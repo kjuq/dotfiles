@@ -1,0 +1,54 @@
+keymap:
+  - name: Except Terminal
+    application:
+      not: [gnome-terminal-server, Gnome-shell]
+    remap:
+      Super_L-q: C-q
+      Super_L-w: C-w
+      Super_L-e: C-e
+      Super_L-r: C-r
+      Super_L-t: C-t
+      Super_L-y: C-y
+      Super_L-u: C-u
+      Super_L-i: C-i
+      Super_L-o: C-o
+      Super_L-p: C-p
+      Super_L-a: C-a
+      Super_L-s: C-s
+      Super_L-d: C-d
+      Super_L-f: C-f
+      Super_L-g: C-g
+      Super_L-h: C-h
+      Super_L-j: C-j
+      Super_L-k: C-k
+      Super_L-l: C-l
+      Super_L-semicolon: C-semicolon
+      Super_L-z: C-z
+      Super_L-x: C-x
+      Super_L-c: C-c
+      Super_L-v: C-v
+      Super_L-b: C-b
+      Super_L-n: C-n
+      Super_L-m: C-m
+      Super_L-comma: C-comma
+      Super_L-dot: C-dot
+      Super_L-slash: C-slash
+
+      C-b: left
+      C-f: right
+      C-p: up
+      C-n: down
+      C-a: home
+      C-e: end
+      C-h: backspace
+      C-d: delete
+      C-m: enter
+      C-k: [Shift-end, backspace]
+      C-o: [enter, left]
+
+      esc: [esc, hanja]
+
+
+
+
+

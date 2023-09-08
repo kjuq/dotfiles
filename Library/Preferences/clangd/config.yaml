@@ -1,0 +1,7 @@
+CompileFlags:
+  Add:
+    - -I/usr/local/include/
+    - -I/opt/homebrew/include/
+    - -I/opt/homebrew/opt/llvm/include/
+    - -L/opt/homebrew/opt/llvm/lib
+

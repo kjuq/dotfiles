@@ -1,0 +1,15 @@
+snippet 2>&1
+	2>&1 > /dev/null
+
+snippet iftype
+	if type -P ${1:#command_name}; then
+		${0}
+	fi
+
+snippet #!
+	#!/bin/sh
+
+snippet scriptdir
+	SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+
