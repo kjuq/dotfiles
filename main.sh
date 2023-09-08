@@ -1,44 +1,10 @@
 #!/bin/sh
 
-xdg_files="
-atcoder-cli-nodejs/config.json
-atcoder-cli-nodejs/cpp
-alacritty/alacritty.yml
-brewfile/Brewfile
-fish/config.fish
-git/config
-git/ignore
-karabiner/assets
-karabiner/karabiner.json
-kitty/kitty.conf
-lazygit/config.yml
-nvim/ftplugin
-nvim/init.lua
-nvim/lua
-pycodestyle
-tmux/tmux.conf
-wezterm/wezterm.lua
-xkeysnail
-xremap
-"
-
-files="
-.mackup
-.mackup.cfg
-.scripts
-.ssh/config
-Library/Preferences/atcoder-cli-nodejs/config.json
-Library/Preferences/atcoder-cli-nodejs/cpp
-Library/Preferences/clangd/config.yaml
-Library/Preferences/com.colliderli.iina.plist
-Library/Preferences/com.hegenberg.BetterTouchTool.plist
-Library/Preferences/com.raycast.macos.plist
-Library/Application Support/Code/User/settings.json
-"
-
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 XDG_NO_HOME="${XDG_CONFIG_HOME/$HOME\//}"
 SCRIPT_XDG="$SCRIPT_DIR/$XDG_NO_HOME"
+
+source $SCRIPT_DIR/targets.sh
 
 make_parent_dir() {
     TARGET_FILE="$1"
