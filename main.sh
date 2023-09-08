@@ -6,53 +6,33 @@ SCRIPT_XDG="$SCRIPT_DIR/$XDG_NO_HOME"
 
 source $SCRIPT_DIR/targets.sh
 
-make_parent_dir() {
-    TARGET_FILE="$1"
-
-    PARENT_DIR="$(dirname "$TARGET_FILE")"
-
-    if ! test -d "$PARENT_DIR"; then
-        # echo "Making Directories: $PARENT_DIR"
-        mkdir --parents "$PARENT_DIR"
-    fi
-}
-
-make_parent_dir_xdg() {
-    TARGET_FILE="$1"
-
-    PARENT_DIR="$SCRIPT_XDG/$(dirname "$TARGET_FILE")"
-
-    if ! test -d "$PARENT_DIR"; then
-        # echo "Making Directories: $PARENT_DIR"
-        mkdir --parents "$PARENT_DIR"
-    fi
-}
-
 backup() {
     TARGET_FILE="$1"
+    IS_XDG="$2"
 
-    make_parent_dir "$TARGET_FILE"
-
-    SRC="$HOME/$TARGET_FILE"
-    DST="$SCRIPT_DIR/$TARGET_FILE"
-    echo "Backing up: $SRC"
-
-    if test -d "$SRC"; then
-        cp -r "$SRC" "$( dirname "$DST" )"
+    # Set a source path and a destination path based on the second argument
+    if test "$IS_XDG" == "xdg"; then
+        SRC="$XDG_CONFIG_HOME/$TARGET_FILE"
+        DST="$SCRIPT_XDG/$TARGET_FILE"
+        PARENT_DIR="$SCRIPT_XDG/$(dirname "$TARGET_FILE")"
+    elif test "$IS_XDG" == ""; then
+        SRC="$HOME/$TARGET_FILE"
+        DST="$SCRIPT_DIR/$TARGET_FILE"
+        PARENT_DIR="$(dirname "$TARGET_FILE")"
     else
-        cp "$SRC" "$DST"
+        echo "XDG option is invalid."
+        echo "Target: $TARGET_FILE"
+        exit 1
     fi
-}
 
-backup_xdg() {
-    TARGET_FILE="$1"
-
-    make_parent_dir_xdg "$TARGET_FILE"
-
-    SRC="$XDG_CONFIG_HOME/$TARGET_FILE"
-    DST="$SCRIPT_XDG/$TARGET_FILE"
     echo "Backing up: $SRC"
 
+    # Create directories including parent ones
+    if ! test -d "$PARENT_DIR"; then
+        mkdir --parents "$PARENT_DIR"
+    fi
+
+    # Copy directory or file
     if test -d "$SRC"; then
         cp -r "$SRC" "$( dirname "$DST" )"
     else
@@ -63,7 +43,7 @@ backup_xdg() {
 echo "$xdg_files" | while read f
 do
     if ! test "$f" == ""; then
-        backup_xdg "$f"
+        backup "$f" "xdg"
     fi
 done
 

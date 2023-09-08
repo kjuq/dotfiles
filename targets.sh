@@ -29,10 +29,6 @@ files="
 Library/Preferences/atcoder-cli-nodejs/config.json
 Library/Preferences/atcoder-cli-nodejs/cpp
 Library/Preferences/clangd/config.yaml
-Library/Preferences/com.colliderli.iina.plist
-Library/Preferences/com.hegenberg.BetterTouchTool.plist
-Library/Preferences/com.raycast.macos.plist
-Library/Application Support/Code/User/settings.json
 "
 
 
