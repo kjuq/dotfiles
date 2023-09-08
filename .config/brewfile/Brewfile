@@ -1,0 +1,41 @@
+tap "kjuq/tap"
+
+brew "bat"
+brew "coreutils"
+brew "curl"
+brew "dust"
+brew "exa"
+brew "fd"
+brew "fish"
+brew "gcc"
+brew "gh"
+brew "gist"
+brew "git"
+brew "git-delta"
+brew "mackup"
+brew "marp-cli"
+brew "mas"
+brew "neovim"
+brew "node"
+brew "python"
+brew "ripgrep"
+brew "tmux"
+brew "trash-cli"
+brew "wget"
+brew "zoxide"
+
+brew "kjuq/tap/bitsstdcpp"
+
+cask "alacritty"
+cask "google-chrome"
+cask "google-japanese-ime"
+cask "jump-desktop-connect"
+cask "linearmouse"
+cask "raycast"
+
+cask "homebrew/cask-fonts/font-hack-nerd-font"
+
+mas "AdGuard for Safari", id: 1440147259
+mas "Glance", id: 1564688210
+mas "Tailscale", id: 1475387142
+

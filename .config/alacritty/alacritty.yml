@@ -1,0 +1,52 @@
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+
+  italic:
+    family: Hack Nerd Font
+    style: Regular Italic
+
+  size: 16.0
+
+
+window:
+  # larger size
+  dimensions:
+    columns: 220
+    lines: 60
+
+  # the edges on mac is curved
+  padding:
+    x: 8
+    y: 4
+
+  option_as_alt: Both
+
+
+shell:
+  program: /opt/homebrew/bin/fish
+  args:
+    - --login
+    - --command
+    - "tmux attach; or tmux"
+
+
+env:
+  TERM: xterm-256color
+
+
+key_bindings:
+#  - { key: Up,    chars: "\u0010" }
+#  - { key: Down,  chars: "\u000e" }
+#  - { key: Right, chars: "\u0006" }
+#  - { key: Left,  chars: "\u0002" }
+  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
+
+# vim: set tabstop=2 :
+
+
