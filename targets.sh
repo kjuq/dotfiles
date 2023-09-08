@@ -1,7 +1,7 @@
 xdg_files="
+alacritty/alacritty.yml
 atcoder-cli-nodejs/config.json
 atcoder-cli-nodejs/cpp
-alacritty/alacritty.yml
 brewfile/Brewfile
 fish/config.fish
 git/config
@@ -13,6 +13,7 @@ lazygit/config.yml
 nvim/ftplugin
 nvim/init.lua
 nvim/lua
+nvim/snippets
 pycodestyle
 tmux/tmux.conf
 wezterm/wezterm.lua
