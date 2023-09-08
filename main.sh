@@ -72,7 +72,7 @@ backup() {
     echo "Backing up: $SRC"
 
     if test -d "$SRC"; then
-        cp -r "$SRC" "$DST"
+        cp -r "$SRC" "$( dirname "$DST" )"
     else
         cp "$SRC" "$DST"
     fi
@@ -88,7 +88,7 @@ backup_xdg() {
     echo "Backing up: $SRC"
 
     if test -d "$SRC"; then
-        cp -r "$SRC" "$DST"
+        cp -r "$SRC" "$( dirname "$DST" )"
     else
         cp "$SRC" "$DST"
     fi
