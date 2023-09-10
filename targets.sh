@@ -1,19 +1,13 @@
 xdg_files="
 alacritty/alacritty.yml
-atcoder-cli-nodejs/config.json
-atcoder-cli-nodejs/cpp
 brewfile/Brewfile
 fish/config.fish
-git/config
-git/ignore
+git
 karabiner/assets
 karabiner/karabiner.json
 kitty/kitty.conf
 lazygit/config.yml
-nvim/ftplugin
-nvim/init.lua
-nvim/lua
-nvim/snippets
+nvim
 pycodestyle
 tmux/tmux.conf
 wezterm/wezterm.lua
@@ -27,7 +21,6 @@ files="
 .scripts
 .ssh/config
 Library/Preferences/atcoder-cli-nodejs/config.json
-Library/Preferences/atcoder-cli-nodejs/cpp
 Library/Preferences/clangd/config.yaml
 "
 
