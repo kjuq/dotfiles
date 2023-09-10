@@ -18,6 +18,14 @@ set -g fish_autosuggestion_enabled 0
 # reset fish_user_paths
 set -eU fish_user_paths
 
+# aliases
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias ........="cd ../../../../../../.."
+
 # zoxide initialization
 if command --search --quiet zoxide
     zoxide init --cmd c fish | source
