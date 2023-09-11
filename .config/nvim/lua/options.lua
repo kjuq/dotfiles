@@ -20,7 +20,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 
-vim.opt.listchars = { trail = "◊", tab = ">-" } -- { space = "⋅" }
+vim.opt.listchars = { trail = "◊", tab = ">-", space = "⋅" }
 vim.opt.list = true
 
 vim.opt.shell = "fish"
