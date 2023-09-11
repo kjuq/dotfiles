@@ -3,7 +3,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    event = { "BufAdd", "BufNewFile", "BufReadPost" },
+    event = { "BufNewFile", "BufReadPost" },
     opts = function ()
         local function show_macro_recording()
             local recording_register = vim.fn.reg_recording()
