@@ -46,6 +46,13 @@ return {
                 Escs[#Escs + 1] = Esc
                 vim.keymap.set("n", "<Esc>", Exec_Escs, { silent = true })
 
+                vim.keymap.set("n", "<C-w><C-w>", function()
+                    local key = vim.api.nvim_replace_termcodes("<C-w>", true, false, true)
+                    require('notify').dismiss()
+                    vim.api.nvim_feedkeys(key, "n", false)
+                    vim.api.nvim_feedkeys(key, "n", false)
+                end, { silent = true })
+
                 require("notify").setup({
                     fps = 60,
                     timeout = 800,
