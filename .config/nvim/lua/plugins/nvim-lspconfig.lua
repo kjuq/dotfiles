@@ -38,6 +38,9 @@ return {
                 end, opts)
             end,
         })
+        vim.diagnostic.config({
+            signs = false,
+        })
     end,
 }
 
