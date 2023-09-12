@@ -100,7 +100,7 @@ function acw --description='Usage: acw abc290 a'
 end
 
 function fisher_init
-        # The deletion below may be unnecessary when setting up a completely new environment
+    # The deletion below may be unnecessary when setting up a completely new environment
     set --local fisher_completions_path "$XDG_CONFIG_HOME/fish/local_settings.fish"
     if [ -f $fisher_completions_path ]
         command rm $fisher_completions_path
