@@ -29,11 +29,6 @@ return {
                         fmt = show_macro_recording,
                         color = { fg = "#ff9e64" },
                     },
-                    {
-                        require("lazy.status").updates,
-                        cond = require("lazy.status").has_updates,
-                        color = { fg = "#ff9e64" },
-                    },
                 },
             },
         }
