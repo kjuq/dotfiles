@@ -16,6 +16,7 @@ xremap
 "
 
 files="
+.docker/config.json
 .mackup
 .mackup.cfg
 .scripts
