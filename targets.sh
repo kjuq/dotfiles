@@ -3,6 +3,7 @@ alacritty/alacritty.yml
 brewfile/Brewfile
 fish/config.fish
 git
+gitui
 karabiner/assets
 karabiner/karabiner.json
 kitty/kitty.conf
