@@ -25,6 +25,10 @@ backup() {
         exit 1
     fi
 
+    if [ -L $SRC ]; then
+        return 1
+    fi
+
     echo "Backing up: $SRC"
 
     # Create directories including parent ones
