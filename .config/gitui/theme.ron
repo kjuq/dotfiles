@@ -16,7 +16,7 @@
     commit_time: None,
     commit_author: None,
     danger_fg: None,
-    push_gauge_bg: None,
+    push_gauge_bg: Some(Black),
     push_gauge_fg: None,
     tag_fg: None,
     branch_fg: None,
