@@ -21,7 +21,7 @@ return {
         },
     },
     keys = {
-        { "<C-Space>", mode = { "n", "i" }, "<Cmd>Neotree source=filesystem position=float toggle=true<CR>" },
+        { "<C-Space>", mode = { "n", "i" }, "<Cmd>Neotree source=filesystem position=float toggle=true dir=%:p:h reveal_force_cwd<CR>" },
         { "<leader>tt", mode = "n", "<Cmd>Neotree source=filesystem position=float toggle=true reveal=true<CR>" },
         { "<leader>ts", mode = "n", "<Cmd>Neotree source=filesystem position=left<CR>" },
     },
