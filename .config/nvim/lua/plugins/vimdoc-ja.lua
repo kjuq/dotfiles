@@ -1,9 +1,9 @@
 return {
     'vim-jp/vimdoc-ja',
-    keys = {
-        { "h", mode = "c", desc = "open [H]elp" },
-    },
+    event = { "VimEnter" },
     config = function()
         vim.opt.helplang = "ja,en"
     end,
 }
+
+
