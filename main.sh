@@ -26,7 +26,7 @@ backup() {
     fi
 
     if [ -L $SRC ]; then
-        return 1
+        return 0
     fi
 
     echo "Backing up: $SRC"
