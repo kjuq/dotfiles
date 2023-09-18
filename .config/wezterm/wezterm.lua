@@ -14,12 +14,12 @@ end)
 
 -- This table will hold the configuration.
 Config = {
-    -- color_scheme = "GruvboxDarkHard",
+    color_scheme = "GruvboxDarkHard",
     -- color_scheme = "Gruvbox Dark (Gogh)",
     -- color_scheme = "tokyonight",
     -- color_scheme = "Catppuccin Mocha",
     -- color_scheme = "Clone Of Ubuntu (Gogh)",
-    color_scheme = "iceberg-dark",
+    -- color_scheme = "iceberg-dark",
 
     font_size = 16,
     font = wezterm.font("Hack Nerd Font"),
