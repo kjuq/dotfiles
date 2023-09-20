@@ -1,7 +1,6 @@
-# set XDG_CONFIG_HOME if it is not set
 set -q XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME ~/.config
 
-# fisher auto installation
+# Check if fisher is installed
 if not functions -q fisher
     echo "========================="
     echo " Fisher is not installed"
@@ -9,21 +8,59 @@ if not functions -q fisher
     echo "========================="
 end
 
-# import local settings
+# Import local settings
 if [ -f $XDG_CONFIG_HOME/fish/local_settings.fish ]
     source $XDG_CONFIG_HOME/fish/local_settings.fish
 end
 
-# disable fish auto-completion
+# Disable fish auto-completion
 set -g fish_autosuggestion_enabled 0
 
-# reset fish_user_paths
+# Reset fish_user_paths
 set -eU fish_user_paths
 
-set --export PAGER "less"
-set --export MANPAGER "less"
+# Environment variables
+set --export LC_ALL en_US.UTF-8
+set --export LANG en_US.UTF-8
+set --export LANGUAGE en_US.UTF-8
 
-# aliases
+set --export EDITOR nvim
+set --export VISUAL nvim
+set --export PAGER less
+set --export MANPAGER less
+
+set --export HOMEBREW_NO_ANALYTICS 1
+
+# Aliases
+if command --search --quiet exa
+    alias ls="exa --classify --group-directories-first --icons"
+    alias exat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
+    alias exata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
+else
+    alias ls="ls --color=auto --classify --group-directories-first"
+end
+alias la="ls --all"
+alias lla="ll --all"
+alias l1="ls -1"
+
+alias dust="dust --reverse"
+
+if command --search --quiet trash
+    alias dl="trash -r"
+    alias rm="echo '\'rm\' is deprecated. Use \'dl\' to move them to trash.'"
+end
+
+alias cplus="g++ -std=c++14 -Wall -Wextra -Wno-unused-const-variable -g -fsanitize=address -D_GLIBCXX_DEBUG -I/opt/homebrew/include/"
+alias ojp="oj t -c 'python3 main.py'"
+alias acsp="ojp; and acc submit main.py"
+
+if not command --search --quiet python
+    alias python="python3"
+end
+if not command --search --quiet pip
+    alias pip="pip3"
+end
+
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
@@ -37,67 +74,23 @@ set fzf_fd_opts --hidden --exclude .git # used by fzf.fish
 set --export FZF_DEFAULT_COMMAND "fd --type f $fzf_fd_opts"
 set --export FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
-# zoxide initialization
+# Zoxide initialization
 if command --search --quiet zoxide
     zoxide init --cmd c fish | source
 end
 
-# settings for Linux
-if [ (uname) = "Linux" ]
+# OS-specific
+if [ (uname) = "Darwin" ]
     alias open="xdg-open"
     alias pbcopy="xsel --clipboard --input"
-end
-
-# settings for MacOS
-if [ (uname) = "Darwin" ]
-    # paths on M1 environment
+else if [ (uname) = "Linux" ]
     eval (/opt/homebrew/bin/brew shellenv)
     fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
     fish_add_path /opt/homebrew/opt/ruby/bin
     fish_add_path /opt/homebrew/opt/llvm/bin
-
-    # environment variables
-    set --export HOMEBREW_NO_ANALYTICS 1
-
-    set --export LC_ALL en_US.UTF-8
-    set --export LANG en_US.UTF-8
-    set --export LANGUAGE en_US.UTF-8
-
-    set --export EDITOR nvim
-    set --export VISUAL nvim
-
-    # aliases
-    if command --search --quiet exa
-        alias ls="exa --classify --group-directories-first --icons"
-        alias exat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
-        alias exata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
-    else
-        alias ls="ls --color=auto --classify --group-directories-first"
-    end
-    alias la="ls --all"
-    alias lla="ll --all"
-    alias l1="ls -1"
-
-    alias dust="dust --reverse"
-
-    if command --search --quiet trash
-        alias dl="trash -r"
-        alias rm="echo '\'rm\' is deprecated. Use \'dl\' to move them to trash.'"
-    end
-
-    alias cplus="g++ -std=c++14 -Wall -Wextra -Wno-unused-const-variable -g -fsanitize=address -D_GLIBCXX_DEBUG -I/opt/homebrew/include/"
-    alias ojp="oj t -c 'python3 main.py'"
-    alias acsp="ojp; and acc submit main.py"
 end
 
-# python -> python3 (it doesn't overwrite if `python` already exists)
-if not command --search --quiet python
-    alias python="python3"
-end
-if not command --search --quiet pip
-    alias pip="pip3"
-end
-
+# Functions
 function acw --description='Usage: acw abc290 a'
     if test (count $argv) -ne 2
         echo "Not enough arguments. Usage: acw abc290 a"
