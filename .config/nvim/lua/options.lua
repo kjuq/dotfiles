@@ -8,7 +8,7 @@ vim.opt.wrap = false
 vim.opt.laststatus = 3 -- global status line
 vim.opt.termguicolors = true
 
-vim.opt.updatetime = 500
+vim.opt.updatetime = 100
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
