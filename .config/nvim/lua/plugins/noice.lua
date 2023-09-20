@@ -1,6 +1,6 @@
 return {
     "folke/noice.nvim",
-    event = { "CursorHold" },
+    event = { "VeryLazy" },
     cmd = {
         "Noice",
         "NoiceLog",

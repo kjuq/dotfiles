@@ -1,9 +1,6 @@
 return {
     'nvim-lualine/lualine.nvim',
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
-    event = { "CursorHold" },
+    event = { "VeryLazy" },
     opts = function ()
         local function show_macro_recording()
             local recording_register = vim.fn.reg_recording()
@@ -33,6 +30,9 @@ return {
             },
         }
     end,
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
 }
 
 

@@ -1,6 +1,6 @@
 return {
     'vim-jp/vimdoc-ja',
-    event = { "CursorHold" },
+    event = { "VeryLazy" },
     config = function()
         vim.opt.helplang = "ja,en"
     end,

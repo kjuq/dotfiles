@@ -1,6 +1,6 @@
 return {
     "petertriho/nvim-scrollbar",
-    event = { "CursorHold" },
+    event = { "VeryLazy" },
     opts = {},
     dependencies = {
         "kevinhwang91/nvim-hlslens",

@@ -19,6 +19,11 @@ require('lazy').setup('plugins', {
         lazy = true,
         -- cond = false, -- Disable a lot of plugins globally
     },
+    change_detection = {
+        -- automatically check for config file changes and reload the ui
+        enabled = true,
+        notify = false, -- get a notification when changes are found
+    },
     performance = {
         rtp = {
             disabled_plugins = {
