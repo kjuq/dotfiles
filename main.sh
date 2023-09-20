@@ -73,12 +73,7 @@ symlink() {
     # Create a symlink
     # Delete a pre-exist link
     if [ -L "$DST" ]; then
-        read -p "$DST is already symlinked. Unlink it? (y/N) " INPUT
-        if [ "$INPUT" == "y" ] || [ "$INPUT" == "Y" ]; then
-            unlink "$DST"
-        else
-            return 1
-        fi
+        return 0
     fi
     # Delete a pre-exist dir/file
     if [ -e "$DST" ]; then
@@ -93,7 +88,7 @@ symlink() {
                 exit 1
             fi
         else
-            return 1
+            return 0
         fi
     fi
     ln --symbolic "$SRC" "$DST"
