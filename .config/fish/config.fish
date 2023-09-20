@@ -3,8 +3,10 @@ set -q XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME ~/.config
 
 # fisher auto installation
 if not functions -q fisher
-    echo "# Fisher is not installed. #"
-    echo "# Execute fisher_init. #"
+    echo "========================="
+    echo " Fisher is not installed"
+    echo "  Execute `fisher_init`"
+    echo "========================="
 end
 
 # import local settings
@@ -18,6 +20,9 @@ set -g fish_autosuggestion_enabled 0
 # reset fish_user_paths
 set -eU fish_user_paths
 
+set --export PAGER "less"
+set --export MANPAGER "less"
+
 # aliases
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -25,6 +30,12 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
 alias ........="cd ../../../../../../.."
+
+# fzf
+fzf_configure_bindings --directory=\cs
+set fzf_fd_opts --hidden --exclude .git # used by fzf.fish
+set --export FZF_DEFAULT_COMMAND "fd --type f $fzf_fd_opts"
+set --export FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
 # zoxide initialization
 if command --search --quiet zoxide
@@ -57,7 +68,7 @@ if [ (uname) = "Darwin" ]
 
     # aliases
     if command --search --quiet exa
-        alias ls="exa --classify --group-directories-first"
+        alias ls="exa --classify --group-directories-first --icons"
         alias exat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
         alias exata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
     else
@@ -114,6 +125,7 @@ function fisher_init
     fisher install kjuq/pure-iceberg
     fisher install kjuq/color-tomorrow-night
     fisher install kjuq/fish-pip-completion
+    fisher install PatrickF1/fzf.fish
 end
 
 # vim: set filetype=fish :
