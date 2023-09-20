@@ -1,6 +1,6 @@
 return {
     "petertriho/nvim-scrollbar",
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "CursorHold" },
     opts = {},
     dependencies = {
         "kevinhwang91/nvim-hlslens",

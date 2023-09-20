@@ -3,7 +3,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "CursorHold" },
     opts = function ()
         local function show_macro_recording()
             local recording_register = vim.fn.reg_recording()
