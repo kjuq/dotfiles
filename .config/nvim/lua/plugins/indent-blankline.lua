@@ -2,7 +2,6 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufNewFile", "BufReadPost" },
     config = function ()
-        vim.opt.listchars:append({ space = "⋅" })
         vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#E06C75", nocombine = true })
         vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#E5C07B", nocombine = true })
         vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#98C379", nocombine = true })
