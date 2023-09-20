@@ -81,13 +81,13 @@ end
 
 # OS-specific
 if [ (uname) = "Darwin" ]
-    alias open="xdg-open"
-    alias pbcopy="xsel --clipboard --input"
-else if [ (uname) = "Linux" ]
     eval (/opt/homebrew/bin/brew shellenv)
     fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
     fish_add_path /opt/homebrew/opt/ruby/bin
     fish_add_path /opt/homebrew/opt/llvm/bin
+else if [ (uname) = "Linux" ]
+    alias open="xdg-open"
+    alias pbcopy="xsel --clipboard --input"
 end
 
 # Functions
