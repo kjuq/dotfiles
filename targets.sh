@@ -8,6 +8,7 @@ karabiner/assets
 karabiner/karabiner.json
 kitty/kitty.conf
 lazygit/config.yml
+lesskey
 nvim
 pycodestyle
 tmux/tmux.conf
