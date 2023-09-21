@@ -44,7 +44,7 @@ return {
                 }
             },
             rename = {
-                in_select = false,
+                in_select = true,
                 keys = {
                     quit = { "q", "<Esc>" },
                 },
@@ -58,10 +58,10 @@ return {
         vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
         -- definition
-        vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
-        vim.keymap.set("n", "<leader>td", "<cmd>Lspsaga peek_type_definition<CR>")
-        vim.keymap.set("n", "<leader>gd", "<cmd>Lspsaga goto_definition<CR>")
-        vim.keymap.set("n", "<leader><Space>td", "<cmd>Lspsaga goto_type_definition<CR>")
+        vim.keymap.set("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>")
+        vim.keymap.set("n", "<leader><Space>td", "<cmd>Lspsaga peek_type_definition<CR>")
+        vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+        vim.keymap.set("n", "<leader>td", "<cmd>Lspsaga goto_type_definition<CR>")
 
         -- diagnostic
         vim.keymap.set("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>")
@@ -69,7 +69,7 @@ return {
         vim.keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 
         -- finder
-        vim.keymap.set('n', '<leader>rf', '<cmd>Lspsaga finder def+ref+imp<CR>')
+        vim.keymap.set('n', 'gD', '<cmd>Lspsaga finder def+ref+imp<CR>')
 
         -- hover
         vim.keymap.set("n", "K",  "<cmd>Lspsaga hover_doc<CR>")
