@@ -1,6 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.2",
+    tag = "0.1.3",
     cmd = { "Telescope" },
     keys = {
         { "<leader>fg", mode = { "n" }, function () require("telescope.builtin").live_grep() end },
