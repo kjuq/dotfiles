@@ -4,21 +4,28 @@ return {
     cmd = { "Telescope" },
     keys = {
         { "<leader>fg", mode = { "n" }, function () require("telescope.builtin").live_grep() end },
-        { "<leader>ff", mode = { "n" }, function () require("telescope.builtin").find_files() end },
+        { "<leader>ff", mode = { "n" }, function () require("telescope.builtin").find_files({ hidden = true }) end },
         { "<leader>fb", mode = { "n" }, function () require("telescope.builtin").buffers() end },
-        { "<leader>fi", mode = { "n" }, function () require("telescope.builtin").help_tags() end }, -- indexes
+        { "<leader>fi", mode = { "n" }, function () require("telescope.builtin").help_tags() end }, -- "i"ndex
         { "<leader>fk", mode = { "n" }, function () require("telescope.builtin").keymaps() end },
-        { "<leader>fh", mode = { "n" }, function () require("telescope.builtin").oldfiles() end }, -- history
+        { "<leader>fh", mode = { "n" }, function () require("telescope.builtin").oldfiles() end }, -- "h"istory
         { "<leader>fm", mode = { "n" }, function () require("telescope.builtin").man_pages() end },
         { "<leader>fr", mode = { "n" }, function () require("telescope.builtin").registers() end },
         { "<leader>fd", mode = { "n" }, function () require("telescope.builtin").diagnostics() end },
         { "<leader>fc", mode = { "n" }, function () require("telescope").extensions.zoxide.list() end },
     },
     opts = function ()
-        -- Useful for easily creating commands
+        local actions = require("telescope.actions")
         local z_utils = require("telescope._extensions.zoxide.utils")
 
         return {
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<esc>"] = actions.close
+                    },
+                },
+            },
             extensions = {
                 zoxide = {
                     prompt_title = "[ Walking on the shoulders of TJ ]",
