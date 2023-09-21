@@ -1,4 +1,4 @@
+quitOnTopLevelReturn: true # Quit with esc
 gui:
   showIcons: true
-
 
