@@ -8,10 +8,11 @@ if wezterm.config_builder then
 end
 
 -- Startup with fullscreen
--- wezterm.on('gui-startup', function(cmd)
---     local _, _, window = wezterm.mux.spawn_window(cmd or {})
---     window:gui_window():toggle_fullscreen()
--- end)
+wezterm.on('gui-startup', function(cmd)
+    local _, _, window = wezterm.mux.spawn_window(cmd or {})
+    window:gui_window():maximize()
+    -- window:gui_window():toggle_fullscreen()
+end)
 
 -- This table will hold the configuration.
 Config = {

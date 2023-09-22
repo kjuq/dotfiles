@@ -44,6 +44,13 @@ return {
 
         -- Config
         local opts = {
+            extensions = {
+                "lazy",
+                "man",
+                "neo-tree",
+                "quickfix",
+                "toggleterm",
+            },
             options = {
                 globalstatus = true,
                 -- refresh = { statusline = 10 },
@@ -145,7 +152,7 @@ return {
             cond = conditions.buffer_not_empty,
             color = { fg = colors.magenta, gui = 'bold' },
             symbols = {
-                modified = '',    -- Text to show when the file is modified.
+                modified = '',    -- Text to show when the file is modified.
                 readonly = '',    -- Text to show when the file is non-modifiable or readonly.
                 unnamed  = '󱁐',    -- Text to show for unnamed buffers.
                 newfile  = '',    -- Text to show for newly created file before first write
