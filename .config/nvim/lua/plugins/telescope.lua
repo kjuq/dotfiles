@@ -12,6 +12,7 @@ return {
         { "<leader>fm", mode = { "n" }, function () require("telescope.builtin").man_pages() end },
         { "<leader>fr", mode = { "n" }, function () require("telescope.builtin").registers() end },
         { "<leader>fd", mode = { "n" }, function () require("telescope.builtin").diagnostics() end },
+        { "<leader>fs", mode = { "n" }, function () require("telescope.builtin").symbols { sources = { "emoji", "kaomoji", "gitmoji", "nerd" } } end },
         { "<leader>fc", mode = { "n" }, function () require("telescope").extensions.zoxide.list() end },
     },
     opts = function ()
@@ -52,6 +53,7 @@ return {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
         "BurntSushi/ripgrep",
+        "nvim-telescope/telescope-symbols.nvim",
         "jvgrootveld/telescope-zoxide",
     },
 }
