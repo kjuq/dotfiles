@@ -53,7 +53,6 @@ Config = {
             mods = "CMD|CTRL",
             action = wezterm.action.ToggleFullScreen,
         },
-
     },
 }
 
