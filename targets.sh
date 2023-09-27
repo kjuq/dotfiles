@@ -11,6 +11,8 @@ lazygit/config.yml
 lesskey
 nvim
 pycodestyle
+spotify-tui/config.yml
+spotifyd/spotifyd.conf
 tmux/tmux.conf
 wezterm/wezterm.lua
 xkeysnail
