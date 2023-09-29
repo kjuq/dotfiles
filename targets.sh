@@ -9,6 +9,7 @@ karabiner/karabiner.json
 kitty/kitty.conf
 lazygit/config.yml
 lesskey
+nano/nanorc
 nvim
 pycodestyle
 spotify-tui/config.yml
