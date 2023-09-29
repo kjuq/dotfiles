@@ -21,6 +21,7 @@ brew "less"
 brew "mackup"
 brew "marp-cli"
 brew "mas"
+brew "nano"
 brew "neovim"
 brew "nnn"
 brew "node"
@@ -28,6 +29,7 @@ brew "python"
 brew "rename"
 brew "ripgrep"
 brew "spotify-tui"
+brew "tailscale"
 brew "tmux"
 brew "trash-cli"
 brew "viu"
@@ -53,6 +55,5 @@ cask "homebrew/cask-fonts/font-hack-nerd-font"
 
 mas "AdGuard for Safari", id: 1440147259
 mas "Glance", id: 1564688210
-mas "Tailscale", id: 1475387142
 mas "Vimlike", id: 1584519802
 

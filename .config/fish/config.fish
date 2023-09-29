@@ -30,6 +30,7 @@ set --export PAGER less
 set --export MANPAGER less
 
 set --export HOMEBREW_NO_ANALYTICS 1
+set --export HOMEBREW_NO_ENV_HINTS 1
 
 # Aliases
 if command --search --quiet exa

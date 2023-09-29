@@ -100,9 +100,9 @@ unsymlink() {
 }
 
 main() {
-    if [ "$1" == "backup" ]; then
+    if [ "$1" == "backup" ] || [ "$1" == "b" ]; then
         ACTION="backup"
-    elif [ "$1" == "symlink" ]; then
+    elif [ "$1" == "symlink" ] || [ "$1" == "s" ]; then
         ACTION="symlink"
     else
         echo "Unknown or no argument was given. Quit."
