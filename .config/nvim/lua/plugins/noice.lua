@@ -18,7 +18,12 @@ return {
         "NoiceViewstats",
     },
     keys = {
-        { "<leader>fn", mode = { "n" }, function () vim.cmd("Noice telescope") end },
+        {
+            "<leader>fn",
+            mode = { "n" },
+            function () vim.cmd("Noice telescope") end,
+            desc = "Telescope.extensions: Noice",
+        },
     },
     config = function ()
         vim.keymap.set({"n", "i", "s"}, "<c-f>", function()
