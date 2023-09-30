@@ -13,6 +13,7 @@ return {
                     vim.api.nvim_feedkeys(key, "n", false)
                 end
             end,
+            desc = "LuaSnip: expand or jump to a next placeholder",
             { silent = true },
         },
         {
@@ -26,6 +27,7 @@ return {
                     vim.api.nvim_feedkeys(key, "n", false)
                 end
             end,
+            desc = "LuaSnip: jump to a previous placeholder",
             { silent = true },
         },
     },

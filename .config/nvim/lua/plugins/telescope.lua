@@ -3,17 +3,76 @@ return {
     tag = "0.1.3",
     cmd = { "Telescope" },
     keys = {
-        { "<leader>fg", mode = { "n" }, function () require("telescope.builtin").live_grep() end },
-        { "<leader>ff", mode = { "n" }, function () require("telescope.builtin").find_files({ hidden = true }) end },
-        { "<leader>fb", mode = { "n" }, function () require("telescope.builtin").buffers() end },
-        { "<leader>fi", mode = { "n" }, function () require("telescope.builtin").help_tags() end }, -- "i"ndex
-        { "<leader>fk", mode = { "n" }, function () require("telescope.builtin").keymaps() end },
-        { "<leader>fh", mode = { "n" }, function () require("telescope.builtin").oldfiles() end }, -- "h"istory
-        { "<leader>fm", mode = { "n" }, function () require("telescope.builtin").man_pages() end },
-        { "<leader>fr", mode = { "n" }, function () require("telescope.builtin").registers() end },
-        { "<leader>fd", mode = { "n" }, function () require("telescope.builtin").diagnostics() end },
-        { "<leader>fs", mode = { "n" }, function () require("telescope.builtin").symbols { sources = { "emoji", "kaomoji", "gitmoji", "nerd" } } end },
-        { "<leader>fc", mode = { "n" }, function () require("telescope").extensions.zoxide.list() end },
+        {
+            "<leader>fg",
+            mode = { "n" },
+            function () require("telescope.builtin").live_grep() end,
+            desc = "Telescope.builtin: Live grep"
+        },
+        {
+            "<leader>ff",
+            mode = { "n" },
+            function () require("telescope.builtin").find_files({ hidden = true }) end,
+            "Telescope.builtin: Find files"
+        },
+        {
+            "<leader>fb",
+            mode = { "n" },
+            function () require("telescope.builtin").buffers() end,
+            desc = "Telescope.builtin: Buffers"
+        },
+        {
+            "<leader>fi",
+            mode = { "n" },
+            function () require("telescope.builtin").help_tags() end,
+            desc = "Telescope.builtin: Help tags (\"i\"ndex)"
+        },
+        {
+            "<leader>fk",
+            mode = { "n" },
+            function () require("telescope.builtin").keymaps() end,
+            desc = "Telescope.builtin: Keymaps"
+        },
+        {
+            "<leader>fh",
+            mode = { "n" },
+            function () require("telescope.builtin").oldfiles() end,
+            desc = "Telescope.builtin: Old files (\"h\"istory)"
+        },
+        {
+            "<leader>fm",
+            mode = { "n" },
+            function () require("telescope.builtin").man_pages() end,
+            desc = "Telescope.builtin: Man pages"
+        },
+        {
+            "<leader>fr",
+            mode = { "n" },
+            function () require("telescope.builtin").registers() end,
+            desc = "Telescope.builtin: Registers"
+        },
+        {
+            "<leader>fd",
+            mode = { "n" },
+            function () require("telescope.builtin").diagnostics() end,
+            desc = "Telescope.builtin: Diagnostics"
+        },
+        {
+            "<leader>fs",
+            mode = { "n" },
+            function ()
+                require("telescope.builtin").symbols {
+                    sources = { "emoji", "kaomoji", "gitmoji", "nerd" }
+                }
+            end,
+            desc = "Telescope.builtin: Symbols",
+        },
+        {
+            "<leader>fc",
+            mode = { "n" },
+            function () require("telescope").extensions.zoxide.list() end,
+            desc = "Telescope.extensions: Zoxide list (\"c\"d)"
+        },
     },
     opts = function ()
         local actions = require("telescope.actions")
@@ -23,7 +82,8 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ["<esc>"] = actions.close
+                        ["<esc>"] = actions.close,
+                        ["<C-c>"] = { "<esc>", type = "command" },
                     },
                 },
             },

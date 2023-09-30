@@ -6,8 +6,18 @@ return {
         "Neotree",
     },
     keys = {
-        { "<C-Space>", mode = "n", "<Cmd>Neotree source=filesystem position=float toggle=true reveal_force_cwd<CR>" },
-        { "<leader>ts", mode = "n", "<Cmd>Neotree source=filesystem position=left<CR>" },
+        {
+            "<C-Space>",
+            mode = { "n" },
+            "<Cmd>Neotree source=filesystem position=float toggle=true reveal_force_cwd<CR>",
+            desc = "Neo-tree: open a floating window",
+        },
+        {
+            "<leader>ts",
+            mode = { "n" },
+            "<Cmd>Neotree source=filesystem position=left reveal_force_cwd<CR>",
+            desc = "Neo-tree: open a side window on left",
+        },
     },
     opts = {
         close_if_last_window = true,

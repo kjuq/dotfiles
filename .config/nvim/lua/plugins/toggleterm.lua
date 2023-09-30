@@ -2,7 +2,12 @@ return {
     'akinsho/toggleterm.nvim',
     version = "*",
     keys = {
-        { "<C-\\>", mode = { "n", "i" }, function () vim.cmd("ToggleTerm") end },
+        {
+            "<C-\\>",
+            mode = { "n", "i" },
+            function () vim.cmd("ToggleTerm") end,
+            desc = "ToggleTerm: open floating window",
+        },
 
     },
     cmd = {
