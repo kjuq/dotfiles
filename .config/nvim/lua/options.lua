@@ -16,7 +16,7 @@ vim.opt.foldmethod = "marker"
 
 vim.opt.smartindent = true
 vim.opt.tabstop = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 
