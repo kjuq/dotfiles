@@ -1,6 +1,6 @@
 return {
     "ibhagwan/smartyank.nvim",
-    lazy = false,
+    lazy = false, -- necessary
     opts = {
         highlight = {
             enabled = false,
@@ -9,6 +9,7 @@ return {
             silent = false,
         },
     },
+    validate_yank = false,
 }
 
 

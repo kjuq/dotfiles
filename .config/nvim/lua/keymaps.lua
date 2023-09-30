@@ -11,8 +11,10 @@ vim.keymap.set("c", "<C-a>", "<Home>") -- Inserts all matched candidates by defa
 vim.keymap.set("c", "<C-d>", "<Del>") -- Lists completions by default, so <C-i> is enough
 -- vim.keymap.set("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
 
--- Don't update register when deleting letters by "x"
+-- Don't update register when not intend to do so
 vim.keymap.set("n", "x", "\"_x")
+vim.keymap.set("n", "c", "\"_c")
+vim.keymap.set("n", "D", "\"_D")
 
 -- Move caret on display lines
 vim.keymap.set("n", "j", "gj")
@@ -32,6 +34,7 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<leader>x", vim.cmd.bdelete)
 vim.keymap.set("n", "<leader>X", function () vim.cmd.bdelete { bang = true } end)
 
+-- Esc can be appended functions in other places such as config files of plugins
 Escs = {}
 
 local esc = function()
