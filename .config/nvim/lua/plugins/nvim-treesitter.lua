@@ -11,6 +11,9 @@ return {
             indent = { enable = true },
         })
     end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
 }
 
 

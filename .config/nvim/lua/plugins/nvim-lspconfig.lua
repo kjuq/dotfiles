@@ -4,10 +4,30 @@ return {
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
-        -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-        -- vim.keymap.set("n", "[e", vim.diagnostic.goto_prev)
-        -- vim.keymap.set("n", "]e", vim.diagnostic.goto_next)
-        -- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+        -- vim.keymap.set(
+        --     "n",
+        --     "<leader>e",
+        --     vim.diagnostic.open_float,
+        --     { desc = "LSP: Open floating diagnostic message" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "[e",
+        --     vim.diagnostic.goto_prev,
+        --     { desc = "LSP: Go to previous diagnostic message" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "]e",
+        --     vim.diagnostic.goto_next
+        --     { desc = "LSP: Go to next diagnostic message" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "<leader>q",
+        --     vim.diagnostic.setloclist
+        --     { desc = "LSP: Open diagnostics list" }
+        -- )
 
         -- Use LspAttach autocommand to only map the following keys
         -- after the language server attaches to the current buffer
@@ -22,30 +42,43 @@ return {
                 -- Buffer local mappings.
                 -- See `:help vim.lsp.*` for documentation on any of the below functions
 
-                local opts = { buffer = ev.buf }
+                local vlb = vim.lsp.buf
 
-                -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                -- vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, opts)
-                -- vim.keymap.set("n", "<leader>td", vim.lsp.buf.type_definition, opts)
-                -- vim.keymap.set("n", "<leader>im", vim.lsp.buf.implementation, opts)
+                local nmap = function(keys, func, desc)
+                    if desc then
+                        desc = "LSP: " .. desc
+                    end
 
-                -- vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+                    vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc })
+                end
 
-                -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                -- nmap("gd", vlb.definition, "[g]o to [d]efinition")
+                -- nmap("gD", vlb.declaration, "[g]o to [D]eclaration")
+                -- nmap("<leader>td", vlb.type_definition, "Go to [t]ype [d]efinition")
+                -- -- reference has alternatives. telescope, lspsaga, and etc.
+                -- nmap("<leader>rf", vlb.references, "Go to [r]e[f]erence")
+                -- nmap("<leader>im", vlb.implementation, "[g]o to [i]mplementation")
 
-                -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+                -- nmap("<leader>ca", vlb.code_action, "[c]ode [a]ction")
 
-                vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
-                vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
-                vim.keymap.set("n", "<leader>wl", function()
-                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                end, opts)
+                -- nmap("<leader>rn", vlb.rename, "[r]e[n]ame")
 
-                vim.keymap.set("n", "<leader>lv", function()
-                    vim.lsp.buf.format { async = true }
-                end, opts)
+                -- nmap("K", vlb.hover, "Hover Documentation")
+                nmap("<C-k>", vlb.signature_help, "Signature Documentation")
+
+                nmap("<leader>wa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
+                nmap("<leader>wr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
+                nmap(
+                    "<leader>wl",
+                    function() print(vim.inspect(vlb.list_workspace_folders())) end,
+                    "[w]orkspace [l]ist Folders"
+                )
+
+                nmap(
+                    "<leader>lv",
+                    function() vlb.format { async = true } end,
+                    "Format current buffer with LSP ([l]e[v]el buffer)"
+                )
             end,
         })
         vim.diagnostic.config({
