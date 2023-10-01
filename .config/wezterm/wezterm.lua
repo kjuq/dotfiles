@@ -25,7 +25,7 @@ Config = {
 
     font_size = 16,
     font = wezterm.font("Hack Nerd Font"),
-    freetype_load_target = "Mono", -- "Normal", "Light", "Mono"
+    freetype_load_target = "Normal", -- "Normal", "Light", "Mono"
     default_prog = {
         "/opt/homebrew/bin/fish",
         "--login",
@@ -52,6 +52,16 @@ Config = {
             key = "f",
             mods = "CMD|CTRL",
             action = wezterm.action.ToggleFullScreen,
+        },
+        {
+            key = "-",
+            mods = "CMD",
+            action = wezterm.action.DecreaseFontSize,
+        },
+        {
+            key = "=",
+            mods = "CMD|SHIFT",
+            action = wezterm.action.IncreaseFontSize,
         },
     },
 }
