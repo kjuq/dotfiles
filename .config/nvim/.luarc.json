@@ -1,0 +1,8 @@
+{
+    "workspace.library": [
+        "/opt/homebrew/share/nvim/runtime/lua",
+        "/Users/kjuq/.config/nvim/lua",
+        "/Users/kjuq/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "${3rd}/luv/library",
+    ]
+}
