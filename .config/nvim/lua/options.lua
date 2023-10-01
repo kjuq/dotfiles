@@ -4,15 +4,19 @@ vim.opt.swapfile = false
 vim.opt.wildmenu = true
 vim.opt.autoread = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.wrap = false
 vim.opt.laststatus = 3 -- global status line
 vim.opt.termguicolors = true
+vim.opt.hlsearch = false
+vim.opt.completeopt = "menuone,preview,noinsert,noselect"
 
-vim.opt.updatetime = 500
+vim.opt.updatetime = 100
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.foldmethod = "marker"
+
+vim.opt.wrap = true
+vim.opt.breakindent = true
 
 vim.opt.smartindent = true
 vim.opt.tabstop = 4
