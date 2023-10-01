@@ -22,24 +22,41 @@ return {
             "<leader>fn",
             mode = { "n" },
             function () vim.cmd("Noice telescope") end,
-            desc = "Telescope.extensions: Noice",
+            desc = "Telescope.extensions: [n]oice",
+        },
+        {
+            "<C-f>",
+            mode = { "n", "i", "s" },
+            function()
+                if not require("noice.lsp").scroll(4) then
+                    return "<c-f>"
+                end
+            end,
+            silent = true,
+            expr = true,
+        },
+        {
+            "<C-b>",
+            mode = { "n", "i", "s" },
+            function()
+                if not require("noice.lsp").scroll(-4) then
+                    return "<c-f>"
+                end
+            end,
+            silent = true,
+            expr = true,
         },
     },
-    config = function ()
-        vim.keymap.set({"n", "i", "s"}, "<c-f>", function()
-            if not require("noice.lsp").scroll(4) then
-                return "<c-f>"
-            end
-        end, { silent = true, expr = true })
-
-        vim.keymap.set({"n", "i", "s"}, "<c-b>", function()
-            if not require("noice.lsp").scroll(-4) then
-                return "<c-b>"
-            end
-        end, { silent = true, expr = true })
-
-        require("noice").setup({})
-    end,
+    opts = {
+        messages = {
+            enabled = true, -- enables the Noice messages UI
+            view = "mini", -- default view for messages
+            view_error = "mini", -- view for errors
+            view_warn = "mini", -- view for warnings
+            view_history = "messages", -- view for :messages
+            view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+        },
+    },
     dependencies = {
         "MunifTanjim/nui.nvim",
         {
@@ -60,7 +77,7 @@ return {
 
                 require("notify").setup({
                     fps = 60,
-                    timeout = 800,
+                    -- timeout = 800,
                     stages = "fade",
                 })
             end
