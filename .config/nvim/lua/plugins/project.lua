@@ -1,12 +1,12 @@
 return {
     "ahmedkhalf/project.nvim",
-    event = { "BufWinEnter" },
+    event = { "VeryLazy" },
     keys = {
         {
-            "<leader>fp",
+            "<leader>lp",
             mode = { "n" },
             function () require('telescope').extensions.projects.projects{} end,
-            desc = "Telescope.extensions: projects",
+            desc = "Telescope.extensions: [l]ist [p]rojects",
         },
     },
     config = function()
