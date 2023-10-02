@@ -1,7 +1,7 @@
 return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.3",
-    cmd = { "Telescope", desc = "test" },
+    cmd = { "Telescope" },
     keys = {
         -- File pickers
         {
