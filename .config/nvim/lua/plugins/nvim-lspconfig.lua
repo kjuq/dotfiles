@@ -4,30 +4,14 @@ return {
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
-        -- vim.keymap.set(
-        --     "n",
-        --     "<leader>e",
-        --     vim.diagnostic.open_float,
-        --     { desc = "LSP: Open floating diagnostic message" }
-        -- )
-        -- vim.keymap.set(
-        --     "n",
-        --     "[e",
-        --     vim.diagnostic.goto_prev,
-        --     { desc = "LSP: Go to previous diagnostic message" }
-        -- )
-        -- vim.keymap.set(
-        --     "n",
-        --     "]e",
-        --     vim.diagnostic.goto_next
-        --     { desc = "LSP: Go to next diagnostic message" }
-        -- )
-        -- vim.keymap.set(
-        --     "n",
-        --     "<leader>q",
-        --     vim.diagnostic.setloclist
-        --     { desc = "LSP: Open diagnostics list" }
-        -- )
+        -- local desc = "LSP: Open floating diagnostic message"
+        -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = desc })
+        -- desc = "LSP: Go to previous diagnostic message"
+        -- vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = desc })
+        -- desc = "LSP: Go to next diagnostic message"
+        -- vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = desc })
+        -- desc = "LSP: Open diagnostics list"
+        -- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = desc })
 
         -- Use LspAttach autocommand to only map the following keys
         -- after the language server attaches to the current buffer
@@ -76,7 +60,7 @@ return {
 
                 nmap(
                     "<leader>Lf",
-                    function() vlb.format { async = true } end,
+                    function() vlb.format { async = false } end,
                     "[f]ormat current buffer with LSP"
                 )
             end,
