@@ -21,7 +21,7 @@ return {
         {
             "<leader>ln",
             mode = { "n" },
-            function () vim.cmd("Noice telescope") end,
+            function() vim.cmd("Noice telescope") end,
             desc = "Telescope.extensions: [l]ist [n]oice",
         },
         {
@@ -47,42 +47,30 @@ return {
             expr = true,
         },
     },
-    opts = {
-        messages = {
-            enabled = true, -- enables the Noice messages UI
-            view = "mini", -- default view for messages
-            view_error = "mini", -- view for errors
-            view_warn = "mini", -- view for warnings
-            view_history = "messages", -- view for :messages
-            view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
-        },
-    },
+    opts = function ()
+        vim.api.nvim_create_autocmd({ "FileType" }, {
+            pattern = { "noice" },
+            callback = function()
+                vim.keymap.set("n", "<Esc>", "<Cmd>quit<CR>", { buffer = true })
+            end
+        })
+        return {
+            lsp = {
+                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                    ["cmp.entry.get_documentation"] = true,
+                },
+            },
+            presets = {
+                command_palette = false,          -- position the cmdline and popupmenu together
+                long_message_to_split = true,     -- long messages will be sent to a split
+            },
+        }
+    end,
     dependencies = {
         "MunifTanjim/nui.nvim",
-        {
-            "rcarriga/nvim-notify",
-            config = function ()
-                local Esc = function ()
-                    require('notify').dismiss()
-                end
-                Escs[#Escs + 1] = Esc
-                vim.keymap.set("n", "<Esc>", Exec_Escs, { silent = true })
-
-                vim.keymap.set("n", "<C-w><C-w>", function()
-                    local key = vim.api.nvim_replace_termcodes("<C-w>", true, false, true)
-                    require('notify').dismiss()
-                    vim.api.nvim_feedkeys(key, "n", false)
-                    vim.api.nvim_feedkeys(key, "n", false)
-                end, { silent = true })
-
-                require("notify").setup({
-                    fps = 60,
-                    -- timeout = 800,
-                    stages = "fade",
-                })
-            end
-        },
     },
 }
-
 
