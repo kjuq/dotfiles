@@ -51,7 +51,7 @@ return {
             map("n", "<leader>gR", gs.reset_buffer, "[R]eset buffer")
             map("n", "<leader>gp", gs.preview_hunk, "[p]review hunk")
             map("n", "<leader>gb", function() gs.blame_line{full=true} end, "[b]lame line")
-            map("n", "<leader>gB", gs.toggle_current_line_blame, "Toggle current line [B]lame")
+            map("n", "<leader>gT", gs.toggle_current_line_blame, "[T]oggle current line blame")
             map("n", "<leader>gd", gs.diffthis, "Diff this")
             map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff this \"~\" <- ?")
             map("n", "<leader>gt", gs.toggle_deleted, "[t]oggle deleted")
