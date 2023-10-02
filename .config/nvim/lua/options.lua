@@ -15,7 +15,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.foldmethod = "marker"
 
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.breakindent = true
 
 vim.opt.smartindent = true

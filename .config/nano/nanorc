@@ -204,7 +204,7 @@ set tabsize 4
 
 ## Paint the interface elements of nano.  These are examples;
 ## by default there are no colors, except for errorcolor.
-set titlecolor lightwhite,blue
+set titlecolor lightwhite
 set statuscolor lightwhite,black #cyan #green
 set errorcolor lightwhite,red
 set selectedcolor lightwhite,magenta
