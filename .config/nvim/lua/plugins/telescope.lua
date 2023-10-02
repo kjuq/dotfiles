@@ -20,57 +20,57 @@ return {
             "<leader>fw",
             mode = { "n" },
             function () require('telescope.builtin').grep_string() end,
-            desc = 'Telescope.builtin: Current [w]ord',
+            desc = 'Telescope.builtin: [f]ind current [w]ord',
         },
         {
             "<leader>fg",
             mode = { "n" },
             function () require("telescope.builtin").live_grep() end,
-            desc = "Telescope.builtin: Live [g]rep"
+            desc = "Telescope.builtin: [f]ind files with live [g]rep"
         },
 
         -- Vim pickers
         {
-            "<leader>fb",
+            "<leader>lb",
             mode = { "n" },
             function () require("telescope.builtin").buffers() end,
-            desc = "Telescope.builtin: [b]uffers"
+            desc = "Telescope.builtin: [l]ist [b]uffers"
         },
         {
             "<leader>fh",
             mode = { "n" },
             function () require("telescope.builtin").oldfiles() end,
-            desc = "Telescope.builtin: Old files ([h]istory)"
+            desc = "Telescope.builtin: [f]ind [h]istory of [f]iles"
         },
         {
             "<leader>hc",
             mode = { "n" },
             function () require('telescope.builtin').builtin.command_history() end,
-            desc = 'Telescope.builtin: [c]ommand [h]istory',
+            desc = 'Telescope.builtin: [h]istory of [c]ommands',
         },
         {
             "<leader>hs",
             mode = { "n" },
             function () require('telescope.builtin').search_history() end,
-            desc = 'Telescope.builtin: [s]earch [h]istory',
+            desc = 'Telescope.builtin: [h]istory of [s]earch',
         },
         {
-            "<leader>fi",
+            "<leader>lh",
             mode = { "n" },
             function () require("telescope.builtin").help_tags() end,
-            desc = "Telescope.builtin: Help tags ([i]ndex)"
-        },
-        {
-            "<leader>fm",
-            mode = { "n" },
-            function () require("telescope.builtin").man_pages() end,
-            desc = "Telescope.builtin: [m]an pages"
+            desc = "Telescope.builtin: [l]ist [h]elp tags"
         },
         {
             "<leader>lm",
             mode = { "n" },
+            function () require("telescope.builtin").man_pages() end,
+            desc = "Telescope.builtin: [l]ist [m]an pages"
+        },
+        {
+            "<leader>lM",
+            mode = { "n" },
             function () require('telescope.builtin').marks() end,
-            desc = 'Telescope.builtin: [l]ist marks',
+            desc = 'Telescope.builtin: [l]ist [M]arks',
         },
         {
             "<leader>lq",
@@ -82,31 +82,31 @@ return {
             "<leader>hq",
             mode = { "n" },
             function () require('telescope.builtin').quickfixhistory() end,
-            desc = 'Telescope.builtin: [q]uick [h]istory',
+            desc = 'Telescope.builtin: [h]istory of [q]uickfix',
         },
         {
             "<leader>ll",
             mode = { "n" },
             function () require('telescope.builtin').loclist() end,
-            desc = 'Telescope.builtin: [l]oc[l]ist',
+            desc = 'Telescope.builtin: [l]ist [l]oclist',
         },
         {
             "<leader>lj",
             mode = { "n" },
             function () require('telescope.builtin').jumplist() end,
-            desc = 'Telescope.builtin: [j]ump[l]ist',
+            desc = 'Telescope.builtin: [l]ist [j]umplist',
         },
         {
-            "<leader>fr",
+            "<leader>lr",
             mode = { "n" },
             function () require("telescope.builtin").registers() end,
-            desc = "Telescope.builtin: [r]egisters"
+            desc = "Telescope.builtin: [l]ist [r]egisters"
         },
         {
-            "<leader>fk",
+            "<leader>lk",
             mode = { "n" },
             function () require("telescope.builtin").keymaps() end,
-            desc = "Telescope.builtin: [k]eymaps"
+            desc = "Telescope.builtin: [l]ist [k]eymaps"
         },
         {
             "<leader>fz",
@@ -148,22 +148,22 @@ return {
             desc = "Telescope.builtin.LSP: [o]utgoing calls for word under the cursor"
         },
         {
-            "<leader>fd",
+            "<leader>ld",
             mode = { "n" },
             function () require("telescope.builtin").diagnostics() end,
-            desc = "Telescope.builtin.LSP: [d]iagnostics"
+            desc = "Telescope.builtin.LSP: [l]ist [d]iagnostics"
         },
         {
             "<leader>fs",
             mode = { "n" },
             function () require("telescope.builtin").lsp_document_symbols() end,
-            desc = "Telescope.builtin.LSP: document [s]ymbols in the current buffer"
+            desc = "Telescope.builtin.LSP: [f]ind document [s]ymbols in the current buffer"
         },
         {
             "<leader>fS",
             mode = { "n" },
             function () require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
-            desc = "Telescope.builtin.LSP: document [S]ymbols in the current workspace"
+            desc = "Telescope.builtin.LSP: [f]ind document [S]ymbols in the current workspace"
         },
         {
             "<leader>Li",
@@ -220,7 +220,7 @@ return {
             "<leader>fc",
             mode = { "n" },
             function () require("telescope").extensions.zoxide.list() end,
-            desc = "Telescope.extensions: Zoxide list ([c]d)"
+            desc = "Telescope.extensions: [f]ind directory via Zoxide ([c]d)"
         },
     },
     opts = function ()
@@ -247,7 +247,7 @@ return {
                             end
                         },
                         ["<C-s>"] = {
-                            before_action = function(selection) print("before C-s") end,
+                            before_action = function(_) print("before C-s") end,
                             action = function(selection)
                                 vim.cmd.edit(selection.path)
                             end

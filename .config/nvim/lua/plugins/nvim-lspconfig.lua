@@ -75,9 +75,9 @@ return {
                 )
 
                 nmap(
-                    "<leader>lv",
+                    "<leader>Lf",
                     function() vlb.format { async = true } end,
-                    "Format current buffer with LSP ([l]e[v]el buffer)"
+                    "[f]ormat current buffer with LSP"
                 )
             end,
         })
