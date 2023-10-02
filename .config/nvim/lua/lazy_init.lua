@@ -14,6 +14,7 @@ end
 vim.loader.enable()
 vim.opt.rtp:prepend(lazypath)
 
+require("utils.common").quit_with_esc({ "lazy" })
 require('lazy').setup('plugins', {
     defaults = {
         lazy = true,
@@ -39,5 +40,3 @@ require('lazy').setup('plugins', {
         },
     },
 })
-
-require("utils.utils").quit_with_esc({ "lazy" })

@@ -12,4 +12,4 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
     end
 })
 
-require("utils.utils").quit_with_esc({ "qf", "help" })
+require("utils.common").quit_with_esc({ "qf", "help" })
