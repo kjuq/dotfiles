@@ -61,10 +61,6 @@ return {
         vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 
         -- definition
-        opts = { desc = "LspSaga: Open a floating window of [d]efinition" }
-        vim.keymap.set("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-        opts = { desc = "LspSaga: Open a floating window of [t]ype [d]efinition" }
-        vim.keymap.set("n", "<leader><Space>td", "<cmd>Lspsaga peek_type_definition<CR>", opts)
         opts = { desc = "LspSaga: [g]o to [d]efinition" }
         vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
         opts = { desc = "LspSaga: Go to [t]ype [d]efinition" }
@@ -87,8 +83,8 @@ return {
         vim.keymap.set("n", "K",  "<cmd>Lspsaga hover_doc<CR>", opts)
 
         -- outline
-        opts = { desc = "LspSaga: Show [o]ut [l]ine" }
-        vim.keymap.set("n", "<leader>ol", "<Cmd>Lspsaga outline<CR>", opts)
+        opts = { desc = "LspSaga: Show [o]ut line" }
+        vim.keymap.set("n", "<leader>Lo", "<Cmd>Lspsaga outline<CR>", opts)
 
         -- rename
         opts = { desc = "LspSaga: [r]e[n]ame" }
