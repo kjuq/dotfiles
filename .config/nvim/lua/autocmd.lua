@@ -5,13 +5,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     end
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    pattern = { "quickfix" },
-    callback = function()
-        vim.keymap.set("n", "<Esc>", "<Cmd>quit<CR>", { buffer = true })
-    end
-})
-
 vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
     pattern = "*",
     callback = function()
@@ -19,4 +12,4 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
     end
 })
 
-
+require("utils.utils").quit_with_esc({ "qf", "help" })

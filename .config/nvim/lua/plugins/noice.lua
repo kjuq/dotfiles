@@ -25,7 +25,7 @@ return {
             desc = "Telescope.extensions: [l]ist [n]oice",
         },
         {
-            "<C-f>",
+            "<C-d>",
             mode = { "n", "i", "s" },
             function()
                 if not require("noice.lsp").scroll(4) then
@@ -36,7 +36,7 @@ return {
             expr = true,
         },
         {
-            "<C-b>",
+            "<C-u>",
             mode = { "n", "i", "s" },
             function()
                 if not require("noice.lsp").scroll(-4) then
@@ -48,12 +48,7 @@ return {
         },
     },
     opts = function ()
-        vim.api.nvim_create_autocmd({ "FileType" }, {
-            pattern = { "noice" },
-            callback = function()
-                vim.keymap.set("n", "<Esc>", "<Cmd>quit<CR>", { buffer = true })
-            end
-        })
+        require("utils.utils").quit_with_esc({ "noice" })
         return {
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -73,4 +68,3 @@ return {
         "MunifTanjim/nui.nvim",
     },
 }
-
