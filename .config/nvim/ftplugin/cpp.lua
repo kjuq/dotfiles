@@ -1,2 +1,1 @@
-paste_skeleton("cpp.cpp")
-
+require("utils.skeleton").paste_skeleton("cpp.cpp")

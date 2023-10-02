@@ -2,7 +2,4 @@ if vim.bo.filetype ~= "c" then
     return
 end
 
-paste_skeleton("c.c")
-
-
-
+require("utils.skeleton").paste_skeleton("c.c")
