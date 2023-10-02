@@ -17,7 +17,7 @@ vim.keymap.set("c", "<C-d>", "<Del>") -- Lists completions by default, so <C-i> 
 vim.keymap.set("n", "x", "\"_x", { silent = true, desc = "Delete N characters under the cursor" })
 vim.keymap.set("n", "s", "\"_s", { silent = true, desc = "Delete N characters and start insert" })
 vim.keymap.set("n", "c", "\"_c", { silent = true, desc = "Delete Nmove text and start insert" })
-vim.keymap.set("n", "d", "\"_d", { silent = true, desc = "Delete Nmove text" })
+-- vim.keymap.set("n", "d", "\"_d", { silent = true, desc = "Delete Nmove text" })
 vim.keymap.set("n", "D", "\"_D", { silent = true, desc = "Delete until the end of the line" })
 vim.keymap.set("x", "p", "P", { silent = true, desc = "Paste; registers are unchanged" })
 vim.keymap.set("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed register" })
