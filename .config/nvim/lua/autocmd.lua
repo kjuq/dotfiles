@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    pattern = "quickfix",
+    pattern = { "quickfix" },
     callback = function()
         vim.keymap.set("n", "<Esc>", "<Cmd>quit<CR>", { buffer = true })
     end
