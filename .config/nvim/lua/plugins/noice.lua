@@ -48,7 +48,7 @@ return {
         },
     },
     opts = function ()
-        require("utils.utils").quit_with_esc({ "noice" })
+        require("utils.common").quit_with_esc({ "noice" })
         return {
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
