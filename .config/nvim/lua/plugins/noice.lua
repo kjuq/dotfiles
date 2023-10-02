@@ -29,7 +29,7 @@ return {
             mode = { "n", "i", "s" },
             function()
                 if not require("noice.lsp").scroll(4) then
-                    return "<c-f>"
+                    return "<c-d>"
                 end
             end,
             silent = true,
@@ -40,7 +40,7 @@ return {
             mode = { "n", "i", "s" },
             function()
                 if not require("noice.lsp").scroll(-4) then
-                    return "<c-f>"
+                    return "<c-u>"
                 end
             end,
             silent = true,
