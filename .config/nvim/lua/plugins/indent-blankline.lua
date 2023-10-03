@@ -23,7 +23,8 @@ return {
         return {
             indent = {
                 highlight = highlight,
-                char = "▏", -- "│",
+                char = "┆", -- "╎", "┆","│", "▏",
+                tab_char = "┆",
             },
             scope = { enabled = false },
         }
