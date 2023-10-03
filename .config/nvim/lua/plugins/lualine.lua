@@ -53,7 +53,7 @@ return {
             },
             options = {
                 globalstatus = true,
-                -- refresh = { statusline = 10 },
+                refresh = { statusline = 10 },
 
                 -- Disable sections and component separators
                 component_separators = '',
@@ -147,6 +147,11 @@ return {
 
         ins_left {
             'filename',
+            path = 4, -- 0: Just the filename
+                      -- 1: Relative path
+                      -- 2: Absolute path
+                      -- 3: Absolute path, with tilde as the home directory
+                      -- 4: Filename and parent dir, with tilde as the home directory
             file_status = true,
             newfile_status = true,
             cond = conditions.buffer_not_empty,
@@ -177,6 +182,7 @@ return {
             cond = conditions.hide_in_width,
             -- workaround with Gitsigns which works properly even without Gitsigns
             sources = function ()
+                ---@diagnostic disable-next-line: undefined-field
                 local gitsigns = vim.b.gitsigns_status_dict
                 if gitsigns then
                     return {
