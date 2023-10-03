@@ -61,8 +61,8 @@ return {
                     c = cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
                 }),
 
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()

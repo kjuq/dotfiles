@@ -14,7 +14,7 @@ if [ -f $XDG_CONFIG_HOME/fish/local_settings.fish ]
 end
 
 # Disable fish auto-completion
-set -g fish_autosuggestion_enabled 0
+# set -g fish_autosuggestion_enabled 0
 
 # Reset fish_user_paths
 set -eU fish_user_paths

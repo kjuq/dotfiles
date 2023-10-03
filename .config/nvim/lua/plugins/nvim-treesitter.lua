@@ -5,6 +5,8 @@ return {
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
     config = function ()
+        vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
         require("nvim-treesitter.configs").setup {
             auto_install = true,
             highlight = { enable = true },
