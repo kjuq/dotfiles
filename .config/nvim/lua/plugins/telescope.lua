@@ -1,3 +1,8 @@
+local gcc_installed = vim.fn.executable("gcc")
+local clang_installed = vim.fn.executable("clang")
+local make_installed = vim.fn.executable("make")
+local fzf_installable = (gcc_installed or clang_installed) and make_installed
+
 return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.3",
@@ -223,17 +228,42 @@ return {
             desc = "Telescope.extensions: [f]ind directory via Zoxide ([c]d)"
         },
     },
-    opts = function ()
+    config = function ()
         local actions = require("telescope.actions")
-        local z_utils = require("telescope._extensions.zoxide.utils")
+        local actions_layout = require("telescope.actions.layout")
 
-        return {
+        require("telescope").setup({
             defaults = {
                 mappings = {
                     i = {
                         ["<esc>"] = actions.close,
                         ["<C-c>"] = { "<esc>", type = "command" },
+                        ["<M-n>"] = require('telescope.actions').cycle_history_next,
+                        ["<M-p>"] = require('telescope.actions').cycle_history_prev,
+                        ["<M-s>"] = actions_layout.toggle_preview
                     },
+                    n = {
+                        ["<M-s>"] = actions_layout.toggle_preview
+                    },
+                },
+                scroll_strategy = "limit",
+                path_display = { truncate = 3 },
+                preview = {
+                    hide_on_startup = false,
+                },
+                vimgrep_arguments = {
+                    "rg",
+                    "--hidden",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case"
+                },
+                file_ignore_patterns = {
+                    ".git/",
+                    "node_modules/",
                 },
             },
             extensions = {
@@ -251,8 +281,6 @@ return {
                                 vim.cmd.edit(selection.path)
                             end
                         },
-                        -- Opens the selected entry in a new split
-                        ["<C-q>"] = { action = z_utils.create_basic_command("split") },
                     },
                 },
                 sessions_picker = {
@@ -262,7 +290,10 @@ return {
                     sessionDir = require("utils.common").session_dir,
                 },
             }
-        }
+        })
+        if fzf_installable then
+            require('telescope').load_extension('fzf')
+        end
     end,
     dependencies = {
         "nvim-lua/popup.nvim",
@@ -272,5 +303,8 @@ return {
         "jvgrootveld/telescope-zoxide",
         "HUAHUAI23/telescope-session.nvim", -- for saving session
         "JoseConseco/telescope_sessions_picker.nvim", -- for listing sessions
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = fzf_installable }
     },
 }
+
+
