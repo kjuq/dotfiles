@@ -22,6 +22,7 @@ xremap
 
 files="
 .docker/config.json
+.ignore
 .mackup
 .mackup.cfg
 .scripts
@@ -29,5 +30,3 @@ files="
 Library/Preferences/atcoder-cli-nodejs/config.json
 Library/Preferences/clangd/config.yaml
 "
-
-
