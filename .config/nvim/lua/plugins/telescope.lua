@@ -226,7 +226,6 @@ return {
     opts = function ()
         local actions = require("telescope.actions")
         local z_utils = require("telescope._extensions.zoxide.utils")
-        local session_dir = vim.fn.stdpath('data') ..'/session/' -- ~/.local/share/nvim/session
 
         return {
             defaults = {
@@ -257,10 +256,10 @@ return {
                     },
                 },
                 sessions_picker = {
-                    sessions_dir = session_dir,
+                    sessions_dir = require("utils.common").session_dir,
                 },
                 xray23 = {
-                    sessionDir = session_dir,
+                    sessionDir = require("utils.common").session_dir,
                 },
             }
         }
@@ -275,5 +274,3 @@ return {
         "JoseConseco/telescope_sessions_picker.nvim", -- for listing sessions
     },
 }
-
-
