@@ -22,7 +22,7 @@ return {
             end,
         })
         require("mason-lspconfig").setup({})
-        require("mason").setup({})
+        require("mason").setup({ ui = { border = "rounded" } })
 
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         require("null-ls").setup({
