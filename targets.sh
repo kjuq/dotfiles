@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=2034
 xdg_files="
 alacritty/alacritty.yml
 brewfile/Brewfile
@@ -20,6 +23,7 @@ xkeysnail
 xremap
 "
 
+# shellcheck disable=2034
 files="
 .docker/config.json
 .ignore

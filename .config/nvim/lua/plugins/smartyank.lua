@@ -9,7 +9,6 @@ return {
             silent = false,
         },
     },
-    validate_yank = false,
 }
 
 
