@@ -55,7 +55,8 @@ vim.keymap.set("n", "<leader>X", function () vim.cmd.bdelete { bang = true } end
 Escs = {}
 
 local esc = function()
-    vim.api.nvim_command("nohlsearch")
+    vim.cmd.nohlsearch()
+    vim.cmd.fclose { bang = true }
 end
 
 Escs[#Escs + 1] = esc
