@@ -1,12 +1,12 @@
 return {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    event = { "LspAttach" },
+    --event = { "LspAttach" },
     keys = {
         {
             "<leader>Ll",
             mode = { "n" },
             function () require("lsp_lines").toggle() end,
-            "Toggle lsp_lines",
+            "LspLines: Toggle lsp_lines",
         }
     },
     opts = function ()
@@ -17,6 +17,8 @@ return {
                 highlight_whole_line = false,
             },
         })
+        -- disables on load
+        require("lsp_lines").toggle()
         return {}
     end
 }
