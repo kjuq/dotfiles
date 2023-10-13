@@ -8,7 +8,6 @@ return {
             function () vim.cmd("ToggleTerm") end,
             desc = "ToggleTerm: open floating window",
         },
-
     },
     cmd = {
         "ToggleTerm",
@@ -19,8 +18,11 @@ return {
         "ToggleTermSendVisualSelection",
     },
     opts = {
-        open_mapping = [[<c-\>]],
+        open_mapping = "<C-\\>",
         direction = "float",
+        float_opts = {
+            winblend = 20,
+        },
     }
 }
 
