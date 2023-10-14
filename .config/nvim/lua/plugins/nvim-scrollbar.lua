@@ -1,7 +1,16 @@
 return {
     "petertriho/nvim-scrollbar",
     event = { "VeryLazy" },
-    opts = {},
+    opts = {
+        excluded_filetypes = {
+            "cmp_docs",
+            "cmp_menu",
+            "dap-float",
+            "noice",
+            "prompt",
+            "TelescopePrompt",
+        },
+    },
     dependencies = {
         "kevinhwang91/nvim-hlslens",
         config = function()

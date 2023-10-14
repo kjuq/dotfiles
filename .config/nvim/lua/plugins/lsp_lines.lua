@@ -1,13 +1,12 @@
 return {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    --event = { "LspAttach" },
     keys = {
         {
             "<leader>Ll",
             mode = { "n" },
             function () require("lsp_lines").toggle() end,
-            "LspLines: Toggle lsp_lines",
-        }
+            "LspLines: Toggle lsp_[l]ines",
+        },
     },
     opts = function ()
         vim.diagnostic.config({
