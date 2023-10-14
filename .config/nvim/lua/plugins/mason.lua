@@ -45,6 +45,10 @@ return {
             automatic_setup = true,
             handlers = {},
         })
+
+        require("mason-nvim-dap").setup({
+            handlers = {},
+        })
     end,
     opts = {},
     dependencies = {
@@ -52,5 +56,6 @@ return {
         "neovim/nvim-lspconfig",
         "nvimtools/none-ls.nvim",
         "jay-babu/mason-null-ls.nvim",
+        "jay-babu/mason-nvim-dap.nvim",
     }
 }
