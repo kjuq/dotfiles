@@ -1,6 +1,12 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
+        local vt_enabled = false
+        vim.diagnostic.config({
+            signs = false,
+            virtual_text = vt_enabled,
+        })
+
         -- Global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
@@ -54,19 +60,27 @@ return {
                 nmap("<leader>wr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
                 nmap(
                     "<leader>wl",
-                    function() print(vim.inspect(vlb.list_workspace_folders())) end,
+                    function () print(vim.inspect(vlb.list_workspace_folders())) end,
                     "[w]orkspace [l]ist Folders"
                 )
 
                 nmap(
                     "<leader>Lf",
-                    function() vlb.format { async = false } end,
+                    function () vlb.format { async = false } end,
                     "[f]ormat current buffer with LSP"
                 )
+
+                nmap(
+                    "<leader>Lv",
+                    function ()
+                        vt_enabled = not vt_enabled
+                        vim.diagnostic.config({
+                            virtual_text = vt_enabled,
+                        })
+                    end,
+                    "Toggle [v]irtual text of diagnostics"
+                )
             end,
-        })
-        vim.diagnostic.config({
-            signs = false,
         })
     end,
 }
