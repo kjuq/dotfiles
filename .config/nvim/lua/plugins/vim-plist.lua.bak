@@ -1,6 +1,6 @@
 return {
     'darfink/vim-plist',
-    lazy = false,
+    lazy = false, -- necessary
 }
 
 
