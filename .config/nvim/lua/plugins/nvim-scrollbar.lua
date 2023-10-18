@@ -9,6 +9,7 @@ return {
             "noice",
             "prompt",
             "TelescopePrompt",
+            "saga_codeaction",
         },
     },
     dependencies = {
