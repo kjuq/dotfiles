@@ -3,5 +3,5 @@ using namespace std;
 
 signed main() {
 
-    return 0;
+	return 0;
 }
