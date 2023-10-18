@@ -63,8 +63,8 @@ return {
         -- definition
         opts = { desc = "LspSaga: [g]o to [d]efinition" }
         vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-        opts = { desc = "LspSaga: Go to [t]ype [d]efinition" }
-        vim.keymap.set("n", "<leader>td", "<cmd>Lspsaga goto_type_definition<CR>", opts)
+        opts = { desc = "LspSaga: [g]o to t[y]pe definition" }
+        vim.keymap.set("n", "gy", "<cmd>Lspsaga goto_type_definition<CR>", opts)
 
         -- diagnostic
         opts = { desc = "LspSaga: Show a detail of the diagnostics on the line focused ([e]rror)" }
@@ -76,19 +76,19 @@ return {
 
         -- finder
         opts = { desc = "LspSaga: Open a floating window showing def, ref, and implementation" }
-        vim.keymap.set('n', 'gD', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
-
-        -- hover
-        opts = { desc = "LspSaga: Hover doc [K]" }
-        vim.keymap.set("n", "K",  "<cmd>Lspsaga hover_doc<CR>", opts)
+        vim.keymap.set('n', 'gy', '<cmd>Lspsaga finder def+ref+imp+tyd<CR>', opts)
 
         -- outline
         opts = { desc = "LspSaga: Show [o]ut line" }
-        vim.keymap.set("n", "<leader>Lo", "<Cmd>Lspsaga outline<CR>", opts)
+        vim.keymap.set("n", "<leader>lo", "<Cmd>Lspsaga outline<CR>", opts)
 
         -- rename
-        opts = { desc = "LspSaga: [r]e[n]ame" }
-        vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
+        -- opts = { desc = "LspSaga: [r]e[n]ame" }
+        -- vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
+
+        -- hover
+        -- opts = { desc = "LspSaga: Hover doc [K]" }
+        -- vim.keymap.set("n", "K",  "<cmd>Lspsaga hover_doc<CR>", opts)
 
     end,
     dependencies = {

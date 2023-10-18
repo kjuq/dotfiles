@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-doc-name, undefined-field, unused-local
 return {
     "mfussenegger/nvim-dap",
     keys = {

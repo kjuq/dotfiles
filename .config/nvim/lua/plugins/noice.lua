@@ -19,10 +19,10 @@ return {
     },
     keys = {
         {
-            "<leader>ln",
+            "<leader>pn",
             mode = { "n" },
             function() vim.cmd("Noice telescope") end,
-            desc = "Telescope.extensions: [l]ist [n]oice",
+            desc = "Telescope.extensions: [p]ick [n]oice",
         },
         {
             "<C-d>",

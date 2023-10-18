@@ -7,21 +7,6 @@ return {
             virtual_text = vt_enabled,
         })
 
-        -- Global mappings.
-        -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-
-        -- local desc = "LSP: Open floating diagnostic message"
-        -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = desc })
-        -- desc = "LSP: Go to previous diagnostic message"
-        -- vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = desc })
-        -- desc = "LSP: Go to next diagnostic message"
-        -- vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = desc })
-        -- desc = "LSP: Open diagnostics list"
-        -- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = desc })
-
-        -- Use LspAttach autocommand to only map the following keys
-        -- after the language server attaches to the current buffer
-
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
@@ -29,31 +14,27 @@ return {
                 -- Enable completion triggered by <c-x><c-o>
                 vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-                -- Buffer local mappings.
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
-
                 local vlb = vim.lsp.buf
 
-                local nmap = function(keys, func, desc)
-                    if desc then
-                        desc = "LSP: " .. desc
+                local nmap = function(keys, func, description)
+                    if description then
+                        description = "LSP: " .. description
                     end
 
-                    vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc })
+                    vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = description })
                 end
 
                 -- nmap("gd", vlb.definition, "[g]o to [d]efinition")
                 -- nmap("gD", vlb.declaration, "[g]o to [D]eclaration")
-                -- nmap("<leader>td", vlb.type_definition, "Go to [t]ype [d]efinition")
-                -- -- reference has alternatives. telescope, lspsaga, and etc.
-                -- nmap("<leader>rf", vlb.references, "Go to [r]e[f]erence")
-                -- nmap("<leader>im", vlb.implementation, "[g]o to [i]mplementation")
+                -- nmap("gy", vlb.type_definition, "Go to t[y]pe definition")
+                -- nmap("<leader>lr", vlb.references, "Go to [r]eference")
+                -- nmap("<leader>li", vlb.implementation, "[g]o to [i]mplementation")
 
                 -- nmap("<leader>ca", vlb.code_action, "[c]ode [a]ction")
 
-                -- nmap("<leader>rn", vlb.rename, "[r]e[n]ame")
+                nmap("<leader>rn", vlb.rename, "[r]e[n]ame")
 
-                -- nmap("K", vlb.hover, "Hover Documentation")
+                nmap("K", vlb.hover, "Hover Documentation")
                 nmap("<C-k>", vlb.signature_help, "Signature Documentation")
 
                 nmap("<leader>wa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
@@ -65,13 +46,13 @@ return {
                 )
 
                 nmap(
-                    "<leader>Lf",
+                    "<leader>lf",
                     function () vlb.format { async = false } end,
                     "[f]ormat current buffer with LSP"
                 )
 
                 nmap(
-                    "<leader>Lv",
+                    "<leader>lv",
                     function ()
                         vt_enabled = not vt_enabled
                         vim.diagnostic.config({
@@ -82,6 +63,14 @@ return {
                 )
             end,
         })
+        -- local desc = "LSP: Open floating diagnostic message"
+        -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = desc })
+        -- desc = "LSP: Go to previous diagnostic message"
+        -- vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = desc })
+        -- desc = "LSP: Go to next diagnostic message"
+        -- vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = desc })
+        -- desc = "LSP: Open diagnostics list"
+        -- vim.keymap.set("n", "<KEYBIND>", vim.diagnostic.setloclist, { desc = desc })
     end,
 }
 
