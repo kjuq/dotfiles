@@ -3,10 +3,10 @@ return {
     event = { "VeryLazy" },
     keys = {
         {
-            "<leader>lw",
+            "<leader>pw",
             mode = { "n" },
             "<Cmd>WhichKey<CR>",
-            desc = "Which-key: [l]ist all mappings ([w]hich)"
+            desc = "Which-key: [p]ick all mappings ([w]hich)"
         },
     },
     init = function()
@@ -20,8 +20,8 @@ return {
             ["<leader>f"] = { name = "[f]ind", _ = "which_key_ignore", f = "Telescope.builtin: [f]ind [f]iles" },
             ["<leader>g"] = { name = "[g]it", _ = "which_key_ignore" },
             ["<leader>h"] = { name = "[h]istory", _ = "which_key_ignore" },
-            ["<leader>l"] = { name = "[l]ist", _ = "which_key_ignore" },
-            ["<leader>L"] = { name = "[L]SP", _ = "which_key_ignore", c = "[c]all" },
+            ["<leader>l"] = { name = "[l]SP", _ = "which_key_ignore", c = "[c]all" },
+            ["<leader>p"] = { name = "[p]ick", _ = "which_key_ignore" },
             ["<leader>r"] = { name = "[r]ename or [r]esume", _ = "which_key_ignore" },
             ["<leader>s"] = { name = "[s]ave session", _ = "which_key_ignore" },
             ["<leader>t"] = { name = "[t]ree", _ = "which_key_ignore" },

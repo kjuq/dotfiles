@@ -36,10 +36,10 @@ return {
 
         -- Vim pickers
         {
-            "<leader>lb",
+            "<leader>pb",
             mode = { "n" },
             function () require("telescope.builtin").buffers() end,
-            desc = "Telescope.builtin: [l]ist [b]uffers"
+            desc = "Telescope.builtin: [p]ick [b]uffers"
         },
         {
             "<leader>fh",
@@ -50,7 +50,7 @@ return {
         {
             "<leader>hc",
             mode = { "n" },
-            function () require('telescope.builtin').builtin.command_history() end,
+            function () require('telescope.builtin').command_history() end,
             desc = 'Telescope.builtin: [h]istory of [c]ommands',
         },
         {
@@ -60,28 +60,28 @@ return {
             desc = 'Telescope.builtin: [h]istory of [s]earch',
         },
         {
-            "<leader>lh",
+            "<leader>ph",
             mode = { "n" },
             function () require("telescope.builtin").help_tags() end,
-            desc = "Telescope.builtin: [l]ist [h]elp tags"
+            desc = "Telescope.builtin: [p]ick [h]elp tags"
         },
         {
-            "<leader>lm",
+            "<leader>pm",
             mode = { "n" },
             function () require("telescope.builtin").man_pages() end,
-            desc = "Telescope.builtin: [l]ist [m]an pages"
+            desc = "Telescope.builtin: [p]ick [m]an pages"
         },
         {
-            "<leader>lM",
+            "<leader>pM",
             mode = { "n" },
             function () require('telescope.builtin').marks() end,
-            desc = 'Telescope.builtin: [l]ist [M]arks',
+            desc = 'Telescope.builtin: [p]ick [M]arks',
         },
         {
-            "<leader>lq",
+            "<leader>pq",
             mode = { "n" },
             function () require('telescope.builtin').quickfix() end,
-            desc = 'Telescope.builtin: [l]ist [q]uickfix',
+            desc = 'Telescope.builtin: [p]ick [q]uickfix',
         },
         {
             "<leader>hq",
@@ -90,28 +90,28 @@ return {
             desc = 'Telescope.builtin: [h]istory of [q]uickfix',
         },
         {
-            "<leader>ll",
+            "<leader>pl",
             mode = { "n" },
             function () require('telescope.builtin').loclist() end,
-            desc = 'Telescope.builtin: [l]ist [l]oclist',
+            desc = 'Telescope.builtin: [p]ick [l]oclist',
         },
         {
-            "<leader>lj",
+            "<leader>pj",
             mode = { "n" },
             function () require('telescope.builtin').jumplist() end,
-            desc = 'Telescope.builtin: [l]ist [j]umplist',
+            desc = 'Telescope.builtin: [p]ick [j]umplist',
         },
         {
-            "<leader>lr",
+            "<leader>pr",
             mode = { "n" },
             function () require("telescope.builtin").registers() end,
-            desc = "Telescope.builtin: [l]ist [r]egisters"
+            desc = "Telescope.builtin: [p]ick [r]egisters"
         },
         {
-            "<leader>lk",
+            "<leader>pk",
             mode = { "n" },
             function () require("telescope.builtin").keymaps() end,
-            desc = "Telescope.builtin: [l]ist [k]eymaps"
+            desc = "Telescope.builtin: [p]ick [k]eymaps"
         },
         {
             "<leader>fz",
@@ -135,28 +135,28 @@ return {
 
         -- Neovim LSP pickers
         {
-            "<leader>Lr",
+            "<leader>lr",
             mode = { "n" },
             function () require("telescope.builtin").lsp_references() end,
-            desc = "Telescope.builtin.LSP: [r]eferences for word under the cursor"
+            desc = "Telescope.builtin.[l]SP: [r]eferences for word under the cursor"
         },
         {
-            "<leader>Lci",
+            "<leader>lci",
             mode = { "n" },
             function () require("telescope.builtin").lsp_incoming_calls() end,
-            desc = "Telescope.builtin.LSP: [i]ncoming calls for word under the cursor"
+            desc = "Telescope.builtin.[l]SP: [i]ncoming calls for word under the cursor"
         },
         {
-            "<leader>Lco",
+            "<leader>lco",
             mode = { "n" },
             function () require("telescope.builtin").lsp_outgoing_calls() end,
-            desc = "Telescope.builtin.LSP: [o]utgoing calls for word under the cursor"
+            desc = "Telescope.builtin.[l]SP: [o]utgoing calls for word under the cursor"
         },
         {
-            "<leader>ld",
+            "<leader>pd",
             mode = { "n" },
             function () require("telescope.builtin").diagnostics() end,
-            desc = "Telescope.builtin.LSP: [l]ist [d]iagnostics"
+            desc = "Telescope.builtin.LSP: [p]ick [d]iagnostics"
         },
         {
             "<leader>fs",
@@ -171,22 +171,22 @@ return {
             desc = "Telescope.builtin.LSP: [f]ind document [S]ymbols in the current workspace"
         },
         {
-            "<leader>Li",
+            "<leader>li",
             mode = { "n" },
             function () require("telescope.builtin").lsp_implementations() end,
-            desc = "Telescope.builtin.LSP: [i]mplementation of the word under the cursor"
+            desc = "Telescope.builtin.[l]SP: [i]mplementation of the word under the cursor"
         },
         {
-            "<leader>Ld",
+            "<leader>ld",
             mode = { "n" },
             function () require("telescope.builtin").lsp_definitions() end,
-            desc = "Telescope.builtin.LSP: [d]efinition of the word under the cursor"
+            desc = "Telescope.builtin.[l]SP: [d]efinition of the word under the cursor"
         },
         {
-            "<leader>Lt",
+            "<leader>lt",
             mode = { "n" },
             function () require("telescope.builtin").lsp_type_definitions() end,
-            desc = "Telescope.builtin.LSP: definition of the [t]ype of the word under the cursor"
+            desc = "Telescope.builtin.[l]SP: definition of the [t]ype of the word under the cursor"
         },
         -- Git pickers
         -- Treesitter pickers
@@ -194,18 +194,18 @@ return {
             "<leader>ft",
             mode = { "n" },
             function () require("telescope.builtin").treesitter() end,
-            desc = "Telescope.builtin: Lists Function names, variables, from [t]reesitter"
+            desc = "Telescope.builtin: [f]inds Function names, variables, from [t]reesitter"
         },
         -- Lists pickers
         {
-            "<leader>lS",
+            "<leader>pS",
             mode = { "n" },
             function ()
                 require("telescope.builtin").symbols {
                     sources = { "emoji", "kaomoji", "gitmoji", "nerd" }
                 }
             end,
-            desc = "Telescope.builtin: [l]ist [S]ymbols",
+            desc = "Telescope.builtin: [p]ick [S]ymbols",
         },
         -- Previewers
         -- Extensions
@@ -216,10 +216,10 @@ return {
             desc = "Telescope.extensions: [s]ave [s]essions"
         },
         {
-            "<leader>ls",
+            "<leader>ps",
             mode = { "n" },
             function () require('telescope').extensions.sessions_picker.sessions_picker() end,
-            desc = "Telescope.extensions: [l]ist [s]essions"
+            desc = "Telescope.extensions: [p]ick [s]essions"
         },
         {
             "<leader>fc",

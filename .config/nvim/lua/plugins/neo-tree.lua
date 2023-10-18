@@ -5,7 +5,7 @@ return {
     cmd = { "Neotree" },
     keys = {
         {
-            "<C-Space>",
+            "<Space>i",
             mode = { "n" },
             function()
                 require("neo-tree.command").execute({
@@ -33,7 +33,6 @@ return {
         {
             "<leader>tg",
             mode = { "n" },
-            -- "<Cmd>Neotree source=git_status position=left reveal_force_cwd<CR>",
             function()
                 require("neo-tree.command").execute({
                     source = "git_status",
@@ -47,7 +46,6 @@ return {
         {
             "<leader>tb",
             mode = { "n" },
-            -- "<Cmd>Neotree source=buffers position=left reveal_force_cwd<CR>",
             function()
                 require("neo-tree.command").execute({
                     source = "buffers",

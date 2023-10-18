@@ -3,7 +3,7 @@ return {
     version = "*",
     keys = {
         {
-            "<C-\\>",
+            "<C-space>",
             mode = { "n", "i" },
             function () vim.cmd("ToggleTerm") end,
             desc = "ToggleTerm: open floating window",
@@ -18,7 +18,7 @@ return {
         "ToggleTermSendVisualSelection",
     },
     opts = {
-        open_mapping = "<C-\\>",
+        open_mapping = "<C-space>",
         direction = "float",
         float_opts = {
             winblend = 20,

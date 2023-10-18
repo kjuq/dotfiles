@@ -3,10 +3,10 @@ return {
     event = { "VeryLazy" },
     keys = {
         {
-            "<leader>lp",
+            "<leader>pp",
             mode = { "n" },
             function () require('telescope').extensions.projects.projects{} end,
-            desc = "Telescope.extensions: [l]ist [p]rojects",
+            desc = "Telescope.extensions: [p]ick [p]rojects",
         },
     },
     config = function()

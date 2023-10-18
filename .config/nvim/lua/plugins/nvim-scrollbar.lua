@@ -10,6 +10,7 @@ return {
             "prompt",
             "TelescopePrompt",
             "saga_codeaction",
+            "sagarename",
         },
     },
     dependencies = {
