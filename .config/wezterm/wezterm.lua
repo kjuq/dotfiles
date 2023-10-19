@@ -23,6 +23,7 @@ Config = {
     color_scheme = "Tokyo Night",
     -- color_scheme = "iceberg-dark",
 
+    window_background_opacity = 0.85,
     font_size = 16,
     font = wezterm.font("Hack Nerd Font"),
     freetype_load_target = "Normal", -- "Normal", "Light", "Mono"

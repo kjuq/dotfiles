@@ -62,21 +62,15 @@ return {
                     -- We are going to use lualine_c an lualine_x as left and
                     -- right section. Both are highlighted by c theme .  So we
                     -- are just setting default looks o statusline
-                    normal = { c = { fg = colors.fg, bg = colors.bg } },
-                    inactive = { c = { fg = colors.fg, bg = colors.bg } },
+                    normal = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
+                    inactive = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
                 },
             },
             sections = {
                 -- these are to remove the defaults
                 lualine_a = {},
                 lualine_b = {},
-                lualine_y = {
-                    {
-                        "macro-recording",
-                        fmt = show_macro_recording,
-                        color = { fg = "#ff9e64" },
-                    },
-                },
+                lualine_y = {},
                 lualine_z = {},
                 -- These will be filled later
                 lualine_c = {},
@@ -212,6 +206,12 @@ return {
         --         return '%='
         --     end,
         -- }
+
+        ins_right {
+            "macro-recording",
+            fmt = show_macro_recording,
+            color = { fg = "#ff9e64" },
+        }
 
         ins_right {
             -- Lsp server name .
