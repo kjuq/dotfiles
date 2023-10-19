@@ -21,7 +21,7 @@ return {
         open_mapping = "<C-space>",
         direction = "float",
         float_opts = {
-            winblend = 20,
+            -- winblend = 20,
         },
     }
 }
