@@ -7,6 +7,7 @@ brewfile/Brewfile
 fish/config.fish
 git
 gitui
+hammerspoon/init.lua
 karabiner/assets
 karabiner/karabiner.json
 kitty/kitty.conf
