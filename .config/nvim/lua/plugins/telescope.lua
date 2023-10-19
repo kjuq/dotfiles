@@ -8,7 +8,7 @@ return {
     tag = "0.1.3",
     cmd = { "Telescope" },
     keys = {
-        -- File pickers
+        -- File pickers {{{
         {
             "<leader>ff",
             mode = { "n" },
@@ -33,8 +33,9 @@ return {
             function () require("telescope.builtin").live_grep() end,
             desc = "Telescope.builtin: [f]ind files with live [g]rep"
         },
+        -- }}}
 
-        -- Vim pickers
+        -- Vim pickers {{{
         {
             "<leader>pb",
             mode = { "n" },
@@ -114,6 +115,12 @@ return {
             desc = "Telescope.builtin: [p]ick [k]eymaps"
         },
         {
+            "<leader>pc",
+            mode = { "n" },
+            function () require("telescope.builtin").highlights() end,
+            desc = "Telescope.builtin: [p]ick highlights ([c]olors)"
+        },
+        {
             "<leader>fz",
             mode = { "n" },
             function()
@@ -132,8 +139,9 @@ return {
             function () require('telescope.builtin').resume() end,
             desc = 'Telescope.builtin: [r]esume [f]inding',
         },
+        -- }}}
 
-        -- Neovim LSP pickers
+        -- Neovim LSP pickers {{{
         {
             "<leader>lr",
             mode = { "n" },
@@ -188,15 +196,20 @@ return {
             function () require("telescope.builtin").lsp_type_definitions() end,
             desc = "Telescope.builtin.[l]SP: definition of the [t]ype of the word under the cursor"
         },
+        -- }}}
+
         -- Git pickers
-        -- Treesitter pickers
+
+        -- Treesitter pickers {{{
         {
             "<leader>ft",
             mode = { "n" },
             function () require("telescope.builtin").treesitter() end,
             desc = "Telescope.builtin: [f]inds Function names, variables, from [t]reesitter"
         },
-        -- Lists pickers
+        -- }}}
+
+        -- Lists pickers {{{
         {
             "<leader>pS",
             mode = { "n" },
@@ -207,8 +220,11 @@ return {
             end,
             desc = "Telescope.builtin: [p]ick [S]ymbols",
         },
+        -- }}}
+
         -- Previewers
-        -- Extensions
+
+        -- Extensions {{{
         {
             "<leader>ss",
             mode = { "n" },
@@ -227,6 +243,7 @@ return {
             function () require("telescope").extensions.zoxide.list() end,
             desc = "Telescope.extensions: [f]ind directory via Zoxide ([c]d)"
         },
+        -- }}}
     },
     config = function ()
         local actions = require("telescope.actions")

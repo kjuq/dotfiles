@@ -1,15 +1,47 @@
 return {
     'akinsho/bufferline.nvim',
     event = { "VeryLazy" },
-    opts = {
-        options = {
-            diagnostics = "nvim_lsp",
-            always_show_bufferline = true,
-            separator_style = "slant",
-            show_buffer_close_icons = false,
-            color_icons = true,
-        },
-    },
+    opts = function ()
+        -- vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "#000000" })
+        -- vim.api.nvim_set_hl(0, "BufferLineSeparator", { fg = "#000000" })
+        -- vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { fg = "#000000" })
+        return {
+            options = {
+                diagnostics = "nvim_lsp",
+                always_show_bufferline = true,
+                separator_style = { "", "" }, -- "slant", "slope", "thick", "thin"
+                indicator = {
+                    style = "none", -- "icon", "underline", "none"
+                },
+                show_buffer_close_icons = false,
+                color_icons = true,
+                offsets = {
+                    {
+                        filetype = "neo-tree",
+                        text = "Neo Tree",
+                        highlight = "Directory",
+                        separator = true -- use a "true" to enable the default, or set your own character
+                    },
+                    {
+                        filetype = "dapui_watches",
+                        text = "DAP UI",
+                        highlight = "Directory",
+                        separator = true -- use a "true" to enable the default, or set your own character
+                    },
+                },
+            },
+            -- Needed when separator is used
+            -- highlights = {
+            --     fill = { bg = "#000000", },
+            --     tab_separator = { fg = "#000000", },
+            --     tab_separator_selected = { fg = "#000000", },
+            --     separator_selected = { fg = "#000000", bg = "#000000" },
+            --     separator_visible  = { fg = "#000000", },
+            --     separator = { fg = "#000000", },
+            --     offset_separator = { fg = "#000000", },
+            -- },
+        }
+    end,
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
 }
