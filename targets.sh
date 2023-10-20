@@ -29,6 +29,7 @@ xremap
 # shellcheck disable=2034
 files="
 .docker/config.json
+.clang-format
 .ignore
 .mackup
 .mackup.cfg
