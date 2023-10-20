@@ -32,7 +32,7 @@ return {
                 }
             },
             lightbulb = {
-                sign = false,
+                enable = false,
             },
             outline = {
                 win_width = 45,
