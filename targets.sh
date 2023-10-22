@@ -5,6 +5,9 @@ xdg_files="
 alacritty/alacritty.yml
 brewfile/Brewfile
 fish/config.fish
+fish/functions/acw.fish
+fish/functions/cplus.fish
+fish/functions/fisher_init.fish
 git
 gitui
 hammerspoon/init.lua
