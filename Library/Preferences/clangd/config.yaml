@@ -4,4 +4,10 @@ CompileFlags:
     - -I/opt/homebrew/include/
     - -I/opt/homebrew/opt/llvm/include/
     - -L/opt/homebrew/opt/llvm/lib
-
+Diagnostics:
+  Suppress:
+    - c++11-extensions
+    - c++14-extensions
+    - c++17-extensions
+    - c++20-extensions
+    - c++23-extensions
