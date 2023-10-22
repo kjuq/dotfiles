@@ -54,7 +54,6 @@ if command --search --quiet trash
     alias rm="echo '\'rm\' is deprecated. Use \'dl\' to move them to trash.'"
 end
 
-alias cplus="g++ -std=c++14 -Wall -Wextra -Wno-unused-const-variable -g -fsanitize=address -D_GLIBCXX_DEBUG -I/opt/homebrew/include/"
 alias ojp="oj t -c 'python3 main.py'"
 alias acsp="ojp; and acc submit main.py"
 
@@ -94,39 +93,4 @@ else if [ (uname) = "Linux" ]
     alias pbcopy="xsel --clipboard --input"
 end
 
-# Functions
-function acw --description='Usage: acw abc290 a'
-    if test (count $argv) -ne 2
-        echo "Not enough arguments. Usage: acw abc290 a"
-        return 1
-    end
-    set --local sed_str          "s/\\\le/<=/g;"
-    set --local sed_str $sed_str "s/\\\ge/>=/g;"
-    set --local sed_str $sed_str "s/\\\dots/.../g;"
-    set --local sed_str $sed_str "s/\\\ldots/.../g;"
-    w3m "https://atcoder.jp/contests/$argv[1]/tasks/$argv[1]_$argv[2]" | sed "$sed_str" | less
-end
-
-function fisher_init
-    # The deletion below may be unnecessary when setting up a completely new environment
-    set --local fisher_completions_path "$XDG_CONFIG_HOME/fish/local_settings.fish"
-    if [ -f $fisher_completions_path ]
-        command rm $fisher_completions_path
-    end
-
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source; \
-        and fisher install jorgebucaran/fisher
-
-    fisher install rafaelrinaldi/pure
-    fisher install decors/fish-colored-man
-    fisher install kjuq/pure-iceberg
-    fisher install kjuq/color-tomorrow-night
-    fisher install kjuq/fish-pip-completion
-    fisher install PatrickF1/fzf.fish
-end
-
 # vim: set filetype=fish :
-
-
-
-
