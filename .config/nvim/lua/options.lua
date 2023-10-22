@@ -3,6 +3,8 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.autoread = true
 
+vim.opt.scrolloff = 6
+
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.laststatus = 3 -- global status line
@@ -38,4 +40,3 @@ vim.opt.shell = "fish"
 -- Disable a leader key time out
 vim.opt.timeout = false
 vim.opt.ttimeout = true
-
