@@ -2,6 +2,10 @@
 
 # shellcheck disable=2034
 xdg_files="
+aerc/accounts.conf.template
+aerc/aerc.conf
+aerc/binds.conf
+aerc/stylesets
 alacritty/alacritty.yml
 brewfile/Brewfile
 fish/config.fish
