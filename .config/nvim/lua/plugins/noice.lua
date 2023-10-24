@@ -53,12 +53,12 @@ return {
             lsp = {
                 hover = {
                     opts = {
-                        format = { "{message}", "\n\nProvided by Noice - Hover", },
+                        format = { "{message}", "\nProvided by Noice - Hover", },
                     },
                 },
                 signature = {
                     opts = {
-                        format = { "{message}", "\n\nProvided by Noice - Signature Help" },
+                        format = { "{message}", "\nProvided by Noice - Signature Help" },
                     },
                 },
                 documentation = {
