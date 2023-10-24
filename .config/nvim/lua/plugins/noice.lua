@@ -47,10 +47,27 @@ return {
             expr = true,
         },
     },
-    opts = function ()
+    opts = function()
         require("utils.common").quit_with_esc({ "noice" })
         return {
             lsp = {
+                hover = {
+                    opts = {
+                        format = { "{message}", "\n\nProvided by Noice - Hover", },
+                    },
+                },
+                signature = {
+                    opts = {
+                        format = { "{message}", "\n\nProvided by Noice - Signature Help" },
+                    },
+                },
+                documentation = {
+                    opts = {
+                        border = "rounded",
+                        max_width = 80,
+                        max_height = 20,
+                    },
+                },
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -59,8 +76,8 @@ return {
                 },
             },
             presets = {
-                command_palette = false,          -- position the cmdline and popupmenu together
-                long_message_to_split = true,     -- long messages will be sent to a split
+                command_palette = false,      -- position the cmdline and popupmenu together
+                long_message_to_split = true, -- long messages will be sent to a split
             },
         }
     end,

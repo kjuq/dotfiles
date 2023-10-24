@@ -49,19 +49,19 @@ return {
                 nmap("<leader>wr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
                 nmap(
                     "<leader>wl",
-                    function () print(vim.inspect(vlb.list_workspace_folders())) end,
+                    function() print(vim.inspect(vlb.list_workspace_folders())) end,
                     "[w]orkspace [l]ist Folders"
                 )
 
                 nmap(
                     "<leader>lf",
-                    function () vlb.format { async = false } end,
+                    function() vlb.format { async = false } end,
                     "[f]ormat current buffer with LSP"
                 )
 
                 nmap(
                     "<leader>lv",
-                    function ()
+                    function()
                         vt_enabled = not vt_enabled
                         vim.diagnostic.config({
                             virtual_text = vt_enabled,
@@ -81,5 +81,3 @@ return {
         -- vim.keymap.set("n", "<KEYBIND>", vim.diagnostic.setloclist, { desc = desc })
     end,
 }
-
-

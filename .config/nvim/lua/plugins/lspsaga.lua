@@ -63,8 +63,8 @@ return {
         -- definition
         opts = { desc = "LspSaga: [g]o to [d]efinition" }
         vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-        opts = { desc = "LspSaga: [g]o to t[y]pe definition" }
-        vim.keymap.set("n", "gy", "<cmd>Lspsaga goto_type_definition<CR>", opts)
+        -- opts = { desc = "LspSaga: [g]o to t[y]pe definition" }
+        -- vim.keymap.set("n", "gy", "<cmd>Lspsaga goto_type_definition<CR>", opts)
 
         -- diagnostic
         opts = { desc = "LspSaga: Show a detail of the diagnostics on the line focused ([e]rror)" }
@@ -88,14 +88,10 @@ return {
 
         -- hover
         -- opts = { desc = "LspSaga: Hover doc [K]" }
-        -- vim.keymap.set("n", "K",  "<cmd>Lspsaga hover_doc<CR>", opts)
-
+        -- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
     end,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
         "nvim-tree/nvim-web-devicons"
     }
 }
-
-
-

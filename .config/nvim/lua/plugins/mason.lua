@@ -18,6 +18,21 @@ return {
             function(server_name)
                 require('lspconfig')[server_name].setup {
                     capabilities = capabilities,
+                    -- should disable this for noice-hover-scroll
+                    -- handlers = {
+                    --     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                    --         title = " Lsp: Hover ",
+                    --         border = "rounded",
+                    --         max_width = 80,
+                    --         max_height = 20,
+                    --     }),
+                    --     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+                    --         title = " Lsp: Signature Help ",
+                    --         border = "rounded",
+                    --         max_width = 80,
+                    --         max_height = 20,
+                    --     }),
+                    -- }
                 }
             end,
         })
