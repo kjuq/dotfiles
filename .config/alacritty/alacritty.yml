@@ -9,12 +9,17 @@ font:
 
   italic:
     family: Hack Nerd Font
-    style: Regular Italic
+    style: Italic
+
+  bold_italic:
+    family: Hack Nerd Font
+    style: Bold Italic
 
   size: 16.0
 
 
 window:
+  opacity: 0.8
   # larger size
   dimensions:
     columns: 220
@@ -37,15 +42,15 @@ shell:
 
 
 env:
-  TERM: xterm-256color
-
+  TERM: tmux-256color
 
 key_bindings:
+  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
+  - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" } # ctrl-tab fix
 #  - { key: Up,    chars: "\u0010" }
 #  - { key: Down,  chars: "\u000e" }
 #  - { key: Right, chars: "\u0006" }
 #  - { key: Left,  chars: "\u0002" }
-  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
 
 # vim: set tabstop=2 :
 
