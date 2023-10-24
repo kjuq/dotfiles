@@ -17,7 +17,7 @@ local function toggleApp(appName, key)
 end
 
 local function hideAllApps()
-	local appnames = { "WezTerm", "Vivaldi", "KeePassXC" }
+	local appnames = { "Alacritty", "Vivaldi" }
 	for _, appname in pairs(appnames) do
 		local app = hs.application.get(appname)
 		app:hide()
@@ -26,8 +26,7 @@ end
 
 hs.hotkey.bind({}, "f16", hideAllApps)
 toggleApp("Vivaldi", "f17")
-toggleApp("WezTerm", "f18")
-toggleApp("KeePassXC", "f19")
+toggleApp("Alacritty", "f18")
 
 -- Mouse button remaps
 
