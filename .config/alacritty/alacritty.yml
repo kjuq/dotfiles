@@ -47,6 +47,7 @@ env:
 key_bindings:
   - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
   - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" } # ctrl-tab fix
+  - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
 #  - { key: Up,    chars: "\u0010" }
 #  - { key: Down,  chars: "\u000e" }
 #  - { key: Right, chars: "\u0006" }
