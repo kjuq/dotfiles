@@ -44,5 +44,6 @@ cask "vivaldi"
 cask "homebrew/cask-fonts/font-hack-nerd-font"
 
 mas "AdGuard for Safari", id: 1440147259
+mas "BetterSnapTool", id: 417375580
 mas "Glance", id: 1564688210
 mas "Vimlike", id: 1584519802
