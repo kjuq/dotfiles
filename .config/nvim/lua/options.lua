@@ -40,3 +40,8 @@ vim.opt.shell = "fish"
 -- Disable a leader key time out
 vim.opt.timeout = false
 vim.opt.ttimeout = true
+
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
