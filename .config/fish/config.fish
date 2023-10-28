@@ -88,6 +88,7 @@ if [ (uname) = "Darwin" ]
     fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
     fish_add_path /opt/homebrew/opt/ruby/bin
     fish_add_path /opt/homebrew/opt/llvm/bin
+    fish_add_path /opt/homebrew/opt/ncurses/bin
 else if [ (uname) = "Linux" ]
     alias open="xdg-open"
     alias pbcopy="xsel --clipboard --input"
