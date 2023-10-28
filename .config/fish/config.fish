@@ -82,6 +82,9 @@ if command --search --quiet zoxide
     zoxide init --cmd c fish | source
 end
 
+# GnuPG
+set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+
 # OS-specific
 if [ (uname) = "Darwin" ]
     eval (/opt/homebrew/bin/brew shellenv)
