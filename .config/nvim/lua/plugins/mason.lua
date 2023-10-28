@@ -10,6 +10,7 @@ return {
         "MasonUpdate",
     },
     config = function()
+        require("mason").setup({ ui = { border = "rounded" } })
         local success, capabilities = pcall(function() require('cmp_nvim_lsp').default_capabilities() end)
         if not success then
             capabilities = nil
@@ -36,8 +37,14 @@ return {
                 }
             end,
         })
-        require("mason-lspconfig").setup({})
-        require("mason").setup({ ui = { border = "rounded" } })
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "bashls",
+                "clangd",
+                "lua_ls",
+                "jedi_language_server",
+            },
+        })
 
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         require("null-ls").setup({
@@ -57,6 +64,12 @@ return {
         })
 
         require('mason-null-ls').setup({
+            ensure_installed = {
+                "autopep8",
+                "shellcheck",
+                "codelldb",
+                "debugpy",
+            },
             automatic_setup = true,
             handlers = {},
         })

@@ -53,19 +53,22 @@ return {
             lsp = {
                 hover = {
                     opts = {
-                        format = { "{message}", "\nProvided by Noice - Hover", },
+                        format = { "{message}", "\n\nProvided by Noice - Hover", },
                     },
                 },
                 signature = {
                     opts = {
-                        format = { "{message}", "\nProvided by Noice - Signature Help" },
+                        format = { "{message}", "\n\nProvided by Noice - Signature Help" },
                     },
                 },
                 documentation = {
                     opts = {
                         border = "rounded",
-                        max_width = 80,
-                        max_height = 20,
+                        position = { row = 2, col = 2 },
+                        size = {
+                            max_width = 80,
+                            max_height = 20,
+                        },
                     },
                 },
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -78,6 +81,7 @@ return {
             presets = {
                 command_palette = false,      -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
+                -- lsp_doc_hover = true,
             },
         }
     end,
