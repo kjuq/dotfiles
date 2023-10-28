@@ -1,0 +1,32 @@
+[core]
+	pager = delta
+	editor = nvim
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[user]
+	name = kjuq
+	email = 44694396+kjuq@users.noreply.github.com
+	signingkey = D581FF59E1B695F1
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[credential]
+	helper = osxkeychain
+[commit]
+	gpgsign = true
+
+# vim: set noexpandtab :
