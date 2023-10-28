@@ -41,7 +41,7 @@ files="
 .ignore
 .mackup
 .mackup.cfg
-.scripts
+scripts
 .ssh/config
 Library/Preferences/atcoder-cli-nodejs/config.json
 Library/Preferences/clangd/config.yaml
