@@ -32,6 +32,8 @@ set --export VISUAL nvim
 set --export PAGER less
 set --export MANPAGER less
 
+set --export GPG_TTY (tty)
+
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
