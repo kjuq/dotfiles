@@ -14,6 +14,7 @@ fish/functions/cplus.fish
 fish/functions/fisher_init.fish
 git
 gitui
+gnupg/gpg-agent.conf.bak
 hammerspoon/init.lua
 karabiner/assets
 karabiner/karabiner.json
