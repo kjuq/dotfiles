@@ -23,7 +23,6 @@ kitty/kitty.conf
 lazygit/config.yml
 lesskey
 mutt/muttrc
-mutt/passwd.gpg
 nano/nanorc
 nvim
 pycodestyle
