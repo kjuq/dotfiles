@@ -3,7 +3,7 @@
 # Copyright (C) 2012-2014 Dmitry Medvinsky <me@dmedvinsky.name>. All Rights Reserved.
 # This file is licensed under the GPLv2+. Please see COPYING for more information.
 
-set -l PROG 'pc'
+set -l PROG 'po'
 
 function __fish_pass_get_prefix
     if set -q PASSWORD_STORE_DIR

@@ -8,12 +8,12 @@ aerc/binds.conf
 aerc/stylesets
 alacritty/alacritty.yml
 brewfile/Brewfile
-fish/completions/pc.fish
+fish/completions/po.fish
 fish/config.fish
 fish/functions/acw.fish
 fish/functions/cplus.fish
 fish/functions/fisher_init.fish
-fish/functions/pc.fish
+fish/functions/po.fish
 git
 gitui
 hammerspoon/init.lua
