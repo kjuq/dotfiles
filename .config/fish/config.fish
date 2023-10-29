@@ -32,8 +32,6 @@ set --export VISUAL nvim
 set --export PAGER less
 set --export MANPAGER less
 
-set --export GPG_TTY (tty)
-
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
@@ -85,7 +83,8 @@ if command --search --quiet zoxide
 end
 
 # GnuPG
-set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+set --export PASSWORD_STORE_DIR "$HOME/password-store"
+set --export GPG_TTY (tty)
 
 # OS-specific
 if [ (uname) = "Darwin" ]
