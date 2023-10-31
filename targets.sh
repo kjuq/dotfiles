@@ -23,6 +23,7 @@ kitty/kitty.conf
 lazygit/config.yml
 lesskey
 neomutt/common_gmail
+neomutt/common_outlook
 neomutt/neomuttrc
 neomutt/signature
 nano/nanorc

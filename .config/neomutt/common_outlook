@@ -1,0 +1,11 @@
+set spoolfile = "+INBOX"
+set folder = imaps://imap-mail.outlook.com:993
+set postponed = "+Drafts"
+set record = "+Sent"
+
+set smtp_authenticators = "login"
+
+set use_from = yes
+set mail_check = 100
+set move = no
+set imap_keepalive = 900

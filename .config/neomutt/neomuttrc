@@ -5,10 +5,13 @@ set my_conf_dir = "$XDG_CONFIG_HOME/neomutt"
 set my_cache_dir = "$XDG_CACHE_HOME/neomutt"
 
 # Source from an encrypted passwd file
-source "$my_conf_dir/common_gmail"
-source "pass _uncategorized/neomutt_secure_info |"
+# source "$my_conf_dir/common_gmail"
+# source "pass _uncategorized/neomutt_secure_info |"
+source "$my_conf_dir/common_outlook"
+source "pass _neomutt/outlook_university |"
 
-macro index <f2> '<sync-mailbox><enter-command>source "$my_conf_dir/common_gmail |"<enter><enter-command>source "pass _uncategorized/neomutt_secure_info |"<enter><change-folder>!<enter>'
+macro index <f4> '<sync-mailbox><enter-command>source "$my_conf_dir/common_gmail |"<enter><enter-command>source "pass _uncategorized/neomutt_secure_info |"<enter><change-folder>!<enter>'
+macro index <f5> '<sync-mailbox><enter-command>source "$my_conf_dir/common_outlook |"<enter><enter-command>source "pass _neomutt/outlook_university |"<enter><change-folder>!<enter>'
 
 # Ensure TLS is enforced
 set ssl_starttls = yes
