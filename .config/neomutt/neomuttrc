@@ -20,7 +20,6 @@ set imap_check_subscribed = yes
 set header_cache = "$my_cache_dir/headers"
 set message_cachedir = "$my_cache_dir"
 set certificate_file = "$my_cache_dir/certificates"
-unset record
 
 # Settings
 set pager_index_lines = 10
@@ -51,6 +50,10 @@ unset sig_dashes                     # no dashes before sig
 unset markers
 set signature = "$my_conf_dir/signature"
 set editor = "nvim"
+set mailcap_path = "$my_conf_dir/mailcap"
+
+# HTML render
+auto_view text/html
 
 # Sort by newest conversation first.
 set charset = "utf-8"
@@ -62,6 +65,8 @@ set sort_aux = last-date-received
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 set send_charset = "utf-8:iso-8859-1:us-ascii" # send in utf-8
+
+set abort_key = "<Esc>"
 
 # Sidebar
 set sidebar_visible # comment to disable sidebar by default
