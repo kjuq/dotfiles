@@ -22,8 +22,8 @@ karabiner/karabiner.json
 kitty/kitty.conf
 lazygit/config.yml
 lesskey
-mutt/muttrc
-mutt/signature
+neomutt/neomuttrc
+neomutt/signature
 nano/nanorc
 nvim
 pycodestyle
