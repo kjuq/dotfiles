@@ -11,11 +11,6 @@ if not functions -q fisher
     echo "========================="
 end
 
-# Import local settings
-if [ -f $XDG_CONFIG_HOME/fish/local_settings.fish ]
-    source $XDG_CONFIG_HOME/fish/local_settings.fish
-end
-
 # Disable fish auto-completion
 # set -g fish_autosuggestion_enabled 0
 
@@ -85,6 +80,13 @@ end
 # GnuPG
 set --export PASSWORD_STORE_DIR "$HOME/password-store"
 set --export GPG_TTY (tty)
+
+# local bin
+set --local local_bin_path "$HOME/.local/bin"
+if [ ! -d "$local_bin_path" ]
+	mkdir "$local_bin_path"
+end
+fish_add_path $local_bin_path
 
 # OS-specific
 if [ (uname) = "Darwin" ]
