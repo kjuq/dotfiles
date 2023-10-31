@@ -1,5 +1,5 @@
 set spoolfile = "+INBOX"
-set folder = imaps://imap-mail.outlook.com:993
+set folder = imaps://outlook.office365.com:993
 set postponed = "+Drafts"
 set record = "+Sent"
 
