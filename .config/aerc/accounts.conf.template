@@ -1,11 +1,8 @@
-# On MacOS register password to keychain
-# `security add-generic-password -a "google_app_passwd" -w "<APP_PASSWD>" -s "google.com (app password)"`
-
 [Gmail]
 source = imaps://<USER_NAME>@imap.gmail.com:993
-source-cred-cmd = security find-generic-password -w -a "google_app_passwd"
+source-cred-cmd = pass google.com/<app_passwd>
 outgoing = smtps://<USER_NAME>@smtp.gmail.com:587
-outgoing-cred-cmd = security find-generic-password -w -a "google_app_passwd"
+outgoing-cred-cmd = pass google.com/<app_passwd>
 default = INBOX
-from = REAL_NAME <USER_NAME@email.com>
+from = REAL_NAME <<USER_NAME>@gmail.com>
 cache-headers = true
