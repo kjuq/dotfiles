@@ -5,9 +5,10 @@ return {
     config = function()
         require("tokyonight").setup({
             transparent = true,
+            dim_inactive = false,
             styles = {
                 sidebars = "transparent", -- "dark", "transparent", "normal"
-                floats = "transparent", -- "dark", "transparent", "normal"
+                floats = "transparent",   -- "dark", "transparent", "normal"
             },
         })
         vim.cmd.colorscheme("tokyonight")
