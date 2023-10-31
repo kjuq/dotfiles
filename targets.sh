@@ -22,6 +22,7 @@ karabiner/karabiner.json
 kitty/kitty.conf
 lazygit/config.yml
 lesskey
+neomutt/common_gmail
 neomutt/neomuttrc
 neomutt/signature
 nano/nanorc
