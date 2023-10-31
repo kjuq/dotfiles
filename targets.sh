@@ -33,6 +33,7 @@ pycodestyle
 spotify-tui/config.yml
 spotifyd/spotifyd.conf
 tmux/tmux.conf
+tmux/scripts
 wezterm/wezterm.lua
 xkeysnail
 xremap
