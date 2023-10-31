@@ -1,0 +1,12 @@
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Trash"
+
+set smtp_authenticators = 'gssapi:login'
+
+macro index,pager t \
+    "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+
+# vim: set filetype=neomuttrc :

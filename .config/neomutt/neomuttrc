@@ -1,42 +1,26 @@
 # https://seniormars.github.io/posts/neomutt/
 
+# user defined variables
+set my_conf_dir = "$XDG_CONFIG_HOME/neomutt"
+set my_cache_dir = "$XDG_CACHE_HOME/neomutt"
+
 # Source from an encrypted passwd file
+source "$my_conf_dir/common_gmail"
 source "pass _uncategorized/neomutt_secure_info |"
-folder-hook "Inbox-Private"  'source "pass _uncategorized/neomutt_secure_info |"'
-# folder-hook "Inbox-Business" 'source ~/.neomutt/profile.business'
 
-macro index <f2> '<sync-mailbox><enter-command>source "pass _uncategorized/neomutt_secure_info |"<enter><change-folder>!<enter>'
-# macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.bar<enter><change-folder>!<enter>'
-
-# User
-# set from = "example@example.com" # email address
-# set realname = "<YOUR NAME>"
-
-# Gmail
-# set imap_user = "example@example.com"
-# set smtp_url = "smtps://<Email>@smtp.gmail.com:465/"
-# set imap_pass = "<Gmail app password>"
-# set smtp_pass = "<Gmail app password>"
-set smtp_authenticators = 'gssapi:login'
+macro index <f2> '<sync-mailbox><enter-command>source "$my_conf_dir/common_gmail |"<enter><enter-command>source "pass _uncategorized/neomutt_secure_info |"<enter><change-folder>!<enter>'
 
 # Ensure TLS is enforced
 set ssl_starttls = yes
 set ssl_force_tls = yes
 
-# My mailboxes
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set record = "+[Gmail]/Sent Mail"
-set trash = "+[Gmail]/Trash"
-# mailboxes =INBOX ="[Gmail]/All Mail" =[Gmail]/Important =[Gmail]/Starred =[Gmail]/Drafts ="[Gmail]/Sent Mail" =[Gmail]/Spam =[Gmail]/Trash
 # set imap_list_subscribed = yes
 set imap_check_subscribed = yes
 
 # Where to put the stuff
-set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
-set message_cachedir = "$XDG_CACHE_HOME/neomutt"
-set certificate_file = "$XDG_CACHE_HOME/neomutt/certificates"
+set header_cache = "$my_cache_dir/headers"
+set message_cachedir = "$my_cache_dir"
+set certificate_file = "$my_cache_dir/certificates"
 unset record
 
 # Settings
@@ -66,7 +50,7 @@ set include                          # include message in replies
 set text_flowed=yes                  # correct indentation for plain text
 unset sig_dashes                     # no dashes before sig
 unset markers
-set signature = "$XDG_CONFIG_HOME/neomutt/signature"
+set signature = "$my_conf_dir/signature"
 set editor = "nvim"
 
 # Sort by newest conversation first.
@@ -92,9 +76,6 @@ bind index,pager \CE sidebar-open
 bind index,pager B sidebar-toggle-visible
 
 # Vim-like keybinds
-macro index,pager t \
-    "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
-
 bind index j next-entry
 bind index k previous-entry
 bind pager j next-line
