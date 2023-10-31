@@ -24,6 +24,7 @@ lazygit/config.yml
 lesskey
 neomutt/common_gmail
 neomutt/common_outlook
+neomutt/mailcap
 neomutt/neomuttrc
 neomutt/signature
 nano/nanorc
