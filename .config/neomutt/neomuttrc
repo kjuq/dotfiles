@@ -2,6 +2,11 @@
 
 # Source from an encrypted passwd file
 source "pass _uncategorized/neomutt_secure_info |"
+folder-hook "Inbox-Private"  'source "pass _uncategorized/neomutt_secure_info |"'
+# folder-hook "Inbox-Business" 'source ~/.neomutt/profile.business'
+
+macro index <f2> '<sync-mailbox><enter-command>source "pass _uncategorized/neomutt_secure_info |"<enter><change-folder>!<enter>'
+# macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.bar<enter><change-folder>!<enter>'
 
 # User
 # set from = "example@example.com" # email address
@@ -24,12 +29,14 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set record = "+[Gmail]/Sent Mail"
 set trash = "+[Gmail]/Trash"
-mailboxes =INBOX ="[Gmail]/All Mail" =[Gmail]/Important =[Gmail]/Starred =[Gmail]/Drafts ="[Gmail]/Sent Mail" =[Gmail]/Spam =[Gmail]/Trash
+# mailboxes =INBOX ="[Gmail]/All Mail" =[Gmail]/Important =[Gmail]/Starred =[Gmail]/Drafts ="[Gmail]/Sent Mail" =[Gmail]/Spam =[Gmail]/Trash
+# set imap_list_subscribed = yes
+set imap_check_subscribed = yes
 
 # Where to put the stuff
-set header_cache = "$XDG_CACHE_HOME/mutt/headers"
-set message_cachedir = "$XDG_CACHE_HOME/mutt/bodies"
-set certificate_file = "$XDG_CACHE_HOME/mutt/certificates"
+set header_cache = "$XDG_CACHE_HOME/neomutt/headers"
+set message_cachedir = "$XDG_CACHE_HOME/neomutt"
+set certificate_file = "$XDG_CACHE_HOME/neomutt/certificates"
 unset record
 
 # Settings
@@ -59,7 +66,7 @@ set include                          # include message in replies
 set text_flowed=yes                  # correct indentation for plain text
 unset sig_dashes                     # no dashes before sig
 unset markers
-set signature = "$XDG_CONFIG_HOME/mutt/signature"
+set signature = "$XDG_CONFIG_HOME/neomutt/signature"
 set editor = "nvim"
 
 # Sort by newest conversation first.
