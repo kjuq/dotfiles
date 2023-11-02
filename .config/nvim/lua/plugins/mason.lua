@@ -86,5 +86,6 @@ return {
         "jay-babu/mason-null-ls.nvim",
         "jay-babu/mason-nvim-dap.nvim",
         "nvim-lua/plenary.nvim",
+        "mfussenegger/nvim-dap",
     }
 }
