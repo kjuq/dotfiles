@@ -15,9 +15,19 @@ return {
         if not success then
             capabilities = nil
         end
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "bashls",
+                "clangd",
+                "lua_ls",
+                "pylsp",
+            },
+        })
         require("mason-lspconfig").setup_handlers({
             function(server_name)
-                require('lspconfig')[server_name].setup {
+                local lspconfig = require('lspconfig')
+                lspconfig[server_name].setup {
+                    on_attach = on_attach,
                     capabilities = capabilities,
                     -- should disable this for noice-hover-scroll
                     -- handlers = {
@@ -35,16 +45,21 @@ return {
                     --     }),
                     -- }
                 }
+                local macos_python_path = "/opt/homebrew/bin/python3"
+                lspconfig.pylsp.setup({
+                    settings = {
+                        pylsp = {
+                            plugins = {
+                                jedi = {
+                                    environment = macos_python_path,
+                                }
+                            }
+                        }
+                    }
+                })
             end,
         })
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "bashls",
-                "clangd",
-                "lua_ls",
-                "jedi_language_server",
-            },
-        })
+
 
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         require("null-ls").setup({
