@@ -35,10 +35,10 @@ window:
 
 shell:
   program: /opt/homebrew/bin/fish
-  args:
-    - --login
-    - --command
-    - "tmux attach; or tmux"
+  # args:
+  #   - --login
+  #   - --command
+  #   - "tmux attach; or tmux"
 
 
 env:
