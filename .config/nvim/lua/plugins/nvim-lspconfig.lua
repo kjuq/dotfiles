@@ -6,6 +6,7 @@ return {
             signs = false,
             virtual_text = vt_enabled,
         })
+        require('lspconfig.ui.windows').default_options.border = "rounded"
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
