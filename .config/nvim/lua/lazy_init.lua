@@ -29,11 +29,11 @@ opts = {
     ui = { border = "rounded" },
     performance = {
         rtp = {
-            disabled_plugins = {
+            disabled_plugins = { -- shorten start up time for 1 second
                 "gzip",
                 "matchit",
                 "matchparen",
-                "netrwPlugin",
+                -- "netrwPlugin",
                 "tarPlugin",
                 "tohtml",
                 "tutor",

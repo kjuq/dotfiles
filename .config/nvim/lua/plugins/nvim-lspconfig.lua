@@ -45,10 +45,10 @@ return {
                 nmap("K", vlb.hover, "Hover Documentation")
                 nmap("<C-k>", vlb.signature_help, "Signature Documentation")
 
-                nmap("<leader>wa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
-                nmap("<leader>wr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
+                nmap("<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
+                nmap("<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
                 nmap(
-                    "<leader>wl",
+                    "<leader>lwl",
                     function() print(vim.inspect(vlb.list_workspace_folders())) end,
                     "[w]orkspace [l]ist Folders"
                 )

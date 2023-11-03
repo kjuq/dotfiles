@@ -35,6 +35,10 @@ vim.keymap.set("n", "gt", "<Cmd>bnext<CR>", { silent = true, desc = "Go to the n
 vim.keymap.set("n", "gT", "<Cmd>bprevious<CR>", { silent = true, desc = "Go to the previous buffer" })
 vim.keymap.set("n", "<C-Tab>", "<Cmd>bnext<CR>", { silent = true, desc = "Go to the next buffer" })
 vim.keymap.set("n", "<C-S-Tab>", "<Cmd>bprevious<CR>", { silent = true, desc = "Go to the previous buffer" })
+vim.keymap.set("n", "<C-s>", function() vim.cmd("w") end, {
+    silent = true,
+    desc = "Write the whole buffer to the current file"
+})
 
 -- Center cursor when searching
 vim.keymap.set("n", "n", "nzz", {

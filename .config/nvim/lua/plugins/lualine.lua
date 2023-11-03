@@ -1,8 +1,8 @@
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 return {
     'nvim-lualine/lualine.nvim',
-    event = { "VeryLazy" },
-    opts = function ()
+    event = { "BufNewFile", "BufReadPost" },
+    opts = function()
         local function show_macro_recording()
             local recording_register = vim.fn.reg_recording()
             if recording_register == "" then
@@ -62,7 +62,7 @@ return {
                     -- We are going to use lualine_c an lualine_x as left and
                     -- right section. Both are highlighted by c theme .  So we
                     -- are just setting default looks o statusline
-                    normal = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
+                    normal = { c = { fg = colors.fg, bg = "NONE" } },   -- default: bg = colors.bg
                     inactive = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
                 },
             },
@@ -99,16 +99,16 @@ return {
 
         ins_left {
             function()
-                return " " -- '▊'
+                return " "                     -- '▊'
             end,
-            color = { fg = colors.blue }, -- Sets highlighting of component
+            color = { fg = colors.blue },      -- Sets highlighting of component
             padding = { left = 0, right = 1 }, -- We don't need space before this
         }
 
         ins_left {
             -- mode component
             function()
-                return "󰅬"-- 
+                return "󰅬" -- 
             end,
             color = function()
                 -- auto change color according to neovims mode
@@ -142,19 +142,19 @@ return {
         ins_left {
             'filename',
             path = 4, -- 0: Just the filename
-                      -- 1: Relative path
-                      -- 2: Absolute path
-                      -- 3: Absolute path, with tilde as the home directory
-                      -- 4: Filename and parent dir, with tilde as the home directory
+            -- 1: Relative path
+            -- 2: Absolute path
+            -- 3: Absolute path, with tilde as the home directory
+            -- 4: Filename and parent dir, with tilde as the home directory
             file_status = true,
             newfile_status = true,
             cond = conditions.buffer_not_empty,
             color = { fg = colors.magenta, gui = 'bold' },
             symbols = {
-                modified = '',    -- Text to show when the file is modified.
-                readonly = '',    -- Text to show when the file is non-modifiable or readonly.
-                unnamed  = '󱁐',    -- Text to show for unnamed buffers.
-                newfile  = '',    -- Text to show for newly created file before first write
+                modified = '', -- Text to show when the file is modified.
+                readonly = '', -- Text to show when the file is non-modifiable or readonly.
+                unnamed  = '󱁐', -- Text to show for unnamed buffers.
+                newfile  = '', -- Text to show for newly created file before first write
             },
         }
 
@@ -175,7 +175,7 @@ return {
             },
             cond = conditions.hide_in_width,
             -- workaround with Gitsigns which works properly even without Gitsigns
-            sources = function ()
+            sources = function()
                 ---@diagnostic disable-next-line: undefined-field
                 local gitsigns = vim.b.gitsigns_status_dict
                 if gitsigns then
@@ -246,7 +246,7 @@ return {
         }
 
         ins_right {
-            'o:encoding', -- option component same as &encoding in viml
+            'o:encoding',       -- option component same as &encoding in viml
             fmt = string.upper, -- I'm not sure why it's upper case either ;)
             cond = conditions.hide_in_width,
             color = { fg = colors.green, gui = 'bold' },
@@ -273,5 +273,3 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
 }
-
-

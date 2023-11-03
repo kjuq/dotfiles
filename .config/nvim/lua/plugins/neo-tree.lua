@@ -1,7 +1,6 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    event = { "VeryLazy" },
     cmd = { "Neotree" },
     keys = {
         {
@@ -118,5 +117,3 @@ return {
         "MunifTanjim/nui.nvim",
     },
 }
-
-

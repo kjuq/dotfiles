@@ -1,7 +1,7 @@
 return {
     'akinsho/bufferline.nvim',
-    event = { "VeryLazy" },
-    opts = function ()
+    event = { "BufNewFile", "BufReadPost" },
+    opts = function()
         -- vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "#000000" })
         -- vim.api.nvim_set_hl(0, "BufferLineSeparator", { fg = "#000000" })
         -- vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { fg = "#000000" })
@@ -11,7 +11,7 @@ return {
                 always_show_bufferline = true,
                 separator_style = { "", "" }, -- "slant", "slope", "thick", "thin"
                 indicator = {
-                    style = "none", -- "icon", "underline", "none"
+                    style = "none",           -- "icon", "underline", "none"
                 },
                 show_buffer_close_icons = false,
                 color_icons = true,
@@ -45,5 +45,3 @@ return {
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
 }
-
-

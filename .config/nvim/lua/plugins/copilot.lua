@@ -1,7 +1,7 @@
 return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPost" },
     opts = function()
         local success, cmp = pcall(require, "cmp")
         if success then
