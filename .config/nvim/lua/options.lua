@@ -9,7 +9,6 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.laststatus = 3 -- global status line
 vim.opt.termguicolors = true
-vim.opt.hlsearch = false
 
 vim.opt.wildmenu = true
 vim.opt.completeopt = "menuone,preview,noinsert,noselect"
