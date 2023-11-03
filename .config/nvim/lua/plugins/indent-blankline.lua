@@ -1,8 +1,8 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = { "VeryLazy" },
-    opts = function ()
+    event = { "BufNewFile", "BufReadPost" },
+    opts = function()
         local highlight = {
             "IndentBlanklineIndent1",
             "IndentBlanklineIndent2",
@@ -30,5 +30,3 @@ return {
         }
     end,
 }
-
-

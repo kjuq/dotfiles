@@ -1,6 +1,6 @@
 return {
     "folke/which-key.nvim",
-    event = { "VeryLazy" },
+    event = { "BufNewFile", "BufReadPost" },
     keys = {
         {
             "<leader>pw",
@@ -13,7 +13,7 @@ return {
         vim.o.timeout = true
         vim.o.timeoutlen = 300
     end,
-    opts = function ()
+    opts = function()
         require("which-key").register({
             ["<leader>c"] = { name = "[c]all or [c]ode action", _ = "which_key_ignore" },
             ["<leader>d"] = { name = "[d]ebug", _ = "which_key_ignore" },
@@ -31,10 +31,9 @@ return {
         return {
             layout = {
                 width = { max = 80 }, -- min and max width of the columns
-                spacing = 3, -- spacing between columns
-                align = "left", -- align columns left, center or right
+                spacing = 3,          -- spacing between columns
+                align = "left",       -- align columns left, center or right
             },
         }
     end,
 }
-

@@ -7,6 +7,7 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = { "Telescope" },
     keys = {
+
         -- File pickers {{{
         {
             "<leader>ff",
@@ -249,6 +250,7 @@ return {
             desc = "Telescope.extensions.frecency: [f]ind [h]istory of files intelligently"
         },
         -- }}}
+
     },
     config = function()
         local actions = require("telescope.actions")
