@@ -1,6 +1,6 @@
 return {
     "petertriho/nvim-scrollbar",
-    event = { "VeryLazy" },
+    event = { "BufNewFile", "BufReadPost" },
     opts = {
         excluded_filetypes = {
             "cmp_docs",
@@ -19,7 +19,10 @@ return {
             require("scrollbar.handlers.search").setup({
                 override_lens = function() end,
             })
-            require("scrollbar.handlers.gitsigns").setup()
+            local has_gitsigns, _ = pcall(require, "gitsigns")
+            if has_gitsigns then
+                require("scrollbar.handlers.gitsigns").setup()
+            end
         end,
     },
 }
