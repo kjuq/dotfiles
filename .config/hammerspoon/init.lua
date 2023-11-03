@@ -27,11 +27,12 @@ local function hideAllApps()
 	end
 end
 
+toggleApp("System Settings", "f13")
 toggleApp("Safari", "f14")
-hs.hotkey.bind({}, "f16", hideAllApps)
+toggleApp("Wezterm", "f16")
 toggleApp("Vivaldi", "f17")
 toggleApp("Alacritty", "f18")
-toggleApp("System Settings", "f19")
+hs.hotkey.bind({}, "f19", hideAllApps)
 toggleApp("Finder", "f20")
 
 -- }}}

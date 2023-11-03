@@ -29,9 +29,9 @@ Config = {
 	freetype_load_target = "Normal", -- "Normal", "Light", "Mono"
 	default_prog = {
 		"/opt/homebrew/bin/fish",
-		"--login",
-		"--command",
-		"tmux attach; or tmux",
+		-- "--login",
+		-- "--command",
+		-- "tmux attach; or tmux",
 	},
 	enable_tab_bar = false,
 	window_decorations = "RESIZE",
