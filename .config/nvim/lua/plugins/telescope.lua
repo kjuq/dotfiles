@@ -41,12 +41,12 @@ return {
             function() require("telescope.builtin").buffers() end,
             desc = "Telescope.builtin: [p]ick [b]uffers"
         },
-        {
-            "<leader>fh",
-            mode = { "n" },
-            function() require("telescope.builtin").oldfiles() end,
-            desc = "Telescope.builtin: [f]ind [h]istory of [f]iles"
-        },
+        -- {
+        --     "<leader>fh",
+        --     mode = { "n" },
+        --     function() require("telescope.builtin").oldfiles() end,
+        --     desc = "Telescope.builtin: [f]ind [h]istory of files"
+        -- },
         {
             "<leader>hc",
             mode = { "n" },
@@ -234,13 +234,19 @@ return {
             "<leader>ps",
             mode = { "n" },
             function() require('telescope').extensions.sessions_picker.sessions_picker() end,
-            desc = "Telescope.extensions: [p]ick [s]essions"
+            desc = "Telescope.extensions.sessions_picker: [p]ick [s]essions"
         },
         {
             "<leader>fc",
             mode = { "n" },
             function() require("telescope").extensions.zoxide.list() end,
-            desc = "Telescope.extensions: [f]ind directory via Zoxide ([c]d)"
+            desc = "Telescope.extensions.zoxide: [f]ind directory via Zoxide ([c]d)"
+        },
+        {
+            "<leader>fh",
+            mode = { "n" },
+            function() vim.cmd("Telescope frecency") end,
+            desc = "Telescope.extensions.frecency: [f]ind [h]istory of files intelligently"
         },
         -- }}}
     },
@@ -307,9 +313,6 @@ return {
                 },
             }
         })
-        if fzf_installable then
-            require('telescope').load_extension('fzf')
-        end
     end,
     dependencies = {
         "nvim-lua/popup.nvim",
@@ -319,6 +322,19 @@ return {
         "jvgrootveld/telescope-zoxide",
         "HUAHUAI23/telescope-session.nvim",           -- for saving session
         "JoseConseco/telescope_sessions_picker.nvim", -- for listing sessions
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = fzf_installable }
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+            cond = fzf_installable,
+            config = function()
+                require('telescope').load_extension('fzf')
+            end,
+        },
+        {
+            "nvim-telescope/telescope-frecency.nvim",
+            config = function()
+                require("telescope").load_extension("frecency")
+            end,
+        },
     },
 }
