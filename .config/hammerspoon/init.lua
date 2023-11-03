@@ -1,6 +1,7 @@
 -- Execute the command below when setting up a new environment
 -- defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
 
+local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
 local cmd_opt = { "cmd", "option" }
 
 -- Toggle apps {{{
@@ -142,3 +143,25 @@ local watcher = hs.application.watcher.new(handleGlobalEvent)
 watcher:start()
 
 -- }}}
+
+-- Simple remaps {{{
+hs.hotkey.bind(cmd_opt, "g", function() hs.eventtap.keyStroke("cmd", "`") end)
+-- }}}
+
+-- Check if the file exists
+local function path_exists(path)
+	local f = io.open(path, "r")
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
+end
+
+if not path_exists(hs_base .. "/Spoons/EmmyLua.spoon") then
+	hs.alert("EmmyLua is not installed")
+	return false
+else
+	hs.loadSpoon("EmmyLua")
+end
