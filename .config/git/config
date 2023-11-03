@@ -1,5 +1,5 @@
 [core]
-	pager = delta
+	pager = bat
 	editor = nvim
 [interactive]
 	diffFilter = delta --color-only
