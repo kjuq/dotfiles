@@ -1,7 +1,10 @@
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 return {
     'nvim-lualine/lualine.nvim',
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "InsertEnter", "BufNewFile", "BufReadPost" },
+    init = function()
+        vim.opt.laststatus = 0
+    end,
     opts = function()
         local function show_macro_recording()
             local recording_register = vim.fn.reg_recording()

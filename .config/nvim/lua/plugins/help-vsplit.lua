@@ -1,5 +1,8 @@
 return {
     "anuvyklack/help-vsplit.nvim",
-    event = { "VeryLazy" },
+    event = "InsertEnter", -- for telescope help_tag
+    keys = {
+        { "h", mode = "c" },
+    },
     opts = {},
 }

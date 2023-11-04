@@ -1,6 +1,6 @@
 return {
     "folke/noice.nvim",
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "InsertEnter", "CmdlineEnter", "BufNewFile", "BufReadPost" },
     cmd = {
         "Noice",
         "NoiceLog",

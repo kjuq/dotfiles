@@ -1,13 +1,11 @@
+local map = require("utils.lazy").generate_cmd_map("<leader>", "Which-key: ")
+
 return {
     "folke/which-key.nvim",
     event = { "BufNewFile", "BufReadPost" },
     keys = {
-        {
-            "<leader>pw",
-            mode = { "n" },
-            "<Cmd>WhichKey<CR>",
-            desc = "Which-key: [p]ick all mappings ([w]hich)"
-        },
+        { "<leader>", mode = "n" },
+        map("pw", "n", "WhichKey", "[p]ick all mappings ([w]hich)"),
     },
     init = function()
         vim.o.timeout = true
