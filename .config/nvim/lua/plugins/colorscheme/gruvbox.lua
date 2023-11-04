@@ -8,5 +8,6 @@ return {
             dim_inactive = false,
         })
         vim.cmd.colorscheme("gruvbox")
+        vim.api.nvim_set_hl(0, "statusline", { bg = "NONE" })
     end,
 }
