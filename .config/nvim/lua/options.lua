@@ -7,6 +7,7 @@ vim.opt.scrolloff = 6
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.cmdheight = 0
 vim.opt.laststatus = 3 -- global status line
 vim.opt.termguicolors = true
 
