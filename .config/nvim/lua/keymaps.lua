@@ -37,7 +37,9 @@ map("n", "gt", "<Cmd>bnext<CR>", { silent = true, desc = "Go to the next buffer"
 map("n", "gT", "<Cmd>bprevious<CR>", { silent = true, desc = "Go to the previous buffer" })
 map("n", "<C-Tab>", "<Cmd>bnext<CR>", { silent = true, desc = "Go to the next buffer" })
 map("n", "<C-S-Tab>", "<Cmd>bprevious<CR>", { silent = true, desc = "Go to the previous buffer" })
-map("n", "<leader>w", function() vim.cmd("w") end, { silent = true, desc = "Write the whole buffer to the current file" })
+map("n", "<leader>w", vim.cmd.w, { silent = true, desc = "Write the whole buffer to the current file" })
+map("n", "<leader>q", vim.cmd.q, { silent = true, desc = "Quit the current window" })
+map("n", "<leader>Q", function() vim.cmd.q { bang = true } end, { silent = true, desc = "Force quit the current window" })
 
 -- Center cursor when searching
 map("n", "n", "nzz", { silent = true, desc = 'Repeat the latest search' })
