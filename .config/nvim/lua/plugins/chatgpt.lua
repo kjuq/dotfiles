@@ -1,30 +1,22 @@
-local function map(suffix, mode, cmd, comment)
-    local map_base = require("utils.lazy").generate_map("<leader>c", "ChatGPT.nvim: ")
-    return map_base(suffix, mode, function() vim.cmd(cmd) end, comment)
-end
+local map = require("utils.lazy").generate_cmd_map("<leader>c", "ChatGPT")
 
 return {
     "jackMort/ChatGPT.nvim",
-    cmd = {
-        "ChatGPT",
-        "ChatGPTActAs",
-        "ChatGPTEditWithInstructions",
-        "ChatGPTRun",
-    },
+    cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun", },
     keys = {
-        map("c", { "n" }, "ChatGPT", "Open ChatGPT"),
-        map("e", { "n", "v" }, "ChatGPTEditWithInstruction", "Edit with instruction"),
-        map("g", { "n", "v" }, "ChatGPTRun grammar_correction", "Grammar Correction"),
-        map("t", { "n", "v" }, "ChatGPTRun translate", "Translate"),
-        map("k", { "n", "v" }, "ChatGPTRun keywords", "Keywords"),
-        map("d", { "n", "v" }, "ChatGPTRun docstring", "Docstring"),
-        map("a", { "n", "v" }, "ChatGPTRun add_tests", "Add Tests"),
-        map("o", { "n", "v" }, "ChatGPTRun optimize_code", "Optimize Code"),
-        map("s", { "n", "v" }, "ChatGPTRun summarize", "Summarize"),
-        map("f", { "n", "v" }, "ChatGPTRun fix_bugs", "Fix Bugs"),
-        map("x", { "n", "v" }, "ChatGPTRun explain_code", "Explain Code"),
-        map("r", { "n", "v" }, "ChatGPTRun roxygen_edit", "Roxygen Edit"),
-        map("l", { "n", "v" }, "ChatGPTRun code_readability_analysis", "Code Readability Analysis"),
+        map("c", { "n" }, "ChatGPT", ": Open ChatGPT"),
+        map("e", { "n", "v" }, "ChatGPTEditWithInstruction", ": Edit with instruction"),
+        map("g", { "n", "v" }, "ChatGPTRun grammar_correction", ".Run: Grammar Correction"),
+        map("t", { "n", "v" }, "ChatGPTRun translate", ".Run: Translate"),
+        map("k", { "n", "v" }, "ChatGPTRun keywords", ".Run: Keywords"),
+        map("d", { "n", "v" }, "ChatGPTRun docstring", ".Run: Docstring"),
+        map("a", { "n", "v" }, "ChatGPTRun add_tests", ".Run: Add Tests"),
+        map("o", { "n", "v" }, "ChatGPTRun optimize_code", ".Run: Optimize Code"),
+        map("s", { "n", "v" }, "ChatGPTRun summarize", ".Run: Summarize"),
+        map("f", { "n", "v" }, "ChatGPTRun fix_bugs", ".Run: Fix Bugs"),
+        map("x", { "n", "v" }, "ChatGPTRun explain_code", ".Run: Explain Code"),
+        map("r", { "n", "v" }, "ChatGPTRun roxygen_edit", ".Run: Roxygen Edit"),
+        map("l", { "n", "v" }, "ChatGPTRun code_readability_analysis", ".Run: Code Readability Analysis"),
     },
     opts = {
         api_key_cmd = 'pass openai.com/api_key',
