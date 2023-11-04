@@ -16,7 +16,7 @@ return {
 
         return {
             suggestion = {
-                enabled = true,
+                enabled = false,
                 auto_trigger = false,
                 keymap = {
                     accept = "<C-e>",
@@ -26,6 +26,9 @@ return {
                     prev = "<C-b>",
                     dismiss = "<C-c>",
                 },
+            },
+            panel = {
+                enabled = false,
             },
         }
     end,

@@ -1,18 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
-    dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-emoji",
-        "ray-x/cmp-treesitter",
-        "onsails/lspkind.nvim",
-        "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip",
-    },
     config = function()
         local has_words_before = function()
             unpack = unpack or table.unpack
@@ -31,35 +19,25 @@ return {
                 end,
             },
             completion = {
-                --autocomplete = false,
+                autocomplete = false,
             },
 
             mapping = cmp.mapping.preset.insert({
-                ["<C-n>"] = cmp.mapping({
-                    i = function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
-                        elseif has_words_before() then
-                            cmp.complete()
-                        else
-                            fallback()
-                        end
-                    end,
-                    c = cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
-                }),
+                ["<C-n>"] = cmp.mapping(function()
+                    if cmp.visible() then
+                        cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
+                    else
+                        cmp.complete()
+                    end
+                end, { "i", "c" }),
 
-                ["<C-p>"] = cmp.mapping({
-                    i = function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
-                        elseif has_words_before() then
-                            cmp.complete()
-                        else
-                            fallback()
-                        end
-                    end,
-                    c = cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
-                }),
+                ["<C-p>"] = cmp.mapping(function()
+                    if cmp.visible() then
+                        cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
+                    else
+                        cmp.complete()
+                    end
+                end, { "i", "c" }),
 
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -90,6 +68,7 @@ return {
                 { name = "luasnip" },
                 { name = "nvim_lua" },
                 { name = "emoji" },
+                { name = "copilot" },
             },
             window = {
                 completion = cmp.config.window.bordered(),
@@ -100,6 +79,7 @@ return {
                     mode = "text_symbol",  -- show only symbol annotations
                     maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                     ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    symbol_map = { Copilot = "" }
                 })
             },
             experimental = {
@@ -110,7 +90,7 @@ return {
         -- Set configuration for specific filetype.
         cmp.setup.filetype("gitcommit", {
             sources = {
-                -- { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+                { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
                 { name = "buffer" },
             },
         })
@@ -134,4 +114,20 @@ return {
             }
         })
     end,
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-emoji",
+        "ray-x/cmp-treesitter",
+        "onsails/lspkind.nvim",
+        "saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
+        {
+            "zbirenbaum/copilot-cmp",
+            opts = {},
+        },
+    },
 }
