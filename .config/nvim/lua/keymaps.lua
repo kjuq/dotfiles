@@ -52,20 +52,7 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
     desc = "Force delete a current buffer"
 })
 
--- Esc can be appended functions in other places such as config files of plugins
-Escs = {}
-
-local esc = function()
+map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
     vim.cmd.fclose { bang = true }
-end
-
-Escs[#Escs + 1] = esc
-
-Exec_Escs = function()
-    for _, e in ipairs(Escs) do
-        e()
-    end
-end
-
-map("n", "<Esc>", Exec_Escs, { silent = true })
+end, { silent = true })
