@@ -52,13 +52,13 @@ return {
         })
         -- hierarchy
         local opts = { desc = "LspSaga: [i]ncoming [c]alls" }
-        vim.keymap.set("n", "<leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
+        vim.keymap.set("n", "<leader>lci", "<cmd>Lspsaga incoming_calls<CR>", opts)
         opts = { desc = "LspSaga: [o]utgoing [c]alls" }
-        vim.keymap.set("n", "<leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
+        vim.keymap.set("n", "<leader>lco", "<cmd>Lspsaga outgoing_calls<CR>", opts)
 
         -- code action
         opts = { desc = "LspSaga: [c]ode [a]ction" }
-        vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+        vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
 
         -- definition
         opts = { desc = "LspSaga: [g]o to [d]efinition" }

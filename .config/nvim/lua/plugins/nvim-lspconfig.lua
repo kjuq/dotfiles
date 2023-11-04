@@ -34,12 +34,12 @@ return {
                 end
 
                 -- nmap("gd", vlb.definition, "[g]o to [d]efinition")
-                -- nmap("gD", vlb.declaration, "[g]o to [D]eclaration")
-                -- nmap("gy", vlb.type_definition, "Go to t[y]pe definition")
-                -- nmap("<leader>lr", vlb.references, "Go to [r]eference")
-                -- nmap("<leader>li", vlb.implementation, "[g]o to [i]mplementation")
+                -- nmap("<KEYBIND>", vlb.declaration, "[g]o to [D]eclaration")
+                -- nmap("<KEYBIND>", vlb.type_definition, "Go to t[y]pe definition")
+                -- nmap("<KEYBIND>", vlb.references, "Go to [r]eference")
+                -- nmap("<KEYBIND>", vlb.implementation, "[g]o to [i]mplementation")
 
-                -- nmap("<leader>ca", vlb.code_action, "[c]ode [a]ction")
+                -- nmap("<leader>la", vlb.code_action, "code [a]ction")
 
                 nmap("<leader>rn", vlb.rename, "[r]e[n]ame")
 
