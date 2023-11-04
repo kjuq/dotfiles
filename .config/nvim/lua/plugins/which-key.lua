@@ -15,9 +15,9 @@ return {
     end,
     opts = function()
         require("which-key").register({
-            ["<leader>c"] = { name = "[c]all or [c]ode action", _ = "which_key_ignore" },
+            ["<leader>c"] = { name = "[c]hatGPT", _ = "which_key_ignore" },
             ["<leader>d"] = { name = "[d]ebug", _ = "which_key_ignore" },
-            ["<leader>f"] = { name = "[f]ind", _ = "which_key_ignore", f = "Telescope.builtin: [f]ind [f]iles" },
+            ["<leader>f"] = { name = "[f]ind", _ = "which_key_ignore" },
             ["<leader>g"] = { name = "[g]it", _ = "which_key_ignore" },
             ["<leader>h"] = { name = "[h]istory", _ = "which_key_ignore" },
             ["<leader>l"] = { name = "[l]SP", _ = "which_key_ignore", c = "[c]all" },
