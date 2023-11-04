@@ -1,6 +1,6 @@
 return {
     "lewis6991/gitsigns.nvim",
-    event = { "VeryLazy" },
+    event = { "BufWritePost", "BufNewFile", "BufReadPost" },
     opts = {
         signcolumn = false,
         numhl = true,
@@ -44,23 +44,20 @@ return {
             -- Actions
             map("n", "<leader>gh", gs.stage_hunk, "Stage [h]unk")
             map("n", "<leader>gr", gs.reset_hunk, "[r]eset hunk")
-            map("v", "<leader>gh", function() gs.stage_hunk {vim.fn.line("."), vim.fn.line("v")} end, "Stage [h]unk")
-            map("v", "<leader>gr", function() gs.reset_hunk {vim.fn.line("."), vim.fn.line("v")} end, "[r]eset hunk")
+            map("v", "<leader>gh", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Stage [h]unk")
+            map("v", "<leader>gr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end, "[r]eset hunk")
             map("n", "<leader>gs", gs.stage_buffer, "[s]tage buffer")
             map("n", "<leader>gu", gs.undo_stage_hunk, "[u]ndo stage hunk")
             map("n", "<leader>gR", gs.reset_buffer, "[R]eset buffer")
             map("n", "<leader>gp", gs.preview_hunk, "[p]review hunk")
-            map("n", "<leader>gb", function() gs.blame_line{full=true} end, "[b]lame line")
+            map("n", "<leader>gb", function() gs.blame_line { full = true } end, "[b]lame line")
             map("n", "<leader>gT", gs.toggle_current_line_blame, "[T]oggle current line blame")
             map("n", "<leader>gd", gs.diffthis, "Diff this")
             map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff this \"~\" <- ?")
             map("n", "<leader>gt", gs.toggle_deleted, "[t]oggle deleted")
 
             -- Text object
-            map({"o", "x"}, "<leader>gS", ":<C-U>Gitsigns select_hunk<CR>", "[s]elect hunk")
+            map({ "o", "x" }, "<leader>gS", ":<C-U>Gitsigns select_hunk<CR>", "[s]elect hunk")
         end
     },
 }
-
-
-
