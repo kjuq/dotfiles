@@ -56,3 +56,5 @@ map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
     vim.cmd.fclose { bang = true }
 end, { silent = true })
+
+map("i", "<C-l>", function() vim.cmd.fclose { bang = true } end, { silent = true })
