@@ -9,5 +9,22 @@ return {
         })
     end,
 
-    session_dir = vim.fn.stdpath('data') ..'/session/' -- ~/.local/share/nvim/session
+    --- @return boolean
+    has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    end,
+
+    --- @return boolean
+    has_floating_win = function()
+        for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+            if vim.api.nvim_win_get_config(winid).zindex then
+                return true
+            end
+        end
+        return false
+    end,
+
+    session_dir = vim.fn.stdpath('data') .. '/session/' -- ~/.local/share/nvim/session
 }
