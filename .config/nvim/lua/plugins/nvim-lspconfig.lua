@@ -1,10 +1,24 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
+        local map = function(mode, keys, func, description, buffer)
+            if description then
+                description = "LSP: " .. description
+            end
+
+            local opts = {}
+            if not buffer == nil then
+                opts.buffer = buffer
+            end
+            opts.desc = description
+
+            vim.keymap.set(mode, keys, func, opts)
+        end
         local vt_enabled = false
         vim.diagnostic.config({
             signs = false,
             virtual_text = vt_enabled,
+            float = { border = "rounded" },
         })
         require('lspconfig.ui.windows').default_options.border = "rounded"
 
@@ -25,49 +39,38 @@ return {
 
                 local vlb = vim.lsp.buf
 
-                local map = function(mode, keys, func, description)
-                    if description then
-                        description = "LSP: " .. description
-                    end
+                map("n", "gd", vlb.definition, "[g]o to [d]efinition", ev.buf)
 
-                    vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = description })
-                end
+                -- vlb.declaration, "Go to Declaration"
+                -- vlb.type_definition, "Go to type definition"
+                -- vlb.references, "Go to reference"
+                -- vlb.implementation, "Go to implementation"
 
-                -- nmap("gd", vlb.definition, "[g]o to [d]efinition")
-                -- nmap("<KEYBIND>", vlb.declaration, "[g]o to [D]eclaration")
-                -- nmap("<KEYBIND>", vlb.type_definition, "Go to t[y]pe definition")
-                -- nmap("<KEYBIND>", vlb.references, "Go to [r]eference")
-                -- nmap("<KEYBIND>", vlb.implementation, "[g]o to [i]mplementation")
+                -- map("n", "<leader>la", vlb.code_action, "code [a]ction", ev.buf)
 
-                -- nmap("<leader>la", vlb.code_action, "code [a]ction")
+                map("n", "<leader>rn", vlb.rename, "[r]e[n]ame", ev.buf)
 
-                map("n", "<leader>rn", vlb.rename, "[r]e[n]ame")
+                map("n", "K", vlb.hover, "Hover Documentation", ev.buf)
+                map("n", "<C-s>", vlb.signature_help, "Signature Documentation (Normal mode)", ev.buf)
+                map("i", "<C-s>", vlb.signature_help, "Signature Documentation (Insert mode)", ev.buf)
 
-                map("n", "K", vlb.hover, "Hover Documentation")
-                map("n", "<C-k>", vlb.signature_help, "Signature Documentation (Normal mode)")
-                map("i", "<C-s>", vlb.signature_help, "Signature Documentation (Insert mode)")
-
-                map("n", "<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
-                map("n", "<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
+                map("n", "<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older", ev.buf)
+                map("n", "<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder", ev.buf)
                 map("n", "<leader>lwl",
                     function() print(vim.inspect(vlb.list_workspace_folders())) end,
-                    "[w]orkspace [l]ist Folders")
+                    "[w]orkspace [l]ist Folders", ev.buf)
 
-                map("n", "<leader>lf", function() vlb.format { async = false } end, "[f]ormat current buffer with LSP")
+                map("n", "<leader>lf", function() vlb.format { async = false } end, "[f]ormat current buffer", ev.buf)
 
                 map("n", "<leader>lv", function()
                     vt_enabled = not vt_enabled
                     vim.diagnostic.config({ virtual_text = vt_enabled, })
-                end, "Toggle [v]irtual text of diagnostics")
+                end, "Toggle [v]irtual text of diagnostics", ev.buf)
             end,
         })
-        -- local desc = "LSP: Open floating diagnostic message"
-        -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = desc })
-        -- desc = "LSP: Go to previous diagnostic message"
-        -- vim.keymap.set("n", "[e", vim.diagnostic.goto_prev, { desc = desc })
-        -- desc = "LSP: Go to next diagnostic message"
-        -- vim.keymap.set("n", "]e", vim.diagnostic.goto_next, { desc = desc })
-        -- desc = "LSP: Open diagnostics list"
-        -- vim.keymap.set("n", "<KEYBIND>", vim.diagnostic.setloclist, { desc = desc })
+        map("n", "<leader>e", vim.diagnostic.open_float, "Open floating diagnostic message")
+        map("n", "[e", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
+        map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostic message")
+        map("n", "<leader>lq", vim.diagnostic.setloclist, "Open diagnostics list")
     end,
 }
