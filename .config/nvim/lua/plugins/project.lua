@@ -1,5 +1,6 @@
 return {
     "ahmedkhalf/project.nvim",
+    name = "project_nvim",
     event = { "BufNewFile", "BufReadPost" },
     keys = {
         {
@@ -16,7 +17,7 @@ return {
             desc = "Telescope.extensions: [p]ick [p]rojects",
         },
     },
-    config = function()
-        require("project_nvim").setup {}
-    end,
+    opts = {
+        detection_methods = { "pattern" },
+    },
 }
