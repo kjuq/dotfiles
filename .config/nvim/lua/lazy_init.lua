@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("utils.common").quit_with_esc({ "lazy" })
 
-opts = {
+local opts = {
     defaults = {
         lazy = true,
         -- cond = false, -- Disable a lot of plugins globally

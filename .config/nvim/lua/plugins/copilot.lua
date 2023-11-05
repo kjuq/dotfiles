@@ -16,7 +16,7 @@ return {
 
         return {
             suggestion = {
-                enabled = false,
+                enabled = true,
                 auto_trigger = false,
                 keymap = {
                     accept = "<C-e>",
