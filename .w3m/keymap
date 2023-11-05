@@ -1,2 +1,4 @@
 keymap F NEXT
 keymap B PREV
+keymap C-w CLOSE_TAB
+keymap C-l WRAP_TOGGLE
