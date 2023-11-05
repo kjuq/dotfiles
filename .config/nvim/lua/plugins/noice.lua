@@ -60,6 +60,7 @@ return {
                     opts = {
                         format = { "{message}", "\n\nProvided by Noice - Signature Help" },
                     },
+                    auto_open = { enabled = false },
                 },
                 documentation = {
                     opts = {

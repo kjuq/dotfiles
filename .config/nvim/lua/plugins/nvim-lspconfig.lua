@@ -25,12 +25,12 @@ return {
 
                 local vlb = vim.lsp.buf
 
-                local nmap = function(keys, func, description)
+                local map = function(mode, keys, func, description)
                     if description then
                         description = "LSP: " .. description
                     end
 
-                    vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = description })
+                    vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = description })
                 end
 
                 -- nmap("gd", vlb.definition, "[g]o to [d]efinition")
@@ -41,35 +41,24 @@ return {
 
                 -- nmap("<leader>la", vlb.code_action, "code [a]ction")
 
-                nmap("<leader>rn", vlb.rename, "[r]e[n]ame")
+                map("n", "<leader>rn", vlb.rename, "[r]e[n]ame")
 
-                nmap("K", vlb.hover, "Hover Documentation")
-                nmap("<C-k>", vlb.signature_help, "Signature Documentation")
+                map("n", "K", vlb.hover, "Hover Documentation")
+                map("n", "<C-k>", vlb.signature_help, "Signature Documentation (Normal mode)")
+                map("i", "<C-s>", vlb.signature_help, "Signature Documentation (Insert mode)")
 
-                nmap("<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
-                nmap("<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
-                nmap(
-                    "<leader>lwl",
+                map("n", "<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older")
+                map("n", "<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder")
+                map("n", "<leader>lwl",
                     function() print(vim.inspect(vlb.list_workspace_folders())) end,
-                    "[w]orkspace [l]ist Folders"
-                )
+                    "[w]orkspace [l]ist Folders")
 
-                nmap(
-                    "<leader>lf",
-                    function() vlb.format { async = false } end,
-                    "[f]ormat current buffer with LSP"
-                )
+                map("n", "<leader>lf", function() vlb.format { async = false } end, "[f]ormat current buffer with LSP")
 
-                nmap(
-                    "<leader>lv",
-                    function()
-                        vt_enabled = not vt_enabled
-                        vim.diagnostic.config({
-                            virtual_text = vt_enabled,
-                        })
-                    end,
-                    "Toggle [v]irtual text of diagnostics"
-                )
+                map("n", "<leader>lv", function()
+                    vt_enabled = not vt_enabled
+                    vim.diagnostic.config({ virtual_text = vt_enabled, })
+                end, "Toggle [v]irtual text of diagnostics")
             end,
         })
         -- local desc = "LSP: Open floating diagnostic message"
