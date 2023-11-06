@@ -146,6 +146,7 @@ watcher:start()
 -- }}}
 
 -- Simple remaps {{{
+hs.hotkey.bind({ "cmd" }, "q", function() hs.eventtap.keyStroke("cmd", "`") end)
 hs.hotkey.bind(cmd_opt, "g", function() hs.eventtap.keyStroke("cmd", "`") end)
 -- }}}
 
