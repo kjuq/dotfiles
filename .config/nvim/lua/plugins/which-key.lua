@@ -13,6 +13,7 @@ return {
     end,
     opts = function()
         require("which-key").register({
+            ["<leader>a"] = { name = "[a]dditional", _ = "which_key_ignore" },
             ["<leader>c"] = { name = "[c]hatGPT", _ = "which_key_ignore" },
             ["<leader>d"] = { name = "[d]ebug", _ = "which_key_ignore" },
             ["<leader>f"] = { name = "[f]ind", _ = "which_key_ignore" },
