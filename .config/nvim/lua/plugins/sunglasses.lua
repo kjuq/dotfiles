@@ -17,7 +17,7 @@ return {
 
         require("sunglasses").setup({
             filter_type = "SHADE",
-            filter_percent = .45
+            filter_percent = .40
         })
 
         vim.cmd("SunglassesRefresh")
