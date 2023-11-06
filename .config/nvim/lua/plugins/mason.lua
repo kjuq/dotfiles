@@ -1,3 +1,5 @@
+local map = require("utils.lazy").generate_cmd_map("<leader>", "Mason: ")
+
 return {
     "williamboman/mason.nvim",
     event = { "BufNewFile", "BufReadPost" },
@@ -8,6 +10,9 @@ return {
         "MasonUninstallAll",
         "MasonLog",
         "MasonUpdate",
+    },
+    keys = {
+        map("am", "n", "Mason", "Open Mason")
     },
     config = function()
         require("mason").setup({ ui = { border = "rounded" } })

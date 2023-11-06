@@ -14,8 +14,6 @@ end
 vim.loader.enable()
 vim.opt.rtp:prepend(lazypath)
 
-require("utils.common").quit_with_esc({ "lazy" })
-
 local opts = {
     defaults = {
         lazy = true,
@@ -44,3 +42,5 @@ local opts = {
 }
 
 require("lazy").setup("plugins", opts)
+
+vim.keymap.set("n", "<leader>al", function() vim.cmd("Lazy") end, { desc = "Lazy: Open Lazy.nvim" })
