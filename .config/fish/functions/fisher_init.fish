@@ -10,8 +10,9 @@ function fisher_init
 
     fisher install rafaelrinaldi/pure
     fisher install decors/fish-colored-man
-    fisher install kjuq/pure-iceberg
-    fisher install kjuq/color-tomorrow-night
     fisher install kjuq/fish-pip-completion
     fisher install PatrickF1/fzf.fish
+
+    set --erase pure_color_current_directory
+    set --universal pure_color_current_directory normal
 end
