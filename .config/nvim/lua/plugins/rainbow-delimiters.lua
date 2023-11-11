@@ -17,11 +17,11 @@ return {
 
         vim.g.rainbow_delimiters = {
             strategy = {
-                [''] = function()
-                    if vim.fn.line('$') > 3000 then
-                        return rainbow.strategy['local']
+                [""] = function()
+                    if vim.fn.line("$") > 3000 then
+                        return nil
                     else
-                        return rainbow.strategy['global']
+                        return rainbow.strategy["global"]
                     end
                 end,
             },
