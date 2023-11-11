@@ -22,7 +22,7 @@ return {
             ["<leader>l"] = { name = "[l]SP", _ = "which_key_ignore", c = "[c]all" },
             ["<leader>p"] = { name = "[p]ick", _ = "which_key_ignore" },
             ["<leader>r"] = { name = "[r]ename or [r]esume", _ = "which_key_ignore" },
-            ["<leader>s"] = { name = "[s]ave session", _ = "which_key_ignore" },
+            ["<leader>s"] = { name = "[s]earch", _ = "which_key_ignore" },
             ["<leader>t"] = { name = "[t]ree", _ = "which_key_ignore" },
             -- ["<leader>w"] = { name = "[w]orkspace", _ = "which_key_ignore" },
         })
