@@ -1,6 +1,16 @@
+local map = require("utils.lazy").generate_cmd_map("", "LspSaga: ")
+
 return {
     "nvimdev/lspsaga.nvim",
     event = { "LspAttach" },
+    keys = {
+        map("<leader>lci", "n", "Lspsaga incoming_calls", "[i]ncoming [c]alls"),
+        map("<leader>lco", "n", "Lspsaga outgoing_calls", "[o]utgoing [c]alls"),
+        map("<leader>la", { "n", "v" }, "Lspsaga code_action", "Code [a]ction"),
+        map("gy", "n", "Lspsaga finder def+ref+imp+tyd", "Find def, ref, imp, and type def"),
+        map("gd", "n", "Lspsaga goto_definition", "[g]o to [d]efinition"),
+        map("<leader>lz", "n", "Lspsaga outline", "Show outline"),
+    },
     config = function()
         require("lspsaga").setup({
             callhierarchy = { keys = { quit = { "q", "<Esc>" } } },
@@ -20,23 +30,6 @@ return {
                 }
             },
         })
-        -- hierarchy
-        local opts = { desc = "LspSaga: [i]ncoming [c]alls" }
-        vim.keymap.set("n", "<leader>lci", "<cmd>Lspsaga incoming_calls<CR>", opts)
-        opts = { desc = "LspSaga: [o]utgoing [c]alls" }
-        vim.keymap.set("n", "<leader>lco", "<cmd>Lspsaga outgoing_calls<CR>", opts)
-
-        -- code action
-        opts = { desc = "LspSaga: [c]ode [a]ction" }
-        vim.keymap.set({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
-
-        -- finder
-        opts = { desc = "LspSaga: Open a floating window showing def, ref, and implementation" }
-        vim.keymap.set('n', 'gy', '<cmd>Lspsaga finder def+ref+imp+tyd<CR>', opts)
-
-        -- outline
-        opts = { desc = "LspSaga: Show out line" }
-        vim.keymap.set("n", "<leader>lz", "<Cmd>Lspsaga outline<CR>", opts)
     end,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",

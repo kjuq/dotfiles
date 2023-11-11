@@ -39,7 +39,7 @@ return {
 
                 local vlb = vim.lsp.buf
 
-                map("n", "gd", vlb.definition, "[g]o to [d]efinition", ev.buf)
+                -- map("n", "gd", vlb.definition, "[g]o to [d]efinition", ev.buf)
 
                 -- vlb.declaration, "Go to Declaration"
                 -- vlb.type_definition, "Go to type definition"
