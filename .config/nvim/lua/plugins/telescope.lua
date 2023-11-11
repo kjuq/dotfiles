@@ -70,7 +70,6 @@ return {
 
         -- Extensions
 
-        mapex("ss", "n", function() vim.cmd("Telescope xray23 save") end, ": [s]ave [s]essions"),
         mapex("ps", "n", function() te.sessions_picker.sessions_picker() end, ".sessions_picker: [p]ick [s]essions"),
         mapex("fc", "n", function() te.zoxide.list() end, ".zoxide: [f]ind directory via Zoxide ([c]d)"),
         mapex("fh", "n", function() vim.cmd("Telescope frecency") end, ".frecency: [f]ind [h]istory of files"),
@@ -133,9 +132,6 @@ return {
                 sessions_picker = {
                     sessions_dir = require("utils.common").session_dir,
                 },
-                xray23 = {
-                    sessionDir = require("utils.common").session_dir,
-                },
             }
         })
     end,
@@ -145,8 +141,7 @@ return {
         "BurntSushi/ripgrep",
         "nvim-telescope/telescope-symbols.nvim",
         "jvgrootveld/telescope-zoxide",
-        "HUAHUAI23/telescope-session.nvim",           -- for saving session
-        "JoseConseco/telescope_sessions_picker.nvim", -- for listing sessions
+        "JoseConseco/telescope_sessions_picker.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
