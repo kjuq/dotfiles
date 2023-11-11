@@ -52,6 +52,7 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
     desc = "Force delete a current buffer"
 })
 
+map("n", "<leader>hm", function() vim.cmd("messages") end, { desc = "[h]istory of messages" })
 map("v", "gz", function()
     local key = vim.api.nvim_replace_termcodes('<esc>', true, false, true)
     vim.api.nvim_feedkeys(key, 'x', false)
@@ -67,6 +68,8 @@ end, { desc = [[Replace ' with " on current line]] })
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
     vim.cmd.fclose { bang = true }
+    local key = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
+    vim.api.nvim_feedkeys(key, "n", false)
 end, { silent = true })
 
-map("i", "<C-l>", function() vim.cmd.fclose { bang = true } end, { silent = true })
+map({ "i", "s" }, "<C-l>", function() vim.cmd.fclose { bang = true } end, { silent = true })
