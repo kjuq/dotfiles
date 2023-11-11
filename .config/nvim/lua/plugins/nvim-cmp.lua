@@ -4,16 +4,11 @@ return {
     config = function()
         local cmp = require("cmp")
         local types = require("cmp.types")
+        local modes_is = { "i", "s" }
 
         cmp.setup({
-            snippet = {
-                expand = function(args)
-                    require("snippy").expand_snippet(args.body)
-                end,
-            },
-            completion = {
-                autocomplete = false,
-            },
+            snippet = { expand = function(args) require("snippy").expand_snippet(args.body) end },
+            completion = { autocomplete = false, },
 
             mapping = cmp.mapping.preset.insert({
                 ["<C-n>"] = cmp.mapping(function()
@@ -22,7 +17,7 @@ return {
                     else
                         cmp.complete()
                     end
-                end, { "i" }),
+                end, modes_is),
 
                 ["<C-p>"] = cmp.mapping(function()
                     if cmp.visible() then
@@ -30,21 +25,33 @@ return {
                     else
                         cmp.complete()
                     end
-                end, { "i" }),
+                end, modes_is),
+
+                ["<C-l>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.abort()
+                    else
+                        fallback()
+                    end
+                end, modes_is),
 
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
             }),
-            sources = {
-                { name = "nvim_lsp" },
-                { name = "buffer" },
+            sources = cmp.config.sources({
                 { name = "path" },
-                { name = "nvim_lsp_signature_help" },
-                { name = "snippy" },
-                { name = "nvim_lua" },
                 { name = "emoji" },
-                { name = "copilot" },
-            },
+            }, {
+                { name = "snippy" },
+            }, {
+                { name = "nvim_lsp" },
+                { name = "nvim_lua" },
+            }, {
+                { name = "buffer" },
+            }, {
+                -- { name = "nvim_lsp_signature_help" },
+                -- { name = "copilot", priority = -1 },
+            }),
             window = {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
@@ -57,9 +64,7 @@ return {
                     symbol_map = { Copilot = "" }
                 })
             },
-            experimental = {
-                ghost_text = true,
-            },
+            experimental = { ghost_text = true },
         })
 
         -- Set configuration for specific filetype.
@@ -96,11 +101,11 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-emoji",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
+        -- "hrsh7th/cmp-nvim-lsp-signature-help",
         "ray-x/cmp-treesitter",
         "onsails/lspkind.nvim",
         "dcampos/cmp-snippy",
-        { "zbirenbaum/copilot-cmp", opts = {}, },
-        { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" }
+        -- { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
+        { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim" }
     },
 }
