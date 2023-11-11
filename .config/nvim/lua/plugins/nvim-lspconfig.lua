@@ -51,8 +51,7 @@ return {
                 map("n", "<leader>rn", vlb.rename, "[r]e[n]ame", ev.buf)
 
                 map("n", "K", vlb.hover, "Hover Documentation", ev.buf)
-                map("n", "<C-s>", vlb.signature_help, "Signature Documentation (Normal mode)", ev.buf)
-                map("i", "<C-s>", vlb.signature_help, "Signature Documentation (Insert mode)", ev.buf)
+                map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Documentation", ev.buf)
 
                 map("n", "<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older", ev.buf)
                 map("n", "<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder", ev.buf)
