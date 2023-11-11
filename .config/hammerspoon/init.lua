@@ -30,7 +30,7 @@ end
 
 toggleApp("System Settings", cmd_opt_ctrl, "/")
 toggleApp("Safari", cmd_opt_ctrl, ",")
-toggleApp("Wezterm", cmd_opt_ctrl, ";")
+toggleApp("Wezterm", cmd_opt_ctrl, "/")
 toggleApp("Vivaldi", cmd_opt_ctrl, "[")
 toggleApp("Alacritty", cmd_opt_ctrl, "]")
 hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
