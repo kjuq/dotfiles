@@ -3,14 +3,15 @@
 
 local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
 local cmd_opt = { "cmd", "option" }
+local cmd_opt_ctrl = { "cmd", "option", "ctrl" }
 
 -- Toggle apps {{{
 hs.ipc.cliInstall("/opt/homebrew")
 
 local appsToHide = {}
 
-local function toggleApp(appName, key)
-	hs.hotkey.bind({}, key, function()
+local function toggleApp(appName, mods, key)
+	hs.hotkey.bind(mods, key, function()
 		local app = hs.application.get(appName)
 		if app:isFrontmost() then
 			app:hide()
@@ -27,13 +28,13 @@ local function hideAllApps()
 	end
 end
 
-toggleApp("System Settings", "f13")
-toggleApp("Safari", "f14")
-toggleApp("Wezterm", "f16")
-toggleApp("Vivaldi", "f17")
-toggleApp("Alacritty", "f18")
-hs.hotkey.bind({}, "f19", hideAllApps)
-toggleApp("Finder", "f20")
+toggleApp("System Settings", cmd_opt_ctrl, "/")
+toggleApp("Safari", cmd_opt_ctrl, ",")
+toggleApp("Wezterm", cmd_opt_ctrl, ";")
+toggleApp("Vivaldi", cmd_opt_ctrl, "[")
+toggleApp("Alacritty", cmd_opt_ctrl, "]")
+hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
+toggleApp("Finder", cmd_opt_ctrl, "=")
 
 -- }}}
 
@@ -161,9 +162,8 @@ local function path_exists(path)
 	end
 end
 
-if not path_exists(hs_base .. "/Spoons/EmmyLua.spoon") then
-	hs.alert("EmmyLua is not installed")
-	return false
-else
-	hs.loadSpoon("EmmyLua")
-end
+-- if not path_exists(hs_base .. "/Spoons/EmmyLua.spoon") then
+-- 	hs.alert("EmmyLua is not installed")
+-- else
+hs.loadSpoon("EmmyLua")
+-- end
