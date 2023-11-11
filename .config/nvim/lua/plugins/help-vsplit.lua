@@ -4,5 +4,7 @@ return {
     keys = {
         { "h", mode = "c" },
     },
-    opts = {},
+    opts = {
+        side = "left",
+    },
 }

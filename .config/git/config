@@ -1,6 +1,7 @@
 [core]
-	pager = bat
+	pager = less
 	editor = nvim
+	sparsecheckout = true
 [interactive]
 	diffFilter = delta --color-only
 [delta]
