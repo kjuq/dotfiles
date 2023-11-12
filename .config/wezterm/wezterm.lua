@@ -24,8 +24,12 @@ Config = {
 	-- color_scheme = "iceberg-dark",
 
 	window_background_opacity = 0.65,
-	font_size = 16,
-	font = wezterm.font("Hack Nerd Font"),
+	font_size = 20,
+	-- font = wezterm.font("Hack Nerd Font"),
+	font = wezterm.font_with_fallback {
+		"Hack Nerd Font",
+		"Hiragino Sans",
+	},
 	freetype_load_target = "Normal", -- "Normal", "Light", "Mono"
 	default_prog = {
 		"/opt/homebrew/bin/fish",
