@@ -33,5 +33,6 @@ return {
         })
         -- setup must be called before loading
         vim.cmd.colorscheme("catppuccin")
+        vim.api.nvim_set_hl(0, "LineNr", { fg = "#888888" })
     end,
 }

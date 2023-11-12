@@ -1,3 +1,3 @@
 return {
-    require("plugins.colorscheme.gruvbox")
+    require("plugins.colorschemes.catppuccin")
 }
