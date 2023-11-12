@@ -119,28 +119,28 @@ bind attach,index G last-entry
 
 # See http://www.mutt.org/doc/manual/#color
 
-color attachment  color109 default # 234
-color bold        color229 default # 234
-color error       color167 default # 234
-color hdrdefault  color246 default # 234
-color indicator   color223 color237
-color markers     color243 default # 234
-color normal      color223 default # 234
-color quoted      color250 default # 234
-color quoted1     color108 default # 234
-color quoted2     color250 default # 234
-color quoted3     color108 default # 234
-color quoted4     color250 default # 234
-color quoted5     color108 default # 234
-color search      color234 default # 208
-color signature   color108 default # 234
-color status      color108 default # 234, 250
-color tilde       color243 default # 234
-color tree        color142 default # 234
-color underline   color223 default # 239
+color attachment color109 default # 234
+color bold       color229 default # 234
+color error      color167 default # 234
+color hdrdefault color246 default # 234
+color indicator  color223 color237
+color markers    color243 default # 234
+color normal     color223 default # 234
+color quoted     color250 default # 234
+color quoted1    color108 default # 234
+color quoted2    color250 default # 234
+color quoted3    color108 default # 234
+color quoted4    color250 default # 234
+color quoted5    color108 default # 234
+color search     color175 default # 234, 208
+color signature  color108 default # 234
+color status     color108 default # 234, 250
+color tilde      color243 default # 234
+color tree       color142 default # 234
+color underline  color223 default # 239
 
-color sidebar_divider    color250 default # 234
-color sidebar_new        color142 default # 234
+color sidebar_divider color250 default # 234
+color sidebar_new     color142 default # 234
 
 color index color142 default ~N # 234
 color index color108 default ~O # 234
@@ -148,8 +148,8 @@ color index color109 default ~P # 234
 color index color214 default ~F # 234
 color index color175 default ~Q # 234
 color index color167 default ~= # 234
-color index color234 default ~T # 233
-color index color234 default ~D # 167
+color index color109 default ~T # 233
+color index color208 default ~D # 167
 
 color header color214 default "^(To:|From:)" # 234
 color header color142 default "^Subject:" # 234
@@ -188,7 +188,7 @@ color body color208 default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+" # 234
 color body color208 default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+" # 234
 
 # some simleys and stuff
-color body color234 default "[;:]-*[)>(<lt;|]" # 214
+color body color223 default "[;:]-*[)>(<lt;|]" # 214
 color body color229 default "\\*[- A-Za-z]+\\*" # 234
 
 color body color214 default "^-.*PGP.*-*" # 234
@@ -207,8 +207,8 @@ color body color167 default "^.?BAD.? signature from:" # 234
 color body color142 default "^Verification successful" # 234
 color body color167 default "^Verification [^s][^[:space:]]*$" # 234
 
-color compose header            color223 default # 234
-color compose security_encrypt  color175 default # 234
-color compose security_sign     color109 default # 234
-color compose security_both     color142 default # 234
-color compose security_none     color208 default # 234
+color compose header           color223 default # 234
+color compose security_encrypt color175 default # 234
+color compose security_sign    color109 default # 234
+color compose security_both    color142 default # 234
+color compose security_none    color208 default # 234

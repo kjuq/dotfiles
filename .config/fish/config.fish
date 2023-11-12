@@ -51,7 +51,7 @@ end
 
 alias ojp="oj t -c 'python3 main.py'"
 alias acsp="ojp; and acc submit main.py"
-alias mutt="env TERM=screen-256color neomutt"
+alias mutt="cd $XDG_CACHE_HOME/neomutt; and env TERM=screen-256color neomutt; cd -"
 
 if not command --search --quiet python
     alias python="python3"
