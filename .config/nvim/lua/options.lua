@@ -24,6 +24,7 @@ vim.opt.smartcase = true
 vim.opt.foldmethod = "marker"
 
 vim.opt.wrap = false
+vim.opt.smoothscroll = true
 vim.opt.breakindent = true
 
 vim.opt.smartindent = true

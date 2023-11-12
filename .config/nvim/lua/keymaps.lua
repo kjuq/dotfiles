@@ -3,7 +3,7 @@ local map = vim.keymap.set
 -- Space is leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Disable Ctrl-c to allow <C-c> keymappings (e.g. <C-w><C-c>, etc
 map("n", "<C-c>", "<Nop>", { silent = true })
@@ -14,6 +14,8 @@ map("c", "<C-f>", "<Right>") -- Opens a command-line window (q:) by default
 map("c", "<C-a>", "<Home>")  -- Inserts all matched candidates by default, so <C-i> is enough
 map("c", "<C-d>", "<Del>")   -- Lists completions by default, so <C-i> is enough
 -- map("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
+map("c", "<C-p>", "<Up>")
+map("c", "<C-n>", "<Down>")
 
 -- Don't update register when not intend to do so
 map("n", "x", "\"_x", { silent = true, desc = "Delete N characters after the cursor" })
@@ -29,14 +31,18 @@ map("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed regis
 
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", function()
+    return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, silent = true })
+map({ "n", "x" }, "j", function()
+    return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, silent = true })
 
 -- Buffer movement instead of tab's
-map("n", "gt", "<Cmd>bnext<CR>", { silent = true, desc = "Go to the next buffer" })
-map("n", "gT", "<Cmd>bprevious<CR>", { silent = true, desc = "Go to the previous buffer" })
-map("n", "<C-Tab>", "<Cmd>bnext<CR>", { silent = true, desc = "Go to the next buffer" })
-map("n", "<C-S-Tab>", "<Cmd>bprevious<CR>", { silent = true, desc = "Go to the previous buffer" })
+map("n", "gt", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
+map("n", "gT", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
+map("n", "<C-Tab>", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
+map("n", "<C-S-Tab>", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
 map("n", "<leader>w", vim.cmd.w, { silent = true, desc = "Write the whole buffer to the current file" })
 map("n", "<leader>q", vim.cmd.q, { silent = true, desc = "Quit the current window" })
 map("n", "<leader>Q", function() vim.cmd.q { bang = true } end, { silent = true, desc = "Force quit the current window" })
