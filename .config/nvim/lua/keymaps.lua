@@ -53,17 +53,6 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
 })
 
 map("n", "<leader>hm", function() vim.cmd("messages") end, { desc = "[h]istory of messages" })
-map("v", "gz", function()
-    local key = vim.api.nvim_replace_termcodes('<esc>', true, false, true)
-    vim.api.nvim_feedkeys(key, 'x', false)
-    vim.cmd([['<,'>s/'/"/ge]])
-    vim.cmd.nohlsearch()
-end, { desc = [[Replace ' with " on selected texts]] })
-
-map("n", "gz", function() -- TODO: dot repeat
-    vim.cmd([[s/'/"/ge]])
-    vim.cmd.nohlsearch()
-end, { desc = [[Replace ' with " on current line]] })
 
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
