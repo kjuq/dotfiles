@@ -1,5 +1,6 @@
 return {
-    'akinsho/bufferline.nvim',
+    "akinsho/bufferline.nvim",
+    version = "*",
     event = { "BufNewFile", "BufReadPost" },
     opts = function()
         -- vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "#000000" })
@@ -42,6 +43,5 @@ return {
             -- },
         }
     end,
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
+    dependencies = "nvim-tree/nvim-web-devicons",
 }

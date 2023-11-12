@@ -1,6 +1,9 @@
 return {
     "petertriho/nvim-scrollbar",
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "WinScrolled" },
+    keys = {
+        { "<leader>ab", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
+    },
     opts = {
         excluded_filetypes = {
             "cmp_docs",
@@ -26,5 +29,3 @@ return {
         end,
     },
 }
-
-

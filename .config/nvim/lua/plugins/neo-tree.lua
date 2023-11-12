@@ -60,9 +60,9 @@ return {
         close_if_last_window = true,
         window = {
             mappings = {
-                ["<M-f>"] = function() vim.api.nvim_exec2('Neotree focus filesystem', { output = true }) end,
-                ["<M-b>"] = function() vim.api.nvim_exec2('Neotree focus buffers', { output = true }) end,
-                ["<M-g>"] = function() vim.api.nvim_exec2('Neotree focus git_status', { output = true }) end,
+                ["<M-f>"] = function() vim.api.nvim_exec2("Neotree focus filesystem", { output = true }) end,
+                ["<M-b>"] = function() vim.api.nvim_exec2("Neotree focus buffers", { output = true }) end,
+                ["<M-g>"] = function() vim.api.nvim_exec2("Neotree focus git_status", { output = true }) end,
             },
         },
         filesystem = {
@@ -76,7 +76,7 @@ return {
             },
             filtered_items = {
                 visible = true, -- when true, they will just be displayed differently than normal items
-                hide_dotfiles = true,
+                hide_dotfiles = false,
                 hide_gitignored = true,
                 hide_by_name = {
                     "node_modules",
