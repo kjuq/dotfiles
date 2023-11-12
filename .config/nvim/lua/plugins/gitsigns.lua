@@ -1,6 +1,6 @@
 return {
     "lewis6991/gitsigns.nvim",
-    event = { "BufWritePost", "BufNewFile", "BufReadPost" },
+    event = { "CursorMoved" },
     opts = {
         signcolumn = false,
         numhl = true,

@@ -2,7 +2,6 @@ local map = require("utils.lazy").generate_map("", "Flash: ")
 
 return {
     "folke/flash.nvim",
-    -- stylua: ignore
     keys = {
         { "f",  mode = { "n", "x" } },
         { "F",  mode = { "n", "x" } },
@@ -21,7 +20,6 @@ return {
             })
         end, "Flash"),
     },
-    ---@type Flash.Config
     opts = {
         labels = "abcdefghijklmnopqrstuvwxyz",
         search = { multi_window = false, },

@@ -1,6 +1,6 @@
 return {
     "miversen33/sunglasses.nvim",
-    event = { "BufNewFile", "BufReadPost", "FocusLost", "FocusGained" },
+    event = { "BufNewFile", "BufReadPost", "FocusLost", "WinNew" },
     config = function()
         vim.api.nvim_create_autocmd({ "FocusLost" }, {
             callback = function()

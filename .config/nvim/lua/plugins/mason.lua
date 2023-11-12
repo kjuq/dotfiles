@@ -32,6 +32,7 @@ return {
             function(server_name)
                 local lspconfig = require('lspconfig')
                 lspconfig[server_name].setup {
+                    ---@diagnostic disable-next-line: undefined-global
                     on_attach = on_attach,
                     capabilities = capabilities,
                     -- should disable this for noice-hover-scroll
