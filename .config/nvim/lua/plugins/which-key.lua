@@ -1,16 +1,24 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>", "Which-key: ")
 
+local active = false
+local toggle = function()
+    if active then
+        print("Which-key is inactive")
+        vim.o.timeout = false
+    else
+        print("Which-key is active")
+        vim.o.timeout = true
+        vim.o.timeoutlen = 500
+    end
+    active = not active
+end
+
 return {
     "folke/which-key.nvim",
-    event = { "BufNewFile", "BufReadPost" },
     keys = {
-        { "<leader>", mode = "n" },
+        { "<leader>aw", mode = { "n" }, toggle, desc = "Which-key: Toggle" },
         map("pw", "n", "WhichKey", "[p]ick all mappings ([w]hich)"),
     },
-    init = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-    end,
     opts = function()
         require("which-key").register({
             ["<leader>a"] = { name = "[a]dditional", _ = "which_key_ignore" },
@@ -28,6 +36,9 @@ return {
         })
 
         return {
+            window = {
+                border = "single",
+            },
             layout = {
                 width = { max = 80 }, -- min and max width of the columns
                 spacing = 3,          -- spacing between columns
