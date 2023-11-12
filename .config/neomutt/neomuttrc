@@ -92,5 +92,123 @@ bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
 
-# Color scheme
-source /opt/homebrew/share/neomutt/colorschemes/vombatidae.neomuttrc
+# gruvbox dark (contrast dark): https://github.com/shuber2/mutt-gruvbox
+
+# bg0    = 234
+# bg1    = 237
+# bg2    = 239
+# bg3    = 241
+# bg4    = 243
+#
+# gray   = 245
+#
+# fg0    = 229
+# fg1    = 223
+# fg2    = 250
+# fg3    = 248
+# fg4    = 246
+#
+# red    = 167
+# green  = 142
+# yellow = 214
+# blue   = 109
+# purple = 175
+# aqua   = 108
+# orange = 208
+
+
+# See http://www.mutt.org/doc/manual/#color
+
+color attachment  color109 default # 234
+color bold        color229 default # 234
+color error       color167 default # 234
+color hdrdefault  color246 default # 234
+color indicator   color223 color237
+color markers     color243 default # 234
+color normal      color223 default # 234
+color quoted      color250 default # 234
+color quoted1     color108 default # 234
+color quoted2     color250 default # 234
+color quoted3     color108 default # 234
+color quoted4     color250 default # 234
+color quoted5     color108 default # 234
+color search      color234 default # 208
+color signature   color108 default # 234
+color status      color108 default # 234, 250
+color tilde       color243 default # 234
+color tree        color142 default # 234
+color underline   color223 default # 239
+
+color sidebar_divider    color250 default # 234
+color sidebar_new        color142 default # 234
+
+color index color142 default ~N # 234
+color index color108 default ~O # 234
+color index color109 default ~P # 234
+color index color214 default ~F # 234
+color index color175 default ~Q # 234
+color index color167 default ~= # 234
+color index color234 default ~T # 233
+color index color234 default ~D # 167
+
+color header color214 default "^(To:|From:)" # 234
+color header color142 default "^Subject:" # 234
+color header color108 default "^X-Spam-Status:" # 234
+color header color108 default "^Received:" # 234
+
+# Regex magic for URLs and hostnames
+#
+# Attention: BSD's regex has RE_DUP_MAX set to 255.
+#
+# Examples:
+#   http://some-service.example.com
+#   example.com
+#   a.example.com
+#   some-service.example.com
+#   example.com/
+#   example.com/datenschutz
+#   file:///tmp/foo
+#
+# Non-examples:
+#   1.1.1900
+#   14.02.2022/24:00
+#   23.59
+#   w.l.o.g
+#   team.its
+color body color142 default "[a-z]{3,255}://[[:graph:]]*" # 234
+color body color142 default "([-[:alnum:]]+\\.)+([0-9]{1,3}|[-[:alpha:]]+)/[[:graph:]]*" # 234
+color body color142 default "([-[:alnum:]]+\\.){2,255}[-[:alpha:]]{2,10}" # 234
+
+# IPv4 and IPv6 stolen from https://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+color body color142 default "((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])" # 234
+color body color142 default "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))" # 234
+
+# Mail addresses and mailto URLs
+color body color208 default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+" # 234
+color body color208 default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+" # 234
+
+# some simleys and stuff
+color body color234 default "[;:]-*[)>(<lt;|]" # 214
+color body color229 default "\\*[- A-Za-z]+\\*" # 234
+
+color body color214 default "^-.*PGP.*-*" # 234
+color body color142 default "^gpg: Good signature from" # 234
+color body color167 default "^gpg: Can't.*$" # 234
+color body color214 default "^gpg: WARNING:.*$" # 234
+color body color167 default "^gpg: BAD signature from" # 234
+color body color167 default "^gpg: Note: This key has expired!" # 234
+color body color214 default "^gpg: There is no indication that the signature belongs to the owner." # 234
+color body color214 default "^gpg: can't handle these multiple signatures" # 234
+color body color214 default "^gpg: signature verification suppressed" # 234
+color body color214 default "^gpg: invalid node with packet of type" # 234
+
+color body color142 default "^Good signature from:" # 234
+color body color167 default "^.?BAD.? signature from:" # 234
+color body color142 default "^Verification successful" # 234
+color body color167 default "^Verification [^s][^[:space:]]*$" # 234
+
+color compose header            color223 default # 234
+color compose security_encrypt  color175 default # 234
+color compose security_sign     color109 default # 234
+color compose security_both     color142 default # 234
+color compose security_none     color208 default # 234
