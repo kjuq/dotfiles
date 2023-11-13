@@ -13,5 +13,6 @@ return {
         })
         vim.cmd.colorscheme("tokyonight")
         vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#808080" })
+        vim.api.nvim_set_hl(0, "statusline", { bg = "NONE", ctermbg = "NONE" })
     end,
 }
