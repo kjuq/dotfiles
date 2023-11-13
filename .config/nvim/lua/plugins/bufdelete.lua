@@ -8,16 +8,14 @@ return {
         {
             "<leader>x",
             mode = { "n" },
-            function () require('bufdelete').bufdelete(0, false) end,
-            desc = "Bufdelete: delete buffer [x]",
+            function() require('bufdelete').bufdelete(0, false) end,
+            desc = "Bufdelete: Delete buffer [x]",
         },
         {
             "<leader>X",
             mode = { "n" },
-            function () require('bufdelete').bufdelete(0, true) end,
-            desc = "Bufdelete: force delete buffer [X]",
+            function() require('bufdelete').bufdelete(0, true) end,
+            desc = "Bufdelete: Force delete buffer [X]",
         },
     },
 }
-
-
