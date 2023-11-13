@@ -12,7 +12,7 @@ return {
         "MasonUpdate",
     },
     keys = {
-        map("am", "n", "Mason", "Open Mason")
+        map("al", "n", "Mason", "Manage language servers")
     },
     config = function()
         require("mason").setup({ ui = { border = "rounded" } })

@@ -26,13 +26,11 @@ return {
             ["<leader>d"] = { name = "[d]ebug", _ = "which_key_ignore" },
             ["<leader>f"] = { name = "[f]ind", _ = "which_key_ignore" },
             ["<leader>g"] = { name = "[g]it", _ = "which_key_ignore" },
-            ["<leader>h"] = { name = "[h]istory", _ = "which_key_ignore" },
-            ["<leader>l"] = { name = "[l]SP", _ = "which_key_ignore", c = "[c]all" },
+            -- ["<leader>l"] = { name = "[l]SP", _ = "which_key_ignore" },
             ["<leader>p"] = { name = "[p]ick", _ = "which_key_ignore" },
-            ["<leader>r"] = { name = "[r]ename or [r]esume", _ = "which_key_ignore" },
+            ["<leader>r"] = { name = "[r]e {name, sume}", _ = "which_key_ignore" },
             ["<leader>s"] = { name = "[s]earch", _ = "which_key_ignore" },
-            ["<leader>t"] = { name = "[t]ree", _ = "which_key_ignore" },
-            -- ["<leader>w"] = { name = "[w]orkspace", _ = "which_key_ignore" },
+            ["<leader>t"] = { name = "LSP", _ = "which_key_ignore", c = "[c]all", w = "[w]orkspace" },
         })
 
         return {

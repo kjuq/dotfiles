@@ -39,7 +39,7 @@ return {
 
                 local vlb = vim.lsp.buf
 
-                -- map("n", "gd", vlb.definition, "[g]o to [d]efinition", ev.buf)
+                -- map("n", "gd", vlb.definition, "Go to definition", ev.buf)
 
                 -- vlb.declaration, "Go to Declaration"
                 -- vlb.type_definition, "Go to type definition"
@@ -48,28 +48,27 @@ return {
 
                 -- map("n", "<leader>la", vlb.code_action, "code [a]ction", ev.buf)
 
-                map("n", "<leader>rn", vlb.rename, "[r]e[n]ame", ev.buf)
+                map("n", "<leader>rn", vlb.rename, "Rename", ev.buf)
 
                 map("n", "K", vlb.hover, "Hover Documentation", ev.buf)
                 map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Documentation", ev.buf)
 
-                map("n", "<leader>lwa", vlb.add_workspace_folder, "[w]orkspace Add [f]older", ev.buf)
-                map("n", "<leader>lwr", vlb.remove_workspace_folder, "[w]orkspace [r]emove Folder", ev.buf)
-                map("n", "<leader>lwl",
-                    function() print(vim.inspect(vlb.list_workspace_folders())) end,
-                    "[w]orkspace [l]ist Folders", ev.buf)
+                map("n", "<leader>twa", vlb.add_workspace_folder, "Workspace Add folder", ev.buf)
+                map("n", "<leader>twr", vlb.remove_workspace_folder, "Workspace remove Folder", ev.buf)
+                map("n", "<leader>twl", function() print(vim.inspect(vlb.list_workspace_folders())) end,
+                    "Workspace list Folders", ev.buf)
 
-                map("n", "<leader>lf", function() vlb.format { async = false } end, "[f]ormat current buffer", ev.buf)
+                map("n", "<leader>tf", function() vlb.format { async = false } end, "Format current buffer", ev.buf)
 
-                map("n", "<leader>lv", function()
+                map("n", "<leader>tv", function()
                     vt_enabled = not vt_enabled
                     vim.diagnostic.config({ virtual_text = vt_enabled, })
-                end, "Toggle [v]irtual text of diagnostics", ev.buf)
+                end, "Toggle virtual text of diagnostics", ev.buf)
             end,
         })
         map("n", "<leader>e", vim.diagnostic.open_float, "Open floating diagnostic message")
         map("n", "[e", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
         map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostic message")
-        map("n", "<leader>lq", vim.diagnostic.setloclist, "Open diagnostics list")
+        map("n", "<leader>tq", vim.diagnostic.setloclist, "Open diagnostics list")
     end,
 }
