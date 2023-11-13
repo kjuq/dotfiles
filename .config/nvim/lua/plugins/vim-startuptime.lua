@@ -4,7 +4,7 @@ return {
     "dstein64/vim-startuptime",
     cmd = { "StartupTime" },
     keys = {
-        map("as", "n", "StartupTime", "Calculate startup time")
+        map("av", "n", "StartupTime", "Calculate startup time")
     },
     config = function()
         vim.g.startuptime_tries = 10

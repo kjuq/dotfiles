@@ -17,7 +17,7 @@ return {
             desc = "Neo-tree: open a floating window",
         },
         {
-            "<leader>ts",
+            "<leader>at",
             mode = { "n" },
             function()
                 require("neo-tree.command").execute({
@@ -30,7 +30,7 @@ return {
             desc = "Neo-tree: open a file window on left",
         },
         {
-            "<leader>tg",
+            "<leader>ag",
             mode = { "n" },
             function()
                 require("neo-tree.command").execute({
@@ -43,7 +43,7 @@ return {
             desc = "Neo-tree: open a git window on left",
         },
         {
-            "<leader>tb",
+            "<leader>ab",
             mode = { "n" },
             function()
                 require("neo-tree.command").execute({

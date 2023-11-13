@@ -4,12 +4,12 @@ return {
     "nvimdev/lspsaga.nvim",
     event = { "LspAttach" },
     keys = {
-        map("<leader>lci", "n", "Lspsaga incoming_calls", "[i]ncoming [c]alls"),
-        map("<leader>lco", "n", "Lspsaga outgoing_calls", "[o]utgoing [c]alls"),
-        map("<leader>la", { "n", "v" }, "Lspsaga code_action", "Code [a]ction"),
-        map("gy", "n", "Lspsaga finder def+ref+imp+tyd", "Find def, ref, imp, and type def"),
-        map("gd", "n", "Lspsaga goto_definition", "[g]o to [d]efinition"),
-        map("<leader>lz", "n", "Lspsaga outline", "Show outline"),
+        map("<leader>tci", "n", "Lspsaga incoming_calls", "Incoming calls"),
+        map("<leader>tco", "n", "Lspsaga outgoing_calls", "Outgoing calls"),
+        map("<leader>ta", { "n", "v" }, "Lspsaga code_action", "Code action"),
+        map("gy", "n", "Lspsaga finder def+ref+imp+tyd", "Finder def+ref+imp+tyd"),
+        map("gd", "n", "Lspsaga goto_definition", "Go to definition"),
+        map("<leader>tz", "n", "Lspsaga outline", "Show outline"),
     },
     config = function()
         require("lspsaga").setup({

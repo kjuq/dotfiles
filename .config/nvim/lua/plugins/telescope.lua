@@ -18,61 +18,62 @@ return {
     keys = {
         -- File pickers
 
-        mapb("ff", "n", function() tb.find_files({ hidden = true }) end, "[f]ind [f]iles"),
-        mapb("gf", "n", function() tb.git_files() end, '[g]it [f]iles'),
-        mapb("fw", "n", function() tb.grep_string() end, '[f]ind current [w]ord'),
-        mapb("fg", "n", function() tb.live_grep() end, "[f]ind files with live [g]rep"),
+        mapb("ff", "n", function() tb.find_files({ hidden = true }) end, "Find files"),
+        mapb("fw", "n", function() tb.grep_string() end, "Find current word"),
+        mapb("fg", "n", function() tb.live_grep() end, "Find files with live grep"),
+
+        mapb("gf", "n", function() tb.git_files() end, "Git files"),
 
         -- Vim pickers
 
-        mapb("pb", "n", function() tb.buffers() end, "[p]ick [b]uffers"),
-        -- mapb("fh", "n", function() tb.oldfiles() end, "[f]ind [h]istory of files"),
-        mapb("hc", "n", function() tb.command_history() end, '[h]istory of [c]ommands'),
-        mapb("hs", "n", function() tb.search_history() end, '[h]istory of [s]earch'),
-        mapb("ph", "n", function() tb.help_tags() end, "[p]ick [h]elp tags"),
-        mapb("pm", "n", function() tb.man_pages() end, "[p]ick [m]an pages"),
-        mapb("pM", "n", function() tb.marks() end, '[p]ick [M]arks'),
-        mapb("pq", "n", function() tb.quickfix() end, '[p]ick [q]uickfix'),
-        mapb("hq", "n", function() tb.quickfixhistory() end, '[h]istory of [q]uickfix'),
-        mapb("pl", "n", function() tb.loclist() end, '[p]ick [l]oclist'),
-        mapb("pj", "n", function() tb.jumplist() end, '[p]ick [j]umplist'),
-        mapb("pr", "n", function() tb.registers() end, "[p]ick [r]egisters"),
-        mapb("pk", "n", function() tb.keymaps() end, "[p]ick [k]eymaps"),
-        mapb("pc", "n", function() tb.highlights() end, "[p]ick highlights ([c]olors)"),
-        mapb("fz", "n", function() tb.current_buffer_fuzzy_find() end, "Fu[z]zily search in current buffer"),
-        mapb("rf", "n", function() tb.resume() end, '[r]esume [f]inding'),
+        -- mapb("<KEYBIND>", "n", function() tb.oldfiles() end, "[f]ind [h]istory of files"),
+        mapb("fb", "n", function() tb.buffers() end, "Find buffers"),
+        mapb("fi", "n", function() tb.help_tags() end, "Find help tags"),
+        mapb("fm", "n", function() tb.marks() end, "Find marks"),
+        mapb("fq", "n", function() tb.quickfix() end, "Find in current quickfix"),
+        mapb("fr", "n", function() tb.registers() end, "Find registers"),
+        mapb("fk", "n", function() tb.keymaps() end, "Find keymaps"),
+        mapb("fz", "n", function() tb.current_buffer_fuzzy_find() end, "Fuzzily search in current buffer"),
+
+        mapb("pc", "n", function() tb.command_history() end, "Find commands history"),
+        mapb("pn", "n", function() tb.search_history() end, "Find search history"),
+        mapb("pm", "n", function() tb.man_pages() end, "Pick man pages"),
+        mapb("pq", "n", function() tb.quickfixhistory() end, "Pick quickfix history"),
+        mapb("pl", "n", function() tb.loclist() end, "Pick loclist"),
+        mapb("pj", "n", function() tb.jumplist() end, "Pick jumplist"),
+        mapb("ph", "n", function() tb.highlights() end, "Pick highlights"),
+
+        mapb("rf", "n", function() tb.resume() end, "Resume finding"),
 
         -- Neovim LSP pickers
 
-        mapbl("lr", "n", function() tb.lsp_references() end, "[r]eferences for word under the cursor"),
         -- using lspsaga's same function
-        -- mapbl("lci", "n", function() tb.lsp_incoming_calls() end, "[i]ncoming calls for word under the cursor"),
-        -- mapbl("lco", "n", function() tb.lsp_outgoing_calls() end, "[o]utgoing calls for word under the cursor"),
-        mapbl("pd", "n", function() tb.diagnostics() end, "[p]ick [d]iagnostics"),
-        mapbl("fs", "n", function() tb.lsp_document_symbols() end, "[f]ind document [s]ymbols in the current buffer"),
-        mapbl("fS", "n", function() tb.lsp_dynamic_workspace_symbols() end, "[f]ind doc [S]ymbols in current workspace"),
-        mapbl("li", "n", function() tb.lsp_implementations() end, "[i]mplementation of the word under the cursor"),
-        mapbl("ld", "n", function() tb.lsp_definitions() end, "[d]efinition of the word under the cursor"),
-        mapbl("lt", "n", function() tb.lsp_type_definitions() end, "[t]ype's definition of the word under the cursor"),
+        -- mapbl("<KEYBIND>", "n", function() tb.lsp_references() end, "[r]eferences for word under the cursor"),
+        -- mapbl("<KEYBIND>", "n", function() tb.lsp_incoming_calls() end, "[i]ncoming calls for word under the cursor"),
+        -- mapbl("<KEYBIND>", "n", function() tb.lsp_outgoing_calls() end, "[o]utgoing calls for word under the cursor"),
+
+        mapbl("fd", "n", function() tb.diagnostics() end, "Find diagnostics"),
+        mapbl("fs", "n", function() tb.lsp_document_symbols() end, "Find document symbols in the current buffer"),
+        mapbl("fj", "n", function() tb.lsp_dynamic_workspace_symbols() end, "Find doc Symbols in current workspace"),
+        mapbl("ti", "n", function() tb.lsp_implementations() end, "Implementation of the word under the cursor"),
+        mapbl("td", "n", function() tb.lsp_definitions() end, "Definition of the word under the cursor"),
+        mapbl("tt", "n", function() tb.lsp_type_definitions() end, "Type's definition of the word under the cursor"),
 
         -- Git pickers
 
         -- Treesitter pickers
 
-        mapb("ft", "n", function() tb.treesitter() end, "[f]inds Function names, variables, from [t]reesitter"),
+        mapb("ft", "n", function() tb.treesitter() end, "Finds Function names, variables, from treesitter"),
 
         -- Lists pickers
 
-        mapb("pS", "n", function() tb.symbols { sources = { "emoji", "kaomoji", "gitmoji", "nerd" } } end,
-            "[p]ick [S]ymbols"),
-
-        -- Previewers
+        mapb("pk", "n", function() tb.symbols { sources = { "emoji", "kaomoji", "gitmoji", "nerd" } } end, "Pick moji"),
 
         -- Extensions
 
-        mapex("ps", "n", function() te.sessions_picker.sessions_picker() end, ".sessions_picker: [p]ick [s]essions"),
-        mapex("fc", "n", function() te.zoxide.list() end, ".zoxide: [f]ind directory via Zoxide ([c]d)"),
-        mapex("fh", "n", function() vim.cmd("Telescope frecency") end, ".frecency: [f]ind [h]istory of files"),
+        mapex("ps", "n", function() te.sessions_picker.sessions_picker() end, ".sessions_picker: Pick sessions"),
+        mapex("fc", "n", function() te.zoxide.list() end, ".zoxide: Find directory via Zoxide ([c]d)"),
+        mapex("fh", "n", function() vim.cmd("Telescope frecency") end, ".frecency: Find frecency"),
     },
     config = function()
         local actions = require("telescope.actions")

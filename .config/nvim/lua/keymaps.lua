@@ -62,7 +62,7 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
     desc = "Force delete a current buffer"
 })
 
-map("n", "<leader>hm", function() vim.cmd("messages") end, { desc = "[h]istory of messages" })
+map("n", "<leader>am", function() vim.cmd("messages") end, { desc = "History of messages" })
 
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
