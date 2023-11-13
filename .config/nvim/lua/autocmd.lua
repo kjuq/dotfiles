@@ -17,10 +17,13 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, { -- q:
     end,
 })
 
+vim.api.nvim_set_hl(0, "UserHighlightOnYank", { bg = "#c43963" }) -- from SagaBeacon of LspSaga
+
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     pattern = "*",
+    group = augrp,
     callback = function()
-        require("vim.highlight").on_yank({ timeout = 125 })
+        require("vim.highlight").on_yank({ higroup = "UserHighlightOnYank", timeout = 125 })
     end,
 })
 
