@@ -1,27 +1,24 @@
-local augrp = "user_autocommands"
-vim.api.nvim_create_augroup(augrp, {})
-
+local snippets = vim.api.nvim_create_augroup("user_snippets", {})
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.snippets",
-    group = augrp,
+    group = snippets,
     callback = function()
         vim.opt_local.filetype = "snippets"
     end,
 })
 
+local cmdwin = vim.api.nvim_create_augroup("user_cmdwin_esc", {})
 vim.api.nvim_create_autocmd({ "CmdwinEnter" }, { -- q:
-    pattern = "*",
-    group = augrp,
+    group = cmdwin,
     callback = function()
         vim.keymap.set("n", "<Esc>", vim.cmd.quit, { buffer = true })
     end,
 })
 
 vim.api.nvim_set_hl(0, "UserHighlightOnYank", { bg = "#c43963" }) -- from SagaBeacon of LspSaga
-
+local hlyank = vim.api.nvim_create_augroup("user_highlight_on_yank", {})
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    pattern = "*",
-    group = augrp,
+    group = hlyank,
     callback = function()
         require("vim.highlight").on_yank({ higroup = "UserHighlightOnYank", timeout = 125 })
     end,
