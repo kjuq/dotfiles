@@ -35,8 +35,21 @@ return {
                     end
                 end, modes_is),
 
-                ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                ["<C-u>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.scroll_docs(-4)
+                    else
+                        fallback()
+                    end
+                end, modes_is),
+
+                ["<C-d>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.scroll_docs(4)
+                    else
+                        fallback()
+                    end
+                end, modes_is),
             }),
             sources = cmp.config.sources({
                 { name = "path" },
