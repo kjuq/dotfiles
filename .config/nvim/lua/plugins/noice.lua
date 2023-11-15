@@ -31,7 +31,7 @@ return {
         map("<C-d>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-d>" end end, "Half down"),
         map("<C-u>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-u>" end end, "Half up"),
     },
-    opts = function ()
+    opts = function()
         require("utils.common").quit_with_esc({ "noice" })
         return {
             lsp = {
