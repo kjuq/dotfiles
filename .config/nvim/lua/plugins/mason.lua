@@ -3,7 +3,7 @@ local map = require("utils.lazy").generate_map("<leader>", "Mason: ")
 
 return {
     "williamboman/mason.nvim",
-    event = { "CursorMoved", "ModeChanged" },
+    event = { "VeryLazy" },
     cmd = {
         "Mason",
         "MasonInstall",
