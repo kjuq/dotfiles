@@ -1,46 +1,51 @@
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.swapfile = false
-vim.opt.autoread = true
+local o = vim.opt
 
-vim.opt.scrolloff = 6
+o.backup = false
+o.writebackup = false
+o.swapfile = false
+o.autoread = true
 
-vim.opt.clipboard = "unnamedplus"
+o.scrolloff = 6
 
-vim.opt.cmdheight = 0
-vim.opt.laststatus = 3 -- global status line
-vim.opt.termguicolors = true
+o.clipboard = "unnamedplus"
 
-vim.opt.wildmenu = true
-vim.opt.completeopt = "menuone,preview,noinsert,noselect"
-vim.opt.pumheight = 10
-vim.opt.pumwidth = 60
+o.cmdheight = 0
+o.laststatus = 3 -- global status line
+o.termguicolors = true
+
+o.wildmenu = true
+o.completeopt = "menuone,preview,noinsert,noselect"
+o.pumheight = 10
+o.pumwidth = 60
 -- vim.opt.pumblend = 20 -- Disable this when using transparent env
 
-vim.opt.updatetime = 500
+o.updatetime = 500
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.foldmethod = "marker"
+o.ignorecase = true
+o.smartcase = true
+o.foldmethod = "marker"
 
-vim.opt.wrap = false
-vim.opt.smoothscroll = true
-vim.opt.breakindent = true
+o.wrap = false
+o.smoothscroll = true
+o.breakindent = true
 
-vim.opt.smartindent = true
-vim.opt.tabstop = 4
-vim.opt.expandtab = false
-vim.opt.shiftwidth = 4
-vim.opt.shiftround = true
+o.smartindent = true
+o.tabstop = 4
+o.expandtab = false
+o.shiftwidth = 4
+o.shiftround = true
 
-vim.opt.listchars = { trail = "◊", tab = ">-", space = "⋅", eol = "󰌑" } -- "⏎"
-vim.opt.list = true
+o.listchars = { trail = "◊", tab = ">-", space = "⋅", eol = "󰌑" } -- "⏎"
+o.list = true
 
-vim.opt.shell = "fish"
+o.shell = "fish"
 
 -- Disable a leader key time out
-vim.opt.timeout = false
-vim.opt.ttimeout = false
+o.timeout = false
+o.ttimeout = false
+
+-- Disable welcome message
+o.shortmess:append("I")
 
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
