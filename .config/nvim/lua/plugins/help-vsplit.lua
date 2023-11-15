@@ -1,10 +1,6 @@
 return {
     "anuvyklack/help-vsplit.nvim",
-    event = "InsertEnter", -- for telescope help_tag
-    keys = {
-        { "h", mode = "c" },
-    },
-    opts = {
-        side = "left",
-    },
+    keys = { { "h", mode = "c" }, },
+    ft = { "TelescopePrompt", },
+    opts = { side = "left", },
 }

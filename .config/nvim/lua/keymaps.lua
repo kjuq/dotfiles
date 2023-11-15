@@ -31,12 +31,8 @@ map("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed regis
 
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
-map({ "n", "x" }, "k", function()
-    return vim.v.count == 0 and "gk" or "k"
-end, { expr = true, silent = true })
-map({ "n", "x" }, "j", function()
-    return vim.v.count == 0 and "gj" or "j"
-end, { expr = true, silent = true })
+map({ "n", "x" }, "k", function() return vim.v.count == 0 and "gk" or "k" end, { expr = true, silent = true })
+map({ "n", "x" }, "j", function() return vim.v.count == 0 and "gj" or "j" end, { expr = true, silent = true })
 
 -- move 5 lines
 map({ "n", "x" }, "<C-p>", "5k")
@@ -47,9 +43,12 @@ map("n", "gt", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
 map("n", "gT", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
 map("n", "<C-Tab>", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
 map("n", "<C-S-Tab>", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
+
+-- Frequently used keymaps
 map("n", "<leader>w", vim.cmd.w, { silent = true, desc = "Write the whole buffer to the current file" })
 map("n", "<leader>q", vim.cmd.q, { silent = true, desc = "Quit the current window" })
 map("n", "<leader>Q", function() vim.cmd.q { bang = true } end, { silent = true, desc = "Force quit the current window" })
+map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch windows" })
 
 -- Center cursor when searching
 map("n", "n", "nzz", { silent = true, desc = 'Repeat the latest search' })
