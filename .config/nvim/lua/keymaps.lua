@@ -71,3 +71,9 @@ map("n", "<Esc>", function()
 end, { silent = true })
 
 map({ "i", "s" }, "<C-l>", function() vim.cmd.fclose { bang = true } end, { silent = true })
+
+-- Diagnostics
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostics" })
+map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostics" })
+map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+map("n", "<leader>tq", vim.diagnostic.setloclist, { desc = "Set diagnostics into loclist" })
