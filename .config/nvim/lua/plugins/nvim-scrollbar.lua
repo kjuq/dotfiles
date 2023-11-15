@@ -2,7 +2,7 @@ return {
     "petertriho/nvim-scrollbar",
     event = { "WinScrolled" },
     keys = {
-        { "<leader>ab", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
+        { "<leader>as", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
     },
     opts = {
         excluded_filetypes = {
