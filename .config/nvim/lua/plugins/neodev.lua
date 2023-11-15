@@ -7,6 +7,9 @@ return {
             types = true,
         },
     },
+    dependencies = {
+        "neovim/nvim-lspconfig",
+    },
 }
 
 
