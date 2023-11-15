@@ -1,6 +1,6 @@
 return {
     "lewis6991/gitsigns.nvim",
-    event = { "CursorMoved" },
+    event = { "CursorMoved", "CursorHold" },
     opts = {
         signcolumn = false,
         numhl = true,
