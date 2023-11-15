@@ -1,8 +1,8 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = { "BufNewFile", "BufReadPost" },
-    opts = function()
+    event = { "CursorMoved", "ModeChanged" },
+    config = function()
         local highlight = {
             "IndentBlanklineIndent1",
             "IndentBlanklineIndent2",
@@ -11,6 +11,7 @@ return {
             "IndentBlanklineIndent5",
             "IndentBlanklineIndent6",
         }
+
         local hooks = require("ibl.hooks")
         hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
             vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#E06C75", nocombine = true })
@@ -20,13 +21,17 @@ return {
             vim.api.nvim_set_hl(0, "IndentBlanklineIndent5", { fg = "#61AFEF", nocombine = true })
             vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#C678DD", nocombine = true })
         end)
-        return {
+
+        local ibl = require("ibl")
+        ibl.setup({
             indent = {
                 highlight = highlight,
                 char = "┆", -- "╎", "┆","│", "▏",
                 tab_char = "┆",
             },
             scope = { enabled = false },
-        }
+        })
+
+        ibl.refresh_all()
     end,
 }

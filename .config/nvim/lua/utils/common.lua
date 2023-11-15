@@ -1,12 +1,9 @@
-local augrp = "user_autocommands_utils"
-vim.api.nvim_create_augroup(augrp, {})
-
 return {
     --- @param ft table<string>
     quit_with_esc = function(ft)
         vim.api.nvim_create_autocmd({ "filetype" }, {
             pattern = ft,
-            group = augrp,
+            group = vim.api.nvim_create_augroup("user_autocommands_utils", {}),
             callback = function()
                 vim.keymap.set("n", "<esc>", "<cmd>quit<cr>", { buffer = true, silent = true })
             end

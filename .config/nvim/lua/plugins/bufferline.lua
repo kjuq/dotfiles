@@ -1,7 +1,7 @@
 return {
     "akinsho/bufferline.nvim",
     version = "*",
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "BufNew" },
     opts = function()
         -- vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "#000000" })
         -- vim.api.nvim_set_hl(0, "BufferLineSeparator", { fg = "#000000" })
@@ -9,7 +9,7 @@ return {
         return {
             options = {
                 diagnostics = "nvim_lsp",
-                always_show_bufferline = true,
+                always_show_bufferline = false,
                 separator_style = { "", "" }, -- "slant", "slope", "thick", "thin"
                 indicator = {
                     style = "none",           -- "icon", "underline", "none"

@@ -1,7 +1,7 @@
 return {
     "ahmedkhalf/project.nvim",
     name = "project_nvim",
-    event = { "BufNewFile", "BufReadPost" },
+    event = { "BufNewFile", "BufReadPost" }, -- necessary
     keys = {
         {
             "<leader>pp",

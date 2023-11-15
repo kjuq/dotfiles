@@ -1,92 +1,26 @@
----@diagnostic disable: undefined-doc-name, undefined-field, unused-local
+local map = require("utils.lazy").generate_map("<leader>d", "Nvim-dap: ")
+local mod = require("dap")
+
 return {
     "mfussenegger/nvim-dap",
     keys = {
-        {
-            "<leader>dB",
-            function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-            desc = "Nvim-dap: [B]reakpoint Condition"
-        },
-        {
-            "<leader>db",
-            function() require("dap").toggle_breakpoint() end,
-            desc = "Nvim-dap: Toggle [b]reakpoint"
-        },
-        {
-            "<leader>dc",
-            function() require("dap").continue() end,
-            desc = "Nvim-dap: [c]ontinue"
-        },
-        {
-            "<leader>da",
-            function() require("dap").continue({ before = get_args }) end,
-            desc = "Nvim-dap: Run with [a]rgs"
-        },
-        {
-            "<leader>dC",
-            function() require("dap").run_to_cursor() end,
-            desc = "Nvim-dap: Run to [C]ursor"
-        },
-        {
-            "<leader>dg",
-            function() require("dap").goto_() end,
-            desc = "Nvim-dap: [g]o to line (no execute)"
-        },
-        {
-            "<leader>di",
-            function() require("dap").step_into() end,
-            desc = "Nvim-dap: Step [i]nto"
-        },
-        {
-            "<leader>dj",
-            function() require("dap").down() end,
-            desc = "Nvim-dap: Down [j]"
-        },
-        {
-            "<leader>dk",
-            function() require("dap").up() end,
-            desc = "Nvim-dap: Up [k]"
-        },
-        {
-            "<leader>dl",
-            function() require("dap").run_last() end,
-            desc = "Nvim-dap: Run [l]ast"
-        },
-        {
-            "<leader>do",
-            function() require("dap").step_out() end,
-            desc = "Nvim-dap: Step [o]ut"
-        },
-        {
-            "<leader>dO",
-            function() require("dap").step_over() end,
-            desc = "Nvim-dap: Step [O]ver"
-        },
-        {
-            "<leader>dp",
-            function() require("dap").pause() end,
-            desc = "Nvim-dap: [p]ause"
-        },
-        {
-            "<leader>dr",
-            function() require("dap").repl.toggle() end,
-            desc = "Nvim-dap: Toggle [r]EPL"
-        },
-        {
-            "<leader>ds",
-            function() require("dap").session() end,
-            desc = "Nvim-dap: [s]ession"
-        },
-        {
-            "<leader>dt",
-            function() require("dap").terminate() end,
-            desc = "Nvim-dap: [t]erminate"
-        },
-        {
-            "<leader>dw",
-            function() require("dap.ui.widgets").hover() end,
-            desc = "Nvim-dap: [w]idgets"
-        },
+        map("B", "n", function() mod.set_breakpoint(vim.fn.input("BP condition: ")) end, "Breakpoint condition"),
+        map("b", "n", function() mod.toggle_breakpoint() end, "Breakpoint"),
+        map("c", "n", function() mod.continue() end, "Continue"),
+        map("a", "n", function() mod.continue({ before = get_args }) end, "Run with args"),
+        map("C", "n", function() mod.run_to_cursor() end, "Run to cursor"),
+        map("g", "n", function() mod.goto_() end, "Go to line (no execute)"),
+        map("i", "n", function() mod.step_into() end, "Step into"),
+        map("j", "n", function() mod.down() end, "Down"),
+        map("k", "n", function() mod.up() end, "Up"),
+        map("l", "n", function() mod.run_last() end, "Run last"),
+        map("o", "n", function() mod.step_out() end, "Step out"),
+        map("O", "n", function() mod.step_over() end, "Step over"),
+        map("p", "n", function() mod.pause() end, "Pause"),
+        map("r", "n", function() mod.repl.toggle() end, "Toggle REPL"),
+        map("s", "n", function() mod.session() end, "Session"),
+        map("t", "n", function() mod.terminate() end, "Terminate"),
+        map("w", "n", function() require("dap.ui.widgets").hover() end, "Widgets"),
     },
     cmd = {
         "DapContinue",
@@ -134,6 +68,7 @@ return {
         {
             "theHamsta/nvim-dap-virtual-text",
             opts = {
+                ---@diagnostic disable-next-line: unused-local
                 display_callback = function(variable, buf, stackframe, node, options)
                     if options.virt_text_pos == 'inline' then
                         return " = " .. variable.value

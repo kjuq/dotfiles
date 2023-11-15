@@ -1,7 +1,7 @@
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 return {
-    'nvim-lualine/lualine.nvim',
-    event = { "InsertEnter", "BufNewFile", "BufReadPost" },
+    "nvim-lualine/lualine.nvim",
+    event = { "CursorMoved", "ModeChanged" },
     init = function()
         vim.opt.laststatus = 0
     end,
