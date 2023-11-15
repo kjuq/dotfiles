@@ -1,9 +1,9 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>", "Mason: ")
+local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Mason: ")
+local map = require("utils.lazy").generate_map("<leader>", "Mason: ")
 
 return {
     "williamboman/mason.nvim",
-    event = { "BufNewFile", "BufReadPost" },
-    -- event = { "CursorMoved" },
+    event = { "CursorMoved", "ModeChanged" },
     cmd = {
         "Mason",
         "MasonInstall",
@@ -13,7 +13,8 @@ return {
         "MasonUpdate",
     },
     keys = {
-        map("al", "n", "Mason", "Manage language servers")
+        cmap("al", "n", "Mason", "Manage language servers"),
+        map("ar", "n", function() vim.bo.filetype = vim.bo.filetype end, "Attach language server"),
     },
     config = function()
         require("mason").setup({ ui = { border = "rounded" } })
@@ -83,6 +84,9 @@ return {
         require("mason-nvim-dap").setup({
             handlers = {},
         })
+
+        -- for lazy-load, reload filetype
+        vim.bo.filetype = vim.bo.filetype
     end,
     dependencies = {
         "neovim/nvim-lspconfig",
