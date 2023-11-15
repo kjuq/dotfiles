@@ -9,7 +9,7 @@ local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope.exten
 
 return {
     "folke/noice.nvim",
-    event = { "CursorMoved", "ModeChanged" },
+    event = { "VeryLazy" },
     cmd = {
         "Noice",
         "NoiceLog",

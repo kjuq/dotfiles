@@ -1,7 +1,7 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = { "CursorMoved", "ModeChanged" },
+    event = { "VeryLazy" },
     config = function()
         local highlight = {
             "IndentBlanklineIndent1",

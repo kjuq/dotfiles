@@ -1,6 +1,6 @@
 return {
     "norcalli/nvim-colorizer.lua",
-    event = { "CursorMoved", "CursorHold" },
+    event = { "VeryLazy" },
     config = function() -- `opts` not works
         require("colorizer").setup()
         vim.cmd("ColorizerAttachToBuffer")
