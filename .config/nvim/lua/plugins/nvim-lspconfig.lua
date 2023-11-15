@@ -34,8 +34,7 @@ return {
                     end,
                 })
 
-                -- Enable completion triggered by <c-x><c-o>
-                vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+                vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
 
                 local vlb = vim.lsp.buf
 
@@ -46,7 +45,7 @@ return {
                 -- vlb.references, "Go to reference"
                 -- vlb.implementation, "Go to implementation"
 
-                -- map("n", "<leader>la", vlb.code_action, "code [a]ction", ev.buf)
+                -- map("n", "<KEYBIND>", vlb.code_action, "code [a]ction", ev.buf)
 
                 map("n", "<leader>rn", vlb.rename, "Rename", ev.buf)
 
