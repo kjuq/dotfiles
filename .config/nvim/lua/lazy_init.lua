@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 
-vim.loader.enable()
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
@@ -38,6 +37,11 @@ local opts = {
                 "zipPlugin",
             },
         },
+    },
+    dev = {
+        path = "~/codes/_nvim_plugins",
+        patterns = { "kjuq" },
+        fallback = true,
     },
 }
 
