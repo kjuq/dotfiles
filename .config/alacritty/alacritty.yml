@@ -18,7 +18,7 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
-  size: 16.0
+  size: 18.0
 
 import:
   # - "~/.config/alacritty/themes/themes/hardhacker.yaml"
@@ -50,27 +50,18 @@ window:
 
   option_as_alt: Both
 
-
 shell:
   program: /opt/homebrew/bin/fish
-  # args:
-  #   - --login
-  #   - --command
-  #   - "tmux attach; or tmux"
-
 
 env:
   TERM: tmux-256color
 
 key_bindings:
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: Equals, mods: Command|Shift, action: IncreaseFontSize }
+  - { key: Equals, mods: Command, action: ResetFontSize }
   - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
   - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" } # ctrl-tab fix
   - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
-#  - { key: Up,    chars: "\u0010" }
-#  - { key: Down,  chars: "\u000e" }
-#  - { key: Right, chars: "\u0006" }
-#  - { key: Left,  chars: "\u0002" }
 
 # vim: set tabstop=2 :
-
-
