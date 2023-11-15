@@ -31,24 +31,26 @@ return {
         require("mason-lspconfig").setup_handlers({
             function(server_name)
                 local lspconfig = require('lspconfig')
-                lspconfig[server_name].setup {
+                lspconfig[server_name].setup({
                     ---@diagnostic disable-next-line: undefined-global
                     on_attach = on_attach,
                     capabilities = capabilities,
                     -- should disable this for noice-hover-scroll
-                    -- handlers = {
-                    --     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-                    --         title = " Lsp: Hover ",
-                    --         max_width = 80,
-                    --         max_height = 20,
-                    --     }),
-                    --     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-                    --         title = " Lsp: Signature Help ",
-                    --         max_width = 80,
-                    --         max_height = 20,
-                    --     }),
-                    -- }
-                }
+                    _DISABLED_handlers = {
+                        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                            title = " Lsp: Hover ",
+                            border = "rounded",
+                            max_width = 80,
+                            max_height = 20,
+                        }),
+                        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+                            title = " Lsp: Signature Help ",
+                            border = "rounded",
+                            max_width = 80,
+                            max_height = 20,
+                        }),
+                    },
+                })
                 local macos_python_path = "/opt/homebrew/bin/python3"
                 lspconfig.pylsp.setup({
                     settings = {
