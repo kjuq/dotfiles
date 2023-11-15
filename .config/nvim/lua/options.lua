@@ -17,7 +17,7 @@ vim.opt.pumheight = 10
 vim.opt.pumwidth = 60
 -- vim.opt.pumblend = 20 -- Disable this when using transparent env
 
-vim.opt.updatetime = 100
+vim.opt.updatetime = 500
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
