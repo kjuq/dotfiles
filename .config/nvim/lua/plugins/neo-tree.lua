@@ -1,60 +1,43 @@
+local map = require("utils.lazy").generate_map("<leader>", "Neo-tree: ")
+
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     cmd = { "Neotree" },
+    event = { "VeryLazy" },
     keys = {
-        {
-            "<Space>i",
-            mode = { "n" },
-            function()
-                require("neo-tree.command").execute({
-                    source = "filesystem",
-                    position = "float",
-                    toggle = true,
-                    reveal_force_cwd = true,
-                })
-            end,
-            desc = "Neo-tree: open a floating window",
-        },
-        {
-            "<leader>at",
-            mode = { "n" },
-            function()
-                require("neo-tree.command").execute({
-                    source = "filesystem",
-                    position = "left",
-                    toggle = false,
-                    reveal_force_cwd = true,
-                })
-            end,
-            desc = "Neo-tree: open a file window on left",
-        },
-        {
-            "<leader>ag",
-            mode = { "n" },
-            function()
-                require("neo-tree.command").execute({
-                    source = "git_status",
-                    position = "left",
-                    toggle = false,
-                    reveal_force_cwd = true,
-                })
-            end,
-            desc = "Neo-tree: open a git window on left",
-        },
-        {
-            "<leader>ab",
-            mode = { "n" },
-            function()
-                require("neo-tree.command").execute({
-                    source = "buffers",
-                    position = "left",
-                    toggle = false,
-                    reveal_force_cwd = true,
-                })
-            end,
-            desc = "Neo-tree: open a buffer window on left",
-        },
+        map("i", "n", function()
+            require("neo-tree.command").execute({
+                source = "filesystem",
+                position = "float",
+                toggle = true,
+                reveal_force_cwd = true,
+            })
+        end, "Open a floating window"),
+        map("at", "n", function()
+            require("neo-tree.command").execute({
+                source = "filesystem",
+                position = "left",
+                toggle = false,
+                reveal_force_cwd = true,
+            })
+        end, "Open a file window on left"),
+        map("ag", "n", function()
+            require("neo-tree.command").execute({
+                source = "git_status",
+                position = "left",
+                toggle = false,
+                reveal_force_cwd = true,
+            })
+        end, "Open a git window on left"),
+        map("ab", "n", function()
+            require("neo-tree.command").execute({
+                source = "buffers",
+                position = "left",
+                toggle = false,
+                reveal_force_cwd = true,
+            })
+        end, "Open a buffer window on left"),
     },
     opts = {
         close_if_last_window = true,
