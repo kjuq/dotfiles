@@ -3,7 +3,6 @@ return {
     quit_with_esc = function(ft)
         vim.api.nvim_create_autocmd({ "filetype" }, {
             pattern = ft,
-            group = vim.api.nvim_create_augroup("user_autocommands_utils", {}),
             callback = function()
                 vim.keymap.set("n", "<esc>", "<cmd>quit<cr>", { buffer = true, silent = true })
             end
