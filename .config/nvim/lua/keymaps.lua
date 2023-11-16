@@ -76,6 +76,9 @@ map({ "i", "s" }, "<C-l>", function()
     end
 end, { silent = true })
 
+-- <NUM><CR> to go to line. i.e. 10<CR> -> 10G
+map({ "n" }, "<CR>", function() return vim.v.count ~= 0 and "G" or "<CR>" end, { expr = true, silent = true })
+
 -- Diagnostics
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostics" })
 map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostics" })
