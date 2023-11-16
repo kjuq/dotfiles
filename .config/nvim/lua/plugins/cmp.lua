@@ -2,13 +2,18 @@ return {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
+        -- max height of floating cmp window
+        vim.opt.pumheight = 4
+
         local cmp = require("cmp")
         local types = require("cmp.types")
         local modes_is = { "i", "s" }
 
         cmp.setup({
+            -- completion = { autocomplete = false }, -- `true` is invalid option
+            experimental = { ghost_text = true },
+
             snippet = { expand = function(args) require("snippy").expand_snippet(args.body) end },
-            completion = { autocomplete = false, },
 
             mapping = cmp.mapping.preset.insert({
                 ["<C-n>"] = cmp.mapping(function()
@@ -52,18 +57,14 @@ return {
                 end, modes_is),
             }),
             sources = cmp.config.sources({
+                { name = "copilot" }, --,  priority = -1 },
                 { name = "path" },
-                { name = "emoji" },
-            }, {
-                { name = "snippy" },
-            }, {
-                { name = "nvim_lsp" },
-                { name = "nvim_lua" },
-            }, {
-                { name = "buffer" },
-            }, {
-                -- { name = "nvim_lsp_signature_help" },
-                -- { name = "copilot", priority = -1 },
+                { name = "emoji",    max_item_count = 5 },
+                { name = "snippy",   max_item_count = 5 },
+                { name = "nvim_lsp", max_item_count = 5 },
+                { name = "nvim_lua", max_item_count = 5 },
+                { name = "buffer",   max_item_count = 5 },
+                -- { name = "skkeleton" },
             }),
             window = {
                 completion = cmp.config.window.bordered(),
@@ -77,13 +78,12 @@ return {
                     symbol_map = { Copilot = "" }
                 })
             },
-            experimental = { ghost_text = true },
         })
 
         -- Set configuration for specific filetype.
         cmp.setup.filetype("gitcommit", {
             sources = {
-                { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+                { name = "git" },
                 { name = "buffer" },
             },
         })
@@ -114,11 +114,11 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-emoji",
-        -- "hrsh7th/cmp-nvim-lsp-signature-help",
         "ray-x/cmp-treesitter",
         "onsails/lspkind.nvim",
         "dcampos/cmp-snippy",
-        -- { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
-        { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim" }
+        { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
+        { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" },
+        "uga-rosa/cmp-skkeleton",
     },
 }
