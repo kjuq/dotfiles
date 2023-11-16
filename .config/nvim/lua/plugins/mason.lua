@@ -1,27 +1,16 @@
 local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Mason: ")
-local map = require("utils.lazy").generate_map("<leader>", "Mason: ")
 
 return {
-    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
     event = { "VeryLazy" },
-    cmd = {
-        "Mason",
-        "MasonInstall",
-        "MasonUninstall",
-        "MasonUninstallAll",
-        "MasonLog",
-        "MasonUpdate",
-    },
-    keys = {
-        cmap("al", "n", "Mason", "Manage language servers"),
-        map("ar", "n", function() vim.bo.filetype = vim.bo.filetype end, "Attach language server"),
-    },
     config = function()
         require("mason").setup({ ui = { border = "rounded" } })
+
         local success, capabilities = pcall(function() require('cmp_nvim_lsp').default_capabilities() end)
         if not success then
             capabilities = nil
         end
+
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "bashls",
@@ -30,6 +19,7 @@ return {
                 "pylsp",
             },
         })
+
         require("mason-lspconfig").setup_handlers({
             function(server_name)
                 local lspconfig = require('lspconfig')
@@ -89,8 +79,8 @@ return {
         vim.bo.filetype = vim.bo.filetype
     end,
     dependencies = {
+        { "williamboman/mason.nvim", keys = { cmap("al", "n", "Mason", "Manage language servers") }, },
         "neovim/nvim-lspconfig",
-        "williamboman/mason-lspconfig.nvim",
         "nvimtools/none-ls.nvim",
         "jay-babu/mason-null-ls.nvim",
         "jay-babu/mason-nvim-dap.nvim",
