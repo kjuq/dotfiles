@@ -15,8 +15,9 @@ o.termguicolors = true
 
 o.wildmenu = true
 o.completeopt = "menuone,preview,noinsert,noselect"
-o.pumheight = 10
-o.pumwidth = 60
+
+o.pumheight = 8
+o.pumwidth = 50
 -- vim.opt.pumblend = 20 -- Disable this when using transparent env
 
 o.updatetime = 500

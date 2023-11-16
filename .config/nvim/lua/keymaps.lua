@@ -66,7 +66,15 @@ map("n", "<Esc>", function()
     vim.api.nvim_feedkeys(key, "n", false)
 end, { silent = true })
 
-map({ "i", "s" }, "<C-l>", function() vim.cmd.fclose { bang = true } end, { silent = true })
+map({ "i", "s" }, "<C-l>", function()
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "ix" then -- completion with <C-x>
+        local key = vim.api.nvim_replace_termcodes("<C-l>", true, false, true)
+        vim.api.nvim_feedkeys(key, "n", false)
+    else
+        vim.cmd.fclose { bang = true }
+    end
+end, { silent = true })
 
 -- Diagnostics
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostics" })
