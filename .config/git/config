@@ -1,33 +1,37 @@
-[core]
-	pager = less
-	editor = nvim
-	sparsecheckout = true
-[interactive]
-	diffFilter = delta --color-only
-[delta]
-	features = side-by-side line-numbers decorations
-	whitespace-error-style = 22 reverse
-[delta "decorations"]
-	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
-	file-decoration-style = none
-[merge]
-	tool = vimdiff
-[mergetool]
-	prompt = true
-[mergetool "vimdiff"]
-	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [user]
 	name = kjuq
 	email = 44694396+kjuq@users.noreply.github.com
 	signingkey = D581FF59E1B695F1
+[commit]
+	gpgsign = true
+
 [pull]
 	rebase = false
 [init]
 	defaultBranch = master
+
 [credential]
-	helper = osxkeychain
-[commit]
-	gpgsign = true
+	helper = !pass github.com/kjuq_repo_token
+
+[core]
+	pager = nvim -R
+	editor = nvim
+	sparsecheckout = true
+[color]
+	pager = false
+
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = false
+[difftool "nvimdiff"]
+	cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[merge]
+	tool = nvimmerge
+[mergetool]
+	prompt = true
+[mergetool "nvimmerge"]
+	cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c "$wincmd w" -c "wincmd J"
 
 # vim: set noexpandtab :
