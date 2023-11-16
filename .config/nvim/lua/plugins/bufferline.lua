@@ -2,12 +2,10 @@ return {
     "akinsho/bufferline.nvim",
     version = "*",
     event = { "BufNew", "WinScrolled" },
-    opts = function()
-        -- vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "#000000" })
-        -- vim.api.nvim_set_hl(0, "BufferLineSeparator", { fg = "#000000" })
-        -- vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { fg = "#000000" })
-        return {
+    config = function()
+        require("bufferline").setup({
             options = {
+                numbers = "ordinal",
                 diagnostics = "nvim_lsp",
                 always_show_bufferline = true,
                 separator_style = { "", "" }, -- "slant", "slope", "thick", "thin"
@@ -33,15 +31,15 @@ return {
             },
             -- Needed when separator is used
             -- highlights = {
-            --     fill = { bg = "#000000", },
-            --     tab_separator = { fg = "#000000", },
+            --     fill                   = { bg = "#000000", },
+            --     tab_separator          = { fg = "#000000", },
             --     tab_separator_selected = { fg = "#000000", },
-            --     separator_selected = { fg = "#000000", bg = "#000000" },
-            --     separator_visible  = { fg = "#000000", },
-            --     separator = { fg = "#000000", },
-            --     offset_separator = { fg = "#000000", },
+            --     separator_selected     = { fg = "#000000", bg = "#000000" },
+            --     separator_visible      = { fg = "#000000", },
+            --     separator              = { fg = "#000000", },
+            --     offset_separator       = { fg = "#000000", },
             -- },
-        }
+        })
     end,
     dependencies = "nvim-tree/nvim-web-devicons",
 }
