@@ -21,15 +21,13 @@ return {
     },
     opts = function()
         require("which-key").register({
-            ["<leader>a"] = { name = "[a]dditional", _ = "which_key_ignore" },
-            ["<leader>c"] = { name = "[c]hatGPT", _ = "which_key_ignore" },
-            ["<leader>d"] = { name = "[d]ebug", _ = "which_key_ignore" },
-            ["<leader>f"] = { name = "[f]ind", _ = "which_key_ignore" },
-            ["<leader>g"] = { name = "[g]it", _ = "which_key_ignore" },
-            -- ["<leader>l"] = { name = "[l]SP", _ = "which_key_ignore" },
-            ["<leader>p"] = { name = "[p]ick", _ = "which_key_ignore" },
-            ["<leader>r"] = { name = "[r]e {name, sume}", _ = "which_key_ignore" },
-            ["<leader>s"] = { name = "[s]earch", _ = "which_key_ignore" },
+            ["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
+            ["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
+            ["<leader>d"] = { name = "Debug", _ = "which_key_ignore" },
+            ["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
+            ["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
+            ["<leader>p"] = { name = "Pick", _ = "which_key_ignore" },
+            ["<leader>r"] = { name = "Re {name, sume}", _ = "which_key_ignore" },
             ["<leader>t"] = { name = "LSP", _ = "which_key_ignore", c = "[c]all", w = "[w]orkspace" },
         })
 
