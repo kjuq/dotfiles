@@ -78,9 +78,11 @@ if command --search --quiet zoxide
     zoxide init --cmd c fish | source
 end
 
-# GnuPG
+# GnuPG and password-store
 set --export PASSWORD_STORE_DIR "$HOME/password-store"
 set --export GPG_TTY (tty)
+alias passpush="cd $PASSWORD_STORE_DIR; and git push; and cd -"
+alias passpull="cd $PASSWORD_STORE_DIR; and git pull; and cd -"
 
 # local bin
 set --local local_bin_path "$HOME/.local/bin"

@@ -34,10 +34,6 @@ map("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed regis
 map({ "n", "x" }, "k", function() return vim.v.count == 0 and "gk" or "k" end, { expr = true, silent = true })
 map({ "n", "x" }, "j", function() return vim.v.count == 0 and "gj" or "j" end, { expr = true, silent = true })
 
--- move 5 lines
-map({ "n", "x" }, "<C-p>", "5k")
-map({ "n", "x" }, "<C-n>", "5j")
-
 -- Buffer movement instead of tab's
 map("n", "gt", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
 map("n", "gT", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
