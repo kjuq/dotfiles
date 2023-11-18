@@ -26,5 +26,11 @@ return {
         return false
     end,
 
+    -- https://stackoverflow.com/questions/72165140/vim-bufnewfile-autocmd-does-not-work-when-inside-filetype-plugin
+    ---@return boolean
+    is_empty_buffer = function()
+        return vim.fn.filereadable(vim.fn.bufname()) == 0 and vim.fn.line("$") == 1 and vim.fn.getline(1) == ""
+    end,
+
     session_dir = vim.fn.stdpath('data') .. '/session/' -- ~/.local/share/nvim/session
 }
