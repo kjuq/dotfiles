@@ -1,9 +1,7 @@
 return {
-    'vim-jp/vimdoc-ja',
-    event = { "BufNewFile", "BufReadPost" },
-    config = function()
-        vim.opt.helplang = "ja,en"
+    "vim-jp/vimdoc-ja",
+    lazy = false,
+    init = function()
+        vim.opt.helplang = { "ja", "en" }
     end,
 }
-
-

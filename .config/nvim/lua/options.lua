@@ -43,6 +43,8 @@ o.list = true
 
 o.shell = "fish"
 
+o.helplang = { "en", "ja" }
+
 -- Disable a leader key time out
 o.timeout = false
 o.ttimeout = false
