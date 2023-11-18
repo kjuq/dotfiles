@@ -30,7 +30,7 @@ o.wrap = false
 o.smoothscroll = true
 o.breakindent = true
 
-o.virtualedit = "onemore"
+o.virtualedit = { "onemore", "block" }
 
 o.smartindent = true
 o.tabstop = 4
