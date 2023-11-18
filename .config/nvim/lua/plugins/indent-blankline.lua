@@ -3,6 +3,11 @@ return {
     main = "ibl",
     event = { "VeryLazy" },
     config = function()
+        -- disable builtin indentline
+        vim.opt_local.listchars:remove("leadmultispace")
+        vim.api.nvim_clear_autocmds({ group = "init_indent_line" })
+        vim.api.nvim_clear_autocmds({ group = "update_indent_line" })
+
         local highlight = {
             "IndentBlanklineIndent1",
             "IndentBlanklineIndent2",
@@ -26,8 +31,8 @@ return {
         ibl.setup({
             indent = {
                 highlight = highlight,
-                char = "┆", -- "╎", "┆","│", "▏",
-                tab_char = "┆",
+                char = "╎", -- "╎", "┆","│", "▏",
+                tab_char = "│",
             },
             scope = { enabled = false },
         })
