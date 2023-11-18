@@ -30,6 +30,8 @@ o.wrap = false
 o.smoothscroll = true
 o.breakindent = true
 
+o.virtualedit = "onemore"
+
 o.smartindent = true
 o.tabstop = 4
 o.expandtab = false
