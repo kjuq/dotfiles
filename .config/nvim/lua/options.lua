@@ -33,10 +33,10 @@ o.breakindent = true
 o.smartindent = true
 o.tabstop = 4
 o.expandtab = false
-o.shiftwidth = 4
+o.shiftwidth = 0 -- obey tabstop
 o.shiftround = true
 
-o.listchars = { trail = "◊", tab = ">-", space = "⋅", eol = "󰌑" } -- "⏎"
+o.listchars = { trail = "◊", tab = "│⋅", space = "⋅", eol = "󰌑" } -- ⏎
 o.list = true
 
 o.shell = "fish"
