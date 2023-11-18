@@ -5,7 +5,7 @@ local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
 local cmd_opt = { "cmd", "option" }
 local cmd_opt_ctrl = { "cmd", "option", "ctrl" }
 
--- Toggle apps {{{
+-- Toggle apps
 hs.ipc.cliInstall("/opt/homebrew")
 
 local appsToHide = {}
@@ -28,7 +28,7 @@ local function hideAllApps()
 	end
 end
 
-toggleApp("System Settings", cmd_opt_ctrl, "/")
+toggleApp("System Settings", cmd_opt_ctrl, ";")
 toggleApp("Safari", cmd_opt_ctrl, ",")
 toggleApp("Alacritty", cmd_opt_ctrl, "]")
 toggleApp("Vivaldi", cmd_opt_ctrl, "[")
@@ -36,9 +36,7 @@ toggleApp("Wezterm", cmd_opt_ctrl, "/")
 hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 toggleApp("Finder", cmd_opt_ctrl, "=")
 
--- }}}
-
--- Window movement {{{
+-- Window movement
 -- https://qiita.com/haruyama480/items/bf9e6a42fedbdbbaf438
 DURATION = 0.05
 DELTA = 10
@@ -78,9 +76,8 @@ hs.hotkey.bind(cmd_opt, "t", moveRight, nil, moveRight)
 
 hs.hotkey.bind(cmd_opt, "a", function() hs.window.focusedWindow():moveOneScreenWest() end)
 hs.hotkey.bind(cmd_opt, "o", function() hs.window.focusedWindow():moveOneScreenEast() end)
--- }}}
 
--- Window separation {{{
+-- Window separation
 hs.window.animationDuration = 0
 local units = {
 	right       = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
@@ -104,9 +101,8 @@ hs.hotkey.bind(cmd_opt, ".", function() hs.window.focusedWindow():move(units.bot
 hs.hotkey.bind(cmd_opt, "m", function() hs.window.focusedWindow():move(units.bottomLeft, nil, true) end)
 
 hs.hotkey.bind(cmd_opt, "e", function() hs.window.focusedWindow():maximize() end)
--- }}}
 
--- Mouse button remaps {{{
+-- Mouse button remaps
 
 local middleButton = 2
 local backButton = 3
@@ -144,12 +140,10 @@ end
 local watcher = hs.application.watcher.new(handleGlobalEvent)
 watcher:start()
 
--- }}}
 
--- Simple remaps {{{
+-- Simple remaps
 hs.hotkey.bind({ "cmd" }, "q", function() hs.eventtap.keyStroke("cmd", "`") end)
 hs.hotkey.bind(cmd_opt, "g", function() hs.eventtap.keyStroke("cmd", "`") end)
--- }}}
 
 -- Check if the file exists
 local function path_exists(path)
