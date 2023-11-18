@@ -4,7 +4,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = {
-        map("<C-space>", { "n", "i" }, "ToggleTerm", "Open floating term window")
+        map("<C-space>", { "n" }, "ToggleTerm", "Open floating term window")
     },
     cmd = {
         "ToggleTerm",
@@ -19,6 +19,7 @@ return {
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
             vim.keymap.set("t", "<esc>", function() vim.cmd("ToggleTerm") end, opts)
+            vim.keymap.set("t", "<C-Space>", function() vim.cmd("ToggleTerm") end, opts)
         end
 
         vim.api.nvim_create_autocmd({ "TermOpen" }, {
@@ -27,7 +28,6 @@ return {
         })
 
         return {
-            open_mapping = "<C-space>",
             direction = "float",
             -- float_opts = { winblend = 20, },
         }

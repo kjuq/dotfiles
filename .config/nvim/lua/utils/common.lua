@@ -26,6 +26,13 @@ return {
         return false
     end,
 
+    -- https://github.com/neovim/neovim/blob/b535575acdb037c35a9b688bc2d8adc2f3dece8d/src/nvim/keymap.h#L225
+    -- https://www.reddit.com/r/neovim/comments/kup1g0/comment/givujwd
+    ---@param cmd string
+    feed_plug = function(cmd)
+        vim.fn.feedkeys(string.format("%c%c%c" .. cmd, 0x80, 253, 83))
+    end,
+
     -- https://stackoverflow.com/questions/72165140/vim-bufnewfile-autocmd-does-not-work-when-inside-filetype-plugin
     ---@return boolean
     is_empty_buffer = function()
