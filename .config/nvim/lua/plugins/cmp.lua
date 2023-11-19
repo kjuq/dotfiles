@@ -57,7 +57,10 @@ return {
                 end, modes_is),
             }),
             sources = cmp.config.sources({
-                { name = "skkeleton" },
+                pcall(require, "plugins.skkeleton")
+                --[[-]] and require("plugins.skkeleton").cond
+                --[[-]] and { name = "skkeleton" }
+                --[[-]] or {},
             }, {
                 { name = "copilot" }, --,  priority = -1 },
                 { name = "path" },
