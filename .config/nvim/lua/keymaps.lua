@@ -41,7 +41,8 @@ map("n", "<C-Tab>", vim.cmd.bnext, { silent = true, desc = "Go to the next buffe
 map("n", "<C-S-Tab>", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
 
 -- Frequently used keymaps
-map("n", "<leader>w", vim.cmd.w, { silent = true, desc = "Write the whole buffer to the current file" })
+map("n", "<leader>w", vim.cmd.w, { silent = true, desc = "Write to the file" })
+map("n", "<leader>W", function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write to the file without format" })
 map("n", "<leader>q", vim.cmd.q, { silent = true, desc = "Quit the current window" })
 map("n", "<leader>Q", function() vim.cmd.q { bang = true } end, { silent = true, desc = "Force quit the current window" })
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch windows" })
