@@ -38,19 +38,29 @@ return {
             end,
         })
 
-        if pcall(require, "noice") then
-            vim.api.nvim_create_autocmd("user", {
-                pattern = "eskk-enable-pre",
-                callback = function()
+        local has_cmp, cmp = pcall(require, "cmp")
+        local has_noice, _ = pcall(require, "noice")
+        vim.api.nvim_create_autocmd("user", {
+            pattern = "eskk-enable-pre",
+            callback = function()
+                if has_noice then
                     vim.cmd("Noice disable")
-                end,
-            })
-            vim.api.nvim_create_autocmd("user", {
-                pattern = "eskk-disable-post",
-                callback = function()
+                end
+                if has_cmp then
+                    cmp.setup({ sources = cmp.config.sources({}) })
+                end
+            end,
+        })
+        vim.api.nvim_create_autocmd("user", {
+            pattern = "eskk-disable-post",
+            callback = function()
+                if has_noice then
                     vim.cmd("Noice enable")
-                end,
-            })
-        end
+                end
+                if has_cmp then
+                    require("plugins.cmp").config()
+                end
+            end,
+        })
     end,
 }
