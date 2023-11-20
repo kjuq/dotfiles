@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# check if XDG_CONFIG_HOME is set
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "XDG_CONFIG_HOME is not set. Quit."
+    exit 1
+fi
+
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 XDG_NO_HOME="${XDG_CONFIG_HOME/$HOME\//}"
 SCRIPT_XDG="$SCRIPT_DIR/$XDG_NO_HOME"
