@@ -4,6 +4,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = { "VeryLazy" },
     config = function()
+        require("lsp")
         require("mason").setup({ ui = { border = "rounded" } })
 
         local success, capabilities = pcall(function() require('cmp_nvim_lsp').default_capabilities() end)
