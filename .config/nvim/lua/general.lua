@@ -1,6 +1,20 @@
-vim.scriptencoding = "utf-8"
+vim.scriptencoding              = "utf-8"
 
-vim.wo.number = true
-vim.wo.fillchars = "eob: " -- hide tildes in blank space after end of file
+vim.g.netrw_fastbrowse          = 0
+vim.g.skip_loading_mswin        = 1
 
--- vim.g.loaded_matchparen = 1
+vim.g.did_install_default_menus = 1
+vim.g.did_install_syntax_menu   = 1
+vim.g.did_indent_on             = 1
+
+vim.g.loaded_2html_plugin       = 1
+vim.g.loaded_gzip               = 1
+vim.g.loaded_tarPlugin          = 1
+vim.g.loaded_zipPlugin          = 1
+vim.g.loaded_tutor_mode_plugin  = 1
+vim.g.loaded_remote_plugins     = 1
+
+vim.g.loaded_python3_provider   = 0
+vim.g.loaded_ruby_provider      = 0
+vim.g.loaded_node_provider      = 0
+vim.g.loaded_perl_provider      = 0
