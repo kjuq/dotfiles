@@ -32,7 +32,7 @@ return {
         map("<C-u>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-u>" end end, "Half up"),
     },
     opts = function()
-        require("utils.common").quit_with_esc({ "noice" })
+        require("utils.lazy").quit_with_esc({ "noice" })
         return {
             lsp = {
                 signature = { auto_open = { enabled = false } },
