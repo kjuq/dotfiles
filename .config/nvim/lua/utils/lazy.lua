@@ -30,7 +30,18 @@ local generate_cmd_map = function(key_prefix, desc_prefix)
     return cmap
 end
 
+--- @param ft table<string>
+local quit_with_esc = function(ft)
+    vim.api.nvim_create_autocmd({ "filetype" }, {
+        pattern = ft,
+        callback = function()
+            vim.keymap.set("n", "<esc>", vim.cmd.quit, { buffer = true, silent = true })
+        end
+    })
+end
+
 return {
     generate_map = generate_map,
     generate_cmd_map = generate_cmd_map,
+    quit_with_esc = quit_with_esc,
 }

@@ -1,14 +1,4 @@
 return {
-    --- @param ft table<string>
-    quit_with_esc = function(ft)
-        vim.api.nvim_create_autocmd({ "filetype" }, {
-            pattern = ft,
-            callback = function()
-                vim.keymap.set("n", "<esc>", "<cmd>quit<cr>", { buffer = true, silent = true })
-            end
-        })
-    end,
-
     --- @return boolean
     has_words_before = function()
         unpack = unpack or table.unpack
