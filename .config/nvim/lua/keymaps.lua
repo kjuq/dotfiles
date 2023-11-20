@@ -14,6 +14,8 @@ map("c", "<C-f>", "<Right>") -- Opens a command-line window (q:) by default
 map("c", "<C-a>", "<Home>")  -- Inserts all matched candidates by default, so <C-i> is enough
 map("c", "<C-d>", "<Del>")   -- Lists completions by default, so <C-i> is enough
 -- map("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
+
+-- recall history beginning with typed characters
 map("c", "<C-p>", "<Up>")
 map("c", "<C-n>", "<Down>")
 
@@ -41,10 +43,10 @@ map("n", "<C-Tab>", vim.cmd.bnext, { silent = true, desc = "Go to the next buffe
 map("n", "<C-S-Tab>", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
 
 -- Frequently used keymaps
-map("n", "<leader>w", vim.cmd.w, { silent = true, desc = "Write to the file" })
+map("n", "<leader>w", vim.cmd.write, { silent = true, desc = "Write to the file" })
 map("n", "<leader>W", function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write to the file without format" })
-map("n", "<leader>q", vim.cmd.q, { silent = true, desc = "Quit the current window" })
-map("n", "<leader>Q", function() vim.cmd.q { bang = true } end, { silent = true, desc = "Force quit the current window" })
+map("n", "<leader>q", vim.cmd.quit, { silent = true, desc = "Quit the current window" })
+map("n", "<leader>Q", vim.cmd.quitall, { silent = true, desc = "Quit all windows" })
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch windows" })
 
 -- Center cursor when searching
@@ -63,15 +65,13 @@ map("n", "<leader>am", function() vim.cmd("messages") end, { desc = "History of 
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
     vim.cmd.fclose { bang = true }
-    local key = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
-    vim.api.nvim_feedkeys(key, "n", false)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
 end, { silent = true })
 
 map({ "i", "s" }, "<C-l>", function()
     local mode = vim.api.nvim_get_mode().mode
     if mode == "ix" then -- completion with <C-x>
-        local key = vim.api.nvim_replace_termcodes("<C-l>", true, false, true)
-        vim.api.nvim_feedkeys(key, "n", false)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, false, true), "n", false)
     else
         vim.cmd.fclose { bang = true }
     end
