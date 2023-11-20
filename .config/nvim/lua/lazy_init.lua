@@ -1,3 +1,8 @@
+if os.getenv("NO_PLUG") then
+    require("colorscheme")
+    return
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -16,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
     defaults = {
         lazy = true,
-        -- cond = false, -- Disable a lot of plugins globally
     },
     change_detection = {
         -- automatically check for config file changes and reload the ui
@@ -26,7 +30,7 @@ local opts = {
     ui = { border = "rounded" },
     performance = {
         rtp = {
-            disabled_plugins = { -- shorten start up time for 1 second
+            disabled_plugins = { -- shorten start up time for 1 ms
                 "gzip",
                 "matchit",
                 "matchparen",
@@ -46,9 +50,9 @@ local opts = {
 }
 
 require("lazy").setup("plugins", opts)
-
 vim.keymap.set("n", "<leader>ap", function() vim.cmd("Lazy") end, { desc = "Lazy.nvim: Manage plugins" })
 
+-- load built-in colorscheme if no colorscheme is loaded
 if vim.g.colors_name == nil then
     require("colorscheme")
 end
