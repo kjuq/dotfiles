@@ -1,3 +1,9 @@
+local color = "catppuccin"
 return {
-    require("plugins.colorschemes.tokyonight")
+    dir = "/tmp/70724411/_colorscheme",
+    lazy = false,
+    priority = 9999,
+    config = function()
+        require(color)
+    end
 }
