@@ -72,10 +72,6 @@ return {
             handlers = {},
         })
 
-        require("mason-nvim-dap").setup({
-            handlers = {},
-        })
-
         -- for lazy-load, reload filetype
         vim.bo.filetype = vim.bo.filetype
     end,
@@ -84,8 +80,6 @@ return {
         "neovim/nvim-lspconfig",
         "nvimtools/none-ls.nvim",
         "jay-babu/mason-null-ls.nvim",
-        "jay-babu/mason-nvim-dap.nvim",
         "nvim-lua/plenary.nvim",
-        "mfussenegger/nvim-dap",
     }
 }
