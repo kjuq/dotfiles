@@ -42,10 +42,16 @@ return {
         "DapVirtualTextToggle",
     },
     config = function()
+        require("mason-nvim-dap").setup({
+            handlers = {},
+        })
         vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#CA4F4F" })
         vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" }) -- 󰧞 
     end,
     dependencies = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "jay-babu/mason-nvim-dap.nvim",
         {
             "rcarriga/nvim-dap-ui",
             keys = {
