@@ -17,6 +17,7 @@ fish/functions/po.fish
 git
 gitui
 hammerspoon/init.lua
+i3/config
 karabiner/assets
 karabiner/karabiner.json
 kitty/kitty.conf
