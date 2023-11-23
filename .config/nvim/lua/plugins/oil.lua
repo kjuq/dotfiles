@@ -3,6 +3,7 @@ local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
 return {
     "stevearc/oil.nvim",
+    event = { "VeryLazy" },
     keys = {
         map("<leader>o", "n", "Oil", "Open parent directory"),
     },
