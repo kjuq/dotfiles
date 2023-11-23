@@ -18,7 +18,7 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
-  size: 18.0
+  size: 20.0
 
 import:
   # - "~/.config/alacritty/themes/themes/hardhacker.yaml"
@@ -43,10 +43,9 @@ window:
     columns: 220
     lines: 60
 
-  # the edges on mac is curved
   padding:
-    x: 8
-    y: 4
+    x: 6
+    y: 11
 
   option_as_alt: Both
 
