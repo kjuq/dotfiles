@@ -13,7 +13,6 @@ return {
         view_options = {
             show_hidden = true,
             is_always_hidden = function(name, bufnr)
-                print(name)
                 return vim.list_contains(hiddens, name)
             end,
         },

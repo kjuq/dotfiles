@@ -10,22 +10,7 @@ local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope.exten
 return {
     "folke/noice.nvim",
     event = { "VeryLazy" },
-    cmd = {
-        "Noice",
-        "NoiceLog",
-        "NoiceLast",
-        "NoiceDebug",
-        "NoiceStats",
-        "NoiceConfig",
-        "NoiceEnable",
-        "NoiceErrors",
-        "NoiceRoutes",
-        "NoiceDisable",
-        "NoiceDismiss",
-        "NoiceHistory",
-        "NoiceTelescope",
-        "NoiceViewstats",
-    },
+    cmd = { "Noice" },
     keys = {
         cmap("fn", "n", "Noice telescope", "Pick noice"),
         map("<C-d>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-d>" end end, "Half down"),
@@ -35,6 +20,7 @@ return {
         require("utils.lazy").quit_with_esc({ "noice" })
         return {
             lsp = {
+                -- progress = { enabled = false },
                 signature = { auto_open = { enabled = false } },
                 documentation = {
                     opts = {
