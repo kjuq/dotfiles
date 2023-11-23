@@ -3,7 +3,7 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
         -- max height of floating cmp window
-        vim.opt.pumheight = 4
+        vim.opt.pumheight = 8
 
         local cmp = require("cmp")
         local types = require("cmp.types")
@@ -64,11 +64,11 @@ return {
             }, {
                 { name = "copilot" }, --,  priority = -1 },
                 { name = "path" },
-                { name = "emoji",    max_item_count = 5 },
-                { name = "snippy",   max_item_count = 5 },
-                { name = "nvim_lsp", max_item_count = 5 },
-                { name = "nvim_lua", max_item_count = 5 },
-                { name = "buffer",   max_item_count = 5 },
+                { name = "emoji" },
+                { name = "snippy" },
+                { name = "nvim_lsp" },
+                { name = "nvim_lua" },
+                { name = "buffer" },
             }),
             window = {
                 completion = cmp.config.window.bordered(),
