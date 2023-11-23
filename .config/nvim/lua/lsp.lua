@@ -32,7 +32,13 @@ local callback = function(ev)
     map("n", "<leader>twa", vlb.add_workspace_folder, "Workspace Add folder")
     map("n", "<leader>twr", vlb.remove_workspace_folder, "Workspace remove Folder")
     map("n", "<leader>twl", function() print(vim.inspect(vlb.list_workspace_folders())) end, "Workspace list Folders")
-    map("n", "<leader>tf", function() vlb.format { async = false } end, "Format current buffer")
+    map("n", "<leader>tf", function()
+        local winpos = vim.fn.winsaveview()
+        vlb.format({ async = false })
+        ---@diagnostic disable-next-line: param-type-mismatch
+        vim.fn.winrestview(winpos)
+        vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting
+    end, "Format current buffer")
 
     map("n", "<leader>tv", function()
         vt = not vt
@@ -44,11 +50,22 @@ local callback = function(ev)
 
     -- Format on save
     if client and client.supports_method("textDocument/formatting") then
+        local winpos
+        local group = vim.api.nvim_create_augroup("AutoFormatting", {})
         vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("AutoFormatting", {}),
+            group = group,
             buffer = bufnr,
             callback = function()
+                winpos = vim.fn.winsaveview()
                 vim.lsp.buf.format({ async = false })
+            end,
+        })
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            group = group,
+            buffer = bufnr,
+            callback = function()
+                vim.diagnostic.enable(0)   -- fix not showing diagnostics after formatting
+                vim.fn.winrestview(winpos) -- restore cursor position
             end,
         })
     end
