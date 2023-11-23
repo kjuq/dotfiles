@@ -1,8 +1,3 @@
-local gcc_installed = vim.fn.executable("gcc")
-local clang_installed = vim.fn.executable("clang")
-local make_installed = vim.fn.executable("make")
-local fzf_installable = (gcc_installed or clang_installed) and make_installed
-
 local gen_map = require("utils.lazy").generate_map
 
 local mapb = gen_map("<leader>", "Telescope.builtin: ")
@@ -71,7 +66,6 @@ return {
 
         -- Extensions
 
-        mapex("ps", "n", function() te.sessions_picker.sessions_picker() end, ".sessions_picker: Pick sessions"),
         mapex("fc", "n", function() te.zoxide.list() end, ".zoxide: Find directory via Zoxide ([c]d)"),
         mapex("fh", "n", function() vim.cmd("Telescope frecency") end, ".frecency: Find frecency"),
     },
@@ -130,10 +124,7 @@ return {
                         },
                     },
                 },
-                sessions_picker = {
-                    sessions_dir = require("utils.common").session_dir,
-                },
-            }
+            },
         })
     end,
     dependencies = {
@@ -142,13 +133,12 @@ return {
         "BurntSushi/ripgrep",
         "nvim-telescope/telescope-symbols.nvim",
         "jvgrootveld/telescope-zoxide",
-        "JoseConseco/telescope_sessions_picker.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
-            cond = fzf_installable,
+            cond = (vim.fn.executable("gcc") == 1 or vim.fn.executable("clang") == 1) and vim.fn.executable("make") == 1,
             config = function()
-                require('telescope').load_extension('fzf')
+                require("telescope").load_extension("fzf")
             end,
         },
         {
