@@ -99,6 +99,7 @@ if [ (uname) = "Darwin" ]
     fish_add_path /opt/homebrew/opt/llvm/bin
     fish_add_path /opt/homebrew/opt/ncurses/bin
 else if [ (uname) = "Linux" ]
+	eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     alias open="xdg-open"
     alias pbcopy="xsel --clipboard --input"
 end
