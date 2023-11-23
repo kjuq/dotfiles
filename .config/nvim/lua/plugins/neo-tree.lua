@@ -4,7 +4,6 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     cmd = { "Neotree" },
-    event = { "VeryLazy" },
     keys = {
         map("i", "n", function()
             require("neo-tree.command").execute({
