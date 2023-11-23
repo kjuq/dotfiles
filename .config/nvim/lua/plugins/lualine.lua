@@ -48,9 +48,12 @@ return {
         -- Config
         local opts = {
             extensions = {
+                "aerial",
                 "lazy",
                 "man",
+                "mason",
                 "neo-tree",
+                "nvim-dap-ui",
                 "quickfix",
                 "toggleterm",
             },
