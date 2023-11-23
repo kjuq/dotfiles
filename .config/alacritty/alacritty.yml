@@ -45,7 +45,7 @@ window:
 
   padding:
     x: 6
-    y: 11
+    y: 1
 
   option_as_alt: Both
 
@@ -57,7 +57,7 @@ key_bindings:
   - { key: Minus, mods: Command, action: DecreaseFontSize }
   - { key: Equals, mods: Command|Shift, action: IncreaseFontSize }
   - { key: Equals, mods: Command, action: ResetFontSize }
-  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
+  # - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
   - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" } # ctrl-tab fix
   - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
 
