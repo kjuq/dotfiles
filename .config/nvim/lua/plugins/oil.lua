@@ -1,11 +1,10 @@
 local map = require("utils.lazy").generate_cmd_map("", "Oil: ")
-local hiddens = { "../", ".DS_Store", ".git", ".gitmodules", "node_modules" }
+local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
 return {
     "stevearc/oil.nvim",
-    lazy = false,
     keys = {
-        map("-", "n", "Oil", "Open parent directory"),
+        map("<leader>o", "n", "Oil", "Open parent directory"),
     },
     opts = {
         delete_to_trash = true,
