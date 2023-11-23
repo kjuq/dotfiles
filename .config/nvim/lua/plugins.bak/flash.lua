@@ -11,14 +11,6 @@ return {
         { "dF", mode = { "n" },     desc = "Delete to previous char" },
         { "dt", mode = { "n" },     desc = "Delete before next char" },
         { "dT", mode = { "n" },     desc = "Delete before previous char" },
-        map("<leader>af", { "n", "x", "o" }, function() require("flash").treesitter() end, "Flash Treesitter"),
-        map("<leader>s", { "n", "x", "o" }, function()
-            require("flash").jump({
-                search = { mode = "search", max_length = 0 },
-                label = { after = { 0, 0 } },
-                pattern = "^"
-            })
-        end, "Flash"),
     },
     opts = {
         labels = "abcdefghijklmnopqrstuvwxyz",
@@ -28,7 +20,7 @@ return {
         modes = {
             search = { enabled = false },
             char = {
-                multi_line = false,
+                multi_line = true,
                 highlight = { backdrop = false }
             },
             treesitter_search = {
