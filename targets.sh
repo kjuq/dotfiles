@@ -44,7 +44,7 @@ xremap
 files="
 .docker/config.json
 .clang-format
-.gnupg/gpg-agent.conf
+.gnupg/gpg-agent.conf.bak
 .ignore
 .mackup
 .mackup.cfg
