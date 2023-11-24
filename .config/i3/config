@@ -153,16 +153,18 @@ set $ws5 5
 set $ws6 6
 set $ws7 7
 set $ws8 8
+set $ws9 9
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
+bindsym $mod+Ctrl+Mod1+period workspace $ws1
+bindsym $mod+Ctrl+Mod1+comma workspace $ws2
+bindsym $mod+Ctrl+Mod1+semicolon workspace $ws3
+bindsym $mod+Ctrl+Mod1+bracketright workspace $ws4
+bindsym $mod+Ctrl+Mod1+bracketleft workspace $ws5
+bindsym $mod+Ctrl+Mod1+slash workspace $ws6
+bindsym $mod+Ctrl+Mod1+apostrophe workspace $ws7
+bindsym $mod+Ctrl+Mod1+equal workspace $ws8
+bindsym $mod+Ctrl+Mod1+minus workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -185,8 +187,8 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
+assign [class="Vivaldi"] $ws5
+assign [class="Alacritty"] $ws4
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
