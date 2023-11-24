@@ -1,8 +1,27 @@
+local virtual_text = function(enable)
+    if enable then
+        return {
+            format = function(diagnostic)
+                return string.format("%s (%s) [%s]", diagnostic.message, diagnostic.source, diagnostic.code)
+            end
+        }
+    else
+        return false
+    end
+end
+
 local vt = false -- if virtual text of diagnostics is on
+
 vim.diagnostic.config({
     signs = false,
-    virtual_text = vt,
-    float = { border = "rounded" },
+    virtual_text = virtual_text(vt),
+    float = {
+        border = "rounded",
+        header = false,
+        format = function(diagnostic)
+            return string.format("%s\n%s", diagnostic.message, diagnostic.source)
+        end
+    },
 })
 
 local callback = function(ev)
@@ -42,7 +61,7 @@ local callback = function(ev)
 
     map("n", "<leader>tv", function()
         vt = not vt
-        vim.diagnostic.config({ virtual_text = vt, })
+        vim.diagnostic.config({ virtual_text = virtual_text(vt), })
     end, "Toggle virtual text of diagnotics")
 
     -- Enable completion triggered by <c-x><c-o>
