@@ -141,10 +141,6 @@ local watcher = hs.application.watcher.new(handleGlobalEvent)
 watcher:start()
 
 
--- Simple remaps
-hs.hotkey.bind({ "cmd" }, "q", function() hs.eventtap.keyStroke("cmd", "`") end)
-hs.hotkey.bind(cmd_opt, "g", function() hs.eventtap.keyStroke("cmd", "`") end)
-
 -- Check if the file exists
 local function path_exists(path)
 	local f = io.open(path, "r")
