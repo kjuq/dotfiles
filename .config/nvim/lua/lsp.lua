@@ -19,7 +19,7 @@ vim.diagnostic.config({
         border = "rounded",
         header = false,
         format = function(diagnostic)
-            return string.format("%s\n%s", diagnostic.message, diagnostic.source)
+            return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
         end
     },
 })

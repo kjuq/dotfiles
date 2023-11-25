@@ -5,14 +5,12 @@ return {
         vim.api.nvim_create_autocmd({ "FocusLost" }, {
             group = vim.api.nvim_create_augroup("sunglasses_unfocuesd", {}),
             callback = function()
-                vim.cmd.fclose({ bang = true })
                 vim.cmd("SunglassesOn")
             end,
         })
         vim.api.nvim_create_autocmd({ "FocusGained" }, {
             group = vim.api.nvim_create_augroup("sunglasses_focused", {}),
             callback = function()
-                vim.cmd.fclose({ bang = true })
                 vim.cmd("SunglassesOff")
             end,
         })
