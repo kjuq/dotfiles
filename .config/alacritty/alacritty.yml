@@ -60,5 +60,6 @@ key_bindings:
   # - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
   - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" } # ctrl-tab fix
   - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
+  - { key: Back, mods: Control, chars: "\u0017" }
 
 # vim: set tabstop=2 :
