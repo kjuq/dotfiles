@@ -102,6 +102,8 @@ else if [ (uname) = "Linux" ]
 	eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     alias open="xdg-open"
     alias pbcopy="xsel --clipboard --input"
+
+	set --export BROWSER "/usr/bin/vivaldi"
 end
 
 # vim: set filetype=fish :
