@@ -1,6 +1,13 @@
 # Install Theme
 # `set -l D $XDG_CONFIG_HOME/alacritty/themes; and [ ! -e $D ]; and mkdir -p $D; and git clone https://github.com/alacritty/alacritty-theme $D`
 
+import:
+  - "~/.config/alacritty/macos.yml"
+  - "~/.config/alacritty/linux.yml"
+  # - "~/.config/alacritty/themes/themes/hardhacker.yaml"
+  # - "~/.config/alacritty/themes/themes/everforest_dark.yaml"
+  - "~/.config/alacritty/themes/themes/kanagawa_dragon.yaml"
+
 font:
   normal:
     family: Hack Nerd Font
@@ -18,13 +25,6 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
-  size: 12.0
-
-import:
-  # - "~/.config/alacritty/themes/themes/hardhacker.yaml"
-  # - "~/.config/alacritty/themes/themes/everforest_dark.yaml"
-  - "~/.config/alacritty/themes/themes/kanagawa_dragon.yaml"
-
 colors:
   cursor:
     cursor: "#E5E9F0"
@@ -35,10 +35,9 @@ colors:
   # bright:
   #   white:   '0xd3c6aa'
 
-
 window:
   opacity: 0.7
-  # larger size
+
   dimensions:
     columns: 220
     lines: 60
@@ -49,7 +48,6 @@ window:
 
   option_as_alt: Both
 
-
 env:
   TERM: tmux-256color
 
@@ -57,7 +55,6 @@ key_bindings:
   - { key: Minus, mods: Command, action: DecreaseFontSize }
   - { key: Equals, mods: Command|Shift, action: IncreaseFontSize }
   - { key: Equals, mods: Command, action: ResetFontSize }
-  # - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
   - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" } # ctrl-tab fix
   - { key: Tab, mods: Control|Shift, chars: "\x1b[27;6;9~" }
   - { key: Back, mods: Control, chars: "\u0017" } # Word-del fix for Linux

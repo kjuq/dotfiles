@@ -7,6 +7,8 @@ aerc/aerc.conf
 aerc/binds.conf
 aerc/stylesets
 alacritty/alacritty.yml
+alacritty/macos.yml.bak
+alacritty/linux.yml.bak
 brewfile/Brewfile
 fish/completions/po.fish
 fish/config.fish
