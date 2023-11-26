@@ -36,6 +36,7 @@ spotifyd/spotifyd.conf
 tmux/tmux.conf
 tmux/scripts
 wezterm/wezterm.lua
+xbindkeys/config
 xkeysnail
 xremap
 "
