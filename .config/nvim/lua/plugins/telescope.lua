@@ -21,7 +21,7 @@ return {
 
         -- Vim pickers
 
-        -- mapb("<KEYBIND>", "n", function() tb.oldfiles() end, "[f]ind [h]istory of files"),
+        mapb("fh", "n", function() tb.oldfiles() end, "Find old files"),
         mapb("fb", "n", function() tb.buffers() end, "Find buffers"),
         mapb("fi", "n", function() tb.help_tags() end, "Find help tags"),
         mapb("fm", "n", function() tb.marks() end, "Find marks"),
@@ -67,7 +67,6 @@ return {
         -- Extensions
 
         mapex("fc", "n", function() te.zoxide.list() end, ".zoxide: Find directory via Zoxide ([c]d)"),
-        mapex("fh", "n", function() vim.cmd("Telescope frecency") end, ".frecency: Find frecency"),
     },
     config = function()
         local actions = require("telescope.actions")
@@ -139,12 +138,6 @@ return {
             cond = (vim.fn.executable("gcc") == 1 or vim.fn.executable("clang") == 1) and vim.fn.executable("make") == 1,
             config = function()
                 require("telescope").load_extension("fzf")
-            end,
-        },
-        {
-            "nvim-telescope/telescope-frecency.nvim",
-            config = function()
-                require("telescope").load_extension("frecency")
             end,
         },
     },
