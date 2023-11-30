@@ -15,6 +15,7 @@ fish/config.fish
 fish/functions/acw.fish
 fish/functions/cplus.fish
 fish/functions/fisher_init.fish
+fish/functions/nvimcopy.fish
 fish/functions/po.fish
 git
 gitui
