@@ -1,8 +1,9 @@
 {
     "workspace.library": [
-        "/opt/homebrew/share/nvim/runtime/lua",
-        "/Users/kjuq/.config/nvim/lua",
-        "/Users/kjuq/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "${HOMEBREW_PREFIX}/share/nvim/runtime/lua",
+        "/usr/share/nvim/runtime/lua",
+        "${XDG_CONFIG_HOME}/nvim/lua",
+        "${XDG_DATA_HOME}/nvim/lazy/neodev.nvim/types/nightly",
         "${3rd}/luv/library",
     ],
     "diagnostics.globals": [
