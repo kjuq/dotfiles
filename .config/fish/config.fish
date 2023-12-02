@@ -87,7 +87,9 @@ set --local local_bin_path "$HOME/.local/bin"
 if [ ! -d "$local_bin_path" ]
 	mkdir "$local_bin_path"
 end
-fish_add_path $local_bin_path
+fish_add_path "$local_bin_path"
+
+fish_add_path "$HOME/node_modules/.bin"
 
 # OS-specific
 if [ (uname) = "Darwin" ]
@@ -100,6 +102,7 @@ else if [ (uname) = "Linux" ]
 	eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     alias open="xdg-open"
     alias pbcopy="xsel --clipboard --input"
+    alias pbpaste="xsel --clipboard --output"
 
 	set --export BROWSER "/usr/bin/vivaldi"
 end
