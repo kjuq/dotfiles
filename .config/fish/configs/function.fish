@@ -35,27 +35,7 @@ end
 
 function cplus --description="compile and execute a cpp file"
 	set --local output "/tmp/cplus_output"
-
-	# array of options
-	set --local com (
-		"g++"
-		"-std=c++20"
-		"-Wall"
-		"-Wextra"
-		"-fsanitize=address"
-		"-D_GLIBCXX_DEBUG"
-		"-D_LIBCPP_ENABLE_DEBUG_MODE"
-		"-I$HOMEBREW_PREFIX/include/"
-		"-o\"$output\""
-		"$argv"
-	)
-
-	echo $com
-	command $com
-
-	# if [ $status = 0 ]
-	# 	"$output"
-	# end
+	cpl -o "$output" "$argv"; and "$output"; and command rm "$output"
 end
 
 function po --description='copy password from password-store (OSC52 compatible)'
@@ -104,5 +84,3 @@ complete -c $PROG -f -n '__fish_pass_needs_command' -s c -l clip -d 'Put passwor
 complete -c $PROG -f -n '__fish_pass_needs_command' -a "(__fish_pass_print_entries)"
 complete -c $PROG -f -n '__fish_pass_uses_command -c' -a "(__fish_pass_print_entries)"
 complete -c $PROG -f -n '__fish_pass_uses_command --clip' -a "(__fish_pass_print_entries)"
-
-# po completion END
