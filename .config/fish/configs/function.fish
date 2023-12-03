@@ -45,14 +45,14 @@ function cplus --description="Compile and execute a cpp file"
 end
 
 if command --search --quiet oj
-    function oj-test-cpp --description="Test a cpp file with oj"
+    function cpp-test --description="Test a cpp file with oj"
         if test (count $argv) -ne 1
             echo -e "Error: Invalid argument.\nUsage: `oj-test-cpp main.cpp`"
             return 1
         end
         cpl "$argv[1]"; and oj test; and command rm ./a.out
     end
-    function oj-test-python --description="Test a python file with oj"
+    function python-test --description="Test a python file with oj"
         if test (count $argv) -ne 1
             echo -e "Error: Invalid argument.\nUsage: `oj-test-python main.py`"
             return 1
@@ -60,26 +60,26 @@ if command --search --quiet oj
         oj test -c "python3 $argv[1]"
     end
     if command --search --quiet acc
-        function oj-submit-cpp --description="Test then submit a cpp file"
+        function cpp-submit --description="Test then submit a cpp file"
             if test (count $argv) -ne 1
                 echo -e "Error: Invalid argument.\nUsage: `oj-submit-cpp main.cpp`"
                 return 1
             end
-            oj-test-cpp "$argv[1]"; and acc submit "$argv[1]"
+            cpp-test "$argv[1]"; and acc submit "$argv[1]"
         end
-        function oj-submit-python --description="Test then submit a python file in CPython"
+        function python-submit --description="Test then submit a python file in CPython"
             if test (count $argv) -ne 1
                 echo -e "Error: Invalid argument.\nUsage: `oj-submit-python main.py`"
                 return 1
             end
-            oj-test-python "$argv[1]"; and acc submit "$argv[1]" -- --language 5055
+            python-test "$argv[1]"; and acc submit "$argv[1]" -- --language 5055
         end
-        function oj-submit-pypy --description="Test then submit a python file in PyPy"
+        function pypy-submit --description="Test then submit a python file in PyPy"
             if test (count $argv) -ne 1
                 echo -e "Error: Invalid argument.\nUsage: `oj-submit-pypy main.py`"
                 return 1
             end
-            oj-test-python "$argv[1]"; and acc submit "$argv[1]" -- --guess-python-interpreter pypy
+            python-test "$argv[1]"; and acc submit "$argv[1]" -- --guess-python-interpreter pypy
         end
     end
 end
