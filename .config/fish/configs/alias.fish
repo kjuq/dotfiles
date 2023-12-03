@@ -38,12 +38,8 @@ if command --search --quiet oj
     end
 end
 
-if not command --search --quiet python
-    alias python="python3"
-end
-if not command --search --quiet pip
-    alias pip="pip3"
-end
+alias python="python3"
+alias pip="pip3"
 
 alias cpl="c++ -std=c++20 -Wall -Wextra -fsanitize=address -D_GLIBCXX_DEBUG -D_LIBCPP_ENABLE_DEBUG_MODE -I$HOMEBREW_PREFIX/include/"
 
