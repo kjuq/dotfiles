@@ -10,13 +10,7 @@ alacritty/alacritty.yml
 alacritty/macos.yml.bak
 alacritty/linux.yml.bak
 brewfile/Brewfile
-fish/completions/po.fish
 fish/config.fish
-fish/functions/acw.fish
-fish/functions/cplus.fish
-fish/functions/fisher_init.fish
-fish/functions/nvimcopy.fish
-fish/functions/po.fish
 git
 gitui
 hammerspoon/init.lua
