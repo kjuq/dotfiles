@@ -22,7 +22,7 @@ end
 
 if command --search --quiet trash
     alias dl="trash -r"
-    alias rm="echo '\'rm\' is deprecated. Use \'dl\' to move them to trash.'"
+    alias rm="echo '`rm` is dangerous so use `dl` instead.'"
 end
 
 if command --search --quiet neomutt
@@ -30,8 +30,12 @@ if command --search --quiet neomutt
 end
 
 if command --search --quiet oj
+    alias oj-test-cpp="cpl main.cpp; and oj test; and command rm ./a.out"
     alias oj-test-python="oj test -c 'python3 main.py'"
-    alias oj-submit-python="oj-test-python; and acc submit main.py"
+    if command --search --quiet acc
+        alias oj-submit-cpp="oj-test-cpp; and acc submit main.cpp"
+        alias oj-submit-python="oj-test-python; and acc submit main.py"
+    end
 end
 
 if not command --search --quiet python
@@ -40,6 +44,8 @@ end
 if not command --search --quiet pip
     alias pip="pip3"
 end
+
+alias cpl="c++ -std=c++20 -Wall -Wextra -fsanitize=address -D_GLIBCXX_DEBUG -D_LIBCPP_ENABLE_DEBUG_MODE -I$HOMEBREW_PREFIX/include/"
 
 if [ (uname) = "Linux" ]
     alias open="xdg-open"
