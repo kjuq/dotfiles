@@ -86,6 +86,7 @@ return {
                         ["<M-s>"] = actions_layout.toggle_preview
                     },
                 },
+                layout_strategy = "flex",
                 scroll_strategy = "limit",
                 path_display = { truncate = 3 },
                 preview = {
