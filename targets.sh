@@ -16,8 +16,6 @@ git
 gitui
 hammerspoon/init.lua
 i3/config
-karabiner/assets
-karabiner/karabiner.json
 kitty/kitty.conf
 lazygit/config.yml
 lesskey
@@ -42,8 +40,6 @@ files="
 .clang-format
 .gnupg/gpg-agent.conf.bak
 .ignore
-.mackup
-.mackup.cfg
 .ssh/config
 .w3m/keymap
 scripts
