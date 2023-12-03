@@ -29,15 +29,6 @@ if command --search --quiet neomutt
     alias mutt="cd $XDG_CACHE_HOME/neomutt; and env TERM=screen-256color neomutt; cd -"
 end
 
-if command --search --quiet oj
-    alias oj-test-cpp="cpl main.cpp; and oj test; and command rm ./a.out"
-    alias oj-test-python="oj test -c 'python3 main.py'"
-    if command --search --quiet acc
-        alias oj-submit-cpp="oj-test-cpp; and acc submit main.cpp"
-        alias oj-submit-python="oj-test-python; and acc submit main.py"
-    end
-end
-
 alias python="python3"
 alias pip="pip3"
 
