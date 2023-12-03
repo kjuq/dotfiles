@@ -15,7 +15,3 @@ end
 
 fish_add_path "$local_bin_path"
 fish_add_path "$HOME/node_modules/.bin"
-fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
-fish_add_path "$HOMEBREW_PREFIX/opt/ruby/bin"
-fish_add_path "$HOMEBREW_PREFIX/opt/llvm/bin"
-fish_add_path "$HOMEBREW_PREFIX/opt/ncurses/bin"
