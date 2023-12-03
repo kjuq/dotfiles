@@ -21,9 +21,9 @@ function nvimcopy --description="Open nvim for copying text"
 	nvim -c "startinsert" "$tmp"; and [ -e "$tmp" ]; and head -c -1 "$tmp" | pbcopy; and command rm "$tmp"
 end
 
-function acw --description='Usage: acw abc290 a'
+function acw --description="View a problem on AtCoder"
     if test (count $argv) -ne 2
-        echo "Not enough arguments. Usage: acw abc290 a"
+        echo -e "Error: Invalid argument.\nUsage: `acw abc290 a`"
         return 1
     end
     set --local sed_str          "s/\\\leq/<=/g;"
@@ -33,18 +33,18 @@ function acw --description='Usage: acw abc290 a'
     w3m "https://atcoder.jp/contests/$argv[1]/tasks/$argv[1]_$argv[2]" | sed "$sed_str" | less
 end
 
-function cplus --description="compile and execute a cpp file"
+function cplus --description="Compile and execute a cpp file"
 	set --local output "/tmp/cplus_output"
 	cpl -o "$output" "$argv"; and "$output"; and command rm "$output"
 end
 
-function po --description='copy password from password-store (OSC52 compatible)'
+function po --description="Copy password from password-store (OSC52 compatible)"
 	command pass show -c "$argv"; and pbpaste | osc52
 end
 
 # po completion
 
-set -l PROG 'po'
+set -l PROG "po"
 
 function __fish_pass_get_prefix
     if set -q PASSWORD_STORE_DIR
@@ -73,14 +73,14 @@ function __fish_pass_print
     set -l strip $argv[2]
     set -l prefix (__fish_pass_get_prefix)
     set -l matches $prefix/**$ext
-    printf '%s\n' $matches | sed "s#$prefix/\(.*\)$strip#\1#"
+    printf "%s\n" $matches | sed "s#$prefix/\(.*\)$strip#\1#"
 end
 
 function __fish_pass_print_entries
     __fish_pass_print ".gpg" ".gpg"
 end
 
-complete -c $PROG -f -n '__fish_pass_needs_command' -s c -l clip -d 'Put password in clipboard'
-complete -c $PROG -f -n '__fish_pass_needs_command' -a "(__fish_pass_print_entries)"
-complete -c $PROG -f -n '__fish_pass_uses_command -c' -a "(__fish_pass_print_entries)"
-complete -c $PROG -f -n '__fish_pass_uses_command --clip' -a "(__fish_pass_print_entries)"
+complete -c $PROG -f -n "__fish_pass_needs_command" -s c -l clip -d "Put password in clipboard"
+complete -c $PROG -f -n "__fish_pass_needs_command" -a "(__fish_pass_print_entries)"
+complete -c $PROG -f -n "__fish_pass_uses_command -c" -a "(__fish_pass_print_entries)"
+complete -c $PROG -f -n "__fish_pass_uses_command --clip" -a "(__fish_pass_print_entries)"
