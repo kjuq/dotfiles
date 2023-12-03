@@ -1,0 +1,10 @@
+CompileFlags:
+  Add:
+    - -std=c++23
+    - -Wall
+    - -Wextra
+    - -fsanitize=address
+    - -D_GLIBCXX_DEBUG
+    - -D_LIBCPP_ENABLE_DEBUG_MODE
+    - -I/home/linuxbrew/.linuxbrew/include/
+    - -I/opt/homebrew/include/
