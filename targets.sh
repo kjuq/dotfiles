@@ -10,6 +10,7 @@ alacritty/alacritty.yml
 alacritty/macos.yml.bak
 alacritty/linux.yml.bak
 brewfile/Brewfile
+clangd/config.yaml
 fish/config.fish
 fish/configs
 git
@@ -43,5 +44,4 @@ files="
 .ssh/config
 .w3m/keymap
 scripts
-Library/Preferences/clangd/config.yaml
 "
