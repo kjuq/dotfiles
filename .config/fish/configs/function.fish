@@ -16,12 +16,18 @@ function fisher_init
     set --export pure_color_current_directory normal # fisher_init to take effect
 end
 
-function nvimcopy --description="Open nvim for copying text"
-	set --local tmp "/tmp/clip_tmp_nae18aA6ARaiOF"
-	nvim -c "startinsert" "$tmp"; and [ -e "$tmp" ]; and head -c -1 "$tmp" | pbcopy; and command rm "$tmp"
+if command --search --quiet nvim
+    function nvimcopy --description="Open nvim for copying text"
+        set --local tmp "/tmp/clip_tmp_nae18aA6ARaiOF"
+        nvim -c "startinsert" "$tmp"; and [ -e "$tmp" ]; and head -c -1 "$tmp" | pbcopy; and command rm "$tmp"
+    end
 end
 
 function acw --description="View a problem on AtCoder"
+    if not command --search --quiet w3m
+        echo "Error: `w3m` not found"
+        return 1
+    end
     if test (count $argv) -ne 2
         echo -e "Error: Invalid argument.\nUsage: `acw abc290 a`"
         return 1
