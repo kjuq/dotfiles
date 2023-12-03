@@ -5,10 +5,10 @@ alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
 alias ........="cd ../../../../../../.."
 
-if command --search --quiet exa
-    alias ls="exa --classify --group-directories-first --icons"
-    alias exat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
-    alias exata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
+if command --search --quiet eza
+    alias ls="eza --classify --group-directories-first --icons"
+    alias ezat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
+    alias ezata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
 else
     alias ls="ls --color=auto --classify --group-directories-first"
 end
