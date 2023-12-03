@@ -107,4 +107,32 @@ else if [ (uname) = "Linux" ]
 	set --export BROWSER "/usr/bin/vivaldi"
 end
 
-# vim: set filetype=fish :
+# functions
+
+function fisher_init
+    # The deletion below may be unnecessary when setting up a completely new environment
+    set --local fisher_completions_path "$XDG_CONFIG_HOME/fish/local_settings.fish"
+    if [ -f $fisher_completions_path ]
+        command rm $fisher_completions_path
+    end
+
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source; \
+        and fisher install jorgebucaran/fisher
+
+    fisher install rafaelrinaldi/pure
+    fisher install decors/fish-colored-man
+    fisher install kjuq/fish-pip-completion
+    fisher install PatrickF1/fzf.fish
+
+    set --erase pure_color_current_directory
+    set --universal pure_color_current_directory normal
+end
+
+function nvimcopy --description="Open nvim for copying text"
+	set --local tmp "/tmp/clip_tmp_nae18aA6ARaiOF"
+	nvim -c "startinsert" "$tmp"; and [ -e "$tmp" ]; and head -c -1 "$tmp" | pbcopy; and command rm "$tmp"
+end
+
+function po --description='copy password from password-store (OSC52 compatible)'
+	command pass show -c "$argv"; and pbpaste | osc52
+end
