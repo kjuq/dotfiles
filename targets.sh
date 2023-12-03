@@ -9,7 +9,6 @@ aerc/stylesets
 alacritty/alacritty.yml
 alacritty/macos.yml.bak
 alacritty/linux.yml.bak
-atcoder-cli-nodejs/config.json
 brewfile/Brewfile
 fish/config.fish
 fish/configs
@@ -48,6 +47,5 @@ files="
 .ssh/config
 .w3m/keymap
 scripts
-Library/Preferences/atcoder-cli-nodejs/config.json
 Library/Preferences/clangd/config.yaml
 "
