@@ -44,13 +44,13 @@ return {
                         }),
                     },
                 })
-                local macos_python_path = "/opt/homebrew/bin/python3"
+                local python_path = os.getenv("HOMEBREW_PREFIX") .. "/bin/python3"
                 lspconfig.pylsp.setup({
                     settings = {
                         pylsp = {
                             plugins = {
                                 jedi = {
-                                    environment = macos_python_path,
+                                    environment = python_path,
                                 }
                             }
                         }
