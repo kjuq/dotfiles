@@ -11,6 +11,7 @@ alacritty/macos.yml.bak
 alacritty/linux.yml.bak
 brewfile/Brewfile
 fish/config.fish
+fish/configs
 git
 gitui
 hammerspoon/init.lua
