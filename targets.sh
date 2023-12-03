@@ -28,7 +28,6 @@ neomutt/signature
 nano/nanorc
 nvim
 pycodestyle
-spotify-tui/config.yml
 spotifyd/spotifyd.conf
 tmux/tmux.conf
 tmux/scripts
