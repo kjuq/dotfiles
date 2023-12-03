@@ -50,14 +50,14 @@ if command --search --quiet oj
             echo -e "Error: Invalid argument.\nUsage: `oj-test-cpp main.cpp`"
             return 1
         end
-        cpl "$argv[1]"; and oj test; and command rm ./a.out
+        cpl "$argv[1]"; and oj test --directory "tests/"; and command rm ./a.out
     end
     function python-test --description="Test a python file with oj"
         if test (count $argv) -ne 1
             echo -e "Error: Invalid argument.\nUsage: `oj-test-python main.py`"
             return 1
         end
-        oj test -c "python3 $argv[1]"
+        oj test --directory "tests/" -c "python3 $argv[1]"
     end
     if command --search --quiet acc
         function cpp-submit --description="Test then submit a cpp file"
