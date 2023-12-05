@@ -1,11 +1,16 @@
 # Make symlink for MacOS
 # `bash -c 'dst="$HOME/Library/Preferences/clangd" && mkdir -p $dst && ln -s "$XDG_CONFIG_HOME/clangd/config.yaml" "$dst/config.yaml"'`
+If:
+  PathMatch: .*\.cpp
 CompileFlags:
   Add:
     - -std=c++23
+    - -I/home/linuxbrew/.linuxbrew/include/
+    - -I/opt/homebrew/include/
+---
+CompileFlags:
+  Add:
     - -Wall
     - -Wextra
     - -D_GLIBCXX_DEBUG
     - -D_LIBCPP_ENABLE_DEBUG_MODE
-    - -I/home/linuxbrew/.linuxbrew/include/
-    - -I/opt/homebrew/include/
