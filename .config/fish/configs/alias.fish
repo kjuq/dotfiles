@@ -9,8 +9,10 @@ if command --search --quiet eza
     alias ls="eza --classify --group-directories-first --icons"
     alias ezat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
     alias ezata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
-else
+else if [ (uname) = "Linux" ]
     alias ls="ls --color=auto --classify --group-directories-first"
+else if [ (uname) = "Darwin" ]
+    alias ls="ls -GF"
 end
 alias la="ls --all"
 alias lla="ll --all"
