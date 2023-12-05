@@ -1,3 +1,4 @@
+# `ln -s ./macos.yml.bak ./macos.yml`
 font:
   size: 18.0
 key_bindings:
