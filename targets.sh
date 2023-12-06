@@ -20,6 +20,7 @@ i3/config
 kitty/kitty.conf
 lazygit/config.yml
 lesskey
+mimeapps.list
 neomutt/common_gmail
 neomutt/common_outlook
 neomutt/mailcap
