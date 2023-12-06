@@ -7,7 +7,7 @@ return {
             options = {
                 numbers = "ordinal",
                 diagnostics = "nvim_lsp",
-                always_show_bufferline = true,
+                always_show_bufferline = false,
                 separator_style = { "", "" }, -- "slant", "slope", "thick", "thin"
                 indicator = {
                     style = "none",           -- "icon", "underline", "none"
