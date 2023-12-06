@@ -7,7 +7,90 @@ return {
 
         local cmp = require("cmp")
         local types = require("cmp.types")
-        local modes_is = { "i", "s" }
+
+        local select_next = function()
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
+            else
+                cmp.complete()
+            end
+        end
+
+        local select_prev = function()
+            if cmp.visible() then
+                cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
+            else
+                cmp.complete()
+            end
+        end
+
+        local abort = function(fallback)
+            if cmp.visible() then
+                cmp.abort()
+            else
+                fallback()
+            end
+        end
+
+        local scroll_docs_up = function(fallback)
+            if cmp.visible() then
+                cmp.scroll_docs(-4)
+            else
+                fallback()
+            end
+        end
+
+        local scroll_docs_down = function(fallback)
+            if cmp.visible() then
+                cmp.scroll_docs(4)
+            else
+                fallback()
+            end
+        end
+
+        local confirm = function(fallback)
+            if cmp.visible() then
+                cmp.confirm({ select = false })
+            else
+                fallback()
+            end
+        end
+
+        local cmd_history_next = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
+            else
+                fallback()
+            end
+        end
+
+        local cmd_history_prev = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
+            else
+                fallback()
+            end
+        end
+
+        local mapping_insert = {
+            ["<C-n>"] = cmp.mapping(select_next, { "i", "s" }),
+            ["<C-p>"] = cmp.mapping(select_prev, { "i", "s" }),
+            ["<C-u>"] = cmp.mapping(scroll_docs_up, { "i", "s" }),
+            ["<C-d>"] = cmp.mapping(scroll_docs_down, { "i", "s" }),
+            ["<C-l>"] = cmp.mapping(abort, { "i", "s" }),
+            ["<C-e>"] = cmp.mapping(abort, { "i", "s" }),
+            ["<C-y>"] = cmp.mapping(confirm, { "i", "s" }),
+        }
+
+        local mapping_cmdline = {
+            ["<C-n>"] = cmp.mapping(cmd_history_next, { "c" }),
+            ["<C-p>"] = cmp.mapping(cmd_history_prev, { "c" }),
+            ["<Tab>"] = cmp.mapping(select_next, { "c" }),
+            ["<S-Tab>"] = cmp.mapping(select_prev, { "c" }),
+            ["<C-l>"] = cmp.mapping(abort, { "c" }),
+            ["<C-e>"] = cmp.mapping(abort, { "c" }),
+            ["<C-y>"] = cmp.mapping(confirm, { "c" }),
+        }
 
         cmp.setup({
             -- completion = { autocomplete = false }, -- `true` is invalid option
@@ -15,52 +98,13 @@ return {
 
             snippet = { expand = function(args) require("snippy").expand_snippet(args.body) end },
 
-            mapping = cmp.mapping.preset.insert({
-                ["<C-n>"] = cmp.mapping(function()
-                    if cmp.visible() then
-                        cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
-                    else
-                        cmp.complete()
-                    end
-                end, modes_is),
+            mapping = mapping_insert,
 
-                ["<C-p>"] = cmp.mapping(function()
-                    if cmp.visible() then
-                        cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
-                    else
-                        cmp.complete()
-                    end
-                end, modes_is),
-
-                ["<C-l>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.abort()
-                    else
-                        fallback()
-                    end
-                end, modes_is),
-
-                ["<C-u>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.scroll_docs(-4)
-                    else
-                        fallback()
-                    end
-                end, modes_is),
-
-                ["<C-d>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.scroll_docs(4)
-                    else
-                        fallback()
-                    end
-                end, modes_is),
-            }),
             sources = cmp.config.sources({
                 pcall(require, "plugins.skkeleton")
-                --[[-]] and require("plugins.skkeleton").cond
-                --[[-]] and { name = "skkeleton" }
-                --[[-]] or {},
+                --[[]] and require("plugins.skkeleton").cond
+                --[[]] and { name = "skkeleton" }
+                --[[]] or {},
             }, {
                 { name = "copilot" }, --,  priority = -1 },
                 { name = "path" },
@@ -95,7 +139,7 @@ return {
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
         cmp.setup.cmdline({ "/", "?" }, {
             completion = { autocomplete = false },
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = mapping_cmdline,
             sources = {
                 { name = "buffer" },
             },
@@ -104,7 +148,7 @@ return {
         -- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore).
         cmp.setup.cmdline(":", {
             completion = { autocomplete = false },
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = mapping_cmdline,
             sources = {
                 { name = "path" },
                 { name = "cmdline" },
