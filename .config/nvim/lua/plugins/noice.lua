@@ -5,7 +5,7 @@ local map = function(suffix, mode, func, comment)
     result.expr = true
     return result
 end
-local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope.extensions: ")
+local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope: ")
 
 return {
     "folke/noice.nvim",

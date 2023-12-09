@@ -1,10 +1,10 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>", "Vim-Startuptime: ")
+local map = require("utils.lazy").generate_cmd_map("<leader>", "Startuptime: ")
 
 return {
     "dstein64/vim-startuptime",
     cmd = { "StartupTime" },
     keys = {
-        map("av", "n", "StartupTime", "Calculate startup time")
+        map("av", "n", "StartupTime", "Calculate the time")
     },
     config = function()
         vim.g.startuptime_tries = 10

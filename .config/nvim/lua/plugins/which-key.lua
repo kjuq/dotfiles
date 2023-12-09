@@ -8,18 +8,21 @@ local toggle = function()
     else
         print("Which-key is active")
         vim.o.timeout = true
-        vim.o.timeoutlen = 500
+        vim.o.timeoutlen = 700
     end
     active = not active
 end
 
 return {
     "folke/which-key.nvim",
+    event = { "VeryLazy" },
     keys = {
-        { "<leader>aw", mode = { "n" }, toggle, desc = "Which-key: Toggle" },
-        map("pw", "n", "WhichKey", "[p]ick all mappings ([w]hich)"),
+        { "<leader>aw", mode = { "n" }, toggle,                             desc = "Which-key: Toggle" },
+        { "<leader>aW", mode = { "n" }, function() vim.cmd("WhichKey") end, desc = "Which-key: Show" },
     },
     opts = function()
+        toggle()
+
         require("which-key").register({
             ["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
             ["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },

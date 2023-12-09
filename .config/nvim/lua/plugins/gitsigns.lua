@@ -15,49 +15,39 @@ return {
             end
 
             -- Navigation
-            map(
-                "n", "]g",
-                function()
-                    if vim.wo.diff then
-                        return "]g"
-                    end
-                    vim.schedule(function() gs.next_hunk() end)
-                    return "<Ignore>"
-                end,
-                "Go to next hunk",
-                { expr = true }
-            )
+            map("n", "]g", function()
+                if vim.wo.diff then
+                    return "]g"
+                end
+                vim.schedule(function() gs.next_hunk() end)
+                return "<Ignore>"
+            end, "Go to next hunk", { expr = true })
 
-            map(
-                "n", "[g",
-                function()
-                    if vim.wo.diff then
-                        return "[g"
-                    end
-                    vim.schedule(function() gs.prev_hunk() end)
-                    return "<Ignore>"
-                end,
-                "Go to next hunk",
-                { expr = true }
-            )
+            map("n", "[g", function()
+                if vim.wo.diff then
+                    return "[g"
+                end
+                vim.schedule(function() gs.prev_hunk() end)
+                return "<Ignore>"
+            end, "Go to next hunk", { expr = true })
 
             -- Actions
-            map("n", "<leader>gh", gs.stage_hunk, "Stage [h]unk")
-            map("n", "<leader>gr", gs.reset_hunk, "[r]eset hunk")
-            map("v", "<leader>gh", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Stage [h]unk")
-            map("v", "<leader>gr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end, "[r]eset hunk")
-            map("n", "<leader>gs", gs.stage_buffer, "[s]tage buffer")
-            map("n", "<leader>gu", gs.undo_stage_hunk, "[u]ndo stage hunk")
-            map("n", "<leader>gR", gs.reset_buffer, "[R]eset buffer")
-            map("n", "<leader>gp", gs.preview_hunk, "[p]review hunk")
-            map("n", "<leader>gb", function() gs.blame_line { full = true } end, "[b]lame line")
-            map("n", "<leader>gT", gs.toggle_current_line_blame, "[T]oggle current line blame")
+            map("n", "<leader>gh", gs.stage_hunk, "Stage hunk")
+            map("n", "<leader>gr", gs.reset_hunk, "Reset hunk")
+            map("v", "<leader>gh", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Stage hunk")
+            map("v", "<leader>gr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Reset hunk")
+            map("n", "<leader>gs", gs.stage_buffer, "Stage buffer")
+            map("n", "<leader>gu", gs.undo_stage_hunk, "Undo stage hunk")
+            map("n", "<leader>gR", gs.reset_buffer, "Reset buffer")
+            map("n", "<leader>gp", gs.preview_hunk, "Preview hunk")
+            map("n", "<leader>gb", function() gs.blame_line { full = true } end, "Blame line")
+            map("n", "<leader>gT", gs.toggle_current_line_blame, "Toggle current line blame")
             map("n", "<leader>gd", gs.diffthis, "Diff this")
             map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff this \"~\" <- ?")
-            map("n", "<leader>gt", gs.toggle_deleted, "[t]oggle deleted")
+            map("n", "<leader>gt", gs.toggle_deleted, "Toggle deleted")
 
             -- Text object
-            map({ "o", "x" }, "<leader>gS", ":<C-U>Gitsigns select_hunk<CR>", "[s]elect hunk")
+            map({ "o", "x" }, "<leader>gS", ":<C-U>Gitsigns select_hunk<CR>", "Select hunk")
         end
     },
 }

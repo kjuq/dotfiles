@@ -14,7 +14,7 @@ return {
                     print("Telescope is not installed")
                 end
             end,
-            desc = "Telescope.extensions: [p]ick [p]rojects",
+            desc = "Project: Pick projects",
         },
     },
     opts = {

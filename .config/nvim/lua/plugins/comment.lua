@@ -1,18 +1,8 @@
 return {
     'numToStr/Comment.nvim',
     keys = {
-        {
-            "gc",
-            mode = { "n", "x" },
-            desc = "Comment.nvim: add line [c]omment(s)",
-        },
-        {
-            "gb",
-            mode = { "n", "x" },
-            desc = "Comment.nvim: add [b]lock comment(s)",
-        },
+        { "gc", mode = { "n", "x" }, desc = "Comment: add line comment", },
+        { "gb", mode = { "n", "x" }, desc = "Comment: add block comments", },
     },
     opts = {},
 }
-
-
