@@ -5,7 +5,7 @@ return {
     "stevearc/oil.nvim",
     event = { "VeryLazy" },
     keys = {
-        map("<leader>o", "n", "Oil", "Open parent directory"),
+        map("<leader>o", "n", "Oil", "Open"),
     },
     opts = {
         delete_to_trash = true,

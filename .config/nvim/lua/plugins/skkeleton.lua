@@ -14,8 +14,8 @@ return {
     cond = vim.fn.executable("deno") ~= 0,
     event = { "InsertEnter" },
     keys = {
-        { "<C-Space>",  mode = { "i", "c" }, "<Plug>(skkeleton-enable)", desc = "Skkeleton: Enable",              noremap = false, silent = true },
-        { "<leader>aj", mode = { "n" },      toggle_japanese,            desc = "Skkeleton: Toggle Japanese mode" },
+        { "<C-Space>",  mode = { "i", "c" }, "<Plug>(skkeleton-enable)", desc = "Skkeleton: Enable",        noremap = false, silent = true },
+        { "<leader>aj", mode = { "n" },      toggle_japanese,            desc = "Skkeleton: Toggle JP mode" },
     },
     config = function()
         local jisyo_l = skk.jisyo_l

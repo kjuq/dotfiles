@@ -43,18 +43,18 @@ map("n", "<C-Tab>", vim.cmd.bnext, { silent = true, desc = "Go to the next buffe
 map("n", "<C-S-Tab>", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
 
 -- Frequently used keymaps
-map("n", "<leader>w", vim.cmd.write, { silent = true, desc = "Write to the file" })
-map("n", "<leader>W", function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write to the file without format" })
-map("n", "<leader>q", vim.cmd.quit, { silent = true, desc = "Quit the current window" })
-map("n", "<leader>Q", vim.cmd.quitall, { silent = true, desc = "Quit all windows" })
-map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch windows" })
+map("n", "<leader>w", vim.cmd.write, { silent = true, desc = "Write" })
+map("n", "<leader>W", function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write w/o format" })
+map("n", "<leader>q", vim.cmd.quit, { silent = true, desc = "Quit" })
+map("n", "<leader>Q", vim.cmd.quitall, { silent = true, desc = "Quit all" })
+map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
 -- Center cursor when searching
 map("n", "n", "nzz", { silent = true, desc = 'Repeat the latest search' })
 map("n", "N", "Nzz", { silent = true, desc = 'Repeat the latest search in opposite direction' })
 
 -- Comfortable buffer deletion
-map("n", "<leader>x", vim.cmd.bdelete, { silent = true, desc = "Delete a current buffer" })
+map("n", "<leader>x", vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
 map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
     silent = true,
     desc = "Force delete a current buffer"
@@ -81,7 +81,7 @@ end, { silent = true })
 map({ "n" }, "<CR>", function() return vim.v.count ~= 0 and "G" or "<CR>" end, { expr = true, silent = true })
 
 -- Diagnostics
-map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostics" })
-map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostics" })
-map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics" })
+map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostics" })
+map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostics" })
 map("n", "<leader>tq", vim.diagnostic.setloclist, { desc = "Set diagnostics into loclist" })

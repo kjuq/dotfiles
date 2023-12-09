@@ -12,7 +12,7 @@ return {
                 toggle = true,
                 reveal_force_cwd = true,
             })
-        end, "Open a floating window"),
+        end, "Open"),
         map("at", "n", function()
             require("neo-tree.command").execute({
                 source = "filesystem",
@@ -20,7 +20,7 @@ return {
                 toggle = false,
                 reveal_force_cwd = true,
             })
-        end, "Open a file window on left"),
+        end, "Open on left"),
         map("ag", "n", function()
             require("neo-tree.command").execute({
                 source = "git_status",
@@ -28,7 +28,7 @@ return {
                 toggle = false,
                 reveal_force_cwd = true,
             })
-        end, "Open a git window on left"),
+        end, "Open git on left"),
         map("ab", "n", function()
             require("neo-tree.command").execute({
                 source = "buffers",
@@ -36,7 +36,7 @@ return {
                 toggle = false,
                 reveal_force_cwd = true,
             })
-        end, "Open a buffer window on left"),
+        end, "Open buffer on left"),
     },
     opts = {
         close_if_last_window = true,

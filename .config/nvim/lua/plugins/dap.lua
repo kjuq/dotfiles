@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_map("<leader>d", "Nvim-dap: ")
+local map = require("utils.lazy").generate_map("<leader>d", "Dap: ")
 
 return {
     "mfussenegger/nvim-dap",
@@ -55,7 +55,7 @@ return {
         {
             "rcarriga/nvim-dap-ui",
             keys = {
-                { "<leader>dd", function() require("dapui").toggle() end, desc = "Nvim-dap-ui: Toggle" },
+                map("d", "n", function() require("dapui").toggle() end, "Toggle UI"),
             },
             config = function()
                 local dap, dapui = require("dap"), require("dapui")
