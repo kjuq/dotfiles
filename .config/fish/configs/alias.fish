@@ -34,7 +34,7 @@ end
 alias python="python3"
 alias pip="pip3"
 
-alias cpl="c++ -std=c++23 -Wall -Wextra -D_GLIBCXX_DEBUG -D_LIBCPP_ENABLE_DEBUG_MODE -I$HOMEBREW_PREFIX/include/"
+alias cpl="c++ -std=c++23 -Wall -Wextra -D_GLIBCXX_DEBUG -D_LIBCPP_ENABLE_DEBUG_MODE"
 
 if [ (uname) = "Linux" ]
     alias open="xdg-open"
