@@ -33,7 +33,7 @@ return {
         end
 
         local scroll_docs_up = function(fallback)
-            if cmp.visible() then
+            if cmp.visible_docs() then
                 cmp.scroll_docs(-4)
             else
                 fallback()
@@ -41,7 +41,7 @@ return {
         end
 
         local scroll_docs_down = function(fallback)
-            if cmp.visible() then
+            if cmp.visible_docs() then
                 cmp.scroll_docs(4)
             else
                 fallback()
@@ -93,7 +93,7 @@ return {
         }
 
         cmp.setup({
-            -- completion = { autocomplete = false }, -- `true` is invalid option
+            completion = { autocomplete = false }, -- `true` is invalid option
             experimental = { ghost_text = true },
 
             snippet = { expand = function(args) require("snippy").expand_snippet(args.body) end },
