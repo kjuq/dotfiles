@@ -68,6 +68,11 @@ Config = {
 			mods = "CMD|SHIFT",
 			action = wezterm.action.IncreaseFontSize,
 		},
+		{
+			key = "Backspace",
+			mods = "CMD",
+			action = wezterm.action.SendKey({ key = "u", mods = "CTRL" }),
+		},
 	},
 }
 
