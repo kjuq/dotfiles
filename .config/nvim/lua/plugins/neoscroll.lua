@@ -1,7 +1,7 @@
 local map = require("utils.lazy").generate_map("", "Neoscroll: ")
 local nx = { "n", "x" }
 
-local duration = 10
+local duration = 25
 
 return {
     "karb94/neoscroll.nvim",
