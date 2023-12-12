@@ -19,12 +19,7 @@ end
 if command --search --quiet nvim
     function nvimcopy --description="Open nvim for copying text"
         set --local tmp "/tmp/clip_tmp_nae18aA6ARaiOF"
-        if [ (uname) = "Darwin" ]
-            set --function head "ghead"
-        else
-            set --function head "head"
-        end
-        nvim -c "startinsert" "$tmp"; and [ -e "$tmp" ]; and "$head" -c -1 "$tmp" | pbcopy; and command rm "$tmp"
+        nvim -c "startinsert" "$tmp"; and [ -e "$tmp" ]; and head -c -1 "$tmp" | pbcopy; and command rm "$tmp"
     end
 end
 
