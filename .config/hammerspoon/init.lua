@@ -28,13 +28,20 @@ local function hideAllApps()
 	end
 end
 
-toggleApp("System Settings", cmd_opt_ctrl, ";")
-toggleApp("Safari", cmd_opt_ctrl, ",")
+toggleApp("System Settings", cmd_opt_ctrl, ",")
+toggleApp("Safari", cmd_opt_ctrl, ".")
 toggleApp("Alacritty", cmd_opt_ctrl, "]")
 toggleApp("Vivaldi", cmd_opt_ctrl, "[")
 toggleApp("Wezterm", cmd_opt_ctrl, "/")
 hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 toggleApp("Finder", cmd_opt_ctrl, "=")
+
+hs.hotkey.bind(cmd_opt_ctrl, "`", function()
+	local task = hs.task.new("/opt/homebrew/bin/fish", nil, { "-c", "~/scripts/floatingnvim.sh", })
+	task:start()
+	task:waitUntilExit()
+	hs.eventtap.keyStroke({ "cmd" }, "v")
+end)
 
 -- Window movement
 -- https://qiita.com/haruyama480/items/bf9e6a42fedbdbbaf438
