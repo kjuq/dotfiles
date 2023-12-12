@@ -164,7 +164,7 @@ bindsym $mod+Ctrl+Mod1+apostrophe workspace $ws7
 bindsym $mod+Ctrl+Mod1+equal workspace $ws8
 bindsym $mod+Ctrl+Mod1+minus workspace $ws9
 
-bindsym $mod+Ctrl+Mod1+grave exec $HOME/scripts/floatingnvim.sh
+bindsym $mod+Ctrl+Mod1+grave exec "$HOME/scripts/floatingnvim.sh && xte 'key XF86Paste'"
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
