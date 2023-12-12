@@ -36,6 +36,7 @@ config = {
 	font = wezterm.font_with_fallback {
 		"Hack Nerd Font",
 		"Hiragino Sans",
+		"SourceHanSansJP-Normal", -- for linux, install `adobe-source-han-sans-jp-fonts`
 	},
 	freetype_load_target = "Normal", -- "Normal", "Light", "Mono"
 
