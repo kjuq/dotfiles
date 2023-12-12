@@ -27,6 +27,7 @@ return {
         local abort = function(fallback)
             if cmp.visible() then
                 cmp.abort()
+                cmp.core:reset() -- https://github.com/hrsh7th/nvim-cmp/issues/1251#issuecomment-1365229958
             else
                 fallback()
             end
@@ -93,7 +94,10 @@ return {
         }
 
         cmp.setup({
-            completion = { autocomplete = false }, -- `true` is invalid option
+            completion = {
+                autocomplete = false, -- `true` is invalid option
+                completeopt = "menu,menuone,noinsert",
+            },
             experimental = { ghost_text = true },
 
             snippet = { expand = function(args) require("snippy").expand_snippet(args.body) end },

@@ -14,7 +14,7 @@ o.laststatus    = 3 -- global status line
 o.termguicolors = true
 
 o.wildmenu      = true
-o.completeopt   = "menuone,preview,noinsert,noselect"
+o.completeopt   = "menu,menuone,preview,noinsert"
 
 o.pumheight     = 10
 o.pumwidth      = 40
