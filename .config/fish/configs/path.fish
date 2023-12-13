@@ -15,4 +15,4 @@ if [ ! -d "$local_bin_path" ]
 end
 
 fish_add_path "$local_bin_path"
-fish_add_path "$HOME/node_modules/.bin"
+fish_add_path "$XDG_DATA_HOME/node_bin/node_modules/.bin"
