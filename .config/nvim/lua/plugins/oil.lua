@@ -1,8 +1,20 @@
 local map = require("utils.lazy").generate_cmd_map("", "Oil: ")
 local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
+---@return boolean
+local is_oil_ssh = function()
+    for _, arg in pairs(vim.v.argv) do
+        local pattern = "oil-ssh://"
+        if string.sub(arg, 1, string.len(pattern)) == pattern then
+            return true
+        end
+    end
+    return false
+end
+
 return {
     "stevearc/oil.nvim",
+    lazy = not is_oil_ssh(),
     event = { "VeryLazy" },
     keys = {
         map("<leader>o", "n", "Oil", "Open"),
