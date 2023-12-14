@@ -2,4 +2,11 @@
 
 tmp="/tmp/clip_tmp_nae18aA6ARaiOF"
 
-nvim -c "startinsert" "$tmp" && [ -e "$tmp" ] && head -c -1 "$tmp" | pbcopy && command rm "$tmp"
+if [ "$(uname)" = "Darwin" ]; then
+	copy="pbcopy"
+else
+	# shellcheck disable=2034
+	copy="xsel --clipboard --input"
+fi
+
+nvim -c "startinsert" "$tmp" && [ -e "$tmp" ] && head -c -1 "$tmp" | "$copy" && command rm "$tmp"
