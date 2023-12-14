@@ -6,16 +6,16 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
     exit 1
 fi
 
-if [ -z "$XDG_DATA_HOME" ]; then
-    echo "XDG_DATA_HOME is not set. Quit."
+if [ -z "$LOCAL_BIN_PATH" ]; then
+    echo "LOCAL_BIN_PATH is not set. Quit."
     exit 1
 fi
 
 script_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 xdg_config_without_prefix="${XDG_CONFIG_HOME/$HOME\//}"
 script_xdg_config="$script_dir/$xdg_config_without_prefix"
-xdg_data_without_prefix="${XDG_DATA_HOME/$HOME\//}"
-script_xdg_data="$script_dir/$xdg_data_without_prefix"
+local_bin_without_prefix="${LOCAL_BIN_PATH/$HOME\//}"
+script_local_bin="$script_dir/$local_bin_without_prefix"
 
 source "$script_dir/targets.sh"
 
@@ -28,10 +28,10 @@ backup() {
         src="$XDG_CONFIG_HOME/$target_file"
         dst="$script_xdg_config/$target_file"
         parent_dir="$script_xdg_config/$(dirname "$target_file")"
-    elif [ "$dirtype" == "xdg_data" ]; then
-        src="$XDG_DATA_HOME/$target_file"
-        dst="$script_xdg_data/$target_file"
-        parent_dir="$script_xdg_data/$(dirname "$target_file")"
+    elif [ "$dirtype" == "local_bin" ]; then
+        src="$LOCAL_BIN_PATH/$target_file"
+        dst="$script_local_bin/$target_file"
+        parent_dir="$script_local_bin/$(dirname "$target_file")"
     elif [ "$dirtype" == "root" ]; then
         src="$HOME/$target_file"
         dst="$script_dir/$target_file"
@@ -70,9 +70,9 @@ symlink() {
         src="$script_xdg_config/$target_file"
         dst="$XDG_CONFIG_HOME/$target_file"
         parent_dir="$XDG_CONFIG_HOME/$(dirname "$target_file")"
-    elif [ "$dirtype" == "xdg_data" ]; then
-        src="$script_xdg_data/$target_file"
-        dst="$XDG_DATA_HOME/$target_file"
+    elif [ "$dirtype" == "local_bin" ]; then
+        src="$script_local_bin/$target_file"
+        dst="$LOCAL_BIN_PATH/$target_file"
         parent_dir="$XDG_DATA_HOME/$(dirname "$target_file")"
     elif [ "$dirtype" == "root" ]; then
         src="$script_dir/$target_file"
@@ -145,13 +145,13 @@ main() {
 
     IFS_BAK=$IFS
     IFS=$'\n'
-    for f in $xdg_data_files; do
+    for f in $local_bin_files; do
         IFS=$IFS_BAK
         if ! [ "$f" == "" ]; then
             if [ "$action" == "backup" ]; then
-                backup "$f" "xdg_data"
+                backup "$f" "local_bin"
             elif [ "$action" == "symlink" ]; then
-                symlink "$f" "xdg_data"
+                symlink "$f" "local_bin"
             fi
         fi
     done
