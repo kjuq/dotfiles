@@ -61,6 +61,21 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
 })
 
 map("n", "<leader>am", function() vim.cmd("messages") end, { desc = "History of messages" })
+map("n", "<leader>an", function()
+    local o = vim.opt
+    ---@diagnostic disable-next-line: undefined-field
+    if o.number._value then
+        o.number = false
+        o.relativenumber = false
+        ---@diagnostic disable-next-line: undefined-field
+    elseif o.relativenumber._value then
+        o.number = true
+        o.relativenumber = false
+    else
+        o.number = false
+        o.relativenumber = true
+    end
+end, { desc = "Toggle number style" })
 
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
