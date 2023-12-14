@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [ "$#" -ne 1 ]; then
-	echo -e "Error: Invalid argument.\nUsage: cpp-test main.cpp"
-	return 1
+	echo -e "Error: Invalid argument.\nUsage: 'cpp-test main.cpp'"
+	exit 1
 fi
 
 cpl "$1" && oj test --directory "tests/" && command rm ./a.out

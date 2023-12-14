@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [ "$#" -ne 1 ]; then
-	echo -e "Error: Invalid argument.\nUsage: python-test main.py"
-	return 1
+	echo -e "Error: Invalid argument.\nUsage: 'python-test main.py'"
+	exit 1
 fi
 
 oj test --directory "tests/" -c "python3 $1"
