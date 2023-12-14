@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+alacritty \
+    --option \
+    window.dimensions.columns=100 \
+    window.dimensions.lines=10 \
+    window.decorations=None \
+    window.position.x=910 \
+    window.position.y=0 \
+    --command /opt/homebrew/bin/fish -c nvimcopy
+
+# wezterm \
+#     --config initial_rows=10 \
+#     --config initial_cols=70 \
+#     start \
+#     --class FloatingVim \
+#     fish -c nvimcopy
