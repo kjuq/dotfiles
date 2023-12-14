@@ -35,5 +35,7 @@ alias python="python3"
 alias pip="pip3"
 
 if [ (uname) = "Linux" ]
+    alias pbcopy="xsel --clipboard --input"
+    alias pbpaste="xsel --clipboard --output"
     alias open="xdg-open"
 end
