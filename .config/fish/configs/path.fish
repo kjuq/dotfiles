@@ -9,7 +9,6 @@ else if [ (uname) = "Linux" ]
 end
 
 # create local bin if it not exists
-set --export LOCAL_BIN_PATH "$HOME/.local/bin"
 if [ ! -d "$LOCAL_BIN_PATH" ]
 	mkdir "$LOCAL_BIN_PATH"
 end

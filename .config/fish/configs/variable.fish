@@ -16,6 +16,9 @@ set --export HOMEBREW_NO_ENV_HINTS 1
 set --export PASSWORD_STORE_DIR "$HOME/password-store"
 set --export GPG_TTY (tty)
 
+# User defined
+set --export LOCAL_BIN_PATH "$HOME/.local/bin"
+
 if [ (uname) = "Linux" ]
 	set --export BROWSER "/usr/bin/vivaldi"
 end
