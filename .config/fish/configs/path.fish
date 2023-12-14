@@ -9,10 +9,10 @@ else if [ (uname) = "Linux" ]
 end
 
 # create local bin if it not exists
-set --local local_bin_path "$HOME/.local/bin"
-if [ ! -d "$local_bin_path" ]
-	mkdir "$local_bin_path"
+set --export LOCAL_BIN_PATH "$HOME/.local/bin"
+if [ ! -d "$LOCAL_BIN_PATH" ]
+	mkdir "$LOCAL_BIN_PATH"
 end
 
-fish_add_path "$local_bin_path"
+fish_add_path "$LOCAL_BIN_PATH"
 fish_add_path "$XDG_DATA_HOME/node_bin/node_modules/.bin"

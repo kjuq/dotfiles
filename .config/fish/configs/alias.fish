@@ -34,20 +34,8 @@ end
 alias python="python3"
 alias pip="pip3"
 
-alias cpl="c++ -std=c++23 -Wall -Wextra -D_GLIBCXX_DEBUG -D_LIBCPP_ENABLE_DEBUG_MODE"
-
 if [ (uname) = "Linux" ]
     alias open="xdg-open"
     alias pbcopy="xsel --clipboard --input"
     alias pbpaste="xsel --clipboard --output"
-else if [ (uname) = "Darwin" ]
-    set --local cpp "g++-13"
-    set --local c "gcc-13"
-    if command --search --quiet "$cpp"
-        alias g++="$cpp"
-        alias c++="$cpp"
-    end
-    if command --search --quiet "$c"
-        alias gcc="$c"
-    end
 end
