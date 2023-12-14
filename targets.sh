@@ -41,10 +41,13 @@ cpl
 cplus
 cpp-submit
 cpp-test
+floatingnvim
 nvimcopy
 pypy-submit
 python-submit
 python-test
+set_keyrepeat_rate
+toggle_menubar
 "
 
 # shellcheck disable=2034
@@ -55,5 +58,4 @@ root_files="
 .ignore
 .ssh/config
 .w3m/keymap
-scripts
 "
