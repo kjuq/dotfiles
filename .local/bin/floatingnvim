@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
 
-alacritty \
-    --option \
-    window.dimensions.columns=100 \
-    window.dimensions.lines=10 \
-    window.decorations=None \
-    window.position.x=910 \
-    window.position.y=0 \
-    --command /opt/homebrew/bin/fish -c nvimcopy
+if [ "$#" -ne 1 ]; then
+	echo -e "Error: Invalid argument.\nUsage: 'floatingnvim alacritty'"
+	exit 1
+fi
 
-# wezterm \
-#     --config initial_rows=10 \
-#     --config initial_cols=70 \
-#     start \
-#     --class FloatingVim \
-#     fish -c nvimcopy
+if [ "$1" = "alacritty" ]; then
+	alacritty \
+		--option \
+		window.dimensions.columns=100 \
+		window.dimensions.lines=10 \
+		window.decorations=None \
+		window.position.x=910 \
+		window.position.y=0 \
+		--command fish -c nvimcopy
+elif [ "$1" = "wezterm" ]; then
+	wezterm \
+		--config initial_rows=10 \
+		--config initial_cols=70 \
+		start \
+		--class FloatingVim \
+		fish -c nvimcopy
+else
+	echo "Invalid terminal was specified: $1"
+fi
