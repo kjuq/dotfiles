@@ -6,98 +6,113 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
     exit 1
 fi
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-XDG_NO_HOME="${XDG_CONFIG_HOME/$HOME\//}"
-SCRIPT_XDG="$SCRIPT_DIR/$XDG_NO_HOME"
+if [ -z "$XDG_DATA_HOME" ]; then
+    echo "XDG_DATA_HOME is not set. Quit."
+    exit 1
+fi
 
-source "$SCRIPT_DIR"/targets.sh
+script_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+xdg_config_without_prefix="${XDG_CONFIG_HOME/$HOME\//}"
+script_xdg_config="$script_dir/$xdg_config_without_prefix"
+xdg_data_without_prefix="${XDG_DATA_HOME/$HOME\//}"
+script_xdg_data="$script_dir/$xdg_data_without_prefix"
+
+source "$script_dir/targets.sh"
 
 backup() {
-    TARGET_FILE="$1"
-    IS_XDG="$2"
+    target_file="$1"
+    dirtype="$2"
 
     # Set a source path and a destination path based on a second argument
-    if [ "$IS_XDG" == "xdg" ]; then
-        SRC="$XDG_CONFIG_HOME/$TARGET_FILE"
-        DST="$SCRIPT_XDG/$TARGET_FILE"
-        PARENT_DIR="$SCRIPT_XDG/$(dirname "$TARGET_FILE")"
-    elif [ "$IS_XDG" == "" ]; then
-        SRC="$HOME/$TARGET_FILE"
-        DST="$SCRIPT_DIR/$TARGET_FILE"
-        PARENT_DIR="$(dirname "$TARGET_FILE")"
+    if [ "$dirtype" == "xdg_config" ]; then
+        src="$XDG_CONFIG_HOME/$target_file"
+        dst="$script_xdg_config/$target_file"
+        parent_dir="$script_xdg_config/$(dirname "$target_file")"
+    elif [ "$dirtype" == "xdg_data" ]; then
+        src="$XDG_DATA_HOME/$target_file"
+        dst="$script_xdg_data/$target_file"
+        parent_dir="$script_xdg_data/$(dirname "$target_file")"
+    elif [ "$dirtype" == "root" ]; then
+        src="$HOME/$target_file"
+        dst="$script_dir/$target_file"
+        parent_dir="$(dirname "$target_file")"
     else
         echo "XDG option is invalid."
-        echo "Target: $TARGET_FILE"
+        echo "Target: $target_file"
         exit 1
     fi
 
-    if [ -L "$SRC" ]; then
+    if [ -L "$src" ]; then
         return 0
     fi
 
-    echo "Backing up: $SRC"
+    echo "Backing up: $src"
 
     # Create directories including parent ones
-    if ! [ -d "$PARENT_DIR" ]; then
-        mkdir --parents "$PARENT_DIR"
+    if ! [ -d "$parent_dir" ]; then
+        mkdir --parents "$parent_dir"
     fi
 
     # Copy directory or file
-    if [ -d "$SRC" ]; then
-        cp -r "$SRC" "$( dirname "$DST" )"
+    if [ -d "$src" ]; then
+        cp -r "$src" "$( dirname "$dst" )"
     else
-        cp "$SRC" "$DST"
+        cp "$src" "$dst"
     fi
 }
 
 symlink() {
-    TARGET_FILE="$1"
-    IS_XDG="$2"
+    target_file="$1"
+    dirtype="$2"
 
     # Set a source path and a destination path based on a second argument
-    if [ "$IS_XDG" == "xdg" ]; then
-        SRC="$SCRIPT_XDG/$TARGET_FILE"
-        DST="$XDG_CONFIG_HOME/$TARGET_FILE"
-        PARENT_DIR="$XDG_CONFIG_HOME/$(dirname "$TARGET_FILE")"
-    elif [ "$IS_XDG" == "" ]; then
-        SRC="$SCRIPT_DIR/$TARGET_FILE"
-        DST="$HOME/$TARGET_FILE"
-        PARENT_DIR="$HOME/$(dirname "$TARGET_FILE")"
+    if [ "$dirtype" == "xdg_config" ]; then
+        src="$script_xdg_config/$target_file"
+        dst="$XDG_CONFIG_HOME/$target_file"
+        parent_dir="$XDG_CONFIG_HOME/$(dirname "$target_file")"
+    elif [ "$dirtype" == "xdg_data" ]; then
+        src="$script_xdg_data/$target_file"
+        dst="$XDG_DATA_HOME/$target_file"
+        parent_dir="$XDG_DATA_HOME/$(dirname "$target_file")"
+    elif [ "$dirtype" == "root" ]; then
+        src="$script_dir/$target_file"
+        dst="$HOME/$target_file"
+        parent_dir="$HOME/$(dirname "$target_file")"
     else
         echo "XDG option is invalid."
-        echo "Target: $TARGET_FILE"
+        echo "Target: $target_file"
         exit 1
     fi
 
-    echo "Creating Symlink: $SRC"
+    echo "Creating Symlink: $src"
 
     # Create directories including parent ones
-    if ! [ -d "$PARENT_DIR" ]; then
-        mkdir --parents "$PARENT_DIR"
+    if ! [ -d "$parent_dir" ]; then
+        mkdir --parents "$parent_dir"
     fi
 
     # Create a symlink
     # Delete a pre-exist link
-    if [ -L "$DST" ]; then
+    if [ -L "$dst" ]; then
         return 0
     fi
     # Delete a pre-exist dir/file
-    if [ -e "$DST" ]; then
-        read -r -p "$DST already exists. Delete it? (y/N) " INPUT
+    if [ -e "$dst" ]; then
+        read -r -p "$dst already exists. Delete it? (y/N) " INPUT
         if [ "$INPUT" == "y" ] || [ "$INPUT" == "Y" ]; then
-            if [ -d "$DST" ]; then
-                rm -r "$DST"
-            elif [ -f "$DST" ]; then
-                rm "$DST"
+            if [ -d "$dst" ]; then
+                rm -r "$dst"
+            elif [ -f "$dst" ]; then
+                rm "$dst"
             else
-                echo "Unknown Filetype Error: when deleting $DST"
+                echo "Unknown Filetype Error: when deleting $dst"
                 exit 1
             fi
         else
             return 0
         fi
     fi
-    ln --symbolic "$SRC" "$DST"
+    ln --symbolic "$src" "$dst"
 }
 
 unsymlink() {
@@ -107,9 +122,9 @@ unsymlink() {
 
 main() {
     if [ "$1" == "backup" ] || [ "$1" == "b" ]; then
-        ACTION="backup"
+        action="backup"
     elif [ "$1" == "symlink" ] || [ "$1" == "s" ]; then
-        ACTION="symlink"
+        action="symlink"
     else
         echo "Unknown or no argument was given. Quit."
         exit 1
@@ -117,33 +132,42 @@ main() {
 
     IFS_BAK=$IFS
     IFS=$'\n'
-    for f in $xdg_files; do
+    for f in $xdg_config_files; do
         IFS=$IFS_BAK
         if ! [ "$f" == "" ]; then
-            if [ "$ACTION" == "backup" ]; then
-                backup "$f" "xdg"
-            elif [ "$ACTION" == "symlink" ]; then
-                symlink "$f" "xdg"
+            if [ "$action" == "backup" ]; then
+                backup "$f" "xdg_config"
+            elif [ "$action" == "symlink" ]; then
+                symlink "$f" "xdg_config"
             fi
         fi
     done
 
     IFS_BAK=$IFS
     IFS=$'\n'
-    for f in $files; do
+    for f in $xdg_data_files; do
         IFS=$IFS_BAK
         if ! [ "$f" == "" ]; then
-            if [ "$ACTION" == "backup" ]; then
-                backup "$f"
-            elif [ "$ACTION" == "symlink" ]; then
-                symlink "$f"
+            if [ "$action" == "backup" ]; then
+                backup "$f" "xdg_data"
+            elif [ "$action" == "symlink" ]; then
+                symlink "$f" "xdg_data"
+            fi
+        fi
+    done
+
+    IFS_BAK=$IFS
+    IFS=$'\n'
+    for f in $root_files; do
+        IFS=$IFS_BAK
+        if ! [ "$f" == "" ]; then
+            if [ "$action" == "backup" ]; then
+                backup "$f" "root"
+            elif [ "$action" == "symlink" ]; then
+                symlink "$f" "root"
             fi
         fi
     done
 }
 
 main "$1"
-
-
-
-

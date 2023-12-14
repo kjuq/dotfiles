@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=2034
-xdg_files="
+xdg_config_files="
 aerc/accounts.conf.template
 aerc/aerc.conf
 aerc/binds.conf
@@ -35,8 +35,12 @@ tmux/scripts
 wezterm/wezterm.lua
 "
 
+xdg_data_files="
+user_bin
+"
+
 # shellcheck disable=2034
-files="
+root_files="
 .docker/config.json
 .clang-format
 .gnupg/gpg-agent.conf.bak
