@@ -37,7 +37,9 @@ hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 toggleApp("Finder", cmd_opt_ctrl, "=")
 
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
-	local task = hs.task.new("/opt/homebrew/bin/fish", nil, { "-c", "~/scripts/floatingnvim.sh", })
+	local task = hs.task.new("/opt/homebrew/bin/wezterm", nil, {
+		"start", "/opt/homebrew/bin/fish", "-c", "nvimcopy",
+	})
 	task:start()
 	task:waitUntilExit()
 	hs.eventtap.keyStroke({ "cmd" }, "v")
