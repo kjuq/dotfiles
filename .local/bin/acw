@@ -2,11 +2,11 @@
 
 if ! command -v w3m &> /dev/null; then
 	echo "Error: 'w3m' not found"
-	return 1
+	exit 1
 fi
 if [ $# -ne 2 ]; then
-	echo -e "Error: Invalid argument.\nUsage: acw abc290 a"
-	return 1
+	echo -e "Error: Invalid argument.\nUsage: 'acw abc290 a'"
+	exit 1
 fi
 
 sed_str="s/\\\\leq/<=/g;"
