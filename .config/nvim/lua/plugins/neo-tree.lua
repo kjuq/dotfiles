@@ -5,7 +5,7 @@ return {
     branch = "v3.x",
     cmd = { "Neotree" },
     keys = {
-        map("i", "n", function()
+        map("y", "n", function()
             require("neo-tree.command").execute({
                 source = "filesystem",
                 position = "float",
