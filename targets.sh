@@ -36,6 +36,15 @@ wezterm/wezterm.lua
 "
 
 local_bin_files="
+acw
+cpl
+cplus
+cpp-submit
+cpp-test
+nvimcopy
+pypy-submit
+python-submit
+python-test
 "
 
 # shellcheck disable=2034

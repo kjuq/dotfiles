@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+output="/tmp/cplus_output"
+cpl -o "$output" "$@" && "$output" && command rm "$output"
