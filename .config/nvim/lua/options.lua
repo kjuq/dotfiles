@@ -18,7 +18,7 @@ o.completeopt    = "menu,menuone,preview,noinsert"
 
 o.pumheight      = 10
 o.pumwidth       = 40
--- vim.opt.pumblend = 20 -- Disable this when using transparent env
+-- o.pumblend = 20 -- Disable this when using transparent env
 
 o.updatetime     = 500
 
@@ -41,7 +41,6 @@ o.shiftround     = true
 
 o.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "󰌑" } -- ⏎
 o.list           = true
-o.number         = true
 o.relativenumber = true
 vim.o.fillchars  = "eob: " -- hide tildes in blank space after end of file
 
