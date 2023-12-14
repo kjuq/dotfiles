@@ -43,6 +43,8 @@ cpp-submit
 cpp-test
 floatingnvim
 nvimcopy
+pbcopy
+pbpaste
 pypy-submit
 python-submit
 python-test
