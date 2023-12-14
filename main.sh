@@ -10,7 +10,7 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 XDG_NO_HOME="${XDG_CONFIG_HOME/$HOME\//}"
 SCRIPT_XDG="$SCRIPT_DIR/$XDG_NO_HOME"
 
-source $SCRIPT_DIR/targets.sh
+source "$SCRIPT_DIR"/targets.sh
 
 backup() {
     TARGET_FILE="$1"
@@ -31,7 +31,7 @@ backup() {
         exit 1
     fi
 
-    if [ -L $SRC ]; then
+    if [ -L "$SRC" ]; then
         return 0
     fi
 
@@ -83,7 +83,7 @@ symlink() {
     fi
     # Delete a pre-exist dir/file
     if [ -e "$DST" ]; then
-        read -p "$DST already exists. Delete it? (y/N) " INPUT
+        read -r -p "$DST already exists. Delete it? (y/N) " INPUT
         if [ "$INPUT" == "y" ] || [ "$INPUT" == "Y" ]; then
             if [ -d "$DST" ]; then
                 rm -r "$DST"
@@ -142,7 +142,7 @@ main() {
     done
 }
 
-main $1
+main "$1"
 
 
 
