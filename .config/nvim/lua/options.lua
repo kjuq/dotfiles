@@ -1,48 +1,49 @@
-local o         = vim.opt
+local o          = vim.opt
 
-o.backup        = false
-o.writebackup   = false
-o.swapfile      = false
-o.autoread      = true
+o.backup         = false
+o.writebackup    = false
+o.swapfile       = false
+o.autoread       = true
 
-o.scrolloff     = 6
+o.scrolloff      = 6
 
-o.clipboard     = "unnamedplus"
+o.clipboard      = "unnamedplus"
 
-o.cmdheight     = 0
-o.laststatus    = 3 -- global status line
-o.termguicolors = true
+o.cmdheight      = 0
+o.laststatus     = 3 -- global status line
+o.termguicolors  = true
 
-o.wildmenu      = true
-o.completeopt   = "menu,menuone,preview,noinsert"
+o.wildmenu       = true
+o.completeopt    = "menu,menuone,preview,noinsert"
 
-o.pumheight     = 10
-o.pumwidth      = 40
+o.pumheight      = 10
+o.pumwidth       = 40
 -- vim.opt.pumblend = 20 -- Disable this when using transparent env
 
-o.updatetime    = 500
+o.updatetime     = 500
 
-o.ignorecase    = true
-o.smartcase     = true
+o.ignorecase     = true
+o.smartcase      = true
 
-o.foldmethod    = "marker"
+o.foldmethod     = "marker"
 
-o.wrap          = false
-o.smoothscroll  = true
-o.breakindent   = true
+o.wrap           = false
+o.smoothscroll   = true
+o.breakindent    = true
 
-o.virtualedit   = { "onemore", "block" }
+o.virtualedit    = { "onemore", "block" }
 
-o.smartindent   = true
-o.tabstop       = 4
-o.expandtab     = false
-o.shiftwidth    = 0 -- obey tabstop
-o.shiftround    = true
+o.smartindent    = true
+o.tabstop        = 4
+o.expandtab      = false
+o.shiftwidth     = 0 -- obey tabstop
+o.shiftround     = true
 
-o.listchars     = { trail = "◊", tab = "│⋅", space = "⋅", eol = "󰌑" } -- ⏎
-o.list          = true
-o.number        = true
-vim.o.fillchars = "eob: " -- hide tildes in blank space after end of file
+o.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "󰌑" } -- ⏎
+o.list           = true
+o.number         = true
+o.relativenumber = true
+vim.o.fillchars  = "eob: " -- hide tildes in blank space after end of file
 
 
 o.shell = "fish"
