@@ -1,7 +1,7 @@
 -- Execute the command below when setting up a new environment
 -- defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
 
-local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
+-- local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
 local cmd_opt = { "cmd", "option" }
 local cmd_opt_ctrl = { "cmd", "option", "ctrl" }
 
@@ -37,11 +37,11 @@ hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 toggleApp("Finder", cmd_opt_ctrl, "=")
 
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
-	local task = hs.task.new("/opt/homebrew/bin/wezterm", nil, {
-		"start", "/opt/homebrew/bin/fish", "-c", "nvimcopy",
-	})
-	task:start()
-	task:waitUntilExit()
+	local alacritty = hs.task.new("/opt/homebrew/bin/fish", nil, {
+		"-c",
+		"~/scripts/floatingnvim.sh",
+	}):start()
+	alacritty:waitUntilExit()
 	hs.eventtap.keyStroke({ "cmd" }, "v")
 end)
 
@@ -151,15 +151,15 @@ watcher:start()
 
 
 -- Check if the file exists
-local function path_exists(path)
-	local f = io.open(path, "r")
-	if f ~= nil then
-		io.close(f)
-		return true
-	else
-		return false
-	end
-end
+-- local function path_exists(path)
+-- 	local f = io.open(path, "r")
+-- 	if f ~= nil then
+-- 		io.close(f)
+-- 		return true
+-- 	else
+-- 		return false
+-- 	end
+-- end
 
 -- if not path_exists(hs_base .. "/Spoons/EmmyLua.spoon") then
 -- 	hs.alert("EmmyLua is not installed")
