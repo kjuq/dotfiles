@@ -39,7 +39,7 @@ toggleApp("Finder", cmd_opt_ctrl, "=")
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
 	local alacritty = hs.task.new("/opt/homebrew/bin/fish", nil, {
 		"-c",
-		"~/scripts/floatingnvim.sh",
+		"floatingnvim alacritty",
 	}):start()
 	alacritty:waitUntilExit()
 	hs.eventtap.keyStroke({ "cmd" }, "v")
