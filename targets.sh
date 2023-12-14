@@ -16,6 +16,7 @@ fish/configs
 git
 gitui
 hammerspoon/init.lua
+hammerspoon/.luarc.json
 i3/config
 kitty/kitty.conf
 lazygit/config.yml
@@ -43,8 +44,6 @@ cpp-submit
 cpp-test
 floatingnvim
 nvimcopy
-pbcopy
-pbpaste
 pypy-submit
 python-submit
 python-test
