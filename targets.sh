@@ -35,8 +35,7 @@ tmux/scripts
 wezterm/wezterm.lua
 "
 
-xdg_data_files="
-user_bin
+local_bin_files="
 "
 
 # shellcheck disable=2034
