@@ -24,7 +24,6 @@ o.updatetime    = 500
 
 o.ignorecase    = true
 o.smartcase     = true
-o.wrapscan      = false
 
 o.foldmethod    = "marker"
 
