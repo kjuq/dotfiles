@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+pass _computers/"$(hostname)" | sed -n 1p

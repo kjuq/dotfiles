@@ -34,6 +34,8 @@ end
 alias python="python3"
 alias pip="pip3"
 
+alias sudo="sudo -A"
+
 if [ (uname) = "Linux" ]
     alias pbcopy="xsel --clipboard --input"
     alias pbpaste="xsel --clipboard --output"

@@ -48,6 +48,7 @@ pypy-submit
 python-submit
 python-test
 set_keyrepeat_rate
+sudo_pass
 toggle_menubar
 "
 
