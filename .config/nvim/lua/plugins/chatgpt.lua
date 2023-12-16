@@ -2,6 +2,7 @@ local map = require("utils.lazy").generate_cmd_map("<leader>c", "ChatGPT: ")
 
 return {
     "jackMort/ChatGPT.nvim",
+    commit = "f189c51d03316b4ab02766c5fed6f876f5d57cbb",
     cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun", },
     keys = {
         map("c", { "n" }, "ChatGPT", "Open ChatGPT"),
