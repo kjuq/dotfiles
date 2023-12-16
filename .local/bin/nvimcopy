@@ -9,4 +9,4 @@ else
 	copy="xsel --clipboard --input"
 fi
 
-nvim -c "startinsert" "$tmp" && [ -e "$tmp" ] && head -c -1 "$tmp" | "$copy" && command rm "$tmp"
+nvim -c "startinsert" "$tmp" && [ -e "$tmp" ] && head -c -1 "$tmp" | $copy && command rm "$tmp"
