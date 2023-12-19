@@ -10,6 +10,8 @@ if [ "$1" = "alacritty" ]; then
 		--option \
 		window.dimensions.columns=100 \
 		window.dimensions.lines=10 \
+		window.padding.x=10 \
+		window.padding.y=10 \
 		window.decorations=None \
 		window.position.x=910 \
 		window.position.y=0 \
