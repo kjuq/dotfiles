@@ -19,29 +19,29 @@ return {
         -- Color table for highlights
         -- stylua: ignore
         local colors = {
-            bg       = '#202328',
-            fg       = '#bbc2cf',
-            yellow   = '#ECBE7B',
-            cyan     = '#008080',
-            darkblue = '#081633',
-            green    = '#98be65',
-            orange   = '#FF8800',
-            violet   = '#a9a1e1',
-            magenta  = '#c678dd',
-            blue     = '#51afef',
-            red      = '#ec5f67',
+            bg       = "#202328",
+            fg       = "#bbc2cf",
+            yellow   = "#ECBE7B",
+            cyan     = "#008080",
+            darkblue = "#081633",
+            green    = "#98be65",
+            orange   = "#FF8800",
+            violet   = "#a9a1e1",
+            magenta  = "#c678dd",
+            blue     = "#51afef",
+            red      = "#ec5f67",
         }
 
         local conditions = {
             buffer_not_empty = function()
-                return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+                return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
             end,
             hide_in_width = function()
                 return vim.fn.winwidth(0) > 80
             end,
             check_git_workspace = function()
-                local filepath = vim.fn.expand('%:p:h')
-                local gitdir = vim.fn.finddir('.git', filepath .. ';')
+                local filepath = vim.fn.expand("%:p:h")
+                local gitdir = vim.fn.finddir(".git", filepath .. ";")
                 return gitdir and #gitdir > 0 and #gitdir < #filepath
             end,
         }
@@ -64,8 +64,8 @@ return {
                 refresh = { statusline = 10 },
 
                 -- Disable sections and component separators
-                component_separators = '',
-                section_separators = '',
+                component_separators = "",
+                section_separators = "",
                 theme = {
                     -- We are going to use lualine_c an lualine_x as left and
                     -- right section. Both are highlighted by c theme .  So we
@@ -124,13 +124,13 @@ return {
                     n = colors.red,
                     i = colors.green,
                     v = colors.blue,
-                    [''] = colors.blue,
+                    [""] = colors.blue,
                     V = colors.blue,
                     c = colors.magenta,
                     no = colors.red,
                     s = colors.orange,
                     S = colors.orange,
-                    [''] = colors.orange,
+                    [""] = colors.orange,
                     ic = colors.yellow,
                     R = colors.violet,
                     Rv = colors.violet,
@@ -138,8 +138,8 @@ return {
                     ce = colors.red,
                     r = colors.cyan,
                     rm = colors.cyan,
-                    ['r?'] = colors.cyan,
-                    ['!'] = colors.red,
+                    ["r?"] = colors.cyan,
+                    ["!"] = colors.red,
                     t = colors.red,
                 }
                 return { fg = mode_color[vim.fn.mode()] }
@@ -148,34 +148,35 @@ return {
         }
 
         ins_left {
-            'filename',
-            path = 4, -- 0: Just the filename
+            "filename",
+            -- 0: Just the filename
             -- 1: Relative path
             -- 2: Absolute path
             -- 3: Absolute path, with tilde as the home directory
             -- 4: Filename and parent dir, with tilde as the home directory
+            path = 0,
             file_status = true,
             newfile_status = true,
             cond = conditions.buffer_not_empty,
-            color = { fg = colors.magenta, gui = 'bold' },
+            color = { fg = colors.magenta, gui = "bold" },
             symbols = {
-                modified = '', -- Text to show when the file is modified.
-                readonly = '', -- Text to show when the file is non-modifiable or readonly.
-                unnamed  = '󱁐', -- Text to show for unnamed buffers.
-                newfile  = '', -- Text to show for newly created file before first write
+                modified = "", -- Text to show when the file is modified.
+                readonly = "", -- Text to show when the file is non-modifiable or readonly.
+                unnamed  = "󱁐", -- Text to show for unnamed buffers.
+                newfile  = "", -- Text to show for newly created file before first write
             },
         }
 
         ins_left {
-            'branch',
-            icon = '',
-            color = { fg = colors.violet, gui = 'bold' },
+            "branch",
+            icon = "",
+            color = { fg = colors.violet, gui = "bold" },
         }
 
         ins_left {
-            'diff',
+            "diff",
             -- Is it me or the symbol for modified us really weird
-            symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+            symbols = { added = " ", modified = "󰝤 ", removed = " " },
             diff_color = {
                 added = { fg = colors.green },
                 modified = { fg = colors.orange },
@@ -197,9 +198,9 @@ return {
         }
 
         ins_left {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
-            symbols = { error = ' ', warn = ' ', info = ' ' },
+            "diagnostics",
+            sources = { "nvim_diagnostic" },
+            symbols = { error = " ", warn = " ", info = " " },
             diagnostics_color = {
                 color_error = { fg = colors.red },
                 color_warn = { fg = colors.yellow },
@@ -224,8 +225,8 @@ return {
         ins_right {
             -- Lsp server name .
             function()
-                local msg = 'No Active Lsp'
-                local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+                local msg = "N/A"
+                local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
                 local clients = vim.lsp.get_clients()
                 if next(clients) == nil then
                     return msg
@@ -239,33 +240,35 @@ return {
                 end
                 return msg
             end,
-            icon = ' LSP:',
-            color = { fg = '#ffffff', gui = 'bold' },
+            icon = " ",
+            -- color = { fg = "#ffffff", gui = "bold" },
+            color = { gui = "bold" },
         }
 
-        ins_right { 'location' }
+        ins_right { "location", color = { gui = "bold" } }
 
-        ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+        ins_right { "progress", color = { gui = "bold" } }
 
         ins_right {
             -- filesize component
-            'filesize',
+            "filesize",
             cond = conditions.buffer_not_empty,
+            color = { fg = colors.blue, gui = "bold" },
         }
 
-        ins_right {
-            'o:encoding',       -- option component same as &encoding in viml
-            fmt = string.upper, -- I'm not sure why it's upper case either ;)
-            cond = conditions.hide_in_width,
-            color = { fg = colors.green, gui = 'bold' },
-        }
-
-        ins_right {
-            'fileformat',
-            fmt = string.upper,
-            icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-            color = { fg = colors.green, gui = 'bold' },
-        }
+        -- ins_right {
+        --     "o:encoding",       -- option component same as &encoding in viml
+        --     fmt = string.upper, -- I'm not sure why it's upper case either ;)
+        --     cond = conditions.hide_in_width,
+        --     color = { fg = colors.green, gui = "bold" },
+        -- }
+        --
+        -- ins_right {
+        --     "fileformat",
+        --     fmt = string.upper,
+        --     icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+        --     color = { fg = colors.green, gui = "bold" },
+        -- }
 
         ins_right {
             function()
