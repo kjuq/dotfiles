@@ -1,16 +1,26 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>", "Which-key: ")
 
 local active = false
+
+local enable = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 700
+    active = true
+end
+
+local disable = function()
+    vim.o.timeout = false
+    active = false
+end
+
 local toggle = function()
     if active then
         print("Which-key is inactive")
-        vim.o.timeout = false
+        disable()
     else
         print("Which-key is active")
-        vim.o.timeout = true
-        vim.o.timeoutlen = 700
+        enable()
     end
-    active = not active
 end
 
 return {
@@ -21,7 +31,7 @@ return {
         { "<leader>aW", mode = { "n" }, function() vim.cmd("WhichKey") end, desc = "Which-key: Show" },
     },
     opts = function()
-        toggle()
+        enable()
 
         require("which-key").register({
             ["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
