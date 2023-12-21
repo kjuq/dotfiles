@@ -28,13 +28,16 @@ local function hideAllApps()
 	end
 end
 
-toggleApp("System Settings", cmd_opt_ctrl, ",")
 toggleApp("Safari", cmd_opt_ctrl, ".")
+toggleApp("System Settings", cmd_opt_ctrl, ",")
+
 toggleApp("Alacritty", cmd_opt_ctrl, "]")
 toggleApp("Vivaldi", cmd_opt_ctrl, "[")
-toggleApp("Wezterm", cmd_opt_ctrl, "/")
-hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
+toggleApp("Preview", cmd_opt_ctrl, "/")
+
+toggleApp("Wezterm", cmd_opt_ctrl, "'")
 toggleApp("Finder", cmd_opt_ctrl, "=")
+hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
 	local alacritty = hs.task.new("/opt/homebrew/bin/fish", nil, {
@@ -118,8 +121,7 @@ local backButton = 3
 local forwardButton = 4
 
 local finderMouseEvent = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown }, function(e)
-	-- print(hs.eventtap.event.properties['mouseEventButtonNumber'])
-	local mouseButton = e:getProperty(hs.eventtap.event.properties['mouseEventButtonNumber'])
+	local mouseButton = e:getProperty(hs.eventtap.event.properties["mouseEventButtonNumber"])
 	if mouseButton == middleButton then
 		hs.eventtap.event.newKeyEvent("cmd", "delete", true):post()
 		return true
