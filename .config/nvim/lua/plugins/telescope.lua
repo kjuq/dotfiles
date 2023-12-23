@@ -41,9 +41,9 @@ return {
         -- Neovim LSP pickers
 
         -- using lspsaga's same function
-        -- map("<KEYBIND>", "n", function() tb.lsp_references() end, "[r]eferences for word under the cursor"),
-        -- map("<KEYBIND>", "n", function() tb.lsp_incoming_calls() end, "[i]ncoming calls for word under the cursor"),
-        -- map("<KEYBIND>", "n", function() tb.lsp_outgoing_calls() end, "[o]utgoing calls for word under the cursor"),
+        -- map("<KEYBIND>", "n", function() tb.lsp_references() end, "Lsp references"),
+        -- map("<KEYBIND>", "n", function() tb.lsp_incoming_calls() end, "Incoming calls"),
+        -- map("<KEYBIND>", "n", function() tb.lsp_outgoing_calls() end, "Outgoing calls"),
 
         map("fd", "n", function() tb.diagnostics() end, "Find diagnostics"),
         map("fs", "n", function() tb.lsp_document_symbols() end, "Find document symbols"),
@@ -84,7 +84,7 @@ return {
                         ["<M-s>"] = actions_layout.toggle_preview
                     },
                 },
-                layout_strategy = "flex",
+                layout_strategy = "vertical", -- center, vertical, horizontal, flex
                 scroll_strategy = "limit",
                 path_display = { truncate = 3 },
                 preview = {
