@@ -110,7 +110,7 @@ return {
                 --[[]] and { name = "skkeleton" }
                 --[[]] or {},
             }, {
-                { name = "copilot" }, --,  priority = -1 },
+                { name = "copilot", priority = -1 },
                 { name = "path" },
                 { name = "emoji" },
                 { name = "snippy" },
