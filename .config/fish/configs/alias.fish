@@ -7,8 +7,7 @@ alias ........="cd ../../../../../../.."
 
 if command --search --quiet eza
     alias ls="eza --classify --group-directories-first --icons"
-    alias ezat="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
-    alias ezata="la --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
+    alias tree="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
 else if [ (uname) = "Linux" ]
     alias ls="ls --color=auto --classify --group-directories-first"
 else if [ (uname) = "Darwin" ]
@@ -17,6 +16,7 @@ end
 alias la="ls --all"
 alias lla="ll --all"
 alias l1="ls -1"
+alias trea="tree -a"
 
 if command --search --quiet dust
     alias dust="dust --reverse"
@@ -31,10 +31,21 @@ if command --search --quiet neomutt
     alias mutt="cd $XDG_CACHE_HOME/neomutt; and env TERM=screen-256color neomutt; cd -"
 end
 
-alias python="python3"
-alias pip="pip3"
+if command --search --quiet sudo
+    alias sudo="sudo -A"
+end
 
-alias sudo="sudo -A"
+if command --search --quiet fd
+    alias fd="fd --hidden --exclude .git/"
+end
+
+if command --search --quiet python3
+    alias python="python3"
+end
+
+if command --search --quiet pip3
+    alias pip="pip3"
+end
 
 if [ (uname) = "Linux" ]
     alias pbcopy="xsel --clipboard --input"
