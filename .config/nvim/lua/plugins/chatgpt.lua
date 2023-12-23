@@ -2,7 +2,6 @@ local map = require("utils.lazy").generate_cmd_map("<leader>c", "ChatGPT: ")
 
 return {
     "jackMort/ChatGPT.nvim",
-    commit = "f189c51d03316b4ab02766c5fed6f876f5d57cbb",
     cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun", },
     keys = {
         map("c", { "n" }, "ChatGPT", "Open ChatGPT"),
@@ -20,16 +19,10 @@ return {
         map("l", { "n", "v" }, "ChatGPTRun code_readability_analysis", "Code Readability Analysis"),
     },
     opts = {
-        api_key_cmd = 'pass openai.com/api_key',
+        api_key_cmd = "pass openai.com/api_key",
         yank_register = "+",
-        edit_with_instructions = {
-            keymaps = {
-                close = "<Esc>",
-            },
-        },
         chat = {
             keymaps = {
-                close = { "<Esc>" },
                 scroll_down = "<C-d>",
                 draft_message = "<M-d>",
             },
