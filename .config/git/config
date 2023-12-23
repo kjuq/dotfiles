@@ -24,14 +24,15 @@
 	tool = nvimdiff
 [difftool]
 	prompt = false
-[difftool "nvimdiff"]
-	cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [merge]
 	tool = nvimmerge
 [mergetool]
-	prompt = true
-[mergetool "nvimmerge"]
-	cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c "$wincmd w" -c "wincmd J"
+	prompt = false
+[mergetool "nvimdiff"]
+	path = nvim
+
+; difftool and mergetool
+; https://gist.github.com/openjck/93b335dfe5e33955d7dec3c9aec9d609
 
 # vim: set noexpandtab :
