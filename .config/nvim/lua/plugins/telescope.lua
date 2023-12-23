@@ -2,8 +2,7 @@ local gen_map = require("utils.lazy").generate_map
 
 local map = gen_map("<leader>", "Telescope: ")
 
-local tb = require("telescope.builtin")
-local te = require("telescope").extensions
+local tb = "telescope.builtin"
 
 return {
     "nvim-telescope/telescope.nvim",
@@ -11,60 +10,62 @@ return {
     keys = {
         -- File pickers
 
-        map("ff", "n", function() tb.find_files({ hidden = true }) end, "Find files"),
-        map("fw", "n", function() tb.grep_string() end, "Find current word"),
-        map("fg", "n", function() tb.live_grep() end, "Find files with live grep"),
+        map("ff", "n", function() require(tb).find_files({ hidden = true }) end, "Find files"),
+        map("fw", "n", function() require(tb).grep_string() end, "Find current word"),
+        map("fg", "n", function() require(tb).live_grep() end, "Find files with live grep"),
 
-        map("gf", "n", function() tb.git_files() end, "Git files"),
+        map("gf", "n", function() require(tb).git_files() end, "Git files"),
 
         -- Vim pickers
 
-        map("fh", "n", function() tb.oldfiles() end, "Find old files"),
-        map("fb", "n", function() tb.buffers() end, "Find buffers"),
-        map("fi", "n", function() tb.help_tags() end, "Find help tags"),
-        map("fm", "n", function() tb.marks() end, "Find marks"),
-        map("fq", "n", function() tb.quickfix() end, "Pass results to quickfix"),
-        map("fr", "n", function() tb.registers() end, "Find registers"),
-        map("fk", "n", function() tb.keymaps() end, "Find keymaps"),
-        map("fz", "n", function() tb.current_buffer_fuzzy_find() end, "Fuzzy search"),
+        map("fh", "n", function() require(tb).oldfiles() end, "Find old files"),
+        map("fb", "n", function() require(tb).buffers() end, "Find buffers"),
+        map("fi", "n", function() require(tb).help_tags() end, "Find help tags"),
+        map("fm", "n", function() require(tb).marks() end, "Find marks"),
+        map("fq", "n", function() require(tb).quickfix() end, "Pass results to quickfix"),
+        map("fr", "n", function() require(tb).registers() end, "Find registers"),
+        map("fk", "n", function() require(tb).keymaps() end, "Find keymaps"),
+        map("fz", "n", function() require(tb).current_buffer_fuzzy_find() end, "Fuzzy search"),
 
-        map("pc", "n", function() tb.command_history() end, "Find commands history"),
-        map("pn", "n", function() tb.search_history() end, "Find search history"),
-        map("pm", "n", function() tb.man_pages() end, "Pick man pages"),
-        map("pq", "n", function() tb.quickfixhistory() end, "Pick quickfix history"),
-        map("pl", "n", function() tb.loclist() end, "Pick loclist"),
-        map("pj", "n", function() tb.jumplist() end, "Pick jumplist"),
-        map("ph", "n", function() tb.highlights() end, "Pick highlights"),
+        map("pc", "n", function() require(tb).command_history() end, "Find commands history"),
+        map("pn", "n", function() require(tb).search_history() end, "Find search history"),
+        map("pm", "n", function() require(tb).man_pages() end, "Pick man pages"),
+        map("pq", "n", function() require(tb).quickfixhistory() end, "Pick quickfix history"),
+        map("pl", "n", function() require(tb).loclist() end, "Pick loclist"),
+        map("pj", "n", function() require(tb).jumplist() end, "Pick jumplist"),
+        map("ph", "n", function() require(tb).highlights() end, "Pick highlights"),
 
-        map("rf", "n", function() tb.resume() end, "Resume finding"),
+        map("rf", "n", function() require(tb).resume() end, "Resume finding"),
 
         -- Neovim LSP pickers
 
         -- using lspsaga's same function
-        -- map("<KEYBIND>", "n", function() tb.lsp_references() end, "Lsp references"),
-        -- map("<KEYBIND>", "n", function() tb.lsp_incoming_calls() end, "Incoming calls"),
-        -- map("<KEYBIND>", "n", function() tb.lsp_outgoing_calls() end, "Outgoing calls"),
+        -- map("<KEYBIND>", "n", function() require(tb).lsp_references() end, "Lsp references"),
+        -- map("<KEYBIND>", "n", function() require(tb).lsp_incoming_calls() end, "Incoming calls"),
+        -- map("<KEYBIND>", "n", function() require(tb).lsp_outgoing_calls() end, "Outgoing calls"),
 
-        map("fd", "n", function() tb.diagnostics() end, "Find diagnostics"),
-        map("fs", "n", function() tb.lsp_document_symbols() end, "Find document symbols"),
-        map("fj", "n", function() tb.lsp_dynamic_workspace_symbols() end, "Find doc Symbols"),
-        map("ti", "n", function() tb.lsp_implementations() end, "Implementations"),
-        map("td", "n", function() tb.lsp_definitions() end, "Definition"),
-        map("tt", "n", function() tb.lsp_type_definitions() end, "Type definition"),
+        map("fd", "n", function() require(tb).diagnostics() end, "Find diagnostics"),
+        map("fs", "n", function() require(tb).lsp_document_symbols() end, "Find document symbols"),
+        map("fj", "n", function() require(tb).lsp_dynamic_workspace_symbols() end, "Find doc Symbols"),
+        map("ti", "n", function() require(tb).lsp_implementations() end, "Implementations"),
+        map("td", "n", function() require(tb).lsp_definitions() end, "Definition"),
+        map("tt", "n", function() require(tb).lsp_type_definitions() end, "Type definition"),
 
         -- Git pickers
 
         -- Treesitter pickers
 
-        map("ft", "n", function() tb.treesitter() end, "Find via treesitter"),
+        map("ft", "n", function() require(tb).treesitter() end, "Find via treesitter"),
 
         -- Lists pickers
 
-        map("pk", "n", function() tb.symbols { sources = { "emoji", "kaomoji", "gitmoji", "nerd" } } end, "Pick moji"),
+        map("pk", "n", function()
+            require(tb).symbols({ sources = { "emoji", "kaomoji", "gitmoji", "nerd" } })
+        end, "Pick moji"),
 
         -- Extensions
 
-        map("fc", "n", function() te.zoxide.list() end, "Change directory"),
+        map("fc", "n", function() require("telescope").extensions.zoxide.list() end, "Change directory"),
     },
     config = function()
         local actions = require("telescope.actions")
