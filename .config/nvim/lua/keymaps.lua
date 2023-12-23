@@ -60,8 +60,8 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
     desc = "Force delete a current buffer"
 })
 
-map("n", "<leader>am", function() vim.cmd("messages") end, { desc = "History of messages" })
-map("n", "<leader>an", function()
+map("n", "gL", function() vim.cmd("messages") end, { desc = "History of messages" })
+map("n", "gC", function() -- number [C]olumn (?)
     local o = vim.opt
     ---@diagnostic disable-next-line: undefined-field
     if o.number._value then
@@ -99,4 +99,4 @@ map({ "n" }, "<CR>", function() return vim.v.count ~= 0 and "G" or "<CR>" end, {
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostics" })
 map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostics" })
-map("n", "<leader>tq", vim.diagnostic.setloclist, { desc = "Set diagnostics into loclist" })
+map("n", "<leader>E", vim.diagnostic.setloclist, { desc = "Set diagnostics into loclist" })
