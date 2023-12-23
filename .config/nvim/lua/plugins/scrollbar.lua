@@ -1,6 +1,6 @@
 return {
     "petertriho/nvim-scrollbar",
-    event = { "WinScrolled" },
+    -- event = { "WinScrolled" },
     keys = {
         { "<leader>as", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
     },
@@ -26,6 +26,8 @@ return {
             if has_gitsigns then
                 require("scrollbar.handlers.gitsigns").setup()
             end
+
+            require("scrollbar.utils").hide() -- to disable first when loaded
         end,
     },
 }
