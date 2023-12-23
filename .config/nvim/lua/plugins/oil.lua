@@ -3,7 +3,8 @@ local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
 ---@return boolean
 local is_oil_ssh = function()
-    for _, arg in pairs(vim.v.argv) do
+    ---@diagnostic disable-next-line: param-type-mismatch
+    for _, arg in pairs(vim.fn.argv()) do
         local pattern = "oil-ssh://"
         if string.sub(arg, 1, string.len(pattern)) == pattern then
             return true
