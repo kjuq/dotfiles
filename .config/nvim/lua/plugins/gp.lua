@@ -1,5 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>c", "GP: ")
 
+local nv = { "n", "v" }
+
 return {
     "robitx/gp.nvim",
     cmd = {
@@ -21,20 +23,20 @@ return {
         "GpImageAgent",
     },
     keys = {
-        map("n", "n", "GpChatNew vsplit", "Open new chat"),
-        map("p", "n", "GpChatPaste vsplit", "Paste selected text to a chat"),
-        map("c", "n", "GpChatToggle vsplit", "Toggle chat"),
-        map("f", "n", "GpChatFinder", "Search through chats"),
-        map("o", "n", "GpChatRespond", "Request a new GPT response"),
-        map("d", "n", "GpChatDelete", "Delete the current chat"),
-        map("r", "n", "GpRewrite", "Open prompt to rewrite codes"),
-        map("j", "n", "GpAppend", "Open prompt to append codes"),
-        map("k", "n", "GpPrepend", "Open prompt to prepend codes"),
-        map(".", "n", "GpContext", "Configure custom context per repo"),
-        map("]", "n", "GpNextAgent", "Next agent"),
-        map("a", "n", "GpAgent", "Show current agent"),
-        map("i", "n", "GpImage", "Open prompt to generate image"),
-        map("q", "n", "GpStop", "Stop responses and jobs"),
+        map("n", nv, "GpChatNew vsplit", "Open new chat"),
+        map("p", nv, "GpChatPaste vsplit", "Paste selected text to a chat"),
+        map("c", nv, "GpChatToggle vsplit", "Toggle chat"),
+        map("f", nv, "GpChatFinder", "Search through chats"),
+        map("o", nv, "GpChatRespond", "Request a new GPT response"),
+        map("d", nv, "GpChatDelete", "Delete the current chat"),
+        map("r", nv, "GpRewrite", "Open prompt to rewrite codes"),
+        map("j", nv, "GpAppend", "Open prompt to append codes"),
+        map("k", nv, "GpPrepend", "Open prompt to prepend codes"),
+        map(".", nv, "GpContext", "Configure custom context per repo"),
+        map("]", nv, "GpNextAgent", "Next agent"),
+        map("a", nv, "GpAgent", "Show current agent"),
+        map("i", nv, "GpImage", "Open prompt to generate image"),
+        map("q", nv, "GpStop", "Stop responses and jobs"),
     },
     opts = {
         openai_api_key = { "pass", "openai.com/api_key" },
