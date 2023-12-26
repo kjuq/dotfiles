@@ -110,7 +110,7 @@ return {
                 --[[]] and { name = "skkeleton" }
                 --[[]] or {},
             }, {
-                { name = "copilot", priority = -1 },
+                -- { name = "copilot" },
                 { name = "path" },
                 { name = "emoji" },
                 { name = "snippy" },
@@ -169,8 +169,8 @@ return {
         "ray-x/cmp-treesitter",
         "onsails/lspkind.nvim",
         "dcampos/cmp-snippy",
-        { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
-        { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" },
+        { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim" },
         "uga-rosa/cmp-skkeleton",
+        -- { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
     },
 }
