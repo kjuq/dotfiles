@@ -1,33 +1,33 @@
 return {
     "petertriho/nvim-scrollbar",
-    -- event = { "WinScrolled" },
     keys = {
         { "<leader>as", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
     },
-    opts = {
-        excluded_filetypes = {
-            "cmp_docs",
-            "cmp_menu",
-            "dap-float",
-            "noice",
-            "prompt",
-            "TelescopePrompt",
-            "saga_codeaction",
-            "sagarename",
-        },
-    },
+    config = function()
+        require("scrollbar").setup({
+            excluded_filetypes = {
+                "cmp_docs",
+                "cmp_menu",
+                "dap-float",
+                "noice",
+                "prompt",
+                "TelescopePrompt",
+                "saga_codeaction",
+                "sagarename",
+            },
+        })
+
+        require("scrollbar.handlers.search").setup({
+            override_lens = function() end,
+        })
+
+        require("gitsigns").setup() -- in case that gitsigns.lua doesn't exist
+        require("scrollbar.handlers.gitsigns").setup()
+
+        require("scrollbar.utils").hide()
+    end,
     dependencies = {
         "kevinhwang91/nvim-hlslens",
-        config = function()
-            require("scrollbar.handlers.search").setup({
-                override_lens = function() end,
-            })
-            local has_gitsigns, _ = pcall(require, "gitsigns")
-            if has_gitsigns then
-                require("scrollbar.handlers.gitsigns").setup()
-            end
-
-            require("scrollbar.utils").hide() -- to disable first when loaded
-        end,
+        "lewis6991/gitsigns.nvim",
     },
 }
