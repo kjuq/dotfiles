@@ -3,7 +3,10 @@
 
 return {
     "tzachar/highlight-undo.nvim",
-    lazy = false,
+    keys = {
+        { "u",     mode = "n" },
+        { "<C-r>", mode = "n" },
+    },
     opts = {
         duration = 125,
         undo = {
