@@ -25,9 +25,6 @@ return {
                     help = false,
                 },
             },
-            messages = {
-                view_search = false, -- use hlslens
-            },
             lsp = {
                 -- progress = { enabled = false },
                 signature = { auto_open = { enabled = false } },
