@@ -19,6 +19,15 @@ return {
     opts = function()
         require("utils.lazy").quit_with_esc({ "noice" })
         return {
+            cmdline = {
+                format = {
+                    lua = false,
+                    help = false,
+                },
+            },
+            messages = {
+                view_search = false, -- use hlslens
+            },
             lsp = {
                 -- progress = { enabled = false },
                 signature = { auto_open = { enabled = false } },
