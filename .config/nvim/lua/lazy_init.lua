@@ -51,8 +51,3 @@ local opts = {
 
 require("lazy").setup("plugins", opts)
 vim.keymap.set("n", "<leader>ap", function() vim.cmd("Lazy") end, { desc = "Lazy.nvim: Manage plugins" })
-
--- load built-in colorscheme if no colorscheme is loaded
-if vim.g.colors_name == nil then
-    require("colorscheme")
-end
