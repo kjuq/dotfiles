@@ -1,6 +1,6 @@
 return {
     "andersevenrud/nvim_context_vt",
-    lazy = false,
+    event = "VeryLazy",
     opts = {
         prefix = " -->",
     },
