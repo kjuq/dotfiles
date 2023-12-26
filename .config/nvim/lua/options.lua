@@ -39,19 +39,16 @@ o.expandtab      = false
 o.shiftwidth     = 0 -- obey tabstop
 o.shiftround     = true
 
-o.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "󰌑" } -- ⏎
+o.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵" }
 o.list           = true
 o.relativenumber = true
 vim.o.fillchars  = "eob: " -- hide tildes in blank space after end of file
 
-
-o.shell = "fish"
-
-o.helplang = { "en", "ja" }
+o.helplang       = { "en", "ja" }
 
 -- Disable a leader key time out
-o.timeout = false
-o.ttimeout = false
+o.timeout        = false
+o.ttimeout       = false
 
 -- Disable welcome message
 o.shortmess:append("I")
