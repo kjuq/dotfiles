@@ -1,6 +1,5 @@
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 return {
-    dir = "~/codes/_nvim_plugins/lualine.nvim",
     "nvim-lualine/lualine.nvim",
     event = { "VeryLazy" },
     init = function()
