@@ -1,5 +1,7 @@
 return {
     "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 9999,
     config = function()
         require("gruvbox").setup({
             transparent_mode = true,
