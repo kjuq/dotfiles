@@ -3,8 +3,8 @@ local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
 return {
     "stevearc/oil.nvim",
-    lazy = os.getenv("OILSSH") ~= nil,
-    event = "VeryLazy",
+    lazy = os.getenv("OILSSH") == nil,
+    event = { "CursorHold" },
     keys = {
         map("i", "n", "Oil", "Open"),
     },
@@ -17,7 +17,7 @@ return {
             ["<C-s>"] = "actions.select_vsplit",
             ["<C-h>"] = "actions.select_split",
             ["<C-t>"] = "actions.select_tab",
-            ["dp"] = "actions.preview",
+            ["K"] = "actions.preview",
             ["<C-c>"] = "actions.close",
             ["<C-l>"] = "actions.refresh",
             ["-"] = "actions.parent",
