@@ -1,4 +1,4 @@
 return {
-    "MTDL9/vim-log-highlighting",
+    "kjuq/vim-log-highlighting",
     ft = "log",
 }
