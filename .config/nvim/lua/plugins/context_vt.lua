@@ -1,6 +1,6 @@
 return {
     "andersevenrud/nvim_context_vt",
-    event = "VeryLazy",
+    event = { "CursorHold", "CursorHoldI" },
     opts = {
         prefix = " -->",
         disable_virtual_lines = true,

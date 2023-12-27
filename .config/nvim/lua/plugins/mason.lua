@@ -2,7 +2,7 @@ local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Mason: ")
 
 return {
     "williamboman/mason-lspconfig.nvim",
-    event = { "VeryLazy" },
+    event = { "CursorHold", "CursorHoldI" },
     config = function()
         require("lsp")
         require("mason").setup({ ui = { border = "rounded" } })

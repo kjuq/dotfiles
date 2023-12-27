@@ -20,7 +20,7 @@ o.pumheight      = 10
 o.pumwidth       = 40
 -- o.pumblend = 20 -- Disable this when using transparent env
 
-o.updatetime     = 500
+o.updatetime     = 100
 
 o.ignorecase     = true
 o.smartcase      = true
