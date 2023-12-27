@@ -1,6 +1,7 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
+    commit = "0dca9284bce128e60da18693d92999968d6cb523",
     event = { "VeryLazy" },
     config = function()
         -- disable builtin indentline
