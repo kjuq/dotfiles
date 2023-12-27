@@ -25,7 +25,7 @@ end
 
 return {
     "folke/which-key.nvim",
-    event = { "VeryLazy" },
+    event = { "CursorHold", "CursorHoldI" },
     keys = {
         { "<leader>aw", mode = { "n" }, toggle,                             desc = "Which-key: Toggle" },
         { "<leader>aW", mode = { "n" }, function() vim.cmd("WhichKey") end, desc = "Which-key: Show" },

@@ -1,6 +1,6 @@
 return {
     "ibhagwan/smartyank.nvim",
-    lazy = false, -- necessary
+    event = "BufReadPost",
     opts = {
         highlight = {
             enabled = false,

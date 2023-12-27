@@ -63,9 +63,6 @@ return {
             require(tb).symbols({ sources = { "emoji", "kaomoji", "gitmoji", "nerd" } })
         end, "Pick moji"),
 
-        -- Extensions
-
-        map("fc", "n", function() require("telescope").extensions.zoxide.list() end, "Change directory"),
     },
     config = function()
         local actions = require("telescope.actions")
@@ -106,24 +103,6 @@ return {
                     "node_modules/",
                 },
             },
-            extensions = {
-                zoxide = {
-                    prompt_title = "[ Walking on the shoulders of TJ ]",
-                    mappings = {
-                        default = {
-                            after_action = function(selection)
-                                print("Update to (" .. selection.z_score .. ") " .. selection.path)
-                            end
-                        },
-                        ["<C-s>"] = {
-                            before_action = function(_) print("before C-s") end,
-                            action = function(selection)
-                                vim.cmd.edit(selection.path)
-                            end
-                        },
-                    },
-                },
-            },
         })
     end,
     dependencies = {
@@ -131,7 +110,6 @@ return {
         "nvim-lua/plenary.nvim",
         "BurntSushi/ripgrep",
         "nvim-telescope/telescope-symbols.nvim",
-        "jvgrootveld/telescope-zoxide",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",

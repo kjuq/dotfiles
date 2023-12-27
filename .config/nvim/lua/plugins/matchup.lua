@@ -1,6 +1,6 @@
 return {
     "andymass/vim-matchup",
-    event = { "VeryLazy" },
+    event = { "CursorHold", "CursorHoldI" },
     config = function()
         require("nvim-treesitter.configs").setup({
             matchup = {

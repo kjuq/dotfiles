@@ -1,6 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = { "VeryLazy" },
+    event = { "CursorHold", "CursorHoldI" },
     build = function()
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
