@@ -1,6 +1,6 @@
 return {
     "bennypowers/nvim-regexplainer",
-    event = "CursorHold",
+    event = require("utils.lazy").verylazy,
     config = function()
         require("regexplainer").setup({
             auto = true,

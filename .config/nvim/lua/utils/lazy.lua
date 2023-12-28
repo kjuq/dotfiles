@@ -44,4 +44,6 @@ return {
     generate_map = generate_map,
     generate_cmd_map = generate_cmd_map,
     quit_with_esc = quit_with_esc,
+    -- verylazy = { "CursorHold", "CursorHoldI" },
+    verylazy = { "VeryLazy" },
 }
