@@ -4,7 +4,7 @@ local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 return {
     "stevearc/oil.nvim",
     lazy = os.getenv("OILSSH") == nil,
-    event = { "CursorHold" },
+    event = require("utils.lazy").verylazy,
     keys = {
         map("i", "n", "Oil", "Open"),
     },

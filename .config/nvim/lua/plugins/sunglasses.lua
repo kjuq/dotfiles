@@ -1,6 +1,6 @@
 return {
     "miversen33/sunglasses.nvim",
-    event = { "CursorHold", "CursorHoldI" },
+    event = require("utils.lazy").verylazy,
     config = function()
         vim.api.nvim_create_autocmd({ "FocusLost" }, {
             group = vim.api.nvim_create_augroup("sunglasses_unfocuesd", {}),

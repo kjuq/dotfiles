@@ -1,6 +1,6 @@
 return {
     "lewis6991/gitsigns.nvim",
-    event = { "CursorHold", "CursorHoldI" },
+    event = require("utils.lazy").verylazy,
     opts = {
         signcolumn = false,
         numhl = true,

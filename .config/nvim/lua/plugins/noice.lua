@@ -9,7 +9,7 @@ local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope: ")
 
 return {
     "folke/noice.nvim",
-    event = { "CmdlineEnter", "CursorHold", "CursorHoldI" },
+    event = require("utils.lazy").verylazy,
     cmd = { "Noice" },
     keys = {
         cmap("fn", "n", "Noice telescope", "Pick noice"),
