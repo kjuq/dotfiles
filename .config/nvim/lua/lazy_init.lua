@@ -1,5 +1,4 @@
 if os.getenv("NO_PLUG") then
-    require("colorscheme")
     return
 end
 
