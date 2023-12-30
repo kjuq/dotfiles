@@ -5,6 +5,7 @@ return {
         require("nvim-treesitter.configs").setup({
             matchup = {
                 enable = true,
+                enable_quotes = true,
             },
         })
         -- for lazy-load, reload filetype
