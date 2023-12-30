@@ -6,9 +6,9 @@ aerc/accounts.conf.template
 aerc/aerc.conf
 aerc/binds.conf
 aerc/stylesets
-alacritty/alacritty.yml
-alacritty/macos.yml.bak
-alacritty/linux.yml.bak
+alacritty/alacritty.toml
+alacritty/macos.toml.bak
+alacritty/linux.toml.bak
 brewfile/Brewfile
 clangd/config.yaml
 fish/config.fish
