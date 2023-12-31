@@ -1,6 +1,7 @@
 ---@return table { skk_dir = string, jisyo_l = string, toggle_japanese = fun(opts: table, group: integer, callback: fun()) }
 return {
     skk_dir = os.getenv("XDG_CONFIG_HOME") .. "/skk",
+    jisyo_user = os.getenv("XDG_CONFIG_HOME") .. "/skk/my_jisyo",
     jisyo_l = os.getenv("HOMEBREW_PREFIX") .. "/share/skk-jisyo-l/SKK-JISYO.L",
 
     ---@param opts table { enabled = boolean }

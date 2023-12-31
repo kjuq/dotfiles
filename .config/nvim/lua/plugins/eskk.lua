@@ -17,10 +17,9 @@ return {
         { "<leader>aj", mode = { "n" },      toggle_japanese,       desc = "Eskk: Toggle JP mode" },
     },
     config = function()
-        local jisyo_l = os.getenv("HOMEBREW_PREFIX") .. "/share/skk-jisyo-l/SKK-JISYO.L"
         vim.g["eskk#directory"] = skk.skk_dir
-        vim.g["eskk#dictionary"] = { path = skk.skk_dir .. "/my_jisyo", sorted = 1, encoding = "utf-8" }
-        vim.g["eskk#large_dictionary"] = { path = jisyo_l, sorted = 1, encoding = "euc-jp" }
+        vim.g["eskk#dictionary"] = { path = skk.jisyo_user, sorted = 1, encoding = "utf-8" }
+        vim.g["eskk#large_dictionary"] = { path = skk.jisyo_l, sorted = 1, encoding = "euc-jp" }
         vim.g["eskk#egg_like_newline"] = 1
         vim.g["eskk#keep_state"] = 0
         vim.g["eskk#enable_completion"] = 0
