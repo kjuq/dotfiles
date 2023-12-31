@@ -10,7 +10,7 @@ return {
             popup = {
                 border = {
                     padding = { 0, 1 },
-                    style = "rounded",
+                    style = require("utils.lazy").floatwinborder,
                 }
             }
         })

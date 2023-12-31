@@ -16,7 +16,7 @@ vim.diagnostic.config({
     signs = false,
     virtual_text = virtual_text(vt),
     float = {
-        border = "rounded",
+        border = require("utils.lazy").floatwinborder,
         header = false,
         format = function(diagnostic)
             return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)

@@ -46,4 +46,5 @@ return {
     quit_with_esc = quit_with_esc,
     -- verylazy = { "CursorHold", "CursorHoldI" },
     verylazy = { "VeryLazy" },
+    floatwinborder = "single",
 }
