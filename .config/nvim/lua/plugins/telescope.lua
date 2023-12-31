@@ -10,30 +10,30 @@ return {
     keys = {
         -- File pickers
 
-        map("ff", "n", function() require(tb).find_files({ hidden = true }) end, "Find files"),
-        map("fw", "n", function() require(tb).grep_string() end, "Find current word"),
-        map("fg", "n", function() require(tb).live_grep() end, "Find files with live grep"),
+        map("ff", "n", function() require(tb).find_files({ hidden = true }) end, "Files on current dir"),
+        map("fw", "n", function() require(tb).grep_string() end, "Word on the cursor"),
+        map("fg", "n", function() require(tb).live_grep() end, "Live grep"),
 
         map("gf", "n", function() require(tb).git_files() end, "Git files"),
 
         -- Vim pickers
 
-        map("fh", "n", function() require(tb).oldfiles() end, "Find old files"),
-        map("fb", "n", function() require(tb).buffers() end, "Find buffers"),
-        map("fi", "n", function() require(tb).help_tags() end, "Find help tags"),
-        map("fm", "n", function() require(tb).marks() end, "Find marks"),
-        map("fq", "n", function() require(tb).quickfix() end, "Pass results to quickfix"),
-        map("fr", "n", function() require(tb).registers() end, "Find registers"),
-        map("fk", "n", function() require(tb).keymaps() end, "Find keymaps"),
+        map("fh", "n", function() require(tb).oldfiles() end, "Old files"),
+        map("fb", "n", function() require(tb).buffers() end, "Buffers"),
+        map("fi", "n", function() require(tb).help_tags() end, "Help tags"),
+        map("fm", "n", function() require(tb).marks() end, "Marks"),
+        map("fq", "n", function() require(tb).quickfix() end, "Quickfix"),
+        map("fr", "n", function() require(tb).registers() end, "Registers"),
+        map("fk", "n", function() require(tb).keymaps() end, "Keymaps"),
         map("fz", "n", function() require(tb).current_buffer_fuzzy_find() end, "Fuzzy search"),
 
-        map("pc", "n", function() require(tb).command_history() end, "Find commands history"),
-        map("pn", "n", function() require(tb).search_history() end, "Find search history"),
-        map("pm", "n", function() require(tb).man_pages() end, "Pick man pages"),
-        map("pq", "n", function() require(tb).quickfixhistory() end, "Pick quickfix history"),
-        map("pl", "n", function() require(tb).loclist() end, "Pick loclist"),
-        map("pj", "n", function() require(tb).jumplist() end, "Pick jumplist"),
-        map("ph", "n", function() require(tb).highlights() end, "Pick highlights"),
+        map("pc", "n", function() require(tb).command_history() end, "Commands history"),
+        map("pn", "n", function() require(tb).search_history() end, "Search history"),
+        map("pm", "n", function() require(tb).man_pages() end, "Man pages"),
+        map("pq", "n", function() require(tb).quickfixhistory() end, "Quickfix history"),
+        map("pl", "n", function() require(tb).loclist() end, "Loclist"),
+        map("pj", "n", function() require(tb).jumplist() end, "Jumplist"),
+        map("ph", "n", function() require(tb).highlights() end, "Highlights"),
 
         map("rf", "n", function() require(tb).resume() end, "Resume finding"),
 
@@ -44,12 +44,12 @@ return {
         -- map("<KEYBIND>", "n", function() require(tb).lsp_incoming_calls() end, "Incoming calls"),
         -- map("<KEYBIND>", "n", function() require(tb).lsp_outgoing_calls() end, "Outgoing calls"),
 
-        map("fd", "n", function() require(tb).diagnostics() end, "Find diagnostics"),
-        map("fs", "n", function() require(tb).lsp_document_symbols() end, "Find document symbols"),
-        map("fj", "n", function() require(tb).lsp_dynamic_workspace_symbols() end, "Find doc Symbols"),
+        map("fd", "n", function() require(tb).diagnostics() end, "Diagnostics"),
+        map("fs", "n", function() require(tb).lsp_document_symbols() end, "Document symbols"),
+        map("fj", "n", function() require(tb).lsp_dynamic_workspace_symbols() end, "Doc Symbols"),
         map("ti", "n", function() require(tb).lsp_implementations() end, "Implementations"),
-        map("td", "n", function() require(tb).lsp_definitions() end, "Definition"),
-        map("tt", "n", function() require(tb).lsp_type_definitions() end, "Type definition"),
+        map("td", "n", function() require(tb).lsp_definitions() end, "Definitions"),
+        map("tt", "n", function() require(tb).lsp_type_definitions() end, "Type definitions"),
 
         -- Git pickers
 
@@ -61,7 +61,7 @@ return {
 
         map("pk", "n", function()
             require(tb).symbols({ sources = { "emoji", "kaomoji", "gitmoji", "nerd" } })
-        end, "Pick moji"),
+        end, "Symbols"),
 
     },
     config = function()
