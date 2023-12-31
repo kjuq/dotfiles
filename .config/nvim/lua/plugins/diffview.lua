@@ -12,11 +12,12 @@ return {
         "DiffviewLog",
     },
     keys = {
-        map("l", "n", "DiffviewFileHistory %", "File History")
+        map("o", "n", "DiffviewOpen", "Open"),
+        map("l", "n", "DiffviewFileHistory %", "File History"),
     },
     config = function()
         vim.api.nvim_create_autocmd({ "FileType" }, {
-            pattern = { "DiffviewFileHistory" },
+            pattern = { "DiffviewFileHistory", "DiffviewFiles" },
             group = vim.api.nvim_create_augroup("user_diff_view", {}),
             callback = function()
                 vim.keymap.set("n", "<leader>q", function() vim.cmd("DiffviewClose") end, { buffer = true })
