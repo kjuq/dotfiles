@@ -12,7 +12,7 @@ return {
     event = require("utils.lazy").verylazy,
     cmd = { "Noice" },
     keys = {
-        cmap("fn", "n", "Noice telescope", "Pick noice"),
+        cmap("fn", "n", "Noice telescope", "Noice"),
         map("<C-f>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, "Page down"),
         map("<C-b>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, "Page up"),
     },
@@ -46,8 +46,8 @@ return {
                 },
             },
             presets = {
-                command_palette = false,      -- position the cmdline and popupmenu together
-                long_message_to_split = true, -- long messages will be sent to a split
+                -- command_palette = false,      -- position the cmdline and popupmenu together
+                -- long_message_to_split = true, -- long messages will be sent to a split
             },
         }
     end,
