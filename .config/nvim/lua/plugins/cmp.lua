@@ -8,10 +8,26 @@ return {
         local cmp = require("cmp")
         local types = require("cmp.types")
 
+        local copilot_source = cmp.config.sources({ { name = "copilot" } })
+        local normal_sources = cmp.config.sources({
+            pcall(require, "plugins.skkeleton")
+            --[[-]] and require("plugins.skkeleton").cond
+            --[[-]] and { name = "skkeleton" }
+            --[[-]] or {},
+        }, {
+            { name = "path" },
+            { name = "emoji" },
+            { name = "snippy" },
+            { name = "nvim_lsp" },
+            { name = "nvim_lua" },
+            { name = "buffer" },
+        })
+
         local select_next = function()
             if cmp.visible() then
                 cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
             else
+                cmp.setup({ sources = normal_sources })
                 cmp.complete()
             end
         end
@@ -20,6 +36,7 @@ return {
             if cmp.visible() then
                 cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
             else
+                cmp.setup({ sources = copilot_source })
                 cmp.complete()
             end
         end
@@ -104,20 +121,7 @@ return {
 
             mapping = mapping_insert,
 
-            sources = cmp.config.sources({
-                pcall(require, "plugins.skkeleton")
-                --[[]] and require("plugins.skkeleton").cond
-                --[[]] and { name = "skkeleton" }
-                --[[]] or {},
-            }, {
-                -- { name = "copilot" },
-                { name = "path" },
-                { name = "emoji" },
-                { name = "snippy" },
-                { name = "nvim_lsp" },
-                { name = "nvim_lua" },
-                { name = "buffer" },
-            }),
+            sources = normal_sources,
             window = {
                 completion = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
                 documentation = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
@@ -169,8 +173,7 @@ return {
         "ray-x/cmp-treesitter",
         "onsails/lspkind.nvim",
         "dcampos/cmp-snippy",
-        { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim" },
-        "uga-rosa/cmp-skkeleton",
-        -- { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
+        { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" },
+        { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
     },
 }
