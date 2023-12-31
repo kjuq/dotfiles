@@ -70,16 +70,78 @@ return {
 
         require("telescope").setup({
             defaults = {
+                default_mappings = {
+                    i = {
+                        ["<C-n>"] = actions.move_selection_next,
+                        ["<C-p>"] = actions.move_selection_previous,
+
+                        ["<C-c>"] = actions.close,
+
+                        ["<CR>"] = actions.select_default,
+
+                        ["<C-s>"] = actions.select_vertical,
+
+                        ["<C-b>"] = actions.preview_scrolling_up,
+                        ["<C-f>"] = actions.preview_scrolling_down,
+                        ["<M-b>"] = actions.preview_scrolling_left,
+                        ["<M-f>"] = actions.preview_scrolling_right,
+
+                        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+                        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+
+                        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+                        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+                        ["<C-l>"] = actions.complete_tag,
+                        ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+                        ["<C-w>"] = { "<c-s-w>", type = "command" },
+
+                        -- disable c-j because we dont want to allow new lines #2123
+                        ["<C-j>"] = actions.nop,
+                    },
+
+                    n = {
+                        ["<esc>"] = actions.close,
+
+                        ["<CR>"] = actions.select_default,
+
+                        ["<C-s>"] = actions.select_vertical,
+
+                        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+                        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+                        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+                        ["j"] = actions.move_selection_next,
+                        ["k"] = actions.move_selection_previous,
+
+                        ["<C-n>"] = actions.move_selection_next,
+                        ["<C-p>"] = actions.move_selection_previous,
+
+                        ["gg"] = actions.move_to_top,
+                        ["G"] = actions.move_to_bottom,
+
+                        ["<C-b>"] = actions.preview_scrolling_up,
+                        ["<C-f>"] = actions.preview_scrolling_down,
+                        ["<M-f>"] = actions.preview_scrolling_left,
+                        ["<M-b>"] = actions.preview_scrolling_right,
+
+                        ["?"] = actions.which_key,
+                    }
+                },
                 mappings = {
                     i = {
                         ["<esc>"] = actions.close,
                         ["<C-c>"] = { "<esc>", type = "command" },
-                        ["<M-n>"] = require('telescope.actions').cycle_history_next,
-                        ["<M-p>"] = require('telescope.actions').cycle_history_prev,
-                        ["<M-s>"] = actions_layout.toggle_preview
+
+                        ["<M-n>"] = actions.cycle_history_next,
+                        ["<M-p>"] = actions.cycle_history_prev,
                     },
                     n = {
-                        ["<M-s>"] = actions_layout.toggle_preview
+                        ["<esc>"] = actions.close,
+                        ["K"] = actions_layout.toggle_preview,
+                        ["<M-n>"] = actions.cycle_history_next,
+                        ["<M-p>"] = actions.cycle_history_prev,
                     },
                 },
                 layout_strategy = "vertical", -- center, vertical, horizontal, flex
