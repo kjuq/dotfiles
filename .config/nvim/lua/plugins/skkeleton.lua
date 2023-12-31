@@ -18,12 +18,10 @@ return {
         { "<leader>aj", mode = { "n" },      toggle_japanese,            desc = "Skkeleton: Toggle JP mode" },
     },
     config = function()
-        local jisyo_l = skk.jisyo_l
-
         vim.fn["skkeleton#config"]({
             eggLikeNewline = true,
-            globalJisyo = jisyo_l,
-            -- userJisyo =
+            globalJisyo = skk.jisyo_l,
+            userJisyo = skk.jisyo_user,
         })
 
         vim.fn["skkeleton#register_kanatable"]("rom", {
@@ -34,6 +32,7 @@ return {
     end,
     dependencies = {
         "vim-denops/denops.vim",
+        "uga-rosa/cmp-skkeleton",
         {
             "delphinus/skkeleton_indicator.nvim",
             opts = {
