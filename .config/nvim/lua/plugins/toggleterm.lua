@@ -20,7 +20,7 @@ return {
         ---@diagnostic disable-next-line: duplicate-set-field
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
-            vim.keymap.set("t", "<esc>", function() vim.cmd(open_cmd) end, opts)
+            -- vim.keymap.set("t", "<esc>", function() vim.cmd(open_cmd) end, opts)
             vim.keymap.set("t", "<C-Space>", function() vim.cmd(open_cmd) end, opts)
         end
 
