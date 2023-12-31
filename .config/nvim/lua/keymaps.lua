@@ -76,18 +76,17 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
 
 map("n", "gL", function() vim.cmd("messages") end, { desc = "History of messages" })
 map("n", "gC", function() -- number [C]olumn (?)
-    local o = vim.opt
-    ---@diagnostic disable-next-line: undefined-field
-    if o.number._value then
-        o.number = false
-        o.relativenumber = false
-        ---@diagnostic disable-next-line: undefined-field
-    elseif o.relativenumber._value then
-        o.number = true
-        o.relativenumber = false
+    local opt = vim.opt
+    local o = vim.o
+    if o.number then
+        opt.number = false
+        opt.relativenumber = false
+    elseif o.relativenumber then
+        opt.number = true
+        opt.relativenumber = false
     else
-        o.number = false
-        o.relativenumber = true
+        opt.number = false
+        opt.relativenumber = true
     end
 end, { desc = "Toggle number style" })
 
