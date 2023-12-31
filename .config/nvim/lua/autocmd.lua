@@ -6,6 +6,24 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, { -- q:
     end,
 })
 
+vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
+    group = vim.api.nvim_create_augroup("user_cmdline_enter", {}),
+    callback = function()
+        _G.user_cur_relativenumber = vim.o.relativenumber
+        _G.user_cur_number = vim.o.number
+        vim.opt.relativenumber = false
+        vim.opt.number = true
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
+    group = vim.api.nvim_create_augroup("user_cmdline_leave", {}),
+    callback = function()
+        vim.opt.relativenumber = _G.user_cur_relativenumber
+        vim.opt.number = _G.user_cur_number
+    end,
+})
+
 -- highlight yanked text
 vim.api.nvim_set_hl(0, "UserHighlightOnYank", { bg = "#c43963" }) -- from SagaBeacon of LspSaga
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
