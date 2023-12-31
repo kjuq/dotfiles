@@ -11,7 +11,7 @@ end
 
 return {
     "vim-skk/eskk.vim",
-    cond = vim.fn.executable("deno") == 0, -- fellback from skkeleton
+    cond = vim.fn.executable("deno") == 0, -- fallen-back from skkeleton
     keys = {
         { "<C-Space>",  mode = { "i", "c" }, "<Plug>(eskk:enable)", desc = "Eskk: Enable",        noremap = false, silent = true },
         { "<leader>aj", mode = { "n" },      toggle_japanese,       desc = "Eskk: Toggle JP mode" },
