@@ -52,3 +52,11 @@ o.ttimeout       = false
 
 -- Disable welcome message
 o.shortmess:append("I")
+
+o.matchpairs:append("「:」")
+o.matchpairs:append("（:）")
+o.matchpairs:append("［:］")
+o.matchpairs:append("〔:〕")
+o.matchpairs:append("【:】")
+o.matchpairs:append("『:』")
+o.matchpairs:append("｛:｝")
