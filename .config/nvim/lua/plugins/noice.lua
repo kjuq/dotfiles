@@ -13,8 +13,8 @@ return {
     cmd = { "Noice" },
     keys = {
         cmap("fn", "n", "Noice telescope", "Pick noice"),
-        map("<C-d>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-d>" end end, "Half down"),
-        map("<C-u>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-u>" end end, "Half up"),
+        map("<C-f>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, "Page down"),
+        map("<C-b>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, "Page up"),
     },
     opts = function()
         require("utils.lazy").quit_with_esc({ "noice" })
