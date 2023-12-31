@@ -102,6 +102,7 @@ return {
                     ".git/",
                     "node_modules/",
                 },
+                borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }, -- presets such as "single" and "rounded" are not supported
             },
         })
     end,

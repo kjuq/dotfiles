@@ -24,13 +24,16 @@ return {
                     lua = false,
                     help = false,
                 },
+                opts = {
+                    border = { style = require("utils.lazy").floatwinborder },
+                },
             },
             lsp = {
                 -- progress = { enabled = false },
                 signature = { auto_open = { enabled = false } },
                 documentation = {
                     opts = {
-                        border = "rounded",
+                        border = require("utils.lazy").floatwinborder,
                         position = { row = 2, col = 2 },
                         size = { max_width = 80, max_height = 20, },
                     },

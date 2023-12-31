@@ -5,7 +5,7 @@ return {
     event = require("utils.lazy").verylazy,
     config = function()
         require("lsp")
-        require("mason").setup({ ui = { border = "rounded" } })
+        require("mason").setup({ ui = { border = require("utils.lazy").floatwinborder } })
 
         local success, capabilities = pcall(function() require('cmp_nvim_lsp').default_capabilities() end)
         if not success then
@@ -32,13 +32,13 @@ return {
                     _DISABLED_handlers = {
                         ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
                             title = " Lsp: Hover ",
-                            border = "rounded",
+                            border = require("utils.lazy").floatwinborder,
                             max_width = 80,
                             max_height = 20,
                         }),
                         ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
                             title = " Lsp: Signature Help ",
-                            border = "rounded",
+                            border = require("utils.lazy").floatwinborder,
                             max_width = 80,
                             max_height = 20,
                         }),

@@ -119,8 +119,8 @@ return {
                 { name = "buffer" },
             }),
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                completion = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
+                documentation = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
             },
             formatting = {
                 format = require("lspkind").cmp_format({
