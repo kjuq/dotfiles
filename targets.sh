@@ -56,7 +56,7 @@ toggle_menubar
 root_files="
 .docker/config.json
 .clang-format
-.gnupg/gpg-agent.conf.bak
+.gnupg/gpg-agent.conf
 .ignore
 .ssh/config
 .w3m/keymap
