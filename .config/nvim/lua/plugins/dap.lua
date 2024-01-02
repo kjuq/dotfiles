@@ -7,6 +7,7 @@ return {
             "Breakpoint condition"),
         map("b", "n", function() require("dap").toggle_breakpoint() end, "Breakpoint"),
         map("c", "n", function() require("dap").continue() end, "Continue"),
+        ---@diagnostic disable-next-line: undefined-global (get_args)
         map("a", "n", function() require("dap").continue({ before = get_args }) end, "Run with args"),
         map("C", "n", function() require("dap").run_to_cursor() end, "Run to cursor"),
         map("g", "n", function() require("dap").goto_() end, "Go to line (no execute)"),
