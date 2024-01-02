@@ -108,9 +108,3 @@ end, { silent = true })
 
 -- <NUM><CR> to go to line. i.e. 10<CR> -> 10G
 map({ "n" }, "<CR>", function() return vim.v.count ~= 0 and "G" or "<CR>" end, { expr = true, silent = true })
-
--- Diagnostics
-map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics" })
-map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostics" })
-map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostics" })
-map("n", "<leader>E", vim.diagnostic.setloclist, { desc = "Set diagnostics into loclist" })
