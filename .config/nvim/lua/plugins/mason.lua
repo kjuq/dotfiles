@@ -4,13 +4,9 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = require("utils.lazy").verylazy,
     config = function()
-        require("lsp")
-        require("mason").setup({ ui = { border = require("utils.lazy").floatwinborder } })
+        require("lsp") -- load lsp config
 
-        local success, capabilities = pcall(function() require("cmp_nvim_lsp").default_capabilities() end)
-        if not success then
-            capabilities = nil
-        end
+        require("mason").setup({ ui = { border = require("utils.lazy").floatwinborder } })
 
         require("mason-lspconfig").setup({
             ensure_installed = {
@@ -21,63 +17,16 @@ return {
             },
         })
 
-        local common_opts = {
-            capabilities = capabilities,
-            _handlers = { -- this is now disabled to use noice-hover-scroll
-                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-                    title = " Lsp: Hover ",
-                    border = require("utils.lazy").floatwinborder,
-                    max_width = 80,
-                    max_height = 20,
-                }),
-                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-                    title = " Lsp: Signature Help ",
-                    border = require("utils.lazy").floatwinborder,
-                    max_width = 80,
-                    max_height = 20,
-                }),
-            },
-        }
-
-        local lspconfig = require("lspconfig")
-
         require("mason-lspconfig").setup_handlers({
             function(server_name)
+                local lspconfig = require("lspconfig")
+                local common_opts = require("plugins/lsp/common")
                 ---@diagnostic disable-next-line: undefined-field
                 lspconfig[server_name].setup(common_opts)
             end,
 
-            ["pylsp"] = function()
-                local python_path = os.getenv("HOMEBREW_PREFIX") .. "/bin/python3"
-                lspconfig.pylsp.setup(vim.tbl_deep_extend("error", common_opts, {
-                    settings = { pylsp = { plugins = { jedi = { environment = python_path } } } },
-                }))
-            end,
-
-            -- https://github.com/uhooi/dotfiles/blob/09d5f8f03974e4ef8ecf6641a0801d8b60271fca/.config/nvim/lua/plugins/config/nvim_lspconfig.lua
-            -- https://github.com/uhooi/dotfiles/blob/09d5f8f03974e4ef8ecf6641a0801d8b60271fca/.config/nvim/lua/plugins/config/lsp/lua_ls.lua
-            ["lua_ls"] = function()
-                lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, {
-                    settings = {
-                        Lua = {
-                            runtime = { version = "LuaJIT" },
-                            diagnostics = { globals = { "vim" } },
-                            workspace = {
-                                checkThirdParty = "Disable",
-                                library = {
-                                    vim.env.VIMRUNTIME,
-                                    "${3rd}/luv/library",
-                                    "${3rd}/busted/library",
-                                },
-                                -- library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
-                            },
-                            -- format = { enable = false } , -- Use StyLua if disabled
-                            telemetry = { enable = false },
-                            hint = { enable = true },
-                        },
-                    },
-                }))
-            end,
+            ["pylsp"] = require("plugins/lsp/pylsp").setup,
+            ["lua_ls"] = require("plugins/lsp/lua_ls").setup,
         })
 
         require("null-ls").setup({})
@@ -97,7 +46,7 @@ return {
         vim.bo.filetype = vim.bo.filetype
     end,
     dependencies = {
-        { "williamboman/mason.nvim", keys = { cmap("al", "n", "Mason", "Manage language servers") }, },
+        { "williamboman/mason.nvim", keys = { cmap("al", "n", "Mason", "Open") }, },
         "neovim/nvim-lspconfig",
         "nvimtools/none-ls.nvim",
         "jay-babu/mason-null-ls.nvim",
