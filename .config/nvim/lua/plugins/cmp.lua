@@ -20,7 +20,7 @@ return {
             { name = "snippy" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
-            { name = "buffer" },
+            { name = "buffer",  max_item_count = 2 },
         })
 
         local select_next = function()
@@ -176,4 +176,5 @@ return {
         { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" },
         { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
     },
+    _user_load_library = true,
 }

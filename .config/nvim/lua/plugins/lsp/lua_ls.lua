@@ -3,7 +3,9 @@ local get_plugin_paths = function()
     local result = {}
     local plugins = require("lazy.core.config").plugins
     for _, plugin in pairs(plugins) do
-        table.insert(result, plugin.dir)
+        if plugin._user_load_library or plugin.name == "lazy.nvim" then
+            table.insert(result, plugin.dir)
+        end
     end
     return result
 end
