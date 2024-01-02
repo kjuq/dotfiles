@@ -48,5 +48,6 @@ local opts = {
     },
 }
 
+---@diagnostic disable-next-line: different-requires
 require("lazy").setup("plugins", opts)
 vim.keymap.set("n", "<leader>ap", function() vim.cmd("Lazy") end, { desc = "Lazy.nvim: Manage plugins" })
