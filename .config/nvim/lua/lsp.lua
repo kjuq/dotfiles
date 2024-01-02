@@ -64,6 +64,12 @@ local callback = function(ev)
         vim.diagnostic.config({ virtual_text = virtual_text(vt), })
     end, "Toggle virtual text of diagnotics")
 
+    -- Diagnostics
+    map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostics")
+    map("n", "[e", vim.diagnostic.goto_prev, "Go to prev diagnostics")
+    map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostics")
+    map("n", "<leader>E", vim.diagnostic.setloclist, "Set diagnostics into loclist")
+
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
