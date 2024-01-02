@@ -74,6 +74,7 @@ map("n", "<leader>X", function() vim.cmd.bdelete { bang = true } end, {
     desc = "Force delete a current buffer"
 })
 
+map("n", "gW", function() vim.opt.wrap = not vim.o.wrap end, { desc = "Toggle wrap" })
 map("n", "gL", function() vim.cmd("messages") end, { desc = "History of messages" })
 map("n", "gC", function() -- number [C]olumn (?)
     local opt = vim.opt
