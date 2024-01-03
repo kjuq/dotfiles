@@ -2,7 +2,7 @@
 
 My ultimate dotfiles.
 
-- OS: MacOS (Trying to Linux compatible now)
+- OS: MacOS (Probably works on Linux)
 - Terminal Emulator: Alacritty
 - Terminal Multiplexer: Tmux
 - Shell: Fish
