@@ -4,7 +4,7 @@ local get_plugin_paths = function()
     local plugins = require("lazy.core.config").plugins
     for _, plugin in pairs(plugins) do
         if plugin._user_load_library or plugin.name == "lazy.nvim" then
-            table.insert(result, plugin.dir)
+            table.insert(result, vim.fs.joinpath(plugin.dir, "lua"))
         end
     end
     return result
@@ -13,8 +13,8 @@ end
 ---@return string[]
 local library = function()
     local paths = get_plugin_paths()
-    table.insert(paths, vim.fn.stdpath("config"))
-    table.insert(paths, vim.env.VIMRUNTIME)
+    table.insert(paths, vim.fs.joinpath(vim.fn.stdpath("config"), "lua"))
+    table.insert(paths, vim.fs.joinpath(vim.env.VIMRUNTIME, "lua"))
     table.insert(paths, "${3rd}/luv/library")
     table.insert(paths, "${3rd}/busted/library")
     table.insert(paths, "${3rd}/luassert/library")
@@ -28,7 +28,11 @@ local setup = function()
     lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, {
         settings = {
             Lua = {
-                runtime = { version = "LuaJIT" },
+                runtime = {
+                    version = "LuaJIT",
+                    pathStrict = true,
+                    path = { "?.lua", "?/init.lua" },
+                },
                 diagnostics = { globals = { "vim" } },
                 workspace = {
                     checkThirdParty = "Disable",
