@@ -1,4 +1,4 @@
-source "$__fish_config_dir/configs/init.fish"
+source "$__fish_config_dir/configs/checkhealth.fish"
 
 source "$__fish_config_dir/configs/variable.fish" # need to load first
 
