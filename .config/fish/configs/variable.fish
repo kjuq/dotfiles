@@ -17,6 +17,9 @@ set --export SUDO_ASKPASS "$LOCAL_BIN_PATH/sudo_pass"
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
+# w3m
+set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
+
 # GnuPG and password-store
 set --export PASSWORD_STORE_DIR "$HOME/password-store"
 set --export GPG_TTY (tty)
