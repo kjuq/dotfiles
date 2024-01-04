@@ -33,6 +33,7 @@ pycodestyle
 spotifyd/spotifyd.conf
 tmux/tmux.conf
 tmux/scripts
+w3m/keymap
 wezterm/wezterm.lua
 "
 
@@ -59,5 +60,4 @@ root_files="
 .gnupg/gpg-agent.conf
 .ignore
 .ssh/config
-.w3m/keymap
 "
