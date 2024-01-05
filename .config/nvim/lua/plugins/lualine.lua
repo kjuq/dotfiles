@@ -22,20 +22,6 @@ return {
             red      = "#ec5f67",
         }
 
-        local conditions = {
-            buffer_not_empty = function()
-                return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
-            end,
-            hide_in_width = function()
-                return vim.fn.winwidth(0) > 80
-            end,
-            check_git_workspace = function()
-                local filepath = vim.fn.expand("%:p:h")
-                local gitdir = vim.fn.finddir(".git", filepath .. ";")
-                return gitdir and #gitdir > 0 and #gitdir < #filepath
-            end,
-        }
-
         -- Config
         local opts = {
             extensions = {
@@ -56,10 +42,8 @@ return {
                 -- Disable sections and component separators
                 component_separators = "",
                 section_separators = "",
+
                 theme = {
-                    -- We are going to use lualine_c an lualine_x as left and
-                    -- right section. Both are highlighted by c theme .  So we
-                    -- are just setting default looks o statusline
                     normal = { c = { fg = colors.fg, bg = "NONE" } },   -- default: bg = colors.bg
                     inactive = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
                 },
@@ -94,6 +78,20 @@ return {
         local function ins_right(component)
             table.insert(opts.sections.lualine_x, component)
         end
+
+        local conditions = {
+            buffer_not_empty = function()
+                return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+            end,
+            hide_in_width = function()
+                return vim.fn.winwidth(0) > 80
+            end,
+            check_git_workspace = function()
+                local filepath = vim.fn.expand("%:p:h")
+                local gitdir = vim.fn.finddir(".git", filepath .. ";")
+                return gitdir and #gitdir > 0 and #gitdir < #filepath
+            end,
+        }
 
         ins_left {
             -- mode component
@@ -132,12 +130,7 @@ return {
 
         ins_left {
             "filename",
-            -- 0: Just the filename
-            -- 1: Relative path
-            -- 2: Absolute path
-            -- 3: Absolute path, with tilde as the home directory
-            -- 4: Filename and parent dir, with tilde as the home directory
-            path = 0,
+            path = 0, -- format of path; relative, absolute, and etc. see help for more details
             file_status = true,
             newfile_status = true,
             cond = conditions.buffer_not_empty,
@@ -212,18 +205,16 @@ return {
             },
         }
 
-        local function show_macro_recording()
-            local recording_register = vim.fn.reg_recording()
-            if recording_register == "" then
-                return ""
-            else
-                return "Recording @" .. recording_register
-            end
-        end
-
         ins_right {
             "macro-recording",
-            fmt = show_macro_recording,
+            fmt = function()
+                local recording_register = vim.fn.reg_recording()
+                if recording_register == "" then
+                    return ""
+                else
+                    return "Recording @" .. recording_register
+                end
+            end,
             color = { fg = colors.orange },
         }
 
