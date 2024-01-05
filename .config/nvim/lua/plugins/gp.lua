@@ -23,9 +23,9 @@ return {
         "GpImageAgent",
     },
     keys = {
-        map("n", nv, "GpChatNew vsplit", "Open new chat"),
-        map("p", nv, "GpChatPaste vsplit", "Paste selected text to a chat"),
-        map("c", nv, "GpChatToggle vsplit", "Toggle chat"),
+        map("n", nv, "GpChatNew", "Open new chat"),
+        map("p", nv, "GpChatPaste", "Paste selected text to a chat"),
+        map("c", nv, "GpChatToggle", "Toggle chat"),
         map("f", nv, "GpChatFinder", "Search through chats"),
         map("o", nv, "GpChatRespond", "Request a new GPT response"),
         map("d", nv, "GpChatDelete", "Delete the current chat"),
@@ -56,7 +56,7 @@ return {
         chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>c" },
 
         -- how to display GpChatToggle or GpContext: popup / split / vsplit / tabnew
-        toggle_target = "vsplit",
+        toggle_target = "", -- empty for keeping current layout
 
         -- styling for chatfinder
         style_chat_finder_border = "single",
