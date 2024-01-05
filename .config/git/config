@@ -14,15 +14,12 @@
 	helper = !pass github.com/kjuq_repo_token
 
 [core]
-	; pager = nvim -R
-	editor = nvim
 	sparsecheckout = true
 [color]
 	pager = false
 
 [diff]
 	tool = nvimdiff
-	external = difft
 [difftool]
 	prompt = false
 
