@@ -6,15 +6,6 @@ return {
         vim.opt.laststatus = 0
     end,
     opts = function()
-        local function show_macro_recording()
-            local recording_register = vim.fn.reg_recording()
-            if recording_register == "" then
-                return ""
-            else
-                return "Recording @" .. recording_register
-            end
-        end
-
         -- Color table for highlights
         -- stylua: ignore
         local colors = {
@@ -105,20 +96,9 @@ return {
         end
 
         ins_left {
-            function()
-                return " "                     -- '▊'
-            end,
-            color = { fg = colors.blue },      -- Sets highlighting of component
-            padding = { left = 0, right = 1 }, -- We don't need space before this
-        }
-
-        ins_left {
             -- mode component
-            function()
-                return "󰅬" -- 
-            end,
+            function() return "󰅬" end,
             color = function()
-                -- auto change color according to neovims mode
                 local mode_color = {
                     n = colors.red,
                     i = colors.green,
@@ -143,7 +123,11 @@ return {
                 }
                 return { fg = mode_color[vim.fn.mode()] }
             end,
-            padding = { right = 1 },
+            padding = { left = 2, right = 1 },
+        }
+
+        local file = {
+            color = { fg = colors.magenta, gui = "bold" },
         }
 
         ins_left {
@@ -157,13 +141,34 @@ return {
             file_status = true,
             newfile_status = true,
             cond = conditions.buffer_not_empty,
-            color = { fg = colors.magenta, gui = "bold" },
+            color = file.color,
             symbols = {
                 modified = "", -- Text to show when the file is modified.
-                readonly = "", -- Text to show when the file is non-modifiable or readonly.
-                unnamed  = "󱁐", -- Text to show for unnamed buffers.
+                readonly = "", -- Text to show when the file is non-modifiable or readonly.
+                unnamed  = "[No Name]", -- Text to show for unnamed buffers.
                 newfile  = "", -- Text to show for newly created file before first write
             },
+        }
+
+        ins_left {
+            function() return "(" end,
+            cond = conditions.buffer_not_empty,
+            color = file.color,
+            padding = 0,
+        }
+
+        ins_left {
+            "filesize",
+            cond = conditions.buffer_not_empty,
+            color = { fg = colors.magenta, gui = "bold" },
+            padding = 0, -- default is { left = 1, right = 1 }
+        }
+
+        ins_left {
+            function() return ")" end,
+            cond = conditions.buffer_not_empty,
+            color = file.color,
+            padding = { left = 0, right = 1 },
         }
 
         ins_left {
@@ -207,24 +212,42 @@ return {
             },
         }
 
-        -- Insert mid section. You can make any number of sections in neovim :)
-        -- for lualine it's any number greater then 2
-        -- ins_left {
-        --     function()
-        --         return '%='
-        --     end,
-        -- }
+        local function show_macro_recording()
+            local recording_register = vim.fn.reg_recording()
+            if recording_register == "" then
+                return ""
+            else
+                return "Recording @" .. recording_register
+            end
+        end
 
         ins_right {
             "macro-recording",
             fmt = show_macro_recording,
-            color = { fg = "#ff9e64" },
+            color = { fg = colors.orange },
+        }
+
+        ins_right {
+            "location",
+            color = { fg = colors.fg, gui = "bold" },
+            padding = { left = 1, right = 0 }
+        }
+
+        ins_right {
+            "progress",
+            color = { fg = colors.fg, gui = "bold" },
+        }
+
+        ins_right {
+            function() return "--" end,
+            color = { fg = colors.fg, gui = "bold" },
         }
 
         ins_right {
             -- Lsp server name .
             function()
-                local msg = "N/A"
+                -- local msg = "N/A"
+                local msg = ""
                 local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
                 local clients = vim.lsp.get_clients()
                 if next(clients) == nil then
@@ -239,42 +262,29 @@ return {
                 end
                 return msg
             end,
-            icon = " ",
-            -- color = { fg = "#ffffff", gui = "bold" },
-            color = { gui = "bold" },
+            icon = { "" },
+            color = { fg = colors.fg, gui = "bold" },
         }
 
-        ins_right { "location", color = { gui = "bold" } }
-
-        ins_right { "progress", color = { gui = "bold" } }
-
         ins_right {
-            -- filesize component
-            "filesize",
-            cond = conditions.buffer_not_empty,
-            color = { fg = colors.blue, gui = "bold" },
+            "o:encoding",       -- option component same as &encoding in viml
+            fmt = string.upper, -- I'm not sure why it's upper case either ;)
+            cond = conditions.hide_in_width,
+            color = { fg = colors.green, gui = "bold" },
         }
 
-        -- ins_right {
-        --     "o:encoding",       -- option component same as &encoding in viml
-        --     fmt = string.upper, -- I'm not sure why it's upper case either ;)
-        --     cond = conditions.hide_in_width,
-        --     color = { fg = colors.green, gui = "bold" },
-        -- }
-        --
-        -- ins_right {
-        --     "fileformat",
-        --     fmt = string.upper,
-        --     icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-        --     color = { fg = colors.green, gui = "bold" },
-        -- }
+        ins_right {
+            "fileformat",
+            fmt = string.upper,
+            icons_enabled = false,
+            color = { fg = colors.green, gui = "bold" },
+        }
 
         ins_right {
-            function()
-                return " " -- '▊'
-            end,
-            color = { fg = colors.blue },
-            padding = { left = 1 },
+            "filetype",
+            icon = { align = "right" },
+            color = { fg = colors.fg, gui = "bold" },
+            padding = { left = 1, right = 2 },
         }
 
         return opts
