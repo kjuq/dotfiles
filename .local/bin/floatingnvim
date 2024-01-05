@@ -12,9 +12,8 @@ if [ "$1" = "alacritty" ]; then
 		window.dimensions.lines=10 \
 		window.padding.x=10 \
 		window.padding.y=10 \
-		window.decorations=None \
+		window.decorations=\"None\" \
 		window.position.x=910 \
-		window.position.y=0 \
 		--command fish -c nvimcopy
 elif [ "$1" = "wezterm" ]; then
 	wezterm \
