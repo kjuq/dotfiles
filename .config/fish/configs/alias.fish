@@ -47,6 +47,12 @@ if command --search --quiet pip3
     alias pip="pip3"
 end
 
+if command --search --quiet lnks
+    set --local lnks_dir "$HOME/Documents/__bookmarks"
+    alias lnks="lnks --dir $lnks_dir"
+    alias lnks_chrome="lnks --dir $lnks_dir/chrome"
+end
+
 if [ (uname) = "Linux" ]
     alias pbcopy="xsel --clipboard --input"
     alias pbpaste="xsel --clipboard --output"
