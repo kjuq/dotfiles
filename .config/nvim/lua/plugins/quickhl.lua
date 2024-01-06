@@ -4,10 +4,10 @@ return {
     "t9md/vim-quickhl",
     keys = {
         map("m", { "n", "x" }, function()
-            require("utils.common").feed_plug("(quickhl-manual-this)")
+            require("utils.common").feed_plug("quickhl-manual-this")
         end, "Mark"),
         map("M", { "n", "x" }, function()
-            require("utils.common").feed_plug("(quickhl-manual-reset)")
+            require("utils.common").feed_plug("quickhl-manual-reset")
         end, "Reset")
     }
 }
