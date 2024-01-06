@@ -13,12 +13,12 @@ return {
             require("neoscroll").scroll(vim.wo.scroll, true, duration)
         end, "Half down"),
         map("<C-b>", nx, function()
-            if not pcall(function() require("noice.lsp").scroll(-4) end) then
+            if not (pcall(require, "noice") and require("noice.lsp").scroll(-4)) then
                 require("neoscroll").scroll(-vim.api.nvim_win_get_height(0), true, duration)
             end
         end, "Up"),
         map("<C-f>", nx, function()
-            if not pcall(function() require("noice.lsp").scroll(4) end) then
+            if not (pcall(require, "noice") and require("noice.lsp").scroll(4)) then
                 require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, duration)
             end
         end, "Down"),

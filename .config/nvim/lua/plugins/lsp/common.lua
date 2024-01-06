@@ -20,5 +20,5 @@ local handlers = { -- this is now disabled to use noice-hover-scroll
 
 return {
     capabilities = capabilities,
-    handlers = handlers,
+    _handlers = handlers, -- enable noice's lsp window
 }
