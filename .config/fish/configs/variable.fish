@@ -14,8 +14,8 @@ set --export LANGUAGE en_US.UTF-8
 
 set --export EDITOR nvim
 set --export VISUAL nvim
-set --export PAGER "nvim -R +'set norelativenumber' +'set nonumber'"
-set --export MANPAGER "nvim +Man!"
+set --export PAGER nvim -R +"set norelativenumber" +"set nonumber"
+set --export MANPAGER nvim +Man!
 
 set --export SUDO_ASKPASS "$LOCAL_BIN_PATH/sudo_pass"
 
