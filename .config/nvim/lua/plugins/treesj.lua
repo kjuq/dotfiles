@@ -3,7 +3,7 @@ local map = require("utils.lazy").generate_map("", "TreeSJ: ")
 return {
     "Wansmer/treesj",
     keys = {
-        map("gS", "n", function() require("treesj").toggle() end, "Toggle")
+        map("<leader>sk", "n", function() require("treesj").toggle() end, "Toggle")
     },
     config = function()
         require("treesj").setup({
