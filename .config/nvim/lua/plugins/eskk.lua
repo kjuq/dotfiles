@@ -5,7 +5,7 @@ local jp_toggle = vim.api.nvim_create_augroup("EskkToggle", {})
 
 local toggle_japanese = function()
     skk.toggle_japanese(opts, jp_toggle, function()
-        require("utils.common").feed_plug("(eskk:enable)")
+        require("utils.common").feed_plug("eskk:enable")
     end)
 end
 

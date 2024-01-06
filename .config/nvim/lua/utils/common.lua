@@ -19,7 +19,7 @@ end
 -- https://www.reddit.com/r/neovim/comments/kup1g0/comment/givujwd
 ---@param cmd string
 local feed_plug = function(cmd)
-    vim.fn.feedkeys(string.format("%c%c%c" .. cmd, 0x80, 253, 83))
+    vim.fn.feedkeys(string.format("%c%c%c" .. "(" .. cmd .. ")", 0x80, 253, 83))
 end
 
 ---@return boolean
