@@ -158,9 +158,11 @@ return {
             },
         }
 
+        local fs = require("lualine.components.filesize")
+
         ins_left {
             function() return "(" end,
-            cond = conditions.buffer_not_empty,
+            cond = function() return fs() ~= "" and conds.hide_in_width() end,
             color = file.color,
             padding = 0,
         }
@@ -174,7 +176,7 @@ return {
 
         ins_left {
             function() return ")" end,
-            cond = conditions.buffer_not_empty,
+            cond = function() return fs() ~= "" and conds.hide_in_width() end,
             color = file.color,
             padding = { left = 0, right = 1 },
         }
