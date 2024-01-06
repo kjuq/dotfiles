@@ -45,6 +45,7 @@ o.relativenumber = true
 vim.o.fillchars  = "eob: " -- hide tildes in blank space after end of file
 
 o.helplang       = { "en", "ja" }
+o.fileencodings  = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }
 
 -- Disable a leader key time out
 o.timeout        = false
