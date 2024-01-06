@@ -79,23 +79,39 @@ return {
             table.insert(opts.sections.lualine_x, component)
         end
 
-        local conditions = {
+
+        local conds = {
             buffer_not_empty = function()
                 return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
             end,
             hide_in_width = function()
-                return vim.fn.winwidth(0) > 80
+                return vim.fn.winwidth(0) > 100
             end,
             check_git_workspace = function()
                 local filepath = vim.fn.expand("%:p:h")
                 local gitdir = vim.fn.finddir(".git", filepath .. ";")
                 return gitdir and #gitdir > 0 and #gitdir < #filepath
             end,
+            enc_not_utf_8 = function()
+                local _, cnt = (vim.bo.fenc or vim.go.enc):gsub("^utf%-8$", "")
+                return cnt == 0
+            end,
+            filefmt_not_unix = function()
+                local _, cnt = vim.bo.fileformat:gsub("^unix$", "")
+                return cnt == 0
+            end,
+        }
+
+        ins_left {
+            function() return " " end,
+            cond = conds.hide_in_width,
+            padding = 0,
         }
 
         ins_left {
             -- mode component
             function() return "󰅬" end,
+            cond = conds.hide_in_width,
             color = function()
                 local mode_color = {
                     n = colors.red,
@@ -121,7 +137,6 @@ return {
                 }
                 return { fg = mode_color[vim.fn.mode()] }
             end,
-            padding = { left = 2, right = 1 },
         }
 
         local file = {
@@ -133,7 +148,7 @@ return {
             path = 0, -- format of path; relative, absolute, and etc. see help for more details
             file_status = true,
             newfile_status = true,
-            cond = conditions.buffer_not_empty,
+            cond = conds.buffer_not_empty,
             color = file.color,
             symbols = {
                 modified = "", -- Text to show when the file is modified.
@@ -152,7 +167,7 @@ return {
 
         ins_left {
             "filesize",
-            cond = conditions.buffer_not_empty,
+            cond = conds.hide_in_width,
             color = { fg = colors.magenta, gui = "bold" },
             padding = 0, -- default is { left = 1, right = 1 }
         }
@@ -179,7 +194,7 @@ return {
                 modified = { fg = colors.orange },
                 removed = { fg = colors.red },
             },
-            cond = conditions.hide_in_width,
+            cond = conds.hide_in_width,
             -- workaround with Gitsigns which works properly even without Gitsigns
             sources = function()
                 ---@diagnostic disable-next-line: undefined-field
@@ -231,6 +246,7 @@ return {
 
         ins_right {
             function() return "--" end,
+            cond = conds.hide_in_width,
             color = { fg = colors.fg, gui = "bold" },
         }
 
@@ -258,24 +274,30 @@ return {
         }
 
         ins_right {
-            "o:encoding",       -- option component same as &encoding in viml
+            "encoding",         -- option component same as &encoding in viml
             fmt = string.upper, -- I'm not sure why it's upper case either ;)
-            cond = conditions.hide_in_width,
-            color = { fg = colors.green, gui = "bold" },
+            cond = conds.enc_not_utf_8,
+            color = { fg = colors.red, gui = "bold" },
         }
 
         ins_right {
             "fileformat",
             fmt = string.upper,
+            cond = conds.filefmt_not_unix,
             icons_enabled = false,
-            color = { fg = colors.green, gui = "bold" },
+            color = { fg = colors.red, gui = "bold" },
         }
 
         ins_right {
             "filetype",
             icon = { align = "right" },
             color = { fg = colors.fg, gui = "bold" },
-            padding = { left = 1, right = 2 },
+        }
+
+        ins_right {
+            function() return " " end,
+            cond = conds.hide_in_width,
+            padding = 0,
         }
 
         return opts
