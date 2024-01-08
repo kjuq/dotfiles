@@ -44,7 +44,11 @@ return {
     },
     config = function()
         require("mason-nvim-dap").setup({
-            handlers = {},
+            handlers = { -- https://zenn.dev/pluck/articles/17f0b3770146ad
+                function(config)
+                    require("mason-nvim-dap").default_setup(config)
+                end,
+            },
         })
         vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#CA4F4F" })
         vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" }) -- 󰧞 
