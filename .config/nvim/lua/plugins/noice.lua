@@ -30,12 +30,16 @@ return {
             },
             lsp = {
                 -- progress = { enabled = false },
-                signature = { auto_open = { enabled = false } },
+                -- hover = { enabled = false },
+                signature = {
+                    -- enabled = false,
+                    auto_open = { enabled = false },
+                },
                 documentation = {
                     opts = {
                         border = require("utils.lazy").floatwinborder,
                         position = { row = 2, col = 2 },
-                        size = { max_width = 80, max_height = 20, },
+                        -- size = { max_width = 70, max_height = 20, },
                     },
                 },
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -44,10 +48,6 @@ return {
                     ["vim.lsp.util.stylize_markdown"] = true,
                     ["cmp.entry.get_documentation"] = true,
                 },
-            },
-            presets = {
-                -- command_palette = false,      -- position the cmdline and popupmenu together
-                -- long_message_to_split = true, -- long messages will be sent to a split
             },
         }
     end,
