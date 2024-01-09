@@ -1,23 +1,26 @@
 local skk = require("utils.skk")
-
-local opts = { enabled = false }
-local jp_toggle = vim.api.nvim_create_augroup("SkkeletonToggle", {})
+local map = require("utils.lazy").generate_map("", "Skkeleton: ")
 
 local toggle_japanese = function()
-    skk.toggle_japanese(opts, jp_toggle, function()
+    skk.toggle_japanese(function()
         require("utils.common").feed_plug("skkeleton-enable")
     end)
 end
 
 return {
     "vim-skk/skkeleton",
-    cond = vim.fn.executable("deno") ~= 0,
+    cond = vim.fn.executable("deno") ~= 0 and skk.jisyo_l_exists(),
     event = { "InsertEnter" },
     keys = {
-        { "<C-Space>",  mode = { "i", "c" }, "<Plug>(skkeleton-enable)", desc = "Skkeleton: Enable",        noremap = false, silent = true },
-        { "<leader>aj", mode = { "n" },      toggle_japanese,            desc = "Skkeleton: Toggle JP mode" },
+        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleon-enable") end, "Enable"),
+        map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
     },
     config = function()
+        -- create $XDG_CONFIG_HOME/skk dir if it doesn't exist
+        if vim.fn.isdirectory(skk.skk_dir) == 0 then
+            vim.fn.mkdir(skk.skk_dir, "p")
+        end
+
         vim.fn["skkeleton#config"]({
             eggLikeNewline = true,
             globalJisyo = skk.jisyo_l,
