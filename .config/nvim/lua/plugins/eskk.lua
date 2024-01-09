@@ -1,20 +1,18 @@
 local skk = require("utils.skk")
-
-local opts = { enabled = false }
-local jp_toggle = vim.api.nvim_create_augroup("EskkToggle", {})
+local map = require("utils.lazy").generate_map("", "Eskk: ")
 
 local toggle_japanese = function()
-    skk.toggle_japanese(opts, jp_toggle, function()
+    skk.toggle_japanese(function()
         require("utils.common").feed_plug("eskk:enable")
     end)
 end
 
 return {
     "vim-skk/eskk.vim",
-    cond = vim.fn.executable("deno") == 0, -- fallen-back from skkeleton
+    cond = vim.fn.executable("deno") == 0 and skk.jisyo_l_exists(), -- fallen-back from skkeleton
     keys = {
-        { "<C-Space>",  mode = { "i", "c" }, "<Plug>(eskk:enable)", desc = "Eskk: Enable",        noremap = false, silent = true },
-        { "<leader>aj", mode = { "n" },      toggle_japanese,       desc = "Eskk: Toggle JP mode" },
+        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:enable") end, "Enable"),
+        map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
     },
     config = function()
         vim.g["eskk#directory"] = skk.skk_dir
