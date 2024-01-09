@@ -12,7 +12,7 @@ return {
     cond = vim.fn.executable("deno") ~= 0 and skk.jisyo_l_exists(),
     event = { "InsertEnter" },
     keys = {
-        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleon-enable") end, "Enable"),
+        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-enable") end, "Enable"),
         map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
     },
     config = function()
