@@ -8,7 +8,9 @@ else
 	copy="xsel --clipboard --input"
 fi
 
-nvim -c "startinsert" "$tmp" || exit 1
+feed_jp_mode="lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Space>aj', true, false, true), 'x', false)"
+
+nvim -c "$feed_jp_mode" -c "startinsert" "$tmp" || exit 1
 
 if [ -e "$tmp" ]; then
 	head -c -1 "$tmp" | $copy && command rm "$tmp"
