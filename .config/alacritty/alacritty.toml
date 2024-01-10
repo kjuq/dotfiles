@@ -22,7 +22,6 @@ cursor = { cursor = "#E5E9F0" }
 opacity = 0.7
 dimensions = { columns = 220, lines = 60 }
 padding = { x = 6, y = 1 }
-option_as_alt = "Both"
 
 [keyboard]
 bindings = [
