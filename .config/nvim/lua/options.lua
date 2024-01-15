@@ -39,7 +39,7 @@ opt.expandtab      = false
 opt.shiftwidth     = 0 -- obey tabstop
 opt.shiftround     = true
 
-opt.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵" }
+opt.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵", nbsp = "▶", extends = "»", precedes = "«" }
 opt.list           = true
 opt.fillchars      = "eob: " -- hide tildes in blank space after end of file
 
