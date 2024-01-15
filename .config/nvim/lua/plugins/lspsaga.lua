@@ -7,8 +7,8 @@ return {
         map("<leader>tco", "n", "Lspsaga outgoing_calls", "Outgoing calls"),
         map("<leader>ta", { "n", "v" }, "Lspsaga code_action", "Code action"),
         map("gy", "n", "Lspsaga finder def+ref+imp+tyd", "Finder"),
-        map("gd", "n", "Lspsaga goto_definition", "Definition"),
         map("<leader>tz", "n", "Lspsaga outline", "Outline"),
+        -- map("gd", "n", "Lspsaga goto_definition", "Definition"),
         -- map("K", "n", "Lspsaga hover_doc", "Hover doc"),
     },
     opts = {

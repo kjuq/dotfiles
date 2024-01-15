@@ -36,12 +36,13 @@ local callback = function(ev)
 
     -- LspSaga provides same functionalities
     --
-    -- map("n", "gd", vlb.definition, "Go to definition")
     -- vlb.declaration, "Go to Declaration"
     -- vlb.type_definition, "Go to type definition"
     -- vlb.references, "Go to reference"
     -- vlb.implementation, "Go to implementation"
     -- map("n", "<KEYBIND>", vlb.code_action, "Code action")
+
+    map("n", "gd", vlb.definition, "Go to definition")
 
     map("n", "<leader>rn", vlb.rename, "Rename")
 
