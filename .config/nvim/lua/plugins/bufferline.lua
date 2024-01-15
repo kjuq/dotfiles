@@ -3,15 +3,14 @@ return {
     version = "*",
     event = { "BufNew", "WinScrolled" },
     config = function()
+        -- local transparent = "#000000"
         require("bufferline").setup({
             options = {
-                numbers = "ordinal",
+                numbers = "none", -- "ordinal", "buffer_id", "both"
                 diagnostics = "nvim_lsp",
                 always_show_bufferline = false,
-                separator_style = { "", "" }, -- "slant", "slope", "thick", "thin"
-                indicator = {
-                    style = "none",           -- "icon", "underline", "none"
-                },
+                separator_style = { "|", "|" }, -- "slant", "slope", "thick", "thin", { "", "" }
+                indicator = { style = "none" }, -- "icon", "underline", "none"
                 show_buffer_close_icons = false,
                 color_icons = true,
                 offsets = {
@@ -29,16 +28,16 @@ return {
                     },
                 },
             },
-            -- Needed when separator is used
-            -- highlights = {
-            --     fill                   = { bg = "#000000", },
-            --     tab_separator          = { fg = "#000000", },
-            --     tab_separator_selected = { fg = "#000000", },
-            --     separator_selected     = { fg = "#000000", bg = "#000000" },
-            --     separator_visible      = { fg = "#000000", },
-            --     separator              = { fg = "#000000", },
-            --     offset_separator       = { fg = "#000000", },
-            -- },
+            highlights = {
+                separator = { fg = "#777777", },
+                -- Needed when using separator
+                -- fill                   = { bg = transparent, },
+                -- tab_separator          = { fg = transparent, },
+                -- tab_separator_selected = { fg = transparent, },
+                -- separator_selected = { fg = transparent, bg =  transparent},
+                -- separator_visible  = { fg = transparent, },
+                -- offset_separator = { fg = transparent, },
+            },
         })
     end,
     dependencies = "nvim-tree/nvim-web-devicons",
