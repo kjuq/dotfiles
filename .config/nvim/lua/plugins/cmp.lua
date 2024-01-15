@@ -21,6 +21,7 @@ return {
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "buffer",  max_item_count = 2 },
+            { name = "natdat" },
         })
 
         local select_next = function()
@@ -175,6 +176,7 @@ return {
         "dcampos/cmp-snippy",
         { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" },
         { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
+        { "Gelio/cmp-natdat",       config = true },
     },
     _user_load_library = true,
 }
