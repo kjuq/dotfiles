@@ -8,9 +8,13 @@ else
 	copy="xsel --clipboard --input"
 fi
 
-feed_jp_mode="lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Space>aj', true, false, true), 'x', false)"
+key="<Space>aj"
+feed_jp_mode="lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$key', true, false, true), 'x', false)"
+number="set nonumber | set norelativenumber"
+confirm="inoremap <C-g><C-g> <Cmd>wq<CR>"
+wrap="set wrap"
 
-nvim -c "$feed_jp_mode" -c "startinsert" "$tmp" || exit 1
+nvim -c "$wrap" -c "$number" -c "$confirm" -c "$feed_jp_mode" -c "startinsert" "$tmp" || exit 1
 
 if [ -e "$tmp" ]; then
 	head -c -1 "$tmp" | $copy && command rm "$tmp"
