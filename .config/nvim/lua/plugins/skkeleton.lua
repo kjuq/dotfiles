@@ -29,7 +29,7 @@ return {
                 vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.L"),
                 vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.jinmei"),
             },
-            userJisyo = skk.jisyo_user,
+            userDictionary = skk.jisyo_user,
         })
 
         vim.fn["skkeleton#register_kanatable"]("rom", {
