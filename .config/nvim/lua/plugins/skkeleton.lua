@@ -9,7 +9,7 @@ end
 
 return {
     "vim-skk/skkeleton",
-    cond = vim.fn.executable("deno") ~= 0 and skk.jisyo_l_exists(),
+    cond = vim.fn.executable("deno") ~= 0,
     event = { "InsertEnter" },
     keys = {
         map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-enable") end, "Enable"),
@@ -21,9 +21,14 @@ return {
             vim.fn.mkdir(skk.skk_dir, "p")
         end
 
+        local lazy_root = require("lazy.core.config").options.root
+
         vim.fn["skkeleton#config"]({
             eggLikeNewline = true,
-            globalJisyo = skk.jisyo_l,
+            globalDictionaries = {
+                vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.L"),
+                vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.jinmei"),
+            },
             userJisyo = skk.jisyo_user,
         })
 
@@ -36,6 +41,7 @@ return {
     dependencies = {
         "vim-denops/denops.vim",
         "uga-rosa/cmp-skkeleton",
+        "skk-dev/dict",
         {
             "delphinus/skkeleton_indicator.nvim",
             opts = {
