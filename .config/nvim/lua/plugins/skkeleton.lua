@@ -37,6 +37,21 @@ return {
             ["?"] = { "?", "" },
             [":"] = { ":", "" },
         })
+
+        vim.fn["skkeleton#register_keymap"]("input", "<C-g>", "")
+        vim.fn["skkeleton#register_keymap"]("henkan", "<C-g>", "")
+        vim.cmd("call add(g:skkeleton#mapped_keys, '<C-c>')")
+        vim.fn["skkeleton#register_keymap"]("input", "<C-c>", "cancel")
+        vim.fn["skkeleton#register_keymap"]("henkan", "<C-c>", "cancel")
+
+        -- remove "<C-g>" from mapped_keys
+        local mapped_keys = {}
+        for _, v in ipairs(vim.g["skkeleton#mapped_keys"]) do
+            if v ~= "<C-g>" then
+                table.insert(mapped_keys, v)
+            end
+        end
+        vim.g["skkeleton#mapped_keys"] = mapped_keys
     end,
     dependencies = {
         "vim-denops/denops.vim",
