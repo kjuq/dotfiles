@@ -1,63 +1,64 @@
-local o          = vim.opt
+local opt          = vim.opt
 
-o.backup         = false
-o.writebackup    = false
-o.swapfile       = false
-o.autoread       = true
+opt.backup         = false
+opt.writebackup    = false
+opt.swapfile       = false
+opt.autoread       = true
 
-o.scrolloff      = 6
+opt.scrolloff      = 6
 
-o.clipboard      = "unnamedplus"
+opt.clipboard      = "unnamedplus"
 
-o.cmdheight      = 0
-o.laststatus     = 3 -- global status line
-o.termguicolors  = true
+opt.cmdheight      = 0
+opt.laststatus     = 3 -- global status line
+opt.termguicolors  = true
 
-o.wildmenu       = true
-o.completeopt    = "menu,menuone,preview,noinsert"
+opt.wildmenu       = true
+opt.completeopt    = "menu,menuone,preview,noinsert"
 
-o.pumheight      = 10
-o.pumwidth       = 40
+opt.pumheight      = 10
+opt.pumwidth       = 40
 -- o.pumblend = 20 -- Disable this when using transparent env
 
-o.updatetime     = 50
+opt.updatetime     = 50
 
-o.ignorecase     = true
-o.smartcase      = true
+opt.ignorecase     = true
+opt.smartcase      = true
 
-o.foldmethod     = "marker"
+opt.foldmethod     = "marker"
 
-o.wrap           = false
-o.smoothscroll   = true
-o.breakindent    = true
+opt.wrap           = false
+opt.smoothscroll   = true
+opt.breakindent    = true
 
-o.virtualedit    = { "onemore", "block" }
+opt.virtualedit    = { "onemore", "block" }
 
-o.smartindent    = true
-o.tabstop        = 4
-o.expandtab      = false
-o.shiftwidth     = 0 -- obey tabstop
-o.shiftround     = true
+opt.smartindent    = true
+opt.tabstop        = 4
+opt.expandtab      = false
+opt.shiftwidth     = 0 -- obey tabstop
+opt.shiftround     = true
 
-o.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵" }
-o.list           = true
-o.relativenumber = true
-vim.o.fillchars  = "eob: " -- hide tildes in blank space after end of file
+opt.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵" }
+opt.list           = true
+opt.fillchars      = "eob: " -- hide tildes in blank space after end of file
 
-o.helplang       = { "en", "ja" }
-o.fileencodings  = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }
+opt.relativenumber = true
+
+opt.helplang       = { "en", "ja" }
+opt.fileencodings  = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }
 
 -- Disable a leader key time out
-o.timeout        = false
-o.ttimeout       = false
+opt.timeout        = false
+opt.ttimeout       = false
 
 -- Disable welcome message
-o.shortmess:append("I")
+opt.shortmess:append("I")
 
-o.matchpairs:append("「:」")
-o.matchpairs:append("（:）")
-o.matchpairs:append("［:］")
-o.matchpairs:append("〔:〕")
-o.matchpairs:append("【:】")
-o.matchpairs:append("『:』")
-o.matchpairs:append("｛:｝")
+opt.matchpairs:append("「:」")
+opt.matchpairs:append("（:）")
+opt.matchpairs:append("［:］")
+opt.matchpairs:append("〔:〕")
+opt.matchpairs:append("【:】")
+opt.matchpairs:append("『:』")
+opt.matchpairs:append("｛:｝")
