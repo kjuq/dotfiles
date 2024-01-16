@@ -63,4 +63,7 @@ return {
             end,
         })
     end,
+    dependencies = {
+        "skk-dev/dict",
+    },
 }
