@@ -39,7 +39,7 @@ wezterm/wezterm.lua
 
 local_bin_files="
 acw
-cbm
+cm
 cpl
 cplus
 cpp-submit
