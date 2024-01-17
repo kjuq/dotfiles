@@ -29,6 +29,7 @@ cask "hammerspoon"
 cask "jump-desktop-connect"
 cask "linearmouse"
 cask "vivaldi"
+cask "wezterm"
 
 cask "homebrew/cask-fonts/font-hack-nerd-font"
 
