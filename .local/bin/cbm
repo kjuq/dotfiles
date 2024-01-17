@@ -9,4 +9,40 @@ if ! command -v fzf &> /dev/null; then
 	exit 1
 fi
 
-copyq read 0 1 2 3 4 5 6 7 8 9 | fzf
+dir=/tmp/clipboard_copyq
+
+cleanup() {
+	if [ -e "$dir" ]; then
+		if [ -d "$dir" ]; then
+			for f in "$dir"/*; do
+				shred -u "$f"
+			done
+		fi
+		rm -d "$dir"
+	fi
+}
+
+cleanup
+mkdir "$dir"
+
+for i in $(seq 0 5); do
+	copyq read "$i" > "$dir/$i"
+done
+
+preview="cat $dir/{}"
+
+if [ "$(uname)" = "Darwin" ]; then
+	copy="pbcopy"
+elif [ "$(uname)" = "Linux" ]; then
+	copy="xsel --clipboard --input"
+else
+	echo "Error: Unknown OS"
+	exit 1
+fi
+
+enter_command="enter:execute-silent(${preview} | ${copy})+abort"
+
+# shellcheck disable=2012
+ls "$dir" | fzf --preview="$preview" --bind="${enter_command}"
+
+cleanup
