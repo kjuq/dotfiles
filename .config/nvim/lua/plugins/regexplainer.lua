@@ -5,7 +5,7 @@ return {
         require("regexplainer").setup({
             auto = true,
             mappings = {
-                toggle = "", -- disable gR which is the default keymap
+                toggle = "<Nop>", -- disable gR which is the default keymap
             },
             popup = {
                 border = {
@@ -16,7 +16,6 @@ return {
         })
     end,
     dependencies = {
-        "nvim-treesitter/nvim-treesitter",
         "MunifTanjim/nui.nvim",
     },
 }
