@@ -24,12 +24,10 @@ config = {
 	color_scheme = "Tokyo Night",
 	-- color_scheme = "iceberg-dark",
 
-	default_prog = {
-		"/opt/homebrew/bin/fish",
-		-- "--login",
-		-- "--command",
-		-- "tmux attach; or tmux",
-	},
+	-- prefer_egl = false,
+	max_fps = 250,
+	front_end = "WebGpu",
+	webgpu_power_preference = "HighPerformance",
 
 	window_background_opacity = 0.65,
 	-- font = wezterm.font("Hack Nerd Font"),
