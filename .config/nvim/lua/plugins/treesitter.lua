@@ -11,7 +11,10 @@ return {
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "regex", "markdown", "markdown_inline" },
             sync_install = true,
             auto_install = true,
-            highlight = { enable = true },
+            highlight = {
+                enable = true,
+                disable = { "perl" },
+            },
             indent = { enable = true },
 
             incremental_selection = {
