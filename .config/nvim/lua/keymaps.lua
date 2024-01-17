@@ -104,14 +104,14 @@ map("n", "gA", function() vim.cmd("messages") end, { desc = "History of messages
 map("n", "gC", function() -- number [C]olumn (?)
     local opt = vim.opt
     local o = vim.o
-    if o.number then
-        opt.number = false
-        opt.relativenumber = false
-    elseif o.relativenumber then
+    if o.relativenumber then
         opt.number = true
         opt.relativenumber = false
-    else
+    elseif o.number then
         opt.number = false
+        opt.relativenumber = false
+    else
+        opt.number = true -- change this to false if you prefer alternative behavior
         opt.relativenumber = true
     end
 end, { desc = "Toggle number style" })

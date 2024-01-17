@@ -43,6 +43,7 @@ opt.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵"
 opt.list           = true
 opt.fillchars      = "eob: " -- hide tildes in blank space after end of file
 
+opt.number         = true
 opt.relativenumber = true
 
 opt.helplang       = { "en", "ja" }
