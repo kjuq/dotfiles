@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check if XDG_CONFIG_HOME is set
 if [ -z "$XDG_CONFIG_HOME" ]; then
