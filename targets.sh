@@ -60,3 +60,6 @@ root_files="
 .ignore
 .ssh/config
 "
+
+library="
+"

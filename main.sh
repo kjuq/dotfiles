@@ -19,6 +19,9 @@ script_xdg_config="$script_dir/$xdg_config_without_prefix"
 local_bin_without_prefix="${LOCAL_BIN_PATH/$HOME\//}"
 script_local_bin="$script_dir/$local_bin_without_prefix"
 
+library_without_prefix="Library/Preferences"
+script_library="$script_dir/$library_without_prefix"
+
 source "$script_dir/targets.sh"
 
 backup() {
@@ -38,6 +41,10 @@ backup() {
         src="$HOME/$target_file"
         dst="$script_dir/$target_file"
         parent_dir="$(dirname "$target_file")"
+    elif [ "$dirtype" == "library" ]; then
+        src="$HOME/$library_without_prefix/$target_file"
+        dst="$script_library/$target_file"
+        parent_dir="$script_library/$(dirname "$target_file")"
     else
         echo "XDG option is invalid."
         echo "Target: $target_file"
@@ -80,6 +87,10 @@ symlink() {
         src="$script_dir/$target_file"
         dst="$HOME/$target_file"
         parent_dir="$HOME/$(dirname "$target_file")"
+    elif [ "$dirtype" == "library" ]; then
+        src="$script_library/$target_file"
+        dst="$HOME/$library_without_prefix/$target_file"
+        parent_dir="$HOME/$library_without_prefix/$(dirname "$target_file")"
     else
         echo "XDG option is invalid."
         echo "Target: $target_file"
@@ -170,6 +181,21 @@ main() {
             fi
         fi
     done
+
+    if [ "$(uname)" == "Darwin" ]; then
+        IFS_BAK=$IFS
+        IFS=$'\n'
+        for f in $library; do
+            IFS=$IFS_BAK
+            if ! [ "$f" == "" ]; then
+                if [ "$action" == "backup" ]; then
+                    backup "$f" "library"
+                elif [ "$action" == "symlink" ]; then
+                    symlink "$f" "library"
+                fi
+            fi
+        done
+    fi
 }
 
 main "$1"
