@@ -63,3 +63,7 @@ root_files="
 
 library="
 "
+
+xdg_to_library="
+clangd/config.yaml
+"

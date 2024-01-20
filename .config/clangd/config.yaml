@@ -1,5 +1,3 @@
-# Make symlink for MacOS
-# `bash -c 'dst="$HOME/Library/Preferences/clangd" && mkdir -p $dst && ln -s "$XDG_CONFIG_HOME/clangd/config.yaml" "$dst/config.yaml"'`
 If:
   PathMatch: .*\.cpp
 CompileFlags:

@@ -133,6 +133,21 @@ unsymlink() {
     # TODO: remove symlinks and restore real files
 }
 
+link_xdg_to_library() {
+    f="$1"
+
+    src="$XDG_CONFIG_HOME/$f"
+    dst="$HOME/$library_without_prefix/$f"
+
+    if [ -L "$dst" ]; then
+        return 0
+    fi
+
+    echo "Symlinking: $dst"
+
+    ln -s "$src" "$dst"
+}
+
 main() {
     if [ "$1" == "backup" ] || [ "$1" == "b" ]; then
         action="backup"
@@ -192,6 +207,17 @@ main() {
                     backup "$f" "library"
                 elif [ "$action" == "symlink" ]; then
                     symlink "$f" "library"
+                fi
+            fi
+        done
+
+        IFS_BAK=$IFS
+        IFS=$'\n'
+        for f in $xdg_to_library; do
+            IFS=$IFS_BAK
+            if ! [ "$f" == "" ]; then
+                if [ "$action" == "symlink" ]; then
+                    link_xdg_to_library "$f"
                 fi
             fi
         done
