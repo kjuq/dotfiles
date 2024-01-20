@@ -148,6 +148,33 @@ link_xdg_to_library() {
     ln -s "$src" "$dst"
 }
 
+unlink_xdg_to_library() {
+    false
+    # TODO:
+}
+
+link_other() {
+    src="$1"
+    dst="$2"
+
+    if [ -L "$dst" ]; then
+        return 0
+    fi
+
+    echo "Symlinking: $dst"
+
+    ln -s "$src" "$dst"
+}
+
+unlink_other() {
+    false
+    # TODO:
+}
+
+macos_etc() {
+    link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
+}
+
 main() {
     if [ "$1" == "backup" ] || [ "$1" == "b" ]; then
         action="backup"
@@ -218,6 +245,7 @@ main() {
             if ! [ "$f" == "" ]; then
                 if [ "$action" == "symlink" ]; then
                     link_xdg_to_library "$f"
+                    macos_etc
                 fi
             fi
         done
