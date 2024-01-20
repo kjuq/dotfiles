@@ -54,7 +54,6 @@ sudo_pass
 toggle_menubar
 "
 
-# shellcheck disable=2034
 root_files="
 .docker/config.json
 .clang-format

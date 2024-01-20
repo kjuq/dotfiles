@@ -12,8 +12,10 @@ if [ -z "$LOCAL_BIN_PATH" ]; then
 fi
 
 script_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 xdg_config_without_prefix="${XDG_CONFIG_HOME/$HOME\//}"
 script_xdg_config="$script_dir/$xdg_config_without_prefix"
+
 local_bin_without_prefix="${LOCAL_BIN_PATH/$HOME\//}"
 script_local_bin="$script_dir/$local_bin_without_prefix"
 
@@ -73,7 +75,7 @@ symlink() {
     elif [ "$dirtype" == "local_bin" ]; then
         src="$script_local_bin/$target_file"
         dst="$LOCAL_BIN_PATH/$target_file"
-        parent_dir="$XDG_DATA_HOME/$(dirname "$target_file")"
+        parent_dir="$LOCAL_BIN_PATH/$(dirname "$target_file")"
     elif [ "$dirtype" == "root" ]; then
         src="$script_dir/$target_file"
         dst="$HOME/$target_file"
