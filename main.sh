@@ -130,7 +130,7 @@ symlink() {
 
 unsymlink() {
     false
-    # TODO
+    # TODO: remove symlinks and restore real files
 }
 
 main() {
