@@ -7,6 +7,8 @@ return {
         map("]t", "n", function() require("todo-comments").jump_next() end, "Next todo comment"),
         map("[t", "n", function() require("todo-comments").jump_prev() end, "Previous todo comment"),
     },
-    opts = {},
+    opts = {
+        signs = false,
+    },
     dependencies = { "nvim-lua/plenary.nvim" },
 }
