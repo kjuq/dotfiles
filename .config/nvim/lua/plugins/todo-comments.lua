@@ -9,6 +9,12 @@ return {
     },
     opts = {
         signs = false,
+        highlight = {
+            pattern = [[.*<(KEYWORDS)\s*]],
+        },
+        search = {
+            pattern = [[\b(KEYWORDS)\b]],
+        },
     },
     dependencies = { "nvim-lua/plenary.nvim" },
 }

@@ -150,7 +150,7 @@ link_xdg_to_library() {
 
 unlink_xdg_to_library() {
     false
-    # TODO:
+    # TODO
 }
 
 link_other() {
@@ -168,7 +168,7 @@ link_other() {
 
 unlink_other() {
     false
-    # TODO:
+    # TODO
 }
 
 macos_etc() {
