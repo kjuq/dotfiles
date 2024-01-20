@@ -1,8 +1,5 @@
 return {
     "chentoast/marks.nvim",
-    keys = {
-        { "m",  mode = { "n" }, desc = "+ Marks: Set marks" },
-        { "dm", mode = { "n" }, desc = "+ Marks: Delete marks" },
-    },
+    event = require("utils.lazy").verylazy,
     opts = {},
 }
