@@ -30,6 +30,7 @@ neomutt/signature
 nano/nanorc
 nvim
 pycodestyle
+qutebrowser/config.py
 spotifyd/spotifyd.conf
 tmux/tmux.conf
 tmux/scripts
