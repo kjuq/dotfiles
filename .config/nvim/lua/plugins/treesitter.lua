@@ -7,14 +7,16 @@ return {
     config = function()
         -- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()" -- laggy
         vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        require("nvim-treesitter.configs").setup {
+        require("nvim-treesitter.configs").setup({
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "regex", "markdown", "markdown_inline" },
             sync_install = true,
             auto_install = true,
+
             highlight = {
                 enable = true,
                 disable = { "perl" },
             },
+
             indent = { enable = true },
 
             incremental_selection = {
@@ -26,6 +28,7 @@ return {
                     node_decremental = "<M-d>",
                 },
             },
+
             textobjects = {
                 select = {
                     enable = true,
@@ -70,7 +73,7 @@ return {
                     },
                 },
             },
-        }
+        })
     end,
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
