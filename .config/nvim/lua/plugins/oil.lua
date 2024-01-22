@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>", "Oil: ")
+local map = require("utils.lazy").generate_cmd_map("", "Oil: ")
 local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
 return {
@@ -6,7 +6,8 @@ return {
     lazy = os.getenv("OILSSH") == nil,
     event = require("utils.lazy").verylazy,
     keys = {
-        map("i", "n", "Oil", "Open"),
+        map("<leader>i", "n", "Oil", "Open"),
+        map("gX", "n", "Oil", "Open"),
     },
     opts = {
         delete_to_trash = true,

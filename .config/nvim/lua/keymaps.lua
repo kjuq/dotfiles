@@ -116,6 +116,9 @@ map("n", "gC", function() -- number [C]olumn (?)
     end
 end, { desc = "Toggle number style" })
 
+-- TODO: check if Netrw is loaded or not
+map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })
+
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
     vim.cmd.fclose { bang = true }
