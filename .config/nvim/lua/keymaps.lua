@@ -101,6 +101,7 @@ bdelete_force("<leader>X")
 
 map("n", "gW", function() vim.opt.wrap = not vim.o.wrap end, { desc = "Toggle wrap" })
 map("n", "gA", function() vim.cmd("messages") end, { desc = "History of messages" })
+map("n", "gK", function() vim.opt.spell = not vim.o.spell end, { desc = "Toggle spell check" })
 map("n", "gC", function() -- number [C]olumn (?)
     local opt = vim.opt
     local o = vim.o
