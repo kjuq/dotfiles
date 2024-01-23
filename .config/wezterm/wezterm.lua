@@ -45,7 +45,9 @@ end
 
 C.keys = {
 	key("c", "CMD", wez.action({ CopyTo = "Clipboard" })),
+	key("Copy", "", wez.action({ CopyTo = "Clipboard" })),
 	key("v", "CMD", wez.action({ PasteFrom = "Clipboard" })),
+	key("Paste", "", wez.action({ PasteFrom = "Clipboard" })),
 	key("f", "CMD|CTRL", wez.action.ToggleFullScreen),
 	key("-", "CMD", wez.action.DecreaseFontSize),
 	key("=", "CMD|SHIFT", wez.action.IncreaseFontSize),
