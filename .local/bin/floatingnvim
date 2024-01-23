@@ -5,6 +5,8 @@ if [ "$#" -ne 1 ]; then
 	exit 1
 fi
 
+classname="FloatingVim"
+
 if [ "$1" = "alacritty" ]; then
 	alacritty \
 		--option \
@@ -14,13 +16,14 @@ if [ "$1" = "alacritty" ]; then
 		window.padding.y=10 \
 		window.decorations=\"None\" \
 		window.position.x=910 \
+		--class "$classname" \
 		--command fish -c nvimcopy
 elif [ "$1" = "wezterm" ]; then
 	wezterm \
 		--config initial_rows=10 \
 		--config initial_cols=70 \
 		start \
-		--class FloatingVim \
+		--class "$classname" \
 		fish -c nvimcopy
 else
 	echo "Invalid terminal was specified: $1"

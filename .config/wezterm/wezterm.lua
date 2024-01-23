@@ -45,18 +45,21 @@ end
 
 C.keys = {
 	key("c", "CMD", wez.action({ CopyTo = "Clipboard" })),
+	key("Copy", "", wez.action({ CopyTo = "Clipboard" })),
 	key("v", "CMD", wez.action({ PasteFrom = "Clipboard" })),
+	key("Paste", "", wez.action({ PasteFrom = "Clipboard" })),
 	key("f", "CMD|CTRL", wez.action.ToggleFullScreen),
 	key("-", "CMD", wez.action.DecreaseFontSize),
 	key("=", "CMD|SHIFT", wez.action.IncreaseFontSize),
 	key("Backspace", "CMD", wez.action.SendKey({ key = "u", mods = "CTRL" })),
+	key("Backspace", "CTRL", wez.action.SendKey({ key = "w", mods = "CTRL" })),
 }
 
 -- check os
 if os.execute("[ $(uname) = 'Darwin' ]") then
 	C.font_size = 19
 elseif os.execute("[ $(uname) = 'Linux' ]") then
-	C.font_size = 16
+	C.font_size = 13
 end
 
 -- and finally, return the configuration to wezterm
