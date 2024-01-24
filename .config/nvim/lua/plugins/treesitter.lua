@@ -5,8 +5,6 @@ return {
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
     config = function()
-        -- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()" -- laggy
-        vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         require("nvim-treesitter.configs").setup({
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "regex", "markdown", "markdown_inline" },
             sync_install = true,

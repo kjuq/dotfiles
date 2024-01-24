@@ -26,6 +26,8 @@ opt.ignorecase     = true
 opt.smartcase      = true
 
 opt.foldmethod     = "marker"
+opt.foldexpr       = "v:lua.vim.treesitter.foldexpr()"
+-- opt.foldtext       = "v:lua.vim.treesitter.foldtext()" -- laggy
 
 opt.wrap           = false
 opt.smoothscroll   = true
