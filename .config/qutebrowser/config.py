@@ -1,5 +1,7 @@
 config.load_autoconfig()
 
+c.hints.chars = "arstghneio"
+
 c.tabs.position = "left"
 c.tabs.width = 160
 c.tabs.padding = {"bottom": 5, "left": 5, "right": 5, "top": 5}
