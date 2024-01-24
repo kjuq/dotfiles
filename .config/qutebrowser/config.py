@@ -3,8 +3,10 @@ config.load_autoconfig()
 c.hints.chars = "arstghneio"
 
 c.tabs.position = "left"
-c.tabs.width = 160
+c.tabs.width = 250
 c.tabs.padding = {"bottom": 5, "left": 5, "right": 5, "top": 5}
+
+c.completion.height = "20%"
 
 c.content.pdfjs = True  # enable to see pdf
 
@@ -26,6 +28,8 @@ c.scrolling.bar = "always"
 # Open new tab next to the current tab
 c.tabs.new_position.unrelated = "next"
 
+c.messages.timeout = 1000  # ms
+
 c.url.searchengines = {
     "DEFAULT": "https://google.com/search?q={}",
     "g": "https://github.com/search?q={}",
@@ -37,6 +41,7 @@ c.url.searchengines = {
 config.set("content.javascript.enabled", True, "file://*")
 config.set("content.javascript.enabled", True, "chrome://*/*")
 config.set("content.javascript.enabled", True, "qute://*/*")
+c.content.javascript.clipboard = "access"
 
 # Vim/Vimium-like
 config.unbind("d")
@@ -45,6 +50,11 @@ config.bind("d", ":scroll-page 0 0.5")
 config.bind("u", ":scroll-page 0 -0.5")
 config.bind("x", ":tab-close")
 config.bind("X", ":undo")
+
+config.bind("h", ":back")
+config.bind("l", ":forward")
+config.bind("H", ":scroll left")
+config.bind("L", ":scroll right")
 
 # config.bind("yf", ":hint links yank")
 
@@ -57,6 +67,7 @@ config.bind("<Ctrl+f>", ":scroll-page 0 1")
 config.bind("<Right>", ":scroll-page 0 1")
 
 config.unbind("<Ctrl-e>", mode="insert")
+config.bind("<Meta+Backspace>", ":rl-unix-line-discard", mode="command")
 
 # {{{ Colors https://github.com/koekeishiya/dotfiles/blob/master/qutebrowser/config.py
 
