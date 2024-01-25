@@ -171,8 +171,14 @@ unlink_other() {
     # TODO
 }
 
+linux_etc() {
+    link_other "$XDG_CONFIG_HOME/alacritty/linux.toml.bak" "$XDG_CONFIG_HOME/alacritty/linux.toml"
+}
+
 macos_etc() {
+    link_other "$XDG_CONFIG_HOME/alacritty/macos.toml.bak" "$XDG_CONFIG_HOME/alacritty/macos.toml"
     link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
+    defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
 }
 
 main() {
@@ -223,6 +229,10 @@ main() {
             fi
         fi
     done
+
+    if [ "$(uname)" == "Linux" ]; then
+        linux_etc
+    fi
 
     if [ "$(uname)" == "Darwin" ]; then
         IFS_BAK=$IFS

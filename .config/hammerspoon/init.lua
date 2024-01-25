@@ -1,6 +1,3 @@
--- Execute the command below when setting up a new environment
--- defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
-
 -- local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
 local cmd_opt = { "cmd", "option" }
 local cmd_opt_ctrl = { "cmd", "option", "ctrl" }

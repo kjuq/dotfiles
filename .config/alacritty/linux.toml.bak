@@ -1,3 +1,2 @@
-# `ln -s ./linux.toml.bak ./linux.toml`
 [font]
 size = 14.0

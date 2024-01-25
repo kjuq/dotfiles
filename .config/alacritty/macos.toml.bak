@@ -1,4 +1,3 @@
-# `ln -s ./macos.toml.bak ./macos.toml`
 [font]
 size = 18.0
 
