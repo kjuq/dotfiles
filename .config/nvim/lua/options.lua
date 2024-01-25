@@ -33,6 +33,8 @@ opt.wrap           = false
 opt.smoothscroll   = true
 opt.breakindent    = true
 
+opt.splitright     = true
+
 opt.virtualedit    = { "onemore", "block" }
 
 opt.smartindent    = true
