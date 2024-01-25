@@ -11,22 +11,36 @@ fi
 
 dir=/tmp/clipboard_copyq
 
+# init
 cleanup() {
-	if [ -e "$dir" ]; then
-		if [ -d "$dir" ]; then
-			for f in "$dir"/*; do
-				shred -u "$f"
-			done
-		fi
-		rm -d "$dir"
+	if [ ! -e "$dir" ]; then # if $dir doesn't exist
+		return
 	fi
+	if [ -d "$dir" ] && [ -n "$(ls -A "$dir")" ]; then # if $dir is directory and not empty
+		for f in "$dir"/*; do
+			shred -u "$f"
+		done
+	fi
+	rm -d "$dir"
 }
 
 cleanup
 mkdir "$dir"
 
-for i in $(seq 0 5); do
-	copyq read "$i" > "$dir/$i"
+separator="#|#|fuakg_sep4rat0r_afuos|#|#\n"
+
+i=0
+line_num=0
+
+copyq separator "\n$separator" read 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 | while IFS= read -r line; do
+	if [ "$line\n" = "$separator" ]; then
+		i=$((i+1))
+		line_num=0
+	else
+		filename="$(printf "%02d" $i)"
+		echo "$line" >> "$dir/$filename"
+		line_num=$((line_num+1))
+	fi
 done
 
 preview="cat $dir/{}"
