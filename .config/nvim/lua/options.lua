@@ -11,6 +11,8 @@ opt.clipboard      = "unnamedplus"
 
 opt.cmdheight      = 0
 opt.laststatus     = 3 -- global status line
+opt.showcmdloc     = "statusline"
+
 opt.termguicolors  = true
 
 opt.wildmenu       = true

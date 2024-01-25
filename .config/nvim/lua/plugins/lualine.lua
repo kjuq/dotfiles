@@ -236,6 +236,17 @@ return {
         }
 
         ins_right {
+            function() return "%S" end,
+            color = { fg = colors.yellow, gui = "bold" },
+        }
+
+        ins_right {
+            "selectioncount",
+            color = { fg = colors.blue, gui = "bold" },
+            padding = { left = 1, right = 0 }
+        }
+
+        ins_right {
             "location",
             color = { fg = colors.fg, gui = "bold" },
             padding = { left = 1, right = 0 }
