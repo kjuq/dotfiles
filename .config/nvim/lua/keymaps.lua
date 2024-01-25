@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
--- Space is leader key
+-- Space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
@@ -116,6 +116,15 @@ map("n", "gC", function() -- number [C]olumn (?)
         opt.relativenumber = true
     end
 end, { desc = "Toggle number style" })
+
+-- open specific files via keymaps
+local open = function(filepath)
+    vim.cmd.vsplit(filepath)
+end
+map("n", "go", "<Nop>")
+map("n", "got", function() open("~/Documents/__user/todo.txt") end, { desc = "Open todo.txt" })
+map("n", "gob", function() open("~/Documents/__user/__bookmarks/bookmarks.txt") end, { desc = "Open bookmarks.txt" })
+map("n", "gor", function() open("~/Documents/__user/__bookmarks/readinglist.txt") end, { desc = "Open readinglist.txt" })
 
 -- TODO: check if Netrw is loaded or not
 map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })

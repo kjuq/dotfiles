@@ -13,7 +13,7 @@ return {
                 reveal_force_cwd = true,
             })
         end, "Open"),
-        map("at", "n", function()
+        map("af", "n", function()
             require("neo-tree.command").execute({
                 source = "filesystem",
                 position = "left",
