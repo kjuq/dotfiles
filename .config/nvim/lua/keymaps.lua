@@ -121,10 +121,12 @@ end, { desc = "Toggle number style" })
 local open = function(filepath)
     vim.cmd.vsplit(filepath)
 end
+local doc = "~/Documents/__user"
 map("n", "go", "<Nop>")
-map("n", "got", function() open("~/Documents/__user/todo.txt") end, { desc = "Open todo.txt" })
-map("n", "gob", function() open("~/Documents/__user/__bookmarks/bookmarks.txt") end, { desc = "Open bookmarks.txt" })
-map("n", "gor", function() open("~/Documents/__user/__bookmarks/readinglist.txt") end, { desc = "Open readinglist.txt" })
+map("n", "got", function() open(doc .. "/__todo/todo.txt") end, { desc = "Open todo.txt" })
+map("n", "gob", function() open(doc .. "/__bookmarks/bookmarks.txt") end, { desc = "Open bookmarks.txt" })
+map("n", "gor", function() open(doc .. "/__bookmarks/readinglist.txt") end, { desc = "Open readinglist.txt" })
+map("n", "god", function() open(doc .. "/__daily/" .. os.date("%Y-%m-%d.md")) end, { desc = "Open daily note" })
 
 -- TODO: check if Netrw is loaded or not
 map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })
