@@ -17,7 +17,7 @@ vim.diagnostic.config({
     virtual_text = virtual_text(vt),
     float = {
         border = require("utils.lazy").floatwinborder,
-        header = false,
+        -- header = false,
         format = function(diagnostic)
             return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
         end
@@ -55,7 +55,6 @@ local callback = function(ev)
     map("n", "<leader>tf", function()
         local winpos = vim.fn.winsaveview()
         vlb.format({ async = false })
-        ---@diagnostic disable-next-line: param-type-mismatch
         vim.fn.winrestview(winpos)
         vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting
     end, "Format current buffer")

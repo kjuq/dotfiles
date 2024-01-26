@@ -127,6 +127,7 @@ return {
                 completion = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
                 documentation = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
             },
+            ---@diagnostic disable-next-line: missing-fields
             formatting = {
                 format = require("lspkind").cmp_format({
                     mode = "text_symbol",  -- show only symbol annotations

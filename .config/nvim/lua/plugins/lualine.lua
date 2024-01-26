@@ -199,7 +199,6 @@ return {
             cond = conds.hide_in_width,
             -- workaround with Gitsigns which works properly even without Gitsigns
             sources = function()
-                ---@diagnostic disable-next-line: undefined-field
                 local gitsigns = vim.b.gitsigns_status_dict
                 if gitsigns then
                     return {

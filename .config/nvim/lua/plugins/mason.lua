@@ -21,7 +21,6 @@ return {
             function(server_name)
                 local lspconfig = require("lspconfig")
                 local common_opts = require("plugins/lsp/common")
-                ---@diagnostic disable-next-line: undefined-field
                 lspconfig[server_name].setup(common_opts)
             end,
 
