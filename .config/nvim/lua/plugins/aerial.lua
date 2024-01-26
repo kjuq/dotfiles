@@ -1,9 +1,9 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>", "Aerial: ")
+local map = require("utils.lazy").generate_cmd_map("", "Aerial: ")
 
 return {
     "stevearc/aerial.nvim",
     keys = {
-        map("to", "n", "AerialToggle", "Toggle")
+        map("gO", "n", "AerialToggle", "Toggle")
     },
     opts = {
         backends = { "lsp", "treesitter", "markdown", "man" },
