@@ -17,7 +17,7 @@ return {
         }, {
             { name = "path" },
             { name = "emoji" },
-            { name = "snippy" },
+            { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "buffer",  max_item_count = 2 },
@@ -118,7 +118,11 @@ return {
             },
             experimental = { ghost_text = true },
 
-            snippet = { expand = function(args) require("snippy").expand_snippet(args.body) end },
+            snippet = {
+                expand = function(args)
+                    require("luasnip").lsp_expand(args.body)
+                end,
+            },
 
             mapping = mapping_insert,
 
@@ -174,7 +178,7 @@ return {
         "hrsh7th/cmp-emoji",
         "ray-x/cmp-treesitter",
         "onsails/lspkind.nvim",
-        "dcampos/cmp-snippy",
+        "saadparwaiz1/cmp_luasnip",
         { "petertriho/cmp-git",     dependencies = "nvim-lua/plenary.nvim" },
         { "zbirenbaum/copilot-cmp", event = { "LspAttach" },               opts = {}, },
         { "Gelio/cmp-natdat",       config = true },
