@@ -56,8 +56,8 @@ return {
     end,
     dependencies = {
         "vim-denops/denops.vim",
-        "uga-rosa/cmp-skkeleton",
         "skk-dev/dict",
+        { "uga-rosa/cmp-skkeleton", cond = pcall(require, "cmp") },
         {
             "delphinus/skkeleton_indicator.nvim",
             opts = {
