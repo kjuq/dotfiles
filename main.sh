@@ -178,6 +178,11 @@ linux_etc() {
 macos_etc() {
     link_other "$XDG_CONFIG_HOME/alacritty/macos.toml.bak" "$XDG_CONFIG_HOME/alacritty/macos.toml"
     link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
+
+    defaults write -g KeyRepeat -int 1
+    defaults write -g InitialKeyRepeat -int 10
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
 }
 
