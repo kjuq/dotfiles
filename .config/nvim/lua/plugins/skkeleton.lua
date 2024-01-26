@@ -25,6 +25,7 @@ return {
 
         vim.fn["skkeleton#config"]({
             eggLikeNewline = true,
+            setUndoPoint = false,
             globalDictionaries = {
                 vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.L"),
                 vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.jinmei"),
