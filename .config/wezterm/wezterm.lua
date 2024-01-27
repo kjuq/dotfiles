@@ -12,7 +12,9 @@ end
 --     window:gui_window():toggle_fullscreen()
 -- end)
 
-C.color_scheme = "GruvboxDarkHard" -- "Catppuccin Mocha", "Tokyo Night", "iceberg-dark"
+C.color_scheme = "Kanagawa (Gogh)" -- "GruvboxDarkHard", "Catppuccin Mocha", "Tokyo Night", "iceberg-dark"
+
+C.colors = { background = "#181616" }
 
 -- C.prefer_egl = false
 C.max_fps = 250
@@ -59,9 +61,9 @@ C.keys = {
 
 -- check os
 if os.execute("[ $(uname) = 'Darwin' ]") then
-	C.font_size = 19
+	C.font_size = 18
 elseif os.execute("[ $(uname) = 'Linux' ]") then
-	C.font_size = 13
+	C.font_size = 12
 end
 
 -- and finally, return the configuration to wezterm
