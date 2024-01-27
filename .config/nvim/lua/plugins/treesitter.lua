@@ -22,7 +22,7 @@ return {
                 keymaps = {
                     init_selection = "<M-v>",
                     node_incremental = "<M-v>",
-                    scope_incremental = "<M-s>",
+                    -- scope_incremental = "<M-s>",
                     node_decremental = "<M-d>",
                 },
             },
