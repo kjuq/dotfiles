@@ -57,6 +57,7 @@ C.keys = {
 	key("=", "CMD|SHIFT", wez.action.IncreaseFontSize),
 	key("Backspace", "CMD", wez.action.SendKey({ key = "u", mods = "CTRL" })),
 	key("Backspace", "CTRL", wez.action.SendKey({ key = "w", mods = "CTRL" })),
+	key("q", "CMD", wez.action.QuitApplication),
 }
 
 -- check os
