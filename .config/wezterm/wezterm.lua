@@ -14,7 +14,10 @@ end
 
 C.color_scheme = "Kanagawa (Gogh)" -- "GruvboxDarkHard", "Catppuccin Mocha", "Tokyo Night", "iceberg-dark"
 
-C.colors = { background = "#181616" }
+C.colors = {
+	background = "black",
+	cursor_fg = "black",
+}
 
 -- C.prefer_egl = false
 C.max_fps = 250
