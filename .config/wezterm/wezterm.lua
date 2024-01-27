@@ -28,6 +28,8 @@ C.freetype_load_target = "Normal" -- "Normal", "Light", "Mono"
 
 C.window_background_opacity = 0.65
 
+C.audible_bell = "Disabled"
+
 C.enable_tab_bar = false
 C.window_decorations = "RESIZE"
 
