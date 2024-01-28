@@ -4,7 +4,7 @@ return {
     event = { "BufNewFile", "BufReadPost" }, -- necessary
     keys = {
         {
-            "<leader>pp",
+            "<leader>fp",
             mode = { "n" },
             function()
                 local has_telescope, _ = pcall(require, "telescope")

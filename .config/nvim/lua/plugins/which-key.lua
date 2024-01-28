@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>", "Which-key: ")
+local map = require("utils.lazy").generate_map("<leader>a", "Which-key: ")
 
 local active = false
 
@@ -27,8 +27,8 @@ return {
     "folke/which-key.nvim",
     event = require("utils.lazy").verylazy,
     keys = {
-        { "<leader>aw", mode = { "n" }, toggle,                             desc = "Which-key: Toggle" },
-        { "<leader>aW", mode = { "n" }, function() vim.cmd("WhichKey") end, desc = "Which-key: Show" },
+        map("w", "n", toggle, "Toggle"),
+        map("W", "n", function() vim.cmd("WhichKey") end, "Show all keymaps"),
     },
     opts = function()
         enable()
@@ -39,9 +39,8 @@ return {
             ["<leader>d"] = { name = "Debug", _ = "which_key_ignore" },
             ["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
             ["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
-            ["<leader>p"] = { name = "Pick", _ = "which_key_ignore" },
-            ["<leader>r"] = { name = "Re {name, sume}", _ = "which_key_ignore" },
-            ["<leader>t"] = { name = "LSP", _ = "which_key_ignore", c = "[c]all", w = "[w]orkspace" },
+            ["<leader>r"] = { name = "Resume", _ = "which_key_ignore" },
+            ["<M-w>"] = { name = "Workspace", _ = "which_key_ignore" },
         })
 
         return {

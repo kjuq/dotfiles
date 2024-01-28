@@ -23,7 +23,7 @@ return {
                     init_selection = "<M-v>",
                     node_incremental = "<M-v>",
                     -- scope_incremental = "<M-s>",
-                    node_decremental = "<M-d>",
+                    node_decremental = "<M-s>", -- shrink
                 },
             },
 

@@ -12,7 +12,7 @@ return {
     event = require("utils.lazy").verylazy,
     cmd = { "Noice" },
     keys = {
-        cmap("fn", "n", "Noice telescope", "Noice"),
+        cmap("fa", "n", "Noice telescope", "Noice"),
         map("<C-f>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, "Page down"),
         map("<C-b>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, "Page up"),
     },

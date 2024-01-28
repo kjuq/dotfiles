@@ -44,31 +44,31 @@ local callback = function(ev)
 
     map("n", "gd", vlb.definition, "Go to definition")
 
-    map("n", "<leader>rn", vlb.rename, "Rename")
+    map("n", "<M-r>", vlb.rename, "Rename")
 
-    map("n", "K", vlb.hover, "Hover Documentation")
+    map("n", "K", vlb.hover, "Hover Documentation") -- even without this, K is automatically mapped to see hover docs
     map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Help")
 
-    map("n", "<leader>twa", vlb.add_workspace_folder, "Workspace Add folder")
-    map("n", "<leader>twr", vlb.remove_workspace_folder, "Workspace remove Folder")
-    map("n", "<leader>twl", function() print(vim.inspect(vlb.list_workspace_folders())) end, "Workspace list Folders")
-    map("n", "<leader>tf", function()
+    map("n", "<M-w><M-a>", vlb.add_workspace_folder, "Add folder to workspace")
+    map("n", "<M-w><M-r>", vlb.remove_workspace_folder, "Remove folder from workspace")
+    map("n", "<M-w><M-w>", function() print(vim.inspect(vlb.list_workspace_folders())) end, "List folders of workspaceh")
+    map("n", "gq", function()
         local winpos = vim.fn.winsaveview()
         vlb.format({ async = false })
         vim.fn.winrestview(winpos)
-        vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting
+        vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting, when it's fixed remove this keybind
     end, "Format current buffer")
 
-    map("n", "<leader>tv", function()
+    map("n", "<M-d>", function()
         vt = not vt
         vim.diagnostic.config({ virtual_text = virtual_text(vt), })
     end, "Toggle virtual text of diagnotics")
 
     -- Diagnostics
-    map("n", "<leader>e", vim.diagnostic.open_float, "Show diagnostics")
+    map("n", "<M-e>", vim.diagnostic.open_float, "Show diagnostics")
     map("n", "[e", vim.diagnostic.goto_prev, "Go to prev diagnostics")
     map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostics")
-    map("n", "<leader>E", vim.diagnostic.setloclist, "Set diagnostics into loclist")
+    map("n", "<M-l>", vim.diagnostic.setloclist, "Set diagnostics into loclist")
 
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
