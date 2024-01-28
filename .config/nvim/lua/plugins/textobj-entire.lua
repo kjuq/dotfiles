@@ -1,6 +1,9 @@
 return {
     "kana/vim-textobj-entire",
-    event = require("utils.lazy").verylazy,
+    keys = {
+        { "i", mode = "" },
+        { "a", mode = "" },
+    },
     dependencies = {
         "kana/vim-textobj-user",
     },
