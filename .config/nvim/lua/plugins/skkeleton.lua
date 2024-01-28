@@ -1,3 +1,5 @@
+-- skkeleton makes startuptime longer even load it lazily
+
 local skk = require("utils.skk")
 local map = require("utils.lazy").generate_map("", "Skkeleton: ")
 
@@ -10,7 +12,6 @@ end
 return {
     "vim-skk/skkeleton",
     cond = vim.fn.executable("deno") ~= 0,
-    event = { "InsertEnter" },
     keys = {
         map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-enable") end, "Enable"),
         map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
