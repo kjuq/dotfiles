@@ -4,10 +4,9 @@ require("general")
 require("options")
 require("keymaps")
 require("commands")
+require("autocmd")
 
 require("lazy_init")
 
--- These two should be loaded after plugins loaded
--- for highlight on yank to work properly
+-- should load colorscheme after initialize plugins
 require("colorscheme")
-require("autocmd")

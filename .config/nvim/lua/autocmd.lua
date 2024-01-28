@@ -25,11 +25,17 @@ vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
 })
 
 -- highlight yanked text
-vim.api.nvim_set_hl(0, "UserHighlightOnYank", { bg = "#c43963" }) -- from SagaBeacon of LspSaga
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    group = vim.api.nvim_create_augroup("user_highlight_on_yank", {}),
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    pattern = "*",
+    group = vim.api.nvim_create_augroup("user_load_colorscheme", {}),
     callback = function()
-        require("vim.highlight").on_yank({ higroup = "UserHighlightOnYank", timeout = 125 })
+        vim.api.nvim_set_hl(0, "UserHighlightOnYank", { bg = "#c43963" }) -- color is from SagaBeacon of LspSaga
+        vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+            group = vim.api.nvim_create_augroup("user_highlight_on_yank", {}),
+            callback = function()
+                require("vim.highlight").on_yank({ higroup = "UserHighlightOnYank", timeout = 125 })
+            end,
+        })
     end,
 })
 
