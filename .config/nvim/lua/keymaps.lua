@@ -131,14 +131,20 @@ map("n", "god", function() open(doc .. "/__daily/" .. os.date("%Y-%m-%d.md")) en
 -- TODO: check if Netrw is loaded or not
 map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })
 
-map("i", "<C-g>d", function()
+local insert_date = function()
     local date = os.date("%Y-%m-%d") --[[@ as string]]
     vim.api.nvim_feedkeys(date, "n", false)
-end, { desc = "Insert date" })
-map("i", "<C-g>t", function()
+end
+
+local insert_time = function()
     local time = os.date("%H:%M:%S") --[[@ as string]]
     vim.api.nvim_feedkeys(time, "n", false)
-end, { desc = "Insert time" })
+end
+
+map("i", "<C-g>d", insert_date, { desc = "Insert date" })
+map("i", "<C-g><C-d>", insert_date, { desc = "Insert date" })
+map("i", "<C-g>t", insert_time, { desc = "Insert time" })
+map("i", "<C-g><C-t>", insert_time, { desc = "Insert time" })
 
 map("n", "<Esc>", function()
     vim.cmd.nohlsearch()
