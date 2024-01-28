@@ -9,6 +9,7 @@ return {
     config = function()
         require("scrollbar").setup({
             excluded_filetypes = {
+                "ccc-ui",
                 "cmp_docs",
                 "cmp_menu",
                 "dap-float",
