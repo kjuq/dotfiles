@@ -46,18 +46,12 @@ local callback = function(ev)
 
     map("n", "<M-r>", vlb.rename, "Rename")
 
-    map("n", "K", vlb.hover, "Hover Documentation") -- even without this, K is automatically mapped to see hover docs
+    -- map("n", "K", vlb.hover, "Hover Documentation") -- even without this, K is automatically mapped to see hover docs
     map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Help")
 
     map("n", "<M-w><M-a>", vlb.add_workspace_folder, "Add folder to workspace")
     map("n", "<M-w><M-r>", vlb.remove_workspace_folder, "Remove folder from workspace")
     map("n", "<M-w><M-w>", function() print(vim.inspect(vlb.list_workspace_folders())) end, "List folders of workspaceh")
-    map("n", "gq", function()
-        local winpos = vim.fn.winsaveview()
-        vlb.format({ async = false })
-        vim.fn.winrestview(winpos)
-        vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting, when it's fixed remove this keybind
-    end, "Format current buffer")
 
     map("n", "<M-d>", function()
         vt = not vt
@@ -75,8 +69,16 @@ local callback = function(ev)
 
     -- Format on save
     if client and client.supports_method("textDocument/formatting") then
+        map("n", "gq", function()
+            local winpos = vim.fn.winsaveview()
+            vlb.format({ async = false })
+            vim.fn.winrestview(winpos)
+            vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting, when it's fixed remove this keybind
+        end, "Format current buffer")
+
         local winpos
         local group = vim.api.nvim_create_augroup("AutoFormatting", {})
+
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = group,
             buffer = bufnr,
@@ -85,6 +87,7 @@ local callback = function(ev)
                 vim.lsp.buf.format({ async = false })
             end,
         })
+
         vim.api.nvim_create_autocmd("BufWritePost", {
             group = group,
             buffer = bufnr,

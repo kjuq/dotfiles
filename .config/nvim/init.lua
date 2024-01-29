@@ -1,12 +1,12 @@
 vim.loader.enable()
 
-require("general")
-require("options")
-require("keymaps")
-require("commands")
-require("autocmd")
+require("core.general")
+require("core.options")
+require("core.keymaps")
+require("core.commands")
+require("core.autocmd")
 
-require("lazy_init")
+require("core.lazy")
 
 -- should load colorscheme after initialize plugins
-require("colorscheme")
+require("core.colorscheme")

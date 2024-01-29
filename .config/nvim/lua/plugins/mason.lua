@@ -4,7 +4,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = require("utils.lazy").verylazy,
     config = function()
-        require("lsp") -- load lsp config
+        require("core.lsp") -- load lsp config
 
         require("mason").setup({ ui = { border = require("utils.lazy").floatwinborder } })
 
@@ -20,12 +20,12 @@ return {
         require("mason-lspconfig").setup_handlers({
             function(server_name)
                 local lspconfig = require("lspconfig")
-                local common_opts = require("plugins/lsp/common")
+                local common_opts = require("plugins.lsp.common")
                 lspconfig[server_name].setup(common_opts)
             end,
 
-            ["pylsp"] = require("plugins/lsp/pylsp").setup,
-            ["lua_ls"] = require("plugins/lsp/lua_ls").setup,
+            ["pylsp"] = require("plugins.lsp.pylsp").setup,
+            ["lua_ls"] = require("plugins.lsp.lua_ls").setup,
         })
 
         require("null-ls").setup({})
