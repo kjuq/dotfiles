@@ -13,8 +13,10 @@ return {
     "vim-skk/skkeleton",
     cond = vim.fn.executable("deno") ~= 0,
     keys = {
-        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-enable") end, "Enable"),
+        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-toggle") end, "Toggle"),
         map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
+        map("<F19>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-enable") end, "Enable"),
+        map("<F18>", { "i", "c" }, function() require("utils.common").feed_plug("skkeleton-disable") end, "Disable"),
     },
     config = function()
         -- create $XDG_CONFIG_HOME/skk dir if it doesn't exist

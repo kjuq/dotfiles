@@ -11,8 +11,10 @@ return {
     "vim-skk/eskk.vim",
     cond = vim.fn.executable("deno") == 0, -- fallen-back from skkeleton
     keys = {
-        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:enable") end, "Enable"),
+        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:toggle") end, "Toggle"),
         map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
+        map("<F19>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:enable") end, "Enable"),
+        map("<F18>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:disable") end, "Disable"),
     },
     config = function()
         local lazy_root = require("lazy.core.config").options.root
