@@ -119,7 +119,7 @@ end, { desc = "Toggle number style" })
 
 -- open specific files via keymaps
 local open = function(filepath)
-    vim.cmd.vsplit(filepath)
+    vim.cmd.edit(filepath)
 end
 local doc = "~/Documents/__user"
 map("n", "go", "<Nop>")
