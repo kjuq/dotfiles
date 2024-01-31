@@ -1,4 +1,4 @@
-if os.getenv("NO_PLUG") then
+if os.getenv("NOPLUG") then
     return
 end
 
