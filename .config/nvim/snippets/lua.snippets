@@ -1,0 +1,10 @@
+priority 100
+
+snippet autocmd
+    vim.api.nvim_create_autocmd({ "${1:EVENTS}" }, {
+        pattern = "${2:*}",
+        group = vim.api.nvim_create_augroup("${3}", {}),
+        callback = function()
+            ${4}
+        end,
+    })
