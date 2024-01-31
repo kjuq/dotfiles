@@ -19,6 +19,7 @@ hammerspoon/init.lua
 hammerspoon/.luarc.json
 i3/config
 kitty/kitty.conf
+latexmk/latexmkrc
 lazygit/config.yml
 lesskey
 mimeapps.list
