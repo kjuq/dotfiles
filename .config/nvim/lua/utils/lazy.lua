@@ -1,6 +1,8 @@
+local M = {}
+
 --- @param key_prefix string
 --- @param desc_prefix string
-local generate_map = function(key_prefix, desc_prefix)
+M.generate_map = function(key_prefix, desc_prefix)
     --- @param suffix string
     --- @param mode string|table
     --- @param func function
@@ -17,8 +19,8 @@ end
 
 --- @param key_prefix string
 --- @param desc_prefix string
-local generate_cmd_map = function(key_prefix, desc_prefix)
-    local map = generate_map(key_prefix, desc_prefix)
+M.generate_cmd_map = function(key_prefix, desc_prefix)
+    local map = M.generate_map(key_prefix, desc_prefix)
     --- @param suffix string
     --- @param mode string|table
     --- @param cmd string
@@ -30,21 +32,20 @@ local generate_cmd_map = function(key_prefix, desc_prefix)
     return cmap
 end
 
---- @param ft table<string>
-local quit_with_esc = function(ft)
-    vim.api.nvim_create_autocmd({ "filetype" }, {
-        pattern = ft,
+--- @param ft_pattern string|table<string>
+M.quit_with_esc = function(ft_pattern)
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+        pattern = ft_pattern,
+        group = vim.api.nvim_create_augroup("user_quit_with_esc", {}),
         callback = function()
             vim.keymap.set("n", "<esc>", vim.cmd.quit, { buffer = true, silent = true })
         end
     })
 end
 
-return {
-    generate_map = generate_map,
+M.verylazy = { "VeryLazy" }
+M.floatwinborder = "single"
     generate_cmd_map = generate_cmd_map,
     quit_with_esc = quit_with_esc,
-    -- verylazy = { "CursorHold", "CursorHoldI" },
-    verylazy = { "VeryLazy" },
-    floatwinborder = "single",
-}
+
+return M
