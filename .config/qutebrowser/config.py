@@ -43,11 +43,16 @@ config.set("content.javascript.enabled", True, "chrome://*/*")
 config.set("content.javascript.enabled", True, "qute://*/*")
 c.content.javascript.clipboard = "access"
 
+ctrl_d = "<Delete>"
+ctrl_u = "<Meta+Backspace>"
+
 # Vim/Vimium-like
 config.unbind("d")
 config.unbind("u")
 config.bind("d", ":scroll-page 0 0.5")
 config.bind("u", ":scroll-page 0 -0.5")
+config.bind(ctrl_d, ":scroll-page 0 0.5")
+config.bind(ctrl_u, ":scroll-page 0 -0.5")
 config.bind("x", ":tab-close")
 config.bind("X", ":undo")
 
@@ -67,7 +72,7 @@ config.bind("<Ctrl+f>", ":scroll-page 0 1")
 config.bind("<Right>", ":scroll-page 0 1")
 
 config.unbind("<Ctrl-e>", mode="insert")
-config.bind("<Meta+Backspace>", ":rl-unix-line-discard", mode="command")
+config.bind(ctrl_u, ":rl-unix-line-discard", mode="command")
 
 # {{{ Colors https://github.com/koekeishiya/dotfiles/blob/master/qutebrowser/config.py
 
