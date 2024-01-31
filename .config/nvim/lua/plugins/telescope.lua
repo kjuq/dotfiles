@@ -81,8 +81,8 @@ return {
 
                         ["<C-s>"] = actions.select_vertical,
 
-                        ["<C-b>"] = actions.preview_scrolling_up,
-                        ["<C-f>"] = actions.preview_scrolling_down,
+                        [require("utils.lazy").floatscrollup] = actions.preview_scrolling_up,
+                        [require("utils.lazy").floatscrolldown] = actions.preview_scrolling_down,
                         ["<M-b>"] = actions.preview_scrolling_left,
                         ["<M-f>"] = actions.preview_scrolling_right,
 
@@ -121,8 +121,8 @@ return {
                         ["gg"] = actions.move_to_top,
                         ["G"] = actions.move_to_bottom,
 
-                        ["<C-b>"] = actions.preview_scrolling_up,
-                        ["<C-f>"] = actions.preview_scrolling_down,
+                        [require("utils.lazy").floatscrollup] = actions.preview_scrolling_up,
+                        [require("utils.lazy").floatscrolldown] = actions.preview_scrolling_down,
                         ["<M-f>"] = actions.preview_scrolling_left,
                         ["<M-b>"] = actions.preview_scrolling_right,
 

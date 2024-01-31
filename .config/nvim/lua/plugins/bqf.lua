@@ -14,8 +14,8 @@ return {
             split = "",
             vsplit = "<C-s>",
 
-            pscrollup = "<C-b>",
-            pscrolldown = "<C-f>",
+            pscrollup = require("utils.lazy").floatscrollup,
+            pscrolldown = require("utils.lazy").floatscrolldown,
             pscrollorig = "zo",
             ptogglemode = "zp",
             ptoggleitem = "",

@@ -45,7 +45,7 @@ end
 
 M.verylazy = { "VeryLazy" }
 M.floatwinborder = "single"
-    generate_cmd_map = generate_cmd_map,
-    quit_with_esc = quit_with_esc,
+M.floatscrolldown = "<C-d>"
+M.floatscrollup = "<C-u>"
 
 return M

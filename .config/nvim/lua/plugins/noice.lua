@@ -7,17 +7,21 @@ local map = function(suffix, mode, func, comment)
 end
 local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope: ")
 
+local utils = require("utils.lazy")
+local scrollup = utils.floatscrollup
+local scrolldown = utils.floatscrolldown
+
 return {
     "folke/noice.nvim",
     event = require("utils.lazy").verylazy,
     cmd = { "Noice" },
     keys = {
         cmap("fa", "n", "Noice telescope", "Noice"),
-        map("<C-f>", "i", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, "Page down"),
-        map("<C-b>", "i", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, "Page up"),
+        map(scrolldown, "i", function() if not require("noice.lsp").scroll(4) then return scrolldown end end, "Page down"),
+        map(scrollup, "i", function() if not require("noice.lsp").scroll(-4) then return scrollup end end, "Page up"),
     },
     opts = function()
-        require("utils.lazy").quit_with_esc({ "noice" })
+        require("utils.lazy").quit_with_esc("noice")
         return {
             cmdline = {
                 format = {

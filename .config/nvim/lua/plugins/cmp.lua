@@ -91,11 +91,15 @@ return {
             end
         end
 
+        local utils = require("utils.lazy")
+        local scrolldown = utils.floatscrolldown
+        local scrollup = utils.floatscrollup
+
         local mapping_insert = {
             ["<C-n>"] = cmp.mapping(select_next, { "i", "s" }),
             ["<C-p>"] = cmp.mapping(select_prev, { "i", "s" }),
-            ["<C-b>"] = cmp.mapping(scroll_docs_up, { "i", "s" }),
-            ["<C-f>"] = cmp.mapping(scroll_docs_down, { "i", "s" }),
+            [scrollup] = cmp.mapping(scroll_docs_up, { "i", "s" }),
+            [scrolldown] = cmp.mapping(scroll_docs_down, { "i", "s" }),
             ["<C-l>"] = cmp.mapping(abort, { "i", "s" }),
             ["<C-e>"] = cmp.mapping(abort, { "i", "s" }),
             ["<C-y>"] = cmp.mapping(confirm, { "i", "s" }),
