@@ -179,8 +179,9 @@ macos_etc() {
     link_other "$XDG_CONFIG_HOME/alacritty/macos.toml.bak" "$XDG_CONFIG_HOME/alacritty/macos.toml"
     link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
 
-    defaults write -g KeyRepeat -int 2
-    defaults write -g InitialKeyRepeat -int 15
+    # These 3 lines need reboot to apply
+    defaults write -g KeyRepeat -int 2 # MacOS's minimum is 2 (30 ms)
+    defaults write -g InitialKeyRepeat -int 15 # MacOS's minimum is 15 (225 ms)
     defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
     defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
