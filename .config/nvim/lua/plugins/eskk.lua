@@ -13,6 +13,14 @@ return {
     keys = {
         map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:toggle") end, "Toggle"),
         map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
+        map("<C-g>j", "i", function()
+            if _G._user_skk_jp_mode_enabled then
+                require("utils.common").feed_plug("eskk:disable")
+            else
+                require("utils.common").feed_plug("eskk:enable")
+            end
+            toggle_japanese()
+        end, "Toggle JP mode"),
         map("<F19>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:enable") end, "Enable"),
         map("<F18>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:disable") end, "Disable"),
     },
