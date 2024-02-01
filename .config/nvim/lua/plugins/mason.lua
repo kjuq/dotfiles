@@ -26,6 +26,7 @@ return {
 
             ["pylsp"] = require("plugins.lsp.pylsp").setup,
             ["lua_ls"] = require("plugins.lsp.lua_ls").setup,
+            ["bashls"] = require("plugins.lsp.bashls").setup,
         })
 
         require("null-ls").setup({})
