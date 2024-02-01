@@ -1,24 +1,27 @@
-local success, capabilities = pcall(function() require("cmp_nvim_lsp").default_capabilities() end)
+local M = {}
+
+local success
+success, M.capabilities = pcall(function() require("cmp_nvim_lsp").default_capabilities() end)
 if not success then
-    capabilities = nil
+    M.capabilities = nil
 end
 
-local handlers = { -- disable this if you prefer noice-hover-scroll
+local max_width = 70
+local max_height = 20
+
+M._handlers = { -- disable this if you prefer noice-hover-scroll
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         title = " Lsp: Hover ",
         border = require("utils.lazy").floatwinborder,
-        -- max_width = 70,
-        -- max_height = 20,
+        _max_width = max_width,
+        _max_height = max_height,
     }),
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         title = " Lsp: Signature Help ",
         border = require("utils.lazy").floatwinborder,
-        -- max_width = 70,
-        -- max_height = 20,
+        _max_width = max_width,
+        _max_height = max_height,
     }),
 }
 
-return {
-    capabilities = capabilities,
-    _handlers = handlers,
-}
+return M
