@@ -22,5 +22,29 @@ M.toggle_japanese = function(callback)
     _G._user_skk_jp_mode_enabled = not _G._user_skk_jp_mode_enabled
 end
 
+M.mappings = function(enable, disable, toggle)
+    local map = require("utils.lazy").generate_map("", "Skkeleton: ")
+    local skk = require("utils.skk")
+    local toggle_japanese = function()
+        skk.toggle_japanese(function()
+            require("utils.common").feed_plug(enable)
+        end)
+    end
+    return {
+        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug(toggle) end, "Toggle"),
+        map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
+        map("<F19>", { "i", "c" }, function() require("utils.common").feed_plug(enable) end, "Enable"),
+        map("<F18>", { "i", "c" }, function() require("utils.common").feed_plug(disable) end, "Disable"),
+        map("<C-g>j", "i", function()
+            if _G._user_skk_jp_mode_enabled then
+                require("utils.common").feed_plug(disable)
+            else
+                require("utils.common").feed_plug(enable)
+            end
+            toggle_japanese()
+        end, "Toggle JP mode"),
+    }
+end
+
 ---@return table
 return M

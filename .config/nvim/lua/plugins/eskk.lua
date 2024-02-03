@@ -1,29 +1,8 @@
 local skk = require("utils.skk")
-local map = require("utils.lazy").generate_map("", "Eskk: ")
-
-local toggle_japanese = function()
-    skk.toggle_japanese(function()
-        require("utils.common").feed_plug("eskk:enable")
-    end)
-end
-
 return {
     "vim-skk/eskk.vim",
     cond = vim.fn.executable("deno") == 0, -- fallen-back from skkeleton
-    keys = {
-        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:toggle") end, "Toggle"),
-        map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
-        map("<C-g>j", "i", function()
-            if _G._user_skk_jp_mode_enabled then
-                require("utils.common").feed_plug("eskk:disable")
-            else
-                require("utils.common").feed_plug("eskk:enable")
-            end
-            toggle_japanese()
-        end, "Toggle JP mode"),
-        map("<F19>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:enable") end, "Enable"),
-        map("<F18>", { "i", "c" }, function() require("utils.common").feed_plug("eskk:disable") end, "Disable"),
-    },
+    keys = skk.mappings("eskk:enable", "eskk:disable", "eskk:toggle"),
     config = function()
         local lazy_root = require("lazy.core.config").options.root
         local large_dict = vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.L")
