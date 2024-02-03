@@ -14,3 +14,9 @@ snippet url
 snippet lstinputlisting
 	\lstinputlisting[caption = ${1:CAPTION}, label = ${2:LABEL}]{${3:PATH_TO_FILE}}
 
+snippet image
+	\begin{figure}[${1:POSITION}]
+		\includegraphics[${2:OPTION}]{${3:PATH}}
+		\caption{${4}}
+		\label{${5}}
+	\end{figure}
