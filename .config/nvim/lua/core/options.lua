@@ -37,7 +37,7 @@ opt.breakindent    = true
 
 opt.splitright     = true
 
-opt.virtualedit    = { "onemore", "block" }
+opt.virtualedit    = { "block" }
 
 opt.smartindent    = true
 opt.tabstop        = 4

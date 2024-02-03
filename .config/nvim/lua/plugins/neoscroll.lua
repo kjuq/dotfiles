@@ -1,7 +1,7 @@
 local map = require("utils.lazy").generate_map("", "Neoscroll: ")
 local nx = { "n", "x" }
 
-local duration = 25
+local duration = 150
 
 local utils = require("utils.lazy")
 local scrolldown = utils.floatscrolldown
