@@ -235,8 +235,15 @@ return {
         }
 
         ins_right {
+            -- show typed (partial) command (:h showcmd)
             function() return "%S" end,
             color = { fg = colors.yellow, gui = "bold" },
+        }
+
+        ins_right {
+            "searchcount",
+            color = { fg = colors.blue, gui = "bold" },
+            padding = { left = 1, right = 0 }
         }
 
         ins_right {
@@ -248,7 +255,7 @@ return {
         ins_right {
             "location",
             color = { fg = colors.fg, gui = "bold" },
-            padding = { left = 1, right = 0 }
+            padding = { left = 2, right = 0 }
         }
 
         ins_right {
