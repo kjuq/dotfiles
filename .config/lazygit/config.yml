@@ -1,4 +1,5 @@
 quitOnTopLevelReturn: true # Quit with esc
+promptToReturnFromSubprocess: false
 gui:
   showIcons: true
 git:
