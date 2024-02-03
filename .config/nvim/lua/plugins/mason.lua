@@ -31,7 +31,7 @@ return {
 
         require("null-ls").setup({})
 
-        require('mason-null-ls').setup({
+        require("mason-null-ls").setup({
             ensure_installed = {
                 "autopep8",
                 "shellcheck",
@@ -39,7 +39,6 @@ return {
                 "debugpy",
             },
             automatic_installation = true,
-            handlers = {},
         })
 
         -- for lazy-load, reload filetype
