@@ -4,8 +4,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = require("utils.lazy").verylazy,
     config = function()
-        require("core.lsp") -- load lsp config
-
         require("mason").setup({ ui = { border = require("utils.lazy").floatwinborder } })
 
         require("mason-lspconfig").setup({
