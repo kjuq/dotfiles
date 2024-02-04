@@ -41,8 +41,8 @@ M.setup = function()
                 diagnostics = { globals = { "vim" } },
                 workspace = {
                     checkThirdParty = "Disable",
-                    -- library = library(),
-                    library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
+                    library = library(),
+                    -- library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
                 },
                 -- format = { enable = false } , -- Use StyLua if disabled
                 telemetry = { enable = false },
