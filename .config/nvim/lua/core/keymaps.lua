@@ -122,15 +122,17 @@ map("n", "gC", function() -- number [C]olumn (?)
 end, { desc = "Toggle number style" })
 
 -- open specific files via keymaps
-local open = function(filepath)
+local edit = function(filepath)
 	vim.cmd.edit(filepath)
 end
 local doc = "~/Documents/__user"
+local confroot = os.getenv("XDG_CONFIG_HOME") .. "/nvim"
 map("n", "go", "<Nop>")
-map("n", "got", function() open(doc .. "/__todo/todo.txt") end, { desc = "Open todo.txt" })
-map("n", "gob", function() open(doc .. "/__bookmarks/bookmarks.txt") end, { desc = "Open bookmarks.txt" })
-map("n", "gor", function() open(doc .. "/__bookmarks/readinglist.txt") end, { desc = "Open readinglist.txt" })
-map("n", "god", function() open(doc .. "/__daily/" .. os.date("%Y-%m-%d.md")) end, { desc = "Open daily note" })
+map("n", "got", function() edit(doc .. "/__todo/todo.txt") end, { desc = "Edit todo.txt" })
+map("n", "gob", function() edit(doc .. "/__bookmarks/bookmarks.txt") end, { desc = "Edit bookmarks.txt" })
+map("n", "gor", function() edit(doc .. "/__bookmarks/readinglist.txt") end, { desc = "Edit readinglist.txt" })
+map("n", "god", function() edit(doc .. "/__daily/" .. os.date("%Y-%m-%d.md")) end, { desc = "Edit daily note" })
+map("n", "gos", function() edit(confroot .. "/snippets/" .. vim.o.ft .. ".snippets") end, { desc = "Edit snippet" })
 
 -- TODO: check if Netrw is loaded or not
 map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })
