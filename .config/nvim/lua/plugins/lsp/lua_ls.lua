@@ -5,6 +5,7 @@ local get_plugin_paths = function()
     local result = {}
     local plugins = require("lazy.core.config").plugins
     for _, plugin in pairs(plugins) do
+        ---@diagnostic disable-next-line: undefined-field
         if plugin._user_load_library or plugin.name == "lazy.nvim" then
             table.insert(result, vim.fs.joinpath(plugin.dir, "lua"))
         end
@@ -28,7 +29,7 @@ end
 
 M.setup = function()
     local lspconfig = require("lspconfig")
-    local common_opts = require("plugins/lsp/common")
+    local common_opts = require("plugins.lsp.common")
     lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, {
         settings = {
             Lua = {
@@ -40,8 +41,8 @@ M.setup = function()
                 diagnostics = { globals = { "vim" } },
                 workspace = {
                     checkThirdParty = "Disable",
-                    library = library(),
-                    -- library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
+                    -- library = library(),
+                    library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
                 },
                 -- format = { enable = false } , -- Use StyLua if disabled
                 telemetry = { enable = false },
