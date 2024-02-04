@@ -13,8 +13,6 @@ opt.cmdheight      = 0
 opt.laststatus     = 3 -- global status line
 opt.showcmdloc     = "statusline"
 
-opt.incsearch      = false
-
 opt.termguicolors  = true
 
 opt.wildmenu       = true
