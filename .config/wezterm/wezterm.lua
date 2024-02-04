@@ -58,6 +58,7 @@ C.keys = {
 	key("f", "CMD|CTRL", wez.action.ToggleFullScreen),
 	key("-", "CMD", wez.action.DecreaseFontSize),
 	key("=", "CMD|SHIFT", wez.action.IncreaseFontSize),
+	key("=", "CMD", wez.action.ResetFontSize),
 	key("Backspace", "CMD", wez.action.SendKey({ key = "u", mods = "CTRL" })),
 	key("Backspace", "CTRL", wez.action.SendKey({ key = "w", mods = "CTRL" })),
 	key("q", "CMD", wez.action.QuitApplication),
