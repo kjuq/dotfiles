@@ -34,12 +34,10 @@ local callback = function(ev)
 
     local vlb = vim.lsp.buf
 
-    -- LspSaga provides same functionalities
-    --
-    -- vlb.declaration, "Go to Declaration"
-    -- vlb.type_definition, "Go to type definition"
-    -- vlb.references, "Go to reference"
-    -- vlb.implementation, "Go to implementation"
+    map("n", "[d", vlb.type_definition, "Go to type definition")
+    map("n", "]d", vlb.implementation, "Go to implementation")
+    map("n", "gr", vlb.references, "Go to reference")
+    -- map("n", "gD", vlb.declaration, "Go to Declaration")
     -- map("n", "<KEYBIND>", vlb.code_action, "Code action")
 
     map("n", "gd", vlb.definition, "Go to definition")
