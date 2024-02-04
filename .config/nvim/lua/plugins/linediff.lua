@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("<leader>a", "Linediff: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"AndrewRadev/linediff.vim",
 	cmd = { "Linediff" },
 	keys = {
@@ -11,3 +12,5 @@ return {
 		map("f", "n", function() vim.cmd("LinediffReset") end, "Linediff Reset current selection"),
 	}
 }
+
+return spec

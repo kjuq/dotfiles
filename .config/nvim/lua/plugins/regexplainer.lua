@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"bennypowers/nvim-regexplainer",
 	event = require("utils.lazy").verylazy,
 	config = function()
@@ -19,3 +20,5 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 }
+
+return spec

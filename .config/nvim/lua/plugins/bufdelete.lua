@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("", "Bufdelete: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"famiu/bufdelete.nvim",
 	cmd = { "Bdelete", "Bwipeout" },
 	keys = {
@@ -10,3 +11,5 @@ return {
 		map("<leader>X", "n", function() require("bufdelete").bufdelete(0, true) end, "Delete buffer forcibly"),
 	},
 }
+
+return spec

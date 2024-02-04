@@ -2,7 +2,8 @@ local map = require("utils.lazy").generate_cmd_map("<leader>c", "GP: ")
 
 local nv = { "n", "v" }
 
-return {
+---@type LazySpec
+local spec = {
 	"robitx/gp.nvim",
 	cmd = {
 		"GpChatNew",
@@ -83,3 +84,5 @@ return {
 		image_prompt_save = "󰏫 󰉉 ~ ",
 	},
 }
+
+return spec

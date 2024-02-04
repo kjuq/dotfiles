@@ -1,6 +1,7 @@
 local hide_by_default = false
 
-return {
+---@type LazySpec
+local spec = {
 	"petertriho/nvim-scrollbar",
 	keys = {
 		{ "<leader>as", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
@@ -37,3 +38,5 @@ return {
 		"lewis6991/gitsigns.nvim",
 	},
 }
+
+return spec

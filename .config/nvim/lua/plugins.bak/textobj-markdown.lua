@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"coachshea/vim-textobj-markdown",
 	ft = "markdown",
 	init = function()
@@ -40,3 +41,5 @@ return {
 		"kana/vim-textobj-user",
 	},
 }
+
+return spec

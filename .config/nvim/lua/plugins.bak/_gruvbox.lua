@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"ellisonleao/gruvbox.nvim",
 	lazy = false,
 	priority = 9999,
@@ -11,3 +12,5 @@ return {
 		vim.api.nvim_set_hl(0, "statusline", { bg = "NONE" })
 	end,
 }
+
+return spec

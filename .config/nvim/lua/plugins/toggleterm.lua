@@ -2,7 +2,8 @@ local map = require("utils.lazy").generate_cmd_map("", "ToggleTerm: ")
 
 local open_cmd = "ToggleTerm dir=%:p:h"
 
-return {
+---@type LazySpec
+local spec = {
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	keys = {
@@ -35,3 +36,5 @@ return {
 		}
 	end
 }
+
+return spec

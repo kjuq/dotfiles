@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>g", "Diffview: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"sindrets/diffview.nvim",
 	cmd = {
 		"DiffviewOpen",
@@ -25,3 +26,5 @@ return {
 		})
 	end,
 }
+
+return spec

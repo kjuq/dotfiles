@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"williamboman/mason-lspconfig.nvim",
 	event = require("utils.lazy").verylazy,
 	config = function()
@@ -32,3 +33,5 @@ return {
 		"williamboman/mason.nvim",
 	},
 }
+
+return spec

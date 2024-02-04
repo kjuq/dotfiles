@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"nvim-treesitter/nvim-treesitter",
 	event = require("utils.lazy").verylazy,
 	build = function()
@@ -73,3 +74,5 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 }
+
+return spec

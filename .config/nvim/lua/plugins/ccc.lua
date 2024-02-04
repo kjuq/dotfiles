@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>a", "CCC: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"uga-rosa/ccc.nvim",
 	event = require("utils.lazy").verylazy,
 	keys = {
@@ -12,3 +13,5 @@ return {
 		},
 	},
 }
+
+return spec

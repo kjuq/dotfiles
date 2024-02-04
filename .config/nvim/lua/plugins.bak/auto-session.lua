@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"rmagatti/auto-session",
 	lazy = false,
 	opts = function()
@@ -9,3 +10,5 @@ return {
 		}
 	end
 }
+
+return spec

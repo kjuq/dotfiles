@@ -23,7 +23,8 @@ local toggle = function()
 	end
 end
 
-return {
+---@type LazySpec
+local spec = {
 	"folke/which-key.nvim",
 	event = require("utils.lazy").verylazy,
 	keys = {
@@ -56,3 +57,5 @@ return {
 		}
 	end,
 }
+
+return spec

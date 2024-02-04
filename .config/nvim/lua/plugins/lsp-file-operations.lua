@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"antosha417/nvim-lsp-file-operations",
 	event = { "LspAttach" },
 	dependencies = {
@@ -10,3 +11,5 @@ return {
 		require("lsp-file-operations").setup()
 	end,
 }
+
+return spec

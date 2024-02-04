@@ -7,7 +7,8 @@ local rhs = function(key)
 	end
 end
 
-return {
+---@type LazySpec
+local spec = {
 	"kevinhwang91/nvim-hlslens",
 	event = { "CmdlineEnter" },
 	keys = {
@@ -20,3 +21,5 @@ return {
 	},
 	opts = {},
 }
+
+return spec

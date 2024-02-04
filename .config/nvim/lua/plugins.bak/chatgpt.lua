@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>c", "ChatGPT: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"jackMort/ChatGPT.nvim",
 	cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun", },
 	keys = {
@@ -102,3 +103,5 @@ return {
 		"nvim-telescope/telescope.nvim"
 	}
 }
+
+return spec

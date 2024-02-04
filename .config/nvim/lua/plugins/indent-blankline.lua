@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
 	commit = "0dca9284bce128e60da18693d92999968d6cb523",
@@ -41,3 +42,5 @@ return {
 		ibl.refresh_all()
 	end,
 }
+
+return spec

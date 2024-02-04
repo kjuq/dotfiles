@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"ahmedkhalf/project.nvim",
 	name = "project_nvim",
 	event = { "BufNewFile", "BufReadPost" }, -- necessary
@@ -21,3 +22,5 @@ return {
 		detection_methods = { "pattern" },
 	},
 }
+
+return spec

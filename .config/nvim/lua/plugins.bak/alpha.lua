@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"goolord/alpha-nvim",
 	cond = vim.fn.argc() == 0, -- if nvim was launched without files specified by args
 	event = { "BufWinEnter" },
@@ -9,3 +10,5 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 }
+
+return spec

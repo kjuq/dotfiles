@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"chrishrb/gx.nvim",
 	keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 	cmd = { "Browse" },
@@ -8,3 +9,5 @@ return {
 	opts = {},
 	dependencies = { "nvim-lua/plenary.nvim" },
 }
+
+return spec

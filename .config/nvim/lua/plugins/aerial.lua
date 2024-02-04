@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("", "Aerial: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"stevearc/aerial.nvim",
 	keys = {
 		map("gO", "n", "AerialToggle", "Toggle")
@@ -17,3 +18,5 @@ return {
 		"nvim-tree/nvim-web-devicons"
 	},
 }
+
+return spec

@@ -1,5 +1,7 @@
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
-return {
+
+---@type LazySpec
+local spec = {
 	"nvim-lualine/lualine.nvim",
 	event = require("utils.lazy").verylazy,
 	init = function()
@@ -44,7 +46,7 @@ return {
 				section_separators = "",
 
 				theme = {
-					normal = { c = { fg = colors.fg, bg = "NONE" } },   -- default: bg = colors.bg
+					normal = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
 					inactive = { c = { fg = colors.fg, bg = "NONE" } }, -- default: bg = colors.bg
 				},
 			},
@@ -293,7 +295,7 @@ return {
 		}
 
 		ins_right {
-			"encoding",         -- option component same as &encoding in viml
+			"encoding", -- option component same as &encoding in viml
 			fmt = string.upper, -- I'm not sure why it's upper case either ;)
 			cond = conds.enc_not_utf_8,
 			color = { fg = colors.red, gui = "bold" },
@@ -325,3 +327,5 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 }
+
+return spec

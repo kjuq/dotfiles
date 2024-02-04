@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"andymass/vim-matchup",
 	event = require("utils.lazy").verylazy,
 	config = function()
@@ -16,3 +17,5 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 }
+
+return spec

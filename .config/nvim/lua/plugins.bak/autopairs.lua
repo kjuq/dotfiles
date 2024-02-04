@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
 	opts = {
@@ -13,3 +14,5 @@ return {
 		},
 	},
 }
+
+return spec

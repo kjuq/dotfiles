@@ -1,7 +1,8 @@
 local map = require("utils.lazy").generate_cmd_map("", "Oil: ")
 local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
-return {
+---@type LazySpec
+local spec = {
 	"stevearc/oil.nvim",
 	lazy = os.getenv("OILSSH") == nil,
 	event = require("utils.lazy").verylazy,
@@ -38,3 +39,5 @@ return {
 	},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
+
+return spec

@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"folke/neodev.nvim",
 	ft = { "lua" },
 	opts = {
@@ -11,3 +12,5 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 }
+
+return spec

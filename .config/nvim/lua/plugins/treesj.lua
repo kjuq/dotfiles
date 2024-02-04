@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("", "TreeSJ: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"Wansmer/treesj",
 	keys = {
 		map("<leader>ak", "n", function() require("treesj").toggle() end, "Toggle")
@@ -12,3 +13,5 @@ return {
 	end,
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
+
+return spec

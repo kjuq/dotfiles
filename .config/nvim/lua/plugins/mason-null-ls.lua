@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"jay-babu/mason-null-ls.nvim",
 	event = "LspAttach",
 	opts = {
@@ -15,3 +16,5 @@ return {
 		"nvimtools/none-ls.nvim",
 	},
 }
+
+return spec

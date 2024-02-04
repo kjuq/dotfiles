@@ -1,6 +1,7 @@
 local ft = { "markdown", "markdownpreview" }
 
-return {
+---@type LazySpec
+local spec = {
 	"topazape/md-preview.nvim",
 	cond = vim.fn.executable("glow") ~= 0,
 	ft = ft,
@@ -21,3 +22,5 @@ return {
 		}
 	end,
 }
+
+return spec

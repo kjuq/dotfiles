@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 9999,
@@ -8,7 +9,7 @@ return {
 			dim_inactive = false,
 			styles = {
 				sidebars = "transparent", -- "dark", "transparent", "normal"
-				floats = "transparent",   -- "dark", "transparent", "normal"
+				floats = "transparent", -- "dark", "transparent", "normal"
 			},
 		})
 		vim.cmd.colorscheme("tokyonight")
@@ -16,3 +17,5 @@ return {
 		vim.api.nvim_set_hl(0, "statusline", { bg = "NONE", ctermbg = "NONE" })
 	end,
 }
+
+return spec

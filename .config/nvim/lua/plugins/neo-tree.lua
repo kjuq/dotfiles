@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("<leader>", "Neo-tree: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
 	cmd = { "Neotree" },
@@ -91,3 +92,5 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 }
+
+return spec

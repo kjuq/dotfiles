@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("<leader>a", "Silicon: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"segeljakt/vim-silicon",
 	cmd = "Silicon",
 	keys = {
@@ -44,3 +45,5 @@ return {
 		}
 	end,
 }
+
+return spec

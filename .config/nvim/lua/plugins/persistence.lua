@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("<leader>r", "Persistence: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"folke/persistence.nvim",
 	event = "BufReadPre", -- this will only start session saving when an actual file was opened
 	keys = {
@@ -16,3 +17,5 @@ return {
 	opts = {
 	}
 }
+
+return spec

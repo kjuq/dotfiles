@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("<leader>d", "Dap: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"mfussenegger/nvim-dap",
 	keys = {
 		map("B", "n", function() require("dap").set_breakpoint(vim.fn.input("BP condition: ")) end,
@@ -86,3 +87,5 @@ return {
 		}
 	},
 }
+
+return spec

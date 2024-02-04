@@ -1,6 +1,7 @@
 local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Mason: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"williamboman/mason.nvim",
 	keys = { cmap("al", "n", "Mason", "Open") },
 	opts = {
@@ -9,3 +10,5 @@ return {
 		},
 	},
 }
+
+return spec

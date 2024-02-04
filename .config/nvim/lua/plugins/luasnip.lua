@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("", "Luasnip: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"L3MON4D3/LuaSnip",
 	keys = {
 		map("<Tab>", { "i", "s" }, function()
@@ -24,3 +25,5 @@ return {
 		require("luasnip.loaders.from_snipmate").lazy_load()
 	end,
 }
+
+return spec

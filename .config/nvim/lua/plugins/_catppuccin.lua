@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"catppuccin/nvim",
 	name = "catppuccin",
 	lazy = false,
@@ -6,18 +7,18 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			flavour = "mocha", -- latte, frappe, macchiato, mocha
-			background = {     -- :h background
+			background = { -- :h background
 				light = "latte",
 				dark = "mocha",
 			},
 			transparent_background = true, -- disables setting the background color.
 			dim_inactive = {
-				enabled = false,           -- dims the background color of inactive window
+				enabled = false,  -- dims the background color of inactive window
 				shade = "dark",
-				percentage = 0.15,         -- percentage of the shade to apply to the inactive window
+				percentage = 0.15, -- percentage of the shade to apply to the inactive window
 			},
-			styles = {                     -- Handles the styles of general hi groups (see `:h highlight-args`):
-				comments = { "italic" },   -- Change the style of comments
+			styles = {            -- Handles the styles of general hi groups (see `:h highlight-args`):
+				comments = { "italic" }, -- Change the style of comments
 				conditionals = { "italic" },
 				loops = {},
 				functions = {},
@@ -36,3 +37,5 @@ return {
 		vim.api.nvim_set_hl(0, "LineNr", { fg = "#888888" })
 	end,
 }
+
+return spec

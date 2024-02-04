@@ -4,7 +4,8 @@ local map = gen_map("<leader>", "Telescope: ")
 
 local tb = "telescope.builtin"
 
-return {
+---@type LazySpec
+local spec = {
 	"nvim-telescope/telescope.nvim",
 	cmd = { "Telescope" },
 	keys = {
@@ -183,3 +184,5 @@ return {
 		},
 	},
 }
+
+return spec

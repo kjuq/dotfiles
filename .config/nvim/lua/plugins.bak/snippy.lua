@@ -1,6 +1,7 @@
 local expand_key = "<Tab>"
 
-return {
+---@type LazySpec
+local spec = {
 	"dcampos/nvim-snippy",
 	keys = {
 		{ expand_key, mode = { "i" } },
@@ -17,3 +18,5 @@ return {
 		"honza/vim-snippets",
 	},
 }
+
+return spec

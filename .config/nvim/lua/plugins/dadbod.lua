@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("<leader>a", "Dadbod: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"kristijanhusak/vim-dadbod-ui",
 	cmd = {
 		"DBUI",
@@ -35,3 +36,5 @@ return {
 		},
 	},
 }
+
+return spec

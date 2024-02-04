@@ -1,7 +1,8 @@
 -- This plugin may be incompatible with nvim-cmp
 -- See: https://github.com/tzachar/highlight-undo.nvim/issues/2
 
-return {
+---@type LazySpec
+local spec = {
 	"tzachar/highlight-undo.nvim",
 	keys = {
 		{ "u",     mode = "n" },
@@ -26,3 +27,5 @@ return {
 		highlight_for_count = true,
 	},
 }
+
+return spec

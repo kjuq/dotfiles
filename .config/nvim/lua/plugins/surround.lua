@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"kylechui/nvim-surround",
 	version = "*", -- Use for stability; omit to use `main` branch for the latest features
 	keys = {
@@ -15,3 +16,5 @@ return {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 }
+
+return spec

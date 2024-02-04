@@ -11,7 +11,8 @@ local utils = require("utils.lazy")
 local scrollup = utils.floatscrollup
 local scrolldown = utils.floatscrolldown
 
-return {
+---@type LazySpec
+local spec = {
 	"folke/noice.nvim",
 	event = require("utils.lazy").verylazy,
 	cmd = { "Noice" },
@@ -59,3 +60,5 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 }
+
+return spec

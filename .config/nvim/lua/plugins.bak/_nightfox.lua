@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"EdenEast/nightfox.nvim",
 	lazy = false,
 	priority = 9999,
@@ -13,3 +14,5 @@ return {
 		vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#808080" })
 	end,
 }
+
+return spec

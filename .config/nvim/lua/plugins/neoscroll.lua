@@ -3,11 +3,8 @@ local nx = { "n", "x" }
 
 local duration = 150
 
-local utils = require("utils.lazy")
-local scrolldown = utils.floatscrolldown
-local scrollup = utils.floatscrollup
-
-return {
+---@type LazySpec
+local spec = {
 	"karb94/neoscroll.nvim",
 	keys = {
 		map("<C-u>", nx, function()
@@ -35,3 +32,5 @@ return {
 		hide_cursor = false,
 	}
 }
+
+return spec

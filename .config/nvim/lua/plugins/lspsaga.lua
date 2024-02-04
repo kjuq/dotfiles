@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_cmd_map("", "LspSaga: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"nvimdev/lspsaga.nvim",
 	keys = {
 		map("<M-i>", "n", "Lspsaga incoming_calls", "Incoming calls"),
@@ -38,3 +39,5 @@ return {
 		"nvim-tree/nvim-web-devicons"
 	}
 }
+
+return spec

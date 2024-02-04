@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	'jinh0/eyeliner.nvim',
 	keys = {
 		{ "f",  mode = { "n", "x" } },
@@ -15,3 +16,5 @@ return {
 		dim = true,
 	},
 }
+
+return spec

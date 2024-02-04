@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"lewis6991/gitsigns.nvim",
 	event = require("utils.lazy").verylazy,
 	opts = {
@@ -51,3 +52,5 @@ return {
 		end
 	},
 }
+
+return spec

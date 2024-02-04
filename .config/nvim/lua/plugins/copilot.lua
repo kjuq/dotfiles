@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
 	event = { "InsertEnter" },
@@ -63,3 +64,5 @@ return {
 		return opts
 	end,
 }
+
+return spec

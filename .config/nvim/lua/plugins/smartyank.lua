@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"ibhagwan/smartyank.nvim",
 	event = "BufReadPost",
 	opts = {
@@ -10,3 +11,5 @@ return {
 		},
 	},
 }
+
+return spec

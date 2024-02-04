@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 	keys = {
 		{
@@ -21,3 +22,5 @@ return {
 		return {}
 	end
 }
+
+return spec

@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"miversen33/sunglasses.nvim",
 	event = require("utils.lazy").verylazy,
 	config = function()
@@ -23,3 +24,5 @@ return {
 		vim.cmd("SunglassesRefresh") -- for lazy load
 	end,
 }
+
+return spec

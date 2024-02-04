@@ -1,6 +1,7 @@
 local map = require("utils.lazy").generate_map("<leader>a", "QuickHL: ")
 
-return {
+---@type LazySpec
+local spec = {
 	"t9md/vim-quickhl",
 	keys = {
 		map("m", { "n", "x" }, function()
@@ -11,3 +12,5 @@ return {
 		end, "Reset")
 	}
 }
+
+return spec

@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"andersevenrud/nvim_context_vt",
 	event = require("utils.lazy").verylazy,
 	opts = {
@@ -6,3 +7,5 @@ return {
 		disable_virtual_lines = true,
 	},
 }
+
+return spec

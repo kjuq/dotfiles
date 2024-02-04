@@ -1,4 +1,5 @@
-return {
+---@type LazySpec
+local spec = {
 	"HiPhish/rainbow-delimiters.nvim",
 	event = require("utils.lazy").verylazy,
 	tag = "v0.2.0",
@@ -39,3 +40,5 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 }
+
+return spec
