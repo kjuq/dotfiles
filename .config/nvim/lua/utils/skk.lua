@@ -30,19 +30,53 @@ M.mappings = function(enable, disable, toggle)
             require("utils.common").feed_plug(enable)
         end)
     end
-    return {
-        map("<C-Space>", { "i", "c" }, function() require("utils.common").feed_plug(toggle) end, "Toggle"),
-        map("<leader>aj", "n", function() toggle_japanese() end, "Toggle JP mode"),
-        map("<F19>", { "i", "c" }, function() require("utils.common").feed_plug(enable) end, "Enable"),
-        map("<F18>", { "i", "c" }, function() require("utils.common").feed_plug(disable) end, "Disable"),
-        map("<C-g>j", "i", function()
+
+    local map_toggle = function(key)
+        return map(key, { "i", "c" }, function()
+            require("utils.common").feed_plug(toggle)
+        end, "Toggle")
+    end
+
+    local map_toggle_jp = function(key)
+        return map(key, "n", function()
+            toggle_japanese()
+        end, "Toggle JP mode")
+    end
+
+    local map_enable = function(key)
+        return map(key, { "i", "c" }, function()
+            require("utils.common").feed_plug(enable)
+        end, "Enable")
+    end
+
+    local map_disable = function(key)
+        map(key, { "i", "c" }, function()
+            print("hello")
+            require("utils.common").feed_plug(disable)
+        end, "Disable")
+    end
+
+    local map_toggle_jp_in_insert_mode = function(key)
+        map(key, "i", function()
             if _G._user_skk_jp_mode_enabled then
                 require("utils.common").feed_plug(disable)
             else
                 require("utils.common").feed_plug(enable)
             end
             toggle_japanese()
-        end, "Toggle JP mode"),
+        end, "Toggle JP mode")
+    end
+
+    return {
+        map_toggle("<C-Space>"),
+        map_toggle_jp("<leader>aj"),
+        map_enable("<F19>"),
+        map_enable("<C-g>n"),
+        map_enable("<C-g><C-n>"),
+        map_disable("<F18>"),
+        map_disable("<C-g>e"),
+        map_disable("<C-g><C-e>"),
+        map_toggle_jp_in_insert_mode("<C-g>j"),
     }
 end
 
