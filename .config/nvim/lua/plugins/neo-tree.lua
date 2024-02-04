@@ -5,7 +5,7 @@ return {
     branch = "v3.x",
     cmd = { "Neotree" },
     keys = {
-        map("at", "n", function()
+        map("aT", "n", function()
             require("neo-tree.command").execute({
                 source = "filesystem",
                 position = "left",
@@ -13,7 +13,7 @@ return {
                 reveal_force_cwd = true,
             })
         end, "Open"),
-        map("ag", "n", function()
+        map("aG", "n", function()
             require("neo-tree.command").execute({
                 source = "git_status",
                 position = "left",
@@ -21,7 +21,7 @@ return {
                 reveal_force_cwd = true,
             })
         end, "Open git"),
-        map("ab", "n", function()
+        map("aB", "n", function()
             require("neo-tree.command").execute({
                 source = "buffers",
                 position = "left",
