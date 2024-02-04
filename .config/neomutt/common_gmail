@@ -7,6 +7,6 @@ unset record
 set smtp_authenticators = 'gssapi:login'
 
 macro index,pager t \
-    "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+	"<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
 
 # vim: set filetype=neomuttrc :

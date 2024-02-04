@@ -2,8 +2,8 @@
 set -eU fish_user_paths
 
 if [ (uname) = "Darwin" ]
-    eval (/opt/homebrew/bin/brew shellenv)
-    fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
+	eval (/opt/homebrew/bin/brew shellenv)
+	fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
 else if [ (uname) = "Linux" ]
 	eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end

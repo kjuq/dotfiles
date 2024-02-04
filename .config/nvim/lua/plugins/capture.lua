@@ -1,4 +1,4 @@
 return {
-    "tyru/capture.vim",
-    cmd = "Capture",
+	"tyru/capture.vim",
+	cmd = "Capture",
 }

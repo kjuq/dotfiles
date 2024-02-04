@@ -1,5 +1,5 @@
 return {
-    "chentoast/marks.nvim",
-    event = require("utils.lazy").verylazy,
-    opts = {},
+	"chentoast/marks.nvim",
+	event = require("utils.lazy").verylazy,
+	opts = {},
 }

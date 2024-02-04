@@ -1,4 +1,4 @@
 return {
-    "kjuq/todo.txt-vim",
-    ft = "todo",
+	"kjuq/todo.txt-vim",
+	ft = "todo",
 }

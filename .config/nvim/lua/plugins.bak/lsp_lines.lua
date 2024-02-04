@@ -1,25 +1,23 @@
 return {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    keys = {
-        {
-            "<leader>Ll",
-            mode = { "n" },
-            function () require("lsp_lines").toggle() end,
-            "LspLines: Toggle lsp_[l]ines",
-        },
-    },
-    opts = function ()
-        vim.diagnostic.config({
-            virtual_text = false,
-            virtual_lines = {
-                only_current_line = true,
-                highlight_whole_line = false,
-            },
-        })
-        -- disables on load
-        require("lsp_lines").toggle()
-        return {}
-    end
+	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	keys = {
+		{
+			"<leader>Ll",
+			mode = { "n" },
+			function() require("lsp_lines").toggle() end,
+			"LspLines: Toggle lsp_[l]ines",
+		},
+	},
+	opts = function()
+		vim.diagnostic.config({
+			virtual_text = false,
+			virtual_lines = {
+				only_current_line = true,
+				highlight_whole_line = false,
+			},
+		})
+		-- disables on load
+		require("lsp_lines").toggle()
+		return {}
+	end
 }
-
-

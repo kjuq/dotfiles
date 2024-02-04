@@ -31,10 +31,10 @@ c.tabs.new_position.unrelated = "next"
 c.messages.timeout = 1000  # ms
 
 c.url.searchengines = {
-    "DEFAULT": "https://google.com/search?q={}",
-    "g": "https://github.com/search?q={}",
-    "s": "https://stackoverflow.com/search?q={}",
-    "y": "https://www.youtube.com/results?search_query={}",
+	"DEFAULT": "https://google.com/search?q={}",
+	"g": "https://github.com/search?q={}",
+	"s": "https://stackoverflow.com/search?q={}",
+	"y": "https://www.youtube.com/results?search_query={}",
 }
 
 # Enable JavaScript.

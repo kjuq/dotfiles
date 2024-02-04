@@ -295,4 +295,3 @@ set functioncolor white
 #bind ^U undo main
 #bind ^E redo main
 #set multibuffer
-

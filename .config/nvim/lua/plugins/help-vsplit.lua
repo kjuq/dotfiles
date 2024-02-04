@@ -1,6 +1,6 @@
 return {
-    "anuvyklack/help-vsplit.nvim",
-    keys = { { "h", mode = "c" }, },
-    ft = { "TelescopePrompt", },
-    opts = { side = "right", },
+	"anuvyklack/help-vsplit.nvim",
+	keys = { { "h", mode = "c" }, },
+	ft = { "TelescopePrompt", },
+	opts = { side = "right", },
 }

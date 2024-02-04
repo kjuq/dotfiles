@@ -6,5 +6,5 @@ set --export FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
 # Zoxide initialization
 if command --search --quiet zoxide
-    zoxide init --cmd c fish | source
+	zoxide init --cmd c fish | source
 end

@@ -1,4 +1,4 @@
 return {
-    "kjuq/vim-log-highlighting",
-    ft = "log",
+	"kjuq/vim-log-highlighting",
+	ft = "log",
 }

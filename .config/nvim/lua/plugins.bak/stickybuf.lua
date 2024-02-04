@@ -1,6 +1,6 @@
 return {
-    "stevearc/stickybuf.nvim",
-    lazy = false,
-    event = "WinEnter",
-    opts = {},
+	"stevearc/stickybuf.nvim",
+	lazy = false,
+	event = "WinEnter",
+	opts = {},
 }

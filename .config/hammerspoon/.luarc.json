@@ -1,3 +1,5 @@
 {
-  "Lua.workspace.library": ["$XDG_CONFIG_HOME/hammerspoon/Spoons/EmmyLua.spoon/annotations"]
+	"Lua.workspace.library": [
+		"$XDG_CONFIG_HOME/hammerspoon/Spoons/EmmyLua.spoon/annotations"
+	]
 }

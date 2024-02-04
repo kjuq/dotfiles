@@ -22,15 +22,15 @@ map("c", "<C-n>", "<Down>")
 -- Don't update register when not intend to do so
 
 map("n", "x", function()
-    return vim.v.count == 0 and "\"_x" or "x"
+	return vim.v.count == 0 and "\"_x" or "x"
 end, { expr = true, silent = true, desc = "Delete N characters after the cursor" })
 
 map("n", "X", function()
-    return vim.v.count == 0 and "\"_X" or "X"
+	return vim.v.count == 0 and "\"_X" or "X"
 end, { expr = true, silent = true, desc = "Delete N characters before the cursor" })
 
 map("n", "s", function()
-    return vim.v.count == 0 and "\"_s" or "s"
+	return vim.v.count == 0 and "\"_s" or "s"
 end, { expr = true, silent = true, desc = "Delete N characters and start insert" })
 
 -- map("n", "S", '"_S', { silent = true, desc = "Delete N lines and start insert" })
@@ -62,16 +62,16 @@ map("n", "[l", vim.cmd.cprevious, { desc = "Previous location on QuickFix" })
 
 -- Frequently used keymaps
 local write = function(key)
-    map("n", key, vim.cmd.write, { silent = true, desc = "Write" })
+	map("n", key, vim.cmd.write, { silent = true, desc = "Write" })
 end
 local write_noautocmd = function(key)
-    map("n", key, function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write w/o autocmd" })
+	map("n", key, function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write w/o autocmd" })
 end
 local quit = function(key)
-    map("n", key, vim.cmd.quit, { silent = true, desc = "Quit" })
+	map("n", key, vim.cmd.quit, { silent = true, desc = "Quit" })
 end
 local quit_all = function(key)
-    map("n", key, vim.cmd.quitall, { silent = true, desc = "Quit all" })
+	map("n", key, vim.cmd.quitall, { silent = true, desc = "Quit all" })
 end
 write("gs")
 write("<leader>w")
@@ -90,13 +90,13 @@ map("n", "N", "Nzz", { silent = true, desc = "Repeat the latest search in opposi
 
 -- Comfortable buffer deletion
 local bdelete = function(key)
-    map("n", key, vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
+	map("n", key, vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
 end
 local bdelete_force = function(key)
-    map("n", key, function() vim.cmd.bdelete { bang = true } end, {
-        silent = true,
-        desc = "Force delete a current buffer"
-    })
+	map("n", key, function() vim.cmd.bdelete { bang = true } end, {
+		silent = true,
+		desc = "Force delete a current buffer"
+	})
 end
 bdelete("gl")
 bdelete("<leader>x")
@@ -107,23 +107,23 @@ map("n", "gW", function() vim.opt.wrap = not vim.o.wrap end, { desc = "Toggle wr
 map("n", "gA", function() vim.cmd("messages") end, { desc = "History of messages" })
 map("n", "gK", function() vim.opt.spell = not vim.o.spell end, { desc = "Toggle spell check" })
 map("n", "gC", function() -- number [C]olumn (?)
-    local opt = vim.opt
-    local o = vim.o
-    if o.relativenumber then
-        opt.number = true
-        opt.relativenumber = false
-    elseif o.number then
-        opt.number = false
-        opt.relativenumber = false
-    else
-        opt.number = true -- change this to false if you prefer alternative behavior
-        opt.relativenumber = true
-    end
+	local opt = vim.opt
+	local o = vim.o
+	if o.relativenumber then
+		opt.number = true
+		opt.relativenumber = false
+	elseif o.number then
+		opt.number = false
+		opt.relativenumber = false
+	else
+		opt.number = true -- change this to false if you prefer alternative behavior
+		opt.relativenumber = true
+	end
 end, { desc = "Toggle number style" })
 
 -- open specific files via keymaps
 local open = function(filepath)
-    vim.cmd.edit(filepath)
+	vim.cmd.edit(filepath)
 end
 local doc = "~/Documents/__user"
 map("n", "go", "<Nop>")
@@ -136,13 +136,13 @@ map("n", "god", function() open(doc .. "/__daily/" .. os.date("%Y-%m-%d.md")) en
 map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })
 
 local insert_date = function()
-    local date = os.date("%Y-%m-%d") --[[@ as string]]
-    vim.api.nvim_feedkeys(date, "n", false)
+	local date = os.date("%Y-%m-%d") --[[@ as string]]
+	vim.api.nvim_feedkeys(date, "n", false)
 end
 
 local insert_time = function()
-    local time = os.date("%H:%M:%S") --[[@ as string]]
-    vim.api.nvim_feedkeys(time, "n", false)
+	local time = os.date("%H:%M:%S") --[[@ as string]]
+	vim.api.nvim_feedkeys(time, "n", false)
 end
 
 map("i", "<C-g>d", insert_date, { desc = "Insert date" })
@@ -151,18 +151,18 @@ map("i", "<C-g>t", insert_time, { desc = "Insert time" })
 map("i", "<C-g><C-t>", insert_time, { desc = "Insert time" })
 
 map("n", "<Esc>", function()
-    vim.cmd.nohlsearch()
-    vim.cmd.fclose { bang = true }
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
+	vim.cmd.nohlsearch()
+	vim.cmd.fclose { bang = true }
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
 end, { silent = true })
 
 map({ "i", "s" }, "<C-l>", function()
-    local mode = vim.api.nvim_get_mode().mode
-    if mode == "ix" then -- completion with <C-x>
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, false, true), "n", false)
-    else
-        vim.cmd.fclose { bang = true }
-    end
+	local mode = vim.api.nvim_get_mode().mode
+	if mode == "ix" then -- completion with <C-x>
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, false, true), "n", false)
+	else
+		vim.cmd.fclose { bang = true }
+	end
 end, { silent = true })
 
 -- <NUM><CR> to go to line. i.e. 10<CR> -> 10G

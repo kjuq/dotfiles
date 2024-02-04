@@ -2,27 +2,27 @@
 -- See: https://github.com/tzachar/highlight-undo.nvim/issues/2
 
 return {
-    "tzachar/highlight-undo.nvim",
-    keys = {
-        { "u",     mode = "n" },
-        { "<C-r>", mode = "n" },
-    },
-    opts = {
-        duration = 125,
-        undo = {
-            hlgroup = "HighlightUndo",
-            mode = "n",
-            lhs = "u",
-            map = "undo",
-            opts = {}
-        },
-        redo = {
-            hlgroup = "HighlightUndo",
-            mode = "n",
-            lhs = "<C-r>",
-            map = "redo",
-            opts = {}
-        },
-        highlight_for_count = true,
-    },
+	"tzachar/highlight-undo.nvim",
+	keys = {
+		{ "u",     mode = "n" },
+		{ "<C-r>", mode = "n" },
+	},
+	opts = {
+		duration = 125,
+		undo = {
+			hlgroup = "HighlightUndo",
+			mode = "n",
+			lhs = "u",
+			map = "undo",
+			opts = {}
+		},
+		redo = {
+			hlgroup = "HighlightUndo",
+			mode = "n",
+			lhs = "<C-r>",
+			map = "redo",
+			opts = {}
+		},
+		highlight_for_count = true,
+	},
 }

@@ -1,4 +1,4 @@
 return {
-    "darfink/vim-plist",
-    lazy = false, -- necessary
+	"darfink/vim-plist",
+	lazy = false, -- necessary
 }

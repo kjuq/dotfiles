@@ -3,55 +3,55 @@ local map = require("utils.lazy").generate_map("<leader>a", "Which-key: ")
 local active = false
 
 local enable = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 700
-    active = true
+	vim.o.timeout = true
+	vim.o.timeoutlen = 700
+	active = true
 end
 
 local disable = function()
-    vim.o.timeout = false
-    active = false
+	vim.o.timeout = false
+	active = false
 end
 
 local toggle = function()
-    if active then
-        print("Which-key is inactive")
-        disable()
-    else
-        print("Which-key is active")
-        enable()
-    end
+	if active then
+		print("Which-key is inactive")
+		disable()
+	else
+		print("Which-key is active")
+		enable()
+	end
 end
 
 return {
-    "folke/which-key.nvim",
-    event = require("utils.lazy").verylazy,
-    keys = {
-        map("w", "n", toggle, "Toggle"),
-        map("W", "n", function() vim.cmd("WhichKey") end, "Show all keymaps"),
-    },
-    opts = function()
-        enable()
+	"folke/which-key.nvim",
+	event = require("utils.lazy").verylazy,
+	keys = {
+		map("w", "n", toggle, "Toggle"),
+		map("W", "n", function() vim.cmd("WhichKey") end, "Show all keymaps"),
+	},
+	opts = function()
+		enable()
 
-        require("which-key").register({
-            ["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
-            ["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
-            ["<leader>d"] = { name = "Debug", _ = "which_key_ignore" },
-            ["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
-            ["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
-            ["<leader>r"] = { name = "Resume", _ = "which_key_ignore" },
-            ["<M-w>"] = { name = "Workspace", _ = "which_key_ignore" },
-        })
+		require("which-key").register({
+			["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
+			["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
+			["<leader>d"] = { name = "Debug", _ = "which_key_ignore" },
+			["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
+			["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
+			["<leader>r"] = { name = "Resume", _ = "which_key_ignore" },
+			["<M-w>"] = { name = "Workspace", _ = "which_key_ignore" },
+		})
 
-        return {
-            window = {
-                border = "single",
-            },
-            layout = {
-                width = { max = 80 }, -- min and max width of the columns
-                spacing = 3,          -- spacing between columns
-                align = "left",       -- align columns left, center or right
-            },
-        }
-    end,
+		return {
+			window = {
+				border = "single",
+			},
+			layout = {
+				width = { max = 80 }, -- min and max width of the columns
+				spacing = 3,          -- spacing between columns
+				align = "left",       -- align columns left, center or right
+			},
+		}
+	end,
 }

@@ -1,5 +1,5 @@
 return {
-    "nacro90/numb.nvim",
-    event = { "CmdlineEnter" },
-    opts = {},
+	"nacro90/numb.nvim",
+	event = { "CmdlineEnter" },
+	opts = {},
 }
