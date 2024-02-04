@@ -22,8 +22,8 @@ M.toggle_japanese = function(callback)
     _G._user_skk_jp_mode_enabled = not _G._user_skk_jp_mode_enabled
 end
 
-M.mappings = function(enable, disable, toggle)
-    local map = require("utils.lazy").generate_map("", "Skkeleton: ")
+M.mappings = function(desc_prefix, enable, disable, toggle)
+    local map = require("utils.lazy").generate_map("", desc_prefix)
     local skk = require("utils.skk")
     local toggle_japanese = function()
         skk.toggle_japanese(function()
@@ -50,14 +50,13 @@ M.mappings = function(enable, disable, toggle)
     end
 
     local map_disable = function(key)
-        map(key, { "i", "c" }, function()
-            print("hello")
+        return map(key, { "i", "c" }, function()
             require("utils.common").feed_plug(disable)
         end, "Disable")
     end
 
     local map_toggle_jp_in_insert_mode = function(key)
-        map(key, "i", function()
+        return map(key, "i", function()
             if _G._user_skk_jp_mode_enabled then
                 require("utils.common").feed_plug(disable)
             else

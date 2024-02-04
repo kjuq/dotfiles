@@ -1,8 +1,9 @@
 local skk = require("utils.skk")
+
 return {
     "vim-skk/eskk.vim",
     cond = vim.fn.executable("deno") == 0, -- fallen-back from skkeleton
-    keys = skk.mappings("eskk:enable", "eskk:disable", "eskk:toggle"),
+    keys = skk.mappings("Eskk: ", "eskk:enable", "eskk:disable", "eskk:toggle"),
     config = function()
         local lazy_root = require("lazy.core.config").options.root
         local large_dict = vim.fs.joinpath(lazy_root, "dict", "SKK-JISYO.L")

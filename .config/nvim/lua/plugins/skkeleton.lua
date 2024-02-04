@@ -5,7 +5,7 @@ local skk = require("utils.skk")
 return {
     "vim-skk/skkeleton",
     cond = vim.fn.executable("deno") ~= 0,
-    keys = skk.mappings("skkeleton-enable", "skkeleton-disable", "skkeleton-toggle"),
+    keys = skk.mappings("Skkeleton: ", "skkeleton-enable", "skkeleton-disable", "skkeleton-toggle"),
     config = function()
         -- create $XDG_CONFIG_HOME/skk dir if it doesn't exist
         if vim.fn.isdirectory(skk.skk_dir) == 0 then
