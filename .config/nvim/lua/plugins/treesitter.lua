@@ -23,8 +23,8 @@ local spec = {
 				keymaps = {
 					init_selection = "<M-v>",
 					node_incremental = "<M-v>",
-					-- scope_incremental = "<M-s>",
-					node_decremental = "<M-s>", -- shrink
+					-- scope_incremental = "",
+					node_decremental = "<M-b>",
 				},
 			},
 

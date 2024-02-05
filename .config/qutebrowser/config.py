@@ -47,12 +47,15 @@ ctrl_d = "<Delete>"
 ctrl_u = "<Meta+Backspace>"
 
 # Vim/Vimium-like
+halfpage_size = "0.4"
+fullpage_size = "0.9"
+
 config.unbind("d")
 config.unbind("u")
-config.bind("d", ":scroll-page 0 0.5")
-config.bind("u", ":scroll-page 0 -0.5")
-config.bind(ctrl_d, ":scroll-page 0 0.5")
-config.bind(ctrl_u, ":scroll-page 0 -0.5")
+config.bind("d", ":scroll-page 0 " + halfpage_size)
+config.bind("u", ":scroll-page 0 -" + halfpage_size)
+config.bind(ctrl_d, ":scroll-page 0 " + halfpage_size)
+config.bind(ctrl_u, ":scroll-page 0 -" + halfpage_size)
 config.bind("x", ":tab-close")
 config.bind("X", ":undo")
 
@@ -66,10 +69,10 @@ config.bind("L", ":scroll right")
 config.bind("<Ctrl+e>", ":scroll down")
 config.bind("<Ctrl+y>", ":scroll up")
 
-config.bind("<Ctrl+b", ":scroll-page 0 -1")
-config.bind("<Left>", ":scroll-page 0 -1")
-config.bind("<Ctrl+f>", ":scroll-page 0 1")
-config.bind("<Right>", ":scroll-page 0 1")
+config.bind("<Ctrl+b", ":scroll-page 0 -" + fullpage_size)
+config.bind("<Left>", ":scroll-page 0 -" + fullpage_size)
+config.bind("<Ctrl+f>", ":scroll-page 0 " + fullpage_size)
+config.bind("<Right>", ":scroll-page 0 " + fullpage_size)
 
 config.unbind("<Ctrl-e>", mode="insert")
 config.bind(ctrl_u, ":rl-unix-line-discard", mode="command")
