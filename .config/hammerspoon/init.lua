@@ -39,7 +39,7 @@ hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
 	local alacritty = hs.task.new("/opt/homebrew/bin/fish", nil, {
 		"-c",
-		"floatingnvim alacritty",
+		"floatingnvim wezterm",
 	}):start()
 	alacritty:waitUntilExit()
 	hs.eventtap.keyStroke({ "cmd" }, "v")

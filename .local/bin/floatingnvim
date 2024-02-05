@@ -20,9 +20,10 @@ if [ "$1" = "alacritty" ]; then
 		--command tmux new-session nvimcopy
 elif [ "$1" = "wezterm" ]; then
 	wezterm \
-		--config initial_rows=10 \
-		--config initial_cols=70 \
+		--config initial_rows=30 \
+		--config initial_cols=80 \
 		start \
+		--position active:26%,25% \
 		--class "$classname" \
 		tmux new-session nvimcopy
 else
