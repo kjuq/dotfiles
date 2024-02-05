@@ -17,14 +17,14 @@ if [ "$1" = "alacritty" ]; then
 		window.decorations=\"None\" \
 		window.position.x=910 \
 		--class "$classname" \
-		--command fish -c nvimcopy
+		--command tmux new-session nvimcopy
 elif [ "$1" = "wezterm" ]; then
 	wezterm \
 		--config initial_rows=10 \
 		--config initial_cols=70 \
 		start \
 		--class "$classname" \
-		fish -c nvimcopy
+		tmux new-session nvimcopy
 else
 	echo "Invalid terminal was specified: $1"
 fi
