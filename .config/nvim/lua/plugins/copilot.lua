@@ -34,6 +34,7 @@ local spec = {
 		end
 
 		local mod = require("copilot.suggestion")
+
 		--- @param key string
 		--- @param normal_behavior function
 		--- @param choosing_behavior function
@@ -47,7 +48,7 @@ local spec = {
 			end)
 		end
 
-		map("<C-f>", mod.next, mod.accept)
+		map("<C-g><C-f>", mod.next, mod.accept)
 		map("<C-l>", function() vim.cmd.fclose { bang = true } end, mod.dismiss)
 
 		if not opts.suggestion.auto_trigger then
