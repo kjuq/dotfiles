@@ -36,13 +36,18 @@ toggleApp("Alacritty", cmd_opt_ctrl, "'")
 toggleApp("Finder", cmd_opt_ctrl, "=")
 hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 
+---@type hs.task
+local floatterm
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
-	local alacritty = hs.task.new("/opt/homebrew/bin/fish", nil, {
-		"-c",
-		"floatingnvim wezterm",
-	}):start()
-	alacritty:waitUntilExit()
-	hs.eventtap.keyStroke({ "cmd" }, "v")
+	if floatterm ~= nil and floatterm:isRunning() then
+		return
+	end
+
+	floatterm = hs.task.new(
+		"/opt/homebrew/bin/fish",
+		function() hs.eventtap.keyStroke({ "cmd" }, "v") end,
+		{ "-c", "floatingnvim wezterm", }
+	):start()
 end)
 
 -- Window movement
