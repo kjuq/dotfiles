@@ -1,199 +1,41 @@
--- local hs_base = "$XDG_CONFIG_HOME/hammerspoon"
+hs.ipc.cliInstall("/opt/homebrew")
+
 local cmd_opt = { "cmd", "option" }
 local cmd_opt_ctrl = { "cmd", "option", "ctrl" }
 
--- Toggle apps
-hs.ipc.cliInstall("/opt/homebrew")
+local bind = hs.hotkey.bind
 
-local appsToHide = {}
+local floatingnvim  = require("lua.floatingnvim")
+bind(cmd_opt_ctrl, "`", floatingnvim.toggle)
 
-local function toggleApp(appName, mods, key)
-	hs.hotkey.bind(mods, key, function()
-		local app = hs.application.get(appName)
-		if app:isFrontmost() then
-			app:hide()
-		else
-			hs.application.launchOrFocus(appName)
-		end
-	end)
-	table.insert(appsToHide, appName)
-end
-local function hideAllApps()
-	for _, appname in pairs(appsToHide) do
-		local app = hs.application.get(appname)
-		app:hide()
-	end
-end
+local toggleapps = require("lua.toggleapps")
+bind(cmd_opt_ctrl, ".", function() toggleapps.toggle_app("Vivaldi") end)
+bind(cmd_opt_ctrl, ",", function() toggleapps.toggle_app("System Settings") end)
+bind(cmd_opt_ctrl, "]", function() toggleapps.toggle_app("Wezterm") end)
+bind(cmd_opt_ctrl, "[", function() toggleapps.toggle_app("qutebrowser") end)
+bind(cmd_opt_ctrl, "/", function() toggleapps.toggle_app("Preview") end)
+bind(cmd_opt_ctrl, "'", function() toggleapps.toggle_app("Alacritty") end)
+bind(cmd_opt_ctrl, "=", function() toggleapps.toggle_app("Finder") end)
 
-toggleApp("Vivaldi", cmd_opt_ctrl, ".")
-toggleApp("System Settings", cmd_opt_ctrl, ",")
+local movewin = require("lua.movewin")
+bind(cmd_opt, "f", movewin.up, nil, movewin.up)
+bind(cmd_opt, "right", movewin.up, nil, movewin.up)
+bind(cmd_opt, "s", movewin.down, nil, movewin.down)
+bind(cmd_opt, "r", movewin.left, nil, movewin.left)
+bind(cmd_opt, "t", movewin.right, nil, movewin.right)
+bind(cmd_opt, "a", function() hs.window.focusedWindow():moveOneScreenWest() end)
+bind(cmd_opt, "o", function() hs.window.focusedWindow():moveOneScreenEast() end)
 
-toggleApp("Wezterm", cmd_opt_ctrl, "]")
-toggleApp("qutebrowser", cmd_opt_ctrl, "[")
-toggleApp("Preview", cmd_opt_ctrl, "/")
+local snap = require("lua.snap")
+bind(cmd_opt, "i", snap.right)
+bind(cmd_opt, "n", snap.left)
+bind(cmd_opt, "u", snap.top)
+bind(cmd_opt, ",", snap.bot)
+bind(cmd_opt, "y", snap.upper_right)
+bind(cmd_opt, "l", snap.upper_left)
+bind(cmd_opt, ".", snap.bottom_right)
+bind(cmd_opt, "m", snap.bottom_left)
 
-toggleApp("Alacritty", cmd_opt_ctrl, "'")
-toggleApp("Finder", cmd_opt_ctrl, "=")
-hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
+bind(cmd_opt, "e", function() hs.window.focusedWindow():maximize() end)
 
-local tmp = "/tmp/floatterm"
-if not os.execute("test -e " .. tmp) then
-	os.execute("echo '/opt/homebrew/bin/tmux new-session ~/.local/bin/nvimcopy' > " .. tmp)
-	os.execute("chmod +x " .. tmp)
-end
-
----@type hs.task
-local floatterm
-hs.hotkey.bind(cmd_opt_ctrl, "`", function()
-	if floatterm ~= nil and floatterm:isRunning() then
-		hs.application.applicationForPID(floatterm:pid()):activate()
-		return
-	end
-
-	local generate_floatterm
-	generate_floatterm = function()
-		---@type hs.task
-		floatterm = hs.task.new(
-			"/opt/homebrew/bin/wezterm",
-			function()
-				hs.eventtap.keyStroke({ "cmd" }, "v")
-				-- floatterm = generate_floatterm()
-				-- floatterm:start()
-			end,
-			{
-				"--config",
-				"initial_rows=1",
-				"--config",
-				"initial_cols=1",
-				"start",
-				"--position",
-				"main:100%,0",
-				tmp,
-			}
-		)
-		return floatterm
-	end
-
-	generate_floatterm():start()
-end)
-
--- Window movement
--- https://qiita.com/haruyama480/items/bf9e6a42fedbdbbaf438
-DURATION = 0.05
-DELTA = 10
-local function moveDown()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	f.y = f.y + DELTA
-	win:setFrameInScreenBounds(f, DURATION)
-end
-
-local function moveUp()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	f.y = f.y - DELTA
-	win:setFrameInScreenBounds(f, DURATION)
-end
-
-local function moveLeft()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	f.x = f.x - DELTA
-	win:setFrameInScreenBounds(f, DURATION)
-end
-
-local function moveRight()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	f.x = f.x + DELTA
-	win:setFrameInScreenBounds(f, DURATION)
-end
-
-hs.hotkey.bind(cmd_opt, "f", moveUp, nil, moveUp)
-hs.hotkey.bind(cmd_opt, "right", moveUp, nil, moveUp)
-hs.hotkey.bind(cmd_opt, "s", moveDown, nil, moveDown)
-hs.hotkey.bind(cmd_opt, "r", moveLeft, nil, moveLeft)
-hs.hotkey.bind(cmd_opt, "t", moveRight, nil, moveRight)
-
-hs.hotkey.bind(cmd_opt, "a", function() hs.window.focusedWindow():moveOneScreenWest() end)
-hs.hotkey.bind(cmd_opt, "o", function() hs.window.focusedWindow():moveOneScreenEast() end)
-
--- Window separation
-hs.window.animationDuration = 0
-local units = {
-	right       = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
-	left        = { x = 0.00, y = 0.00, w = 0.50, h = 1.00 },
-	top         = { x = 0.00, y = 0.00, w = 1.00, h = 0.50 },
-	bot         = { x = 0.00, y = 0.50, w = 1.00, h = 0.50 },
-	upperRight  = { x = 0.50, y = 0.00, w = 0.50, h = 0.50 },
-	upperLeft   = { x = 0.00, y = 0.00, w = 0.50, h = 0.50 },
-	bottomRight = { x = 0.50, y = 0.50, w = 0.50, h = 0.50 },
-	bottomLeft  = { x = 0.00, y = 0.50, w = 0.50, h = 0.50 },
-}
-
-hs.hotkey.bind(cmd_opt, "i", function() hs.window.focusedWindow():move(units.right, nil, true) end)
-hs.hotkey.bind(cmd_opt, "n", function() hs.window.focusedWindow():move(units.left, nil, true) end)
-hs.hotkey.bind(cmd_opt, "u", function() hs.window.focusedWindow():move(units.top, nil, true) end)
-hs.hotkey.bind(cmd_opt, ",", function() hs.window.focusedWindow():move(units.bot, nil, true) end)
-
-hs.hotkey.bind(cmd_opt, "y", function() hs.window.focusedWindow():move(units.upperRight, nil, true) end)
-hs.hotkey.bind(cmd_opt, "l", function() hs.window.focusedWindow():move(units.upperLeft, nil, true) end)
-hs.hotkey.bind(cmd_opt, ".", function() hs.window.focusedWindow():move(units.bottomRight, nil, true) end)
-hs.hotkey.bind(cmd_opt, "m", function() hs.window.focusedWindow():move(units.bottomLeft, nil, true) end)
-
-hs.hotkey.bind(cmd_opt, "e", function() hs.window.focusedWindow():maximize() end)
-
--- Mouse button remaps
-
-local middleButton = 2
-local backButton = 3
-local forwardButton = 4
-
-local finderMouseEvent = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown }, function(e)
-	local mouseButton = e:getProperty(hs.eventtap.event.properties["mouseEventButtonNumber"])
-	if mouseButton == middleButton then
-		hs.eventtap.event.newKeyEvent("cmd", "delete", true):post()
-		return true
-	end
-	if mouseButton == backButton then
-		hs.eventtap.event.newKeyEvent("cmd", "[", true):post()
-		return true
-	end
-	if mouseButton == forwardButton then
-		hs.eventtap.event.newKeyEvent("cmd", "]", true):post()
-		return true
-	end
-end)
-
--- App-specific remaps
-
-local function handleGlobalEvent(name, event, _) -- name, event, APP
-	if event == hs.application.watcher.activated then
-		if name == "Finder" then
-			finderMouseEvent:start()
-		else
-			finderMouseEvent:stop()
-		end
-	end
-end
-
-local watcher = hs.application.watcher.new(handleGlobalEvent)
-watcher:start()
-
-
--- Check if the file exists
--- local function path_exists(path)
--- 	local f = io.open(path, "r")
--- 	if f ~= nil then
--- 		io.close(f)
--- 		return true
--- 	else
--- 		return false
--- 	end
--- end
-
--- if not path_exists(hs_base .. "/Spoons/EmmyLua.spoon") then
--- 	hs.alert("EmmyLua is not installed")
--- else
 hs.loadSpoon("EmmyLua")
--- end

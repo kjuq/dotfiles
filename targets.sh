@@ -15,6 +15,7 @@ fish/config.fish
 fish/configs
 git
 gitui
+hammerspoon/lua
 hammerspoon/init.lua
 hammerspoon/.luarc.json
 i3/config
