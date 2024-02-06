@@ -24,7 +24,6 @@ brew "zoxide"
 
 brew "kjuq/tap/osc52"
 
-cask "alacritty"
 cask "betterdisplay"
 cask "hammerspoon"
 cask "linearmouse"
@@ -32,3 +31,5 @@ cask "qutebrowser"
 cask "wezterm"
 
 cask "homebrew/cask-fonts/font-hack-nerd-font"
+
+brew "font-pixel-m-plus"

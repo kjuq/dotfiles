@@ -24,11 +24,24 @@ C.max_fps = 250
 C.front_end = "WebGpu"
 C.webgpu_power_preference = "HighPerformance"
 
-C.font = wez.font_with_fallback {
-	"Hack Nerd Font",
-	"Hiragino Sans",
-	"SourceHanSansJP-Normal",     -- for linux, install `adobe-source-han-sans-jp-fonts`
-}
+local fonts = {}
+
+local add_font = function(fontname)
+	print(fontname)
+	local cmd = os.getenv("SHELL") .. " -c 'fc-list --quiet " .. fontname .. "'"
+	if os.execute(cmd) then
+		table.insert(fonts, fontname)
+	end
+end
+
+add_font("CozetteVector")
+add_font("PixelMplus12")
+add_font("Menlo")
+add_font("Hiragino Sans")          -- MacOS's builtin
+add_font("SourceHanSansJP-Normal") -- for linux, install `adobe-source-han-sans-jp-fonts`
+
+C.font = wez.font_with_fallback(fonts)
+
 C.freetype_load_target = "Normal" -- "Normal", "Light", "Mono"
 
 C.window_background_opacity = 0.65
@@ -55,18 +68,21 @@ C.keys = {
 	key("Copy", "", wez.action({ CopyTo = "Clipboard" })),
 	key("v", "CMD", wez.action({ PasteFrom = "Clipboard" })),
 	key("Paste", "", wez.action({ PasteFrom = "Clipboard" })),
+
 	key("f", "CMD|CTRL", wez.action.ToggleFullScreen),
+	key("q", "CMD", wez.action.QuitApplication),
+
 	key("-", "CMD", wez.action.DecreaseFontSize),
 	key("=", "CMD|SHIFT", wez.action.IncreaseFontSize),
 	key("=", "CMD", wez.action.ResetFontSize),
+
 	key("Backspace", "CMD", wez.action.SendKey({ key = "u", mods = "CTRL" })),
 	key("Backspace", "CTRL", wez.action.SendKey({ key = "w", mods = "CTRL" })),
-	key("q", "CMD", wez.action.QuitApplication),
 }
 
 -- check os
 if os.execute("[ $(uname) = 'Darwin' ]") then
-	C.font_size = 18
+	C.font_size = 22
 elseif os.execute("[ $(uname) = 'Linux' ]") then
 	C.font_size = 12
 end
