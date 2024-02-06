@@ -1,4 +1,5 @@
 tap "kjuq/tap"
+tap "homebrew/cask-fonts"
 
 brew "bash"
 brew "coreutils"
@@ -15,21 +16,28 @@ brew "mas"
 brew "neovim"
 brew "npm"
 brew "pass"
+brew "pass-otp"
+brew "pinentry-mac"
 brew "python"
 brew "ripgrep"
+brew "tailscale", restart_service: true
 brew "tmux"
 brew "trash-cli"
 brew "w3m"
 brew "zoxide"
 
-brew "kjuq/tap/osc52"
-
 cask "betterdisplay"
+cask "copyq"
 cask "hammerspoon"
 cask "linearmouse"
 cask "qutebrowser"
 cask "wezterm"
 
-cask "homebrew/cask-fonts/font-hack-nerd-font"
+# homebrew/cask-fonts
+cask "font-cozette"
 
-brew "font-pixel-m-plus"
+# kjuq/tap
+brew "osc52"
+cask "font-pixel-m-plus"
+
+# vim: set filetype=ruby :
