@@ -18,7 +18,7 @@ end
 
 local open_floatterm_then_hide = function()
 	floatterm = generate_floatterm():start()
-	os.execute("sleep 1")
+	os.execute("sleep 0.9")
 	hs.application.applicationForPID(floatterm:pid()):hide()
 end
 
