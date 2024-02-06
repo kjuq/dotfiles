@@ -6,6 +6,7 @@ local cmd_opt_ctrl = { "cmd", "option", "ctrl" }
 local bind = hs.hotkey.bind
 
 local floatingnvim  = require("lua.floatingnvim")
+floatingnvim.initialize()
 bind(cmd_opt_ctrl, "`", floatingnvim.toggle)
 
 local toggleapps = require("lua.toggleapps")

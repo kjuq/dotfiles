@@ -11,7 +11,7 @@ local units = {
 	upper_left   = { x = 0.00, y = 0.00, w = 0.50, h = 0.50 },
 	bottom_right = { x = 0.50, y = 0.50, w = 0.50, h = 0.50 },
 	bottom_left  = { x = 0.00, y = 0.50, w = 0.50, h = 0.50 },
-	center       = { x = 0.25, y = 0.25, w = 0.25, h = 0.25 },
+	center       = { x = 0.25, y = 0.25, w = 0.50, h = 0.50 },
 }
 
 M.right = function() hs.window.focusedWindow():move(units.right, nil, true) end
@@ -23,5 +23,7 @@ M.upper_right = function() hs.window.focusedWindow():move(units.upper_right, nil
 M.upper_left = function() hs.window.focusedWindow():move(units.upper_left, nil, true) end
 M.bottom_right = function() hs.window.focusedWindow():move(units.bottom_right, nil, true) end
 M.bottom_left = function() hs.window.focusedWindow():move(units.bottom_left, nil, true) end
+
+M.center = function() hs.window.focusedWindow():move(units.center, nil, true) end
 
 return M
