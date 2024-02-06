@@ -36,18 +36,45 @@ toggleApp("Alacritty", cmd_opt_ctrl, "'")
 toggleApp("Finder", cmd_opt_ctrl, "=")
 hs.hotkey.bind(cmd_opt_ctrl, "-", hideAllApps)
 
+local tmp = "/tmp/floatterm"
+if not os.execute("test -e " .. tmp) then
+	os.execute("echo '/opt/homebrew/bin/tmux new-session ~/.local/bin/nvimcopy' > " .. tmp)
+	os.execute("chmod +x " .. tmp)
+end
+
 ---@type hs.task
 local floatterm
 hs.hotkey.bind(cmd_opt_ctrl, "`", function()
 	if floatterm ~= nil and floatterm:isRunning() then
+		hs.application.applicationForPID(floatterm:pid()):activate()
 		return
 	end
 
-	floatterm = hs.task.new(
-		"/opt/homebrew/bin/fish",
-		function() hs.eventtap.keyStroke({ "cmd" }, "v") end,
-		{ "-c", "floatingnvim wezterm", }
-	):start()
+	local generate_floatterm
+	generate_floatterm = function()
+		---@type hs.task
+		floatterm = hs.task.new(
+			"/opt/homebrew/bin/wezterm",
+			function()
+				hs.eventtap.keyStroke({ "cmd" }, "v")
+				-- floatterm = generate_floatterm()
+				-- floatterm:start()
+			end,
+			{
+				"--config",
+				"initial_rows=1",
+				"--config",
+				"initial_cols=1",
+				"start",
+				"--position",
+				"main:100%,0",
+				tmp,
+			}
+		)
+		return floatterm
+	end
+
+	generate_floatterm():start()
 end)
 
 -- Window movement
