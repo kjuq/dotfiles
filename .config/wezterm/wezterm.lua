@@ -27,7 +27,6 @@ C.webgpu_power_preference = "HighPerformance"
 local fonts = {}
 
 local add_font = function(fontname)
-	print(fontname)
 	local cmd = os.getenv("SHELL") .. " -c 'fc-list --quiet " .. fontname .. "'"
 	if os.execute(cmd) then
 		table.insert(fonts, fontname)
