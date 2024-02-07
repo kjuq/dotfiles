@@ -39,6 +39,21 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 	end,
 })
 
+-- highlight cursorline when moving is finished
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	group = vim.api.nvim_create_augroup("user_highlight_cur_line", {}),
+	callback = function()
+		vim.opt.cursorline = true
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+	group = vim.api.nvim_create_augroup("user_unhighlight_cur_line", {}),
+	callback = function()
+		vim.opt.cursorline = false
+	end,
+})
+
 -- show indent line implemented with built-in functionality
 local update_indent_line = function()
 	vim.opt_local.listchars:append({ leadmultispace = "╎" .. string.rep("⋅", vim.bo.tabstop - 1) })

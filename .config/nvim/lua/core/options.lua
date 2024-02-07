@@ -22,7 +22,7 @@ opt.pumheight      = 10
 opt.pumwidth       = 40
 -- o.pumblend = 20 -- Disable this when using transparent env
 
-opt.updatetime     = 50
+opt.updatetime     = 200
 
 opt.ignorecase     = true
 opt.smartcase      = true
@@ -34,6 +34,8 @@ opt.foldexpr       = "v:lua.vim.treesitter.foldexpr()"
 opt.wrap           = false
 opt.smoothscroll   = true
 opt.breakindent    = true
+
+opt.cursorlineopt  = { "screenline" }
 
 opt.splitright     = true
 
