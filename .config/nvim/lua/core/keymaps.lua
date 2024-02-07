@@ -45,10 +45,10 @@ map("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed regis
 -- Comfortable line specify movement by v:count
 map({ "n", "x" }, "k", function() return vim.v.count == 0 and "gk" or "k" end, { expr = true, silent = true })
 map({ "n", "x" }, "j", function() return vim.v.count == 0 and "gj" or "j" end, { expr = true, silent = true })
-map({ "n", "x", "o" }, "$", "g$")
-map({ "n", "x", "o" }, "g$", "$")
-map({ "n", "x", "o" }, "^", "g^")
-map({ "n", "x", "o" }, "g^", "^")
+-- map({ "n", "x", "o" }, "$", "g$")
+-- map({ "n", "x", "o" }, "g$", "$")
+-- map({ "n", "x", "o" }, "^", "g^")
+-- map({ "n", "x", "o" }, "g^", "^")
 
 -- Buffer movement instead of tab's
 map("n", "gt", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
