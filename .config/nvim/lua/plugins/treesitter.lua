@@ -40,6 +40,16 @@ local spec = {
 						["if"] = "@function.inner",
 						["aC"] = "@class.outer",
 						["iC"] = "@class.inner",
+						["ai"] = "@conditional.outer", -- [i]f
+						["ii"] = "@conditional.inner",
+						["al"] = "@loop.outer",
+						["il"] = "@loop.inner",
+						["a/"] = "@comment.outer",
+						["i/"] = "@comment.inner",
+						["ag"] = "@call.outer", -- ar[g]uments
+						["ig"] = "@call.inner",
+						["ah"] = "@block.outer", -- [h]ere
+						["ih"] = "@block.inner",
 					},
 				},
 				move = {
