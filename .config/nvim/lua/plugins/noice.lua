@@ -33,6 +33,9 @@ local spec = {
 					border = { style = require("utils.lazy").floatwinborder },
 				},
 			},
+			popupmenu = {
+				enabled = false,
+			},
 			lsp = {
 				-- progress = { enabled = false },
 				-- hover = { enabled = false },
