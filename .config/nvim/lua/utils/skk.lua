@@ -75,7 +75,7 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 		map_disable("<F18>"),
 		map_disable("<C-g>e"),
 		map_disable("<C-g><C-e>"),
-		map_toggle_jp_in_insert_mode("<C-g>j"),
+		map_toggle_jp_in_insert_mode("<C-g>J"),
 	}
 end
 

@@ -18,10 +18,10 @@ local spec = {
 			end
 		end, "Half down"),
 		map("<C-b>", nx, function()
-			require("neoscroll").scroll(-vim.api.nvim_win_get_height(0), true, duration)
+			require("neoscroll").scroll(-vim.api.nvim_win_get_height(0), true, duration * 2)
 		end, "Up"),
 		map("<C-f>", nx, function()
-			require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, duration)
+			require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, duration * 2)
 		end, "Down"),
 		map("zt", nx, function() require("neoscroll").zt(duration) end, "Top this line"),
 		map("zz", nx, function() require("neoscroll").zz(duration) end, "Center this line"),

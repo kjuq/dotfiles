@@ -10,6 +10,9 @@ local spec = {
 		map("<leader>i", "n", "Oil", "Open"),
 		map("gX", "n", "Oil", "Open"),
 	},
+	init = function()
+		vim.g.loaded_netrwPlugin = 1
+	end,
 	opts = {
 		delete_to_trash = true,
 		cleanup_delay_ms = 1000,

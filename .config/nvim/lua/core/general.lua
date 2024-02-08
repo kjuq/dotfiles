@@ -1,6 +1,5 @@
-vim.scriptencoding              = "utf-8"
+-- vim.scriptencoding              = "utf-8"
 
-vim.g.netrw_fastbrowse          = 0
 vim.g.skip_loading_mswin        = 1
 
 vim.g.did_install_default_menus = 1
