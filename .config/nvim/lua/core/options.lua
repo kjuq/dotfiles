@@ -1,11 +1,13 @@
 local opt          = vim.opt
 
-opt.backup         = false
-opt.writebackup    = false
+opt.backup         = true
+opt.writebackup    = true
+opt.backupdir      = os.getenv("XDG_STATE_HOME") .. "/nvim/backup//"
+
 opt.swapfile       = false
 opt.autoread       = true
 
-opt.scrolloff      = 6
+-- opt.scrolloff      = 6
 
 opt.clipboard      = "unnamedplus"
 
@@ -28,13 +30,13 @@ opt.ignorecase     = true
 opt.smartcase      = true
 
 opt.foldmethod     = "marker"
-opt.foldexpr       = "v:lua.vim.treesitter.foldexpr()"
 -- opt.foldtext       = "v:lua.vim.treesitter.foldtext()" -- laggy
 
 opt.wrap           = false
 opt.smoothscroll   = true
 opt.breakindent    = true
 
+opt.cursorline     = true
 opt.cursorlineopt  = { "screenline" }
 
 opt.splitright     = true
@@ -51,8 +53,9 @@ opt.listchars      = { trail = "◊", tab = "│⋅", space = "⋅", eol = "↵"
 opt.list           = true
 opt.fillchars      = "eob: " -- hide tildes in blank space after end of file
 
-opt.number         = true
+opt.number         = false
 opt.relativenumber = true
+opt.numberwidth    = 1
 
 opt.helplang       = { "en", "ja" }
 opt.fileencodings  = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }

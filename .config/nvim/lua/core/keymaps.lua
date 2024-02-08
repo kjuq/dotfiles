@@ -109,14 +109,19 @@ map("n", "gas", function() vim.opt.spell = not vim.o.spell end, { desc = "Toggle
 map("n", "gan", function()
 	local opt = vim.opt
 	local o = vim.o
-	if o.relativenumber then
+	local num = o.number
+	local rnum = o.relativenumber
+	if num and rnum then
+		opt.number = false
+		opt.relativenumber = true
+	elseif not num and rnum then
 		opt.number = true
 		opt.relativenumber = false
-	elseif o.number then
+	elseif num and not rnum then
 		opt.number = false
 		opt.relativenumber = false
 	else
-		opt.number = true -- change this to false if you prefer alternative behavior
+		opt.number = true
 		opt.relativenumber = true
 	end
 end, { desc = "Toggle number style" })
