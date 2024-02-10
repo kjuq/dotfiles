@@ -23,9 +23,9 @@ local spec = {
 		map("<C-f>", nx, function()
 			require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, duration * 2)
 		end, "Down"),
-		map("zt", nx, function() require("neoscroll").zt(duration) end, "Top this line"),
-		map("zz", nx, function() require("neoscroll").zz(duration) end, "Center this line"),
-		map("zb", nx, function() require("neoscroll").zb(duration) end, "Bottom this line"),
+		map("zt", nx, function() require("neoscroll").zt(duration * 0.75) end, "Top this line"),
+		map("zz", nx, function() require("neoscroll").zz(duration * 0.75) end, "Center this line"),
+		map("zb", nx, function() require("neoscroll").zb(duration * 0.75) end, "Bottom this line"),
 	},
 	opts = {
 		mappings = {},

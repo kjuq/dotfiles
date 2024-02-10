@@ -85,8 +85,8 @@ quit_all("<leader>Q")
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
 -- Center cursor when searching
-map("n", "n", "nzz", { silent = true, desc = "Repeat the latest search" })
-map("n", "N", "Nzz", { silent = true, desc = "Repeat the latest search in opposite direction" })
+-- map("n", "n", "nzz", { silent = true, desc = "Repeat the latest search" })
+-- map("n", "N", "Nzz", { silent = true, desc = "Repeat the latest search in opposite direction" })
 
 -- Comfortable buffer deletion
 local bdelete = function(key)
