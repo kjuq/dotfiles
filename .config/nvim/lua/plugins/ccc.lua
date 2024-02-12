@@ -7,11 +7,14 @@ local spec = {
 	keys = {
 		map("r", "n", "CccPick", "Open picker"),
 	},
-	opts = {
-		highlighter = {
-			auto_enable = true,
-		},
-	},
+	config = function()
+		require("ccc").setup {
+			highlighter = {
+				auto_enable = true,
+			},
+		}
+		vim.cmd("CccHighlighterEnable") -- for lazy load
+	end,
 }
 
 return spec

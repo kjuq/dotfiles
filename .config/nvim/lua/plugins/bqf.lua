@@ -5,7 +5,7 @@ local spec = {
 	opts = function()
 		return {
 			preview = {
-				auto_preview = true,
+				auto_preview = false,
 				winblend = 0,
 			},
 			func_map = {
