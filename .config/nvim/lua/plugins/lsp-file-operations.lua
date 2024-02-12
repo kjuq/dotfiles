@@ -1,15 +1,15 @@
 ---@type LazySpec
-local spec = {
-	"antosha417/nvim-lsp-file-operations",
-	event = { "LspAttach" },
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-neo-tree/neo-tree.nvim",
-		"stevearc/oil.nvim",
-	},
-	config = function()
-		require("lsp-file-operations").setup()
-	end,
+local spec = { "antosha417/nvim-lsp-file-operations" }
+spec.event = { "LspAttach" }
+
+spec.config = function()
+	require("lsp-file-operations").setup()
+end
+
+spec.dependencies = {
+	"nvim-lua/plenary.nvim",
+	"nvim-neo-tree/neo-tree.nvim",
+	"stevearc/oil.nvim",
 }
 
 return spec

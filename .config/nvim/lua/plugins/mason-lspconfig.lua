@@ -1,46 +1,46 @@
 ---@type LazySpec
-local spec = {
-	"williamboman/mason-lspconfig.nvim",
-	event = require("utils.lazy").verylazy,
-	config = function()
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"bashls",
-				"clangd",
-				"lua_ls",
-				"pylsp",
-			},
-		})
+local spec = { "williamboman/mason-lspconfig.nvim" }
+spec.event = require("utils.lazy").verylazy
 
-		local lspconfig = require("lspconfig")
-		local common_opts = {
-			handlers = require("core.lsp").handlers,
-			capabilities = pcall(require, "cmp") and require("cmp_nvim_lsp").default_capabilities() or nil,
-		}
+spec.config = function()
+	require("mason-lspconfig").setup({
+		ensure_installed = {
+			"bashls",
+			"clangd",
+			"lua_ls",
+			"pylsp",
+		},
+	})
 
-		require("mason-lspconfig").setup_handlers({
+	local lspconfig = require("lspconfig")
+	local common_opts = {
+		handlers = require("core.lsp").handlers,
+		capabilities = pcall(require, "cmp") and require("cmp_nvim_lsp").default_capabilities() or nil,
+	}
 
-			function(server_name)
-				lspconfig[server_name].setup(common_opts)
-			end,
+	require("mason-lspconfig").setup_handlers({
 
-			["pylsp"] = function()
-				lspconfig.pylsp.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.pylsp").opts))
-			end,
+		function(server_name)
+			lspconfig[server_name].setup(common_opts)
+		end,
 
-			["lua_ls"] = function()
-				lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.lua_ls").opts))
-			end,
+		["pylsp"] = function()
+			lspconfig.pylsp.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.pylsp").opts))
+		end,
 
-		})
+		["lua_ls"] = function()
+			lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.lua_ls").opts))
+		end,
 
-		-- for lazy load
-		vim.bo.filetype = vim.bo.filetype
-	end,
-	dependencies = {
-		"neovim/nvim-lspconfig",
-		"williamboman/mason.nvim",
-	},
+	})
+
+	-- for lazy load
+	vim.bo.filetype = vim.bo.filetype
+end
+
+spec.dependencies = {
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
 }
 
 return spec

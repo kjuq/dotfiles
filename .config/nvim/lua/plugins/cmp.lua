@@ -1,7 +1,5 @@
 ---@type LazySpec
-local spec = {}
-
-spec[1] = "hrsh7th/nvim-cmp"
+local spec = { "hrsh7th/nvim-cmp" }
 
 spec.event = { "InsertEnter", "CmdlineEnter" }
 

@@ -1,7 +1,5 @@
 ---@type LazySpec
-local spec = {
-	"kjuq/todo.txt-vim",
-	ft = "todo",
-}
+local spec = { "kjuq/todo.txt-vim" }
+spec.ft = "todo"
 
 return spec

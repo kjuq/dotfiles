@@ -1,14 +1,13 @@
 ---@type LazySpec
-local spec = {
-	"ibhagwan/smartyank.nvim",
-	event = "BufReadPost",
-	opts = {
-		highlight = {
-			enabled = false,
-		},
-		osc52 = {
-			silent = false,
-		},
+local spec = { "ibhagwan/smartyank.nvim" }
+spec.event = "BufReadPost"
+
+spec.opts = {
+	highlight = {
+		enabled = false,
+	},
+	osc52 = {
+		silent = false,
 	},
 }
 
