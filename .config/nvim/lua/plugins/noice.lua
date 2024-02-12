@@ -11,6 +11,7 @@ local utils = require("utils.lazy")
 local scrollup = utils.floatscrollup
 local scrolldown = utils.floatscrolldown
 
+
 ---@type LazySpec
 local spec = {
 	"folke/noice.nvim",
@@ -38,7 +39,7 @@ local spec = {
 			},
 			lsp = {
 				-- progress = { enabled = false },
-				hover = { enabled = false },
+				-- hover = { enabled = false },
 				signature = {
 					-- enabled = false,
 					auto_open = { enabled = false },

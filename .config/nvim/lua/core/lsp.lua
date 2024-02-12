@@ -110,7 +110,7 @@ end
 M.float_max_width = 80
 M.float_max_height = 20
 
-M.handlers = { -- disable this if you prefer noice-hover-scroll
+M._handlers = { -- disable this if you prefer noice-hover-scroll
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		title = " Lsp: Hover ",
 		border = require("utils.lazy").floatwinborder,
