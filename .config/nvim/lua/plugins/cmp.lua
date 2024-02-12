@@ -119,7 +119,6 @@ spec.config = function()
 
 	cmp.setup({
 		completion = {
-			-- autocomplete = false, -- `true` is invalid value
 			completeopt = "menu,menuone,noinsert",
 		},
 		experimental = { ghost_text = true },
