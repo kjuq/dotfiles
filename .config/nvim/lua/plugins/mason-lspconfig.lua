@@ -12,19 +12,25 @@ local spec = {
 			},
 		})
 
+		local lspconfig = require("lspconfig")
+		local common_opts = {
+			handlers = require("core.lsp").handlers,
+			capabilities = pcall(require, "cmp") and require("cmp_nvim_lsp").default_capabilities() or nil,
+		}
+
 		require("mason-lspconfig").setup_handlers({
+
 			function(server_name)
-				local lspconfig = require("lspconfig")
-				local common_opts = {
-					handlers = require("core.lsp").handlers,
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				}
 				lspconfig[server_name].setup(common_opts)
 			end,
 
-			["pylsp"] = require("plugins.lsp.pylsp").setup,
-			["lua_ls"] = require("plugins.lsp.lua_ls").setup,
-			["bashls"] = require("plugins.lsp.bashls").setup,
+			["pylsp"] = function()
+				lspconfig.pylsp.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.pylsp").opts))
+			end,
+
+			["lua_ls"] = function()
+				lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.lua_ls").opts))
+			end,
 
 		})
 

@@ -27,33 +27,26 @@ local library = function()
 	return paths
 end
 
-M.setup = function()
-	local lspconfig = require("lspconfig")
-	local common_opts = {
-		handlers = require("core.lsp").handlers,
-		-- capabilities = require("core.lsp").capabilities,
-	}
-	lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, {
-		settings = {
-			Lua = {
-				runtime = {
-					version = "LuaJIT",
-					pathStrict = true,
-					path = { "?.lua", "?/init.lua" },
-				},
-				diagnostics = { globals = { "vim" } },
-				workspace = {
-					checkThirdParty = "Disable",
-					library = library(),
-					-- library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
-				},
-				-- format = { enable = false } , -- Use StyLua if disabled
-				telemetry = { enable = false },
-				hint = { enable = true },
+M.opts = {
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+				pathStrict = true,
+				path = { "?.lua", "?/init.lua" },
 			},
+			diagnostics = { globals = { "vim" } },
+			workspace = {
+				checkThirdParty = "Disable",
+				library = library(),
+				-- library = vim.api.nvim_get_runtime_file("", true), -- This is a lot slower
+			},
+			-- format = { enable = false } , -- Use StyLua if disabled
+			telemetry = { enable = false },
+			hint = { enable = true },
 		},
-	}))
-end
+	},
+}
 
 return M
 
