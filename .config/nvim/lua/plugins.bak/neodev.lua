@@ -1,16 +1,16 @@
 ---@type LazySpec
-local spec = {
-	"folke/neodev.nvim",
-	ft = { "lua" },
-	opts = {
-		library = {
-			plugins = { "nvim-dap-ui" },
-			types = true,
-		},
+local spec = { "folke/neodev.nvim" }
+spec.ft = { "lua" }
+
+spec.opts = {
+	library = {
+		plugins = { "nvim-dap-ui" },
+		types = true,
 	},
-	dependencies = {
-		"neovim/nvim-lspconfig",
-	},
+}
+
+spec.dependencies = {
+	"neovim/nvim-lspconfig",
 }
 
 return spec

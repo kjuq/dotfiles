@@ -1,14 +1,14 @@
 ---@type LazySpec
-local spec = {
-	"goolord/alpha-nvim",
-	cond = vim.fn.argc() == 0, -- if nvim was launched without files specified by args
-	event = { "BufWinEnter" },
-	config = function()
-		require("alpha").setup(require("alpha.themes.theta").config)
-	end,
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
+local spec = { "goolord/alpha-nvim" }
+spec.cond = vim.fn.argc() == 0 -- if nvim was launched without files specified by args
+spec.event = { "BufWinEnter" }
+
+spec.config = function()
+	require("alpha").setup(require("alpha.themes.theta").config)
+end
+
+spec.dependencies = {
+	"nvim-tree/nvim-web-devicons",
 }
 
 return spec

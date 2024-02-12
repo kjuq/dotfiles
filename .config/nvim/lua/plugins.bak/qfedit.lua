@@ -1,7 +1,5 @@
 ---@type LazySpec
-local spec = {
-	"itchyny/vim-qfedit",
-	ft = "qf",
-}
+local spec = { "itchyny/vim-qfedit" }
+spec.ft = "qf"
 
 return spec
