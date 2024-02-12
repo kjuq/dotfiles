@@ -1,5 +1,9 @@
-local virtual_text = function(enable)
-	if enable then
+local M = {}
+
+local vt = false -- if virtual text of diagnostics is on
+
+local virtual_text = function(enabled)
+	if enabled then
 		return {
 			format = function(diagnostic)
 				return string.format("%s (%s) [%s]", diagnostic.message, diagnostic.source, diagnostic.code)
@@ -9,20 +13,6 @@ local virtual_text = function(enable)
 		return false
 	end
 end
-
-local vt = false -- if virtual text of diagnostics is on
-
-vim.diagnostic.config({
-	signs = false,
-	virtual_text = virtual_text(vt),
-	float = {
-		border = require("utils.lazy").floatwinborder,
-		-- header = false,
-		format = function(diagnostic)
-			return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
-		end
-	},
-})
 
 local callback = function(ev)
 	local bufnr = ev.buf
@@ -90,15 +80,50 @@ local callback = function(ev)
 			group = group,
 			buffer = bufnr,
 			callback = function()
-				vim.diagnostic.enable(0)   -- fix not showing diagnostics after formatting
+				vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting
 				vim.fn.winrestview(winpos) -- restore cursor position
 			end,
 		})
 	end
 end
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	pattern = "*",
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = callback,
-})
+M.setup = function()
+	vim.diagnostic.config({
+		signs = false,
+		virtual_text = virtual_text(vt),
+		float = {
+			border = require("utils.lazy").floatwinborder,
+			-- header = false,
+			format = function(diagnostic)
+				return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
+			end
+		},
+	})
+
+	vim.api.nvim_create_autocmd("LspAttach", {
+		pattern = "*",
+		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+		callback = callback,
+	})
+end
+
+M.float_max_width = 80
+M.float_max_height = 20
+
+M.handlers = { -- disable this if you prefer noice-hover-scroll
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		title = " Lsp: Hover ",
+		border = require("utils.lazy").floatwinborder,
+		max_width = M.float_max_width,
+		max_height = M.float_max_height,
+	}),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		title = " Lsp: Signature Help ",
+		border = require("utils.lazy").floatwinborder,
+		max_width = M.float_max_width,
+		max_height = M.float_max_height,
+	}),
+}
+
+M.setup()
+return M

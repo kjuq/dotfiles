@@ -38,7 +38,7 @@ local spec = {
 			},
 			lsp = {
 				-- progress = { enabled = false },
-				-- hover = { enabled = false },
+				hover = { enabled = false },
 				signature = {
 					-- enabled = false,
 					auto_open = { enabled = false },
@@ -47,7 +47,10 @@ local spec = {
 					opts = {
 						border = require("utils.lazy").floatwinborder,
 						position = { row = 2, col = 2 },
-						-- size = { max_width = 70, max_height = 20, },
+						size = {
+							max_width = require("core.lsp").float_max_width,
+							max_height = require("core.lsp").float_max_height,
+						},
 					},
 				},
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**

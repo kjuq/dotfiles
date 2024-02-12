@@ -29,7 +29,10 @@ end
 
 M.setup = function()
 	local lspconfig = require("lspconfig")
-	local common_opts = require("plugins.lsp.common")
+	local common_opts = {
+		handlers = require("core.lsp").handlers,
+		-- capabilities = require("core.lsp").capabilities,
+	}
 	lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, {
 		settings = {
 			Lua = {

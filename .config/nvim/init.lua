@@ -5,7 +5,6 @@ require("core.options")
 require("core.keymaps")
 require("core.commands")
 require("core.autocmd")
-require("core.lsp")
 
 require("core.lazy")
 
