@@ -1,4 +1,4 @@
-local hide_by_default = false
+local hide_by_default = true
 
 ---@type LazySpec
 local spec = {
