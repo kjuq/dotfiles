@@ -2,7 +2,6 @@
 local spec = {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
-	commit = "0dca9284bce128e60da18693d92999968d6cb523",
 	event = require("utils.lazy").verylazy,
 	config = function()
 		-- disable builtin indentline
@@ -29,18 +28,42 @@ local spec = {
 			vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#C678DD", nocombine = true })
 		end)
 
-		local ibl = require("ibl")
-		ibl.setup({
+		hooks.register(
+			hooks.type.SKIP_LINE,
+			function(_, _, _, line)
+				local pattern = "^$" -- empty line
+				return line:match(pattern)
+			end
+		)
+
+		hooks.register(
+			hooks.type.SKIP_LINE,
+			hooks.builtin.skip_preproc_lines,
+			{ bufnr = 0 }
+		)
+
+		---@type ibl.config
+		local opts = {
 			indent = {
 				highlight = highlight,
 				char = "╎", -- "╎", "┆","│", "▏",
 				tab_char = "│",
 			},
-			scope = { enabled = false },
-		})
+			scope = {
+				-- enabled = false,
+				show_start = false,
+				show_end = false,
+			},
+			exclude = {
+				filetypes = { "oil" },
+			},
+		}
 
+		local ibl = require("ibl")
+		ibl.setup(opts)
 		ibl.refresh_all()
 	end,
+	_user_load_library = true
 }
 
 return spec
