@@ -1,8 +1,11 @@
+-- Do `:TSInstall all` manually
+-- rust and scala take much time to install
+
 ---@type LazySpec
 local spec = { "nvim-treesitter/nvim-treesitter" }
 spec.event = require("utils.lazy").verylazy
 spec.build = function()
-	require("nvim-treesitter.install").update({ with_sync = false, })()
+	require("nvim-treesitter.install").update({ with_sync = false })()
 end
 
 spec.opts = {
@@ -82,6 +85,9 @@ spec.opts = {
 spec.config = function()
 	require("nvim-treesitter.configs").setup(spec.opts)
 end
+
+---@diagnostic disable-next-line: inject-field
+spec._user_load_library = true
 
 spec.dependencies = {
 	"nvim-treesitter/nvim-treesitter-textobjects",
