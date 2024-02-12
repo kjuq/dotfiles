@@ -37,9 +37,9 @@ spec.opts = function()
 				border = { style = require("utils.common").floatwinborder },
 			},
 		},
-		popupmenu = {
-			enabled = false,
-		},
+		popupmenu = { enabled = false },
+		-- messages = { enabled = false },
+		-- notify = { enabled = false },
 		lsp = {
 			-- progress = { enabled = false },
 			-- hover = { enabled = false },
