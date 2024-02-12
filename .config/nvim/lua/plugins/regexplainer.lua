@@ -11,7 +11,7 @@ spec.config = function()
 		popup = {
 			border = {
 				padding = { 0, 1 },
-				style = require("utils.lazy").floatwinborder,
+				style = require("utils.common").floatwinborder,
 			}
 		}
 	})

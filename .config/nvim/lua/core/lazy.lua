@@ -23,7 +23,7 @@ local opts = {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
-	ui = { border = require("utils.lazy").floatwinborder },
+	ui = { border = require("utils.common").floatwinborder },
 	performance = {
 		rtp = {
 			disabled_plugins = { -- shorten start up time for 1 ms

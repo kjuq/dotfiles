@@ -41,20 +41,6 @@ M.generate_cmd_map = function(key_prefix, desc_prefix)
 	return cmap
 end
 
---- @param ft_pattern string|table<string>
-M.quit_with_esc = function(ft_pattern)
-	vim.api.nvim_create_autocmd({ "FileType" }, {
-		pattern = ft_pattern,
-		group = vim.api.nvim_create_augroup("user_quit_with_esc", {}),
-		callback = function()
-			vim.keymap.set("n", "<esc>", vim.cmd.quit, { buffer = true, silent = true })
-		end
-	})
-end
-
 M.verylazy = { "VeryLazy" }
-M.floatwinborder = "single"
-M.floatscrolldown = "<C-f>"
-M.floatscrollup = "<C-b>"
 
 return M

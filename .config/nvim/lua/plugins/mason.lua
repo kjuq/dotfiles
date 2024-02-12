@@ -7,7 +7,7 @@ spec.keys = { cmap("al", "n", "Mason", "Open") }
 
 spec.opts = {
 	ui = {
-		border = require("utils.lazy").floatwinborder,
+		border = require("utils.common").floatwinborder,
 	},
 }
 

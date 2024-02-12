@@ -92,7 +92,7 @@ M.setup = function()
 		signs = false,
 		virtual_text = virtual_text(vt),
 		float = {
-			border = require("utils.lazy").floatwinborder,
+			border = require("utils.common").floatwinborder,
 			-- header = false,
 			format = function(diagnostic)
 				return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
@@ -113,13 +113,13 @@ M.float_max_height = 20
 M._handlers = { -- disable this if you prefer noice-hover-scroll
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		title = " Lsp: Hover ",
-		border = require("utils.lazy").floatwinborder,
+		border = require("utils.common").floatwinborder,
 		max_width = M.float_max_width,
 		max_height = M.float_max_height,
 	}),
 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 		title = " Lsp: Signature Help ",
-		border = require("utils.lazy").floatwinborder,
+		border = require("utils.common").floatwinborder,
 		max_width = M.float_max_width,
 		max_height = M.float_max_height,
 	}),

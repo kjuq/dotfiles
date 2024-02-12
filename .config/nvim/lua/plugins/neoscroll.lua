@@ -8,7 +8,7 @@ local spec = { "karb94/neoscroll.nvim" }
 spec.keys = {
 
 	map("<C-u>", { "n", "x" }, function()
-		if require("utils.lazy").floatscrollup == "<C-u>" and
+		if require("utils.common").floatscrollup == "<C-u>" and
 			pcall(require, "noice") and require("noice.lsp").scroll(-4) then
 			return
 		end
@@ -16,7 +16,7 @@ spec.keys = {
 	end, "Half up"),
 
 	map("<C-d>", { "n", "x" }, function()
-		if require("utils.lazy").floatscrolldown == "<C-d>" and
+		if require("utils.common").floatscrolldown == "<C-d>" and
 			pcall(require, "noice") and require("noice.lsp").scroll(4) then
 			return
 		end
@@ -24,7 +24,7 @@ spec.keys = {
 	end, "Half down"),
 
 	map("<C-b>", { "n", "x" }, function()
-		if require("utils.lazy").floatscrollup == "<C-b>" and
+		if require("utils.common").floatscrollup == "<C-b>" and
 			pcall(require, "noice") and require("noice.lsp").scroll(-4) then
 			return
 		end
@@ -32,7 +32,7 @@ spec.keys = {
 	end, "Up"),
 
 	map("<C-f>", { "n", "x" }, function()
-		if require("utils.lazy").floatscrolldown == "<C-f>" and
+		if require("utils.common").floatscrolldown == "<C-f>" and
 			pcall(require, "noice") and require("noice.lsp").scroll(4) then
 			return
 		end

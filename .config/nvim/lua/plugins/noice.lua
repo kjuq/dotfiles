@@ -7,7 +7,7 @@ local map = function(suffix, mode, func, comment)
 end
 local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope: ")
 
-local utils = require("utils.lazy")
+local utils = require("utils.common")
 local scrollup = utils.floatscrollup
 local scrolldown = utils.floatscrolldown
 
@@ -26,7 +26,7 @@ spec.keys = {
 }
 
 spec.opts = function()
-	require("utils.lazy").quit_with_esc("noice")
+	require("utils.common").quit_with_esc("noice")
 	return {
 		cmdline = {
 			format = {
@@ -34,7 +34,7 @@ spec.opts = function()
 				help = false,
 			},
 			opts = {
-				border = { style = require("utils.lazy").floatwinborder },
+				border = { style = require("utils.common").floatwinborder },
 			},
 		},
 		popupmenu = {
@@ -49,7 +49,7 @@ spec.opts = function()
 			},
 			documentation = {
 				opts = {
-					border = require("utils.lazy").floatwinborder,
+					border = require("utils.common").floatwinborder,
 					position = { row = 2, col = 2 },
 					size = {
 						max_width = require("core.lsp").float_max_width,

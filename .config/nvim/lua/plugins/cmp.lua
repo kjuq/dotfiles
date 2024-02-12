@@ -93,7 +93,7 @@ spec.config = function()
 		end
 	end
 
-	local utils = require("utils.lazy")
+	local utils = require("utils.common")
 	local scrolldown = utils.floatscrolldown
 	local scrollup = utils.floatscrollup
 
@@ -134,8 +134,8 @@ spec.config = function()
 
 		sources = normal_sources,
 		window = {
-			completion = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
-			documentation = cmp.config.window.bordered({ border = require("utils.lazy").floatwinborder }),
+			completion = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
+			documentation = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
 		},
 		---@diagnostic disable-next-line: missing-fields
 		formatting = {
