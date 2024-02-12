@@ -54,7 +54,7 @@ end
 
 M.verylazy = { "VeryLazy" }
 M.floatwinborder = "single"
-M.floatscrolldown = "<C-d>"
-M.floatscrollup = "<C-u>"
+M.floatscrolldown = "<C-f>"
+M.floatscrollup = "<C-b>"
 
 return M
