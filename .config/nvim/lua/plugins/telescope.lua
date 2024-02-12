@@ -1,7 +1,4 @@
-local gen_map = require("utils.lazy").generate_map
-
-local map = gen_map("<leader>", "Telescope: ")
-
+local map = require("utils.lazy").generate_map("<leader>", "Telescope: ")
 local tb = "telescope.builtin"
 
 ---@type LazySpec
@@ -69,6 +66,11 @@ local spec = {
 		local actions = require("telescope.actions")
 		local actions_layout = require("telescope.actions.layout")
 
+		local prev_up = "<M-k>"
+		local prev_down = "<M-j>"
+		local prev_right = "<M-l>"
+		local prev_left = "<M-h>"
+
 		require("telescope").setup({
 			defaults = {
 				default_mappings = {
@@ -82,10 +84,10 @@ local spec = {
 
 						["<C-s>"] = actions.select_vertical,
 
-						[require("utils.lazy").floatscrollup] = actions.preview_scrolling_up,
-						[require("utils.lazy").floatscrolldown] = actions.preview_scrolling_down,
-						["<M-b>"] = actions.preview_scrolling_left,
-						["<M-f>"] = actions.preview_scrolling_right,
+						[prev_up] = actions.preview_scrolling_up,
+						[prev_down] = actions.preview_scrolling_down,
+						[prev_left] = actions.preview_scrolling_left,
+						[prev_right] = actions.preview_scrolling_right,
 
 						["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 						["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -122,10 +124,10 @@ local spec = {
 						["gg"] = actions.move_to_top,
 						["G"] = actions.move_to_bottom,
 
-						[require("utils.lazy").floatscrollup] = actions.preview_scrolling_up,
-						[require("utils.lazy").floatscrolldown] = actions.preview_scrolling_down,
-						["<M-f>"] = actions.preview_scrolling_left,
-						["<M-b>"] = actions.preview_scrolling_right,
+						[prev_up] = actions.preview_scrolling_up,
+						[prev_down] = actions.preview_scrolling_down,
+						[prev_left] = actions.preview_scrolling_left,
+						[prev_right] = actions.preview_scrolling_right,
 
 						["?"] = actions.which_key,
 					}
@@ -137,6 +139,11 @@ local spec = {
 
 						["<M-n>"] = actions.cycle_history_next,
 						["<M-p>"] = actions.cycle_history_prev,
+
+						["<C-b>"] = { "<Left>", type = "command" },
+						["<C-f>"] = { "<Right>", type = "command" },
+						["<C-a>"] = { "<Home>", type = "command" },
+						["<C-d>"] = { "<Del>", type = "command" },
 					},
 					n = {
 						["<esc>"] = actions.close,
