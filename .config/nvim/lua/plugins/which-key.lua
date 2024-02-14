@@ -36,7 +36,8 @@ spec.opts = function()
 	enable()
 
 	require("which-key").register({
-		["go"] = { name = "+Edit specific file", _ = "which_key_ignore" },
+		["gcd"] = { name = "Annotation", _ = "which_key_ignore" },
+		["go"] = { name = "Edit specific file", _ = "which_key_ignore" },
 		["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
 		["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
 		["<leader>d"] = { name = "Debug", _ = "which_key_ignore" },
