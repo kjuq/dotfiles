@@ -22,6 +22,7 @@ spec.opts = {
 		["g?"] = "actions.show_help",
 		["<CR>"] = "actions.select",
 		["<C-s>"] = "actions.select_vsplit",
+		["g<C-s>"] = "actions.select_split",
 		["K"] = "actions.preview",
 		["<C-c>"] = "actions.close",
 		["<C-l>"] = "actions.refresh",
