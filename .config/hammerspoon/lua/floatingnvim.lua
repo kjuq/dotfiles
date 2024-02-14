@@ -3,62 +3,74 @@ local M = {}
 ---@type hs.task
 local floatterm
 
----@type function
----@return hs.task
-local generate_floatterm
+local tmux = "/tmp/hammerspoon_tmux"
+local inf_nvimcopy = "/tmp/hammerspoon_infinite_nvimcopy"
 
-local tmp = "/tmp/floatterm"
+local create_executable_files = function()
+	if not os.execute("test -e " .. tmux) then
+		local file = io.open(tmux, "a")
+		assert(file, "Unable to open file: " .. tmux)
+		file:write("#!/usr/bin/env bash\n")
+		file:write("tmux new-session /tmp/hammerspoon_infinite_nvimcopy\n")
+		file:close()
+		os.execute("chmod +x " .. tmux)
+	end
 
-local create_init_cmds = function()
-	if not os.execute("test -e " .. tmp) then
-		os.execute("echo '/opt/homebrew/bin/tmux new-session ~/.local/bin/nvimcopy' > " .. tmp)
-		os.execute("chmod +x " .. tmp)
+	if not os.execute("test -e " .. inf_nvimcopy) then
+		local file = io.open(inf_nvimcopy, "a")
+		assert(file, "Unable to open file: " .. inf_nvimcopy)
+		file:write("#!/usr/bin/env bash\n")
+		file:write("while true; do\n")
+		file:write("	~/.local/bin/nvimcopy\n")
+		file:write("	hs -c 'hs.application.frontmostApplication():hide()'\n")
+		file:write("	hs -c 'hs.eventtap.keyStroke({ \"cmd\" }, \"v\")'\n")
+		file:write("done\n")
+		file:close()
+		os.execute("chmod +x " .. inf_nvimcopy)
 	end
 end
 
-local open_floatterm_then_hide = function()
-	floatterm = generate_floatterm():start()
-	os.execute("sleep 0.9")
-	hs.application.applicationForPID(floatterm:pid()):hide()
-end
-
-generate_floatterm = function()
+---@type function
+---@return hs.task
+local generate_floatterm = function()
 	---@type hs.task
 	floatterm = hs.task.new(
 		"/opt/homebrew/bin/wezterm",
-		function()
-			hs.eventtap.keyStroke({ "cmd" }, "v")
-			open_floatterm_then_hide()
-		end,
+		nil,
 		{
 			"--config",
-			"initial_rows=1",
+			"initial_rows=20",
 			"--config",
-			"initial_cols=1",
+			"initial_cols=80",
 			"start",
-			"--position",
-			"main:100%,0",
-			tmp,
+			tmux,
 		}
 	)
 	return floatterm
 end
 
-M.toggle = function()
-	if floatterm ~= nil and floatterm:isRunning() then
-		---@type hs.application
-		local app = hs.application.applicationForPID(floatterm:pid())
-		app:activate()
-		require("lua.snap").center()
-		-- hs.window.focusedWindow():maximize()
-		return
-	end
-	generate_floatterm():start()
+M.initialize = function()
+	create_executable_files()
+	floatterm = generate_floatterm():start()
 end
 
-M.initialize = function()
-	create_init_cmds()
-	open_floatterm_then_hide()
+M.toggle = function()
+	if not floatterm then -- if floatterm is not running
+		M.initialize()
+		return
+	end
+
+	local app = hs.application.applicationForPID(floatterm:pid())
+	if not app then
+		M.initialize()
+		return
+	end
+
+	if app:isFrontmost() then
+		app:hide()
+	else
+		app:activate()
+	end
 end
 
 return M

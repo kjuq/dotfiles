@@ -1,12 +1,11 @@
 hs.ipc.cliInstall("/opt/homebrew")
 
-local cmd_opt = { "cmd", "option" }
+local cmd_opt      = { "cmd", "option" }
 local cmd_opt_ctrl = { "cmd", "option", "ctrl" }
 
-local bind = hs.hotkey.bind
+local bind         = hs.hotkey.bind
 
-local floatingnvim  = require("lua.floatingnvim")
-floatingnvim.initialize()
+local floatingnvim = require("lua.floatingnvim")
 bind(cmd_opt_ctrl, "`", floatingnvim.toggle)
 
 local toggleapps = require("lua.toggleapps")
@@ -36,6 +35,7 @@ bind(cmd_opt, "y", snap.upper_right)
 bind(cmd_opt, "l", snap.upper_left)
 bind(cmd_opt, ".", snap.bottom_right)
 bind(cmd_opt, "m", snap.bottom_left)
+bind(cmd_opt, "h", snap.center)
 
 bind(cmd_opt, "e", function() hs.window.focusedWindow():maximize() end)
 
