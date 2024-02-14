@@ -8,13 +8,29 @@ spec.keys = {
 	map("r", "n", "CccPick", "Open picker"),
 }
 
+spec.opts = {
+	highlighter = {
+		-- auto_enable = true,
+	},
+}
+
 spec.config = function()
-	require("ccc").setup {
-		highlighter = {
-			auto_enable = true,
-		},
-	}
-	vim.cmd("CccHighlighterEnable") -- for lazy load
+	require("ccc").setup(spec.opts)
+
+	local max_lines = 30000
+
+	local enable_hl = function()
+		if vim.fn.line("$") <= max_lines then
+			vim.cmd("CccHighlighterEnable")
+		end
+	end
+
+	enable_hl()
+
+	vim.api.nvim_create_autocmd({ "BufEnter" }, {
+		group = vim.api.nvim_create_augroup("user_ccc_highlighter_auto_enable", {}),
+		callback = enable_hl,
+	})
 end
 
 return spec
