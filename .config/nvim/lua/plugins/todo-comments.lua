@@ -13,6 +13,8 @@ spec.opts = {
 	signs = false,
 	highlight = {
 		pattern = [[.*<(KEYWORDS)\s*]],
+		before = "fg",
+		keyword = "fg",
 	},
 	search = {
 		pattern = [[\b(KEYWORDS)\b]],
