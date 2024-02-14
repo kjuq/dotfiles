@@ -5,7 +5,7 @@ spec.ft = "norg"
 spec.cmd = "Neorg"
 
 spec.config = function()
-	require("neorg").setup {
+	require("neorg").setup({
 		load = {
 			["core.defaults"] = {}, -- Loads default behaviour
 			["core.concealer"] = {}, -- Adds pretty icons to your documents
@@ -26,7 +26,7 @@ spec.config = function()
 				},
 			},
 		},
-	}
+	})
 end
 
 spec.dependencies = { "nvim-lua/plenary.nvim" }

@@ -5,7 +5,14 @@ local spec = { "petertriho/nvim-scrollbar" }
 spec.event = hide_by_default and {} or { "WinScrolled" }
 
 spec.keys = {
-	{ "<leader>as", mode = "n", function() require("scrollbar.utils").toggle() end, desc = "Scrollbar: Toggle" },
+	{
+		"<leader>as",
+		mode = "n",
+		function()
+			require("scrollbar.utils").toggle()
+		end,
+		desc = "Scrollbar: Toggle",
+	},
 }
 
 spec.config = function()

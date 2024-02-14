@@ -5,7 +5,9 @@ spec.keys = {
 	{
 		"<leader>Ll",
 		mode = { "n" },
-		function() require("lsp_lines").toggle() end,
+		function()
+			require("lsp_lines").toggle()
+		end,
 		"LspLines: Toggle lsp_[l]ines",
 	},
 }

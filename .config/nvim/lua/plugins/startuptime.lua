@@ -5,7 +5,7 @@ local spec = { "dstein64/vim-startuptime" }
 spec.cmd = { "StartupTime" }
 
 spec.keys = {
-	map("av", "n", "StartupTime", "Calculate the time")
+	map("av", "n", "StartupTime", "Calculate the time"),
 }
 
 spec.config = function()

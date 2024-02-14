@@ -4,7 +4,9 @@ local map = require("utils.lazy").generate_map("", "TreeSJ: ")
 local spec = { "Wansmer/treesj" }
 
 spec.keys = {
-	map("<leader>ak", "n", function() require("treesj").toggle() end, "Toggle")
+	map("<leader>ak", "n", function()
+		require("treesj").toggle()
+	end, "Toggle"),
 }
 
 spec.config = function()

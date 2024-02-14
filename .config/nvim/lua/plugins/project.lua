@@ -10,7 +10,7 @@ spec.keys = {
 		function()
 			local has_telescope, _ = pcall(require, "telescope")
 			if has_telescope then
-				require('telescope').extensions.projects.projects {}
+				require("telescope").extensions.projects.projects({})
 			else
 				print("Telescope is not installed")
 			end

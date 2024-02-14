@@ -16,8 +16,8 @@ spec.keys = {
 	map("N", "n", rhs("N"), "Previous matched word"),
 	map("*", "n", rhs("*"), "Search forward current word"),
 	map("#", "n", rhs("#"), "Search backward current word"),
-	map("g*", "n", rhs("g*"), "* without \"\\<\" and \"\\>\""),
-	map("g#", "n", rhs("g*"), "# without \"\\<\" and \"\\>\""),
+	map("g*", "n", rhs("g*"), '* without "\\<" and "\\>"'),
+	map("g#", "n", rhs("g*"), '# without "\\<" and "\\>"'),
 }
 
 spec.opts = {}

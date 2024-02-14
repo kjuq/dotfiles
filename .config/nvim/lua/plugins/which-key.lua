@@ -29,7 +29,9 @@ spec.event = require("utils.lazy").verylazy
 
 spec.keys = {
 	map("w", "n", toggle, "Toggle"),
-	map("W", "n", function() vim.cmd("WhichKey") end, "Show all keymaps"),
+	map("W", "n", function()
+		vim.cmd("WhichKey")
+	end, "Show all keymaps"),
 }
 
 spec.opts = function()

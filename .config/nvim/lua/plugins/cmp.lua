@@ -13,9 +13,12 @@ spec.config = function()
 	local copilot_source = cmp.config.sources({ { name = "copilot" } })
 	local normal_sources = cmp.config.sources({
 		pcall(require, "plugins.skkeleton")
-		--[[-]] and require("plugins.skkeleton").cond
-		--[[-]] and { name = "skkeleton" }
-		--[[-]] or {},
+				--[[-]]
+				and require("plugins.skkeleton").cond
+				--[[-]]
+				and { name = "skkeleton" }
+			--[[-]]
+			or {},
 	}, {
 		{ name = "path" },
 		{ name = "emoji" },
@@ -142,8 +145,8 @@ spec.config = function()
 				mode = "text_symbol", -- show only symbol annotations
 				maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 				ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-				symbol_map = { Copilot = "" }
-			})
+				symbol_map = { Copilot = "" },
+			}),
 		},
 	})
 
@@ -171,7 +174,7 @@ spec.config = function()
 		sources = {
 			{ name = "path" },
 			{ name = "cmdline" },
-		}
+		},
 	})
 end
 

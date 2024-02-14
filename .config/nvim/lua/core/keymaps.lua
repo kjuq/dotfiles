@@ -9,10 +9,10 @@ map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "<C-c>", "<Nop>", { silent = true })
 
 -- Emacs-like cursor movement in command mode
-map("c", "<C-b>", "<Left>")  -- Jumps to the beginning of a line by default
+map("c", "<C-b>", "<Left>") -- Jumps to the beginning of a line by default
 map("c", "<C-f>", "<Right>") -- Opens a command-line window (q:) by default
-map("c", "<C-a>", "<Home>")  -- Inserts all matched candidates by default, so <C-i> is enough
-map("c", "<C-d>", "<Del>")   -- Lists completions by default, so <C-i> is enough
+map("c", "<C-a>", "<Home>") -- Inserts all matched candidates by default, so <C-i> is enough
+map("c", "<C-d>", "<Del>") -- Lists completions by default, so <C-i> is enough
 -- map("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
 
 -- recall history beginning with typed characters
@@ -22,15 +22,15 @@ map("c", "<C-n>", "<Down>")
 -- Don't update register when not intend to do so
 
 map("n", "x", function()
-	return vim.v.count == 0 and "\"_x" or "x"
+	return vim.v.count == 0 and '"_x' or "x"
 end, { expr = true, silent = true, desc = "Delete N characters after the cursor" })
 
 map("n", "X", function()
-	return vim.v.count == 0 and "\"_X" or "X"
+	return vim.v.count == 0 and '"_X' or "X"
 end, { expr = true, silent = true, desc = "Delete N characters before the cursor" })
 
 map("n", "s", function()
-	return vim.v.count == 0 and "\"_s" or "s"
+	return vim.v.count == 0 and '"_s' or "s"
 end, { expr = true, silent = true, desc = "Delete N characters and start insert" })
 
 -- map("n", "S", '"_S', { silent = true, desc = "Delete N lines and start insert" })
@@ -43,8 +43,12 @@ map("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed regis
 
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
-map({ "n", "x" }, "k", function() return vim.v.count == 0 and "gk" or "k" end, { expr = true, silent = true })
-map({ "n", "x" }, "j", function() return vim.v.count == 0 and "gj" or "j" end, { expr = true, silent = true })
+map({ "n", "x" }, "k", function()
+	return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, silent = true })
+map({ "n", "x" }, "j", function()
+	return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, silent = true })
 -- map({ "n", "x", "o" }, "$", "g$")
 -- map({ "n", "x", "o" }, "g$", "$")
 -- map({ "n", "x", "o" }, "^", "g^")
@@ -70,7 +74,9 @@ local write = function(key)
 	map("n", key, vim.cmd.write, { silent = true, desc = "Write" })
 end
 local write_noautocmd = function(key)
-	map("n", key, function() vim.cmd("noautocmd w") end, { silent = true, desc = "Write w/o autocmd" })
+	map("n", key, function()
+		vim.cmd("noautocmd w")
+	end, { silent = true, desc = "Write w/o autocmd" })
 end
 local quit = function(key)
 	map("n", key, vim.cmd.quit, { silent = true, desc = "Quit" })
@@ -98,9 +104,11 @@ local bdelete = function(key)
 	map("n", key, vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
 end
 local bdelete_force = function(key)
-	map("n", key, function() vim.cmd.bdelete { bang = true } end, {
+	map("n", key, function()
+		vim.cmd.bdelete({ bang = true })
+	end, {
 		silent = true,
-		desc = "Force delete a current buffer"
+		desc = "Force delete a current buffer",
 	})
 end
 bdelete("gl")
@@ -108,9 +116,15 @@ bdelete("<leader>x")
 bdelete_force("gL")
 bdelete_force("<leader>X")
 
-map("n", "gA", function() vim.cmd("messages") end, { desc = "History of messages" })
-map("n", "gaw", function() vim.opt.wrap = not vim.o.wrap end, { desc = "Toggle wrap" })
-map("n", "gas", function() vim.opt.spell = not vim.o.spell end, { desc = "Toggle spell check" })
+map("n", "gA", function()
+	vim.cmd("messages")
+end, { desc = "History of messages" })
+map("n", "gaw", function()
+	vim.opt.wrap = not vim.o.wrap
+end, { desc = "Toggle wrap" })
+map("n", "gas", function()
+	vim.opt.spell = not vim.o.spell
+end, { desc = "Toggle spell check" })
 map("n", "gan", function()
 	local opt = vim.opt
 	local o = vim.o
@@ -138,14 +152,26 @@ end
 local doc = "~/Documents/__user"
 local confroot = os.getenv("XDG_CONFIG_HOME") .. "/nvim"
 map("n", "go", "<Nop>")
-map("n", "got", function() edit(doc .. "/__todo/todo.txt") end, { desc = "Edit todo.txt" })
-map("n", "gob", function() edit(doc .. "/__bookmarks/bookmarks.txt") end, { desc = "Edit bookmarks.txt" })
-map("n", "gor", function() edit(doc .. "/__bookmarks/readinglist.txt") end, { desc = "Edit readinglist.txt" })
-map("n", "god", function() edit(doc .. "/__daily/" .. os.date("%Y-%m-%d.md")) end, { desc = "Edit daily note" })
-map("n", "gos", function() edit(confroot .. "/snippets/" .. vim.o.ft .. ".snippets") end, { desc = "Edit snippet" })
+map("n", "got", function()
+	edit(doc .. "/__todo/todo.txt")
+end, { desc = "Edit todo.txt" })
+map("n", "gob", function()
+	edit(doc .. "/__bookmarks/bookmarks.txt")
+end, { desc = "Edit bookmarks.txt" })
+map("n", "gor", function()
+	edit(doc .. "/__bookmarks/readinglist.txt")
+end, { desc = "Edit readinglist.txt" })
+map("n", "god", function()
+	edit(doc .. "/__daily/" .. os.date("%Y-%m-%d.md"))
+end, { desc = "Edit daily note" })
+map("n", "gos", function()
+	edit(confroot .. "/snippets/" .. vim.o.ft .. ".snippets")
+end, { desc = "Edit snippet" })
 
 -- TODO: check if Netrw is loaded or not
-map("n", "gX", function() vim.cmd("Explore") end, { desc = "Open Netrw" })
+map("n", "gX", function()
+	vim.cmd("Explore")
+end, { desc = "Open Netrw" })
 
 local insert_date = function()
 	local date = os.date("%Y-%m-%d") --[[@ as string]]
@@ -164,7 +190,7 @@ map("i", "<C-g><C-t>", insert_time, { desc = "Insert time" })
 
 map("n", "<Esc>", function()
 	vim.cmd.nohlsearch()
-	vim.cmd.fclose { bang = true }
+	vim.cmd.fclose({ bang = true })
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
 end, { silent = true })
 
@@ -173,9 +199,11 @@ map({ "i", "s" }, "<C-l>", function()
 	if mode == "ix" then -- completion with <C-x>
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, false, true), "n", false)
 	else
-		vim.cmd.fclose { bang = true }
+		vim.cmd.fclose({ bang = true })
 	end
 end, { silent = true })
 
 -- <NUM><CR> to go to line. i.e. 10<CR> -> 10G
-map({ "n" }, "<CR>", function() return vim.v.count ~= 0 and "G" or "<CR>" end, { expr = true, silent = true })
+map({ "n" }, "<CR>", function()
+	return vim.v.count ~= 0 and "G" or "<CR>"
+end, { expr = true, silent = true })

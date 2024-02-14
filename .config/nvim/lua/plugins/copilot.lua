@@ -49,14 +49,20 @@ spec.opts = function()
 	end
 
 	map("<C-g><C-f>", mod.next, mod.accept)
-	map("<C-l>", function() vim.cmd.fclose { bang = true } end, mod.dismiss)
+	map("<C-l>", function()
+		vim.cmd.fclose({ bang = true })
+	end, mod.dismiss)
 
 	if not opts.suggestion.auto_trigger then
-		map("<M-f>", function() mod.next() end, function()
+		map("<M-f>", function()
+			mod.next()
+		end, function()
 			mod.accept_word()
 			mod.next()
 		end)
-		map("<M-n>", function() mod.next() end, function()
+		map("<M-n>", function()
+			mod.next()
+		end, function()
 			mod.accept_line()
 			mod.next()
 		end)

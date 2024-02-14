@@ -5,7 +5,9 @@ local spec = { "segeljakt/vim-silicon" }
 spec.cmd = "Silicon"
 
 spec.keys = {
-	map("c", "n", function() vim.cmd("Silicon") end, "Capture"),
+	map("c", "n", function()
+		vim.cmd("Silicon")
+	end, "Capture"),
 	map("c", "v", function()
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "x", false)
 		vim.cmd("'<,'>Silicon")

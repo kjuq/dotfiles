@@ -2,10 +2,10 @@
 local spec = { "jinh0/eyeliner.nvim" }
 
 spec.keys = {
-	{ "f",  mode = { "n", "x" } },
-	{ "F",  mode = { "n", "x" } },
-	{ "t",  mode = { "n", "x" } },
-	{ "T",  mode = { "n", "x" } },
+	{ "f", mode = { "n", "x" } },
+	{ "F", mode = { "n", "x" } },
+	{ "t", mode = { "n", "x" } },
+	{ "T", mode = { "n", "x" } },
 	{ "df", mode = { "n" } },
 	{ "dF", mode = { "n" } },
 	{ "dt", mode = { "n" } },

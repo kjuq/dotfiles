@@ -13,11 +13,11 @@ M.paste_skeleton = function(filename)
 	if (not common.is_current_file_exists()) and common.is_empty_buffer() then
 		vim.cmd.read({
 			args = { require("utils.skeleton").skel_path .. filename },
-			mods = { silent = true }
+			mods = { silent = true },
 		})
 		vim.cmd.delete({
 			range = { 1 },
-			mods = { silent = true }
+			mods = { silent = true },
 		})
 	end
 end

@@ -28,19 +28,12 @@ spec.config = function()
 		vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#C678DD", nocombine = true })
 	end)
 
-	hooks.register(
-		hooks.type.SKIP_LINE,
-		function(_, _, _, line)
-			local pattern = "^$" -- empty line
-			return line:match(pattern)
-		end
-	)
+	hooks.register(hooks.type.SKIP_LINE, function(_, _, _, line)
+		local pattern = "^$" -- empty line
+		return line:match(pattern)
+	end)
 
-	hooks.register(
-		hooks.type.SKIP_LINE,
-		hooks.builtin.skip_preproc_lines,
-		{ bufnr = 0 }
-	)
+	hooks.register(hooks.type.SKIP_LINE, hooks.builtin.skip_preproc_lines, { bufnr = 0 })
 
 	---@type ibl.config
 	local opts = {

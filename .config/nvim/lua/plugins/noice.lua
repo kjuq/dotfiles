@@ -11,7 +11,6 @@ local utils = require("utils.common")
 local scrollup = utils.floatscrollup
 local scrolldown = utils.floatscrolldown
 
-
 ---@type LazySpec
 local spec = { "folke/noice.nvim" }
 
@@ -21,8 +20,16 @@ spec.cmd = { "Noice" }
 
 spec.keys = {
 	cmap("fa", "n", "Noice telescope", "Noice"),
-	map(scrolldown, "i", function() if not require("noice.lsp").scroll(4) then return scrolldown end end, "Page down"),
-	map(scrollup, "i", function() if not require("noice.lsp").scroll(-4) then return scrollup end end, "Page up"),
+	map(scrolldown, "i", function()
+		if not require("noice.lsp").scroll(4) then
+			return scrolldown
+		end
+	end, "Page down"),
+	map(scrollup, "i", function()
+		if not require("noice.lsp").scroll(-4) then
+			return scrollup
+		end
+	end, "Page up"),
 }
 
 spec.opts = function()

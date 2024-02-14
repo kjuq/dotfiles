@@ -10,7 +10,7 @@ spec.opts = function()
 		},
 		func_map = {
 			open = "<CR>", -- <CR>
-			openc = "o",  -- "o"
+			openc = "o", -- "o"
 			drop = "<Nop>", -- "O" (I have no idea what this is)
 			tabdrop = "<Nop>", -- ""
 			tab = "<Nop>", -- "t"

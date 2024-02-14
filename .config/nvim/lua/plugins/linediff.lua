@@ -9,7 +9,9 @@ spec.keys = {
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "x", false)
 		vim.cmd("'<,'>Linediff")
 	end, "Set range"),
-	map("f", "n", function() vim.cmd("LinediffReset") end, "Linediff Reset current selection"),
+	map("f", "n", function()
+		vim.cmd("LinediffReset")
+	end, "Linediff Reset current selection"),
 }
 
 return spec

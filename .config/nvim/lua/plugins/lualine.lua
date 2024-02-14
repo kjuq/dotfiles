@@ -82,7 +82,6 @@ spec.opts = function()
 		table.insert(opts.sections.lualine_x, component)
 	end
 
-
 	local conds = {
 		buffer_not_empty = function()
 			return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
@@ -105,15 +104,19 @@ spec.opts = function()
 		end,
 	}
 
-	ins_left {
-		function() return " " end,
+	ins_left({
+		function()
+			return " "
+		end,
 		cond = conds.hide_in_width,
 		padding = 0,
-	}
+	})
 
-	ins_left {
+	ins_left({
 		-- mode component
-		function() return "󰅬" end,
+		function()
+			return "󰅬"
+		end,
 		cond = conds.hide_in_width,
 		color = function()
 			local mode_color = {
@@ -140,13 +143,13 @@ spec.opts = function()
 			}
 			return { fg = mode_color[vim.fn.mode()] }
 		end,
-	}
+	})
 
 	local file = {
 		color = { fg = colors.magenta, gui = "bold" },
 	}
 
-	ins_left {
+	ins_left({
 		"filename",
 		path = 0, -- format of path; relative, absolute, and etc. see help for more details
 		file_status = true,
@@ -156,41 +159,49 @@ spec.opts = function()
 		symbols = {
 			modified = "", -- Text to show when the file is modified.
 			readonly = "", -- Text to show when the file is non-modifiable or readonly.
-			unnamed  = "[No Name]", -- Text to show for unnamed buffers.
-			newfile  = "", -- Text to show for newly created file before first write
+			unnamed = "[No Name]", -- Text to show for unnamed buffers.
+			newfile = "", -- Text to show for newly created file before first write
 		},
-	}
+	})
 
 	local fs = require("lualine.components.filesize")
 
-	ins_left {
-		function() return "(" end,
-		cond = function() return fs() ~= "" and conds.hide_in_width() end,
+	ins_left({
+		function()
+			return "("
+		end,
+		cond = function()
+			return fs() ~= "" and conds.hide_in_width()
+		end,
 		color = file.color,
 		padding = 0,
-	}
+	})
 
-	ins_left {
+	ins_left({
 		"filesize",
 		cond = conds.hide_in_width,
 		color = { fg = colors.magenta, gui = "bold" },
 		padding = 0, -- default is { left = 1, right = 1 }
-	}
+	})
 
-	ins_left {
-		function() return ")" end,
-		cond = function() return fs() ~= "" and conds.hide_in_width() end,
+	ins_left({
+		function()
+			return ")"
+		end,
+		cond = function()
+			return fs() ~= "" and conds.hide_in_width()
+		end,
 		color = file.color,
 		padding = { left = 0, right = 1 },
-	}
+	})
 
-	ins_left {
+	ins_left({
 		"branch",
 		icon = "",
 		color = { fg = colors.violet, gui = "bold" },
-	}
+	})
 
-	ins_left {
+	ins_left({
 		"diff",
 		-- Is it me or the symbol for modified us really weird
 		symbols = { added = " ", modified = "󰝤 ", removed = " " },
@@ -207,13 +218,13 @@ spec.opts = function()
 				return {
 					added = gitsigns.added,
 					modified = gitsigns.changed,
-					removed = gitsigns.removed
+					removed = gitsigns.removed,
 				}
 			end
 		end,
-	}
+	})
 
-	ins_left {
+	ins_left({
 		"diagnostics",
 		sources = { "nvim_diagnostic" },
 		symbols = { error = " ", warn = " ", info = " " },
@@ -222,9 +233,9 @@ spec.opts = function()
 			color_warn = { fg = colors.yellow },
 			color_info = { fg = colors.cyan },
 		},
-	}
+	})
 
-	ins_right {
+	ins_right({
 		"macro-recording",
 		fmt = function()
 			local recording_register = vim.fn.reg_recording()
@@ -235,44 +246,48 @@ spec.opts = function()
 			end
 		end,
 		color = { fg = colors.orange },
-	}
+	})
 
-	ins_right {
+	ins_right({
 		-- show typed (partial) command (:h showcmd)
-		function() return "%S" end,
+		function()
+			return "%S"
+		end,
 		color = { fg = colors.yellow, gui = "bold" },
-	}
+	})
 
-	ins_right {
+	ins_right({
 		"searchcount",
 		color = { fg = colors.blue, gui = "bold" },
-		padding = { left = 1, right = 0 }
-	}
+		padding = { left = 1, right = 0 },
+	})
 
-	ins_right {
+	ins_right({
 		"selectioncount",
 		color = { fg = colors.blue, gui = "bold" },
-		padding = { left = 1, right = 0 }
-	}
+		padding = { left = 1, right = 0 },
+	})
 
-	ins_right {
+	ins_right({
 		"location",
 		color = { fg = colors.fg, gui = "bold" },
-		padding = { left = 2, right = 0 }
-	}
+		padding = { left = 2, right = 0 },
+	})
 
-	ins_right {
+	ins_right({
 		"progress",
 		color = { fg = colors.fg, gui = "bold" },
-	}
+	})
 
-	ins_right {
-		function() return "--" end,
+	ins_right({
+		function()
+			return "--"
+		end,
 		cond = conds.hide_in_width,
 		color = { fg = colors.fg, gui = "bold" },
-	}
+	})
 
-	ins_right {
+	ins_right({
 		-- Lsp server name .
 		function()
 			-- local msg = "N/A"
@@ -293,34 +308,36 @@ spec.opts = function()
 		end,
 		icon = { "" },
 		color = { fg = colors.fg, gui = "bold" },
-	}
+	})
 
-	ins_right {
-		"encoding",   -- option component same as &encoding in viml
+	ins_right({
+		"encoding", -- option component same as &encoding in viml
 		fmt = string.upper, -- I'm not sure why it's upper case either ;)
 		cond = conds.enc_not_utf_8,
 		color = { fg = colors.red, gui = "bold" },
-	}
+	})
 
-	ins_right {
+	ins_right({
 		"fileformat",
 		fmt = string.upper,
 		cond = conds.filefmt_not_unix,
 		icons_enabled = false,
 		color = { fg = colors.red, gui = "bold" },
-	}
+	})
 
-	ins_right {
+	ins_right({
 		"filetype",
 		icon = { align = "right" },
 		color = { fg = colors.fg, gui = "bold" },
-	}
+	})
 
-	ins_right {
-		function() return " " end,
+	ins_right({
+		function()
+			return " "
+		end,
 		cond = conds.hide_in_width,
 		padding = 0,
-	}
+	})
 
 	return opts
 end

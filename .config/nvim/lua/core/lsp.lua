@@ -7,7 +7,7 @@ local virtual_text = function(enabled)
 		return {
 			format = function(diagnostic)
 				return string.format("%s (%s) [%s]", diagnostic.message, diagnostic.source, diagnostic.code)
-			end
+			end,
 		}
 	else
 		return false
@@ -39,11 +39,13 @@ local callback = function(ev)
 
 	map("n", "<M-w><M-a>", vlb.add_workspace_folder, "Add folder to workspace")
 	map("n", "<M-w><M-r>", vlb.remove_workspace_folder, "Remove folder from workspace")
-	map("n", "<M-w><M-w>", function() print(vim.inspect(vlb.list_workspace_folders())) end, "List folders of workspaceh")
+	map("n", "<M-w><M-w>", function()
+		print(vim.inspect(vlb.list_workspace_folders()))
+	end, "List folders of workspaceh")
 
 	map("n", "<M-d>", function()
 		vt = not vt
-		vim.diagnostic.config({ virtual_text = virtual_text(vt), })
+		vim.diagnostic.config({ virtual_text = virtual_text(vt) })
 	end, "Toggle virtual text of diagnotics")
 
 	-- Diagnostics
@@ -96,7 +98,7 @@ M.setup = function()
 			-- header = false,
 			format = function(diagnostic)
 				return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
-			end
+			end,
 		},
 	})
 

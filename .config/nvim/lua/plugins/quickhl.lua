@@ -9,7 +9,7 @@ spec.keys = {
 	end, "Mark"),
 	map("M", { "n", "x" }, function()
 		require("utils.common").feed_plug("quickhl-manual-reset")
-	end, "Reset")
+	end, "Reset"),
 }
 
 return spec

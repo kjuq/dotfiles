@@ -36,9 +36,15 @@ spec.opts = {
 	close_if_last_window = true,
 	window = {
 		mappings = {
-			["<M-f>"] = function() vim.api.nvim_exec2("Neotree focus filesystem", { output = true }) end,
-			["<M-b>"] = function() vim.api.nvim_exec2("Neotree focus buffers", { output = true }) end,
-			["<M-g>"] = function() vim.api.nvim_exec2("Neotree focus git_status", { output = true }) end,
+			["<M-f>"] = function()
+				vim.api.nvim_exec2("Neotree focus filesystem", { output = true })
+			end,
+			["<M-b>"] = function()
+				vim.api.nvim_exec2("Neotree focus buffers", { output = true })
+			end,
+			["<M-g>"] = function()
+				vim.api.nvim_exec2("Neotree focus git_status", { output = true })
+			end,
 		},
 	},
 	filesystem = {
@@ -74,8 +80,7 @@ spec.opts = {
 		hijack_netrw_behavior = "disabled",
 		use_libuv_file_watcher = true,
 	},
-	git_status = {
-	},
+	git_status = {},
 	buffers = {
 		window = {
 			mappings = {

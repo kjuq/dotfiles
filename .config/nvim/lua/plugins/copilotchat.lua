@@ -38,9 +38,9 @@ spec.keys = {
 }
 
 spec.opts = {
-	show_help = "yes",      -- Show help text for CopilotChatInPlace, default: yes
+	show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
 	disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
-	debug = false,          -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+	debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
 }
 
 return spec

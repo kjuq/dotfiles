@@ -6,9 +6,9 @@ spec.keys = {
 	{ "ys", mode = { "n" } },
 	{ "ds", mode = { "n" } },
 	{ "cs", mode = { "n" } },
-	{ "y",  mode = { "x" } },
-	{ "d",  mode = { "x" } },
-	{ "c",  mode = { "x" } },
+	{ "y", mode = { "x" } },
+	{ "d", mode = { "x" } },
+	{ "c", mode = { "x" } },
 }
 
 spec.opts = {}

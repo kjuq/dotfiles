@@ -18,7 +18,7 @@ spec.config = function()
 
 	require("sunglasses").setup({
 		filter_type = "SHADE",
-		filter_percent = .40,
+		filter_percent = 0.40,
 	})
 
 	vim.cmd("SunglassesRefresh") -- for lazy load

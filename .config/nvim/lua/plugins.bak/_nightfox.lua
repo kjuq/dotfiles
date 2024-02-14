@@ -4,7 +4,7 @@ spec.lazy = false
 spec.priority = 9999
 
 spec.config = function()
-	require('nightfox').setup({
+	require("nightfox").setup({
 		options = {
 			transparent = false, -- imperfect
 			dim_inactive = true, -- Non focused panes set to alternative background

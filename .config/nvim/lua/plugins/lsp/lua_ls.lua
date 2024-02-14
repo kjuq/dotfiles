@@ -7,7 +7,7 @@ local get_plugin_paths = function()
 	for _, plugin in pairs(plugins) do
 		---@diagnostic disable-next-line: undefined-field
 		if plugin._user_load_library or plugin.name == "lazy.nvim" then
-		table.insert(result, vim.fs.joinpath(plugin.dir, "lua"))
+			table.insert(result, vim.fs.joinpath(plugin.dir, "lua"))
 		end
 	end
 	return result

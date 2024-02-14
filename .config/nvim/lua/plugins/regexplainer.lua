@@ -12,8 +12,8 @@ spec.config = function()
 			border = {
 				padding = { 0, 1 },
 				style = require("utils.common").floatwinborder,
-			}
-		}
+			},
+		},
 	})
 end
 

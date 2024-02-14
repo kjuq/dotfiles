@@ -5,7 +5,7 @@
 local spec = { "tzachar/highlight-undo.nvim" }
 
 spec.keys = {
-	{ "u",     mode = "n" },
+	{ "u", mode = "n" },
 	{ "<C-r>", mode = "n" },
 }
 
@@ -16,14 +16,14 @@ spec.opts = {
 		mode = "n",
 		lhs = "u",
 		map = "undo",
-		opts = {}
+		opts = {},
 	},
 	redo = {
 		hlgroup = "HighlightUndo",
 		mode = "n",
 		lhs = "<C-r>",
 		map = "redo",
-		opts = {}
+		opts = {},
 	},
 	highlight_for_count = true,
 }

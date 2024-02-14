@@ -19,7 +19,7 @@ spec.opts = {
 	definition = { keys = { quit = { "q", "<Esc>" } } },
 	diagnostic = { max_height = 0.8, keys = { quit = { "q", "<Esc>" } } },
 	finder = { max_height = 0.6, keys = { toggle_or_open = { "o", "<CR>" }, quit = { "q", "<ESC>" } } },
-	lightbulb = { enable = false, },
+	lightbulb = { enable = false },
 	rename = { in_select = true, keys = { quit = { "q", "<Esc>" } } },
 	outline = {
 		win_width = 45,
@@ -28,7 +28,7 @@ spec.opts = {
 		keys = {
 			toggle_or_jump = { "o", "<CR>" },
 			quit = { "q", "<Esc>" },
-		}
+		},
 	},
 	scroll_preview = {
 		scroll_down = "<C-d>",
@@ -38,7 +38,7 @@ spec.opts = {
 
 spec.dependencies = {
 	"nvim-treesitter/nvim-treesitter",
-	"nvim-tree/nvim-web-devicons"
+	"nvim-tree/nvim-web-devicons",
 }
 
 return spec

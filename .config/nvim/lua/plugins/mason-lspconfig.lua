@@ -31,7 +31,6 @@ spec.config = function()
 		["lua_ls"] = function()
 			lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.lua_ls").opts))
 		end,
-
 	})
 
 	-- for lazy load

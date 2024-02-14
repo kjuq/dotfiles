@@ -35,7 +35,9 @@ M.generate_cmd_map = function(key_prefix, desc_prefix)
 	--- @param cmd string
 	--- @param comment string
 	local cmap = function(suffix, mode, cmd, comment)
-		return map(suffix, mode, function() vim.cmd(cmd) end, comment)
+		return map(suffix, mode, function()
+			vim.cmd(cmd)
+		end, comment)
 	end
 
 	return cmap

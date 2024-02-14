@@ -11,7 +11,7 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map("d", "n", "DBUIToggle", "Toggle")
+	map("d", "n", "DBUIToggle", "Toggle"),
 }
 
 spec.init = function()
@@ -33,7 +33,7 @@ spec.dependencies = {
 				pattern = { "sql", "mysql", "plsql" },
 				callback = function()
 					require("cmp").setup.buffer({ sources = { { name = "vim-dadbod-completion" } } })
-				end
+				end,
 			})
 		end,
 	},

@@ -4,7 +4,7 @@ spec.event = { "CmdlineEnter" }
 spec.opts = {}
 
 spec.dependencies = {
-	"winston0410/cmd-parser.nvim"
+	"winston0410/cmd-parser.nvim",
 }
 
 return spec
