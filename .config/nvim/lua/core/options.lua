@@ -36,6 +36,7 @@ opt.foldopen:remove("block")
 opt.wrap = false
 opt.smoothscroll = true
 opt.breakindent = true
+opt.breakindentopt:append("list:-1") -- indent wrapped list
 
 opt.cursorline = true
 opt.cursorlineopt = { "screenline" }
