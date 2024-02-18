@@ -12,14 +12,17 @@ spec.config = function()
 
 	local copilot_source = cmp.config.sources({ { name = "copilot" } })
 	local normal_sources = cmp.config.sources({
-		pcall(require, "plugins.skkeleton")
-				--[[-]]
-				and require("plugins.skkeleton").cond
-				--[[-]]
-				and { name = "skkeleton" }
-			--[[-]]
-			or {},
+		pcall(require, "plugins.skkeleton") and require("plugins.skkeleton").cond and { name = "skkeleton" } or {},
 	}, {
+		{
+			name = "spell",
+			option = {
+				enable_in_context = function()
+					return true
+					-- return require("cmp.config.context").in_treesitter_capture("spell")
+				end,
+			},
+		},
 		{ name = "path" },
 		{ name = "emoji" },
 		{ name = "luasnip" },
@@ -72,6 +75,18 @@ spec.config = function()
 		end
 	end
 
+	local toggle_docs = function(fallback)
+		if not cmp.visible() then
+			fallback()
+			return
+		end
+		if cmp.visible_docs() then
+			cmp.close_docs()
+		else
+			cmp.open_docs()
+		end
+	end
+
 	local confirm = function(fallback)
 		if cmp.visible() then
 			cmp.confirm({ select = false })
@@ -108,6 +123,7 @@ spec.config = function()
 		["<C-l>"] = cmp.mapping(abort, { "i", "s" }),
 		["<C-e>"] = cmp.mapping(abort, { "i", "s" }),
 		["<C-y>"] = cmp.mapping(confirm, { "i", "s" }),
+		["<C-o>"] = cmp.mapping(toggle_docs, { "i", "s" }),
 	}
 
 	local mapping_cmdline = {
@@ -118,6 +134,7 @@ spec.config = function()
 		["<C-l>"] = cmp.mapping(abort, { "c" }),
 		["<C-e>"] = cmp.mapping(abort, { "c" }),
 		["<C-y>"] = cmp.mapping(confirm, { "c" }),
+		["<C-o>"] = cmp.mapping(toggle_docs, { "c" }),
 	}
 
 	cmp.setup({
@@ -185,6 +202,7 @@ spec.dependencies = {
 	"hrsh7th/cmp-cmdline",
 	"hrsh7th/cmp-nvim-lua",
 	"hrsh7th/cmp-emoji",
+	"f3fora/cmp-spell",
 	"ray-x/cmp-treesitter",
 	"onsails/lspkind.nvim",
 	"saadparwaiz1/cmp_luasnip",
