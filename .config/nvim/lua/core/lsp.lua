@@ -54,17 +54,14 @@ local callback = function(ev)
 	map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostics")
 	map("n", "<M-l>", vim.diagnostic.setloclist, "Set diagnostics into loclist")
 
-	-- Enable completion triggered by <c-x><c-o>
-	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
 	-- Format on save
 	if client and client.supports_method("textDocument/formatting") then
-		map("n", "gq", function()
-			local winpos = vim.fn.winsaveview()
-			vlb.format({ async = false })
-			vim.fn.winrestview(winpos)
-			vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting, when it's fixed remove this keybind
-		end, "Format current buffer")
+		-- map("n", "gq", function()
+		-- 	local winpos = vim.fn.winsaveview()
+		-- 	vlb.format({ async = false })
+		-- 	vim.fn.winrestview(winpos)
+		-- 	vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting, when it's fixed remove this keybind
+		-- end, "Format current buffer")
 
 		local winpos
 		local group = vim.api.nvim_create_augroup("AutoFormatting", {})

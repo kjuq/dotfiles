@@ -7,10 +7,6 @@ opt.backupdir = os.getenv("XDG_STATE_HOME") .. "/nvim/backup//"
 opt.swapfile = false
 opt.autoread = true
 
--- opt.scrolloff      = 6
-
-opt.clipboard = "unnamedplus"
-
 opt.cmdheight = 0
 opt.laststatus = 3 -- global status line
 opt.showcmdloc = "statusline"
@@ -18,7 +14,7 @@ opt.showcmdloc = "statusline"
 opt.termguicolors = true
 
 opt.wildmenu = true
-opt.completeopt = "menu,menuone,preview,noinsert"
+opt.completeopt = "menuone,noinsert,popup"
 
 opt.pumheight = 10
 opt.pumwidth = 40
