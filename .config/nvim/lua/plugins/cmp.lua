@@ -14,21 +14,11 @@ spec.config = function()
 	local normal_sources = cmp.config.sources({
 		pcall(require, "plugins.skkeleton") and require("plugins.skkeleton").cond and { name = "skkeleton" } or {},
 	}, {
-		{
-			name = "spell",
-			option = {
-				enable_in_context = function()
-					return true
-					-- return require("cmp.config.context").in_treesitter_capture("spell")
-				end,
-			},
-		},
 		{ name = "path" },
 		{ name = "emoji" },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
-		-- { name = "buffer",  max_item_count = 2 },
 		{ name = "natdat" },
 	})
 
@@ -171,27 +161,26 @@ spec.config = function()
 	cmp.setup.filetype("gitcommit", {
 		sources = {
 			{ name = "git" },
-			{ name = "buffer" },
 		},
 	})
 
 	-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 	cmp.setup.cmdline({ "/", "?" }, {
-		completion = { autocomplete = false },
 		mapping = mapping_cmdline,
 		sources = {
 			{ name = "buffer" },
 		},
+		-- completion = { autocomplete = false },
 	})
 
 	-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore).
 	cmp.setup.cmdline(":", {
-		completion = { autocomplete = false },
 		mapping = mapping_cmdline,
 		sources = {
 			{ name = "path" },
 			{ name = "cmdline" },
 		},
+		-- completion = { autocomplete = false },
 	})
 end
 
@@ -200,10 +189,7 @@ spec.dependencies = {
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
-	"hrsh7th/cmp-nvim-lua",
 	"hrsh7th/cmp-emoji",
-	"f3fora/cmp-spell",
-	"ray-x/cmp-treesitter",
 	"onsails/lspkind.nvim",
 	"saadparwaiz1/cmp_luasnip",
 	{
