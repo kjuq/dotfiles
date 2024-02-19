@@ -1,1 +1,1 @@
-vim.opt.wrap = true
+vim.opt_local.wrap = true
