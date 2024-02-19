@@ -170,7 +170,7 @@ spec.config = function()
 		sources = {
 			{ name = "buffer" },
 		},
-		-- completion = { autocomplete = false },
+		completion = { autocomplete = false },
 	})
 
 	-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore).
@@ -180,7 +180,7 @@ spec.config = function()
 			{ name = "path" },
 			{ name = "cmdline" },
 		},
-		-- completion = { autocomplete = false },
+		completion = { autocomplete = false },
 	})
 end
 
