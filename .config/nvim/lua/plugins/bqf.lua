@@ -23,19 +23,19 @@ spec.opts = function()
 			prevhist = "<", -- "<"
 			nexthist = ">", -- ">"
 			lastleave = "'\"", -- "'\""
-			stoggleup = "X", -- "<S-Tab>" (Substitution for Qfedit)
-			stoggledown = "x", -- "<Tab>" (Substitution for Qfedit)
-			stogglevm = "x", -- "<Tab>" (Substitution for Qfedit)
-			stogglebuf = "a", -- "'<Tab>" (Substitution for Qfedit)
-			sclear = "U", -- "z<Tab>" (Substitution for Qfedit)
+			stoggleup = "<Nop>", -- "<S-Tab>" (Substitution for Qfedit)
+			stoggledown = "<Nop>", -- "<Tab>" (Substitution for Qfedit)
+			stogglevm = "<Nop>", -- "<Tab>" (Substitution for Qfedit)
+			stogglebuf = "<Nop>", -- "'<Tab>" (Substitution for Qfedit)
+			sclear = "<Nop>", -- "z<Tab>" (Substitution for Qfedit)
 			pscrollup = "<C-b>", -- "<C-b>"
 			pscrolldown = "<C-f>", -- "<C-f>"
 			pscrollorig = "zo", -- "zo"
 			ptogglemode = "zp", -- "zp"
 			ptoggleitem = "<Nop>", -- "p"
 			ptoggleauto = "K", -- "P"
-			filter = "D", -- "zn" (Substitution for Qfedit)
-			filterr = "d", -- "zN" (Substitution for Qfedit)
+			filter = "<Nop>", -- "zn" (Substitution for Qfedit)
+			filterr = "<Nop>", -- "zN" (Substitution for Qfedit)
 			fzffilter = "<Nop>", -- "zf" (fzf isn't installed)
 		},
 	}
