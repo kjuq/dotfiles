@@ -17,6 +17,7 @@ end
 
 spec.opts = {
 	delete_to_trash = true,
+	skip_confirm_for_simple_edits = true,
 	cleanup_delay_ms = 1000,
 	keymaps = {
 		["g?"] = "actions.show_help",
