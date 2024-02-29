@@ -15,7 +15,10 @@ spec.config = function()
 	local lspconfig = require("lspconfig")
 	local common_opts = {
 		handlers = require("core.lsp").handlers,
-		capabilities = pcall(require, "cmp") and pcall(require, "cmp_nvim_lsp") and require("cmp_nvim_lsp").default_capabilities() or nil,
+		capabilities = pcall(require, "cmp")
+				and pcall(require, "cmp_nvim_lsp")
+				and require("cmp_nvim_lsp").default_capabilities()
+			or nil,
 	}
 
 	require("mason-lspconfig").setup_handlers({
