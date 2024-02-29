@@ -1,10 +1,10 @@
--- vim.scriptencoding              = "utf-8"
-
 vim.g.skip_loading_mswin = 1
 
 vim.g.did_install_default_menus = 1
 vim.g.did_install_syntax_menu = 1
 vim.g.did_indent_on = 1
+
+vim.g.python_recommended_style = false
 
 vim.g.loaded_2html_plugin = 1
 vim.g.loaded_gzip = 1
