@@ -14,6 +14,8 @@ spec.config = function()
 	local normal_sources = cmp.config.sources({
 		pcall(require, "plugins.skkeleton") and require("plugins.skkeleton").cond and { name = "skkeleton" } or {},
 	}, {
+		{ name = "fish" },
+	}, {
 		{ name = "path" },
 		{ name = "emoji" },
 		{ name = "luasnip" },
@@ -192,6 +194,7 @@ spec.dependencies = {
 	"hrsh7th/cmp-emoji",
 	"onsails/lspkind.nvim",
 	"saadparwaiz1/cmp_luasnip",
+	"mtoohey31/cmp-fish",
 	{
 		"petertriho/cmp-git",
 		dependencies = "nvim-lua/plenary.nvim",
