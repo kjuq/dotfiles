@@ -1,6 +1,7 @@
 ---@type LazySpec
 local spec = { "levouh/tint.nvim" }
-spec.event = { "FocusLost", "WinLeave" }
+-- spec.event = { "FocusLost", "WinLeave" } -- buggy on first launch of telescope
+spec.event = require("utils.lazy").verylazy
 
 spec.opts = {
 	tint = -75,
