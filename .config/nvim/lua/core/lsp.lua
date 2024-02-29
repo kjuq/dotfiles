@@ -86,26 +86,6 @@ local callback = function(ev)
 	end
 end
 
-M.setup = function()
-	vim.diagnostic.config({
-		signs = false,
-		virtual_text = virtual_text(vt),
-		float = {
-			border = require("utils.common").floatwinborder,
-			-- header = false,
-			format = function(diagnostic)
-				return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
-			end,
-		},
-	})
-
-	vim.api.nvim_create_autocmd("LspAttach", {
-		pattern = "*",
-		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-		callback = callback,
-	})
-end
-
 M.float_max_width = 80
 M.float_max_height = 20
 
@@ -124,5 +104,25 @@ M._handlers = { -- disable this if you prefer noice-hover-scroll
 	}),
 }
 
-M.setup()
+M.setup = function()
+	vim.diagnostic.config({
+		signs = false,
+		virtual_text = virtual_text(vt),
+		float = {
+			max_width = M.float_max_width,
+			max_height = M.float_max_height,
+			border = require("utils.common").floatwinborder,
+			-- header = false,
+			format = function(diagnostic)
+				return string.format("%s\n⊳ %s", diagnostic.message, diagnostic.source)
+			end,
+		},
+	})
+	vim.api.nvim_create_autocmd("LspAttach", {
+		pattern = "*",
+		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+		callback = callback,
+	})
+end
+
 return M
