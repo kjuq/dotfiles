@@ -100,21 +100,13 @@ map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 -- map("n", "N", "Nzz", { silent = true, desc = "Repeat the latest search in opposite direction" })
 
 -- Comfortable buffer deletion
-local bdelete = function(key)
-	map("n", key, vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
-end
-local bdelete_force = function(key)
-	map("n", key, function()
-		vim.cmd.bdelete({ bang = true })
-	end, {
-		silent = true,
-		desc = "Force delete a current buffer",
-	})
-end
-bdelete("gl")
-bdelete("<leader>x")
-bdelete_force("gL")
-bdelete_force("<leader>X")
+map("n", "gl", vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
+map("n", "gL", function()
+	vim.cmd.bdelete({ bang = true })
+end, {
+	silent = true,
+	desc = "Force delete a current buffer",
+})
 
 map("n", "gA", function()
 	vim.cmd("messages")

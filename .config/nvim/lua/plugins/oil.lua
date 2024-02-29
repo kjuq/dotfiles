@@ -7,7 +7,6 @@ spec.lazy = os.getenv("OILSSH") == nil
 spec.event = require("utils.lazy").verylazy
 
 spec.keys = {
-	map("<leader>i", "n", "Oil", "Open"),
 	map("gX", "n", "Oil", "Open"),
 }
 

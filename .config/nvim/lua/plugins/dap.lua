@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_map("<leader>d", "Dap: ")
+local map = require("utils.lazy").generate_map("<leader>D", "Dap: ")
 
 ---@type LazySpec
 local spec = { "mfussenegger/nvim-dap" }
