@@ -8,8 +8,6 @@ end
 
 spec.dependencies = {
 	"nvim-lua/plenary.nvim",
-	"nvim-neo-tree/neo-tree.nvim",
-	"stevearc/oil.nvim",
 }
 
 return spec
