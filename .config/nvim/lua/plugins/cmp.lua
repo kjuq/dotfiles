@@ -201,7 +201,6 @@ spec.dependencies = {
 	},
 	{
 		"zbirenbaum/copilot-cmp",
-		event = { "LspAttach" },
 		opts = {},
 	},
 	{
