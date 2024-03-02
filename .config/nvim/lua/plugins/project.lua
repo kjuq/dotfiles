@@ -5,12 +5,12 @@ spec.event = { "BufNewFile", "BufReadPost" } -- necessary
 
 spec.keys = {
 	{
-		"<leader>fp",
+		"<leader>fP",
 		mode = { "n" },
 		function()
-			local has_telescope, _ = pcall(require, "telescope")
+			local has_telescope, telescope = pcall(require, "telescope")
 			if has_telescope then
-				require("telescope").extensions.projects.projects({})
+				telescope.extensions.projects.projects({})
 			else
 				print("Telescope is not installed")
 			end

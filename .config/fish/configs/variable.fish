@@ -25,6 +25,10 @@ set --export HOMEBREW_NO_ENV_HINTS 1
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 
+# rclone
+set --export RCLONE_PROGRESS true
+set --export RCLONE_EXCLUDE "*.DS_Store"
+
 # GnuPG and password-store
 set --export PASSWORD_STORE_DIR "$HOME/password-store"
 set --export GPG_TTY (tty)

@@ -1,8 +1,7 @@
-local map = require("utils.lazy").generate_map("gcd", "Neogen: ")
+local map = require("utils.lazy").generate_map("<leader>d", "Neogen: ") -- [d]oc string
 
 ---@type LazySpec
 local spec = { "danymat/neogen" }
-spec.lazy = false
 
 spec.keys = {
 	map("f", "n", function()

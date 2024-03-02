@@ -1,13 +1,21 @@
 local map = require("utils.lazy").generate_cmd_map("", "Oil: ")
 local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
+local check_ssh = function()
+	for _, v in pairs(vim.v.argv) do
+		if vim.startswith(v, "oil-ssh://") then
+			return true
+		end
+	end
+	return false
+end
+
 ---@type LazySpec
 local spec = { "stevearc/oil.nvim" }
-spec.lazy = os.getenv("OILSSH") == nil
+spec.lazy = not check_ssh()
 spec.event = require("utils.lazy").verylazy
 
 spec.keys = {
-	map("<leader>i", "n", "Oil", "Open"),
 	map("gX", "n", "Oil", "Open"),
 }
 
@@ -17,6 +25,7 @@ end
 
 spec.opts = {
 	delete_to_trash = true,
+	skip_confirm_for_simple_edits = true,
 	cleanup_delay_ms = 1000,
 	keymaps = {
 		["g?"] = "actions.show_help",
@@ -29,8 +38,7 @@ spec.opts = {
 		["-"] = "actions.parent",
 		["_"] = "actions.open_cwd",
 		["`"] = "actions.cd",
-		["~"] = "actions.tcd",
-		["go"] = "actions.change_sort",
+		["~"] = "actions.change_sort",
 		["gx"] = "actions.open_external",
 		["g."] = "actions.toggle_hidden",
 		["g\\"] = "actions.toggle_trash",

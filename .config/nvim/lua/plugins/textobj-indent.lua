@@ -4,8 +4,8 @@ local map = require("utils.lazy").generate_map("", "Textobj-indent: ")
 local spec = { "kana/vim-textobj-indent" }
 
 spec.keys = {
-	map("aI", { "x", "o" }, "<Plug>(textobj-indent-a)", "Around"),
-	map("iI", { "x", "o" }, "<Plug>(textobj-indent-i)", "Inner"),
+	map("aI", { "x", "o" }, "<Plug>(textobj-indent-a)", "Around", { silent = true }),
+	map("iI", { "x", "o" }, "<Plug>(textobj-indent-i)", "Inner", { silent = true }),
 }
 
 spec.init = function()

@@ -18,7 +18,7 @@ spec.opts = {
 		disable = { "perl" },
 	},
 
-	indent = { enable = true },
+	indent = { enable = false },
 
 	incremental_selection = {
 		enable = true,
