@@ -61,7 +61,6 @@ root_files="
 .docker/config.json
 .clang-format
 .ignore
-.ssh/config
 "
 
 library="
