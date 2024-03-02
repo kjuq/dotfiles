@@ -141,7 +141,7 @@ end, { desc = "Toggle number style" })
 local edit = function(filepath)
 	vim.cmd.edit(filepath)
 end
-local doc = "~/Documents/__user"
+local doc = "~/docs"
 local confroot = os.getenv("XDG_CONFIG_HOME") .. "/nvim"
 map("n", "go", "<Nop>")
 map("n", "got", function()
