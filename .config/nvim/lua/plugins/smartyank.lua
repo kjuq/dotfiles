@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "ibhagwan/smartyank.nvim" }
-spec.event = "BufReadPost"
+spec.event = { "BufReadPost" }
 
 spec.opts = {
 	highlight = {
