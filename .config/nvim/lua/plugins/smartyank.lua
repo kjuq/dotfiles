@@ -6,8 +6,11 @@ spec.opts = {
 	highlight = {
 		enabled = false,
 	},
+	clipboard = {
+		enabled = false,
+	},
 	osc52 = {
-		silent = false,
+		silent = true,
 	},
 }
 
