@@ -36,7 +36,7 @@ end
 add_font("CozetteVector")
 add_font("PixelMplus12")
 add_font("Menlo")
-add_font("Hiragino Sans")          -- MacOS's builtin
+add_font("Hiragino Sans") -- MacOS's builtin
 add_font("SourceHanSansJP-Normal") -- for linux, install `adobe-source-han-sans-jp-fonts`
 
 C.font = wez.font_with_fallback(fonts)
@@ -83,7 +83,7 @@ C.keys = {
 if os.execute("[ $(uname) = 'Darwin' ]") then
 	C.font_size = 22
 elseif os.execute("[ $(uname) = 'Linux' ]") then
-	C.font_size = 12
+	C.font_size = 14
 end
 
 -- and finally, return the configuration to wezterm
