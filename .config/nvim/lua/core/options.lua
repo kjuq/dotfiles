@@ -66,9 +66,9 @@ opt.numberwidth = 1
 opt.helplang = { "en", "ja" }
 opt.fileencodings = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }
 
--- Disable a leader key time out
-opt.timeout = false
-opt.ttimeout = false
+-- -- Disable a leader key time out (buggy when ssh-ing KSGO from KMMN)
+-- opt.timeout = false
+-- opt.ttimeout = false
 
 opt.iskeyword:remove("_")
 
