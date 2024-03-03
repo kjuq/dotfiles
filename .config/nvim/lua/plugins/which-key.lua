@@ -27,6 +27,8 @@ end
 local spec = { "folke/which-key.nvim" }
 spec.event = require("utils.lazy").verylazy
 
+spec.enabled = os.getenv("SSH_TTY") == nil -- which-key breaks osc52
+
 spec.keys = {
 	map("w", "n", toggle, "Toggle"),
 	map("W", "n", function()
