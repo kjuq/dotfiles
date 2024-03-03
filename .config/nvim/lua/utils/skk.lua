@@ -9,10 +9,10 @@ local group = vim.api.nvim_create_augroup("user_skk_toggle", {})
 ---@param callback fun()
 M.toggle_japanese = function(callback)
 	if _G._user_skk_jp_mode_enabled then
-		print("Japanese mode disabled")
+		print("Japanese mode disabled (English)")
 		vim.api.nvim_clear_autocmds({ group = group })
 	else
-		print("Japanese mode enabled")
+		print("Japanese mode enabled (Japanese)")
 		vim.api.nvim_create_autocmd("InsertEnter", {
 			group = group,
 			pattern = "*",
@@ -69,13 +69,11 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 	return {
 		map_toggle("<C-Space>"),
 		map_toggle_jp("<leader>aj"),
-		map_enable("<F19>"),
 		map_enable("<C-g>n"),
 		map_enable("<C-g><C-n>"),
-		map_disable("<F18>"),
 		map_disable("<C-g>e"),
 		map_disable("<C-g><C-e>"),
-		map_toggle_jp_in_insert_mode("<C-g>J"),
+		map_toggle_jp_in_insert_mode("<C-g>N"),
 	}
 end
 
