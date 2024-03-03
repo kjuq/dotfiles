@@ -115,7 +115,7 @@ spec.opts = function()
 	ins_left({
 		-- mode component
 		function()
-			return "󰅬"
+			return "" -- "", "", "", "󰅬"
 		end,
 		cond = conds.hide_in_width,
 		color = function()
