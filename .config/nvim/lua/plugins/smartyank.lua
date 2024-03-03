@@ -12,6 +12,7 @@ spec.opts = {
 	osc52 = {
 		silent = true,
 	},
+	validate_yank = false,
 }
 
 return spec
