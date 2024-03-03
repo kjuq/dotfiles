@@ -6,7 +6,7 @@ alias .......="cd ../../../../../.."
 alias ........="cd ../../../../../../.."
 
 if command --search --quiet eza
-	alias ls="eza --group-directories-first --icons"
+	alias ls="eza --group-directories-first --icons --classify"
 	alias tree="ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\""
 else if [ (uname) = "Linux" ]
 	alias ls="ls --color=auto --classify --group-directories-first"
