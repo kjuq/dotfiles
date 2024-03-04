@@ -235,6 +235,16 @@ spec.opts = function()
 		},
 	})
 
+	ins_left({
+		function()
+			return "[JAPANESE INPUT]"
+		end,
+		cond = function()
+			return _G._user_skk_jp_mode_enabled
+		end,
+		color = { fg = colors.orange },
+	})
+
 	ins_right({
 		"macro-recording",
 		fmt = function()
