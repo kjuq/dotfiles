@@ -110,8 +110,8 @@ spec.keys = {
 spec.config = function()
 	local actions = require("telescope.actions")
 	local actions_layout = require("telescope.actions.layout")
-	local prev_up = "<M-k>"
-	local prev_down = "<M-j>"
+	local prev_up = "<C-y>"
+	local prev_down = "<C-e>"
 	local prev_right = "<M-l>"
 	local prev_left = "<M-h>"
 
@@ -133,7 +133,7 @@ spec.config = function()
 					["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 					["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					["<C-l>"] = actions.complete_tag,
-					["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+					["<C-g>?"] = actions.which_key, -- keys from pressing <C-/>
 					["<C-w>"] = { "<c-s-w>", type = "command" },
 					-- disable c-j because we dont want to allow new lines #2123
 					["<C-j>"] = actions.nop,
