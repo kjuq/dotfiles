@@ -5,6 +5,7 @@ spec.event = { "BufWinEnter" }
 spec.init = function()
 	_G._user_flatten_number = vim.o.number
 	_G._user_flatten_relativenumber = vim.o.relativenumber
+	_G._user_flatten_list = vim.o.list
 end
 
 spec.opts = function()
@@ -19,6 +20,7 @@ spec.opts = function()
 			post_open = function(bufnr, _, filetype)
 				vim.opt.number = _G._user_flatten_number
 				vim.opt.relativenumber = _G._user_flatten_relativenumber
+				vim.opt.list = _G._user_flatten_list
 
 				if saved_terminal then
 					saved_terminal:close()
