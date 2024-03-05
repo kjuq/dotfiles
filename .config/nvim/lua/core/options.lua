@@ -54,10 +54,10 @@ opt.listchars = {
 	space = "⋅",
 	eol = "↵",
 	nbsp = "▶",
-	extends = "»",
-	precedes = "«",
+	-- extends = "»",
+	-- precedes = "«",
 }
-opt.fillchars = "eob: " -- hide tildes in blank space after end of file
+opt.fillchars = { eob = " " } -- hide tildes in blank space after end of file
 
 opt.number = false
 opt.relativenumber = true
