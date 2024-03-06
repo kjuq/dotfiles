@@ -47,7 +47,7 @@ opt.expandtab = false
 opt.shiftwidth = 0 -- obey tabstop
 opt.shiftround = true
 
-opt.list = true
+opt.list = false
 opt.listchars = {
 	trail = "◊",
 	tab = "│⋅",
