@@ -65,6 +65,11 @@ spec.opts = function()
 				},
 			},
 		},
+		views = {
+			hover = {
+				scrollbar = false,
+			},
+		},
 	}
 end
 
