@@ -1,9 +1,12 @@
 local map = vim.keymap.set
 
+map({ "n", "v" }, "<Space>", "<Nop>")
+map("n", "ga", "<Nop>")
+map("n", "go", "<Nop>")
+
 -- Space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Disable Ctrl-c to allow <C-c> keymappings (e.g. <C-w><C-c>, etc
 map("n", "<C-c>", "<Nop>", { silent = true })
@@ -70,13 +73,13 @@ map("n", "]l", vim.cmd.cnext, { desc = "Next location on QuickFix" })
 map("n", "[l", vim.cmd.cprevious, { desc = "Previous location on QuickFix" })
 
 -- Frequently used keymaps
-local update = function(key)
-	map("n", key, vim.cmd.update, { silent = true, desc = "Update" })
+local write = function(key)
+	map("n", key, vim.cmd.write, { silent = true, desc = "Write" })
 end
-local update_noautocmd = function(key)
+local write_noautocmd = function(key)
 	map("n", key, function()
-		vim.cmd("noautocmd update")
-	end, { silent = true, desc = "Update w/o autocmd" })
+		vim.cmd("noautocmd write")
+	end, { silent = true, desc = "Write w/o autocmd" })
 end
 local quit = function(key)
 	map("n", key, vim.cmd.quit, { silent = true, desc = "Quit" })
@@ -85,13 +88,13 @@ local quit_all = function(key)
 	map("n", key, vim.cmd.quitall, { silent = true, desc = "Quit all" })
 end
 
-update("gs")
-update_noautocmd("gS")
+write("gs")
+write_noautocmd("gS")
 quit("gh")
 quit_all("gH")
 
-update("<leader>w")
-update_noautocmd("<leader>W")
+write("<leader>w")
+write_noautocmd("<leader>W")
 quit("<leader>q")
 quit_all("<leader>Q")
 
@@ -119,6 +122,9 @@ end, { desc = "Toggle wrap" })
 map("n", "gas", function()
 	vim.opt.spell = not vim.o.spell
 end, { desc = "Toggle spell check" })
+map("n", "gal", function()
+	vim.opt.list = not vim.o.list
+end, { desc = "Toggle list" })
 map("n", "gan", function()
 	local opt = vim.opt
 	local o = vim.o
@@ -145,7 +151,6 @@ local edit = function(filepath)
 end
 local doc = "~/docs"
 local confroot = os.getenv("XDG_CONFIG_HOME") .. "/nvim"
-map("n", "go", "<Nop>")
 map("n", "got", function()
 	edit(doc .. "/__todo/todo.txt")
 end, { desc = "Edit todo.txt" })
