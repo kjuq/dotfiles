@@ -66,7 +66,7 @@ map("n", "<C-S-Tab>", vim.cmd.bprevious, { silent = true, desc = "Go to the prev
 -- tab movement
 map("n", "]T", vim.cmd.tabnext, { silent = true, desc = "Go to the next tab" })
 map("n", "[T", vim.cmd.tabprevious, { silent = true, desc = "Go to the previous tab" })
-map("n", "gaT", vim.cmd.tabclose, { silent = true, desc = "Close current tab page" })
+map("n", "zT", vim.cmd.tabclose, { silent = true, desc = "Close current tab page" })
 
 -- Quickfix
 map("n", "]l", vim.cmd.cnext, { desc = "Next location on QuickFix" })
