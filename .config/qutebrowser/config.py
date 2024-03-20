@@ -77,6 +77,9 @@ config.bind("<Right>", ":scroll-page 0 " + fullpage_size)
 config.unbind("<Ctrl-e>", mode="insert")
 config.bind(ctrl_u, ":rl-unix-line-discard", mode="command")
 
+config.unbind("<Ctrl-a>", mode="normal")
+config.unbind("<Ctrl-x>", mode="normal")
+
 # {{{ Colors https://github.com/koekeishiya/dotfiles/blob/master/qutebrowser/config.py
 
 # Text color of the completion widget. May be a single color to use for

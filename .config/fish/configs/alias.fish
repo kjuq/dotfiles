@@ -48,13 +48,9 @@ if command --search --quiet pip3
 end
 
 if command --search --quiet lnks
-	set --local lnks_dir "$HOME/Documents/__user/__bookmarks"
+	set --local lnks_dir "$HOME/docs/__bookmarks"
 	alias lnks="lnks --dir $lnks_dir"
 	alias lnks_chrome="lnks --dir $lnks_dir/chrome"
-end
-
-if command --search --quiet lnks
-	alias vim="echo 'vim is too old. Maybe nvim? (Given args:'"
 end
 
 if [ (uname) = "Linux" ]
