@@ -2,7 +2,7 @@ local map = require("utils.lazy").generate_map("<leader>b", "Bufferline: ")
 
 ---@type LazySpec
 local spec = { "akinsho/bufferline.nvim" }
-spec.version = "*"
+-- spec.version = "*"
 spec.event = { "BufNew", "WinScrolled" }
 
 spec.keys = {

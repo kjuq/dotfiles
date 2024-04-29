@@ -70,8 +70,6 @@ opt.fileencodings = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }
 -- opt.timeout = false
 -- opt.ttimeout = false
 
-opt.iskeyword:remove("_")
-
 -- Disable welcome message
 opt.shortmess:append("I")
 

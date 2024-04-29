@@ -67,7 +67,7 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 	end
 
 	return {
-		map_toggle("<C-Space>"),
+		map_enable("<C-Space>"),
 		map_toggle_jp("<leader>aj"),
 		map_enable("<C-g>n"),
 		map_enable("<C-g><C-n>"),

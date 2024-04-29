@@ -20,6 +20,7 @@ spec.keys = {
 }
 
 spec.opts = {
+	manual_mode = true,
 	detection_methods = { "pattern" },
 }
 
