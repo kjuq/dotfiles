@@ -24,18 +24,15 @@ local callback = function(ev)
 
 	local vlb = vim.lsp.buf
 
+	-- rename, code action, reference, and signature help are defined by vim/_defaults.lua
+
 	map("n", "[d", vlb.type_definition, "Go to type definition")
 	map("n", "]d", vlb.implementation, "Go to implementation")
-	map("n", "gr", vlb.references, "Go to reference")
 	-- map("n", "gD", vlb.declaration, "Go to Declaration")
-	-- map("n", "<KEYBIND>", vlb.code_action, "Code action")
 
 	map("n", "gd", vlb.definition, "Go to definition")
 
-	map("n", "<M-r>", vlb.rename, "Rename")
-
-	-- map("n", "K", vlb.hover, "Hover Documentation") -- even without this, K is automatically mapped to see hover docs
-	map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Help")
+	map({ "n", "v" }, "<C-s>", vlb.signature_help, "Signature Help") -- imap is defined by default (vim/_defaults.lua)
 
 	map("n", "<M-w><M-a>", vlb.add_workspace_folder, "Add folder to workspace")
 	map("n", "<M-w><M-r>", vlb.remove_workspace_folder, "Remove folder from workspace")
@@ -49,7 +46,6 @@ local callback = function(ev)
 	end, "Toggle virtual text of diagnotics")
 
 	-- Diagnostics
-	map("n", "<M-e>", vim.diagnostic.open_float, "Show diagnostics")
 	map("n", "[e", vim.diagnostic.goto_prev, "Go to prev diagnostics")
 	map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostics")
 	map("n", "<M-l>", vim.diagnostic.setloclist, "Set diagnostics into loclist")
@@ -79,7 +75,7 @@ local callback = function(ev)
 			group = group,
 			buffer = bufnr,
 			callback = function()
-				vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting
+				vim.diagnostic.enable(true) -- fix not showing diagnostics after formatting
 				vim.fn.winrestview(winpos) -- restore cursor position
 			end,
 		})

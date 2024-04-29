@@ -7,9 +7,9 @@ spec.keys = {
 	map("<M-i>", "n", "Lspsaga incoming_calls", "Incoming calls"),
 	map("<M-o>", "n", "Lspsaga outgoing_calls", "Outgoing calls"),
 	map("gD", "n", "Lspsaga finder def+ref+imp+tyd", "Finder"),
-	-- map("<M-f>", { "n", "v" }, "Lspsaga code_action", "Code action"),
-	-- map("gd", "n", "Lspsaga goto_definition", "Definition"),
-	-- map("K", "n", "Lspsaga hover_doc", "Hover doc"),
+	-- map("", { "n", "v" }, "Lspsaga code_action", "Code action"),
+	-- map("", "n", "Lspsaga goto_definition", "Definition"),
+	-- map("", "n", "Lspsaga hover_doc", "Hover doc"),
 }
 
 spec.opts = {
