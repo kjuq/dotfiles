@@ -18,6 +18,13 @@ alias lla="ll --all"
 alias l1="ls -1"
 alias trea="tree -a"
 
+if command --search --quiet nvim
+	alias nvimt="nvim +EditTodo"
+	alias nvimb="nvim +EditBookmarks"
+	alias nvimr="nvim +EditReadinglist"
+	alias nvimd="nvim +EditDailynote"
+end
+
 if command --search --quiet dust
 	alias dust="dust --reverse"
 end

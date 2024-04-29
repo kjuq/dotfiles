@@ -146,26 +146,11 @@ map("n", "gan", function()
 end, { desc = "Toggle number style" })
 
 -- open specific files via keymaps
-local edit = function(filepath)
-	vim.cmd.edit(filepath)
-end
-local doc = "~/docs"
-local confroot = os.getenv("XDG_CONFIG_HOME") .. "/nvim"
-map("n", "got", function()
-	edit(doc .. "/__todo/todo.txt")
-end, { desc = "Edit todo.txt" })
-map("n", "gob", function()
-	edit(doc .. "/__bookmarks/bookmarks.txt")
-end, { desc = "Edit bookmarks.txt" })
-map("n", "gor", function()
-	edit(doc .. "/__bookmarks/readinglist.txt")
-end, { desc = "Edit readinglist.txt" })
-map("n", "god", function()
-	edit(doc .. "/__daily/" .. os.date("%Y-%m-%d.md"))
-end, { desc = "Edit daily note" })
-map("n", "gos", function()
-	edit(confroot .. "/snippets/" .. vim.o.ft .. ".snippets")
-end, { desc = "Edit snippet" })
+map("n", "got", "<CMD>EditTodo<CR>", { desc = "Edit todo.txt" })
+map("n", "gob", "<CMD>EditBookmarks<CR>", { desc = "Edit bookmarks.txt" })
+map("n", "gor", "<CMD>EditReadinglist<CR>", { desc = "Edit readinglist.txt" })
+map("n", "god", "<CMD>EditDailynote<CR>", { desc = "Edit daily note" })
+map("n", "gos", "<CMD>EditSnippet<CR>", { desc = "Edit snippet" })
 
 -- TODO: check if Netrw is loaded or not
 map("n", "gX", function()
