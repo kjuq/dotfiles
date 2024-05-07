@@ -84,19 +84,21 @@ end
 local quit = function(key)
 	map("n", key, vim.cmd.quit, { silent = true, desc = "Quit" })
 end
-local quit_all = function(key)
-	map("n", key, vim.cmd.quitall, { silent = true, desc = "Quit all" })
+local quit_force = function(key)
+	map("n", key, function()
+		vim.cmd.quit({ bang = true })
+	end, { silent = true, desc = "Force quit" })
 end
 
 write("gs")
 write_noautocmd("gS")
 quit("gh")
-quit_all("gH")
+quit_force("gH")
 
 write("<leader>w")
 write_noautocmd("<leader>W")
 quit("<leader>q")
-quit_all("<leader>Q")
+quit_force("<leader>Q")
 
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
