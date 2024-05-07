@@ -12,12 +12,9 @@ spec.config = function()
 
 	local copilot_source = cmp.config.sources({ { name = "copilot" } })
 	local normal_sources = cmp.config.sources({
-		pcall(require, "plugins.skkeleton") and require("plugins.skkeleton").cond and { name = "skkeleton" } or {},
-	}, {
-		{ name = "fish" },
-	}, {
 		{ name = "path" },
 		{ name = "emoji" },
+		{ name = "fish" },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
@@ -183,6 +180,33 @@ spec.config = function()
 			{ name = "cmdline" },
 		},
 		completion = { autocomplete = false },
+	})
+
+	-- enable only skkeleton sources
+	local function cmp_enable_skk()
+		cmp.setup.buffer({
+			sources = cmp.config.sources({
+				{ name = "skkeleton" },
+			}),
+		})
+	end
+
+	local function cmp_disable_skk()
+		cmp.setup.buffer({
+			sources = normal_sources,
+		})
+	end
+
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = { "skkeleton-enable-pre", "eskk-enable-pre" },
+		group = vim.api.nvim_create_augroup("skk-enable-pre", {}),
+		callback = cmp_enable_skk,
+	})
+
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = { "skkeleton-disable-pre", "eskk-disable-pre" },
+		group = vim.api.nvim_create_augroup("skk-disable-pre", {}),
+		callback = cmp_disable_skk,
 	})
 end
 
