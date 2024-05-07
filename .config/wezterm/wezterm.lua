@@ -77,6 +77,10 @@ C.keys = {
 
 	key("Backspace", "CMD", wez.action.SendKey({ key = "u", mods = "CTRL" })),
 	key("Backspace", "CTRL", wez.action.SendKey({ key = "w", mods = "CTRL" })),
+
+	key("F18", "", wez.action.Nop),
+	key("F19", "", wez.action.Nop),
+	key("F20", "", wez.action.Nop),
 }
 
 -- check os

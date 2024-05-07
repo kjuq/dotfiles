@@ -59,4 +59,6 @@ bind(cmd_opt, "e", function()
 	hs.window.focusedWindow():maximize()
 end)
 
+bind({}, "F20", function() end)
+
 hs.loadSpoon("EmmyLua")

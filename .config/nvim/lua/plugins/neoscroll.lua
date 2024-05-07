@@ -1,6 +1,6 @@
 local map = require("utils.lazy").generate_map("", "Neoscroll: ")
 
-local duration = 150
+local duration = 100
 
 ---@type LazySpec
 local spec = { "karb94/neoscroll.nvim" }
