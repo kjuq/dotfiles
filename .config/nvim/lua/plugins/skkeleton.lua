@@ -29,6 +29,7 @@ spec.config = function()
 		["!"] = { "!", "" },
 		["?"] = { "?", "" },
 		[":"] = { ":", "" },
+		["~"] = { "～", "" },
 	})
 
 	vim.fn["skkeleton#register_keymap"]("henkan", "<C-h>", "henkanBackward")

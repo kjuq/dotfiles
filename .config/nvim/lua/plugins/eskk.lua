@@ -24,6 +24,7 @@ spec.config = function()
 			vim.cmd([[ call t.add_map("!", "!") ]])
 			vim.cmd([[ call t.add_map("?", "?") ]])
 			vim.cmd([[ call t.add_map(":", ":") ]])
+			vim.cmd([[ call t.add_map("~", "～") ]])
 			vim.cmd([[ call t.add_map("z ", "　") ]])
 			vim.cmd([[ call eskk#register_mode_table("hira", t) ]])
 		end,
