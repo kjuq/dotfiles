@@ -22,28 +22,6 @@ map("c", "<C-d>", "<Del>") -- Lists completions by default, so <C-i> is enough
 map("c", "<C-p>", "<Up>")
 map("c", "<C-n>", "<Down>")
 
--- Don't update register when not intend to do so
-
-map("n", "x", function()
-	return vim.v.count == 0 and '"_x' or "x"
-end, { expr = true, silent = true, desc = "Delete N characters after the cursor" })
-
-map("n", "X", function()
-	return vim.v.count == 0 and '"_X' or "X"
-end, { expr = true, silent = true, desc = "Delete N characters before the cursor" })
-
-map("n", "s", function()
-	return vim.v.count == 0 and '"_s' or "s"
-end, { expr = true, silent = true, desc = "Delete N characters and start insert" })
-
--- map("n", "S", '"_S', { silent = true, desc = "Delete N lines and start insert" })
--- map("n", "c", '"_c', { silent = true, desc = "Delete Nmove text and start insert" })
--- map("n", "C", '"_C', { silent = true, desc = "Delete Nmove text and start insert" })
--- map("n", "d", '"_d', { silent = true, desc = "Delete Nmove text" })
--- map("n", "D", '"_D', { silent = true, desc = "Delete until the end of the line" })
-map("x", "p", "P", { silent = true, desc = "Paste; registers are unchanged" })
-map("x", "P", "p", { silent = true, desc = "Paste; deleted text in unnamed register" })
-
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
 map({ "n", "x" }, "k", function()
@@ -52,10 +30,6 @@ end, { expr = true, silent = true })
 map({ "n", "x" }, "j", function()
 	return vim.v.count == 0 and "gj" or "j"
 end, { expr = true, silent = true })
--- map({ "n", "x", "o" }, "$", "g$")
--- map({ "n", "x", "o" }, "g$", "$")
--- map({ "n", "x", "o" }, "^", "g^")
--- map({ "n", "x", "o" }, "g^", "^")
 
 -- Buffer movement instead of tab's
 map("n", "gt", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
