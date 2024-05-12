@@ -42,7 +42,6 @@ spec.config = function()
 	local abort = function(fallback)
 		if cmp.visible() then
 			cmp.abort()
-			cmp.core:reset() -- https://github.com/hrsh7th/nvim-cmp/issues/1251#issuecomment-1365229958
 		else
 			fallback()
 		end
