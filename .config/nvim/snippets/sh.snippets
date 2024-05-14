@@ -12,7 +12,7 @@ snippet #!
 	#!/usr/bin/env bash
 
 snippet scriptdir
-	SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+	script_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 snippet scriptname
-	SCRIPT_NAME="$(basename "\$0")"
+	script_name="$(basename "\$0")"

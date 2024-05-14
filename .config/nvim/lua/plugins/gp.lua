@@ -27,9 +27,9 @@ spec.cmd = {
 spec.keys = {
 	map("n", nv, "GpChatNew", "Open new chat"),
 	map("p", nv, "GpChatPaste", "Paste selected text to a chat"),
-	map("c", nv, "GpChatToggle", "Toggle chat"),
+	map("o", nv, "GpChatToggle", "Toggle chat"),
 	map("f", nv, "GpChatFinder", "Search through chats"),
-	map("o", nv, "GpChatRespond", "Request a new GPT response"),
+	map("R", nv, "GpChatRespond", "Request a new GPT response"),
 	map("d", nv, "GpChatDelete", "Delete the current chat"),
 	map("r", nv, "GpRewrite", "Open prompt to rewrite codes"),
 	map("j", nv, "GpAppend", "Open prompt to append codes"),
