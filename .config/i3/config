@@ -154,9 +154,9 @@ set $ws8 8
 set $ws9 9
 
 # switch to workspace
-bindsym $mod+Ctrl+Mod1+period workspace $ws1
-bindsym $mod+Ctrl+Mod1+comma workspace $ws2
-bindsym $mod+Ctrl+Mod1+semicolon workspace $ws3
+bindsym $mod+Ctrl+Mod1+semicolon workspace $ws1
+bindsym $mod+Ctrl+Mod1+period workspace $ws2
+bindsym $mod+Ctrl+Mod1+comma workspace $ws3
 bindsym $mod+Ctrl+Mod1+bracketright workspace $ws4
 bindsym $mod+Ctrl+Mod1+bracketleft workspace $ws5
 bindsym $mod+Ctrl+Mod1+slash workspace $ws6
