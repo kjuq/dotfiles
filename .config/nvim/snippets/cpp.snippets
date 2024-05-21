@@ -5,5 +5,13 @@ snippet forauto
 		${0:CONTENT}
 	}
 
+snippet rep
+	for (int ${1:i} : views::iota(${2:a}, ${3:b})) {
+		${0}
+	}
+
 snippet cout
 	cout << ${1} << endl;
+
+snippet cin
+	cin >> ${1};
