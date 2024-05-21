@@ -55,6 +55,7 @@ spec.dependencies = {
 		"delphinus/skkeleton_indicator.nvim",
 		opts = {
 			alwaysShown = false,
+			fadeOutMs = 0,
 			zindex = 9999,
 		},
 	},

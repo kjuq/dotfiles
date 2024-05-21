@@ -34,7 +34,7 @@ opt.smoothscroll = true
 opt.breakindent = true
 opt.breakindentopt:append("list:-1") -- indent wrapped list
 
-opt.cursorline = true
+-- opt.cursorline = true
 opt.cursorlineopt = { "screenline" }
 
 opt.splitright = true
@@ -60,7 +60,7 @@ opt.listchars = {
 opt.fillchars = { eob = " " } -- hide tildes in blank space after end of file
 
 opt.number = false
-opt.relativenumber = true
+opt.relativenumber = false
 opt.numberwidth = 1
 
 opt.helplang = { "en", "ja" }
