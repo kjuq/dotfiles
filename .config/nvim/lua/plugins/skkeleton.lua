@@ -50,7 +50,7 @@ end
 spec.dependencies = {
 	"vim-denops/denops.vim",
 	"skk-dev/dict",
-	"rinx/cmp-skkeleton",
+	{ "rinx/cmp-skkeleton", cond = pcall(require, "cmp") },
 	{
 		"delphinus/skkeleton_indicator.nvim",
 		opts = {
