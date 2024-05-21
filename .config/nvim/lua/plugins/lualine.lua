@@ -328,7 +328,7 @@ spec.opts = function()
 	})
 
 	ins_right({
-		"fileformat",
+		"fileformat", -- line endings
 		fmt = string.upper,
 		cond = conds.filefmt_not_unix,
 		icons_enabled = false,

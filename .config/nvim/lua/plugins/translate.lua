@@ -3,8 +3,6 @@ local map = require("utils.lazy").generate_map("<leader>", "Translate: ")
 ---@type LazySpec
 local spec = { "skanehira/denops-translate.vim" }
 
-spec.lazy = false
-
 spec.cmd = "Translate"
 
 spec.keys = {
