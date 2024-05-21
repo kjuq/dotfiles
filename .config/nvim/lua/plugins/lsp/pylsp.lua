@@ -1,6 +1,7 @@
 local M = {}
 
-local python_path = os.getenv("HOMEBREW_PREFIX") .. "/bin/python3"
+local python_path = vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV or vim.env.HOMEBREW_PREFIX
+python_path = python_path .. "/bin/python3"
 
 M.opts = {
 	settings = {
