@@ -24,15 +24,20 @@ local callback = function(ev)
 
 	local vlb = vim.lsp.buf
 
-	-- rename, code action, reference, and signature help are defined by vim/_defaults.lua
-
 	map("n", "[d", vlb.type_definition, "Go to type definition")
 	map("n", "]d", vlb.implementation, "Go to implementation")
 	-- map("n", "gD", vlb.declaration, "Go to Declaration")
 
 	map("n", "gd", vlb.definition, "Go to definition")
 
-	map({ "n", "v" }, "<C-s>", vlb.signature_help, "Signature Help") -- imap is defined by default (vim/_defaults.lua)
+	-- rename, code action, reference, and signature help will be defined at vim/_defaults.lua (?)
+	map("n", "gr", vlb.references, "Go to reference")
+	map("n", "crn", vlb.rename, "Rename")
+	map("n", "<M-e>", vim.diagnostic.open_float, "Show diagnostics")
+	map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Help")
+	map("n", "crr", vlb.code_action, "Code action")
+	map("x", "<C-r>r", vlb.code_action, "Code action")
+	map("x", "<C-r><C-r>", vlb.code_action, "Code action")
 
 	map("n", "<M-w><M-a>", vlb.add_workspace_folder, "Add folder to workspace")
 	map("n", "<M-w><M-r>", vlb.remove_workspace_folder, "Remove folder from workspace")
