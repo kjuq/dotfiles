@@ -50,6 +50,7 @@ spec.opts = function()
 		["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
 		["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
 		["<leader>r"] = { name = "Resume", _ = "which_key_ignore" },
+		["<leader>s"] = { name = "Substitute", _ = "which_key_ignore" },
 		["<leader>t"] = { name = "Trouble", _ = "which_key_ignore" },
 		["<M-w>"] = { name = "Workspace", _ = "which_key_ignore" },
 	})
