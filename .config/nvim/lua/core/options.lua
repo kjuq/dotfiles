@@ -25,9 +25,11 @@ opt.updatetime = 200
 opt.ignorecase = true
 opt.smartcase = true
 
+opt.magic = false
+
 opt.foldmethod = "marker"
 opt.foldopen:remove("block")
--- opt.foldtext       = "v:lua.vim.treesitter.foldtext()" -- laggy
+-- opt.foldtext = "v:lua.vim.treesitter.foldtext()" -- buggy and laggy?
 
 opt.wrap = false
 opt.smoothscroll = true
