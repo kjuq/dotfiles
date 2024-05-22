@@ -1,14 +1,16 @@
 local M = {}
 
-local python_path = vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV or vim.env.HOMEBREW_PREFIX
-python_path = python_path .. "/bin/python3"
+local default_path = vim.system({ "which", "python" }):wait().stdout
+local path = vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV .. "/bin/python3" or default_path
+
+print(path)
 
 M.opts = {
 	settings = {
 		pylsp = {
 			plugins = {
 				jedi = {
-					environment = python_path,
+					environment = path,
 				},
 			},
 		},
