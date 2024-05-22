@@ -108,6 +108,9 @@ spec.dependencies = {
 			dap.listeners.before.event_exited["dapui_config"] = dapui.close
 			require("dapui").setup()
 		end,
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+		},
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
