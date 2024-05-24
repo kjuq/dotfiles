@@ -189,6 +189,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Open applications on specific workspaces
 assign [class="qutebrowser"] $ws5
 assign [class="Wezterm"] $ws4
+assign [class="MuPDF"] $ws6
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1

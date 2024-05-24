@@ -1,19 +1,26 @@
+import os
+
 config.load_autoconfig()
 
-c.hints.chars = "arstghneio"
+c.hints.chars = "arstghneiowfpluydm"
 
 c.tabs.position = "left"
-c.tabs.width = 250
 c.tabs.padding = {"bottom": 5, "left": 5, "right": 5, "top": 5}
 
 c.completion.height = "20%"
 
-c.content.pdfjs = True  # enable to see pdf
-
 c.window.hide_decoration = True
 
-c.fonts.web.size.default_fixed = 16
-c.fonts.default_size = "16pt"
+if os.uname()[1] == "KSGO":
+	c.fonts.default_size = "10pt"
+	c.tabs.width = 200
+	c.fonts.web.size.default_fixed = 14
+	c.content.pdfjs = False
+else:
+	c.fonts.default_size = "16pt"
+	c.tabs.width = 250
+	c.fonts.web.size.default_fixed = 16
+	c.content.pdfjs = True
 
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
