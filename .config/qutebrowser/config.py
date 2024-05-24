@@ -15,6 +15,7 @@ if os.uname()[1] == "KSGO":
 	c.fonts.default_size = "10pt"
 	c.tabs.width = 200
 	c.fonts.web.size.default_fixed = 14
+	c.zoom.default = "75%"
 	c.content.pdfjs = False
 else:
 	c.fonts.default_size = "16pt"
