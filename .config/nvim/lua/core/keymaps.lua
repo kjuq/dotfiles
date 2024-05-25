@@ -89,9 +89,7 @@ end, {
 	desc = "Force delete a current buffer",
 })
 
-map("n", "gA", function()
-	vim.cmd("messages")
-end, { desc = "History of messages" })
+map("n", "gA", "<CMD>messages<CR>", { desc = "History of messages" })
 map("n", "gaw", function()
 	vim.opt.wrap = not vim.o.wrap
 end, { desc = "Toggle wrap" })
