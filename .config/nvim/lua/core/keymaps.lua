@@ -81,13 +81,13 @@ map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 -- map("n", "N", "Nzz", { silent = true, desc = "Repeat the latest search in opposite direction" })
 
 -- Comfortable buffer deletion
-map("n", "gl", vim.cmd.bdelete, { silent = true, desc = "Delete the current buffer" })
+map("n", "gl", function()
+	require("utils.common").buffer_delete()
+end, { desc = "Delete the current buffer" })
+
 map("n", "gL", function()
-	vim.cmd.bdelete({ bang = true })
-end, {
-	silent = true,
-	desc = "Force delete a current buffer",
-})
+	require("utils.common").buffer_delete(true)
+end, { desc = "Delete all buffers except for the current one" })
 
 map("n", "gA", "<CMD>messages<CR>", { desc = "History of messages" })
 map("n", "gaw", function()
