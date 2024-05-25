@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_map("<leader>b", "Bufferline: ")
+local map = require("utils.lazy").generate_map("", "Bufferline: ")
 
 ---@type LazySpec
 local spec = { "akinsho/bufferline.nvim" }
@@ -6,28 +6,7 @@ local spec = { "akinsho/bufferline.nvim" }
 spec.event = { "BufNew", "WinScrolled" }
 
 spec.keys = {
-	map("b", "n", function()
-		vim.cmd("BufferLinePick")
-	end, "Pick"),
-	map("p", "n", function()
-		vim.cmd("BufferLineTogglePin")
-	end, "Pin"),
-	map("h", "n", function()
-		vim.cmd("BufferLineMovePrev")
-	end, "Move left"),
-	map("l", "n", function()
-		vim.cmd("BufferLineMoveNext")
-	end, "Move right"),
-	map("u", "n", function()
-		vim.cmd("BufferLineCloseLeft")
-	end, "Close left"),
-	map("k", "n", function()
-		vim.cmd("BufferLineCloseRight")
-	end, "Close right"),
-	map("x", "n", function()
-		vim.cmd("BufferLineCloseOthers")
-	end, "Close others"),
-	map("t", "n", function()
+	map("<leader>ab", "n", function()
 		if vim.o.showtabline == 0 then
 			vim.opt.showtabline = 2
 		else

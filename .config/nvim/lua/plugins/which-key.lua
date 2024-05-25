@@ -43,7 +43,6 @@ spec.opts = function()
 		["gcd"] = { name = "Annotation", _ = "which_key_ignore" },
 		["go"] = { name = "Edit specific file", _ = "which_key_ignore" },
 		["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
-		["<leader>b"] = { name = "Bufferline", _ = "which_key_ignore" },
 		["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
 		["<leader>d"] = { name = "Doc string", _ = "which_key_ignore" },
 		["<leader>D"] = { name = "DAP", _ = "which_key_ignore" },
