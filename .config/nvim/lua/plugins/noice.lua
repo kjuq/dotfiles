@@ -44,14 +44,21 @@ spec.opts = function()
 				border = { style = require("utils.common").floatwinborder },
 			},
 		},
-		popupmenu = { enabled = false },
-		-- messages = { enabled = false },
-		-- notify = { enabled = false },
+		messages = {
+			enabled = true,
+			view_search = false,
+		},
+		popupmenu = { -- Noice's completion
+			enabled = false,
+		},
+		notify = {
+			enabled = true,
+		},
 		lsp = {
-			-- progress = { enabled = false },
-			-- hover = { enabled = false },
+			progress = { enabled = true },
+			hover = { enabled = true },
 			signature = {
-				-- enabled = false,
+				enabled = true,
 				auto_open = { enabled = false },
 			},
 			documentation = {
