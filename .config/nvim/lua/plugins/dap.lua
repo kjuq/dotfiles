@@ -13,8 +13,8 @@ spec.keys = {
 	map("c", "n", function()
 		require("dap").continue()
 	end, "Continue"),
-	---@diagnostic disable-next-line: undefined-global (get_args)
 	map("a", "n", function()
+		---@diagnostic disable-next-line: undefined-global (get_args)
 		require("dap").continue({ before = get_args })
 	end, "Run with args"),
 	map("C", "n", function()

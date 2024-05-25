@@ -3,6 +3,7 @@ local spec = { "andymass/vim-matchup" }
 spec.event = require("utils.lazy").verylazy
 
 spec.config = function()
+	---@diagnostic disable-next-line: missing-fields
 	require("nvim-treesitter.configs").setup({
 		matchup = {
 			enable = true,
