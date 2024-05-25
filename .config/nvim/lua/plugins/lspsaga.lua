@@ -1,12 +1,12 @@
-local map = require("utils.lazy").generate_cmd_map("", "LspSaga: ")
+local map = require("utils.lazy").generate_map("", "LspSaga: ")
 
 ---@type LazySpec
 local spec = { "nvimdev/lspsaga.nvim" }
 
 spec.keys = {
-	map("<M-i>", "n", "Lspsaga incoming_calls", "Incoming calls"),
-	map("<M-o>", "n", "Lspsaga outgoing_calls", "Outgoing calls"),
-	map("gD", "n", "Lspsaga finder def+ref+imp+tyd", "Finder"),
+	map("<M-i>", "n", "<CMD>Lspsaga incoming_calls<CR>", "Incoming calls"),
+	map("<M-o>", "n", "<CMD>Lspsaga outgoing_calls<CR>", "Outgoing calls"),
+	map("gD", "n", "<CMD>Lspsaga finder def+ref+imp+tyd<CR>", "Finder"),
 	-- map("", { "n", "v" }, "Lspsaga code_action", "Code action"),
 	-- map("", "n", "Lspsaga goto_definition", "Definition"),
 	-- map("", "n", "Lspsaga hover_doc", "Hover doc"),

@@ -1,23 +1,23 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>c", "ChatGPT: ")
+local map = require("utils.lazy").generate_map("<leader>c", "ChatGPT: ")
 
 ---@type LazySpec
 local spec = { "jackMort/ChatGPT.nvim" }
 spec.cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInstructions", "ChatGPTRun" }
 
 spec.keys = {
-	map("c", { "n" }, "ChatGPT", "Open ChatGPT"),
-	map("e", { "n", "v" }, "ChatGPTEditWithInstruction", "Edit with instruction"),
-	map("g", { "n", "v" }, "ChatGPTRun grammar_correction", "Grammar Correction"),
-	map("t", { "n", "v" }, "ChatGPTRun translate", "Translate"),
-	map("k", { "n", "v" }, "ChatGPTRun keywords", "Keywords"),
-	map("d", { "n", "v" }, "ChatGPTRun docstring", "Docstring"),
-	map("a", { "n", "v" }, "ChatGPTRun add_tests", "Add Tests"),
-	map("o", { "n", "v" }, "ChatGPTRun optimize_code", "Optimize Code"),
-	map("s", { "n", "v" }, "ChatGPTRun summarize", "Summarize"),
-	map("f", { "n", "v" }, "ChatGPTRun fix_bugs", "Fix Bugs"),
-	map("x", { "n", "v" }, "ChatGPTRun explain_code", "Explain Code"),
-	map("r", { "n", "v" }, "ChatGPTRun roxygen_edit", "Roxygen Edit"),
-	map("l", { "n", "v" }, "ChatGPTRun code_readability_analysis", "Code Readability Analysis"),
+	map("c", { "n" }, "<CMD>ChatGPT<CR>", "Open ChatGPT"),
+	map("e", { "n", "v" }, "<CMD>ChatGPTEditWithInstruction<CR>", "Edit with instruction"),
+	map("g", { "n", "v" }, "<CMD>ChatGPTRun grammar_correction<CR>", "Grammar Correction"),
+	map("t", { "n", "v" }, "<CMD>ChatGPTRun translate<CR>", "Translate"),
+	map("k", { "n", "v" }, "<CMD>ChatGPTRun keywords<CR>", "Keywords"),
+	map("d", { "n", "v" }, "<CMD>ChatGPTRun docstring<CR>", "Docstring"),
+	map("a", { "n", "v" }, "<CMD>ChatGPTRun add_tests<CR>", "Add Tests"),
+	map("o", { "n", "v" }, "<CMD>ChatGPTRun optimize_code<CR>", "Optimize Code"),
+	map("s", { "n", "v" }, "<CMD>ChatGPTRun summarize<CR>", "Summarize"),
+	map("f", { "n", "v" }, "<CMD>ChatGPTRun fix_bugs<CR>", "Fix Bugs"),
+	map("x", { "n", "v" }, "<CMD>ChatGPTRun explain_code<CR>", "Explain Code"),
+	map("r", { "n", "v" }, "<CMD>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit"),
+	map("l", { "n", "v" }, "<CMD>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis"),
 }
 
 spec.opts = {

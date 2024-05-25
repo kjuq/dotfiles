@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>a", "Dadbod: ")
+local map = require("utils.lazy").generate_map("<leader>a", "Dadbod: ")
 
 ---@type LazySpec
 local spec = { "kristijanhusak/vim-dadbod-ui" }
@@ -11,7 +11,7 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map("d", "n", "DBUIToggle", "Toggle"),
+	map("d", "n", "<CMD>DBUIToggle<CR>", "Toggle"),
 }
 
 spec.init = function()

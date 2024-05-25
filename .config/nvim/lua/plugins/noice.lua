@@ -1,11 +1,4 @@
-local map_base = require("utils.lazy").generate_map("", "")
-local map = function(suffix, mode, func, comment)
-	local result = map_base(suffix, mode, func, comment)
-	result.silent = true
-	result.expr = true
-	return result
-end
-local cmap = require("utils.lazy").generate_cmd_map("<leader>", "Telescope: ")
+local map = require("utils.lazy").generate_map("", "")
 
 local utils = require("utils.common")
 local scrollup = utils.floatscrollup
@@ -19,17 +12,17 @@ spec.event = require("utils.lazy").verylazy
 spec.cmd = { "Noice" }
 
 spec.keys = {
-	cmap("fa", "n", "Noice telescope", "Noice"),
-	map(scrolldown, "i", function()
+	map("gA", "n", "<CMD>Noice<CR>", "Noice"),
+	map(scrolldown, { "n", "i" }, function()
 		if not require("noice.lsp").scroll(4) then
 			return scrolldown
 		end
-	end, "Page down"),
-	map(scrollup, "i", function()
+	end, "Page down", { expr = true }),
+	map(scrollup, { "n", "i" }, function()
 		if not require("noice.lsp").scroll(-4) then
 			return scrollup
 		end
-	end, "Page up"),
+	end, "Page up", { expr = true }),
 }
 
 spec.opts = function()

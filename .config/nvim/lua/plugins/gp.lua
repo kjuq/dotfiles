@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>c", "GP: ")
+local map = require("utils.lazy").generate_map("<leader>c", "GP: ")
 
 local nv = { "n", "v" }
 
@@ -25,20 +25,20 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map("n", nv, "GpChatNew", "Open new chat"),
-	map("p", nv, "GpChatPaste", "Paste selected text to a chat"),
-	map("o", nv, "GpChatToggle", "Toggle chat"),
-	map("f", nv, "GpChatFinder", "Search through chats"),
-	map("R", nv, "GpChatRespond", "Request a new GPT response"),
-	map("d", nv, "GpChatDelete", "Delete the current chat"),
-	map("r", nv, "GpRewrite", "Open prompt to rewrite codes"),
-	map("j", nv, "GpAppend", "Open prompt to append codes"),
-	map("k", nv, "GpPrepend", "Open prompt to prepend codes"),
-	map(".", nv, "GpContext", "Configure custom context per repo"),
-	map("]", nv, "GpNextAgent", "Next agent"),
-	map("a", nv, "GpAgent", "Show current agent"),
-	map("i", nv, "GpImage", "Open prompt to generate image"),
-	map("q", nv, "GpStop", "Stop responses and jobs"),
+	map("n", nv, "<CMD>GpChatNew<CR>", "Open new chat"),
+	map("p", nv, "<CMD>GpChatPaste<CR>", "Paste selected text to a chat"),
+	map("o", nv, "<CMD>GpChatToggle<CR>", "Toggle chat"),
+	map("f", nv, "<CMD>GpChatFinder<CR>", "Search through chats"),
+	map("R", nv, "<CMD>GpChatRespond<CR>", "Request a new GPT response"),
+	map("d", nv, "<CMD>GpChatDelete<CR>", "Delete the current chat"),
+	map("r", nv, "<CMD>GpRewrite<CR>", "Open prompt to rewrite codes"),
+	map("j", nv, "<CMD>GpAppend<CR>", "Open prompt to append codes"),
+	map("k", nv, "<CMD>GpPrepend<CR>", "Open prompt to prepend codes"),
+	map(".", nv, "<CMD>GpContext<CR>", "Configure custom context per repo"),
+	map("]", nv, "<CMD>GpNextAgent<CR>", "Next agent"),
+	map("a", nv, "<CMD>GpAgent<CR>", "Show current agent"),
+	map("i", nv, "<CMD>GpImage<CR>", "Open prompt to generate image"),
+	map("q", nv, "<CMD>GpStop<CR>", "Stop responses and jobs"),
 }
 
 spec.opts = {

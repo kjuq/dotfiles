@@ -1,11 +1,11 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>", "Startuptime: ")
+local map = require("utils.lazy").generate_map("<leader>", "Startuptime: ")
 
 ---@type LazySpec
 local spec = { "dstein64/vim-startuptime" }
 spec.cmd = { "StartupTime" }
 
 spec.keys = {
-	map("av", "n", "StartupTime", "Calculate the time"),
+	map("av", "n", "<CMD>StartupTime<CR>", "Calculate the time"),
 }
 
 spec.config = function()

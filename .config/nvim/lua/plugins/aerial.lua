@@ -1,10 +1,10 @@
-local map = require("utils.lazy").generate_cmd_map("", "Aerial: ")
+local map = require("utils.lazy").generate_map("", "Aerial: ")
 
 ---@type LazySpec
 local spec = { "stevearc/aerial.nvim" }
 
 spec.keys = {
-	map("gO", "n", "AerialToggle", "Toggle"),
+	map("gO", "n", "<CMD>AerialToggle<CR>", "Toggle"),
 }
 
 spec.opts = {

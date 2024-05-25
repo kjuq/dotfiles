@@ -1,4 +1,4 @@
-local map = require("utils.lazy").generate_cmd_map("", "Oil: ")
+local map = require("utils.lazy").generate_map("", "Oil: ")
 local hiddens = { ".DS_Store", ".git", ".gitmodules", "node_modules" }
 
 local check_ssh = function()
@@ -16,7 +16,7 @@ spec.lazy = not check_ssh()
 spec.event = require("utils.lazy").verylazy
 
 spec.keys = {
-	map("gX", "n", "Oil", "Open"),
+	map("gX", "n", "<CMD>Oil<CR>", "Open"),
 }
 
 spec.init = function()

@@ -1,11 +1,11 @@
-local map = require("utils.lazy").generate_cmd_map("<leader>a", "CCC: ")
+local map = require("utils.lazy").generate_map("<leader>a", "CCC: ")
 
 ---@type LazySpec
 local spec = { "uga-rosa/ccc.nvim" }
 spec.event = require("utils.lazy").verylazy
 
 spec.keys = {
-	map("r", "n", "CccPick", "Open picker"),
+	map("r", "n", "<CMD>CccPick<CR>", "Open picker"),
 }
 
 spec.opts = {
