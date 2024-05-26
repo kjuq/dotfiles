@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+src="$HOME/.local/share/nvim/lazy/nvim-treesitter/parser"
+dst="$HOMEBREW_PREFIX/share/nvim/runtime/parser"
+
+mkdir --parents "$dst"
+
+cp "$src/lua.so" "$dst/lua.so"
+cp "$src/vimdoc.so" "$dst/vimdoc.so"
+
+echo "DONE"

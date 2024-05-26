@@ -48,6 +48,7 @@ cplus
 cpp-submit
 cpp-test
 floatingnvim
+fix_treesitter_parser
 nvimcopy
 pypy-submit
 python-submit
