@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 
-src="$HOME/.local/share/nvim/lazy/nvim-treesitter/parser"
-dst="$HOMEBREW_PREFIX/share/nvim/runtime/parser"
+# This command allows to lazyload `nvim-treesitter`
 
-mkdir --parents "$dst"
+# If you execute this command with `sudo`, use `-E` option to preserve $HOME variable
+# `sudo -E fix_treesitter_parser`
+
+if [[ $(uname) = "Linux" ]]; then
+	share_prefix="/usr"
+elif [[ $(uname) = "Darwin" ]]; then
+	share_prefix="$HOMEBREW_PREFIX"
+fi
+
+src="$HOME/.local/share/nvim/lazy/nvim-treesitter/parser"
+dst="$share_prefix/share/nvim/runtime/parser"
+
+mkdir --parents "$dst" # in case that /parser directory doesn't exist
 
 cp "$src/lua.so" "$dst/lua.so"
 cp "$src/vimdoc.so" "$dst/vimdoc.so"
