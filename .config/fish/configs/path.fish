@@ -1,13 +1,19 @@
 # Reset fish_user_paths
 set -eU fish_user_paths
 
+set -l brew_path
+
 if [ (uname) = "Darwin" ]
-	eval (/opt/homebrew/bin/brew shellenv)
+	set brew_path "/opt/homebrew/bin/brew"
+else if [ (uname) = "Linux" ]
+	set brew_path "/home/linuxbrew/.linuxbrew/bin/brew"
+end
+
+if [ -x $brew_path ]
+	eval ($brew_path shellenv)
 	fish_add_path -m "$HOMEBREW_PREFIX/sbin"
 	fish_add_path -m "$HOMEBREW_PREFIX/bin"
 	fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
-else if [ (uname) = "Linux" ]
-	eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
 # create local bin if it not exists
