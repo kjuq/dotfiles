@@ -40,7 +40,7 @@ spec.config = function()
 	end
 
 	local abort = function(fallback)
-		if cmp.visible() then
+		if cmp.visible() and vim.fn.pumvisible() ~= 1 then
 			cmp.abort()
 		else
 			fallback()

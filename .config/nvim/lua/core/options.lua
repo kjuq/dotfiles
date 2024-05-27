@@ -14,7 +14,7 @@ opt.showcmdloc = "statusline"
 opt.termguicolors = true
 
 opt.wildmenu = true
-opt.completeopt = "menuone,noinsert,popup"
+opt.completeopt = "menuone,popup"
 
 opt.pumheight = 10
 opt.pumwidth = 40
