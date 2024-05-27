@@ -105,6 +105,15 @@ end, { desc = "Toggle number style" })
 map("n", "gaN", function()
 	vim.opt.relativenumber = not vim.o.relativenumber
 end, { desc = "Toggle relative number style" })
+map("n", "gac", function()
+	if vim.o.clipboard == "" then
+		print("clipboard=unnamedplus")
+		vim.o.clipboard = "unnamedplus"
+	else
+		print('clipboard=""')
+		vim.o.clipboard = ""
+	end
+end, { desc = "Toggle clipboard" })
 
 -- open specific files via keymaps
 map("n", "got", "<CMD>EditTodo<CR>", { desc = "Edit todo.txt" })
