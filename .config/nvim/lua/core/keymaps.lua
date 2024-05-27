@@ -100,24 +100,11 @@ map("n", "gal", function()
 	vim.opt.list = not vim.o.list
 end, { desc = "Toggle list" })
 map("n", "gan", function()
-	local opt = vim.opt
-	local o = vim.o
-	local num = o.number
-	local rnum = o.relativenumber
-	if num and rnum then
-		opt.number = false
-		opt.relativenumber = true
-	elseif not num and rnum then
-		opt.number = true
-		opt.relativenumber = false
-	elseif num and not rnum then
-		opt.number = false
-		opt.relativenumber = false
-	else
-		opt.number = true
-		opt.relativenumber = true
-	end
+	vim.opt.number = not vim.o.number
 end, { desc = "Toggle number style" })
+map("n", "gaN", function()
+	vim.opt.relativenumber = not vim.o.relativenumber
+end, { desc = "Toggle relative number style" })
 
 -- open specific files via keymaps
 map("n", "got", "<CMD>EditTodo<CR>", { desc = "Edit todo.txt" })
