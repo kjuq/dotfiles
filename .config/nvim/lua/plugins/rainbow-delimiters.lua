@@ -32,8 +32,22 @@ spec.config = function()
 			"RainbowAurora4",
 			"RainbowAurora5",
 		},
+		blacklist = {
+			"markdown",
+		},
 	}
-	rainbow.enable()
+
+	-- lazy load except for markdown files
+	vim.api.nvim_create_autocmd({ "FileType" }, {
+		pattern = "*",
+		group = vim.api.nvim_create_augroup("user_rainbow_delimiters", {}),
+		callback = function()
+			if vim.bo.filetype ~= "markdown" then
+				rainbow.enable()
+			end
+		end,
+		once = true,
+	})
 end
 
 spec.dependencies = {

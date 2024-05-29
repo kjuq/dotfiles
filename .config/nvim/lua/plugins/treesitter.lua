@@ -15,7 +15,6 @@ spec.opts = {
 
 	highlight = {
 		enable = true,
-		disable = { "perl" },
 	},
 
 	indent = { enable = false }, -- buggy in py file where tabs are used for indentation
