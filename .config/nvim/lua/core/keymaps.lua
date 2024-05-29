@@ -22,6 +22,9 @@ map("c", "<C-d>", "<Del>") -- Lists completions by default, so <C-i> is enough
 map("c", "<C-p>", "<Up>")
 map("c", "<C-n>", "<Down>")
 
+map("i", "<C-g><C-k>", "<C-k>")
+map("i", "<C-g><C-v>", "<C-v>")
+
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
 map({ "n", "x" }, "k", function()
