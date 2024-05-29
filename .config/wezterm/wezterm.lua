@@ -42,6 +42,7 @@ add_font("SourceHanSansJP-Normal") -- for linux, install `adobe-source-han-sans-
 C.font = wez.font_with_fallback(fonts)
 
 C.freetype_load_target = "Normal" -- "Normal", "Light", "Mono"
+C.freetype_load_flags = "NO_HINTING"
 
 C.window_background_opacity = 0.65
 
@@ -83,11 +84,13 @@ C.keys = {
 	key("F20", "", wez.action.Nop),
 }
 
--- check os
+-- Device specific configurations
 if os.execute("[ $(uname) = 'Darwin' ]") then
 	C.font_size = 22
-elseif os.execute("[ $(uname) = 'Linux' ]") then
+elseif os.execute("[ $(hostname) = 'KSGO' ]") then
 	C.font_size = 14
+elseif os.execute("[ $(hostname) = 'KANTC' ]") then
+	C.font_size = 16
 end
 
 -- and finally, return the configuration to wezterm

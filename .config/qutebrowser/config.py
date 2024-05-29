@@ -11,18 +11,6 @@ c.completion.height = "20%"
 
 c.window.hide_decoration = True
 
-if os.uname()[1] == "KSGO":
-	c.fonts.default_size = "10pt"
-	c.tabs.width = 200
-	c.fonts.web.size.default_fixed = 14
-	c.zoom.default = "75%"
-	c.content.pdfjs = False
-else:
-	c.fonts.default_size = "16pt"
-	c.tabs.width = 250
-	c.fonts.web.size.default_fixed = 16
-	c.content.pdfjs = True
-
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
 
@@ -77,7 +65,7 @@ config.bind("L", ":scroll right")
 config.bind("<Ctrl+e>", ":scroll down")
 config.bind("<Ctrl+y>", ":scroll up")
 
-config.bind("<Ctrl+b", ":scroll-page 0 -" + fullpage_size)
+config.bind("<Ctrl+b>", ":scroll-page 0 -" + fullpage_size)
 config.bind("<Left>", ":scroll-page 0 -" + fullpage_size)
 config.bind("<Ctrl+f>", ":scroll-page 0 " + fullpage_size)
 config.bind("<Right>", ":scroll-page 0 " + fullpage_size)
@@ -87,6 +75,27 @@ config.bind(ctrl_u, ":rl-unix-line-discard", mode="command")
 
 config.unbind("<Ctrl-a>", mode="normal")
 config.unbind("<Ctrl-x>", mode="normal")
+
+# Device specific configurations
+if os.uname()[0] == "Linux":
+	config.bind("<Paste>", "fake-key -g <Ctrl-v>", mode="command")
+	c.content.pdfjs = False
+elif os.uname()[0] == "Darwin":
+	c.content.pdfjs = True
+
+if os.uname()[1] == "KSGO":
+	c.fonts.default_size = "10pt"
+	c.tabs.width = 200
+	c.fonts.web.size.default_fixed = 14
+	c.zoom.default = "75%"
+elif os.uname()[1] == "KANTC":
+	c.fonts.default_size = "12pt"
+	c.tabs.width = 250
+	c.fonts.web.size.default_fixed = 16
+else:
+	c.fonts.default_size = "16pt"
+	c.tabs.width = 250
+	c.fonts.web.size.default_fixed = 16
 
 # {{{ Colors https://github.com/koekeishiya/dotfiles/blob/master/qutebrowser/config.py
 
