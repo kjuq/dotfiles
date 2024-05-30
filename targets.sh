@@ -18,7 +18,7 @@ gitui
 hammerspoon/lua
 hammerspoon/init.lua
 hammerspoon/.luarc.json
-i3/config
+i3
 kitty/kitty.conf
 latexmk/latexmkrc
 lazygit/config.yml

@@ -1,0 +1,66 @@
+# Workspace names
+# to display names or symbols instead of plain workspace numbers you can use
+# something like: set $ws1 1:mail
+#                 set $ws2 2:
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4:terminal
+set $ws5 5:browser
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+
+# Super + Ctrl + Alt
+set $wsmod Mod1+Mod4+Ctrl
+
+set $wskey1 semicolon
+set $wskey2 period
+set $wskey3 comma
+set $wskey4 bracketright
+set $wskey5 bracketleft
+set $wskey6 slash
+set $wskey7 apostrophe
+set $wskey8 equal
+set $wskey9 minus
+set $wskey0 grave
+
+# switch to workspace
+bindsym $wsmod+$wskey1 workspace $ws1
+bindsym $wsmod+$wskey2 workspace $ws2
+bindsym $wsmod+$wskey3 workspace $ws3
+bindsym $wsmod+$wskey4 workspace $ws4
+bindsym $wsmod+$wskey5 workspace $ws5
+bindsym $wsmod+$wskey6 workspace $ws6
+bindsym $wsmod+$wskey7 workspace $ws7
+bindsym $wsmod+$wskey8 workspace $ws8
+bindsym $wsmod+$wskey9 workspace $ws9
+
+bindsym $wsmod+$wskey0 exec "floatingnvim wezterm && xte 'key XF86Paste'"
+
+# Move to workspace with focused container
+bindsym Shift+$wsmod+$wskey1 move container to workspace $ws1; workspace $ws1
+bindsym Shift+$wsmod+$wskey2 move container to workspace $ws2; workspace $ws2
+bindsym Shift+$wsmod+$wskey3 move container to workspace $ws3; workspace $ws3
+bindsym Shift+$wsmod+$wskey4 move container to workspace $ws4; workspace $ws4
+bindsym Shift+$wsmod+$wskey5 move container to workspace $ws5; workspace $ws5
+bindsym Shift+$wsmod+$wskey6 move container to workspace $ws6; workspace $ws6
+bindsym Shift+$wsmod+$wskey7 move container to workspace $ws7; workspace $ws7
+bindsym Shift+$wsmod+$wskey8 move container to workspace $ws8; workspace $ws8
+bindsym Shift+$wsmod+$wskey9 move container to workspace $ws9; workspace $ws9
+
+# Open applications on specific workspaces
+assign [class="Vivaldi"] $ws2
+assign [class="Wezterm"] $ws4
+assign [class="qutebrowser"] $ws5
+assign [class="MuPDF"] $ws6
+
+# Open specific applications in floating mode
+for_window [title="File Transfer*"] floating enable
+for_window [class="FloatingVim"] floating enable
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# vim: set filetype=i3config :

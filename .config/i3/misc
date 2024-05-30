@@ -1,0 +1,7 @@
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+focus_follows_mouse yes
+
+# vim: set filetype=i3config :
