@@ -16,6 +16,7 @@ dst="$share_prefix/share/nvim/runtime/parser"
 
 mkdir --parents "$dst" # in case that /parser directory doesn't exist
 
+cp "$src/query.so" "$dst/query.so"
 cp "$src/lua.so" "$dst/lua.so"
 cp "$src/vimdoc.so" "$dst/vimdoc.so"
 
