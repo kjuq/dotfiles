@@ -31,7 +31,8 @@ bindsym $mod+Shift+4 --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+5 --release exec --no-startup-id i3-scrot -w
 
 # change focus
-bindsym $sac+y focus next
+bindsym $sac+t focus next
+bindsym $sac+9 focus next
 
 # move focused window
 bindsym $sac+h move left
