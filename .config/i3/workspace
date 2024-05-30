@@ -52,7 +52,7 @@ bindsym Shift+$wsmod+$wskey9 move container to workspace $ws9; workspace $ws9
 
 # Open applications on specific workspaces
 assign [class="Vivaldi"] $ws2
-assign [class="Wezterm"] $ws4
+assign [class="org.wezfurlong.wezterm"] $ws4
 assign [class="qutebrowser"] $ws5
 assign [class="MuPDF"] $ws6
 

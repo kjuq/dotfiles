@@ -2,9 +2,9 @@
 set $sac Mod4+Mod1+Ctrl
 
 # change borders
-bindsym $sac+u border none
-bindsym $sac+y border pixel 1
-bindsym $sac+n border normal
+bindsym $sac+Shift+u border none
+bindsym $sac+Shift+y border pixel 1
+bindsym $sac+Shift+n border normal
 
 # Kill Window
 bindsym $sac+q kill
@@ -31,8 +31,7 @@ bindsym $mod+Shift+4 --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+5 --release exec --no-startup-id i3-scrot -w
 
 # change focus
-bindsym $sac+t focus next
-bindsym $sac+4 focus next
+bindsym $sac+y focus next
 
 # move focused window
 bindsym $sac+h move left
