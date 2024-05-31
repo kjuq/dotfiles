@@ -3,6 +3,8 @@ local map = require("utils.lazy").generate_map("<leader>", "Translate: ")
 ---@type LazySpec
 local spec = { "skanehira/denops-translate.vim" }
 
+spec.event = "User UserDenopsActivated"
+
 spec.cmd = "Translate"
 
 spec.keys = {
@@ -15,6 +17,10 @@ spec.keys = {
 		vim.cmd("'<,'>Translate")
 	end, "Selected texts"),
 }
+
+spec.config = function()
+	vim.api.nvim_exec_autocmds("User", { pattern = "UserDenopsActivated" })
+end
 
 spec.dependencies = {
 	"vim-denops/denops.vim",

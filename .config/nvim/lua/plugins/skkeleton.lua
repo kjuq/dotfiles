@@ -5,6 +5,9 @@ local skk = require("utils.skk")
 ---@type LazySpec
 local spec = { "vim-skk/skkeleton" }
 spec.cond = vim.fn.executable("deno") ~= 0
+
+spec.event = "User UserDenopsActivated"
+
 spec.keys = skk.mappings("Skkeleton: ", "skkeleton-enable", "skkeleton-disable", "skkeleton-toggle")
 
 spec.config = function()
@@ -45,6 +48,8 @@ spec.config = function()
 		vim.g["skkeleton#mapped_keys"] = mapped_keys
 	end
 	remove_mapped_keys("<C-g>")
+
+	vim.api.nvim_exec_autocmds("User", { pattern = "UserDenopsActivated" })
 end
 
 spec.dependencies = {
