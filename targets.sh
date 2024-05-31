@@ -53,6 +53,7 @@ nvimcopy
 pypy-submit
 python-submit
 python-test
+rclone_init
 set_keyrepeat_rate
 sudo_pass
 toggle_menubar

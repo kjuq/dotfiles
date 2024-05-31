@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# TODOd dependency check (pass, rclone)
+
+path_box="$HOME/mount/box"
+path_box_enc="$HOME/mount/boxenc"
+
+mkdir --parents "$path_box"
+mkdir --parents "$path_box_enc"
+
+pass _uncategorized/rclone_conf > "$XDG_CONFIG_HOME/rclone/rclone.conf"
+
+rclone mount --daemon --vfs-cache-mode full --read-only "box:" "$path_box"
+rclone mount --daemon --vfs-cache-mode full --read-only "box_enc:" "$path_box_enc"
