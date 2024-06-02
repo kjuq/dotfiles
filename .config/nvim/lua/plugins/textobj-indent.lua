@@ -9,7 +9,7 @@ spec.keys = {
 }
 
 spec.init = function()
-	vim.g.textobj_indent_no_default_key_mappings = false
+	vim.g.textobj_indent_no_default_key_mappings = true
 end
 
 spec.dependencies = {
