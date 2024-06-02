@@ -11,8 +11,6 @@ end
 
 if [ -x $brew_path ]
 	eval ($brew_path shellenv)
-	fish_add_path -m "$HOMEBREW_PREFIX/sbin"
-	fish_add_path -m "$HOMEBREW_PREFIX/bin"
 	fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
 end
 
