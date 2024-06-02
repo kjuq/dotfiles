@@ -38,6 +38,7 @@ tmux/tmux.conf
 tmux/scripts
 w3m/keymap
 wezterm/wezterm.lua
+zsh/.zshrc
 "
 
 local_bin_files="
@@ -63,6 +64,7 @@ root_files="
 .docker/config.json
 .clang-format
 .ignore
+.zshenv
 "
 
 library="
