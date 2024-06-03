@@ -7,6 +7,7 @@ spec.config = function()
 		group = vim.api.nvim_create_augroup("user_denops_activated", {}),
 		callback = function() end,
 	})
+	vim.api.nvim_exec_autocmds("User", { pattern = "UserDenopsActivated" })
 end
 
 return spec

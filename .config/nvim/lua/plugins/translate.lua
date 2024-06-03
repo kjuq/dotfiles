@@ -18,10 +18,6 @@ spec.keys = {
 	end, "Selected texts"),
 }
 
-spec.config = function()
-	vim.api.nvim_exec_autocmds("User", { pattern = "UserDenopsActivated" })
-end
-
 spec.dependencies = {
 	"vim-denops/denops.vim",
 }
