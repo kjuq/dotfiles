@@ -67,7 +67,6 @@ root_files="
 .docker/config.json
 .clang-format
 .ignore
-.zshenv
 "
 
 library="
