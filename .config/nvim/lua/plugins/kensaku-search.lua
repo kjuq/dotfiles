@@ -9,6 +9,7 @@ spec.keys = {
 	map("<C-s>", "c", function()
 		require("utils.common").feed_plug("kensaku-search-replace")
 	end, "Confirm"),
+	"/",
 }
 
 spec.dependencies = {
