@@ -8,7 +8,7 @@
 
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 autoload -U compinit
-mkdir --parents "$XDG_CACHE_HOME/zsh"
+mkdir --parents "$XDG_CACHE_HOME/zsh" "$XDG_STATE_HOME/zsh"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
@@ -100,6 +100,7 @@ elif [ "$(uname)" = "Darwin" ]; then
 fi
 
 # More aliases
+alias ll="ls -l"
 alias la="ls --all"
 alias lla="ll --all"
 alias l1="ls -1"
@@ -177,7 +178,12 @@ fi
 
 # Options (Start) {{{
 
+# Emacs keybindings
 bindkey -e
+
+# Save history
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Options (End) }}}
 
