@@ -139,6 +139,11 @@ if command -v sudo >/dev/null 2>&1; then
 	alias sudo="sudo -A"
 fi
 
+# Store wget-hsts in $XDG_CACHE_HOME
+if command -v wget >/dev/null 2>&1; then
+	alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+fi
+
 # Check if `fd` command exists and create an alias accordingly
 if command -v fd >/dev/null 2>&1; then
 	alias fd="fd --hidden --exclude .git/"
