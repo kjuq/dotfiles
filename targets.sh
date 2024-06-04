@@ -41,7 +41,6 @@ w3m/keymap
 wezterm/wezterm.lua
 X11/xinitrc
 X11/Xresources
-zsh/.zshrc
 "
 
 local_bin_files="
