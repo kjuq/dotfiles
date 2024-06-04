@@ -189,6 +189,10 @@ fi
 
 # Emacs keybindings
 bindkey -e
+bindkey \^U backward-kill-line
+cmd_to_clip () { echo -n $BUFFER | pbcopy }
+zle -N cmd_to_clip
+bindkey '^X' cmd_to_clip
 
 # Save history
 HISTSIZE=10000
