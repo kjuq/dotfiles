@@ -15,27 +15,6 @@ zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 # Setup XDG (End) }}}
 
-#  Plugins (Start) {{{
-
-# Install Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Plugins
-zinit light https://github.com/sindresorhus/pure # Best prompt theme ever
-zinit light zsh-users/zsh-syntax-highlighting # Syntax highlighling
-
-zinit light zsh-users/zsh-autosuggestions # Completion based on history
-zinit light zsh-users/zsh-completions # Completion of commands' actions
-
-zinit light zdharma/history-search-multi-word # History search
-
-# Plugins (End) }}}
-
 # Variables (Start) {{{
 
 # User defined variables
@@ -180,7 +159,6 @@ fi
 # Zoxide initialization
 if command -v zoxide >/dev/null 2>&1; then
 	eval "$(zoxide init --cmd c zsh)"
-	zstyle :prompt:pure:git:stash show yes
 fi
 
 # External applications (End) }}}
@@ -189,14 +167,32 @@ fi
 
 # Emacs keybindings
 bindkey -e
+
 bindkey \^U backward-kill-line
+
 cmd_to_clip () { echo -n $BUFFER | pbcopy }
 zle -N cmd_to_clip
 bindkey '^X' cmd_to_clip
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^[e" edit-command-line
+
+
+bindkey -M isearch "^[" send-break
+
+# zmodload zsh/complist
+bindkey -M menuselect "^[" send-break
+
 # Save history
 HISTSIZE=10000
 SAVEHIST=10000
+
+# Escape without lag
+KEYTIMEOUT=1
+
+# Incasesensitive completion
+zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}"
 
 # Options (End) }}}
 
@@ -228,3 +224,50 @@ export PATH="$LOCAL_BIN_PATH:$PATH"
 export PATH="$XDG_DATA_HOME/node_bin/node_modules/.bin:$PATH"
 
 # Path (End) }}}
+
+# Plugins (Start) {{{
+
+plug_home=$XDG_DATA_HOME/zsh/plugins
+if [ ! -e $plug_home ]; then
+	mkdir --parents "$plug_home"
+fi
+
+# Pure (prompt theme)
+pure="$plug_home/pure"
+if [ ! -d "$pure" ]; then
+	git clone https://github.com/sindresorhus/pure.git "$pure"
+fi
+fpath+="$pure"
+autoload -U promptinit; promptinit
+prompt pure
+zstyle :prompt:pure:git:stash show yes
+
+# Zsh-syntax-highlighting
+syntax_highlighting="$plug_home/zsh-syntax-highlighting"
+if [ ! -d "$syntax_highlighting" ]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$syntax_highlighting"
+fi
+source "$syntax_highlighting/zsh-syntax-highlighting.zsh"
+
+# Zsh-autosuggestions (Show ghost text based on history)
+autosuggestions="$plug_home/zsh-autosuggestions"
+if [ ! -d "$autosuggestions" ]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions"
+fi
+source "$autosuggestions/zsh-autosuggestions.zsh"
+
+# history-search-multi-word
+hsmw="$plug_home/history-search-multi-word"
+if [ ! -d "$hsmw" ]; then
+	git clone https://github.com/zdharma-continuum/history-search-multi-word.git "$hsmw"
+fi
+source "$hsmw/history-search-multi-word.plugin.zsh"
+
+# Zsh-completions
+completions="$plug_home/zsh-completions"
+if [ ! -d "$completions" ]; then
+	git clone https://github.com/zsh-users/zsh-completions.git "$completions"
+fi
+fpath+="$completions/src"
+
+# Plugins (End) }}}
