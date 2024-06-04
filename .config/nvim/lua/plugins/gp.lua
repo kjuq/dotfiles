@@ -54,9 +54,9 @@ spec.opts = {
 	chat_conceal_model_params = false,
 
 	chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g><C-g>" },
-	chat_shortcut_delete = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>d" },
-	chat_shortcut_stop = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>s" },
-	chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>c" },
+	chat_shortcut_delete = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>h" },
+	chat_shortcut_stop = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>c" },
+	chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>n" },
 
 	-- how to display GpChatToggle or GpContext: popup / split / vsplit / tabnew
 	toggle_target = "", -- empty for keeping current layout
@@ -84,6 +84,23 @@ spec.opts = {
 
 	image_prompt_prefix_template = "󰏫 {{agent}} ~ ",
 	image_prompt_save = "󰏫 󰉉 ~ ",
+	agents = {
+		{
+			name = "ChatGPT4o",
+			chat = true,
+			command = false,
+			model = { model = "gpt-4o", temperature = 1.1, top_p = 1 },
+			system_prompt = "You are a general AI assistant.\n\n"
+				.. "The user provided the additional info about how they would like you to respond:\n\n"
+				.. "- If you're unsure don't guess and say you don't know instead.\n"
+				.. "- Ask question if you need clarification to provide better answer.\n"
+				.. "- Think deeply and carefully from first principles step by step.\n"
+				.. "- Zoom out first to see the big picture and then zoom in to details.\n"
+				.. "- Use Socratic method to improve your thinking and coding skills.\n"
+				.. "- Don't elide any code from your output if the answer requires coding.\n"
+				.. "- Take a deep breath; You've got this!\n",
+		},
+	},
 }
 
 return spec
