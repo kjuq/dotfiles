@@ -93,21 +93,37 @@ map("n", "gL", function()
 end, { desc = "Delete all buffers except for the current one" })
 
 map("n", "gA", "<CMD>messages<CR>", { desc = "History of messages" })
+
 map("n", "gaw", function()
 	vim.opt.wrap = not vim.o.wrap
+	if vim.o.wrap then
+		print("Wrap enabled")
+	else
+		print("Wrap disabled")
+	end
 end, { desc = "Toggle wrap" })
+
 map("n", "gas", function()
 	vim.opt.spell = not vim.o.spell
+	if vim.o.spell then
+		print("Spellcheck enabled")
+	else
+		print("Spellcheck disabled")
+	end
 end, { desc = "Toggle spell check" })
+
 map("n", "gal", function()
 	vim.opt.list = not vim.o.list
 end, { desc = "Toggle list" })
+
 map("n", "gan", function()
 	vim.opt.number = not vim.o.number
 end, { desc = "Toggle number style" })
+
 map("n", "gaN", function()
 	vim.opt.relativenumber = not vim.o.relativenumber
 end, { desc = "Toggle relative number style" })
+
 map("n", "gac", function()
 	if vim.o.clipboard == "" then
 		print("clipboard=unnamedplus")
