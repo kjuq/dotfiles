@@ -50,6 +50,7 @@ cpl
 cplus
 cpp-submit
 cpp-test
+disable_mouse_acceleration
 floatingnvim
 fix_treesitter_parser
 nvimcopy
