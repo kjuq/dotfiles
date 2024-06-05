@@ -12,6 +12,7 @@ EndSection'
 
 if [ -e "$mouse_acl_path" ]; then
 	echo "$mouse_acl_path already exists"
+	exit 1
 else
 	echo "Writing to $mouse_acl_path..."
 	echo "$mouse_acl_conf" | \sudo tee "$mouse_acl_path"
