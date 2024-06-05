@@ -5,19 +5,19 @@ local doc = "~/docs"
 local confroot = os.getenv("XDG_CONFIG_HOME") .. "/nvim"
 
 vim.api.nvim_create_user_command("EditTodo", function()
-	edit(doc .. "/__todo/todo.txt")
+	edit(doc .. "/todo/todo.txt")
 end, { desc = "Edit todo.txt" })
 
 vim.api.nvim_create_user_command("EditBookmarks", function()
-	edit(doc .. "/__bookmarks/bookmarks.txt")
+	edit(doc .. "/bookmarks/bookmarks.txt")
 end, { desc = "Edit bookmarks.txt" })
 
 vim.api.nvim_create_user_command("EditReadinglist", function()
-	edit(doc .. "/__bookmarks/readinglist.txt")
+	edit(doc .. "/bookmarks/readinglist.txt")
 end, { desc = "Edit readinglist.txt" })
 
 vim.api.nvim_create_user_command("EditDailynote", function()
-	edit(doc .. "/__daily/" .. os.date("%Y-%m-%d.md"))
+	edit(doc .. "/daily/" .. os.date("%Y-%m-%d.md"))
 end, { desc = "Edit daily note" })
 
 vim.api.nvim_create_user_command("EditSnippet", function()
