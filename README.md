@@ -2,8 +2,12 @@
 
 My ultimate dotfiles.
 
-- OS: MacOS (Probably works on Linux)
-- Terminal Emulator: Alacritty
+- OS: Linux (Manjaro)
+	- Stopped using MacOS
+		- I realized Linux is much more fun :)
+	- Planning to move to Arch linux once I understand how Linux works perfectly
+- Window manager: i3
+- Terminal Emulator: Wezterm
 - Terminal Multiplexer: Tmux
 - Shell: Fish
 - Editor: Neovim
