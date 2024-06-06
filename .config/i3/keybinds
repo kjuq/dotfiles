@@ -8,10 +8,12 @@ bindsym $sac+Shift+n border normal
 
 # Kill Window
 bindsym $sac+q kill
+bindsym $sac+BackSpace kill
 bindsym $sac+Shift+q --release exec --no-startup-id xkill
 
 # start program launcher
 bindsym $sac+d exec --no-startup-id dmenu_recency
+bindsym $mod+space exec --no-startup-id dmenu_recency
 
 # launch categorized menu
 bindsym $sac+c exec --no-startup-id morc_menu
