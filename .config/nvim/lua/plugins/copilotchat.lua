@@ -1,5 +1,5 @@
--- `pip install python-dotenv requests pynvim==0.5.0 prompt-toolkit`
--- `pip install tiktoken` (optional for displaying prompt token counts)
+-- Install `tiktoken_core` with luarocks (optional. This is for displaying prompt token counts)
+-- https://github.com/CopilotC-Nvim/CopilotChat.nvim?tab=readme-ov-file#prerequisites
 
 -- authentication is automatically done when Copilot.lua is ready
 
@@ -7,40 +7,89 @@ local map = require("utils.lazy").generate_map("<leader>c", "CopilotChat: ")
 
 ---@type LazySpec
 local spec = { "CopilotC-Nvim/CopilotChat.nvim" }
--- spec.event = "VeryLazy"
-spec.build = function()
-	vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
-end
 
-spec.init = function()
-	vim.cmd.unlet("g:loaded_python3_provider")
-	vim.cmd.unlet("g:loaded_remote_plugins")
-end
+spec.branch = "canary"
+
+spec.cmd = {
+	"CopilotChat",
+	"CopilotChatOpen",
+	"CopilotChatClose",
+	"CopilotChatToggle",
+	"CopilotChatStop",
+	"CopilotChatReset",
+	"CopilotChatSave",
+	"CopilotChatLoad",
+	"CopilotChatDebugInfo",
+	"CopilotChatExplain",
+	"CopilotChatReview",
+	"CopilotChatFix",
+	"CopilotChatOptimize",
+	"CopilotChatDocs",
+	"CopilotChatTests",
+	"CopilotChatFixDiagnostic",
+	"CopilotChatCommit",
+	"CopilotChatCommitStaged",
+}
 
 spec.keys = {
-	map("e", "n", "<CMD>CopilotChatExplain<CR>", "Explain yanked code"),
-	map("e", "x", function()
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "x", false)
-		vim.cmd("'<,'>CopilotChatVisual Explain")
-	end, "Explain seleced code"),
-
-	map("t", "n", "<CMD>CopilotChatTests<CR>", "Generate tests for yanked code"),
-	map("t", "x", function()
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "x", false)
-		vim.cmd("'<,'>CopilotChatVisual Tests")
-	end, "Generate tests for selected code"),
-
-	map("x", "n", ":CopilotChatInPlace<CR>", "Open In-place chat for yanked code"),
-	map("x", "x", function()
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "x", false)
-		vim.cmd("'<,'>CopilotChatVisual InPlace")
-	end, "Open In-place chat for selected code"),
+	map("o", "n", function()
+		require("CopilotChat").open({ window = { layout = "replace" } })
+	end, "Open CopilotChat"),
+	map("e", { "n", "x" }, "<CMD>CopilotChatExplain<CR>", "Explain code"),
+	map("t", { "n", "x" }, "<CMD>CopilotChatTests<CR>", "Generate tests"),
+	map("x", { "n", "x" }, "<CMD>CopilotChatInPlace<CR>", "Open In-place chat"),
 }
 
-spec.opts = {
-	show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
-	disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
-	debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
-}
+spec.opts = function()
+	if pcall(require, "cmp") then
+		require("CopilotChat.integrations.cmp").setup()
+	end
+
+	vim.api.nvim_create_autocmd({ "FileType" }, {
+		pattern = "copilot-chat",
+		group = vim.api.nvim_create_augroup("user_copilot_chat", {}),
+		callback = function()
+			vim.o.cursorline = false
+		end,
+	})
+
+	return {
+		show_help = false,
+		mappings = {
+			complete = {
+				detail = "Use @<C-g><C-n> or /<C-g><C-n> for options.",
+				insert = "<C-g><C-n>",
+			},
+			close = {
+				normal = "<Nop>",
+				insert = "<Nop>",
+			},
+			reset = {
+				normal = "<C-l>",
+				insert = "<C-l>",
+			},
+			submit_prompt = {
+				normal = "<C-g><C-g>",
+				insert = "<C-g><C-g>",
+			},
+			accept_diff = {
+				normal = "<C-g><C-y>",
+				insert = "<C-g><C-y>",
+			},
+			yank_diff = {
+				normal = "gy",
+			},
+			show_diff = {
+				normal = "gd",
+			},
+			show_system_prompt = {
+				normal = "dp", -- [d]isplay [p]rompt
+			},
+			show_user_selection = {
+				normal = "gV",
+			},
+		},
+	}
+end
 
 return spec

@@ -27,7 +27,7 @@ spec.cmd = {
 spec.keys = {
 	map("n", nv, "<CMD>GpChatNew<CR>", "Open new chat"),
 	map("p", nv, "<CMD>GpChatPaste<CR>", "Paste selected text to a chat"),
-	map("o", nv, "<CMD>GpChatToggle<CR>", "Toggle chat"),
+	map("c", nv, "<CMD>GpChatToggle<CR>", "Open chat"),
 	map("f", nv, "<CMD>GpChatFinder<CR>", "Search through chats"),
 	map("R", nv, "<CMD>GpChatRespond<CR>", "Request a new GPT response"),
 	map("d", nv, "<CMD>GpChatDelete<CR>", "Delete the current chat"),
@@ -35,8 +35,6 @@ spec.keys = {
 	map("j", nv, "<CMD>GpAppend<CR>", "Open prompt to append codes"),
 	map("k", nv, "<CMD>GpPrepend<CR>", "Open prompt to prepend codes"),
 	map(".", nv, "<CMD>GpContext<CR>", "Configure custom context per repo"),
-	map("]", nv, "<CMD>GpNextAgent<CR>", "Next agent"),
-	map("a", nv, "<CMD>GpAgent<CR>", "Show current agent"),
 	map("i", nv, "<CMD>GpImage<CR>", "Open prompt to generate image"),
 	map("q", nv, "<CMD>GpStop<CR>", "Stop responses and jobs"),
 }
