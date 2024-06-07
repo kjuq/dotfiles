@@ -53,12 +53,12 @@ cpp-test
 disable_mouse_acceleration
 floatingnvim
 fix_treesitter_parser
+keyboard_init
 nvimcopy
 pypy-submit
 python-submit
 python-test
 rclone_init
-set_keyrepeat_rate
 sudo_pass
 toggle_menubar
 "

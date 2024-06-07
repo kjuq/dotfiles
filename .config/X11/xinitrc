@@ -45,11 +45,7 @@ fi
 
 copyq &
 
-# Reset all options for keyboard. Mainly for disableing `terminate:ctrl_alt_bksp`
-setxkbmap -option
-
-# $LOCAL_BIN_PATH/set_keyrepeat_rate
-set_keyrepeat_rate
+keyboard_init
 
 # Launch window manager
 i3 --shmlog-size 0
