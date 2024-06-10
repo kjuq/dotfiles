@@ -1,3 +1,5 @@
+-- To setup `:Copilot auth`
+
 ---@type LazySpec
 local spec = { "zbirenbaum/copilot.lua" }
 spec.cmd = "Copilot"
