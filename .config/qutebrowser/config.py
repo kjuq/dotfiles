@@ -84,10 +84,10 @@ elif os.uname()[0] == "Darwin":
 	c.content.pdfjs = True
 
 if os.uname()[1] == "KSGO":
-	c.fonts.default_size = "10pt"
+	c.fonts.default_size = "16pt"
 	c.tabs.width = 200
-	c.fonts.web.size.default_fixed = 14
-	c.zoom.default = "75%"
+	c.fonts.web.size.default_fixed = 22
+	c.zoom.default = "125%"
 elif os.uname()[1] == "KANTC":
 	c.fonts.default_size = "12pt"
 	c.tabs.width = 250

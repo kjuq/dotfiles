@@ -88,7 +88,7 @@ C.keys = {
 if os.execute("[ $(uname) = 'Darwin' ]") then
 	C.font_size = 22
 elseif os.execute("[ $(hostname) = 'KSGO' ]") then
-	C.font_size = 14
+	C.font_size = 20
 elseif os.execute("[ $(hostname) = 'KANTC' ]") then
 	C.font_size = 16
 end
