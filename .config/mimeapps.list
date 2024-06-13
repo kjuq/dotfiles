@@ -15,7 +15,7 @@ image/png=viewnior.desktop;gpicview.desktop;
 text/plain=mousepad.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
-application/pdf=mupdf.desktop
+application/pdf=org.gnome.Evince.desktop
 application/x-bittorrent=deluge.desktop
 x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
 
