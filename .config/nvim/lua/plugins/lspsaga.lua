@@ -3,18 +3,22 @@ local map = require("utils.lazy").generate_map("", "LspSaga: ")
 ---@type LazySpec
 local spec = { "nvimdev/lspsaga.nvim" }
 
+spec.event = "LspAttach"
+
 spec.keys = {
-	map("gD", "n", "<CMD>Lspsaga finder def+ref+imp+tyd<CR>", "Finder"),
+	map("gD", "n", "<Cmd>Lspsaga finder def+ref+imp+tyd<CR>", "Finder"),
 }
 
 spec.opts = {
-	breadcrumbs = { enabled = false },
+	symbol_in_winbar = { enable = false },
+	lightbulb = { enable = false },
+
+	finder = { max_height = 0.6, keys = { toggle_or_open = { "o", "<CR>" }, quit = { "q", "<ESC>" } } },
+
 	callhierarchy = { keys = { quit = { "q", "<Esc>" } } },
 	code_action = { keys = { quit = { "q", "<Esc>" } } },
 	definition = { keys = { quit = { "q", "<Esc>" } } },
 	diagnostic = { max_height = 0.8, keys = { quit = { "q", "<Esc>" } } },
-	finder = { max_height = 0.6, keys = { toggle_or_open = { "o", "<CR>" }, quit = { "q", "<ESC>" } } },
-	lightbulb = { enable = false },
 	rename = { in_select = true, keys = { quit = { "q", "<Esc>" } } },
 	outline = {
 		win_width = 45,
