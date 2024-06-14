@@ -79,9 +79,9 @@ quit_force("<leader>Q")
 
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
--- Center cursor when searching
--- map("n", "n", "nzz", { silent = true, desc = "Repeat the latest search" })
--- map("n", "N", "Nzz", { silent = true, desc = "Repeat the latest search in opposite direction" })
+-- Centering cursor
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
 
 -- Comfortable buffer deletion
 map("n", "gl", function()

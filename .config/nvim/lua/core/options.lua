@@ -14,7 +14,7 @@ opt.showcmdloc = "statusline"
 opt.termguicolors = true
 
 opt.wildmenu = true
-opt.completeopt = "menuone,popup"
+opt.completeopt = "menuone,popup,noselect"
 
 opt.pumheight = 10
 opt.pumwidth = 40
@@ -31,6 +31,7 @@ opt.foldopen:remove("block")
 
 opt.wrap = false
 opt.smoothscroll = true
+opt.startofline = true
 opt.breakindent = true
 opt.breakindentopt:append("list:-1") -- indent wrapped list
 
@@ -59,7 +60,7 @@ opt.listchars = {
 }
 opt.fillchars = { eob = " " } -- hide tildes in blank space after end of file
 
-opt.number = false
+opt.number = true
 opt.relativenumber = false
 opt.numberwidth = 1
 
