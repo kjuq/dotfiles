@@ -24,64 +24,50 @@ local callback = function(ev)
 
 	local vlb = vim.lsp.buf
 
-	map("n", "[d", vlb.type_definition, "Go to type definition")
-	map("n", "]d", vlb.implementation, "Go to implementation")
-	-- map("n", "gD", vlb.declaration, "Go to Declaration")
+	-- rename, code action, reference, and signature help will be defined at vim/_defaults.lua (?)
 
 	map("n", "gd", vlb.definition, "Go to definition")
+	map("n", "grt", vlb.type_definition, "Go to type definition")
+	map("n", "gri", vlb.implementation, "Go to implementation")
+	map("n", "grd", vlb.declaration, "Go to Declaration")
 
-	-- rename, code action, reference, and signature help will be defined at vim/_defaults.lua (?)
-	map("n", "gr", vlb.references, "Go to reference")
-	map("n", "crn", vlb.rename, "Rename")
+	map("n", "grh", vlb.typehierarchy, "Type hierarchy")
+	map("n", "grc", vlb.incoming_calls, "Incoming calls")
+	map("n", "grg", vlb.outgoing_calls, "Outgoing calls")
+
 	map("n", "<M-e>", vim.diagnostic.open_float, "Show diagnostics")
-	map({ "n", "v", "i" }, "<C-s>", vlb.signature_help, "Signature Help")
-	map("n", "crr", vlb.code_action, "Code action")
-	map("x", "<C-r>r", vlb.code_action, "Code action")
-	map("x", "<C-r><C-r>", vlb.code_action, "Code action")
+	map("n", "cre", vim.diagnostic.open_float, "Show diagnostics")
 
-	map("n", "<M-w><M-a>", vlb.add_workspace_folder, "Add folder to workspace")
-	map("n", "<M-w><M-r>", vlb.remove_workspace_folder, "Remove folder from workspace")
-	map("n", "<M-w><M-w>", function()
+	map("n", "crwa", vlb.add_workspace_folder, "Add folder to workspace")
+	map("n", "crwr", vlb.remove_workspace_folder, "Remove folder from workspace")
+	map("n", "crww", function()
 		print(vim.inspect(vlb.list_workspace_folders()))
 	end, "List folders of workspaceh")
 
-	map("n", "<M-d>", function()
+	-- Diagnostics
+	map("n", "grl", vim.diagnostic.setloclist, "Set diagnostics into loclist")
+
+	map("n", "[e", function()
+		vim.diagnostic.jump({ count = -1, float = true })
+	end, "Go to prev diagnostics")
+	map("n", "]e", function()
+		vim.diagnostic.jump({ count = 1, float = true })
+	end, "Go to next diagnostics")
+
+	map("n", "crv", function()
 		vt = not vt
 		vim.diagnostic.config({ virtual_text = virtual_text(vt) })
 	end, "Toggle virtual text of diagnotics")
 
-	-- Diagnostics
-	map("n", "[e", vim.diagnostic.goto_prev, "Go to prev diagnostics")
-	map("n", "]e", vim.diagnostic.goto_next, "Go to next diagnostics")
-	map("n", "<M-l>", vim.diagnostic.setloclist, "Set diagnostics into loclist")
-
 	-- Format on save
 	if client and client.supports_method("textDocument/formatting") then
-		-- map("n", "gq", function()
-		-- 	local winpos = vim.fn.winsaveview()
-		-- 	vlb.format({ async = false })
-		-- 	vim.fn.winrestview(winpos)
-		-- 	vim.diagnostic.enable(0) -- fix not showing diagnostics after formatting, when it's fixed remove this keybind
-		-- end, "Format current buffer")
-
-		local winpos
 		local group = vim.api.nvim_create_augroup("AutoFormatting", {})
 
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = group,
 			buffer = bufnr,
 			callback = function()
-				winpos = vim.fn.winsaveview()
 				vim.lsp.buf.format({ async = false })
-			end,
-		})
-
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			group = group,
-			buffer = bufnr,
-			callback = function()
-				vim.diagnostic.enable(true) -- fix not showing diagnostics after formatting
-				vim.fn.winrestview(winpos) -- restore cursor position
 			end,
 		})
 	end
