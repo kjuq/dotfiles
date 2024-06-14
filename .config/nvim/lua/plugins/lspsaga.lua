@@ -4,12 +4,7 @@ local map = require("utils.lazy").generate_map("", "LspSaga: ")
 local spec = { "nvimdev/lspsaga.nvim" }
 
 spec.keys = {
-	map("<M-i>", "n", "<CMD>Lspsaga incoming_calls<CR>", "Incoming calls"),
-	map("<M-o>", "n", "<CMD>Lspsaga outgoing_calls<CR>", "Outgoing calls"),
 	map("gD", "n", "<CMD>Lspsaga finder def+ref+imp+tyd<CR>", "Finder"),
-	-- map("", { "n", "v" }, "Lspsaga code_action", "Code action"),
-	-- map("", "n", "Lspsaga goto_definition", "Definition"),
-	-- map("", "n", "Lspsaga hover_doc", "Hover doc"),
 }
 
 spec.opts = {
@@ -29,10 +24,6 @@ spec.opts = {
 			toggle_or_jump = { "o", "<CR>" },
 			quit = { "q", "<Esc>" },
 		},
-	},
-	scroll_preview = {
-		scroll_down = "<C-d>",
-		scroll_up = "<C-u>",
 	},
 }
 
