@@ -169,6 +169,10 @@ map("n", "gac", function()
 	end
 end, { desc = "Toggle clipboard" })
 
+map("n", "gad", "<Cmd>pwd<CR>", { desc = "Print working directory" })
+
+map("n", "ga-", "<Cmd>cd .. | pwd<CR>", { desc = "Change to upper directory" })
+
 -- open specific files via keymaps
 map("n", "got", "<CMD>EditTodo<CR>", { desc = "Edit todo.txt" })
 map("n", "gob", "<CMD>EditBookmarks<CR>", { desc = "Edit bookmarks.txt" })
