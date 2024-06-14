@@ -66,6 +66,34 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 		end, "Toggle JP mode")
 	end
 
+	local i_jp = function(key)
+		return map(key, "n", function()
+			require("utils.common").feed_plug(enable)
+			return "i"
+		end, "`i` (SKK)", { expr = true })
+	end
+
+	local a_jp = function(key)
+		return map(key, "n", function()
+			require("utils.common").feed_plug(enable)
+			return "a"
+		end, "`a` (SKK)", { expr = true })
+	end
+
+	local o_jp = function(key)
+		return map(key, "n", function()
+			require("utils.common").feed_plug(enable)
+			return "o"
+		end, "`o` (SKK)", { expr = true })
+	end
+
+	local s_jp = function(key)
+		return map(key, "n", function()
+			require("utils.common").feed_plug(enable)
+			return "s"
+		end, "`s` (SKK)", { expr = true })
+	end
+
 	return {
 		map_enable("<C-Space>"),
 		map_toggle_jp("<leader>aj"),
@@ -74,6 +102,10 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 		map_disable("<C-g>e"),
 		map_disable("<C-g><C-e>"),
 		map_toggle_jp_in_insert_mode("<C-g>N"),
+		i_jp("<M-i>"),
+		a_jp("<M-a>"),
+		o_jp("<M-o>"),
+		s_jp("<M-s>"),
 	}
 end
 
