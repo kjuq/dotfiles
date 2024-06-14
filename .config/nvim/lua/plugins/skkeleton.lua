@@ -6,7 +6,7 @@ local skk = require("utils.skk")
 local spec = { "vim-skk/skkeleton" }
 spec.cond = vim.fn.executable("deno") ~= 0
 
-spec.event = "User UserDenopsActivated"
+spec.event = { "User UserDenopsActivated", "InsertEnter" }
 
 spec.keys = skk.mappings("Skkeleton: ", "skkeleton-enable", "skkeleton-disable", "skkeleton-toggle")
 
