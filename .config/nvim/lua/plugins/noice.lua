@@ -1,8 +1,6 @@
 local map = require("utils.lazy").generate_map("", "")
 
 local utils = require("utils.common")
-local scrollup = utils.floatscrollup
-local scrolldown = utils.floatscrolldown
 
 ---@type LazySpec
 local spec = { "folke/noice.nvim" }
@@ -13,16 +11,12 @@ spec.cmd = { "Noice" }
 
 spec.keys = {
 	map("gA", "n", "<CMD>Noice<CR>", "Noice"),
-	map(scrolldown, { "n", "i" }, function()
-		if not require("noice.lsp").scroll(4) then
-			return scrolldown
-		end
-	end, "Page down", { expr = true }),
-	map(scrollup, { "n", "i" }, function()
-		if not require("noice.lsp").scroll(-4) then
-			return scrollup
-		end
-	end, "Page up", { expr = true }),
+	map(utils.floatscrolldown, { "n", "i" }, function()
+		require("noice.lsp").scroll(4)
+	end, "Page down"),
+	map(utils.floatscrollup, { "n", "i" }, function()
+		require("noice.lsp").scroll(-4)
+	end, "Page up"),
 }
 
 spec.opts = function()

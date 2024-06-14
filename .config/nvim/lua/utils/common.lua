@@ -87,7 +87,7 @@ M.buffer_delete = function(del_others)
 end
 
 M.floatwinborder = "single"
-M.floatscrolldown = "<C-f>"
-M.floatscrollup = "<C-b>"
+M.floatscrolldown = "<M-d>"
+M.floatscrollup = "<M-u>"
 
 return M
