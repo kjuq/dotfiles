@@ -1,3 +1,8 @@
+-- To you prefer "noinsert", use the code below instead of `cmp.select_next_item()`
+-- `cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })`
+
+local autocomplete = { "InsertEnter", "TextChanged" }
+
 ---@type LazySpec
 local spec = { "hrsh7th/nvim-cmp" }
 
@@ -23,18 +28,24 @@ spec.config = function()
 
 	local select_next = function()
 		if cmp.visible() then
-			cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
+			cmp.select_next_item()
 		else
-			cmp.setup({ sources = normal_sources })
+			cmp.setup({
+				sources = normal_sources,
+				completion = { autocomplete = autocomplete },
+			})
 			cmp.complete()
 		end
 	end
 
 	local select_prev = function()
 		if cmp.visible() then
-			cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
+			cmp.select_prev_item()
 		else
-			cmp.setup({ sources = copilot_source })
+			cmp.setup({
+				sources = copilot_source,
+				completion = { autocomplete = autocomplete },
+			})
 			cmp.complete()
 		end
 	end
@@ -42,6 +53,7 @@ spec.config = function()
 	local abort = function(fallback)
 		if cmp.visible() and vim.fn.pumvisible() ~= 1 then
 			cmp.abort()
+			cmp.setup({ completion = { autocomplete = false } })
 		else
 			fallback()
 		end
@@ -85,7 +97,7 @@ spec.config = function()
 
 	local cmd_history_next = function(fallback)
 		if cmp.visible() then
-			cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
+			cmp.select_next_item()
 		else
 			fallback()
 		end
@@ -93,7 +105,7 @@ spec.config = function()
 
 	local cmd_history_prev = function(fallback)
 		if cmp.visible() then
-			cmp.select_prev_item({ behavior = types.cmp.SelectBehavior.Select })
+			cmp.select_prev_item()
 		else
 			fallback()
 		end
@@ -117,7 +129,7 @@ spec.config = function()
 	local mapping_cmdline = {
 		["<C-n>"] = cmp.mapping(cmd_history_next, { "c" }),
 		["<C-p>"] = cmp.mapping(cmd_history_prev, { "c" }),
-		["<Tab>"] = cmp.mapping(select_next, { "c" }),
+		["<C-i>"] = cmp.mapping(select_next, { "c" }),
 		["<S-Tab>"] = cmp.mapping(select_prev, { "c" }),
 		["<C-l>"] = cmp.mapping(abort, { "c" }),
 		["<C-e>"] = cmp.mapping(abort, { "c" }),
@@ -127,9 +139,9 @@ spec.config = function()
 
 	cmp.setup({
 		completion = {
-			completeopt = "menu,menuone,noinsert",
+			completeopt = "menu,menuone,noselect",
+			autocomplete = autocomplete,
 		},
-		experimental = { ghost_text = true },
 
 		snippet = {
 			expand = function(args)
@@ -157,17 +169,13 @@ spec.config = function()
 
 	-- Set configuration for specific filetype.
 	cmp.setup.filetype("gitcommit", {
-		sources = {
-			{ name = "git" },
-		},
+		sources = { { name = "git" } },
 	})
 
 	-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 	cmp.setup.cmdline({ "/", "?" }, {
 		mapping = mapping_cmdline,
-		sources = {
-			{ name = "buffer" },
-		},
+		sources = { { name = "buffer" } },
 		completion = { autocomplete = false },
 	})
 
@@ -182,18 +190,14 @@ spec.config = function()
 	})
 
 	-- enable only skkeleton sources
+	local skkeleton_src = cmp.config.sources({ { name = "skkeleton" } })
+
 	local function cmp_enable_skk()
-		cmp.setup.buffer({
-			sources = cmp.config.sources({
-				{ name = "skkeleton" },
-			}),
-		})
+		cmp.setup.buffer({ sources = skkeleton_src })
 	end
 
 	local function cmp_disable_skk()
-		cmp.setup.buffer({
-			sources = normal_sources,
-		})
+		cmp.setup.buffer({ sources = normal_sources })
 	end
 
 	vim.api.nvim_create_autocmd({ "User" }, {
