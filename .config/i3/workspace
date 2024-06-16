@@ -53,7 +53,7 @@ bindsym Shift+$wsmod+$wskey9 move container to workspace $ws9; workspace $ws9
 assign [class="Vivaldi"] $ws2
 assign [class="org.wezfurlong.wezterm"] $ws4
 assign [class="qutebrowser"] $ws5
-assign [class="MuPDF"] $ws6
+# assign [class="Evince"] $ws6
 
 # Open specific applications in floating mode
 for_window [title="File Transfer*"] floating enable
