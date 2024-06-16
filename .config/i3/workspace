@@ -36,8 +36,6 @@ bindsym $wsmod+$wskey7 workspace $ws7
 bindsym $wsmod+$wskey8 workspace $ws8
 bindsym $wsmod+$wskey9 workspace $ws9
 
-bindsym $wsmod+$wskey0 exec "floatingnvim wezterm && xte 'key XF86Paste'"
-
 # Move to workspace with focused container
 bindsym Shift+$wsmod+$wskey1 move container to workspace $ws1; workspace $ws1
 bindsym Shift+$wsmod+$wskey2 move container to workspace $ws2; workspace $ws2
@@ -56,7 +54,7 @@ assign [class="qutebrowser"] $ws5
 # assign [class="Evince"] $ws6
 
 # Open specific applications in floating mode
-for_window [title="File Transfer*"] floating enable
+# for_window [title="File Transfer*"] floating enable
 for_window [class="FloatingVim"] floating enable
 
 # switch to workspace with urgent window automatically
