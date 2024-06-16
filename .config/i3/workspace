@@ -7,7 +7,7 @@ set $ws2 2
 set $ws3 3
 set $ws4 4:terminal
 set $ws5 5:browser
-set $ws6 6
+set $ws6 6:preview
 set $ws7 7
 set $ws8 8
 set $ws9 9
@@ -21,10 +21,9 @@ set $wskey3 comma
 set $wskey4 bracketright
 set $wskey5 bracketleft
 set $wskey6 slash
-set $wskey7 apostrophe
+set $wskey7 grave
 set $wskey8 equal
 set $wskey9 minus
-set $wskey0 grave
 
 # switch to workspace
 bindsym $wsmod+$wskey1 workspace $ws1
