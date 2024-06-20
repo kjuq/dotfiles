@@ -8,6 +8,7 @@ spec.config = function()
 		matchup = {
 			enable = true,
 			enable_quotes = true,
+			disable_virtual_text = true,
 		},
 	})
 	-- for lazy-load, reload filetype
