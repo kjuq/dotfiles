@@ -82,6 +82,8 @@ map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 -- Centering cursor
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
+map("n", "<C-o>", "<C-o>zz")
+map("n", "<C-i>", "<C-i>zz")
 
 local is_bottom = function()
 	local linesum = vim.fn.line("$")
@@ -108,7 +110,7 @@ end, { expr = true })
 
 map("n", "<C-f>", function()
 	if not is_bottom() then
-		return "<C-d>M"
+		return "<C-f>M"
 	end
 end, { expr = true })
 
