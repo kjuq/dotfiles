@@ -16,6 +16,9 @@ opt.termguicolors = true
 opt.wildmenu = true
 opt.completeopt = "menuone,popup,noselect"
 
+-- To install on Arch `pacman -S words`
+opt.dictionary:append("/usr/share/dict/words")
+
 opt.pumheight = 10
 opt.pumwidth = 40
 -- o.pumblend = 20 -- Disable this when using transparent env
@@ -24,6 +27,7 @@ opt.updatetime = 200
 
 opt.ignorecase = true
 opt.smartcase = true
+opt.infercase = true
 
 opt.foldmethod = "marker"
 opt.foldopen:remove("block")
@@ -31,7 +35,9 @@ opt.foldopen:remove("block")
 
 opt.wrap = false
 opt.smoothscroll = true
+opt.scrolloff = 8
 opt.startofline = true
+
 opt.breakindent = true
 opt.breakindentopt:append("list:-1") -- indent wrapped list
 
