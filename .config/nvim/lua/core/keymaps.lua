@@ -163,13 +163,25 @@ end, { desc = "Toggle relative number style" })
 
 map("n", "gac", function()
 	if vim.o.clipboard == "" then
-		print("clipboard=unnamedplus")
 		vim.o.clipboard = "unnamedplus"
 	else
-		print('clipboard=""')
 		vim.o.clipboard = ""
 	end
+	print("clipboard=" .. vim.o.clipboard)
 end, { desc = "Toggle clipboard" })
+
+local vedit_default
+map("n", "gav", function()
+	if not vedit_default then
+		vedit_default = vim.o.virtualedit
+	end
+	if vim.o.virtualedit == vedit_default then
+		vim.opt.virtualedit = "all"
+	else
+		vim.opt.virtualedit = vedit_default
+	end
+	print("virtualedit=" .. vim.o.virtualedit)
+end, { desc = "Toggle virtualedit" })
 
 map("n", "gad", "<Cmd>pwd<CR>", { desc = "Print working directory" })
 
