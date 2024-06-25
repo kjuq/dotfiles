@@ -49,7 +49,11 @@ spec.opts = function()
 		pattern = "copilot-chat",
 		group = vim.api.nvim_create_augroup("user_copilot_chat", {}),
 		callback = function()
-			vim.o.cursorline = false
+			local chat = require("CopilotChat")
+			vim.keymap.set("n", "gs", function()
+				local date = os.date("%Y-%m-%d") --[[@ as string]]
+				chat.save(date)
+			end, { buffer = true })
 		end,
 	})
 
