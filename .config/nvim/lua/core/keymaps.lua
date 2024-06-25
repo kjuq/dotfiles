@@ -93,7 +93,7 @@ end
 
 local is_top = function()
 	local top = vim.fn.line("w0") -- displayed top line
-	return top == 0
+	return top == 1
 end
 
 map("n", "<C-d>", function()
