@@ -4,7 +4,7 @@ local active = false
 
 local enable = function()
 	vim.o.timeout = true
-	vim.o.timeoutlen = 700
+	vim.o.timeoutlen = 500
 	active = true
 end
 
@@ -40,7 +40,7 @@ spec.opts = function()
 	enable()
 
 	require("which-key").register({
-		["gcd"] = { name = "Annotation", _ = "which_key_ignore" },
+		["ga"] = { name = "Additional actions", _ = "which_key_ignore" },
 		["go"] = { name = "Edit specific file", _ = "which_key_ignore" },
 		["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
 		["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
@@ -51,7 +51,6 @@ spec.opts = function()
 		["<leader>r"] = { name = "Resume", _ = "which_key_ignore" },
 		["<leader>s"] = { name = "Substitute", _ = "which_key_ignore" },
 		["<leader>t"] = { name = "Trouble", _ = "which_key_ignore" },
-		["<M-w>"] = { name = "Workspace", _ = "which_key_ignore" },
 	})
 
 	return {
