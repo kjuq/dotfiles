@@ -14,7 +14,7 @@ opt.showcmdloc = "statusline"
 opt.termguicolors = true
 
 opt.wildmenu = true
-opt.completeopt = "menuone,popup,noselect"
+opt.completeopt = "menuone,popup,noselect,fuzzy"
 
 -- To install on Arch `pacman -S words`
 opt.dictionary:append("/usr/share/dict/words")
@@ -39,7 +39,8 @@ opt.scrolloff = 8
 opt.startofline = true
 
 opt.breakindent = true
-opt.breakindentopt:append("list:-1") -- indent wrapped list
+-- opt.breakindentopt:append("list:-1") -- indent wrapped list
+opt.showbreak = "> "
 
 -- opt.cursorline = true
 opt.cursorlineopt = { "screenline" }
@@ -54,17 +55,19 @@ opt.expandtab = false
 opt.shiftwidth = 0 -- obey tabstop
 opt.shiftround = true
 
-opt.list = false
+opt.list = true
 opt.listchars = {
 	trail = "◊",
-	tab = "│⋅",
-	space = "⋅",
-	eol = "↵",
+	tab = "│ ",
+	-- space = "⋅",
+	-- eol = "↵",
 	nbsp = "▶",
-	-- extends = "»",
-	-- precedes = "«",
+	extends = "»",
+	precedes = "«",
 }
-opt.fillchars = { eob = " " } -- hide tildes in blank space after end of file
+opt.fillchars = {
+	eob = " ", -- hide tildes in blank space after end of file
+}
 
 opt.number = true
 opt.relativenumber = false
@@ -73,9 +76,9 @@ opt.numberwidth = 1
 opt.helplang = { "en", "ja" }
 opt.fileencodings = { "ucs-bom", "utf-8", "sjis", "euc-jp", "latin1" }
 
--- -- Disable a leader key time out (buggy when ssh-ing KSGO from KMMN)
--- opt.timeout = false
--- opt.ttimeout = false
+-- Disable a leader key time out (buggy when ssh-ing KSGO from KMMN)
+opt.timeout = false
+opt.ttimeout = false
 
 -- Disable welcome message
 opt.shortmess:append("I")
