@@ -237,7 +237,4 @@ spec.dependencies = {
 	},
 }
 
----@diagnostic disable-next-line: inject-field
-spec._user_load_library = true
-
 return spec

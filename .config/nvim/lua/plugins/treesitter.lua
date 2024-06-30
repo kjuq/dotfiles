@@ -86,9 +86,6 @@ spec.config = function()
 	require("nvim-treesitter.configs").setup(spec.opts)
 end
 
----@diagnostic disable-next-line: inject-field
-spec._user_load_library = true
-
 spec.dependencies = {
 	"nvim-treesitter/nvim-treesitter-textobjects",
 }

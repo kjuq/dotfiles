@@ -44,6 +44,4 @@ spec.opts = function()
 	}
 end
 
-spec._user_load_library = true
-
 return spec

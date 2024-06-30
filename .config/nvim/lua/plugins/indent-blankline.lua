@@ -57,6 +57,4 @@ spec.config = function()
 	ibl.refresh_all()
 end
 
-spec._user_load_library = true
-
 return spec
