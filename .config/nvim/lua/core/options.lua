@@ -14,7 +14,37 @@ opt.showcmdloc = "statusline"
 opt.termguicolors = true
 
 opt.wildmenu = true
-opt.completeopt = "menuone,popup,noselect,fuzzy"
+opt.wildmode = { "full" } -- use wildmenu any time
+opt.wildoptions = { "pum", "tagfile", "fuzzy" }
+opt.completeopt = { "menuone", "popup", "noselect", "fuzzy" }
+
+opt.wildignore:append({
+	"*.a",
+	"*.aux",
+	"*.class",
+	"*.dll",
+	"*.exe",
+	"*.hg",
+	"*.javac",
+	"*.lib",
+	"*.o",
+	"*.obj",
+	"*.orig",
+	"*.out",
+	"*.pyc",
+	"*.pyc",
+	"*.pyd",
+	"*.pyo",
+	"*.so",
+	"*.swo",
+	"*.swp",
+	"*.toc",
+	".DS_Store",
+	".git",
+	"node_modules",
+})
+
+opt.suffixesadd:append({ ".java", ".rs" })
 
 -- To install on Arch `pacman -S words`
 opt.dictionary:append("/usr/share/dict/words")
@@ -28,6 +58,7 @@ opt.updatetime = 200
 opt.ignorecase = true
 opt.smartcase = true
 opt.infercase = true
+opt.wildignorecase = true
 
 opt.foldmethod = "marker"
 opt.foldopen:remove("block")
