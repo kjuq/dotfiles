@@ -62,8 +62,8 @@ spec.opts = {
 }
 
 spec.config = function(_, opts)
-	vim.api.nvim_set_hl(0, "UserHlSearchAbove", { fg = "#BF616A" })
-	vim.api.nvim_set_hl(0, "UserHlSearchNearest", { fg = "#B48EAD" })
+	vim.api.nvim_set_hl(0, "UserHlSearchAbove", { fg = "#81A1C1" })
+	vim.api.nvim_set_hl(0, "UserHlSearchNearest", { fg = "#BF616A" })
 	vim.api.nvim_set_hl(0, "UserHlSearchBelow", { fg = "#81A1C1" })
 
 	require("hlslens").setup(opts)
