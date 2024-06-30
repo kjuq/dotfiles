@@ -86,6 +86,19 @@ M.buffer_delete = function(del_others)
 	end
 end
 
+---@param mode string
+---@param keymap string
+---@return boolean
+M.is_keymap_set = function(mode, keymap)
+	for _, km in pairs(vim.api.nvim_get_keymap(mode)) do
+		---@diagnostic disable-next-line: undefined-field
+		if km.lhs == keymap then
+			return true
+		end
+	end
+	return false
+end
+
 M.floatwinborder = "single"
 M.floatscrolldown = "<M-f>"
 M.floatscrollup = "<M-b>"

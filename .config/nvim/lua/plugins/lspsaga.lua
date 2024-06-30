@@ -3,10 +3,11 @@ local map = require("utils.lazy").generate_map("", "LspSaga: ")
 ---@type LazySpec
 local spec = { "nvimdev/lspsaga.nvim" }
 
-spec.event = "LspAttach"
+spec.cmd = "Lspsaga"
 
 spec.keys = {
 	map("gD", "n", "<Cmd>Lspsaga finder def+ref+imp+tyd<CR>", "Finder"),
+	map("gd", "n", "<Cmd>Lspsaga goto_definition<CR>", "Go to definition"),
 }
 
 spec.opts = {
