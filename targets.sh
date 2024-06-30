@@ -61,6 +61,7 @@ python-test
 rclone_init
 sudo_pass
 toggle_menubar
+vc
 "
 
 root_files="
