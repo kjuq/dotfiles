@@ -1,8 +1,12 @@
 local map = require("utils.lazy").generate_map("", "Project: ")
 
+local manual_mode = false
+
 ---@type LazySpec
 local spec = { "ahmedkhalf/project.nvim" }
 spec.name = "project_nvim"
+
+spec.event = not manual_mode and { "BufNewFile", "BufReadPost" } or {}
 
 spec.cmd = {
 	"ProjectRoot",
@@ -22,7 +26,7 @@ spec.keys = {
 }
 
 spec.opts = {
-	manual_mode = true,
+	manual_mode = manual_mode,
 	detection_methods = { "pattern" },
 }
 
