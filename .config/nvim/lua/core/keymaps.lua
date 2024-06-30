@@ -129,18 +129,18 @@ map("n", "ga", "<Nop>")
 map("n", "gaw", function()
 	vim.opt.wrap = not vim.o.wrap
 	if vim.o.wrap then
-		print("Wrap enabled")
+		vim.notify("Wrap enabled")
 	else
-		print("Wrap disabled")
+		vim.notify("Wrap disabled")
 	end
 end, { desc = "Toggle wrap" })
 
 map("n", "gas", function()
 	vim.opt.spell = not vim.o.spell
 	if vim.o.spell then
-		print("Spellcheck enabled")
+		vim.notify("Spellcheck enabled")
 	else
-		print("Spellcheck disabled")
+		vim.notify("Spellcheck disabled")
 	end
 end, { desc = "Toggle spell check" })
 
@@ -162,7 +162,7 @@ map("n", "gac", function()
 	else
 		vim.o.clipboard = ""
 	end
-	print("clipboard=" .. vim.o.clipboard)
+	vim.notify("clipboard=" .. vim.o.clipboard)
 end, { desc = "Toggle clipboard" })
 
 local vedit_default
@@ -175,7 +175,7 @@ map("n", "gav", function()
 	else
 		vim.opt.virtualedit = vedit_default
 	end
-	print("virtualedit=" .. vim.o.virtualedit)
+	vim.notify("virtualedit=" .. vim.o.virtualedit)
 end, { desc = "Toggle virtualedit" })
 
 map("n", "gar", ":<C-u>%s///g<Left><Left>", { desc = "Start substitution" })

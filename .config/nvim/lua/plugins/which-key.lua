@@ -15,10 +15,10 @@ end
 
 local toggle = function()
 	if active then
-		print("Which-key is inactive")
+		vim.notify("Which-key is inactive")
 		disable()
 	else
-		print("Which-key is active")
+		vim.notify("Which-key is active")
 		enable()
 	end
 end

@@ -41,7 +41,7 @@ local callback = function(ev)
 	map("n", "crwa", vlb.add_workspace_folder, "Add folder to workspace")
 	map("n", "crwr", vlb.remove_workspace_folder, "Remove folder from workspace")
 	map("n", "crww", function()
-		print(vim.inspect(vlb.list_workspace_folders()))
+		vim.notify(vim.inspect(vlb.list_workspace_folders()))
 	end, "List folders of workspaceh")
 
 	-- Diagnostics

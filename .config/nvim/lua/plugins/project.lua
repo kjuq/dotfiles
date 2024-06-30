@@ -12,7 +12,7 @@ spec.keys = {
 			if has_telescope then
 				telescope.extensions.projects.projects({})
 			else
-				print("Telescope is not installed")
+				vim.notify("Telescope is not installed")
 			end
 		end,
 		desc = "Project: Pick projects",

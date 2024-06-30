@@ -9,10 +9,10 @@ local group = vim.api.nvim_create_augroup("user_skk_toggle", {})
 ---@param callback fun()
 M.toggle_japanese = function(callback)
 	if _G._user_skk_jp_mode_enabled then
-		print("Japanese mode disabled (English)")
+		vim.notify("Japanese mode disabled (English)")
 		vim.api.nvim_clear_autocmds({ group = group })
 	else
-		print("Japanese mode enabled (Japanese)")
+		vim.notify("Japanese mode enabled (Japanese)")
 		vim.api.nvim_create_autocmd("InsertEnter", {
 			group = group,
 			pattern = "*",
