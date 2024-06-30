@@ -1,5 +1,7 @@
 local map = require("utils.lazy").generate_map("", "Yanky: ")
 
+local edgemotion_installed = vim.fn.isdirectory(vim.fn.stdpath("data") .. "/lazy/vim-edgemotion") == 1
+
 ---@type LazySpec
 local spec = { "gbprod/yanky.nvim" }
 
@@ -11,18 +13,22 @@ spec.keys = {
 
 	map("<C-p>", "n", function()
 		if require("yanky").can_cycle() then
-			require("utils.common").feed_plug("YankyPreviousEntry")
+			return "<Plug>(YankyPreviousEntry)"
+		elseif edgemotion_installed then
+			return "<Plug>(edgemotion-k)"
 		else
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, false, true), "n", false)
+			return "<C-p>"
 		end
-	end, "Previous entry"),
+	end, "Previous entry", { expr = true }),
 	map("<C-n>", "n", function()
 		if require("yanky").can_cycle() then
-			require("utils.common").feed_plug("YankyNextEntry")
+			return "<Plug>(YankyNextEntry)"
+		elseif edgemotion_installed then
+			return "<Plug>(edgemotion-j)"
 		else
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, false, true), "n", false)
+			return "<C-n>"
 		end
-	end, "Next entry"),
+	end, "Next entry", { expr = true }),
 
 	map("<leader>fp", "n", function()
 		local has_telescope, telescope = pcall(require, "telescope")
