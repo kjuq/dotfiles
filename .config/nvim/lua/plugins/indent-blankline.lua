@@ -48,7 +48,7 @@ spec.config = function()
 			show_end = false,
 		},
 		exclude = {
-			filetypes = { "oil" },
+			filetypes = { "oil", "undotree" },
 		},
 	}
 
