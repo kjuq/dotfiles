@@ -10,7 +10,7 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map("<leader>ar", "n", "<Cmd>ProjectRoot<CR>", "cd <project_root>"),
+	map("<leader>a.", "n", "<Cmd>ProjectRoot<CR>", "cd <project_root>"),
 	map("<leader>fP", "n", function()
 		local has_telescope, telescope = pcall(require, "telescope")
 		if has_telescope then
