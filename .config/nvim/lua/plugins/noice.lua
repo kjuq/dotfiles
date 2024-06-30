@@ -26,13 +26,14 @@ spec.opts = function()
 			format = {
 				lua = false,
 				help = false,
+				filter = false,
 			},
 			opts = {
 				border = { style = require("utils.common").floatwinborder },
 			},
 		},
 		messages = {
-			enabled = true,
+			enabled = false,
 			view_search = false,
 		},
 		popupmenu = { -- Noice's completion
