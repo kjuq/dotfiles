@@ -82,4 +82,8 @@ spec.config = function()
 	require("yanky").setup(opts)
 end
 
+spec.dependencies = {
+	"haya14busa/vim-edgemotion", -- Because both of Yanky and Edgemotion use <C-p> and <C-n>
+}
+
 return spec
