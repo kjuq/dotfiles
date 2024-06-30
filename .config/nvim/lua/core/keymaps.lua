@@ -1,15 +1,12 @@
 local map = vim.keymap.set
 
-map({ "n", "v" }, "<Space>", "<Nop>")
-map("n", "ga", "<Nop>")
-map("n", "go", "<Nop>")
-
 -- Space as leader key
+map({ "n", "v" }, "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Disable Ctrl-c to allow <C-c> keymappings (e.g. <C-w><C-c>, etc
-map("n", "<C-c>", "<Nop>")
+-- map("n", "<C-c>", "<Nop>")
 
 -- Emacs-like cursor movement in command mode
 map("c", "<C-b>", "<Left>") -- Jumps to the beginning of a line by default
@@ -72,11 +69,6 @@ write_noautocmd("gS")
 quit("gh")
 quit_force("gH")
 
-write("<leader>w")
-write_noautocmd("<leader>W")
-quit("<leader>q")
-quit_force("<leader>Q")
-
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
 -- Centering cursor
@@ -130,6 +122,9 @@ map("n", "gL", function()
 end, { desc = "Delete all buffers except for the current one" })
 
 map("n", "gA", "<CMD>messages<CR>", { desc = "History of messages" })
+
+-- `ga*` keymaps
+map("n", "ga", "<Nop>")
 
 map("n", "gaw", function()
 	vim.opt.wrap = not vim.o.wrap
@@ -188,6 +183,7 @@ map("n", "gad", "<Cmd>pwd<CR>", { desc = "Print working directory" })
 map("n", "ga-", "<Cmd>cd .. | pwd<CR>", { desc = "Change to upper directory" })
 
 -- open specific files via keymaps
+map("n", "go", "<Nop>")
 map("n", "got", "<CMD>EditTodo<CR>", { desc = "Edit todo.txt" })
 map("n", "gob", "<CMD>EditBookmarks<CR>", { desc = "Edit bookmarks.txt" })
 map("n", "gor", "<CMD>EditReadinglist<CR>", { desc = "Edit readinglist.txt" })

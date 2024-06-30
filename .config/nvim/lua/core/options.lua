@@ -77,6 +77,7 @@ opt.showbreak = "> "
 opt.cursorlineopt = { "screenline" }
 
 opt.splitright = true
+opt.splitbelow = false
 
 opt.virtualedit = { "block" }
 
@@ -116,13 +117,15 @@ opt.shortmess:append("I")
 
 opt.spell = false
 opt.spellfile = vim.fs.joinpath(os.getenv("XDG_STATE_HOME"), "nvim", "spell.en.utf-8.add")
-opt.spelllang = "en,cjk"
+opt.spelllang = { "en", "cjk" }
 opt.spelloptions = "camel"
 
-opt.matchpairs:append("「:」")
-opt.matchpairs:append("（:）")
-opt.matchpairs:append("［:］")
-opt.matchpairs:append("〔:〕")
-opt.matchpairs:append("【:】")
-opt.matchpairs:append("『:』")
-opt.matchpairs:append("｛:｝")
+opt.matchpairs:append({
+	"「:」",
+	"（:）",
+	"［:］",
+	"〔:〕",
+	"【:】",
+	"『:』",
+	"｛:｝",
+})
