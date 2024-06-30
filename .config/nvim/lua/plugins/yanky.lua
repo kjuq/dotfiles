@@ -1,7 +1,5 @@
 local map = require("utils.lazy").generate_map("", "Yanky: ")
 
-local edgemotion_installed = vim.fn.isdirectory(vim.fn.stdpath("data") .. "/lazy/vim-edgemotion") == 1
-
 ---@type LazySpec
 local spec = { "gbprod/yanky.nvim" }
 
@@ -11,22 +9,18 @@ spec.keys = {
 	map("gp", { "n", "x" }, "<Plug>(YankyGPutAfter)", "GPut after"),
 	map("gP", { "n", "x" }, "<Plug>(YankyGPutBefore)", "GPut before"),
 
-	map("<C-p>", "n", function()
+	map("-", "n", function()
 		if require("yanky").can_cycle() then
 			return "<Plug>(YankyPreviousEntry)"
-		elseif edgemotion_installed then
-			return "<Plug>(edgemotion-k)"
 		else
-			return "<C-p>"
+			return "-"
 		end
 	end, "Previous entry", { expr = true }),
-	map("<C-n>", "n", function()
+	map("+", "n", function()
 		if require("yanky").can_cycle() then
 			return "<Plug>(YankyNextEntry)"
-		elseif edgemotion_installed then
-			return "<Plug>(edgemotion-j)"
 		else
-			return "<C-n>"
+			return "+"
 		end
 	end, "Next entry", { expr = true }),
 
@@ -81,9 +75,5 @@ spec.config = function()
 
 	require("yanky").setup(opts)
 end
-
-spec.dependencies = {
-	"haya14busa/vim-edgemotion", -- Because both of Yanky and Edgemotion use <C-p> and <C-n>
-}
 
 return spec
