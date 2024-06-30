@@ -23,6 +23,7 @@ M.toggle_japanese = function(callback)
 end
 
 M.mappings = function(desc_prefix, enable, disable, toggle)
+	local _, _ = disable, toggle -- supress unused-local
 	local map = require("utils.lazy").generate_map("", desc_prefix)
 	local skk = require("utils.skk")
 	local toggle_japanese = function()
@@ -31,39 +32,16 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 		end)
 	end
 
-	local map_toggle = function(key)
-		return map(key, { "i", "c" }, function()
-			require("utils.common").feed_plug(toggle)
-		end, "Toggle")
-	end
-
-	local map_toggle_jp = function(key)
+	local toggle_jp = function(key)
 		return map(key, "n", function()
 			toggle_japanese()
 		end, "Toggle JP mode")
 	end
 
-	local map_enable = function(key)
+	local enable_tmp = function(key)
 		return map(key, { "i", "c" }, function()
 			require("utils.common").feed_plug(enable)
 		end, "Enable")
-	end
-
-	local map_disable = function(key)
-		return map(key, { "i", "c" }, function()
-			require("utils.common").feed_plug(disable)
-		end, "Disable")
-	end
-
-	local map_toggle_jp_in_insert_mode = function(key)
-		return map(key, "i", function()
-			if _G._user_skk_jp_mode_enabled then
-				require("utils.common").feed_plug(disable)
-			else
-				require("utils.common").feed_plug(enable)
-			end
-			toggle_japanese()
-		end, "Toggle JP mode")
 	end
 
 	local i_jp = function(key)
@@ -95,13 +73,8 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 	end
 
 	return {
-		map_enable("<C-Space>"),
-		map_toggle_jp("<leader>aj"),
-		map_enable("<C-g>n"),
-		map_enable("<C-g><C-n>"),
-		map_disable("<C-g>e"),
-		map_disable("<C-g><C-e>"),
-		map_toggle_jp_in_insert_mode("<C-g>N"),
+		enable_tmp("<C-Space>"),
+		toggle_jp("<M-n>"),
 		i_jp("<M-i>"),
 		a_jp("<M-a>"),
 		o_jp("<M-o>"),
