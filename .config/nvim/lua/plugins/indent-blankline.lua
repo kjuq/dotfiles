@@ -35,7 +35,6 @@ spec.config = function()
 
 	hooks.register(hooks.type.SKIP_LINE, hooks.builtin.skip_preproc_lines, { bufnr = 0 })
 
-	---@type ibl.config
 	local opts = {
 		indent = {
 			highlight = highlight,

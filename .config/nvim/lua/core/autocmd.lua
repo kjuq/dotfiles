@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 })
 
 vim.api.nvim_create_autocmd({ "TermRequest" }, {
-	callback = function(ev)
+	callback = function(_)
 		if string.sub(vim.v.termrequest, 1, 4) == "\x1b]7;" then
 			local dir = string.gsub(vim.v.termrequest, "\x1b]7;file://[^/]*", "")
 			if vim.fn.isdirectory(dir) == 0 then

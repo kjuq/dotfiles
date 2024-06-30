@@ -3,6 +3,11 @@ local M = {}
 M.opts = {
 	settings = {
 		Lua = {
+			runtime = {
+				version = "LuaJIT",
+				pathStrict = true,
+				-- path = { "?.lua", "?/init.lua" },
+			},
 			format = { enable = false }, -- Use StyLua if disabled
 			hint = { enable = true },
 		},

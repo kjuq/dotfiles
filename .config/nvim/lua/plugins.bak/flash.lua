@@ -1,5 +1,3 @@
-local map = require("utils.lazy").generate_map("", "Flash: ")
-
 ---@type LazySpec
 local spec = { "folke/flash.nvim" }
 
