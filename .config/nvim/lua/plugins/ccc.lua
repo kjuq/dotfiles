@@ -5,26 +5,18 @@ local spec = { "uga-rosa/ccc.nvim" }
 spec.event = require("utils.lazy").verylazy
 
 spec.keys = {
-	map("r", "n", "<CMD>CccPick<CR>", "Open picker"),
-}
-
-spec.opts = {
-	highlighter = {
-		-- auto_enable = true,
-	},
+	map("C", "n", "<CMD>CccPick<CR>", "Open picker"),
 }
 
 spec.config = function()
-	require("ccc").setup(spec.opts)
+	require("ccc").setup()
 
 	local max_lines = 30000
-
 	local enable_hl = function()
 		if vim.fn.line("$") <= max_lines then
 			vim.cmd("CccHighlighterEnable")
 		end
 	end
-
 	enable_hl()
 
 	vim.api.nvim_create_autocmd({ "BufEnter" }, {
