@@ -43,7 +43,7 @@ spec.config = function()
 		group = vim.api.nvim_create_augroup("user_rainbow_delimiters", {}),
 		callback = function()
 			if vim.bo.filetype ~= "markdown" then
-				rainbow.enable()
+				rainbow.enable(0)
 			end
 		end,
 		once = true,

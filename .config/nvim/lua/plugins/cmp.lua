@@ -1,5 +1,5 @@
 -- To you prefer "noinsert", use the code below instead of `cmp.select_next_item()`
--- `cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })`
+-- `cmp.select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Select })`
 
 local autocomplete = { "InsertEnter", "TextChanged" }
 
@@ -13,7 +13,6 @@ spec.config = function()
 	vim.opt.pumheight = 8
 
 	local cmp = require("cmp")
-	local types = require("cmp.types")
 
 	local copilot_source = cmp.config.sources({ { name = "copilot" } })
 	local normal_sources = cmp.config.sources({
