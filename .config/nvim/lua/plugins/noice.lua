@@ -10,7 +10,6 @@ spec.event = require("utils.lazy").verylazy
 spec.cmd = { "Noice" }
 
 spec.keys = {
-	map("gA", "n", "<CMD>Noice<CR>", "Noice"),
 	map(utils.floatscrolldown, { "n", "i" }, function()
 		require("noice.lsp").scroll(4)
 	end, "Page down"),
@@ -40,11 +39,15 @@ spec.opts = function()
 			enabled = false,
 		},
 		notify = {
-			enabled = true,
+			enabled = false,
 		},
 		lsp = {
-			progress = { enabled = true },
-			hover = { enabled = true },
+			progress = {
+				enabled = false,
+			},
+			hover = {
+				enabled = true,
+			},
 			signature = {
 				enabled = true,
 				auto_open = { enabled = false },
