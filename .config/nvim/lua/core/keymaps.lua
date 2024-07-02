@@ -180,8 +180,13 @@ end, { desc = "Toggle virtualedit" })
 
 map("n", "gar", ":<C-u>%s///g<Left><Left>", { desc = "Start substitution" })
 
-map("n", "gad", "<Cmd>pwd<CR>", { desc = "Print working directory" })
-map("n", "ga-", "<Cmd>cd .. | pwd<CR>", { desc = "Change to upper directory" })
+map("n", "gad", function()
+	vim.notify(vim.fn.getcwd())
+end, { desc = "Print working directory" })
+map("n", "ga-", function()
+	vim.cmd("silent! cd ..")
+	vim.notify(vim.fn.getcwd())
+end, { desc = "Change to upper directory" })
 
 -- open specific files via keymaps
 map("n", "go", "<Nop>")
