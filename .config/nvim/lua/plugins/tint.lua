@@ -8,13 +8,14 @@ spec.opts = {
 	highlight_ignore_patterns = { "WinSeparator" },
 }
 
-spec.config = function()
+spec.config = function(_, opts)
 	local tint = require("tint")
-	tint.setup(spec.opts)
+	tint.setup(opts)
 
 	vim.api.nvim_create_autocmd("FocusLost", {
 		group = vim.api.nvim_create_augroup("_user_tint_focus_lost", {}),
 		callback = function()
+			-- TODO: tint all windows
 			tint.tint(vim.api.nvim_get_current_win())
 		end,
 	})
