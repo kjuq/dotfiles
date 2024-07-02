@@ -4,3 +4,9 @@ gui:
   showIcons: true
 git:
   disableForcePushing: true
+keybinding:
+  commits:
+    viewResetOptions: D
+  files:
+    commitChanges: C
+    commitChangesWithEditor: c
