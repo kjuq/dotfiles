@@ -16,7 +16,6 @@ end
 
 local callback = function(ev)
 	local bufnr = ev.buf
-	local client = vim.lsp.get_client_by_id(ev.data.client_id)
 	-- Keymaps for LSP
 	local map = function(mode, lhs, rhs, desc)
 		vim.keymap.set(mode, lhs, rhs, { desc = desc, buffer = bufnr })
@@ -62,17 +61,13 @@ local callback = function(ev)
 	end, "Toggle virtual text of diagnotics")
 
 	-- Format on save
-	if client and client.supports_method("textDocument/formatting") then
-		local group = vim.api.nvim_create_augroup("AutoFormatting", {})
-
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = group,
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({ async = false })
-			end,
-		})
-	end
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = vim.api.nvim_create_augroup("AutoFormatting", {}),
+		buffer = bufnr,
+		callback = function()
+			vim.lsp.buf.format({ async = false })
+		end,
+	})
 end
 
 M.float_max_width = 80
