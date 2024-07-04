@@ -14,26 +14,22 @@ spec.config = function()
 		"IndentBlanklineIndent2",
 		"IndentBlanklineIndent3",
 		"IndentBlanklineIndent4",
-		"IndentBlanklineIndent5",
-		"IndentBlanklineIndent6",
 	}
 
 	local hooks = require("ibl.hooks")
 	hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#E06C75", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#E5C07B", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#98C379", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent4", { fg = "#56B6C2", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent5", { fg = "#61AFEF", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#C678DD", nocombine = true })
+		vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#2E3440", nocombine = true })
+		vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#3B4252", nocombine = true })
+		vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#434C5E", nocombine = true })
+		vim.api.nvim_set_hl(0, "IndentBlanklineIndent4", { fg = "#4C566A", nocombine = true })
 	end)
 
-	hooks.register(hooks.type.SKIP_LINE, function(_, _, _, line)
-		local pattern = "^$" -- empty line
-		return line:match(pattern)
-	end)
-
-	hooks.register(hooks.type.SKIP_LINE, hooks.builtin.skip_preproc_lines, { bufnr = 0 })
+	-- hooks.register(hooks.type.SKIP_LINE, function(_, _, _, line)
+	-- 	local pattern = "^$" -- empty line
+	-- 	return line:match(pattern)
+	-- end)
+	--
+	-- hooks.register(hooks.type.SKIP_LINE, hooks.builtin.skip_preproc_lines, { bufnr = 0 })
 
 	local opts = {
 		indent = {
@@ -42,7 +38,7 @@ spec.config = function()
 			tab_char = "│",
 		},
 		scope = {
-			-- enabled = false,
+			enabled = false,
 			show_start = false,
 			show_end = false,
 		},
