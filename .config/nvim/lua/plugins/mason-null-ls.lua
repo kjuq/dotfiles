@@ -7,13 +7,6 @@ spec.opts = function()
 
 	return {
 		automatic_installation = true,
-		ensure_installed = {
-			"autopep8",
-			"shellcheck",
-			"codelldb",
-			"debugpy",
-			"stylua",
-		},
 		handlers = {
 			function() end, -- disables automatic setup of all null-ls sources
 			stylua = function(_, _)

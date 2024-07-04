@@ -3,14 +3,7 @@ local spec = { "williamboman/mason-lspconfig.nvim" }
 spec.event = require("utils.lazy").verylazy
 
 spec.config = function()
-	require("mason-lspconfig").setup({
-		ensure_installed = {
-			"bashls",
-			"clangd",
-			"lua_ls",
-			"pylsp",
-		},
-	})
+	require("mason-lspconfig").setup()
 
 	local lspconfig = require("lspconfig")
 	local common_opts = {
