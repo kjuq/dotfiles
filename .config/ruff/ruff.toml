@@ -1,0 +1,18 @@
+line-length = 120
+indent-width = 4
+
+[lint]
+select = [
+	'E',      # pycodestyle Error
+	'W',      # pycodestyle Warning
+	'F',      # Pyflakes
+	'I',      # isort
+]
+ignore = [
+	'W191', # Indentation contains tabs
+]
+
+[format]
+indent-style = 'tab'
+quote-style = 'single'
+docstring-code-format = true

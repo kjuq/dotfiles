@@ -31,6 +31,10 @@ spec.config = function()
 			lspconfig.pylsp.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.pylsp").opts))
 		end,
 
+		["ruff"] = function()
+			lspconfig.ruff.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.ruff").opts))
+		end,
+
 		["lua_ls"] = function()
 			lspconfig.lua_ls.setup(vim.tbl_deep_extend("error", common_opts, require("plugins.lsp.lua_ls").opts))
 		end,

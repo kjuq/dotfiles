@@ -32,8 +32,8 @@ neomutt/neomuttrc
 neomutt/signature
 nano/nanorc
 nvim
-pycodestyle
 qutebrowser/config.py
+ruff/ruff.toml
 spotifyd/spotifyd.conf
 tmux/tmux.conf
 tmux/scripts
