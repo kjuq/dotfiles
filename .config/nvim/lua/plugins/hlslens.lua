@@ -4,8 +4,6 @@ local asterisk_installed = vim.fn.isdirectory(vim.fn.stdpath("data") .. "/lazy/v
 
 local rhs = function(key)
 	local asterisk = {
-		n = "n",
-		N = "N",
 		["*"] = "<Plug>(asterisk-z*)<CR>",
 		["g*"] = "<Plug>(asterisk-gz*)<CR>",
 		["#"] = "<Plug>(asterisk-z#)<CR>",
@@ -14,7 +12,11 @@ local rhs = function(key)
 	return function()
 		require("hlslens").start()
 		if asterisk_installed then
-			return asterisk[key]
+			if vim.v.hlsearch == 0 then
+				return asterisk[key]
+			else
+				return "n"
+			end
 		else
 			return vim.v.count1 .. key
 		end
@@ -26,8 +28,15 @@ local spec = { "kevinhwang91/nvim-hlslens" }
 spec.event = { "CmdlineEnter" }
 
 spec.keys = {
-	map("n", "n", rhs("n"), "Next matched word", { expr = true }),
-	map("N", "n", rhs("N"), "Previous matched word", { expr = true }),
+	map("n", "n", function()
+		require("hlslens").start()
+		return "n"
+	end, "Next matched word", { expr = true }),
+	map("N", "n", function()
+		require("hlslens").start()
+		return "N"
+	end, "Previous matched word", { expr = true }),
+
 	map("*", "n", rhs("*"), "Search forward current word", { expr = true }),
 	map("#", "n", rhs("#"), "Search backward current word", { expr = true }),
 	map("g*", "n", rhs("g*"), '* without "\\<" and "\\>"', { expr = true }),
