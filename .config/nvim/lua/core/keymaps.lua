@@ -48,10 +48,10 @@ map("n", "[l", vim.cmd.cprevious, { desc = "Previous location on QuickFix" })
 
 -- Frequently used keymaps
 local write = function(key)
-	map("n", key, "<Cmd>silent write<CR><C-l>", { desc = "Write" })
+	map("n", key, "<Cmd>silent write<CR>", { desc = "Write" })
 end
 local write_noautocmd = function(key)
-	map("n", key, "<Cmd>noautocmd silent write<CR><C-l>", { desc = "Write w/o autocmd" })
+	map("n", key, "<Cmd>noautocmd silent write<CR>", { desc = "Write w/o autocmd" })
 end
 local quit = function(key)
 	map("n", key, vim.cmd.quit, { silent = true, desc = "Quit" })

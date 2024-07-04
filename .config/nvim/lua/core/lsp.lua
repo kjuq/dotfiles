@@ -35,6 +35,9 @@ local callback = function(ev)
 	map("n", "grh", vlb.typehierarchy, "Type hierarchy")
 	map("n", "grc", vlb.incoming_calls, "Incoming calls")
 	map("n", "grg", vlb.outgoing_calls, "Outgoing calls")
+	map("n", "grf", vlb.format, "Format")
+
+	map({ "n", "i" }, "<C-s>", vlb.signature_help, "Signature help") -- _defaults.lua only defines imap
 
 	map("n", "<M-e>", vim.diagnostic.open_float, "Show diagnostics")
 	map("n", "cre", vim.diagnostic.open_float, "Show diagnostics")
