@@ -42,16 +42,12 @@ spec.opts = {
 				["if"] = "@function.inner",
 				["aC"] = "@class.outer",
 				["iC"] = "@class.inner",
-				["aI"] = "@conditional.outer", -- [i]f
-				["iI"] = "@conditional.inner",
+				["aT"] = "@conditional.outer", -- [T]rue
+				["iT"] = "@conditional.inner",
 				["al"] = "@loop.outer",
 				["il"] = "@loop.inner",
 				["a/"] = "@comment.outer",
 				["i/"] = "@comment.inner",
-				["ag"] = "@call.outer", -- ar[g]uments
-				["ig"] = "@call.inner",
-				["ah"] = "@block.outer", -- [h]ere
-				["ih"] = "@block.inner",
 			},
 		},
 		move = {
@@ -82,8 +78,8 @@ spec.opts = {
 	},
 }
 
-spec.config = function()
-	require("nvim-treesitter.configs").setup(spec.opts)
+spec.config = function(_, opts)
+	require("nvim-treesitter.configs").setup(opts)
 end
 
 spec.dependencies = {
