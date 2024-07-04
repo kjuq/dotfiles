@@ -68,7 +68,7 @@ local callback = function(ev)
 	local client = vim.lsp.get_client_by_id(client_id)
 	if client and client.supports_method("textDocument/formatting") then
 		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = vim.api.nvim_create_augroup("AutoFormatting", {}),
+			group = vim.api.nvim_create_augroup("AutoFormatting", { clear = false }),
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format({ async = false, id = client_id })
