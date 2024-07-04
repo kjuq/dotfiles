@@ -64,13 +64,17 @@ local callback = function(ev)
 	end, "Toggle virtual text of diagnotics")
 
 	-- Format on save
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		group = vim.api.nvim_create_augroup("AutoFormatting", {}),
-		buffer = bufnr,
-		callback = function()
-			vim.lsp.buf.format({ async = false })
-		end,
-	})
+	local client_id = ev.data.client_id
+	local client = vim.lsp.get_client_by_id(client_id)
+	if client and client.supports_method("textDocument/formatting") then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("AutoFormatting", {}),
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.format({ async = false, id = client_id })
+			end,
+		})
+	end
 end
 
 M.float_max_width = 80
