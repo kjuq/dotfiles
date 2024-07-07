@@ -1,7 +1,7 @@
 {
 	"rules": {
 		"write-good": {
-			"passive": true,
+			"passive": false,
 			"thereIs": true
 		}
 	}
