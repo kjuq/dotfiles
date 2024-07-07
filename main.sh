@@ -11,7 +11,7 @@ if [ -z "$LOCAL_BIN_PATH" ]; then
 	exit 1
 fi
 
-script_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 xdg_config_without_prefix="${XDG_CONFIG_HOME/$HOME\//}"
 script_xdg_config="$script_dir/$xdg_config_without_prefix"
@@ -64,7 +64,7 @@ backup() {
 
 	# Copy directory or file
 	if [ -d "$src" ]; then
-		cp -r "$src" "$( dirname "$dst" )"
+		cp -r "$src" "$(dirname "$dst")"
 	else
 		cp "$src" "$dst"
 	fi
@@ -180,7 +180,7 @@ macos_etc() {
 	link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
 
 	# These 3 lines need reboot to apply
-	defaults write -g KeyRepeat -int 2 # MacOS's minimum is 2 (30 ms)
+	defaults write -g KeyRepeat -int 2         # MacOS's minimum is 2 (30 ms)
 	defaults write -g InitialKeyRepeat -int 15 # MacOS's minimum is 15 (225 ms)
 	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
