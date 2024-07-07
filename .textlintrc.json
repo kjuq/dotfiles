@@ -1,0 +1,8 @@
+{
+	"rules": {
+		"write-good": {
+			"passive": true,
+			"thereIs": true
+		}
+	}
+}

@@ -65,10 +65,11 @@ vc
 "
 
 root_files="
-.docker/config.json
 .clang-format
+.docker/config.json
 .gnupg/gpg-agent.conf
 .ignore
+.textlintrc.json
 "
 
 library="

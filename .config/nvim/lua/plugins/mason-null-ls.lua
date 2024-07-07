@@ -1,15 +1,16 @@
 ---@type LazySpec
 local spec = { "jay-babu/mason-null-ls.nvim" }
-spec.event = "LspAttach"
+spec.event = { "LspAttach", "VeryLazy" }
 
 spec.opts = function()
 	local null_ls = require("null-ls")
 
 	return {
+		automatic_setup = true,
 		handlers = {
-			function() end, -- disables automatic setup of all null-ls sources
-			stylua = function()
-				null_ls.register(null_ls.builtins.formatting.stylua)
+			textlint = function()
+				require("plugins.linter.textlint").setup()
+				null_ls.register(null_ls.builtins.diagnostics.textlint)
 			end,
 		},
 	}
