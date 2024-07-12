@@ -86,25 +86,25 @@ local is_top = function()
 	return top == 1
 end
 
-map("n", "<C-d>", function()
+map({ "n", "x" }, "<C-d>", function()
 	if not is_bottom() then
 		return "<C-d>M"
 	end
 end, { expr = true })
 
-map("n", "<C-u>", function()
+map({ "n", "x" }, "<C-u>", function()
 	if not is_top() then
 		return "<C-u>M"
 	end
 end, { expr = true })
 
-map("n", "<C-f>", function()
+map({ "n", "x" }, "<C-f>", function()
 	if not is_bottom() then
 		return "<C-f>M"
 	end
 end, { expr = true })
 
-map("n", "<C-b>", function()
+map({ "n", "x" }, "<C-b>", function()
 	if not is_top() then
 		return "<C-b>M"
 	end

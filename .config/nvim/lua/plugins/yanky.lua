@@ -37,6 +37,7 @@ spec.config = function()
 	local opts = {
 		ring = {
 			history_length = 20,
+			cancel_event = "move",
 		},
 		system_clipboard = {
 			sync_with_ring = false,
