@@ -4,7 +4,7 @@ local map = require("utils.lazy").generate_map("", "Action-preview: ")
 local spec = { "aznhe21/actions-preview.nvim" }
 
 spec.keys = {
-	map("crr", { "n", "x" }, function()
+	map("", { "n", "x" }, function()
 		require("actions-preview").code_actions()
 	end, "Open"),
 }
