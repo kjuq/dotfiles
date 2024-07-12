@@ -25,6 +25,7 @@ latexmk/latexmkrc
 lazygit/config.yml
 lesskey
 mimeapps.list
+mypy/config
 neomutt/common_gmail
 neomutt/common_outlook
 neomutt/mailcap
