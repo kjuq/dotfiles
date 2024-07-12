@@ -40,11 +40,11 @@ local callback = function(ev)
 	map({ "n", "i" }, "<C-s>", vlb.signature_help, "Signature help") -- _defaults.lua only defines imap
 
 	map("n", "<M-e>", vim.diagnostic.open_float, "Show diagnostics")
-	map("n", "cre", vim.diagnostic.open_float, "Show diagnostics")
+	map("n", "gre", vim.diagnostic.open_float, "Show diagnostics")
 
-	map("n", "crwa", vlb.add_workspace_folder, "Add folder to workspace")
-	map("n", "crwr", vlb.remove_workspace_folder, "Remove folder from workspace")
-	map("n", "crww", function()
+	map("n", "grwa", vlb.add_workspace_folder, "Add folder to workspace")
+	map("n", "grwr", vlb.remove_workspace_folder, "Remove folder from workspace")
+	map("n", "grww", function()
 		vim.notify(vim.inspect(vlb.list_workspace_folders()))
 	end, "List folders of workspaceh")
 
@@ -58,7 +58,7 @@ local callback = function(ev)
 		vim.diagnostic.jump({ count = 1, float = true })
 	end, "Go to next diagnostics")
 
-	map("n", "crv", function()
+	map("n", "grv", function()
 		vt = not vt
 		vim.diagnostic.config({ virtual_text = virtual_text(vt) })
 	end, "Toggle virtual text of diagnotics")
