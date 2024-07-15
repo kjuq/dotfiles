@@ -107,7 +107,7 @@ spec.keys = {
 	end, "Symbols"),
 }
 
-spec.config = function()
+spec.opts = function()
 	local actions = require("telescope.actions")
 	local actions_layout = require("telescope.actions.layout")
 	local prev_up = "<C-y>"
@@ -115,7 +115,7 @@ spec.config = function()
 	local prev_right = "<M-l>"
 	local prev_left = "<M-h>"
 
-	require("telescope").setup({
+	return {
 		defaults = {
 			default_mappings = {
 				i = {
@@ -203,7 +203,7 @@ spec.config = function()
 			},
 			borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }, -- presets such as "single" and "rounded" are not supported
 		},
-	})
+	}
 end
 
 spec.dependencies = {
