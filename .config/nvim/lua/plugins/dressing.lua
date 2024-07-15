@@ -21,7 +21,6 @@ spec.opts = {
 		},
 	},
 	select = {
-		-- backend = { "builtin", "telescope", "fzf_lua", "fzf", "nui" },
 		telescope = require("telescope.themes").get_dropdown({
 			borderchars = {
 				preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
