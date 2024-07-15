@@ -1,5 +1,3 @@
--- skkeleton makes startuptime longer even load it lazily
-
 local skk = require("utils.skk")
 
 ---@type LazySpec
@@ -53,7 +51,7 @@ end
 spec.dependencies = {
 	"vim-denops/denops.vim",
 	"skk-dev/dict",
-	{ "rinx/cmp-skkeleton", cond = pcall(require, "cmp") },
+	"rinx/cmp-skkeleton",
 	{
 		"delphinus/skkeleton_indicator.nvim",
 		opts = {
