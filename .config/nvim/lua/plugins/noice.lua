@@ -65,7 +65,7 @@ spec.opts = function()
 		},
 		views = {
 			hover = {
-				scrollbar = false,
+				scrollbar = true,
 			},
 		},
 	}

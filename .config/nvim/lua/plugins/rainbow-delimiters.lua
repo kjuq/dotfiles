@@ -37,17 +37,7 @@ spec.config = function()
 		},
 	}
 
-	-- lazy load except for markdown files
-	vim.api.nvim_create_autocmd({ "FileType" }, {
-		pattern = "*",
-		group = vim.api.nvim_create_augroup("user_rainbow_delimiters", {}),
-		callback = function()
-			if vim.bo.filetype ~= "markdown" then
-				rainbow.enable(0)
-			end
-		end,
-		once = true,
-	})
+	rainbow.enable(0) -- for lazy load
 end
 
 spec.dependencies = {
