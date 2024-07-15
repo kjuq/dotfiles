@@ -43,39 +43,37 @@ spec.keys = {
 	map("g#", "n", rhs("g*"), '# without "\\<" and "\\>"', { expr = true }),
 }
 
-spec.opts = {
-	override_lens = function(render, posList, nearest, idx, relIdx)
-		local above, below
-		if relIdx > 0 then
-			below = true
-		elseif relIdx < 0 then
-			above = true
-		end
-
-		local cnt = #posList
-		local text = ("[%d/%d]"):format(idx, cnt)
-
-		local space = " "
-		local chunks
-		if nearest then
-			chunks = { { space }, { text, "UserHlSearchNearest" } }
-		elseif above then
-			chunks = { { space }, { text, "UserHlSearchAbove" } }
-		elseif below then
-			chunks = { { space }, { text, "UserHlSearchBelow" } }
-		end
-
-		local lnum, col = unpack(posList[idx])
-		render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
-	end,
-}
-
-spec.config = function(_, opts)
+spec.opts = function()
 	vim.api.nvim_set_hl(0, "UserHlSearchAbove", { fg = "#81A1C1" })
 	vim.api.nvim_set_hl(0, "UserHlSearchNearest", { fg = "#BF616A" })
 	vim.api.nvim_set_hl(0, "UserHlSearchBelow", { fg = "#81A1C1" })
 
-	require("hlslens").setup(opts)
+	return {
+		override_lens = function(render, posList, nearest, idx, relIdx)
+			local above, below
+			if relIdx > 0 then
+				below = true
+			elseif relIdx < 0 then
+				above = true
+			end
+
+			local cnt = #posList
+			local text = ("[%d/%d]"):format(idx, cnt)
+
+			local space = " "
+			local chunks
+			if nearest then
+				chunks = { { space }, { text, "UserHlSearchNearest" } }
+			elseif above then
+				chunks = { { space }, { text, "UserHlSearchAbove" } }
+			elseif below then
+				chunks = { { space }, { text, "UserHlSearchBelow" } }
+			end
+
+			local lnum, col = unpack(posList[idx])
+			render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
+		end,
+	}
 end
 
 return spec
