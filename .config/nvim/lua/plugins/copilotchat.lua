@@ -57,6 +57,17 @@ spec.opts = function()
 		end,
 	})
 
+	local conceallevel = vim.o.conceallevel
+	local cursorline = vim.o.cursorline
+
+	vim.api.nvim_create_autocmd("BufEnter", {
+		pattern = "copilot-*",
+		callback = function()
+			vim.opt_local.conceallevel = conceallevel
+			vim.opt_local.cursorline = cursorline
+		end,
+	})
+
 	return {
 		show_help = false,
 		mappings = {
