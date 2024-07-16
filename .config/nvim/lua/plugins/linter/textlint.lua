@@ -13,7 +13,7 @@ M.setup = function()
 		end
 	end
 
-	install_rule("textlint-rule-write-good")
+	-- install_rule("textlint-rule-write-good")
 end
 
 return M

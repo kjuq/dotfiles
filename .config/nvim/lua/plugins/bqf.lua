@@ -5,7 +5,7 @@ spec.ft = "qf"
 spec.opts = function()
 	return {
 		preview = {
-			auto_preview = false,
+			auto_preview = true,
 			winblend = 0,
 		},
 		func_map = {
