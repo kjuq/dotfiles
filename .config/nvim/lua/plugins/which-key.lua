@@ -36,33 +36,39 @@ spec.keys = {
 	end, "Show all keymaps"),
 }
 
-spec.opts = function()
-	enable()
+spec.opts = {
+	preset = "modern",
+	win = {
+		no_overlap = false,
+		border = "single",
+	},
+	keys = { -- FIXME: this option doesn't affect
+		scroll_down = require("utils.common").floatscrolldown,
+		scroll_up = require("utils.common").floatscrollup,
+	},
+	layout = {
+		width = { max = 80 }, -- min and max width of the columns
+		spacing = 3, -- spacing between columns
+		align = "left", -- align columns left, center or right
+	},
+}
 
-	require("which-key").register({
-		["ga"] = { name = "Additional actions", _ = "which_key_ignore" },
-		["go"] = { name = "Edit specific file", _ = "which_key_ignore" },
-		["<leader>a"] = { name = "Additional", _ = "which_key_ignore" },
-		["<leader>c"] = { name = "ChatGPT", _ = "which_key_ignore" },
-		["<leader>d"] = { name = "Doc string", _ = "which_key_ignore" },
-		["<leader>D"] = { name = "DAP", _ = "which_key_ignore" },
-		["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
-		["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
-		["<leader>r"] = { name = "Resume", _ = "which_key_ignore" },
-		["<leader>s"] = { name = "Substitute", _ = "which_key_ignore" },
-		["<leader>t"] = { name = "Trouble", _ = "which_key_ignore" },
+spec.config = function(_, opts)
+	local wk = require("which-key")
+	wk.add({
+		{ "ga", group = "Additional actions" },
+		{ "go", group = "Edit specific file" },
+		{ "<leader>a", group = "Additional" },
+		{ "<leader>c", group = "ChatGPT", icon = " " },
+		{ "<leader>d", group = "Doc string" },
+		{ "<leader>D", group = "Debug" },
+		{ "<leader>f", group = "Find" },
+		{ "<leader>g", group = "Git" },
+		{ "<leader>r", group = "Resume" },
+		{ "<leader>s", group = "Substitute" },
+		{ "<leader>t", group = "Trouble" },
 	})
-
-	return {
-		window = {
-			border = "single",
-		},
-		layout = {
-			width = { max = 80 }, -- min and max width of the columns
-			spacing = 3, -- spacing between columns
-			align = "left", -- align columns left, center or right
-		},
-	}
+	wk.setup(opts)
 end
 
 return spec
