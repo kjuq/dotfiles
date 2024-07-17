@@ -40,23 +40,6 @@ spec.config = function(_, opts)
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "QuitPre" }, {
-		group = vim.api.nvim_create_augroup("user_test", {}),
-		callback = function()
-			local function write_to_file(filename, content)
-				local file = io.open(filename, "w")
-				if file then
-					file:write(content)
-					file:close()
-				else
-					print("Could not open file: " .. filename)
-				end
-			end
-
-			write_to_file("/home/kjuq/persistence_log", vim.fn.getcwd())
-		end,
-	})
-
 	require("persistence").setup(opts)
 
 	if #vim.fn.argv() == 0 then -- if neovim was launched without any files as args
