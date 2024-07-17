@@ -1,24 +1,70 @@
-local map = require("utils.lazy").generate_map("<leader>r", "Persistence: ")
-
 ---@type LazySpec
 local spec = { "folke/persistence.nvim" }
-spec.event = "BufReadPre" -- this will only start session saving when an actual file was opened
+spec.event = require("utils.lazy").verylazy
 
+local map = require("utils.lazy").generate_map("<leader>r", "Persistence: ")
 spec.keys = {
-	-- restore the session for the current directory
 	map("s", "n", function()
 		require("persistence").load()
 	end, "Restore session for the current dir"),
-	-- restore the last session
 	map("l", "n", function()
 		require("persistence").load({ last = true })
 	end, "Restore the last session"),
-	-- stop Persistence => session won't be saved on exit
+	map("p", "n", function()
+		require("persistence").select()
+	end, "Pick a session to load"),
 	map("d", "n", function()
 		require("persistence").stop()
 	end, "Stop saving session on exit"),
 }
 
 spec.opts = {}
+
+spec.config = function(_, opts)
+	local dir_bak
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = "PersistenceSavePre",
+		group = vim.api.nvim_create_augroup("user_persistence_save_pre", {}),
+		callback = function()
+			dir_bak = vim.fn.getcwd()
+			if _G._user_init_cwd then
+				vim.fn.chdir(_G._user_init_cwd)
+			end
+		end,
+	})
+	vim.api.nvim_create_autocmd({ "User" }, {
+		pattern = "PersistenceSavePost",
+		group = vim.api.nvim_create_augroup("user_persistence_save_post", {}),
+		callback = function()
+			vim.fn.chdir(dir_bak)
+		end,
+	})
+
+	vim.api.nvim_create_autocmd({ "QuitPre" }, {
+		group = vim.api.nvim_create_augroup("user_test", {}),
+		callback = function()
+			local function write_to_file(filename, content)
+				local file = io.open(filename, "w")
+				if file then
+					file:write(content)
+					file:close()
+				else
+					print("Could not open file: " .. filename)
+				end
+			end
+
+			write_to_file("/home/kjuq/persistence_log", vim.fn.getcwd())
+		end,
+	})
+
+	require("persistence").setup(opts)
+
+	if #vim.fn.argv() == 0 then -- if neovim was launched without any files as args
+		local delay_ms = 0
+		vim.defer_fn(function()
+			require("persistence").load()
+		end, delay_ms)
+	end
+end
 
 return spec

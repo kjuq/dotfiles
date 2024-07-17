@@ -1,5 +1,3 @@
-local map = require("utils.lazy").generate_map("", "Project: ")
-
 local manual_mode = false
 
 ---@type LazySpec
@@ -13,6 +11,7 @@ spec.cmd = {
 	"AddProject",
 }
 
+local map = require("utils.lazy").generate_map("", "Project: ")
 spec.keys = {
 	map("<leader>a.", "n", "<Cmd>ProjectRoot<CR>", "cd <project_root>"),
 	map("<leader>fP", "n", function()
@@ -29,5 +28,9 @@ spec.opts = {
 	manual_mode = manual_mode,
 	detection_methods = { "pattern" },
 }
+
+spec.init = function()
+	_G._user_init_cwd = vim.fn.getcwd()
+end
 
 return spec
