@@ -8,3 +8,17 @@ snippet autocmd
 			${4}
 		end,
 	})
+
+snippet lazyspec
+	---@type LazySpec
+	local spec = { "${1}" }
+
+	local map = require("utils.lazy").generate_map("", "")
+	spec.keys = {}
+
+	spec.opts = {}
+
+	spec.config = function(_, opts)
+	end
+
+	return spec
