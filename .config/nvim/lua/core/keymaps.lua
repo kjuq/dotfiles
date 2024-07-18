@@ -31,6 +31,17 @@ map({ "n", "x" }, "j", function()
 	return vim.v.count == 0 and "gj" or "j"
 end, { expr = true, silent = true })
 
+-- `w` `b` `e` `ge` in only current line
+local wb = require("utils.word_move")
+map({ "n", "x" }, "w", wb.w)
+map({ "n", "x" }, "W", wb.W)
+map({ "n", "x" }, "e", wb.e)
+map({ "n", "x" }, "E", wb.E)
+map({ "n", "x" }, "b", wb.b)
+map({ "n", "x" }, "B", wb.B)
+map({ "n", "x" }, "ge", wb.ge)
+map({ "n", "x" }, "gE", wb.gE)
+
 -- Buffer movement instead of tab's
 map("n", "gt", vim.cmd.bnext, { silent = true, desc = "Go to the next buffer" })
 map("n", "gT", vim.cmd.bprevious, { silent = true, desc = "Go to the previous buffer" })
