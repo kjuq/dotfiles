@@ -6,6 +6,7 @@ opt.backupdir = os.getenv("XDG_STATE_HOME") .. "/nvim/backup//"
 
 opt.swapfile = false
 opt.autoread = true
+opt.undofile = true
 
 opt.cmdheight = 0
 opt.laststatus = 3 -- global status line
@@ -17,6 +18,21 @@ opt.wildmenu = true
 opt.wildmode = { "full" } -- use wildmenu any time
 opt.wildoptions = { "pum", "tagfile", "fuzzy" }
 opt.completeopt = { "menuone", "popup", "noselect", "fuzzy" }
+
+opt.sessionoptions = {
+	"blank",
+	"buffers",
+	"folds",
+	"globals",
+	"help",
+	"localoptions",
+	"options",
+	"resize",
+	"tabpages",
+	"terminal",
+	"winpos",
+	"winsize",
+}
 
 opt.wildignore:append({
 	"*.a",
