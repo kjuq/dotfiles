@@ -9,7 +9,6 @@ spec.init = function()
 end
 
 spec.opts = function()
-	-- Color table for highlights
 	-- stylua: ignore
 	local colors = {
 		bg       = "#202328",
@@ -72,14 +71,22 @@ spec.opts = function()
 		},
 	}
 
-	-- Inserts a component in lualine_c at left section
-	local function ins_left(component)
-		table.insert(opts.sections.lualine_c, component)
+	local function ins_left(component, left, right)
+		left = left or 1
+		right = right or 1
+		table.insert(
+			opts.sections.lualine_c,
+			vim.tbl_deep_extend("keep", component, { padding = { left = left, right = right } })
+		)
 	end
 
-	-- Inserts a component in lualine_x at right section
-	local function ins_right(component)
-		table.insert(opts.sections.lualine_x, component)
+	local function ins_right(component, left, right)
+		left = left or 1
+		right = right or 1
+		table.insert(
+			opts.sections.lualine_x,
+			vim.tbl_deep_extend("keep", component, { padding = { left = left, right = right } })
+		)
 	end
 
 	local conds = {
@@ -104,73 +111,84 @@ spec.opts = function()
 		end,
 	}
 
-	ins_left({
+	local components = {}
+	components.filename = {
+		"filename",
+		path = 3, -- format of path; relative, absolute, and etc. see help for more details
+		file_status = true,
+		newfile_status = true,
+		shorting_target = 0,
+		cond = conds.buffer_not_empty,
+		color = { fg = colors.magenta, gui = "bold" },
+		symbols = {
+			modified = "",
+			readonly = "",
+			unnamed = "[No Name]",
+			newfile = "",
+		},
+	}
+	components.empty = {
 		function()
 			return " "
 		end,
 		cond = conds.hide_in_width,
-		padding = 0,
-	})
-
-	local file = {
-		color = { fg = colors.magenta, gui = "bold" },
+		padding = 0, -- it is natural to set here
 	}
-
-	ins_left({
-		"filename",
-		path = 0, -- format of path; relative, absolute, and etc. see help for more details
-		file_status = true,
-		newfile_status = true,
-		cond = conds.buffer_not_empty,
-		color = file.color,
-		symbols = {
-			modified = "", -- Text to show when the file is modified.
-			readonly = "", -- Text to show when the file is non-modifiable or readonly.
-			unnamed = "[No Name]", -- Text to show for unnamed buffers.
-			newfile = "", -- Text to show for newly created file before first write
-		},
-	})
-
-	local fs = require("lualine.components.filesize")
-
-	ins_left({
-		function()
-			return "("
-		end,
-		cond = function()
-			return fs() ~= "" and conds.hide_in_width()
-		end,
-		color = file.color,
-		padding = 0,
-	})
-
-	ins_left({
+	components.filesize = {
 		"filesize",
+		fmt = function(str)
+			local has_filesize = require("lualine.components.filesize")() ~= ""
+			if has_filesize then
+				return "(" .. str .. ")"
+			else
+				return "(NOT SAVED)"
+			end
+		end,
+		max_length = 3,
 		cond = conds.hide_in_width,
 		color = { fg = colors.magenta, gui = "bold" },
-		padding = 0, -- default is { left = 1, right = 1 }
-	})
-
-	ins_left({
+	}
+	components.macro_recording = {
+		"macro-recording",
+		fmt = function()
+			local recording_register = vim.fn.reg_recording()
+			if recording_register == "" then
+				return ""
+			else
+				return "Recording @" .. recording_register
+			end
+		end,
+		color = { fg = colors.orange },
+	}
+	components.japanese_input = {
 		function()
-			return ")"
+			return "[JAPANESE INPUT]"
 		end,
 		cond = function()
-			return fs() ~= "" and conds.hide_in_width()
+			return _G._user_skk_jp_mode_enabled
 		end,
-		color = file.color,
-		padding = { left = 0, right = 1 },
-	})
-
-	ins_left({
-		"branch",
-		icon = "",
-		color = { fg = colors.violet, gui = "bold" },
-	})
-
-	ins_left({
+		color = { fg = colors.orange },
+	}
+	components.searchcount = {
+		"searchcount",
+		color = { fg = colors.blue, gui = "bold" },
+	}
+	components.selectioncount = {
+		"selectioncount",
+		color = { fg = colors.blue, gui = "bold" },
+	}
+	components.diagnostics = {
+		"diagnostics",
+		sources = { "nvim_diagnostic" },
+		symbols = { error = " ", warn = " ", info = " " },
+		diagnostics_color = {
+			color_error = { fg = colors.red },
+			color_warn = { fg = colors.yellow },
+			color_info = { fg = colors.cyan },
+		},
+	}
+	components.diff = {
 		"diff",
-		-- Is it me or the symbol for modified us really weird
 		symbols = { added = " ", modified = "󰝤 ", removed = " " },
 		diff_color = {
 			added = { fg = colors.green },
@@ -189,82 +207,21 @@ spec.opts = function()
 				}
 			end
 		end,
-	})
-
-	ins_left({
-		"diagnostics",
-		sources = { "nvim_diagnostic" },
-		symbols = { error = " ", warn = " ", info = " " },
-		diagnostics_color = {
-			color_error = { fg = colors.red },
-			color_warn = { fg = colors.yellow },
-			color_info = { fg = colors.cyan },
-		},
-	})
-
-	ins_left({
-		function()
-			return "[JAPANESE INPUT]"
-		end,
-		cond = function()
-			return _G._user_skk_jp_mode_enabled
-		end,
-		color = { fg = colors.orange },
-	})
-
-	ins_right({
-		"macro-recording",
-		fmt = function()
-			local recording_register = vim.fn.reg_recording()
-			if recording_register == "" then
-				return ""
-			else
-				return "Recording @" .. recording_register
-			end
-		end,
-		color = { fg = colors.orange },
-	})
-
-	ins_right({
-		-- show typed (partial) command (:h showcmd)
-		function()
-			return "%S"
-		end,
-		color = { fg = colors.yellow, gui = "bold" },
-	})
-
-	ins_right({
-		"searchcount",
-		color = { fg = colors.blue, gui = "bold" },
-		padding = { left = 1, right = 0 },
-	})
-
-	ins_right({
-		"selectioncount",
-		color = { fg = colors.blue, gui = "bold" },
-		padding = { left = 1, right = 0 },
-	})
-
-	ins_right({
-		"location",
-		color = { fg = colors.fg, gui = "bold" },
-		padding = { left = 2, right = 0 },
-	})
-
-	ins_right({
-		"progress",
-		color = { fg = colors.fg, gui = "bold" },
-	})
-
-	ins_right({
+	}
+	components.branch = {
+		"branch",
+		cond = conds.hide_in_width,
+		icon = "",
+		color = { fg = colors.violet, gui = "bold" },
+	}
+	components.bar = {
 		function()
 			return "--"
 		end,
 		cond = conds.hide_in_width,
 		color = { fg = colors.fg, gui = "bold" },
-	})
-
-	ins_right({
+	}
+	components.lsp = {
 		-- Lsp server name .
 		function()
 			-- local msg = "N/A"
@@ -284,37 +241,46 @@ spec.opts = function()
 			return msg
 		end,
 		icon = { "" },
+		cond = conds.hide_in_width,
 		color = { fg = colors.fg, gui = "bold" },
-	})
-
-	ins_right({
+	}
+	components.encoding = {
 		"encoding", -- option component same as &encoding in viml
 		fmt = string.upper, -- I'm not sure why it's upper case either ;)
 		cond = conds.enc_not_utf_8,
 		color = { fg = colors.red, gui = "bold" },
-	})
-
-	ins_right({
+	}
+	components.fileformat = {
 		"fileformat", -- line endings
 		fmt = string.upper,
 		cond = conds.filefmt_not_unix,
 		icons_enabled = false,
 		color = { fg = colors.red, gui = "bold" },
-	})
-
-	ins_right({
+	}
+	components.filetype = {
 		"filetype",
+		cond = conds.hide_in_width,
 		icon = { align = "right" },
 		color = { fg = colors.fg, gui = "bold" },
-	})
+	}
 
-	ins_right({
-		function()
-			return " "
-		end,
-		cond = conds.hide_in_width,
-		padding = 0,
-	})
+	ins_left(components.empty)
+	ins_left(components.filename)
+	ins_left(components.filesize, 0, 0)
+
+	ins_right(components.macro_recording)
+	ins_right(components.japanese_input)
+	ins_right(components.selectioncount)
+	ins_right(components.searchcount)
+	ins_right(components.diagnostics)
+	ins_right(components.diff)
+	ins_right(components.branch)
+	ins_right(components.bar)
+	ins_right(components.lsp)
+	ins_right(components.encoding)
+	ins_right(components.fileformat)
+	ins_right(components.filetype)
+	ins_right(components.empty)
 
 	return opts
 end
