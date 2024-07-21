@@ -13,8 +13,10 @@ vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
 	callback = function()
 		_G.user_cur_relativenumber = vim.o.relativenumber
 		_G.user_cur_number = vim.o.number
+		_G.user_cur_cursorline = vim.o.cursorline
 		vim.opt.relativenumber = false
 		vim.opt.number = true
+		vim.opt.cursorline = true
 	end,
 })
 
@@ -23,6 +25,7 @@ vim.api.nvim_create_autocmd({ "CmdlineLeave" }, {
 	callback = function()
 		vim.opt.relativenumber = _G.user_cur_relativenumber
 		vim.opt.number = _G.user_cur_number
+		vim.o.cursorline = _G.user_cur_cursorline
 	end,
 })
 
