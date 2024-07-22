@@ -42,7 +42,9 @@ spec.config = function(_, opts)
 
 	require("persistence").setup(opts)
 
-	if #vim.fn.argv() == 0 then -- if neovim was launched without any files as args
+	local no_args = #vim.fn.argv() == 0
+	local empty = vim.api.nvim_buf_get_name(0) == ""
+	if no_args and empty then
 		local delay_ms = 0
 		vim.defer_fn(function()
 			require("persistence").load()
