@@ -1,12 +1,28 @@
+local hidden = true
+
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 
 ---@type LazySpec
 local spec = { "nvim-lualine/lualine.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = not hidden and require("utils.lazy").verylazy or {}
 
 spec.init = function()
 	vim.opt.laststatus = 0
 end
+
+local map = require("utils.lazy").generate_map("", "Lualine: ")
+spec.keys = {
+	map("gal", "n", function()
+		if hidden then
+			local opts = { unhide = true }
+			require("lualine").hide(opts)
+		else
+			local opts = {}
+			require("lualine").hide(opts)
+		end
+		hidden = not hidden
+	end, "Toggle"),
+}
 
 spec.opts = function()
 	-- stylua: ignore

@@ -147,8 +147,13 @@ map("n", "gas", function()
 	end
 end, { desc = "Toggle spell check" })
 
-map("n", "gal", function()
+map("n", "gaL", function()
 	vim.opt.list = not vim.o.list
+end, { desc = "Toggle list" })
+
+local laststatus = vim.o.laststatus
+map("n", "gal", function()
+	vim.opt.laststatus = vim.o.laststatus == 0 and laststatus or 0
 end, { desc = "Toggle list" })
 
 map("n", "gan", function()

@@ -11,6 +11,29 @@ opt.undofile = true
 opt.cmdheight = 0
 opt.laststatus = 3 -- global status line
 opt.showcmdloc = "statusline"
+opt.ruler = false
+
+local stl = {
+	fullpath = "%F",
+	readonly = "%r",
+	modified = "%m",
+	separator = "%=",
+	filetype = "%{&filetype}",
+	blank = " ",
+}
+
+local statusline = {
+	stl.blank,
+	stl.fullpath,
+	stl.readonly,
+	stl.readonly,
+	stl.modified,
+	stl.separator,
+	stl.filetype,
+	stl.blank,
+}
+
+opt.statusline = table.concat(statusline, "")
 
 opt.termguicolors = true
 
