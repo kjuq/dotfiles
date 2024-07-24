@@ -47,7 +47,6 @@ opt.sessionoptions = {
 	"buffers",
 	"folds",
 	"help",
-	"resize",
 	"tabpages",
 	"terminal",
 	"winpos",
