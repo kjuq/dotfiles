@@ -11,7 +11,16 @@ spec.opts = {
 	notification = {
 		filter = vim.log.levels.TRACE,
 		override_vim_notify = true,
+		window = {
+			normal_hl = "user_fidget_window",
+			winblend = 0,
+		},
 	},
 }
+
+spec.config = function(_, opts)
+	vim.api.nvim_set_hl(0, "user_fidget_window", { bg = "#000000" })
+	require("fidget").setup(opts)
+end
 
 return spec
