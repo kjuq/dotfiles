@@ -3,6 +3,8 @@ local map = require("utils.lazy").generate_map("", "Yanky: ")
 ---@type LazySpec
 local spec = { "gbprod/yanky.nvim" }
 
+spec.event = "TextYankPost"
+
 spec.keys = {
 	map("p", { "n", "x" }, "<Plug>(YankyPutAfter)", "Put after"),
 	map("P", { "n", "x" }, "<Plug>(YankyPutBefore)", "Put before"),
