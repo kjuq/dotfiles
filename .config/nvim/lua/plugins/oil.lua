@@ -45,7 +45,7 @@ spec.opts = {
 	},
 	use_default_keymaps = false,
 	view_options = {
-		show_hidden = true,
+		show_hidden = false,
 		is_always_hidden = function(name, _)
 			return vim.list_contains(hiddens, name)
 		end,
