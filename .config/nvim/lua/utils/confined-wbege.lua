@@ -11,8 +11,9 @@ M.motion = function(motion)
 	local initial_top = vim.fn.line("w0")
 	local visual_lines = initial_bottom - initial_top + 1
 
+	-- FIX: revert scroll after back_scroll and remove this section
 	-- HACK: alleviate unexpected scroll
-	local max_count = visual_lines - vim.o.scrolloff * 2
+	local max_count = visual_lines - (vim.o.scrolloff + 1) * 2
 	if vim.v.count1 > max_count then
 		vim.notify(
 			"Confined-wbege: Too many counts (" .. vim.v.count1 .. " > " .. max_count .. ")",
