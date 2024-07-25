@@ -58,14 +58,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "CmdLineEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-	group = group,
-	callback = function()
-		vim.cmd.rshada()
-		vim.cmd.wshada()
-	end,
-})
-
 vim.api.nvim_create_autocmd({ "TermRequest" }, {
 	callback = function(_)
 		if string.sub(vim.v.termrequest, 1, 4) == "\x1b]7;" then
