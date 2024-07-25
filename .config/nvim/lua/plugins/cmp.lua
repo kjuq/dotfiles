@@ -81,8 +81,10 @@ spec.config = function()
 		end
 		if cmp.visible_docs() then
 			cmp.close_docs()
+			cmp.setup({ view = { docs = { auto_open = false } } })
 		else
 			cmp.open_docs()
+			cmp.setup({ view = { docs = { auto_open = true } } })
 		end
 	end
 
@@ -148,11 +150,17 @@ spec.config = function()
 			end,
 		},
 
+		view = {
+			docs = {
+				auto_open = true,
+			},
+		},
+
 		mapping = mapping_insert,
 
 		sources = normal_sources,
 		window = {
-			completion = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
+			-- completion = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
 			documentation = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
 		},
 		---@diagnostic disable-next-line: missing-fields
