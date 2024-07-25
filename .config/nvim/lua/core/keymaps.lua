@@ -32,7 +32,7 @@ map({ "n", "x" }, "j", function()
 end, { expr = true, silent = true })
 
 -- word moves in only current line
-local wb = require("utils.word_move")
+local wb = require("utils.confined-wbege")
 map({ "n", "x" }, "W", wb.W)
 map({ "n", "x" }, "E", wb.E)
 map({ "n", "x" }, "B", wb.B)
