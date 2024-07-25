@@ -1,4 +1,4 @@
-local hidden = true
+local hidden = false
 
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 
