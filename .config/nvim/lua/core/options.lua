@@ -9,7 +9,7 @@ opt.autoread = true
 opt.undofile = true
 
 opt.cmdheight = 0
-opt.laststatus = 3 -- global status line
+opt.laststatus = 3 -- global status line. `0` to hide
 opt.showcmdloc = "statusline"
 opt.ruler = false
 

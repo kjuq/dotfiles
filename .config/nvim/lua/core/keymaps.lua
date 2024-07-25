@@ -123,9 +123,8 @@ map("n", "gaL", function()
 	vim.opt.list = not vim.o.list
 end, { desc = "Toggle list" })
 
-local laststatus = vim.o.laststatus
 map("n", "gal", function()
-	vim.opt.laststatus = vim.o.laststatus == 0 and laststatus or 0
+	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
 end, { desc = "Toggle list" })
 
 map("n", "gan", function()

@@ -15,8 +15,9 @@ spec.opts = {
 spec.config = function(_, opts)
 	require("tokyonight").setup(opts)
 	vim.cmd.colorscheme("tokyonight")
-	vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#808080" })
-	vim.api.nvim_set_hl(0, "statusline", { bg = "NONE", ctermbg = "NONE" })
+	vim.api.nvim_set_hl(0, "WinSeparator", { fg = "DarkGray" })
+	vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", ctermbg = "NONE" })
+	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", ctermbg = "NONE" })
 end
 
 return spec
