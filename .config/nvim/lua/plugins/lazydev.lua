@@ -13,6 +13,7 @@ spec.opts = {
 spec.dependencies = {
 	"Bilal2453/luvit-meta", -- optional `vim.uv` typings
 	{
+		-- TODO: lazy loading cmp
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			opts.sources = opts.sources or {}
