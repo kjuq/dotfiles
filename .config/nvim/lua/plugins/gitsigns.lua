@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "lewis6991/gitsigns.nvim" }
-spec.event = { "CursorMoved", "CursorMovedI" }
+spec.event = require("utils.lazy").verylazy
 
 local map = require("utils.lazy").generate_map("", "Gitsigns: ")
 spec.keys = {
