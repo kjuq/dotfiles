@@ -17,7 +17,6 @@ end
 
 spec.dependencies = {
 	"nvim-treesitter/nvim-treesitter",
-	"nvim-treesitter/nvim-treesitter-textobjects",
 }
 
 return spec
