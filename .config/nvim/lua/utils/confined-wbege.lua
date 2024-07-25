@@ -8,7 +8,16 @@ M.motion = function(motion)
 
 	local initial_line = vim.fn.line(".")
 	local initial_bottom = vim.fn.line("w$") -- displayed bottom line
+	local initial_top = vim.fn.line("w0")
+	local visual_lines = initial_bottom - initial_top + 1
+
+	-- HACK: alleviate unexpected scroll
+	if vim.v.count1 > visual_lines - vim.o.scrolloff * 2 then
+		return
+	end
+
 	motion()
+
 	local new_line = vim.fn.line(".")
 	local new_bottom = vim.fn.line("w$")
 
