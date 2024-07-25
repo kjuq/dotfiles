@@ -12,8 +12,12 @@ M.motion = function(motion)
 	local visual_lines = initial_bottom - initial_top + 1
 
 	-- HACK: alleviate unexpected scroll
-	if vim.v.count1 > visual_lines - vim.o.scrolloff * 2 then
-		vim.notify("Confined-wbege: Too many counts. Skipped", vim.log.levels.WARN)
+	local max_count = visual_lines - vim.o.scrolloff * 2
+	if vim.v.count1 > max_count then
+		vim.notify(
+			"Confined-wbege: Too many counts (" .. vim.v.count1 .. " > " .. max_count .. ")",
+			vim.log.levels.WARN
+		)
 		return
 	end
 
