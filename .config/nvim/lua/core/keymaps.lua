@@ -80,40 +80,12 @@ quit_force("gH")
 
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
-local is_bottom = function()
-	local linesum = vim.fn.line("$")
-	local bottom = vim.fn.line("w$") -- displayed bottom line
-	return bottom == linesum
-end
+local bduf = require("utils.center-bduf")
 
-local is_top = function()
-	local top = vim.fn.line("w0") -- displayed top line
-	return top == 1
-end
-
-map({ "n", "x" }, "<C-d>", function()
-	if not is_bottom() then
-		return "<C-d>M"
-	end
-end, { expr = true })
-
-map({ "n", "x" }, "<C-u>", function()
-	if not is_top() then
-		return "<C-u>M"
-	end
-end, { expr = true })
-
-map({ "n", "x" }, "<C-f>", function()
-	if not is_bottom() then
-		return "<C-f>M"
-	end
-end, { expr = true })
-
-map({ "n", "x" }, "<C-b>", function()
-	if not is_top() then
-		return "<C-b>M"
-	end
-end, { expr = true })
+map({ "n", "x" }, "<C-d>", bduf.cd)
+map({ "n", "x" }, "<C-u>", bduf.cu)
+map({ "n", "x" }, "<C-f>", bduf.cf)
+map({ "n", "x" }, "<C-b>", bduf.cb)
 
 -- Comfortable buffer deletion
 map("n", "gl", function()
