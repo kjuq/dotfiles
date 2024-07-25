@@ -1,5 +1,8 @@
 vim.g.skip_loading_mswin = 1
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.g.did_install_default_menus = 1
 vim.g.did_install_syntax_menu = 1
 vim.g.did_indent_on = 1

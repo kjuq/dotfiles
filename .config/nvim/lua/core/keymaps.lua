@@ -2,8 +2,6 @@ local map = vim.keymap.set
 
 -- Space as leader key
 map({ "n", "v" }, "<Space>", "<Nop>")
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- Disable Ctrl-c to allow <C-c> keymappings (e.g. <C-w><C-c>, etc
 -- map("n", "<C-c>", "<Nop>")
