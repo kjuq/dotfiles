@@ -24,6 +24,7 @@ spec.opts = function()
 			"TelescopePrompt",
 			"saga_codeaction",
 			"sagarename",
+			"DressingInput",
 		},
 	}
 end

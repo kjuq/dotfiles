@@ -38,4 +38,19 @@ spec.opts = {
 	},
 }
 
+spec.config = function(_, opts)
+	vim.api.nvim_create_autocmd({ "FileType" }, {
+		pattern = "DressingInput",
+		group = vim.api.nvim_create_augroup("user_dressing_input_local", {}),
+		callback = function()
+			vim.keymap.set("i", "<C-b>", "<Left>", { buffer = true })
+			vim.keymap.set("i", "<C-f>", "<Right>", { buffer = true })
+			vim.keymap.set("i", "<C-a>", "<Home>", { buffer = true })
+			vim.keymap.set("i", "<C-e>", "<End>", { buffer = true })
+			vim.keymap.set("i", "<C-d>", "<Del>", { buffer = true })
+		end,
+	})
+	require("dressing").setup(opts)
+end
+
 return spec
