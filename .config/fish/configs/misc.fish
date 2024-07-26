@@ -8,3 +8,9 @@ set --export FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 if command --search --quiet zoxide
 	zoxide init --cmd c fish | source
 end
+
+# direnv
+if command --search --quiet direnv
+	direnv hook fish | source
+	set --export DIRENV_LOG_FORMAT ""
+end
