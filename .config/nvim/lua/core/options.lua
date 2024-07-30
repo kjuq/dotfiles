@@ -102,7 +102,7 @@ opt.foldopen:remove("block")
 opt.wrap = false
 opt.smoothscroll = true
 opt.scrolloff = 8
-opt.sidescrolloff = 5
+opt.sidescrolloff = 1
 
 opt.startofline = true
 

@@ -50,6 +50,13 @@ local opts = {
 }
 
 require("lazy").setup("plugins", opts) -- to load multiple dir https://zenn.dev/sisi0808/articles/36ff184554ddd6
-vim.keymap.set("n", "<leader>ap", function()
-	vim.cmd("Lazy")
-end, { desc = "Lazy.nvim: Manage plugins" })
+
+vim.keymap.set("n", "<leader>ap", "<Cmd>Lazy<CR>", { desc = "Lazy.nvim: Manage plugins" })
+
+vim.api.nvim_create_autocmd({ "User" }, {
+	pattern = "LazyLoad telescope",
+	group = vim.api.nvim_create_augroup("user_lazy_test", {}),
+	callback = function()
+		vim.notify("hello")
+	end,
+})
