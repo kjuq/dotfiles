@@ -18,7 +18,10 @@ spec.opts = {
 		disable = { "perl" },
 	},
 
-	indent = { enable = false }, -- buggy in py file where tabs are used for indentation
+	indent = {
+		enable = false,
+		disable = { "python" }, -- buggy in py file where tabs are used for indentation?
+	},
 
 	incremental_selection = {
 		enable = true,
