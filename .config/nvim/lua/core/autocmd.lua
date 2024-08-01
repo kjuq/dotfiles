@@ -38,7 +38,8 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 		vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 			group = vim.api.nvim_create_augroup("user_highlight_on_yank", {}),
 			callback = function()
-				require("vim.highlight").on_yank({ higroup = "UserHighlightOnYank", timeout = 125 })
+				local timeout = require("utils.common").highlight_duration
+				require("vim.highlight").on_yank({ higroup = "UserHighlightOnYank", timeout = timeout })
 			end,
 		})
 	end,

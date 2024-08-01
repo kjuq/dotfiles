@@ -14,7 +14,11 @@ spec.keys = {
 	end, "Visual"),
 }
 
-spec.opts = {}
+spec.opts = {
+	highlight_substituted_text = {
+		timer = require("utils.common").highlight_duration,
+	},
+}
 
 spec.config = function(_, opts)
 	local has_yanky, yanky_int = pcall(require, "yanky.integration")

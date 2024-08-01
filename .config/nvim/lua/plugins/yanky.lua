@@ -47,7 +47,7 @@ spec.config = function()
 		highlight = {
 			on_put = true,
 			on_yank = false,
-			timer = 125,
+			timer = require("utils.common").highlight_duration,
 		},
 		picker = {
 			select = {
