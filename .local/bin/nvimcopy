@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
 tmp="/tmp/clip_tmp_nae18aA6ARaiOF.md"
+confpath="$XDG_CONFIG_HOME/nvim/lua/other/asime.lua"
 
-key="<Space>aj"
-feed_jp_mode="lua vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$key', true, false, true), 'x', false)"
-number="set nonumber | set norelativenumber"
-confirm='inoremap <silent> <C-g><C-g> <Esc>0"+d$i<Cmd>!i3-msg scratchpad show<CR>'
-wrap="set wrap"
-
-nvim -c "$wrap" -c "$number" -c "$confirm" -c "$feed_jp_mode" -c "startinsert" "$tmp" || exit 1
+nvim -c "luafile $confpath" "$tmp"
