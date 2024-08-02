@@ -1,3 +1,5 @@
+-- NOTE: Buggy when using with Japanese letters
+
 ---@type LazySpec
 local spec = { "cxwx/specs.nvim" }
 
