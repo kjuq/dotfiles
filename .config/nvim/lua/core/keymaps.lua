@@ -12,6 +12,9 @@ map("c", "<C-f>", "<Right>") -- Opens a command-line window (q:) by default
 map("c", "<C-a>", "<Home>") -- Inserts all matched candidates by default, so <C-i> is enough
 map("c", "<C-d>", "<Del>") -- Lists completions by default, so <C-i> is enough
 -- map("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
+map("c", "<C-x>", function()
+	vim.fn.setreg("", vim.fn.getcmdline())
+end)
 
 -- recall history beginning with typed characters
 map("c", "<C-p>", "<Up>")
@@ -164,6 +167,19 @@ map("n", "ga-", function()
 	vim.cmd("silent! cd ..")
 	vim.notify(vim.fn.getcwd())
 end, { desc = "Change to upper directory" })
+
+-- variable keybinds on states
+local virtual_edit_replace = true
+map({ "n" }, "r", function()
+	return virtual_edit_replace and "gr" or "r"
+end, { expr = true })
+map({ "n" }, "R", function()
+	return virtual_edit_replace and "gR" or "R"
+end, { expr = true })
+map("n", "gaR", function()
+	virtual_edit_replace = not virtual_edit_replace
+	vim.notify("Virtual edit replace: " .. tostring(virtual_edit_replace))
+end, { desc = "Toggle virtual edit replace" })
 
 -- open specific files via keymaps
 map("n", "go", "<Nop>")
