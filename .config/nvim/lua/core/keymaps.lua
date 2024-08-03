@@ -111,7 +111,7 @@ map("n", "gaw", function()
 	end
 end, { desc = "Toggle wrap" })
 
-map("n", "gas", function()
+map("n", "gaS", function()
 	vim.opt.spell = not vim.o.spell
 	if vim.o.spell then
 		vim.notify("Spellcheck enabled")
@@ -159,6 +159,7 @@ map("n", "gav", function()
 end, { desc = "Toggle virtualedit" })
 
 map("n", "gar", ":<C-u>%s///g<Left><Left>", { desc = "Start substitution" })
+map("x", "gar", ":<C-u>'<,'>s///g<Left><Left>", { desc = "Start substitution" })
 
 map("n", "gad", function()
 	vim.notify(vim.fn.getcwd())
