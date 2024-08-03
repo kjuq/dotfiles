@@ -89,14 +89,8 @@ end
 ---@param mode string
 ---@param keymap string
 ---@return boolean
-M.is_keymap_set = function(mode, keymap)
-	for _, km in pairs(vim.api.nvim_get_keymap(mode)) do
-		---@diagnostic disable-next-line: undefined-field
-		if km.lhs == keymap then
-			return true
-		end
-	end
-	return false
+M.is_keymap_set = function(keymap, mode)
+	return not (vim.fn.maparg(keymap, mode) == "")
 end
 
 ---@param patterns string|string[]

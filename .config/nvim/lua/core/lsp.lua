@@ -25,7 +25,7 @@ local callback = function(ev)
 
 	-- rename, code action, reference, and signature help will be defined at vim/_defaults.lua (?)
 
-	if not require("utils.common").is_keymap_set("n", "gd") then
+	if not require("utils.common").is_keymap_set("gd", "n") then
 		map("n", "gd", vlb.definition, "Go to definition")
 	end
 	map("n", "grt", vlb.type_definition, "Go to type definition")
