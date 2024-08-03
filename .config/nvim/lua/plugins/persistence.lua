@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "folke/persistence.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 local map = require("utils.lazy").generate_map("<leader>r", "Persistence: ")
 spec.keys = {

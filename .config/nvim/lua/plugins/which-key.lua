@@ -25,7 +25,7 @@ end
 
 ---@type LazySpec
 local spec = { "folke/which-key.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.enabled = os.getenv("SSH_TTY") == nil -- which-key breaks osc52
 

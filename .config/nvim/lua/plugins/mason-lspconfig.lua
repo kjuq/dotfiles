@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "williamboman/mason-lspconfig.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.config = function()
 	require("mason-lspconfig").setup()

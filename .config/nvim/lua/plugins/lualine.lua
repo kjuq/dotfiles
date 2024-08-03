@@ -4,7 +4,7 @@ local hidden = false
 
 ---@type LazySpec
 local spec = { "nvim-lualine/lualine.nvim" }
-spec.event = not hidden and require("utils.lazy").verylazy or {}
+spec.event = not hidden and "VeryLazy" or {}
 
 spec.init = function()
 	vim.opt.laststatus = 0

@@ -2,7 +2,7 @@ local map = require("utils.lazy").generate_map("", "Todo: ")
 
 ---@type LazySpec
 local spec = { "folke/todo-comments.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.keys = {
 	map("]t", "n", function()

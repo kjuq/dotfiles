@@ -26,6 +26,4 @@ M.generate_map = function(key_prefix, desc_prefix)
 	return map
 end
 
-M.verylazy = { "VeryLazy" }
-
 return M

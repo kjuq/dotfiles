@@ -1,7 +1,7 @@
 ---@type LazySpec
 local spec = { "lukas-reineke/indent-blankline.nvim" }
 spec.main = "ibl"
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.config = function()
 	-- disable builtin indentline

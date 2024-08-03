@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "andymass/vim-matchup" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.config = function()
 	---@diagnostic disable-next-line: missing-fields

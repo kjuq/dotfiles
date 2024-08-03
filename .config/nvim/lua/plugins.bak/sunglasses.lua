@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "miversen33/sunglasses.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.config = function()
 	-- vim.api.nvim_create_autocmd({ "FocusLost" }, {

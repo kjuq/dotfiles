@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { "HiPhish/rainbow-delimiters.nvim" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.config = function()
 	local rainbow = require("rainbow-delimiters")

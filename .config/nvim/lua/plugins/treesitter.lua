@@ -3,7 +3,7 @@
 
 ---@type LazySpec
 local spec = { "nvim-treesitter/nvim-treesitter" }
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 spec.build = function()
 	require("nvim-treesitter.install").update({ with_sync = false })()
 end

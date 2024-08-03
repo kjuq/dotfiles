@@ -3,7 +3,7 @@ local spec = { "stevearc/oil.nvim" }
 
 spec.lazy = not require("utils.common").argv_contains("oil-ssh://")
 
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 local map = require("utils.lazy").generate_map("", "Oil: ")
 spec.keys = {

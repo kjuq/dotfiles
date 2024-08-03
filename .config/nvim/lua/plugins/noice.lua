@@ -5,7 +5,7 @@ local utils = require("utils.common")
 ---@type LazySpec
 local spec = { "folke/noice.nvim" }
 
-spec.event = require("utils.lazy").verylazy
+spec.event = "VeryLazy"
 
 spec.cmd = { "Noice" }
 
