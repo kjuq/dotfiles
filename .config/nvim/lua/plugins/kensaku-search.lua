@@ -7,8 +7,8 @@ spec.event = "User UserDenopsActivated"
 
 spec.keys = {
 	map("<C-s>", "c", function()
-		require("utils.common").feed_plug("kensaku-search-replace")
-	end, "Confirm"),
+		return "<Plug>(kensaku-search-replace)<CR>"
+	end, "Confirm", { expr = true }),
 	"/",
 }
 
