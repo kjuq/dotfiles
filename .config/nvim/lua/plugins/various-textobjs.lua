@@ -17,10 +17,10 @@ spec.keys = {
 		require("various-textobjs").indentation("outer", "outer", "withBlanks")
 	end, "Indentation (outer with blanks)"),
 
-	map("iS", { "o", "x" }, function()
+	map("ir", { "o", "x" }, function()
 		require("various-textobjs").subword("inner", "inner")
 	end, "Subword (inner)"),
-	map("aS", { "o", "x" }, function()
+	map("ar", { "o", "x" }, function()
 		require("various-textobjs").subword("outer", "outer")
 	end, "Subword (outer)"),
 
