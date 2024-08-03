@@ -48,9 +48,12 @@ spec.config = function()
 	remove_mapped_keys("<C-g>")
 end
 
+spec.specs = {
+	"skk-dev/dict",
+}
+
 spec.dependencies = {
 	"vim-denops/denops.vim",
-	"skk-dev/dict",
 	"rinx/cmp-skkeleton",
 	{
 		"delphinus/skkeleton_indicator.nvim",

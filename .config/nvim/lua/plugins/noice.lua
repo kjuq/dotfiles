@@ -71,7 +71,7 @@ spec.opts = function()
 	}
 end
 
-spec.dependencies = {
+spec.specs = {
 	"MunifTanjim/nui.nvim",
 }
 
