@@ -17,9 +17,6 @@ spec.keys = {
 	map("[c", "n", "<Cmd>GitConflictPrevConflict<CR>", "Previous conflict"),
 }
 
-spec.opts = function()
-	vim.notify("Git-conflict: Conflict detected")
-	return {}
-end
+spec.opts = {}
 
 return spec
