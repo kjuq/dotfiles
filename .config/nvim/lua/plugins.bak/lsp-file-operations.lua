@@ -4,7 +4,7 @@ spec.event = { 'LspAttach' }
 
 spec.config = function() require('lsp-file-operations').setup() end
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-lua/plenary.nvim',
 }
 

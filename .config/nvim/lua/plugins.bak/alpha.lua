@@ -5,7 +5,7 @@ spec.event = { 'BufWinEnter' }
 
 spec.config = function() require('alpha').setup(require('alpha.themes.theta').config) end
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-tree/nvim-web-devicons',
 }
 

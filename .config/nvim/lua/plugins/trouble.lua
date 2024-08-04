@@ -14,7 +14,7 @@ spec.keys = {
 
 spec.opts = {}
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-tree/nvim-web-devicons',
 }
 

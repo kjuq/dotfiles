@@ -17,6 +17,9 @@ spec.opts = {
 
 spec.dependencies = {
 	'nvim-treesitter/nvim-treesitter',
+}
+
+spec.specs = {
 	'nvim-tree/nvim-web-devicons',
 }
 

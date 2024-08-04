@@ -283,7 +283,7 @@ spec.opts = function()
 	return opts
 end
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-tree/nvim-web-devicons',
 }
 

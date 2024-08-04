@@ -19,6 +19,9 @@ end
 spec.dependencies = {
 	'williamboman/mason.nvim',
 	'nvimtools/none-ls.nvim',
+}
+
+spec.specs = {
 	'nvim-lua/plenary.nvim',
 }
 

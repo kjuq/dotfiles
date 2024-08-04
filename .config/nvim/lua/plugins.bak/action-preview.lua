@@ -7,7 +7,7 @@ spec.keys = {
 	map('', { 'n', 'x' }, function() require('actions-preview').code_actions() end, 'Open'),
 }
 
-spec.dependencies = {
+spec.specs = {
 	'MunifTanjim/nui.nvim',
 }
 

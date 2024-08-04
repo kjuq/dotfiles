@@ -225,7 +225,7 @@ spec.dependencies = {
 	'mtoohey31/cmp-fish',
 	{
 		'petertriho/cmp-git',
-		dependencies = 'nvim-lua/plenary.nvim',
+		specs = 'nvim-lua/plenary.nvim',
 	},
 	{
 		'zbirenbaum/copilot-cmp',

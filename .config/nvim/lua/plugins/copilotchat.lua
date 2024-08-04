@@ -104,8 +104,11 @@ spec.opts = function()
 end
 
 spec.dependencies = {
-	{ 'zbirenbaum/copilot.lua' },
-	{ 'nvim-lua/plenary.nvim' },
+	'zbirenbaum/copilot.lua',
+}
+
+spec.specs = {
+	'nvim-lua/plenary.nvim',
 }
 
 return spec

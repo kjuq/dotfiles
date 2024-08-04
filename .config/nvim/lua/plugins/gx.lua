@@ -7,6 +7,6 @@ spec.init = function() vim.g.netrw_nogx = 1 end
 
 spec.opts = {}
 
-spec.dependencies = { 'nvim-lua/plenary.nvim' }
+spec.specs = { 'nvim-lua/plenary.nvim' }
 
 return spec

@@ -29,6 +29,6 @@ spec.config = function()
 	})
 end
 
-spec.dependencies = { 'nvim-lua/plenary.nvim' }
+spec.specs = { 'nvim-lua/plenary.nvim' }
 
 return spec

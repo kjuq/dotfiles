@@ -83,9 +83,12 @@ spec.opts = {
 }
 
 spec.dependencies = {
+	'nvim-telescope/telescope.nvim',
+}
+
+spec.specs = {
 	'MunifTanjim/nui.nvim',
 	'nvim-lua/plenary.nvim',
-	'nvim-telescope/telescope.nvim',
 }
 
 return spec

@@ -155,10 +155,13 @@ spec.opts = function()
 	}
 end
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-lua/popup.nvim',
 	'nvim-lua/plenary.nvim',
 	'BurntSushi/ripgrep',
+}
+
+spec.dependencies = {
 	'nvim-telescope/telescope-symbols.nvim',
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',

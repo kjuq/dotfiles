@@ -26,8 +26,11 @@ spec.config = function(_, opts)
 end
 
 spec.dependencies = {
-	'MunifTanjim/nui.nvim',
 	'nvim-treesitter/nvim-treesitter',
+}
+
+spec.specs = {
+	'MunifTanjim/nui.nvim',
 }
 
 return spec

@@ -2,7 +2,7 @@
 local spec = { 'nvimtools/none-ls.nvim' }
 spec.opts = {}
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-lua/plenary.nvim',
 }
 
