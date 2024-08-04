@@ -1,27 +1,27 @@
 ---@type LazySpec
-local spec = { "lukas-reineke/indent-blankline.nvim" }
-spec.main = "ibl"
-spec.event = "VeryLazy"
+local spec = { 'lukas-reineke/indent-blankline.nvim' }
+spec.main = 'ibl'
+spec.event = 'VeryLazy'
 
 spec.config = function()
 	-- disable builtin indentline
-	vim.opt_local.listchars:remove("leadmultispace")
-	vim.api.nvim_clear_autocmds({ group = "init_indent_line" })
-	vim.api.nvim_clear_autocmds({ group = "update_indent_line" })
+	vim.opt_local.listchars:remove('leadmultispace')
+	vim.api.nvim_clear_autocmds({ group = 'init_indent_line' })
+	vim.api.nvim_clear_autocmds({ group = 'update_indent_line' })
 
 	local highlight = {
-		"IndentBlanklineIndent1",
-		"IndentBlanklineIndent2",
-		"IndentBlanklineIndent3",
-		"IndentBlanklineIndent4",
+		'IndentBlanklineIndent1',
+		'IndentBlanklineIndent2',
+		'IndentBlanklineIndent3',
+		'IndentBlanklineIndent4',
 	}
 
-	local hooks = require("ibl.hooks")
+	local hooks = require('ibl.hooks')
 	hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#4C566A", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#434C5E", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#3B4252", nocombine = true })
-		vim.api.nvim_set_hl(0, "IndentBlanklineIndent4", { fg = "#2E3440", nocombine = true })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent1', { fg = '#4C566A', nocombine = true })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent2', { fg = '#434C5E', nocombine = true })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent3', { fg = '#3B4252', nocombine = true })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent4', { fg = '#2E3440', nocombine = true })
 	end)
 
 	-- hooks.register(hooks.type.SKIP_LINE, function(_, _, _, line)
@@ -34,8 +34,8 @@ spec.config = function()
 	local opts = {
 		indent = {
 			highlight = highlight,
-			char = "╎", -- "╎", "┆","│", "▏",
-			tab_char = "│",
+			char = '╎', -- "╎", "┆","│", "▏",
+			tab_char = '│',
 		},
 		scope = {
 			enabled = false,
@@ -43,11 +43,11 @@ spec.config = function()
 			show_end = false,
 		},
 		exclude = {
-			filetypes = { "oil", "undotree" },
+			filetypes = { 'oil', 'undotree' },
 		},
 	}
 
-	local ibl = require("ibl")
+	local ibl = require('ibl')
 	ibl.setup(opts)
 	ibl.refresh_all()
 end

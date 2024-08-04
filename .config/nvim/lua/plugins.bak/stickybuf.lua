@@ -1,9 +1,9 @@
 -- Buggy when switching buffer with opened quickfix window
 
 ---@type LazySpec
-local spec = { "stevearc/stickybuf.nvim" }
+local spec = { 'stevearc/stickybuf.nvim' }
 spec.lazy = false
-spec.event = "WinEnter"
+spec.event = 'WinEnter'
 
 spec.opts = {}
 

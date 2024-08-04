@@ -1,36 +1,34 @@
 local manual_mode = false
 
 ---@type LazySpec
-local spec = { "ahmedkhalf/project.nvim" }
-spec.name = "project_nvim"
+local spec = { 'ahmedkhalf/project.nvim' }
+spec.name = 'project_nvim'
 
-spec.event = not manual_mode and { "BufNewFile", "BufReadPost" } or {}
+spec.event = not manual_mode and { 'BufNewFile', 'BufReadPost' } or {}
 
 spec.cmd = {
-	"ProjectRoot",
-	"AddProject",
+	'ProjectRoot',
+	'AddProject',
 }
 
-local map = require("utils.lazy").generate_map("", "Project: ")
+local map = require('utils.lazy').generate_map('', 'Project: ')
 spec.keys = {
-	map("<leader>a.", "n", "<Cmd>ProjectRoot<CR>", "cd <project_root>"),
-	map("<leader>fP", "n", function()
-		local has_telescope, telescope = pcall(require, "telescope")
+	map('<leader>a.', 'n', '<Cmd>ProjectRoot<CR>', 'cd <project_root>'),
+	map('<leader>fP', 'n', function()
+		local has_telescope, telescope = pcall(require, 'telescope')
 		if has_telescope then
 			telescope.extensions.projects.projects({})
 		else
-			vim.notify("Telescope is not installed")
+			vim.notify('Telescope is not installed')
 		end
-	end, "Pick projects"),
+	end, 'Pick projects'),
 }
 
 spec.opts = {
 	manual_mode = manual_mode,
-	detection_methods = { "pattern" },
+	detection_methods = { 'pattern' },
 }
 
-spec.init = function()
-	_G._user_init_cwd = vim.fn.getcwd()
-end
+spec.init = function() _G._user_init_cwd = vim.fn.getcwd() end
 
 return spec

@@ -1,14 +1,12 @@
 ---@type LazySpec
-local spec = { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }
+local spec = { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' }
 
 spec.keys = {
 	{
-		"<leader>Ll",
-		mode = { "n" },
-		function()
-			require("lsp_lines").toggle()
-		end,
-		"LspLines: Toggle lsp_[l]ines",
+		'<leader>Ll',
+		mode = { 'n' },
+		function() require('lsp_lines').toggle() end,
+		'LspLines: Toggle lsp_[l]ines',
 	},
 }
 
@@ -21,7 +19,7 @@ spec.opts = function()
 		},
 	})
 	-- disables on load
-	require("lsp_lines").toggle()
+	require('lsp_lines').toggle()
 	return {}
 end
 

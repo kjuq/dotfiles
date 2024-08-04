@@ -1,9 +1,9 @@
 ---@type LazySpec
-local spec = { "nvimtools/none-ls.nvim" }
+local spec = { 'nvimtools/none-ls.nvim' }
 spec.opts = {}
 
 spec.dependencies = {
-	"nvim-lua/plenary.nvim",
+	'nvim-lua/plenary.nvim',
 }
 
 return spec

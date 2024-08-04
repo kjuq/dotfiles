@@ -1,25 +1,21 @@
-local map = require("utils.lazy").generate_map("", "")
+local map = require('utils.lazy').generate_map('', '')
 
-local utils = require("utils.common")
+local utils = require('utils.common')
 
 ---@type LazySpec
-local spec = { "folke/noice.nvim" }
+local spec = { 'folke/noice.nvim' }
 
-spec.event = "VeryLazy"
+spec.event = 'VeryLazy'
 
-spec.cmd = { "Noice" }
+spec.cmd = { 'Noice' }
 
 spec.keys = {
-	map(utils.floatscrolldown, { "n", "i" }, function()
-		require("noice.lsp").scroll(4)
-	end, "Page down"),
-	map(utils.floatscrollup, { "n", "i" }, function()
-		require("noice.lsp").scroll(-4)
-	end, "Page up"),
+	map(utils.floatscrolldown, { 'n', 'i' }, function() require('noice.lsp').scroll(4) end, 'Page down'),
+	map(utils.floatscrollup, { 'n', 'i' }, function() require('noice.lsp').scroll(-4) end, 'Page up'),
 }
 
 spec.opts = function()
-	require("utils.common").quit_with_esc("noice")
+	require('utils.common').quit_with_esc('noice')
 	return {
 		cmdline = {
 			format = {
@@ -28,7 +24,7 @@ spec.opts = function()
 				filter = false,
 			},
 			opts = {
-				border = { style = require("utils.common").floatwinborder },
+				border = { style = require('utils.common').floatwinborder },
 			},
 		},
 		messages = {
@@ -54,11 +50,11 @@ spec.opts = function()
 			},
 			documentation = {
 				opts = {
-					border = require("utils.common").floatwinborder,
+					border = require('utils.common').floatwinborder,
 					position = { row = 2, col = 2 },
 					size = {
-						max_width = require("core.lsp").float_max_width,
-						max_height = require("core.lsp").float_max_height,
+						max_width = require('core.lsp').float_max_width,
+						max_height = require('core.lsp').float_max_height,
 					},
 				},
 			},
@@ -72,7 +68,7 @@ spec.opts = function()
 end
 
 spec.specs = {
-	"MunifTanjim/nui.nvim",
+	'MunifTanjim/nui.nvim',
 }
 
 return spec

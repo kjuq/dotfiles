@@ -1,9 +1,9 @@
-local map = require("utils.lazy").generate_map("", "Undotree: ")
+local map = require('utils.lazy').generate_map('', 'Undotree: ')
 
 ---@type LazySpec
-local spec = { "jiaoshijie/undotree" }
+local spec = { 'jiaoshijie/undotree' }
 
-spec.dependencies = { "nvim-lua/plenary.nvim" }
+spec.dependencies = { 'nvim-lua/plenary.nvim' }
 
 spec.opts = {
 	window = {
@@ -12,9 +12,7 @@ spec.opts = {
 }
 
 spec.keys = {
-	map("<leader>au", "n", function()
-		require("undotree").toggle()
-	end, "Toggle"),
+	map('<leader>au', 'n', function() require('undotree').toggle() end, 'Toggle'),
 }
 
 return spec

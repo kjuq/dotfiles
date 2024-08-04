@@ -1,4 +1,4 @@
-require("utils.skeleton").paste_skeleton("python.py")
+require('utils.skeleton').paste_skeleton('python.py')
 
 vim.g.python_recommended_style = false
 

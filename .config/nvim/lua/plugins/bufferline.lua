@@ -1,49 +1,49 @@
-local map = require("utils.lazy").generate_map("", "Bufferline: ")
+local map = require('utils.lazy').generate_map('', 'Bufferline: ')
 
 ---@type LazySpec
-local spec = { "akinsho/bufferline.nvim" }
+local spec = { 'akinsho/bufferline.nvim' }
 -- spec.version = "*"
-spec.event = { "BufNew", "WinScrolled" }
+spec.event = { 'BufNew', 'WinScrolled' }
 
 spec.keys = {
-	map("<leader>ab", "n", function()
+	map('<leader>ab', 'n', function()
 		if vim.o.showtabline == 0 then
 			vim.opt.showtabline = 2
 		else
 			vim.opt.showtabline = 0
 		end
-	end, "Toggle tabline"),
+	end, 'Toggle tabline'),
 }
 
 spec.config = function()
 	-- local transparent = "#000000"
-	require("bufferline").setup({
+	require('bufferline').setup({
 		options = {
-			numbers = "none", -- "ordinal", "buffer_id", "both"
-			diagnostics = "nvim_lsp",
+			numbers = 'none', -- "ordinal", "buffer_id", "both"
+			diagnostics = 'nvim_lsp',
 			always_show_bufferline = false,
-			separator_style = { "|", "|" }, -- "slant", "slope", "thick", "thin", { "", "" }
-			indicator = { style = "none" }, -- "icon", "underline", "none"
+			separator_style = { '|', '|' }, -- "slant", "slope", "thick", "thin", { "", "" }
+			indicator = { style = 'none' }, -- "icon", "underline", "none"
 			show_buffer_close_icons = false,
 			color_icons = true,
-			sort_by = "insert_at_end",
+			sort_by = 'insert_at_end',
 			offsets = {
 				{
-					filetype = "neo-tree",
-					text = "Neo Tree",
-					highlight = "Directory",
+					filetype = 'neo-tree',
+					text = 'Neo Tree',
+					highlight = 'Directory',
 					separator = true, -- use a "true" to enable the default, or set your own character
 				},
 				{
-					filetype = "dapui_watches",
-					text = "DAP UI",
-					highlight = "Directory",
+					filetype = 'dapui_watches',
+					text = 'DAP UI',
+					highlight = 'Directory',
 					separator = true, -- use a "true" to enable the default, or set your own character
 				},
 			},
 		},
 		highlights = {
-			separator = { fg = "#777777" },
+			separator = { fg = '#777777' },
 			-- Needed when using separator
 			-- fill                   = { bg = transparent, },
 			-- tab_separator          = { fg = transparent, },
@@ -55,6 +55,6 @@ spec.config = function()
 	})
 end
 
-spec.dependencies = "nvim-tree/nvim-web-devicons"
+spec.dependencies = 'nvim-tree/nvim-web-devicons'
 
 return spec

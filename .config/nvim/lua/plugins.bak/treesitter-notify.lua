@@ -1,9 +1,9 @@
 ---@type LazySpec
-local spec = { "kjuq/treesitter-notify.nvim" }
-spec.event = "VeryLazy"
+local spec = { 'kjuq/treesitter-notify.nvim' }
+spec.event = 'VeryLazy'
 
 spec.opts = {
-	blacklist = { "aerial" },
+	blacklist = { 'aerial' },
 }
 
 return spec

@@ -1,21 +1,21 @@
-local map = require("utils.lazy").generate_map("<leader>t", "Trouble: ")
+local map = require('utils.lazy').generate_map('<leader>t', 'Trouble: ')
 
 ---@type LazySpec
-local spec = { "folke/trouble.nvim" }
+local spec = { 'folke/trouble.nvim' }
 
 spec.cmd = {
-	"Trouble",
+	'Trouble',
 }
 
 spec.keys = {
-	map("o", "n", "<CMD>Trouble diagnostics<CR>", "Toggle"),
-	map("r", "n", "<CMD>Trouble lsp<CR>", "Toggle lsp"),
+	map('o', 'n', '<CMD>Trouble diagnostics<CR>', 'Toggle'),
+	map('r', 'n', '<CMD>Trouble lsp<CR>', 'Toggle lsp'),
 }
 
 spec.opts = {}
 
 spec.dependencies = {
-	"nvim-tree/nvim-web-devicons",
+	'nvim-tree/nvim-web-devicons',
 }
 
 return spec

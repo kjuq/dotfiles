@@ -1,11 +1,11 @@
 ---@type LazySpec
-local spec = { "christoomey/vim-textobj-codeblock" }
+local spec = { 'christoomey/vim-textobj-codeblock' }
 spec.keys = {
-	{ "i", mode = "" },
-	{ "a", mode = "" },
+	{ 'i', mode = '' },
+	{ 'a', mode = '' },
 }
 spec.dependencies = {
-	"kana/vim-textobj-user",
+	'kana/vim-textobj-user',
 }
 
 return spec

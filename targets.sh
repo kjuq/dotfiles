@@ -36,6 +36,7 @@ nvim
 qutebrowser/config.py
 ruff/ruff.toml
 spotifyd/spotifyd.conf
+stylua/stylua.toml
 tmux/tmux.conf
 tmux/scripts
 w3m/keymap

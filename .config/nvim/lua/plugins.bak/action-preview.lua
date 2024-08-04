@@ -1,16 +1,14 @@
-local map = require("utils.lazy").generate_map("", "Action-preview: ")
+local map = require('utils.lazy').generate_map('', 'Action-preview: ')
 
 ---@type LazySpec
-local spec = { "aznhe21/actions-preview.nvim" }
+local spec = { 'aznhe21/actions-preview.nvim' }
 
 spec.keys = {
-	map("", { "n", "x" }, function()
-		require("actions-preview").code_actions()
-	end, "Open"),
+	map('', { 'n', 'x' }, function() require('actions-preview').code_actions() end, 'Open'),
 }
 
 spec.dependencies = {
-	"MunifTanjim/nui.nvim",
+	'MunifTanjim/nui.nvim',
 }
 
 return spec

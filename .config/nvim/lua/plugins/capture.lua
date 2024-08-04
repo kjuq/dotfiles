@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { "tyru/capture.vim" }
-spec.cmd = "Capture"
+local spec = { 'tyru/capture.vim' }
+spec.cmd = 'Capture'
 
 return spec

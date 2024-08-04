@@ -1,1 +1,1 @@
-require("utils.skeleton").paste_skeleton("editorconfig")
+require('utils.skeleton').paste_skeleton('editorconfig')

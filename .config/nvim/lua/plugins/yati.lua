@@ -1,7 +1,7 @@
 ---@type LazySpec
-local spec = { "yioneko/nvim-yati" }
+local spec = { 'yioneko/nvim-yati' }
 
-spec.event = "VeryLazy"
+spec.event = 'VeryLazy'
 
 spec.config = function()
 	local ts_opts = {
@@ -9,14 +9,14 @@ spec.config = function()
 			enable = true,
 			disable = {},
 			default_lazy = true,
-			default_fallback = "auto",
+			default_fallback = 'auto',
 		},
 	}
-	require("nvim-treesitter.configs").setup(ts_opts)
+	require('nvim-treesitter.configs').setup(ts_opts)
 end
 
 spec.dependencies = {
-	"nvim-treesitter/nvim-treesitter",
+	'nvim-treesitter/nvim-treesitter',
 }
 
 return spec

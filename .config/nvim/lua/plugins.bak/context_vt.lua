@@ -1,9 +1,9 @@
 ---@type LazySpec
-local spec = { "andersevenrud/nvim_context_vt" }
-spec.event = "VeryLazy"
+local spec = { 'andersevenrud/nvim_context_vt' }
+spec.event = 'VeryLazy'
 
 spec.opts = {
-	prefix = " -->",
+	prefix = ' -->',
 	disable_virtual_lines = true,
 }
 

@@ -1,9 +1,9 @@
 ---@type LazySpec
-local spec = { "mattn/vim-maketable" }
+local spec = { 'mattn/vim-maketable' }
 
 spec.cmd = {
-	"MakeTable",
-	"UnmakeTable",
+	'MakeTable',
+	'UnmakeTable',
 }
 
 return spec

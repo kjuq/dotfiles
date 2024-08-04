@@ -1,16 +1,14 @@
-if os.getenv("NOLAZY") then
-	return
-end
+if os.getenv('NOLAZY') then return end
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
 		lazypath,
 	})
 end
@@ -27,36 +25,34 @@ local opts = {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
-	ui = { border = require("utils.common").floatwinborder },
+	ui = { border = require('utils.common').floatwinborder },
 	performance = {
 		rtp = {
 			disabled_plugins = { -- shorten start up time for 1 ms
-				"gzip",
-				"matchit",
-				"matchparen",
-				"netrwPlugin",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
+				'gzip',
+				'matchit',
+				'matchparen',
+				'netrwPlugin',
+				'tarPlugin',
+				'tohtml',
+				'tutor',
+				'zipPlugin',
 			},
 		},
 	},
 	dev = {
-		path = "~/codes/_nvim_plugins",
-		patterns = { "kjuq" },
+		path = '~/codes/_nvim_plugins',
+		patterns = { 'kjuq' },
 		fallback = true,
 	},
 }
 
-require("lazy").setup("plugins", opts) -- to load multiple dir https://zenn.dev/sisi0808/articles/36ff184554ddd6
+require('lazy').setup('plugins', opts) -- to load multiple dir https://zenn.dev/sisi0808/articles/36ff184554ddd6
 
-vim.keymap.set("n", "<leader>ap", "<Cmd>Lazy<CR>", { desc = "Lazy.nvim: Manage plugins" })
+vim.keymap.set('n', '<leader>ap', '<Cmd>Lazy<CR>', { desc = 'Lazy.nvim: Manage plugins' })
 
-vim.api.nvim_create_autocmd({ "User" }, {
-	pattern = "LazyLoad telescope",
-	group = vim.api.nvim_create_augroup("user_lazy_test", {}),
-	callback = function()
-		vim.notify("hello")
-	end,
+vim.api.nvim_create_autocmd({ 'User' }, {
+	pattern = 'LazyLoad telescope',
+	group = vim.api.nvim_create_augroup('user_lazy_test', {}),
+	callback = function() vim.notify('hello') end,
 })

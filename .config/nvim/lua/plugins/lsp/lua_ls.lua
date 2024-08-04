@@ -4,7 +4,7 @@ M.opts = {
 	settings = {
 		Lua = {
 			runtime = {
-				version = "LuaJIT",
+				version = 'LuaJIT',
 				pathStrict = true,
 				-- path = { "?.lua", "?/init.lua" },
 			},

@@ -1,27 +1,27 @@
 ---@type LazySpec
-local spec = { "nvim-neorg/neorg" }
-spec.build = ":Neorg sync-parsers"
-spec.ft = "norg"
-spec.cmd = "Neorg"
+local spec = { 'nvim-neorg/neorg' }
+spec.build = ':Neorg sync-parsers'
+spec.ft = 'norg'
+spec.cmd = 'Neorg'
 
 spec.config = function()
-	require("neorg").setup({
+	require('neorg').setup({
 		load = {
-			["core.defaults"] = {}, -- Loads default behaviour
-			["core.concealer"] = {}, -- Adds pretty icons to your documents
-			["core.dirman"] = { -- Manages Neorg workspaces
+			['core.defaults'] = {}, -- Loads default behaviour
+			['core.concealer'] = {}, -- Adds pretty icons to your documents
+			['core.dirman'] = { -- Manages Neorg workspaces
 				config = {
 					workspaces = {
-						notes = "~/documents/__neorg",
+						notes = '~/documents/__neorg',
 					},
 				},
 			},
-			["core.keybinds"] = {
+			['core.keybinds'] = {
 				config = {
 					hook = function(keybinds)
 						local leader = keybinds.leader
-						keybinds.remap_key("norg", "n", "<C-Space>", leader .. "tt")
-						keybinds.remap_key("norg", "n", leader .. "id", leader .. "dt")
+						keybinds.remap_key('norg', 'n', '<C-Space>', leader .. 'tt')
+						keybinds.remap_key('norg', 'n', leader .. 'id', leader .. 'dt')
 					end,
 				},
 			},
@@ -29,6 +29,6 @@ spec.config = function()
 	})
 end
 
-spec.dependencies = { "nvim-lua/plenary.nvim" }
+spec.dependencies = { 'nvim-lua/plenary.nvim' }
 
 return spec

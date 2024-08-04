@@ -1,6 +1,6 @@
 ---@type LazySpec
-local spec = { "windwp/nvim-autopairs" }
-spec.event = "InsertEnter"
+local spec = { 'windwp/nvim-autopairs' }
+spec.event = 'InsertEnter'
 
 spec.opts = {
 	map_cr = false,
@@ -9,8 +9,8 @@ spec.opts = {
 	break_undo = false,
 	check_ts = true, -- treesitter
 	fast_wrap = {
-		map = "<C-g>e",
-		keys = "arstneioghwfpluy",
+		map = '<C-g>e',
+		keys = 'arstneioghwfpluy',
 	},
 }
 

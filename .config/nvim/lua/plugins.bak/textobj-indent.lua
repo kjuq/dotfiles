@@ -1,19 +1,17 @@
-local map = require("utils.lazy").generate_map("", "Textobj-indent: ")
+local map = require('utils.lazy').generate_map('', 'Textobj-indent: ')
 
 ---@type LazySpec
-local spec = { "kana/vim-textobj-indent" }
+local spec = { 'kana/vim-textobj-indent' }
 
 spec.keys = {
-	map("ai", { "x", "o" }, "<Plug>(textobj-indent-a)", "Around", { silent = true }),
-	map("ii", { "x", "o" }, "<Plug>(textobj-indent-i)", "Inner", { silent = true }),
+	map('ai', { 'x', 'o' }, '<Plug>(textobj-indent-a)', 'Around', { silent = true }),
+	map('ii', { 'x', 'o' }, '<Plug>(textobj-indent-i)', 'Inner', { silent = true }),
 }
 
-spec.init = function()
-	vim.g.textobj_indent_no_default_key_mappings = true
-end
+spec.init = function() vim.g.textobj_indent_no_default_key_mappings = true end
 
 spec.dependencies = {
-	"kana/vim-textobj-user",
+	'kana/vim-textobj-user',
 }
 
 return spec

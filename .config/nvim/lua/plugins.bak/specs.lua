@@ -1,10 +1,10 @@
 -- NOTE: Buggy when using with Japanese letters
 
 ---@type LazySpec
-local spec = { "cxwx/specs.nvim" }
+local spec = { 'cxwx/specs.nvim' }
 
 -- TODO: load on keypresses that potentially jump long
-spec.event = "VeryLazy"
+spec.event = 'VeryLazy'
 
 spec.opts = function()
 	return {
@@ -15,9 +15,9 @@ spec.opts = function()
 			inc_ms = 10,
 			blend = 0,
 			width = 15,
-			winhl = "UserHighlightOnYank",
-			fader = require("specs").linear_fader,
-			resizer = require("specs").shrink_resizer,
+			winhl = 'UserHighlightOnYank',
+			fader = require('specs').linear_fader,
+			resizer = require('specs').shrink_resizer,
 		},
 		ignore_buftypes = {
 			nofile = true,

@@ -1,10 +1,10 @@
 ---@type LazySpec
-local spec = { "andymass/vim-matchup" }
-spec.event = "VeryLazy"
+local spec = { 'andymass/vim-matchup' }
+spec.event = 'VeryLazy'
 
 spec.config = function()
 	---@diagnostic disable-next-line: missing-fields
-	require("nvim-treesitter.configs").setup({
+	require('nvim-treesitter.configs').setup({
 		matchup = {
 			enable = true,
 			enable_quotes = true,
@@ -16,7 +16,7 @@ spec.config = function()
 end
 
 spec.dependencies = {
-	"nvim-treesitter/nvim-treesitter",
+	'nvim-treesitter/nvim-treesitter',
 }
 
 return spec

@@ -2,45 +2,29 @@
 
 M = {}
 
-local linesum = function()
-	return vim.fn.line("$")
-end
+local linesum = function() return vim.fn.line('$') end
 
 local bottom = function()
-	return vim.fn.line("w$") -- displayed bottom line
+	return vim.fn.line('w$') -- displayed bottom line
 end
 
 local top = function()
-	return vim.fn.line("w0") -- displayed top line
+	return vim.fn.line('w0') -- displayed top line
 end
 
-local height = function()
-	return vim.fn.winheight(0)
-end
+local height = function() return vim.fn.winheight(0) end
 
-local visual_height = function()
-	return bottom() - top() + 1
-end
+local visual_height = function() return bottom() - top() + 1 end
 
-local is_bottom = function()
-	return bottom() == linesum()
-end
+local is_bottom = function() return bottom() == linesum() end
 
-local is_top = function()
-	return top() == 1
-end
+local is_top = function() return top() == 1 end
 
-local is_exceeded = function()
-	return visual_height() < height()
-end
+local is_exceeded = function() return visual_height() < height() end
 
-local cursor_line = function()
-	return vim.fn.getcurpos(0)[2]
-end
+local cursor_line = function() return vim.fn.getcurpos(0)[2] end
 
-local relative_cursorline = function()
-	return cursor_line() - top() + 1
-end
+local relative_cursorline = function() return cursor_line() - top() + 1 end
 
 local scroll_down = function(key)
 	if not is_bottom() then
@@ -48,7 +32,7 @@ local scroll_down = function(key)
 		vim.cmd.execute([["normal! \]] .. key .. '"')
 
 		if is_exceeded() then -- only for <C-f>
-			vim.cmd.normal({ args = { "Gzb" }, bang = true })
+			vim.cmd.normal({ args = { 'Gzb' }, bang = true })
 		end
 
 		local new_line
@@ -80,17 +64,9 @@ local scroll_up = function(key)
 	end
 end
 
-M.cd = function()
-	scroll_down("<C-d>")
-end
-M.cf = function()
-	scroll_down("<C-f>")
-end
-M.cu = function()
-	scroll_up("<C-u>")
-end
-M.cb = function()
-	scroll_up("<C-b>")
-end
+M.cd = function() scroll_down('<C-d>') end
+M.cf = function() scroll_down('<C-f>') end
+M.cu = function() scroll_up('<C-u>') end
+M.cb = function() scroll_up('<C-b>') end
 
 return M
