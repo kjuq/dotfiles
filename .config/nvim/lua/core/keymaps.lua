@@ -81,7 +81,7 @@ quit_force("gH")
 
 map("n", "<C-q>", "<C-w><C-w>", { desc = "Switch window" })
 
-local bduf = require("utils.center-bduf")
+local bduf = require("center-bduf")
 
 map({ "n", "x" }, "<C-d>", bduf.cd)
 map({ "n", "x" }, "<C-u>", bduf.cu)

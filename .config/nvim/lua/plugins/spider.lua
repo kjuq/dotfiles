@@ -3,23 +3,23 @@ local spec = { "chrisgrieser/nvim-spider" }
 
 local map = require("utils.lazy").generate_map("", "Spider: ")
 spec.keys = {
-	map("w", { "n", "x" }, function()
-		require("utils.confined-wbege").motion(function()
+	map("w", { "n", "x", "o" }, function()
+		require("confined-movement").motion(function()
 			require("spider").motion("w")
 		end)
 	end, "w"),
-	map("b", { "n", "x" }, function()
-		require("utils.confined-wbege").motion(function()
+	map("b", { "n", "x", "o" }, function()
+		require("confined-movement").motion(function()
 			require("spider").motion("b")
 		end)
 	end, "b"),
-	map("e", { "n", "x" }, function()
-		require("utils.confined-wbege").motion(function()
+	map("e", { "n", "x", "o" }, function()
+		require("confined-movement").motion(function()
 			require("spider").motion("e")
 		end)
 	end, "e"),
-	map("ge", { "n", "x" }, function()
-		require("utils.confined-wbege").motion(function()
+	map("ge", { "n", "x", "o" }, function()
+		require("confined-movement").motion(function()
 			require("spider").motion("ge")
 		end)
 	end, "ge"),
