@@ -1,33 +1,32 @@
--- https://github.com/yutkat/wb-only-current-line.nvim
-
 local M = {}
 
-M.motion = function(motion)
-	-- TODO: implement operator pending mode
-	-- TODO: not moving cursor when the cursor on the posision beyond a first non-blank char (ie. indent)
+---@return confined-movement.Positions
+local get_cur_poses = function()
+	local line = vim.fn.line(".")
+	local bottom = vim.fn.line("w$") -- displayed bottom line
+	local top = vim.fn.line("w0")
+	local height = bottom - top + 1
+	return {
+		line = line,
+		bottom = bottom,
+		top = top,
+		height = height,
+	}
+end
 
-	local initial_line = vim.fn.line(".")
-	local initial_bottom = vim.fn.line("w$") -- displayed bottom line
-	local initial_top = vim.fn.line("w0")
-	local visual_lines = initial_bottom - initial_top + 1
-
+---@param pos confined-movement.Positions
+---@return boolean
+local counts_exceeded = function(pos)
 	-- FIX: revert scroll after back_scroll and remove this section
 	-- HACK: alleviate unexpected scroll
-	local max_count = math.max(visual_lines, visual_lines - (vim.o.scrolloff + 1) * 2)
-	if vim.v.count1 > max_count then
-		vim.notify(
-			"Confined-wbege: Too many counts (" .. vim.v.count1 .. " > " .. max_count .. ")",
-			vim.log.levels.WARN
-		)
-		return
-	end
+	local max_count = math.max(pos.height, pos.height - (vim.o.scrolloff + 1) * 2)
+	return vim.v.count1 > max_count
+end
 
-	motion()
-
-	local new_line = vim.fn.line(".")
-	local new_bottom = vim.fn.line("w$")
-
-	local line_diff = new_line - initial_line
+---@param newpos confined-movement.Positions
+---@param oldpos confined-movement.Positions
+local back_exceeded_words = function(newpos, oldpos)
+	local line_diff = newpos.line - oldpos.line
 	if line_diff == 0 then
 		return
 	end
@@ -44,8 +43,12 @@ M.motion = function(motion)
 
 	local back_count = math.abs(line_diff)
 	vim.cmd("normal! " .. back_count .. back_key)
+end
 
-	local scroll_diff = new_bottom - initial_bottom
+---@param newpos confined-movement.Positions
+---@param oldpos confined-movement.Positions
+local back_exceeded_scrolls = function(newpos, oldpos)
+	local scroll_diff = newpos.bottom - oldpos.bottom
 	if scroll_diff == 0 then
 		return
 	end
@@ -62,6 +65,20 @@ M.motion = function(motion)
 
 	local scroll_count = math.abs(scroll_diff)
 	vim.cmd('execute "normal! ' .. scroll_count .. scroll_back .. '"')
+end
+
+M.motion = function(motion)
+	-- TODO: implement operator pending mode
+	-- TODO: not moving cursor when the cursor on the posision beyond a first non-blank char (ie. indent)
+	local initpos = get_cur_poses()
+	if counts_exceeded(initpos) then
+		vim.notify("Confined-movement: Too many counts (" .. vim.v.count1 .. ")", vim.log.levels.WARN)
+		return
+	end
+	motion()
+	local newpos = get_cur_poses()
+	back_exceeded_words(newpos, initpos)
+	back_exceeded_scrolls(newpos, initpos)
 end
 
 local key_motion = function(key)
