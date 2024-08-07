@@ -59,8 +59,10 @@ spec.opts = function()
 	vim.api.nvim_create_autocmd('BufEnter', {
 		pattern = 'copilot-*',
 		callback = function()
-			vim.opt_local.conceallevel = conceallevel
-			vim.opt_local.cursorline = cursorline
+			vim.schedule(function()
+				vim.opt_local.conceallevel = conceallevel
+				vim.opt_local.cursorline = cursorline
+			end)
 		end,
 	})
 
