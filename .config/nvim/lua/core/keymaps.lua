@@ -27,15 +27,15 @@ map({ 'n', 'x' }, 'k', function() return vim.v.count == 0 and 'gk' or 'k' end, {
 map({ 'n', 'x' }, 'j', function() return vim.v.count == 0 and 'gj' or 'j' end, { expr = true, silent = true })
 
 -- word moves in only current line
-local wb = require('confined-movement')
-map({ 'n', 'x', 'o' }, 'W', wb.W)
-map({ 'n', 'x', 'o' }, 'E', wb.E)
-map({ 'n', 'x', 'o' }, 'B', wb.B)
-map({ 'n', 'x', 'o' }, 'gE', wb.gE)
-map({ 'n', 'x', 'o' }, 'w', wb.w)
-map({ 'n', 'x', 'o' }, 'e', wb.e)
-map({ 'n', 'x', 'o' }, 'b', wb.b)
-map({ 'n', 'x', 'o' }, 'ge', wb.ge)
+local jolyne = require('jolyne')
+map({ 'n', 'x', 'o' }, 'W', jolyne.W)
+map({ 'n', 'x', 'o' }, 'E', jolyne.E)
+map({ 'n', 'x', 'o' }, 'B', jolyne.B)
+map({ 'n', 'x', 'o' }, 'gE', jolyne.gE)
+map({ 'n', 'x', 'o' }, 'w', jolyne.w)
+map({ 'n', 'x', 'o' }, 'e', jolyne.e)
+map({ 'n', 'x', 'o' }, 'b', jolyne.b)
+map({ 'n', 'x', 'o' }, 'ge', jolyne.ge)
 
 -- Buffer movement instead of tab's
 map('n', 'gt', vim.cmd.bnext, { silent = true, desc = 'Go to the next buffer' })

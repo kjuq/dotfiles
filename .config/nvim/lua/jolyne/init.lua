@@ -1,6 +1,6 @@
 local M = {}
 
----@return confined-movement.Positions
+---@return jolyne.Positions
 local get_cur_poses = function()
 	local line = vim.fn.line('.')
 	local bottom = vim.fn.line('w$') -- displayed bottom line
@@ -14,7 +14,7 @@ local get_cur_poses = function()
 	}
 end
 
----@param pos confined-movement.Positions
+---@param pos jolyne.Positions
 ---@return boolean
 local counts_exceeded = function(pos)
 	-- FIX: revert scroll after back_scroll and remove this section
@@ -23,8 +23,8 @@ local counts_exceeded = function(pos)
 	return vim.v.count1 > max_count
 end
 
----@param newpos confined-movement.Positions
----@param oldpos confined-movement.Positions
+---@param newpos jolyne.Positions
+---@param oldpos jolyne.Positions
 local back_exceeded_words = function(newpos, oldpos)
 	local line_diff = newpos.line - oldpos.line
 	if line_diff == 0 then return end
@@ -43,8 +43,8 @@ local back_exceeded_words = function(newpos, oldpos)
 	vim.cmd('normal! ' .. back_count .. back_key)
 end
 
----@param newpos confined-movement.Positions
----@param oldpos confined-movement.Positions
+---@param newpos jolyne.Positions
+---@param oldpos jolyne.Positions
 local back_exceeded_scrolls = function(newpos, oldpos)
 	local scroll_diff = newpos.bottom - oldpos.bottom
 	if scroll_diff == 0 then return end
@@ -68,7 +68,7 @@ M.motion = function(motion)
 	-- TODO: not moving cursor when the cursor on the posision beyond a first non-blank char (ie. indent)
 	local initpos = get_cur_poses()
 	if counts_exceeded(initpos) then
-		vim.notify('Confined-movement: Too many counts (' .. vim.v.count1 .. ')', vim.log.levels.WARN)
+		vim.notify('Jolyne: Too many counts (' .. vim.v.count1 .. ')', vim.log.levels.WARN)
 		return
 	end
 	motion()
