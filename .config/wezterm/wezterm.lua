@@ -1,9 +1,7 @@
-local wez = require("wezterm")
+local wez = require('wezterm')
 
 local C -- config
-if wez.config_builder then
-	C = wez.config_builder()
-end
+if wez.config_builder then C = wez.config_builder() end
 
 -- Startup with fullscreen
 -- wez.on("gui-startup", function(cmd)
@@ -12,44 +10,42 @@ end
 --     window:gui_window():toggle_fullscreen()
 -- end)
 
-C.color_scheme = "Kanagawa (Gogh)" -- "GruvboxDarkHard", "Catppuccin Mocha", "Tokyo Night", "iceberg-dark"
+C.color_scheme = 'Kanagawa (Gogh)' -- "GruvboxDarkHard", "Catppuccin Mocha", "Tokyo Night", "iceberg-dark"
 
 C.colors = {
-	background = "black",
-	cursor_fg = "black",
+	background = 'black',
+	cursor_fg = 'black',
 }
 
 -- C.prefer_egl = false
 C.max_fps = 250
-C.front_end = "WebGpu"
-C.webgpu_power_preference = "HighPerformance"
+C.front_end = 'WebGpu'
+C.webgpu_power_preference = 'HighPerformance'
 
 local fonts = {}
 
 local add_font = function(fontname)
-	local cmd = os.getenv("SHELL") .. " -c 'fc-list --quiet " .. fontname .. "'"
-	if os.execute(cmd) then
-		table.insert(fonts, fontname)
-	end
+	local cmd = os.getenv('SHELL') .. " -c 'fc-list --quiet " .. fontname .. "'"
+	if os.execute(cmd) then table.insert(fonts, fontname) end
 end
 
-add_font("CozetteVector")
-add_font("PixelMplus12")
-add_font("Menlo")
-add_font("Hiragino Sans") -- MacOS's builtin
-add_font("SourceHanSansJP-Normal") -- for linux, install `adobe-source-han-sans-jp-fonts`
+add_font('CozetteVector')
+add_font('PixelMplus12')
+add_font('Menlo')
+add_font('Hiragino Sans') -- MacOS's builtin
+add_font('SourceHanSansJP-Normal') -- for linux, install `adobe-source-han-sans-jp-fonts`
 
 C.font = wez.font_with_fallback(fonts)
 
-C.freetype_load_target = "Normal" -- "Normal", "Light", "Mono"
-C.freetype_load_flags = "NO_HINTING"
+C.freetype_load_target = 'Normal' -- "Normal", "Light", "Mono"
+C.freetype_load_flags = 'NO_HINTING'
 
 C.window_background_opacity = 0.65
 
-C.audible_bell = "Disabled"
+C.audible_bell = 'Disabled'
 
 C.enable_tab_bar = false
-C.window_decorations = "RESIZE"
+C.window_decorations = 'RESIZE'
 
 C.disable_default_key_bindings = true
 C.send_composed_key_when_left_alt_is_pressed = false
@@ -64,24 +60,24 @@ local key = function(key, mods, action)
 end
 
 C.keys = {
-	key("c", "CMD", wez.action({ CopyTo = "Clipboard" })),
-	key("Copy", "", wez.action({ CopyTo = "Clipboard" })),
-	key("v", "CMD", wez.action({ PasteFrom = "Clipboard" })),
-	key("Paste", "", wez.action({ PasteFrom = "Clipboard" })),
+	key('c', 'CMD', wez.action({ CopyTo = 'Clipboard' })),
+	key('Copy', '', wez.action({ CopyTo = 'Clipboard' })),
+	key('v', 'CMD', wez.action({ PasteFrom = 'Clipboard' })),
+	key('Paste', '', wez.action({ PasteFrom = 'Clipboard' })),
 
-	key("f", "CMD|CTRL", wez.action.ToggleFullScreen),
-	key("q", "CMD", wez.action.QuitApplication),
+	key('f', 'CMD|CTRL', wez.action.ToggleFullScreen),
+	key('q', 'CMD', wez.action.QuitApplication),
 
-	key("-", "CMD", wez.action.DecreaseFontSize),
-	key("=", "CMD|SHIFT", wez.action.IncreaseFontSize),
-	key("=", "CMD", wez.action.ResetFontSize),
+	key('-', 'CMD', wez.action.DecreaseFontSize),
+	key('=', 'CMD|SHIFT', wez.action.IncreaseFontSize),
+	key('=', 'CMD', wez.action.ResetFontSize),
 
-	key("Backspace", "CMD", wez.action.SendKey({ key = "u", mods = "CTRL" })),
-	key("Backspace", "CTRL", wez.action.SendKey({ key = "w", mods = "CTRL" })),
+	key('Backspace', 'CMD', wez.action.SendKey({ key = 'u', mods = 'CTRL' })),
+	key('Backspace', 'CTRL', wez.action.SendKey({ key = 'w', mods = 'CTRL' })),
 
-	key("F18", "", wez.action.Nop),
-	key("F19", "", wez.action.Nop),
-	key("F20", "", wez.action.Nop),
+	key('F18', '', wez.action.Nop),
+	key('F19', '', wez.action.Nop),
+	key('F20', '', wez.action.Nop),
 }
 
 -- Device specific configurations
