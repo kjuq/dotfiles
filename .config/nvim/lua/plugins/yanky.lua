@@ -38,6 +38,7 @@ spec.config = function()
 		ring = {
 			history_length = 20,
 			cancel_event = 'move',
+			update_register_on_cycle = true,
 		},
 		system_clipboard = {
 			sync_with_ring = false,

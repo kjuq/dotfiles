@@ -1,7 +1,7 @@
 [user]
 	name = kjuq
 	email = 44694396+kjuq@users.noreply.github.com
-	signingkey = D581FF59E1B695F1
+	signingkey = 23AA3C90F78458AF
 [commit]
 	gpgsign = true
 	verbose = true

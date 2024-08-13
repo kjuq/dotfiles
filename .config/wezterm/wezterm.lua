@@ -31,6 +31,7 @@ end
 
 add_font('CozetteVector')
 add_font('PixelMplus12')
+add_font('HackNerdFont')
 add_font('Menlo')
 add_font('Hiragino Sans') -- MacOS's builtin
 add_font('SourceHanSansJP-Normal') -- for linux, install `adobe-source-han-sans-jp-fonts`
@@ -83,9 +84,9 @@ C.keys = {
 -- Device specific configurations
 if os.execute("[ $(uname) = 'Darwin' ]") then
 	C.font_size = 22
-elseif os.execute("[ $(hostname) = 'KSGO' ]") then
-	C.font_size = 20
-elseif os.execute("[ $(hostname) = 'KANTC' ]") then
+elseif os.execute("[ $(uname --nodename) = 'KSGO' ]") then
+	C.font_size = 24
+elseif os.execute("[ $(uname --nodename) = 'KANTC' ]") then
 	C.font_size = 16
 end
 
