@@ -20,6 +20,7 @@ hammerspoon/lua
 hammerspoon/init.lua
 hammerspoon/.luarc.json
 i3
+i3status
 kitty/kitty.conf
 latexmk/latexmkrc
 lazygit/config.yml
@@ -46,6 +47,8 @@ X11
 
 local_bin_files="
 acw
+brightmax
+brightmin
 cm
 cpl
 cplus
