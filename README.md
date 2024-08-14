@@ -2,10 +2,13 @@
 
 My ultimate dotfiles.
 
-- OS: Linux (Manjaro)
-	- Stopped using MacOS
+- OS: Linux
+	- ~MacOS~
 		- I realized Linux is much more fun :)
-	- Planning to move to Arch linux once I understand how Linux works perfectly
+	- ~Manjaro~
+		- Planning to move to Arch linux once I understand how Linux works perfectly
+			- I understood how Linux works perfectly
+	- Arch Linux
 - Window manager: i3
 - Terminal Emulator: Wezterm
 - Terminal Multiplexer: Tmux
