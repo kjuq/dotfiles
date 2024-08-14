@@ -35,6 +35,7 @@ add_font('HackNerdFont')
 add_font('Menlo')
 add_font('Hiragino Sans') -- MacOS's builtin
 add_font('SourceHanSansJP-Normal') -- for linux, install `adobe-source-han-sans-jp-fonts`
+add_font('NotoColorEmoji')
 
 C.font = wez.font_with_fallback(fonts)
 
