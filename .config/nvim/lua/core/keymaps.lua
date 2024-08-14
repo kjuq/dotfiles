@@ -80,7 +80,7 @@ map('n', 'gl', function() require('utils.common').buffer_delete() end, { desc = 
 map(
 	'n',
 	'gL',
-	function() require('utils.common').buffer_delete(true) end,
+	function() require('utils.common').buffer_delete('force') end,
 	{ desc = 'Delete all buffers except for the current one' }
 )
 

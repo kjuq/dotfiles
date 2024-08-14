@@ -57,16 +57,16 @@ M.buffer_prev = function()
 	if vim.api.nvim_get_current_buf() ~= vim.fn.min(get_valid_buffers()) then vim.cmd.bprev() end
 end
 
----@param del_others boolean|nil
-M.buffer_delete = function(del_others)
-	if del_others then
+---@param mode 'others'|'force'|nil
+M.buffer_delete = function(mode)
+	if mode == 'others' then
 		for _, value in pairs(get_valid_buffers()) do
 			if value ~= vim.api.nvim_get_current_buf() then vim.api.nvim_buf_delete(value, {}) end
 		end
 	else
 		local cur_bufnr = vim.api.nvim_get_current_buf()
 		require('utils.common').buffer_prev()
-		vim.api.nvim_buf_delete(cur_bufnr, {})
+		vim.api.nvim_buf_delete(cur_bufnr, { force = mode == 'force' })
 	end
 end
 
