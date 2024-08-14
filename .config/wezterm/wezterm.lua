@@ -88,6 +88,8 @@ elseif os.execute("[ $(uname --nodename) = 'KSGO' ]") then
 	C.font_size = 24
 elseif os.execute("[ $(uname --nodename) = 'KANTC' ]") then
 	C.font_size = 16
+elseif os.execute("[ $(uname --nodename) = 'KOXPX' ]") then
+	C.font_size = 18
 end
 
 -- and finally, return the configuration to wezterm
