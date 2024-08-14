@@ -41,8 +41,7 @@ tmux/tmux.conf
 tmux/scripts
 w3m/keymap
 wezterm/wezterm.lua
-X11/xinitrc
-X11/Xresources
+X11
 "
 
 local_bin_files="
