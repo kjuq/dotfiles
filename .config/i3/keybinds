@@ -134,7 +134,7 @@ bindsym $sac+m bar mode toggle
 # bindsym $mod+Ctrl+m exec pavucontrol
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "brightnessctl set 20%+"
+bindsym XF86MonBrightnessDown exec "brightnessctl set 20%-"
 
 # vim: set filetype=i3config :
