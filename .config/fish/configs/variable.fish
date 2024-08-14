@@ -5,7 +5,8 @@ set -q XDG_DATA_HOME; or set --export XDG_DATA_HOME "$HOME/.local/share"
 set -q XDG_STATE_HOME; or set --export XDG_STATE_HOME "$HOME/.local/state"
 
 # User defined
-set --export LOCAL_BIN_PATH "$HOME/.local/bin"
+set --export LOCAL_HOME "$HOME/.local"
+set --export LOCAL_BIN_PATH "$LOCAL_HOME/bin"
 
 # Environment variables
 set --export LC_ALL en_US.UTF-8
@@ -30,7 +31,7 @@ set --export RCLONE_PROGRESS true
 set --export RCLONE_EXCLUDE "*.DS_Store"
 
 # GnuPG and password-store
-set --export PASSWORD_STORE_DIR "$HOME/password-store"
+set --export PASSWORD_STORE_DIR "$LOCAL_HOME/password-store"
 set --export GPG_TTY (tty)
 
 # Xinit
