@@ -47,6 +47,12 @@ bindsym Shift+$wsmod+$wskey7 move container to workspace $ws7; workspace $ws7
 bindsym Shift+$wsmod+$wskey8 move container to workspace $ws8; workspace $ws8
 bindsym Shift+$wsmod+$wskey9 move container to workspace $ws9; workspace $ws9
 
+# Move window to other displays (Super + Alt)
+bindsym $mod+Mod1+p move workspace to output up
+bindsym $mod+Mod1+n move workspace to output down
+bindsym $mod+Mod1+f move workspace to output right
+bindsym $mod+Mod1+b move workspace to output left
+
 # Open applications on specific workspaces
 assign [class="Vivaldi"] $ws2
 assign [class="org.wezfurlong.wezterm"] $ws4
