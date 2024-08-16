@@ -10,4 +10,8 @@ rm "$HOME/.bash_logout"
 
 rm "$HOME/.python_history"
 
+rm "$HOME/.pulse-cookie"
+
 rm "$HOME/.viminfo"
+
+mv "$HOME/.pki" "$XDG_DATA_HOME/pki"
