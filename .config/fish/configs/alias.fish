@@ -51,14 +51,6 @@ if command --search --quiet fd
 	alias fd="fd --hidden --exclude .git/"
 end
 
-if command --search --quiet python3
-	alias python="python3"
-end
-
-if command --search --quiet pip3
-	alias pip="pip3"
-end
-
 if command --search --quiet lnks
 	set --local lnks_dir "$HOME/docs/__bookmarks"
 	alias lnks="lnks --dir $lnks_dir"
