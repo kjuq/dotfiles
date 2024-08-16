@@ -47,6 +47,7 @@ X11
 
 local_bin_files="
 acw
+battery
 brightmax
 brightmin
 cm

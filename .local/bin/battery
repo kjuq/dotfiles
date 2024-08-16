@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ "$(uname --nodename)" == "KOXPX" ]; then
+	left="$(upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep 'percentage' | awk '{print $2}')"
+	state=$(upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep 'state' | awk '{print $2}')
+	if [ "$state" = "charging" ]; then
+		output="$left charging"
+	else
+		output="$left"
+	fi
+	echo "$output"
+fi
