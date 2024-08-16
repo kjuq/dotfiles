@@ -16,6 +16,7 @@ fish/config.fish
 fish/configs
 git
 gitui
+gnupg/gpg-agent.conf
 gtkrc-2.0/gtkrc
 hammerspoon/lua
 hammerspoon/init.lua
@@ -77,7 +78,6 @@ vc
 
 root_files="
 .clang-format
-.gnupg/gpg-agent.conf
 .ignore
 .textlintrc.json
 "
