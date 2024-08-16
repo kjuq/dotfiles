@@ -30,6 +30,12 @@ set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 # Docker
 set --export DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 
+# Python
+set --export PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc.py"
+set --export PYTHON_HISTORY "$XDG_STATE_HOME/python/history" # not working so wrote `pythonrc.py` as a workaround
+set --export PYTHONPYCACHEPREFIX "$XDG_CACHE_HOME/python" # no `__pycache__`
+set --export PYTHONUSERBASE "$XDG_DATA_HOME/python" # base dir where packages will be installed via `pip install --user`
+
 # npm
 set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 

@@ -36,6 +36,7 @@ neomutt/signature
 nano/nanorc
 npm/npmrc
 nvim
+python/pythonrc.py
 qutebrowser/config.py
 ruff/ruff.toml
 spotifyd/spotifyd.conf
