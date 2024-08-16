@@ -13,6 +13,9 @@ spec.opts = {
 		['<Esc>'] = 'actions.close',
 	},
 	show_guides = true,
+	layout = {
+		default_direction = 'prefer_left',
+	},
 }
 
 spec.dependencies = {
