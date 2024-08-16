@@ -78,7 +78,6 @@ vc
 "
 
 root_files="
-.textlintrc.json
 "
 
 library="
