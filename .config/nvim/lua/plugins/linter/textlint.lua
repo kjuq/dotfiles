@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+local install_rules = function()
 	local textlint_root = vim.fn.stdpath('data') .. '/mason/packages/textlint'
 	local has_rule = function(rule)
 		local rules_root = textlint_root .. '/node_modules/'
@@ -14,6 +14,16 @@ M.setup = function()
 	end
 
 	-- install_rule("textlint-rule-write-good")
+end
+
+local register = function()
+	local null_ls = require('null-ls')
+	null_ls.register(null_ls.builtins.diagnostics.textlint)
+end
+
+M.setup = function()
+	install_rules()
+	register()
 end
 
 return M

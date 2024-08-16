@@ -3,15 +3,11 @@ local spec = { 'jay-babu/mason-null-ls.nvim' }
 spec.event = { 'LspAttach', 'VeryLazy' }
 
 spec.opts = function()
-	local null_ls = require('null-ls')
-
 	return {
 		automatic_setup = true,
 		handlers = {
-			textlint = function()
-				require('plugins.linter.textlint').setup()
-				null_ls.register(null_ls.builtins.diagnostics.textlint)
-			end,
+			textlint = require('plugins.linter.textlint').setup,
+			clang_format = require('plugins.formatter.clang_format').setup,
 		},
 	}
 end

@@ -11,6 +11,7 @@ alacritty/macos.toml.bak
 alacritty/linux.toml.bak
 brewfile/Brewfile
 clangd/config.yaml
+clang-format
 docker/config.json
 fish/config.fish
 fish/configs
@@ -77,7 +78,6 @@ vc
 "
 
 root_files="
-.clang-format
 .ignore
 .textlintrc.json
 "

@@ -1,3 +1,6 @@
+-- TODO: use this
+-- local methods = require('vim.lsp.protocol').Methods
+
 local M = {}
 
 local vt = false -- if virtual text of diagnostics is on
@@ -14,7 +17,7 @@ local virtual_text = function(enabled)
 	end
 end
 
-local callback = function(ev)
+local on_attach = function(ev)
 	local bufnr = ev.buf
 	-- Keymaps for LSP
 	local map = function(mode, lhs, rhs, desc) vim.keymap.set(mode, lhs, rhs, { desc = desc, buffer = bufnr }) end
@@ -63,6 +66,11 @@ local callback = function(ev)
 			callback = function() vim.lsp.buf.format({ async = false, id = client_id }) end,
 		})
 	end
+end
+
+local callback = function(ev)
+	-- execute AFTER `on_attach` of each clients
+	vim.schedule(function() on_attach(ev) end)
 end
 
 M.float_max_width = 80
