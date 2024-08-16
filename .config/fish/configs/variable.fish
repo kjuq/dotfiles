@@ -30,6 +30,9 @@ set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 # Docker
 set --export DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 
+# npm
+set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
+
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 

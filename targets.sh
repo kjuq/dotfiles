@@ -34,6 +34,7 @@ neomutt/mailcap
 neomutt/neomuttrc
 neomutt/signature
 nano/nanorc
+npm/npmrc
 nvim
 qutebrowser/config.py
 ruff/ruff.toml
