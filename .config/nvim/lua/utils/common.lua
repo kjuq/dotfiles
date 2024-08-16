@@ -87,6 +87,53 @@ M.argv_contains = function(patterns)
 	return false
 end
 
+---@param path string
+---@return string?
+--- returns `nil` when given `path` is `/`
+local get_parent_directory = function(path)
+	-- Remove trailing slash if present
+	path = path:gsub('/$', '')
+
+	-- Find the last occurrence of the slash
+	local parent_path = path:match('(.*/)')
+
+	-- Remove trailing slash if present
+	if parent_path and parent_path ~= '/' then parent_path = parent_path:gsub('/$', '') end
+
+	return parent_path
+end
+
+---@param filename string
+---@param directory string
+---@return boolean
+local file_exists_in_directory = function(filename, directory)
+	local scandir = vim.uv.fs_scandir(directory)
+	if scandir then
+		while true do
+			local name, type = vim.uv.fs_scandir_next(scandir)
+			if not name then break end
+			if type == 'file' and name == filename then return true end
+		end
+	end
+	return false
+end
+
+---@return string?
+--- returns `nil` when file was not found
+M.parent_directory_traversal = function(filename, path)
+	if vim.fn.isdirectory(path) ~= 1 then error('Invalid path') end
+
+	-- Remove trailing slash if present
+	path = path:gsub('/$', '')
+
+	while path do
+		if file_exists_in_directory(filename, path) then return path .. '/' .. filename end
+		path = get_parent_directory(path)
+	end
+
+	return nil
+end
+
 M.floatwinborder = 'single'
 M.floatscrolldown = '<M-f>'
 M.floatscrollup = '<M-b>'
