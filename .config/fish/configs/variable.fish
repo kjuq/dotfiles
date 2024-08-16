@@ -23,6 +23,10 @@ set --export SUDO_ASKPASS "$LOCAL_BIN_PATH/sudo_pass"
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
+# Bash
+mkdir --parents "$XDG_STATE_HOME/bash"
+set --export HISTFILE "$XDG_STATE_HOME/bash/history"
+
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 
