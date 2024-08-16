@@ -12,6 +12,7 @@ function fisher_init
 	fisher install decors/fish-colored-man
 	fisher install kjuq/fish-pip-completion
 	fisher install PatrickF1/fzf.fish
+	fisher install decors/fish-ghq
 
 	set --export pure_color_current_directory normal # fisher_init to take effect
 end
