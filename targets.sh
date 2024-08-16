@@ -11,6 +11,7 @@ alacritty/macos.toml.bak
 alacritty/linux.toml.bak
 brewfile/Brewfile
 clangd/config.yaml
+docker/config.json
 fish/config.fish
 fish/configs
 git
@@ -72,7 +73,6 @@ vc
 
 root_files="
 .clang-format
-.docker/config.json
 .gnupg/gpg-agent.conf
 .ignore
 .textlintrc.json

@@ -27,6 +27,9 @@ set --export HOMEBREW_NO_ENV_HINTS 1
 mkdir --parents "$XDG_STATE_HOME/bash"
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 
