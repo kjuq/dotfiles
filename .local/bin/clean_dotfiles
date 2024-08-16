@@ -9,3 +9,5 @@ rm "$HOME/.bash_login"
 rm "$HOME/.bash_logout"
 
 rm "$HOME/.python_history"
+
+rm "$HOME/.viminfo"

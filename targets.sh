@@ -43,6 +43,7 @@ spotifyd/spotifyd.conf
 stylua/stylua.toml
 tmux/tmux.conf
 tmux/scripts
+vim/vimrc
 w3m/keymap
 wezterm/wezterm.lua
 X11
