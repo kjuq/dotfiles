@@ -13,7 +13,9 @@ spec.config = function()
 
 	local max_lines = 30000
 	local enable_hl = function()
-		if vim.fn.line('$') <= max_lines then vim.cmd('CccHighlighterEnable') end
+		if vim.fn.line('$') <= max_lines then
+			vim.cmd('CccHighlighterEnable')
+		end
 	end
 	enable_hl()
 

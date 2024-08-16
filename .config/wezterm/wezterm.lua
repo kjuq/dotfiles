@@ -1,7 +1,9 @@
 local wez = require('wezterm')
 
 local C -- config
-if wez.config_builder then C = wez.config_builder() end
+if wez.config_builder then
+	C = wez.config_builder()
+end
 
 -- Startup with fullscreen
 -- wez.on("gui-startup", function(cmd)
@@ -26,7 +28,9 @@ local fonts = {}
 
 local add_font = function(fontname)
 	local cmd = os.getenv('SHELL') .. " -c 'fc-list --quiet " .. fontname .. "'"
-	if os.execute(cmd) then table.insert(fonts, fontname) end
+	if os.execute(cmd) then
+		table.insert(fonts, fontname)
+	end
 end
 
 add_font('CozetteVector')

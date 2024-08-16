@@ -34,13 +34,17 @@ spec.config = function()
 	vim.api.nvim_create_autocmd('user', {
 		pattern = 'eskk-enable-pre',
 		callback = function()
-			if has_noice then vim.cmd('Noice disable') end
+			if has_noice then
+				vim.cmd('Noice disable')
+			end
 		end,
 	})
 	vim.api.nvim_create_autocmd('user', {
 		pattern = 'eskk-disable-post',
 		callback = function()
-			if has_noice then vim.cmd('Noice enable') end
+			if has_noice then
+				vim.cmd('Noice enable')
+			end
 		end,
 	})
 end

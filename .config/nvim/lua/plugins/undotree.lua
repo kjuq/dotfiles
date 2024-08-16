@@ -10,7 +10,9 @@ spec.opts = {
 }
 
 spec.keys = {
-	map('<leader>au', 'n', function() require('undotree').toggle() end, 'Toggle'),
+	map('<leader>au', 'n', function()
+		require('undotree').toggle()
+	end, 'Toggle'),
 }
 
 spec.specs = { 'nvim-lua/plenary.nvim' }

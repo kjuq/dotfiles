@@ -1,4 +1,6 @@
-if os.getenv('NOLAZY') then return end
+if os.getenv('NOLAZY') then
+	return
+end
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
@@ -54,5 +56,7 @@ vim.keymap.set('n', '<leader>ap', '<Cmd>Lazy<CR>', { desc = 'Lazy.nvim: Manage p
 vim.api.nvim_create_autocmd({ 'User' }, {
 	pattern = 'LazyLoad telescope',
 	group = vim.api.nvim_create_augroup('user_lazy_test', {}),
-	callback = function() vim.notify('hello') end,
+	callback = function()
+		vim.notify('hello')
+	end,
 })

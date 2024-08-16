@@ -10,7 +10,9 @@ spec.keys = skk.mappings('Skkeleton: ', 'skkeleton-enable', 'skkeleton-disable',
 
 spec.config = function()
 	-- create $XDG_CONFIG_HOME/skk dir if it doesn't exist
-	if vim.fn.isdirectory(skk.skk_dir) == 0 then vim.fn.mkdir(skk.skk_dir, 'p') end
+	if vim.fn.isdirectory(skk.skk_dir) == 0 then
+		vim.fn.mkdir(skk.skk_dir, 'p')
+	end
 
 	local lazy_root = require('lazy.core.config').options.root
 
@@ -37,7 +39,9 @@ spec.config = function()
 	local remove_mapped_keys = function(key)
 		local mapped_keys = {}
 		for _, v in ipairs(vim.g['skkeleton#mapped_keys']) do
-			if v ~= key then table.insert(mapped_keys, v) end
+			if v ~= key then
+				table.insert(mapped_keys, v)
+			end
 		end
 		vim.g['skkeleton#mapped_keys'] = mapped_keys
 	end

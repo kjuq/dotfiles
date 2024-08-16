@@ -27,7 +27,9 @@ end
 ---@param oldpos jolyne.Positions
 local back_exceeded_words = function(newpos, oldpos)
 	local line_diff = newpos.line - oldpos.line
-	if line_diff == 0 then return end
+	if line_diff == 0 then
+		return
+	end
 
 	local newline_is_below_init_line = line_diff > 0
 	local newline_is_above_init_line = line_diff < 0
@@ -47,7 +49,9 @@ end
 ---@param oldpos jolyne.Positions
 local back_exceeded_scrolls = function(newpos, oldpos)
 	local scroll_diff = newpos.bottom - oldpos.bottom
-	if scroll_diff == 0 then return end
+	if scroll_diff == 0 then
+		return
+	end
 
 	local scrolled_down = scroll_diff > 0
 	local scrolled_up = scroll_diff < 0
@@ -78,16 +82,34 @@ M.motion = function(motion)
 end
 
 local key_motion = function(key)
-	M.motion(function() return vim.cmd('normal! ' .. vim.v.count1 .. key) end)
+	M.motion(function()
+		return vim.cmd('normal! ' .. vim.v.count1 .. key)
+	end)
 end
 
-M.w = function() key_motion('w') end
-M.W = function() key_motion('W') end
-M.e = function() key_motion('e') end
-M.E = function() key_motion('E') end
-M.b = function() key_motion('b') end
-M.B = function() key_motion('B') end
-M.ge = function() key_motion('ge') end
-M.gE = function() key_motion('gE') end
+M.w = function()
+	key_motion('w')
+end
+M.W = function()
+	key_motion('W')
+end
+M.e = function()
+	key_motion('e')
+end
+M.E = function()
+	key_motion('E')
+end
+M.b = function()
+	key_motion('b')
+end
+M.B = function()
+	key_motion('B')
+end
+M.ge = function()
+	key_motion('ge')
+end
+M.gE = function()
+	key_motion('gE')
+end
 
 return M

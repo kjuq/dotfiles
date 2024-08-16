@@ -7,6 +7,8 @@ spec.keys = {
 	{ 'h', mode = 'c' },
 }
 
-spec.init = function() vim.opt.helplang = { 'ja', 'en' } end
+spec.init = function()
+	vim.opt.helplang = { 'ja', 'en' }
+end
 
 return spec

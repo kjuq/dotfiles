@@ -8,7 +8,9 @@ spec.config = function()
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'qf',
 		group = vim.api.nvim_create_augroup('user_qfreplace', {}),
-		callback = function() vim.keymap.set('n', 'r', '<Cmd>Qfreplace<CR>', { buffer = true }) end,
+		callback = function()
+			vim.keymap.set('n', 'r', '<Cmd>Qfreplace<CR>', { buffer = true })
+		end,
 	})
 end
 

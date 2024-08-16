@@ -6,7 +6,9 @@ local hidden = false
 local spec = { 'nvim-lualine/lualine.nvim' }
 spec.event = not hidden and 'VeryLazy' or {}
 
-spec.init = function() vim.opt.laststatus = 0 end
+spec.init = function()
+	vim.opt.laststatus = 0
+end
 
 local map = require('utils.lazy').generate_map('', 'Lualine: ')
 spec.keys = {
@@ -104,8 +106,12 @@ spec.opts = function()
 	end
 
 	local conds = {
-		buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
-		hide_in_width = function() return vim.api.nvim_get_option_value('columns', {}) > 100 end,
+		buffer_not_empty = function()
+			return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+		end,
+		hide_in_width = function()
+			return vim.api.nvim_get_option_value('columns', {}) > 100
+		end,
 		check_git_workspace = function()
 			local filepath = vim.fn.expand('%:p:h')
 			local gitdir = vim.fn.finddir('.git', filepath .. ';')
@@ -138,7 +144,9 @@ spec.opts = function()
 		},
 	}
 	components.empty = {
-		function() return ' ' end,
+		function()
+			return ' '
+		end,
 		cond = conds.hide_in_width,
 		padding = 0, -- it is natural to set here
 	}
@@ -169,8 +177,12 @@ spec.opts = function()
 		color = { fg = colors.orange },
 	}
 	components.japanese_input = {
-		function() return '[JAPANESE INPUT]' end,
-		cond = function() return _G._user_skk_jp_mode_enabled end,
+		function()
+			return '[JAPANESE INPUT]'
+		end,
+		cond = function()
+			return _G._user_skk_jp_mode_enabled
+		end,
 		color = { fg = colors.orange },
 	}
 	components.searchcount = {
@@ -219,7 +231,9 @@ spec.opts = function()
 		color = { fg = colors.violet, gui = 'bold' },
 	}
 	components.bar = {
-		function() return '--' end,
+		function()
+			return '--'
+		end,
 		cond = conds.hide_in_width,
 		color = { fg = colors.fg, gui = 'bold' },
 	}
@@ -230,11 +244,15 @@ spec.opts = function()
 			local msg = ''
 			local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
 			local clients = vim.lsp.get_clients()
-			if next(clients) == nil then return msg end
+			if next(clients) == nil then
+				return msg
+			end
 			for _, client in ipairs(clients) do
 				---@diagnostic disable-next-line: undefined-field
 				local filetypes = client.config.filetypes
-				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then return client.name end
+				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+					return client.name
+				end
 			end
 			return msg
 		end,

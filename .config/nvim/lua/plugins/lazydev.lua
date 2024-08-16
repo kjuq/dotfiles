@@ -15,7 +15,9 @@ spec.config = function(_, opts)
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'lua',
 		group = group,
-		callback = function() require('lazydev').setup(opts) end,
+		callback = function()
+			require('lazydev').setup(opts)
+		end,
 		once = true,
 	})
 	vim.api.nvim_exec_autocmds('FileType', { pattern = vim.o.filetype })

@@ -25,6 +25,8 @@ spec.keys = {
 	end, 'jump to a previous placeholder'),
 }
 
-spec.config = function() require('luasnip.loaders.from_snipmate').lazy_load() end
+spec.config = function()
+	require('luasnip.loaders.from_snipmate').lazy_load()
+end
 
 return spec

@@ -2,7 +2,9 @@ local allmodes = { 'n', 'i', 'c', 'x', 's', 'o', 't', 'l' }
 
 ---@param lhs string
 ---@param rhs string
-local remap = function(lhs, rhs) return vim.keymap.set(allmodes, lhs, rhs, { remap = true }) end
+local remap = function(lhs, rhs)
+	return vim.keymap.set(allmodes, lhs, rhs, { remap = true })
+end
 
 local M = {}
 
@@ -48,7 +50,9 @@ end
 M.setup = function()
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 		group = vim.api.nvim_create_augroup('user_remap_all_specialkeys', {}),
-		callback = function() M.remapall() end,
+		callback = function()
+			M.remapall()
+		end,
 	})
 end
 

@@ -4,7 +4,9 @@
 ---@type LazySpec
 local spec = { 'nvim-treesitter/nvim-treesitter' }
 spec.event = 'VeryLazy'
-spec.build = function() require('nvim-treesitter.install').update({ with_sync = false })() end
+spec.build = function()
+	require('nvim-treesitter.install').update({ with_sync = false })()
+end
 
 spec.opts = {
 	ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'regex', 'markdown', 'markdown_inline', 'bash' },
@@ -79,7 +81,9 @@ spec.opts = {
 	},
 }
 
-spec.config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end
+spec.config = function(_, opts)
+	require('nvim-treesitter.configs').setup(opts)
+end
 
 spec.dependencies = {
 	'nvim-treesitter/nvim-treesitter-textobjects',

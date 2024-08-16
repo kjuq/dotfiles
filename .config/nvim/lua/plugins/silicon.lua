@@ -5,7 +5,9 @@ local spec = { 'segeljakt/vim-silicon' }
 spec.cmd = 'Silicon'
 
 spec.keys = {
-	map('c', 'n', function() vim.cmd('Silicon') end, 'Capture'),
+	map('c', 'n', function()
+		vim.cmd('Silicon')
+	end, 'Capture'),
 	map('c', 'v', function()
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', false)
 		vim.cmd("'<,'>Silicon")
@@ -19,7 +21,9 @@ spec.keys = {
 spec.config = function()
 	local store_dir = os.getenv('HOME') .. '/Documents/silicon'
 
-	if vim.fn.isdirectory(store_dir) then vim.fn.mkdir(store_dir) end
+	if vim.fn.isdirectory(store_dir) then
+		vim.fn.mkdir(store_dir)
+	end
 
 	local datetime = os.date('%Y-%m-%d_%H-%M-%S')
 

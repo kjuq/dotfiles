@@ -12,7 +12,9 @@ map('c', '<C-f>', '<Right>') -- Opens a command-line window (q:) by default
 map('c', '<C-a>', '<Home>') -- Inserts all matched candidates by default, so <C-i> is enough
 map('c', '<C-d>', '<Del>') -- Lists completions by default, so <C-i> is enough
 -- map("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
-map('c', '<C-x>', function() vim.fn.setreg('', vim.fn.getcmdline()) end)
+map('c', '<C-x>', function()
+	vim.fn.setreg('', vim.fn.getcmdline())
+end)
 
 -- recall history beginning with typed characters
 map('c', '<C-p>', '<Up>')
@@ -23,8 +25,12 @@ map('i', '<C-g><C-v>', '<C-v>')
 
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
-map({ 'n', 'x' }, 'k', function() return vim.v.count == 0 and 'gk' or 'k' end, { expr = true, silent = true })
-map({ 'n', 'x' }, 'j', function() return vim.v.count == 0 and 'gj' or 'j' end, { expr = true, silent = true })
+map({ 'n', 'x' }, 'k', function()
+	return vim.v.count == 0 and 'gk' or 'k'
+end, { expr = true, silent = true })
+map({ 'n', 'x' }, 'j', function()
+	return vim.v.count == 0 and 'gj' or 'j'
+end, { expr = true, silent = true })
 
 -- word moves in only current line
 local jolyne = require('jolyne')
@@ -53,11 +59,19 @@ map('n', ']l', vim.cmd.cnext, { desc = 'Next location on QuickFix' })
 map('n', '[l', vim.cmd.cprevious, { desc = 'Previous location on QuickFix' })
 
 -- Frequently used keymaps
-local write = function(key) map('n', key, '<Cmd>silent write<CR>', { desc = 'Write' }) end
-local write_noautocmd = function(key) map('n', key, '<Cmd>noautocmd silent write<CR>', { desc = 'Write w/o autocmd' }) end
-local quit = function(key) map('n', key, vim.cmd.quit, { silent = true, desc = 'Quit' }) end
+local write = function(key)
+	map('n', key, '<Cmd>silent write<CR>', { desc = 'Write' })
+end
+local write_noautocmd = function(key)
+	map('n', key, '<Cmd>noautocmd silent write<CR>', { desc = 'Write w/o autocmd' })
+end
+local quit = function(key)
+	map('n', key, vim.cmd.quit, { silent = true, desc = 'Quit' })
+end
 local quit_force = function(key)
-	map('n', key, function() vim.cmd.quit({ bang = true }) end, { silent = true, desc = 'Force quit' })
+	map('n', key, function()
+		vim.cmd.quit({ bang = true })
+	end, { silent = true, desc = 'Force quit' })
 end
 
 write('gs')
@@ -75,14 +89,13 @@ map({ 'n', 'x' }, '<C-f>', bduf.cf)
 map({ 'n', 'x' }, '<C-b>', bduf.cb)
 
 -- Comfortable buffer deletion
-map('n', 'gl', function() require('utils.common').buffer_delete() end, { desc = 'Delete the current buffer' })
+map('n', 'gl', function()
+	require('utils.common').buffer_delete()
+end, { desc = 'Delete the current buffer' })
 
-map(
-	'n',
-	'gL',
-	function() require('utils.common').buffer_delete('force') end,
-	{ desc = 'Delete all buffers except for the current one' }
-)
+map('n', 'gL', function()
+	require('utils.common').buffer_delete('force')
+end, { desc = 'Delete all buffers except for the current one' })
 
 map('n', 'gA', '<CMD>messages<CR>', { desc = 'History of messages' })
 
@@ -107,18 +120,21 @@ map('n', 'gaS', function()
 	end
 end, { desc = 'Toggle spell check' })
 
-map('n', 'gaL', function() vim.opt.list = not vim.o.list end, { desc = 'Toggle list' })
+map('n', 'gaL', function()
+	vim.opt.list = not vim.o.list
+end, { desc = 'Toggle list' })
 
-map('n', 'gal', function() vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0 end, { desc = 'Toggle list' })
+map('n', 'gal', function()
+	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
+end, { desc = 'Toggle list' })
 
-map('n', 'gan', function() vim.opt.number = not vim.o.number end, { desc = 'Toggle number style' })
+map('n', 'gan', function()
+	vim.opt.number = not vim.o.number
+end, { desc = 'Toggle number style' })
 
-map(
-	'n',
-	'gaN',
-	function() vim.opt.relativenumber = not vim.o.relativenumber end,
-	{ desc = 'Toggle relative number style' }
-)
+map('n', 'gaN', function()
+	vim.opt.relativenumber = not vim.o.relativenumber
+end, { desc = 'Toggle relative number style' })
 
 map('n', 'gac', function()
 	if vim.o.clipboard == '' then
@@ -131,7 +147,9 @@ end, { desc = 'Toggle clipboard' })
 
 local vedit_default
 map('n', 'gav', function()
-	if not vedit_default then vedit_default = vim.o.virtualedit end
+	if not vedit_default then
+		vedit_default = vim.o.virtualedit
+	end
 	if vim.o.virtualedit == vedit_default then
 		vim.opt.virtualedit = 'all'
 	else
@@ -143,7 +161,9 @@ end, { desc = 'Toggle virtualedit' })
 map('n', 'gar', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
 map('x', 'gar', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
 
-map('n', 'gad', function() vim.notify(vim.fn.getcwd()) end, { desc = 'Print working directory' })
+map('n', 'gad', function()
+	vim.notify(vim.fn.getcwd())
+end, { desc = 'Print working directory' })
 map('n', 'ga-', function()
 	vim.cmd('silent! cd ..')
 	vim.notify(vim.fn.getcwd())
@@ -151,8 +171,12 @@ end, { desc = 'Change to upper directory' })
 
 -- variable keybinds on states
 local virtual_edit_replace = true
-map({ 'n' }, 'r', function() return virtual_edit_replace and 'gr' or 'r' end, { expr = true })
-map({ 'n' }, 'R', function() return virtual_edit_replace and 'gR' or 'R' end, { expr = true })
+map({ 'n' }, 'r', function()
+	return virtual_edit_replace and 'gr' or 'r'
+end, { expr = true })
+map({ 'n' }, 'R', function()
+	return virtual_edit_replace and 'gR' or 'R'
+end, { expr = true })
 map('n', 'gaR', function()
 	virtual_edit_replace = not virtual_edit_replace
 	vim.notify('Virtual edit replace: ' .. tostring(virtual_edit_replace))
@@ -167,7 +191,9 @@ map('n', 'god', '<CMD>EditDailynote<CR>', { desc = 'Edit daily note' })
 map('n', 'gos', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
 
 -- TODO: check if Netrw is loaded or not
-map('n', 'gX', function() vim.cmd('Explore') end, { desc = 'Open Netrw' })
+map('n', 'gX', function()
+	vim.cmd('Explore')
+end, { desc = 'Open Netrw' })
 
 local insert_date = function()
 	local date = os.date('%Y-%m-%d') --[[@ as string]]
@@ -200,4 +226,6 @@ map({ 'i', 's' }, '<C-l>', function()
 end, { silent = true })
 
 -- <NUM><CR> to go to line. i.e. 10<CR> -> 10G
-map({ 'n' }, '<CR>', function() return vim.v.count ~= 0 and 'G' or '<CR>' end, { expr = true, silent = true })
+map({ 'n' }, '<CR>', function()
+	return vim.v.count ~= 0 and 'G' or '<CR>'
+end, { expr = true, silent = true })

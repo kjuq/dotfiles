@@ -6,54 +6,45 @@ spec.branch = 'v3.x'
 spec.cmd = { 'Neotree' }
 
 spec.keys = {
-	map(
-		'aT',
-		'n',
-		function()
-			require('neo-tree.command').execute({
-				source = 'filesystem',
-				position = 'left',
-				toggle = false,
-				reveal_force_cwd = true,
-			})
-		end,
-		'Open'
-	),
-	map(
-		'aG',
-		'n',
-		function()
-			require('neo-tree.command').execute({
-				source = 'git_status',
-				position = 'left',
-				toggle = false,
-				reveal_force_cwd = true,
-			})
-		end,
-		'Open git'
-	),
-	map(
-		'aB',
-		'n',
-		function()
-			require('neo-tree.command').execute({
-				source = 'buffers',
-				position = 'left',
-				toggle = false,
-				reveal_force_cwd = true,
-			})
-		end,
-		'Open buffer'
-	),
+	map('aT', 'n', function()
+		require('neo-tree.command').execute({
+			source = 'filesystem',
+			position = 'left',
+			toggle = false,
+			reveal_force_cwd = true,
+		})
+	end, 'Open'),
+	map('aG', 'n', function()
+		require('neo-tree.command').execute({
+			source = 'git_status',
+			position = 'left',
+			toggle = false,
+			reveal_force_cwd = true,
+		})
+	end, 'Open git'),
+	map('aB', 'n', function()
+		require('neo-tree.command').execute({
+			source = 'buffers',
+			position = 'left',
+			toggle = false,
+			reveal_force_cwd = true,
+		})
+	end, 'Open buffer'),
 }
 
 spec.opts = {
 	close_if_last_window = true,
 	window = {
 		mappings = {
-			['<M-f>'] = function() vim.api.nvim_exec2('Neotree focus filesystem', { output = true }) end,
-			['<M-b>'] = function() vim.api.nvim_exec2('Neotree focus buffers', { output = true }) end,
-			['<M-g>'] = function() vim.api.nvim_exec2('Neotree focus git_status', { output = true }) end,
+			['<M-f>'] = function()
+				vim.api.nvim_exec2('Neotree focus filesystem', { output = true })
+			end,
+			['<M-b>'] = function()
+				vim.api.nvim_exec2('Neotree focus buffers', { output = true })
+			end,
+			['<M-g>'] = function()
+				vim.api.nvim_exec2('Neotree focus git_status', { output = true })
+			end,
 		},
 	},
 	filesystem = {

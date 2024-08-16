@@ -3,7 +3,9 @@ local group = vim.api.nvim_create_augroup('user_core_augroup', {})
 -- quit with esc in command-line window
 vim.api.nvim_create_autocmd({ 'CmdwinEnter' }, { -- q:
 	group = group,
-	callback = function() vim.keymap.set('n', '<Esc>', vim.cmd.quit, { buffer = true }) end,
+	callback = function()
+		vim.keymap.set('n', '<Esc>', vim.cmd.quit, { buffer = true })
+	end,
 })
 
 vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
@@ -45,12 +47,16 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 
 vim.api.nvim_create_autocmd({ 'TextYankPost', 'FocusLost', 'CmdlineLeave' }, {
 	group = group,
-	callback = function() vim.cmd.wshada() end,
+	callback = function()
+		vim.cmd.wshada()
+	end,
 })
 
 vim.api.nvim_create_autocmd({ 'FocusGained', 'CmdLineEnter' }, {
 	group = group,
-	callback = function() vim.cmd.rshada() end,
+	callback = function()
+		vim.cmd.rshada()
+	end,
 })
 
 vim.api.nvim_create_autocmd({ 'TermRequest' }, {

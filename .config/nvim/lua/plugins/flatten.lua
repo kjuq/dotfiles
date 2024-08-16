@@ -22,7 +22,9 @@ spec.opts = function()
 				vim.opt.relativenumber = _G._user_flatten_relativenumber
 				vim.opt.list = _G._user_flatten_list
 
-				if saved_terminal then saved_terminal:close() end
+				if saved_terminal then
+					saved_terminal:close()
+				end
 
 				vim.api.nvim_set_current_buf(bufnr)
 
@@ -32,7 +34,9 @@ spec.opts = function()
 					vim.api.nvim_create_autocmd('BufWritePost', {
 						buffer = bufnr,
 						once = true,
-						callback = vim.schedule_wrap(function() vim.api.nvim_buf_delete(bufnr, {}) end),
+						callback = vim.schedule_wrap(function()
+							vim.api.nvim_buf_delete(bufnr, {})
+						end),
 					})
 				end
 			end,

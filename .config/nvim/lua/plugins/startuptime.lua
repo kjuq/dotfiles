@@ -8,6 +8,8 @@ spec.keys = {
 	map('av', 'n', '<CMD>StartupTime<CR>', 'Calculate the time'),
 }
 
-spec.config = function() vim.g.startuptime_tries = 10 end
+spec.config = function()
+	vim.g.startuptime_tries = 10
+end
 
 return spec

@@ -3,7 +3,9 @@ local spec = { 'chrishrb/gx.nvim' }
 spec.keys = { { 'gx', '<cmd>Browse<cr>', mode = { 'n', 'x' } } }
 spec.cmd = { 'Browse' }
 
-spec.init = function() vim.g.netrw_nogx = 1 end
+spec.init = function()
+	vim.g.netrw_nogx = 1
+end
 
 spec.opts = {}
 

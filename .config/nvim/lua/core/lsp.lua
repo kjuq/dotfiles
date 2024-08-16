@@ -20,13 +20,17 @@ end
 local on_attach = function(ev)
 	local bufnr = ev.buf
 	-- Keymaps for LSP
-	local map = function(mode, lhs, rhs, desc) vim.keymap.set(mode, lhs, rhs, { desc = desc, buffer = bufnr }) end
+	local map = function(mode, lhs, rhs, desc)
+		vim.keymap.set(mode, lhs, rhs, { desc = desc, buffer = bufnr })
+	end
 
 	local vlb = vim.lsp.buf
 
 	-- rename, code action, reference, and signature help will be defined at vim/_defaults.lua (?)
 
-	if not require('utils.common').is_keymap_set('gd', 'n') then map('n', 'gd', vlb.definition, 'Go to definition') end
+	if not require('utils.common').is_keymap_set('gd', 'n') then
+		map('n', 'gd', vlb.definition, 'Go to definition')
+	end
 	map('n', 'grt', vlb.type_definition, 'Go to type definition')
 	map('n', 'gri', vlb.implementation, 'Go to implementation')
 	map('n', 'grd', vlb.declaration, 'Go to Declaration')
@@ -43,13 +47,19 @@ local on_attach = function(ev)
 
 	map('n', 'grwa', vlb.add_workspace_folder, 'Add folder to workspace')
 	map('n', 'grwr', vlb.remove_workspace_folder, 'Remove folder from workspace')
-	map('n', 'grww', function() vim.notify(vim.inspect(vlb.list_workspace_folders())) end, 'List folders of workspaceh')
+	map('n', 'grww', function()
+		vim.notify(vim.inspect(vlb.list_workspace_folders()))
+	end, 'List folders of workspaceh')
 
 	-- Diagnostics
 	map('n', 'grl', vim.diagnostic.setloclist, 'Set diagnostics into loclist')
 
-	map('n', '[e', function() vim.diagnostic.jump({ count = -1, float = true }) end, 'Go to prev diagnostics')
-	map('n', ']e', function() vim.diagnostic.jump({ count = 1, float = true }) end, 'Go to next diagnostics')
+	map('n', '[e', function()
+		vim.diagnostic.jump({ count = -1, float = true })
+	end, 'Go to prev diagnostics')
+	map('n', ']e', function()
+		vim.diagnostic.jump({ count = 1, float = true })
+	end, 'Go to next diagnostics')
 
 	map('n', 'grv', function()
 		vt = not vt
@@ -63,14 +73,18 @@ local on_attach = function(ev)
 		vim.api.nvim_create_autocmd('BufWritePre', {
 			group = vim.api.nvim_create_augroup('AutoFormatting', { clear = false }),
 			buffer = bufnr,
-			callback = function() vim.lsp.buf.format({ async = false, id = client_id }) end,
+			callback = function()
+				vim.lsp.buf.format({ async = false, id = client_id })
+			end,
 		})
 	end
 end
 
 local callback = function(ev)
 	-- execute AFTER `on_attach` of each clients
-	vim.schedule(function() on_attach(ev) end)
+	vim.schedule(function()
+		on_attach(ev)
+	end)
 end
 
 M.float_max_width = 80
@@ -100,7 +114,9 @@ M.setup = function()
 			max_height = M.float_max_height,
 			border = require('utils.common').floatwinborder,
 			-- header = false,
-			format = function(diagnostic) return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source) end,
+			format = function(diagnostic)
+				return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)
+			end,
 		},
 	})
 	vim.api.nvim_create_autocmd('LspAttach', {

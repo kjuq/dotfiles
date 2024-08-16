@@ -22,7 +22,9 @@ spec.config = function(_, opts)
 
 	vim.api.nvim_create_autocmd('FocusGained', {
 		group = vim.api.nvim_create_augroup('_user_tint_focus_gained', {}),
-		callback = function() tint.untint(vim.api.nvim_get_current_win()) end,
+		callback = function()
+			tint.untint(vim.api.nvim_get_current_win())
+		end,
 	})
 end
 

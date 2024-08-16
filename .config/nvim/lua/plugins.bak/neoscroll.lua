@@ -51,9 +51,15 @@ spec.keys = {
 		require('neoscroll').scroll(vim.api.nvim_win_get_height(0), true, duration * 2)
 	end, 'Down'),
 
-	map('zt', { 'n', 'x' }, function() require('neoscroll').zt(duration * 0.75) end, 'Top this line'),
-	map('zz', { 'n', 'x' }, function() require('neoscroll').zz(duration * 0.75) end, 'Center this line'),
-	map('zb', { 'n', 'x' }, function() require('neoscroll').zb(duration * 0.75) end, 'Bottom this line'),
+	map('zt', { 'n', 'x' }, function()
+		require('neoscroll').zt(duration * 0.75)
+	end, 'Top this line'),
+	map('zz', { 'n', 'x' }, function()
+		require('neoscroll').zz(duration * 0.75)
+	end, 'Center this line'),
+	map('zb', { 'n', 'x' }, function()
+		require('neoscroll').zb(duration * 0.75)
+	end, 'Bottom this line'),
 }
 
 spec.opts = {

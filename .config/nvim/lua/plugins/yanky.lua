@@ -28,7 +28,9 @@ spec.keys = {
 
 	map('<leader>fp', 'n', function()
 		local has_telescope, telescope = pcall(require, 'telescope')
-		if has_telescope then telescope.extensions.yank_history.yank_history() end
+		if has_telescope then
+			telescope.extensions.yank_history.yank_history()
+		end
 	end, 'search with Telescope'),
 }
 

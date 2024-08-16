@@ -5,10 +5,14 @@ local is_macos = vim.fn.has('mac') == 1
 
 ---@param line string|integer
 ---@return boolean
-local is_line_empty = function(line) return vim.fn.getline(line) == '' end
+local is_line_empty = function(line)
+	return vim.fn.getline(line) == ''
+end
 
 ---@return boolean
-local is_last_line_empty = function() return is_line_empty('$') end
+local is_last_line_empty = function()
+	return is_line_empty('$')
+end
 
 ---@type function
 local yank_entire_buffer = function()

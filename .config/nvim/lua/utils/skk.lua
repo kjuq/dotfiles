@@ -27,15 +27,21 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 	local map = require('utils.lazy').generate_map('', desc_prefix)
 	local skk = require('utils.skk')
 	local toggle_japanese = function()
-		skk.toggle_japanese(function() require('utils.common').feed_plug(enable) end)
+		skk.toggle_japanese(function()
+			require('utils.common').feed_plug(enable)
+		end)
 	end
 
 	local toggle_jp = function(key)
-		return map(key, 'n', function() toggle_japanese() end, 'Toggle JP mode')
+		return map(key, 'n', function()
+			toggle_japanese()
+		end, 'Toggle JP mode')
 	end
 
 	local enable_tmp = function(key)
-		return map(key, { 'i', 'c' }, function() require('utils.common').feed_plug(enable) end, 'Enable')
+		return map(key, { 'i', 'c' }, function()
+			require('utils.common').feed_plug(enable)
+		end, 'Enable')
 	end
 
 	local i_jp = function(key)

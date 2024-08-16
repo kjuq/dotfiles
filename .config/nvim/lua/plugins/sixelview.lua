@@ -14,7 +14,9 @@ spec.config = function(_, opts)
 		local default_pat = require('sixelview.config').default.pattern
 		local pattern = not opts.pattern and default_pat or opts.pattern
 		local is_image_buffer = require('sixelview.utils').is_image_buffer(path, pattern)
-		if is_image_buffer then vim.cmd.SixelView() end
+		if is_image_buffer then
+			vim.cmd.SixelView()
+		end
 	end)
 end
 

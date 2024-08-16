@@ -10,7 +10,9 @@ spec.keys = {
 	map('gX', 'n', '<CMD>Oil<CR>', 'Open'),
 }
 
-spec.init = function() vim.g.loaded_netrwPlugin = 1 end
+spec.init = function()
+	vim.g.loaded_netrwPlugin = 1
+end
 
 spec.opts = function()
 	local hiddens = { '.DS_Store', '.git', '.gitmodules', 'node_modules' }
@@ -38,7 +40,9 @@ spec.opts = function()
 		use_default_keymaps = false,
 		view_options = {
 			show_hidden = false,
-			is_always_hidden = function(name, _) return vim.list_contains(hiddens, name) end,
+			is_always_hidden = function(name, _)
+				return vim.list_contains(hiddens, name)
+			end,
 		},
 	}
 end

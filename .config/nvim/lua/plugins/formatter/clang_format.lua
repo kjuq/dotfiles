@@ -17,7 +17,9 @@ local register = function()
 	---@type string?
 	local style_flag = '--style=file:' .. fallback_path
 
-	if find_clang_format() then style_flag = nil end
+	if find_clang_format() then
+		style_flag = nil
+	end
 
 	clang_format._opts.args = require('null-ls.helpers').range_formatting_args_factory({
 		'-assume-filename',

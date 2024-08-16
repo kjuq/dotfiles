@@ -10,7 +10,9 @@ end
 --- @return boolean
 M.has_floating_win = function()
 	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-		if vim.api.nvim_win_get_config(winid).zindex then return true end
+		if vim.api.nvim_win_get_config(winid).zindex then
+			return true
+		end
 	end
 	return false
 end
@@ -23,17 +25,23 @@ M.feed_plug = function(cmd)
 end
 
 ---@return boolean
-M.is_current_file_exists = function() return vim.fn.filereadable(vim.fn.bufname()) == 1 end
+M.is_current_file_exists = function()
+	return vim.fn.filereadable(vim.fn.bufname()) == 1
+end
 
 ---@return boolean
-M.is_empty_buffer = function() return vim.fn.line('$') == 1 and vim.fn.getline(1) == '' end
+M.is_empty_buffer = function()
+	return vim.fn.line('$') == 1 and vim.fn.getline(1) == ''
+end
 
 --- @param ft_pattern string|table<string>
 M.quit_with_esc = function(ft_pattern)
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = ft_pattern,
 		group = vim.api.nvim_create_augroup('user_quit_with_esc', {}),
-		callback = function() vim.keymap.set('n', '<esc>', vim.cmd.quit, { buffer = true, silent = true }) end,
+		callback = function()
+			vim.keymap.set('n', '<esc>', vim.cmd.quit, { buffer = true, silent = true })
+		end,
 	})
 end
 
@@ -42,7 +50,9 @@ end
 local function get_valid_buffers()
 	--- @param buf_num integer
 	local function is_valid(buf_num)
-		if not buf_num or buf_num < 1 then return false end
+		if not buf_num or buf_num < 1 then
+			return false
+		end
 		local exists = vim.api.nvim_buf_is_valid(buf_num)
 		return vim.bo[buf_num].buflisted and exists
 	end
@@ -50,18 +60,24 @@ local function get_valid_buffers()
 end
 
 M.buffer_next = function()
-	if vim.api.nvim_get_current_buf() ~= vim.fn.max(get_valid_buffers()) then vim.cmd.bnext() end
+	if vim.api.nvim_get_current_buf() ~= vim.fn.max(get_valid_buffers()) then
+		vim.cmd.bnext()
+	end
 end
 
 M.buffer_prev = function()
-	if vim.api.nvim_get_current_buf() ~= vim.fn.min(get_valid_buffers()) then vim.cmd.bprev() end
+	if vim.api.nvim_get_current_buf() ~= vim.fn.min(get_valid_buffers()) then
+		vim.cmd.bprev()
+	end
 end
 
 ---@param mode 'others'|'force'|nil
 M.buffer_delete = function(mode)
 	if mode == 'others' then
 		for _, value in pairs(get_valid_buffers()) do
-			if value ~= vim.api.nvim_get_current_buf() then vim.api.nvim_buf_delete(value, {}) end
+			if value ~= vim.api.nvim_get_current_buf() then
+				vim.api.nvim_buf_delete(value, {})
+			end
 		end
 	else
 		local cur_bufnr = vim.api.nvim_get_current_buf()
@@ -73,7 +89,9 @@ end
 ---@param mode string
 ---@param keymap string
 ---@return boolean
-M.is_keymap_set = function(keymap, mode) return not (vim.fn.maparg(keymap, mode) == '') end
+M.is_keymap_set = function(keymap, mode)
+	return not (vim.fn.maparg(keymap, mode) == '')
+end
 
 ---@param patterns string|string[]
 M.argv_contains = function(patterns)
@@ -81,7 +99,9 @@ M.argv_contains = function(patterns)
 	local argv = vim.fn.argv() --[[@ as string[] ]]
 	for _, arg in pairs(argv) do
 		for _, pattern in pairs(patterns) do
-			if string.find(arg, pattern, 1, true) then return true end
+			if string.find(arg, pattern, 1, true) then
+				return true
+			end
 		end
 	end
 	return false
@@ -98,7 +118,9 @@ local get_parent_directory = function(path)
 	local parent_path = path:match('(.*/)')
 
 	-- Remove trailing slash if present
-	if parent_path and parent_path ~= '/' then parent_path = parent_path:gsub('/$', '') end
+	if parent_path and parent_path ~= '/' then
+		parent_path = parent_path:gsub('/$', '')
+	end
 
 	return parent_path
 end
@@ -111,8 +133,12 @@ local file_exists_in_directory = function(filename, directory)
 	if scandir then
 		while true do
 			local name, type = vim.uv.fs_scandir_next(scandir)
-			if not name then break end
-			if type == 'file' and name == filename then return true end
+			if not name then
+				break
+			end
+			if type == 'file' and name == filename then
+				return true
+			end
 		end
 	end
 	return false
@@ -121,13 +147,17 @@ end
 ---@return string?
 --- returns `nil` when file was not found
 M.parent_directory_traversal = function(filename, path)
-	if vim.fn.isdirectory(path) ~= 1 then error('Invalid path') end
+	if vim.fn.isdirectory(path) ~= 1 then
+		error('Invalid path')
+	end
 
 	-- Remove trailing slash if present
 	path = path:gsub('/$', '')
 
 	while path do
-		if file_exists_in_directory(filename, path) then return path .. '/' .. filename end
+		if file_exists_in_directory(filename, path) then
+			return path .. '/' .. filename
+		end
 		path = get_parent_directory(path)
 	end
 

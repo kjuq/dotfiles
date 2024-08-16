@@ -3,7 +3,9 @@ local spec = { 'bennypowers/nvim-regexplainer' }
 
 local map = require('utils.lazy').generate_map('', 'Regexplainer: ')
 spec.keys = {
-	map('<leader>aR', 'n', function() require('regexplainer').show() end, 'Show'),
+	map('<leader>aR', 'n', function()
+		require('regexplainer').show()
+	end, 'Show'),
 }
 
 spec.opts = {
@@ -22,7 +24,11 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('regexplainer').setup(opts)
-	if not opts.auto then vim.defer_fn(function() require('regexplainer').show() end, 0) end
+	if not opts.auto then
+		vim.defer_fn(function()
+			require('regexplainer').show()
+		end, 0)
+	end
 end
 
 spec.dependencies = {

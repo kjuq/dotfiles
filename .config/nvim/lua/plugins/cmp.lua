@@ -145,7 +145,9 @@ spec.config = function()
 		},
 
 		snippet = {
-			expand = function(args) require('luasnip').lsp_expand(args.body) end,
+			expand = function(args)
+				require('luasnip').lsp_expand(args.body)
+			end,
 		},
 
 		view = {
@@ -197,9 +199,13 @@ spec.config = function()
 	-- enable only skkeleton sources
 	local skkeleton_src = cmp.config.sources({ { name = 'skkeleton' } })
 
-	local function cmp_enable_skk() cmp.setup.buffer({ sources = skkeleton_src }) end
+	local function cmp_enable_skk()
+		cmp.setup.buffer({ sources = skkeleton_src })
+	end
 
-	local function cmp_disable_skk() cmp.setup.buffer({ sources = normal_sources }) end
+	local function cmp_disable_skk()
+		cmp.setup.buffer({ sources = normal_sources })
+	end
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = { 'skkeleton-enable-pre', 'eskk-enable-pre' },

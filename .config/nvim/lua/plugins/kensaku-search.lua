@@ -6,7 +6,9 @@ local spec = { 'lambdalisue/kensaku-search.vim' }
 spec.event = 'User UserDenopsActivated'
 
 spec.keys = {
-	map('<C-s>', 'c', function() return '<Plug>(kensaku-search-replace)<CR>' end, 'Confirm', { expr = true }),
+	map('<C-s>', 'c', function()
+		return '<Plug>(kensaku-search-replace)<CR>'
+	end, 'Confirm', { expr = true }),
 	'/',
 }
 

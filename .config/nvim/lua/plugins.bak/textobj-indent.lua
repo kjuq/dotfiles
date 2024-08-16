@@ -8,7 +8,9 @@ spec.keys = {
 	map('ii', { 'x', 'o' }, '<Plug>(textobj-indent-i)', 'Inner', { silent = true }),
 }
 
-spec.init = function() vim.g.textobj_indent_no_default_key_mappings = true end
+spec.init = function()
+	vim.g.textobj_indent_no_default_key_mappings = true
+end
 
 spec.dependencies = {
 	'kana/vim-textobj-user',

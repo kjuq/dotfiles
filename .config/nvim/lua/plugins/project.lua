@@ -29,6 +29,8 @@ spec.opts = {
 	detection_methods = { 'pattern' },
 }
 
-spec.init = function() _G._user_init_cwd = vim.fn.getcwd() end
+spec.init = function()
+	_G._user_init_cwd = vim.fn.getcwd()
+end
 
 return spec

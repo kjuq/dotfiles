@@ -32,14 +32,18 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('o', 'n', function() require('CopilotChat').open({ window = { layout = 'replace' } }) end, 'Open CopilotChat'),
+	map('o', 'n', function()
+		require('CopilotChat').open({ window = { layout = 'replace' } })
+	end, 'Open CopilotChat'),
 	map('e', { 'n', 'x' }, '<CMD>CopilotChatExplain<CR>', 'Explain code'),
 	map('t', { 'n', 'x' }, '<CMD>CopilotChatTests<CR>', 'Generate tests'),
 	map('x', { 'n', 'x' }, '<CMD>CopilotChatInPlace<CR>', 'Open In-place chat'),
 }
 
 spec.opts = function()
-	if pcall(require, 'cmp') then require('CopilotChat.integrations.cmp').setup() end
+	if pcall(require, 'cmp') then
+		require('CopilotChat.integrations.cmp').setup()
+	end
 
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'copilot-chat',

@@ -1,5 +1,7 @@
 local success, conf_dir = pcall(os.getenv, 'XDG_CONFIG_HOME')
-if not success then conf_dir = os.getenv('HOME') .. '/.config' end
+if not success then
+	conf_dir = os.getenv('HOME') .. '/.config'
+end
 
 local common = require('utils.common')
 
