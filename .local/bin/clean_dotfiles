@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+rm "$HOME/.lesshst"
+
+rm "$HOME/.bashrc"
+rm "$HOME/.bash_history"
+rm "$HOME/.bash_profile"
+rm "$HOME/.bash_login"
+rm "$HOME/.bash_logout"
+
+rm "$HOME/.python_history"

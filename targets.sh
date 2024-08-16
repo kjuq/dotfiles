@@ -51,6 +51,7 @@ acw
 battery
 brightmax
 brightmin
+clean_dotfiles
 cm
 cpl
 cplus
