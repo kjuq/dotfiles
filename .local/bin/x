@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# TODO: Check if X was started (Use $DISPLAY ?)
+
+startx "$XDG_CONFIG_HOME/X11/xinitrc"

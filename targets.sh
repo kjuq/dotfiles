@@ -82,6 +82,7 @@ rclone_init
 sudo_pass
 toggle_menubar
 vc
+x
 "
 
 root_files="
