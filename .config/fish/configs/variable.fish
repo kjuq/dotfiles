@@ -1,8 +1,8 @@
 # XDG Base Directories (NEED TO LOAD FIRST!!!!)
-set -q XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME "$HOME/.config"
-set -q XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"
-set -q XDG_DATA_HOME; or set --export XDG_DATA_HOME "$HOME/.local/share"
-set -q XDG_STATE_HOME; or set --export XDG_STATE_HOME "$HOME/.local/state"
+set --query XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME "$HOME/.config"
+set --query XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"
+set --query XDG_DATA_HOME; or set --export XDG_DATA_HOME "$HOME/.local/share"
+set --query XDG_STATE_HOME; or set --export XDG_STATE_HOME "$HOME/.local/state"
 
 # User defined
 set --export LOCAL_HOME "$HOME/.local"
@@ -28,7 +28,7 @@ mkdir --parents "$XDG_STATE_HOME/bash"
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 
 # Docker
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+set --export DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
