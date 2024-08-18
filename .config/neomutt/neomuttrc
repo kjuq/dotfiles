@@ -49,6 +49,7 @@ set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set text_flowed=yes                  # correct indentation for plain text
+set meta_key = yes                   # use Meta key to Esc sequence shortcuts
 unset sig_dashes                     # no dashes before sig
 unset markers
 set signature = "$my_conf_dir/signature"
@@ -68,8 +69,6 @@ set sort_aux = last-date-received
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 set send_charset = "utf-8:iso-8859-1:us-ascii" # send in utf-8
-
-set abort_key = "<Esc>"
 
 # Sidebar
 set sidebar_visible # comment to disable sidebar by default
@@ -95,3 +94,5 @@ bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
 
+macro index q "<enter-command>echo 'Quit Neomutt with Meta-q!!'<enter>"
+bind index <Esc>q quit
