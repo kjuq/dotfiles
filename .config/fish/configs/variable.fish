@@ -39,6 +39,9 @@ set --export PYTHONUSERBASE "$XDG_DATA_HOME/python" # base dir where packages wi
 # npm
 set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 
+# Cargo
+set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
+
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 
