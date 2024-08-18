@@ -37,6 +37,7 @@ end
 if command --search --quiet neomutt
 	[ -d "$XDG_CACHE_HOME/neomutt" ]; and mkdir --parents "$XDG_CACHE_HOME/neomutt"
 	alias mutt="cd $XDG_CACHE_HOME/neomutt; and env TERM=screen-256color neomutt; cd -"
+	alias neomutt="echo 'Use `mutt` instead'"
 end
 
 if command --search --quiet sudo
