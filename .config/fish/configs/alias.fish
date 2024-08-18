@@ -35,6 +35,7 @@ if command --search --quiet trash
 end
 
 if command --search --quiet neomutt
+	[ -d "$XDG_CACHE_HOME/neomutt" ]; and mkdir --parents "$XDG_CACHE_HOME/neomutt"
 	alias mutt="cd $XDG_CACHE_HOME/neomutt; and env TERM=screen-256color neomutt; cd -"
 end
 
