@@ -2,8 +2,8 @@
 
 if [ "$(uname --nodename)" == "KOXPX" ]; then
 	left="$(upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep 'percentage' | awk '{print $2}')"
-	state=$(upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep 'state' | awk '{print $2}')
-	if [ "$state" = "charging" ]; then
+	ac="$(cat /sys/class/power_supply/ADP1/online)"
+	if [ "$ac" = 1 ]; then
 		output="$left charging"
 	else
 		output="$left"
