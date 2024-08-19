@@ -1,4 +1,5 @@
 -- TODO: highlight when reaching at top and bottom
+-- FIXME: <C-d> and <C-f> break when `wrap` is enabled
 
 M = {}
 
