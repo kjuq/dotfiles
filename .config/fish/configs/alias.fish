@@ -41,7 +41,9 @@ if command --search --quiet neomutt
 end
 
 if command --search --quiet sudo
-	alias sudo="sudo -A"
+	# `-A`: Use $SUDO_ASKPASS
+	# `-E`: Preserve environment variables
+	alias sudo="sudo -AE"
 end
 
 # Store wget-hsts in $XDG_CACHE_HOME
