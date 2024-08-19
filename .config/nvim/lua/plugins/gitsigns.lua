@@ -53,10 +53,10 @@ spec.keys = {
 	map('<leader>gt', 'n', function()
 		require('gitsigns').toggle_deleted()
 	end, 'Toggle deleted'),
-	map('<leader>gh', 'v', function()
+	map('<leader>gh', 'x', function()
 		require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
 	end, 'Stage hunk'),
-	map('<leader>gr', 'v', function()
+	map('<leader>gr', 'x', function()
 		require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
 	end, 'Reset hunk'),
 	map('<leader>gb', 'n', function()
