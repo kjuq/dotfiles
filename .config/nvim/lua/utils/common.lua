@@ -38,7 +38,7 @@ end
 M.quit_with_esc = function(ft_pattern)
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = ft_pattern,
-		group = vim.api.nvim_create_augroup('user_quit_with_esc', {}),
+		group = vim.api.nvim_create_augroup('kjuq_quit_with_esc', {}),
 		callback = function()
 			vim.keymap.set('n', '<esc>', vim.cmd.quit, { buffer = true, silent = true })
 		end,

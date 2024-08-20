@@ -11,7 +11,7 @@ spec.opts = {
 }
 
 spec.config = function(_, opts)
-	local group = vim.api.nvim_create_augroup('user_lazyload_lazydev', {})
+	local group = vim.api.nvim_create_augroup('kjuq_lazyload_lazydev', {})
 
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'lua',

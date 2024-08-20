@@ -13,7 +13,7 @@ spec.config = function(_, opts)
 	tint.setup(opts)
 
 	vim.api.nvim_create_autocmd('FocusLost', {
-		group = vim.api.nvim_create_augroup('_user_tint_focus_lost', {}),
+		group = vim.api.nvim_create_augroup('kjuq_tint_focus_lost', {}),
 		callback = function()
 			-- TODO: tint all windows
 			tint.tint(vim.api.nvim_get_current_win())
@@ -21,7 +21,7 @@ spec.config = function(_, opts)
 	})
 
 	vim.api.nvim_create_autocmd('FocusGained', {
-		group = vim.api.nvim_create_augroup('_user_tint_focus_gained', {}),
+		group = vim.api.nvim_create_augroup('kjuq_tint_focus_gained', {}),
 		callback = function()
 			tint.untint(vim.api.nvim_get_current_win())
 		end,

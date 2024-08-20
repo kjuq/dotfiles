@@ -209,13 +209,13 @@ spec.config = function()
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = { 'skkeleton-enable-pre', 'eskk-enable-pre' },
-		group = vim.api.nvim_create_augroup('skk-enable-pre', {}),
+		group = vim.api.nvim_create_augroup('kjuq_skk_enable_pre', {}),
 		callback = cmp_enable_skk,
 	})
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = { 'skkeleton-disable-pre', 'eskk-disable-pre' },
-		group = vim.api.nvim_create_augroup('skk-disable-pre', {}),
+		group = vim.api.nvim_create_augroup('kjuq_skk_disable_pre', {}),
 		callback = cmp_disable_skk,
 	})
 end

@@ -47,7 +47,7 @@ spec.opts = function()
 
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'copilot-chat',
-		group = vim.api.nvim_create_augroup('user_copilot_chat', {}),
+		group = vim.api.nvim_create_augroup('kjuq_copilot_chat', {}),
 		callback = function()
 			local chat = require('CopilotChat')
 			vim.keymap.set('n', 'gs', function()

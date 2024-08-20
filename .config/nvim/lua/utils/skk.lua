@@ -4,7 +4,7 @@ M.skk_dir = os.getenv('XDG_CONFIG_HOME') .. '/skk'
 M.jisyo_user = M.skk_dir .. '/my_jisyo'
 
 _G._user_skk_jp_mode_enabled = false
-local group = vim.api.nvim_create_augroup('user_skk_toggle', {})
+local group = vim.api.nvim_create_augroup('kjuq_skk_toggle', {})
 
 ---@param callback fun()
 M.toggle_japanese = function(callback)

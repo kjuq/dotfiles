@@ -1,4 +1,4 @@
-local group = vim.api.nvim_create_augroup('user_core_augroup', {})
+local group = vim.api.nvim_create_augroup('kjuq_core_augroup', {})
 
 -- quit with esc in command-line window
 vim.api.nvim_create_autocmd({ 'CmdwinEnter' }, { -- q:
@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 	callback = function()
 		vim.api.nvim_set_hl(0, 'UserHighlightOnYank', { bg = '#c43963' }) -- color is from SagaBeacon of LspSaga
 		vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
-			group = vim.api.nvim_create_augroup('user_highlight_on_yank', {}),
+			group = vim.api.nvim_create_augroup('kjuq_highlight_on_yank', {}),
 			callback = function()
 				local timeout = require('utils.common').highlight_duration
 				require('vim.highlight').on_yank({ higroup = 'UserHighlightOnYank', timeout = timeout })
@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd({ 'TermRequest' }, {
 -- 	callback = function()
 -- 		vim.opt.cursorline = true
 -- 		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
--- 			group = vim.api.nvim_create_augroup("user_unhighlight_cur_line", {}),
+-- 			group = vim.api.nvim_create_augroup("kjuq_unhighlight_cur_line", {}),
 -- 			callback = function()
 -- 				vim.opt.cursorline = false
 -- 			end,
@@ -97,10 +97,10 @@ local update_indent_line = function()
 end
 vim.api.nvim_create_autocmd({ 'OptionSet' }, {
 	pattern = { 'listchars', 'tabstop', 'filetype' },
-	group = vim.api.nvim_create_augroup('update_indent_line', {}),
+	group = vim.api.nvim_create_augroup('kjuq_update_indent_line', {}),
 	callback = update_indent_line,
 })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-	group = vim.api.nvim_create_augroup('init_indent_line', {}),
+	group = vim.api.nvim_create_augroup('kjuq_init_indent_line', {}),
 	callback = update_indent_line,
 })

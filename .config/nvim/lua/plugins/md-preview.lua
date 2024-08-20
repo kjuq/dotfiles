@@ -8,7 +8,7 @@ spec.ft = ft
 spec.opts = function()
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = ft,
-		group = vim.api.nvim_create_augroup('user_md_preview', {}),
+		group = vim.api.nvim_create_augroup('kjuq_md_preview', {}),
 		callback = function()
 			vim.keymap.set('n', 'K', '<Cmd>MPToggle<CR>', { buffer = true, desc = 'Md-preview: Toggle' })
 		end,

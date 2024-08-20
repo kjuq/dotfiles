@@ -41,7 +41,7 @@ spec.opts = {
 spec.config = function(_, opts)
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'DressingInput',
-		group = vim.api.nvim_create_augroup('user_dressing_input_local', {}),
+		group = vim.api.nvim_create_augroup('kjuq_dressing_input_local', {}),
 		callback = function()
 			vim.keymap.set('i', '<C-b>', '<Left>', { buffer = true })
 			vim.keymap.set('i', '<C-f>', '<Right>', { buffer = true })

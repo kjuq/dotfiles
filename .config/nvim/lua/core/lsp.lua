@@ -71,7 +71,7 @@ local on_attach = function(ev)
 	local client = vim.lsp.get_client_by_id(client_id)
 	if client and client.supports_method('textDocument/formatting') then
 		vim.api.nvim_create_autocmd('BufWritePre', {
-			group = vim.api.nvim_create_augroup('AutoFormatting', { clear = false }),
+			group = vim.api.nvim_create_augroup('kjuq_auto_formatting', { clear = false }),
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format({ async = false, id = client_id })
@@ -121,7 +121,7 @@ M.setup = function()
 	})
 	vim.api.nvim_create_autocmd('LspAttach', {
 		pattern = '*',
-		group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+		group = vim.api.nvim_create_augroup('kjuq_user_lsp_config', {}),
 		callback = callback,
 	})
 end

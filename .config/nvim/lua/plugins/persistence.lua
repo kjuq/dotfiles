@@ -24,7 +24,7 @@ spec.config = function(_, opts)
 	local dir_bak
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = 'PersistenceSavePre',
-		group = vim.api.nvim_create_augroup('user_persistence_save_pre', {}),
+		group = vim.api.nvim_create_augroup('kjuq_persistence_save_pre', {}),
 		callback = function()
 			dir_bak = vim.fn.getcwd()
 			if _G._user_init_cwd then
@@ -34,7 +34,7 @@ spec.config = function(_, opts)
 	})
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = 'PersistenceSavePost',
-		group = vim.api.nvim_create_augroup('user_persistence_save_post', {}),
+		group = vim.api.nvim_create_augroup('kjuq_persistence_save_post', {}),
 		callback = function()
 			vim.fn.chdir(dir_bak)
 		end,

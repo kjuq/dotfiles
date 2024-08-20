@@ -49,7 +49,7 @@ end
 
 M.setup = function()
 	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-		group = vim.api.nvim_create_augroup('user_remap_all_specialkeys', {}),
+		group = vim.api.nvim_create_augroup('kjuq_remap_all_specialkeys', {}),
 		callback = function()
 			M.remapall()
 		end,

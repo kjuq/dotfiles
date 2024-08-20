@@ -6,8 +6,8 @@ spec.event = 'VeryLazy'
 spec.config = function()
 	-- disable builtin indentline
 	vim.opt_local.listchars:remove('leadmultispace')
-	vim.api.nvim_clear_autocmds({ group = 'init_indent_line' })
-	vim.api.nvim_clear_autocmds({ group = 'update_indent_line' })
+	vim.api.nvim_clear_autocmds({ group = 'kjuq_init_indent_line' })
+	vim.api.nvim_clear_autocmds({ group = 'kjuq_update_indent_line' })
 
 	local highlight = {
 		'IndentBlanklineIndent1',

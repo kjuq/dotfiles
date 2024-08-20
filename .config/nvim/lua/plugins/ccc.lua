@@ -20,7 +20,7 @@ spec.config = function()
 	enable_hl()
 
 	vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-		group = vim.api.nvim_create_augroup('user_ccc_highlighter_auto_enable', {}),
+		group = vim.api.nvim_create_augroup('kjuq_ccc_highlighter_auto_enable', {}),
 		callback = enable_hl,
 	})
 end

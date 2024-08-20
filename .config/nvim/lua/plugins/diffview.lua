@@ -21,7 +21,7 @@ spec.keys = {
 spec.config = function()
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = { 'DiffviewFileHistory', 'DiffviewFiles' },
-		group = vim.api.nvim_create_augroup('user_diff_view', {}),
+		group = vim.api.nvim_create_augroup('kjuq_diff_view', {}),
 		callback = function()
 			vim.keymap.set('n', '<leader>q', function()
 				vim.cmd('DiffviewClose')

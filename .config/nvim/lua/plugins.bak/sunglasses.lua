@@ -3,14 +3,15 @@ local spec = { 'miversen33/sunglasses.nvim' }
 spec.event = 'VeryLazy'
 
 spec.config = function()
+	-- local group = vim.api.nvim_create_augroup("kjuq_sunglasses", {})
 	-- vim.api.nvim_create_autocmd({ "FocusLost" }, {
-	-- 	group = vim.api.nvim_create_augroup("sunglasses_unfocuesd", {}),
+	-- 	group = group,
 	-- 	callback = function()
 	-- 		vim.cmd("SunglassesOn")
 	-- 	end,
 	-- })
 	-- vim.api.nvim_create_autocmd({ "FocusGained" }, {
-	-- 	group = vim.api.nvim_create_augroup("sunglasses_focused", {}),
+	-- 	group = group,
 	-- 	callback = function()
 	-- 		vim.cmd("SunglassesOff")
 	-- 	end,
