@@ -1,14 +1,33 @@
 #!/usr/bin/env bash
 
-# TODOd dependency check (pass, rclone)
+# Check dependencies
+if ! command -v pass &> /dev/null; then
+	echo 'pass is not installed'
+elif ! command -v rclone &> /dev/null; then
+	echo 'rclone is not installed'
+elif ! command -v fusermount &> /dev/null; then
+	echo 'fuse2 is not installed'
+elif ! command -v fusermount3 &> /dev/null; then
+	echo 'fuse3 is not installed'
+fi
 
 path_box="$HOME/mount/box"
 path_box_enc="$HOME/mount/boxenc"
+path_conf_dir="$XDG_CONFIG_HOME/rclone"
+path_conf="$path_conf_dir/rclone.conf"
 
 mkdir --parents "$path_box"
 mkdir --parents "$path_box_enc"
+mkdir --parents "$path_conf_dir"
 
-pass _uncategorized/rclone_conf > "$XDG_CONFIG_HOME/rclone/rclone.conf"
+if [ ! -f "$path_conf" ]; then
+	pass _uncategorized/rclone_conf > "$path_conf"
+	rclone config reconnect box_base:
+	echo '#############'
+	echo '# Try again #'
+	echo '#############'
+	exit 1
+fi
 
 rclone mount --daemon --vfs-cache-mode full --read-only "box:" "$path_box"
 rclone mount --daemon --vfs-cache-mode full --read-only "box_enc:" "$path_box_enc"
