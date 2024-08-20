@@ -120,6 +120,14 @@ map('n', 'gaS', function()
 	end
 end, { desc = 'Toggle spell check' })
 
+map('n', 'gah', function()
+	vim.opt.cursorline = not vim.o.cursorline
+end, { desc = 'Toggle cursorline' })
+
+map('n', 'gaH', function()
+	vim.opt.cursorcolumn = not vim.o.cursorcolumn
+end, { desc = 'Toggle cursorcolumn' })
+
 map('n', 'gaL', function()
 	vim.opt.list = not vim.o.list
 end, { desc = 'Toggle list' })
