@@ -64,6 +64,7 @@ cplus
 cpp-submit
 cpp-test
 cpustatus
+curfreq
 disable_mouse_acceleration
 extend_hidpi_display
 floatingnvim

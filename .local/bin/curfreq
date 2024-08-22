@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+lscpu | grep -w scaling | awk '{print $4}'; cpupower frequency-info | grep -w asserted | awk '{print $4 $5}'
