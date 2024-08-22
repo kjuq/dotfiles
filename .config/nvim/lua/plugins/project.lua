@@ -30,7 +30,7 @@ spec.opts = {
 }
 
 spec.init = function()
-	_G._user_init_cwd = vim.fn.getcwd()
+	_G.kjuq_init_cwd = vim.fn.getcwd()
 end
 
 return spec

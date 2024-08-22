@@ -27,8 +27,8 @@ spec.config = function(_, opts)
 		group = vim.api.nvim_create_augroup('kjuq_persistence_save_pre', {}),
 		callback = function()
 			dir_bak = vim.fn.getcwd()
-			if _G._user_init_cwd then
-				vim.fn.chdir(_G._user_init_cwd)
+			if _G.kjuq_init_cwd then
+				vim.fn.chdir(_G.kjuq_init_cwd)
 			end
 		end,
 	})

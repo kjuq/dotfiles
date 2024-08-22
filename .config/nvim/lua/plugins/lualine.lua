@@ -181,7 +181,7 @@ spec.opts = function()
 			return '[JAPANESE INPUT]'
 		end,
 		cond = function()
-			return _G._user_skk_jp_mode_enabled
+			return _G.kjuq_skk_jp_mode_enabled
 		end,
 		color = { fg = colors.orange },
 	}

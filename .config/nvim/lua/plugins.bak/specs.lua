@@ -15,7 +15,7 @@ spec.opts = function()
 			inc_ms = 10,
 			blend = 0,
 			width = 15,
-			winhl = 'UserHighlightOnYank',
+			winhl = 'kjuq_highlight_on_yank',
 			fader = require('specs').linear_fader,
 			resizer = require('specs').shrink_resizer,
 		},

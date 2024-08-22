@@ -17,7 +17,7 @@ spec.config = function()
 	vim.g['eskk#enable_completion'] = 0
 	vim.g['eskk#no_default_mappings'] = 1
 
-	vim.api.nvim_create_autocmd('user', {
+	vim.api.nvim_create_autocmd('User', {
 		pattern = 'eskk-initialize-pre',
 		callback = function()
 			vim.cmd([[ let t = eskk#table#new("rom_to_hira*", "rom_to_hira") ]])
@@ -31,7 +31,7 @@ spec.config = function()
 	})
 
 	local has_noice, _ = pcall(require, 'noice')
-	vim.api.nvim_create_autocmd('user', {
+	vim.api.nvim_create_autocmd('User', {
 		pattern = 'eskk-enable-pre',
 		callback = function()
 			if has_noice then
@@ -39,7 +39,7 @@ spec.config = function()
 			end
 		end,
 	})
-	vim.api.nvim_create_autocmd('user', {
+	vim.api.nvim_create_autocmd('User', {
 		pattern = 'eskk-disable-post',
 		callback = function()
 			if has_noice then

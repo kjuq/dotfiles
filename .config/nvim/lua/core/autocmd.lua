@@ -11,9 +11,9 @@ vim.api.nvim_create_autocmd({ 'CmdwinEnter' }, { -- q:
 vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
 	group = group,
 	callback = function()
-		_G.user_cur_relativenumber = vim.o.relativenumber
-		_G.user_cur_number = vim.o.number
-		_G.user_cur_cursorline = vim.o.cursorline
+		_G.kjuq_cur_relativenumber = vim.o.relativenumber
+		_G.kjuq_cur_number = vim.o.number
+		_G.kjuq_cur_cursorline = vim.o.cursorline
 		vim.opt.relativenumber = false
 		vim.opt.number = true
 		vim.opt.cursorline = true
@@ -23,9 +23,9 @@ vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
 vim.api.nvim_create_autocmd({ 'CmdlineLeave' }, {
 	group = group,
 	callback = function()
-		vim.opt.relativenumber = _G.user_cur_relativenumber
-		vim.opt.number = _G.user_cur_number
-		vim.o.cursorline = _G.user_cur_cursorline
+		vim.opt.relativenumber = _G.kjuq_cur_relativenumber
+		vim.opt.number = _G.kjuq_cur_number
+		vim.o.cursorline = _G.kjuq_cur_cursorline
 	end,
 })
 
@@ -34,12 +34,12 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 	pattern = '*',
 	group = group,
 	callback = function()
-		vim.api.nvim_set_hl(0, 'UserHighlightOnYank', { bg = '#c43963' }) -- color is from SagaBeacon of LspSaga
+		vim.api.nvim_set_hl(0, 'kjuq_highlight_on_yank', { bg = '#c43963' }) -- color is from SagaBeacon of LspSaga
 		vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
 			group = vim.api.nvim_create_augroup('kjuq_highlight_on_yank', {}),
 			callback = function()
 				local timeout = require('utils.common').highlight_duration
-				require('vim.highlight').on_yank({ higroup = 'UserHighlightOnYank', timeout = timeout })
+				require('vim.highlight').on_yank({ higroup = 'kjuq_highlight_on_yank', timeout = timeout })
 			end,
 		})
 	end,

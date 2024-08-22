@@ -44,9 +44,9 @@ spec.keys = {
 }
 
 spec.opts = function()
-	vim.api.nvim_set_hl(0, 'UserHlSearchAbove', { fg = '#81A1C1' })
-	vim.api.nvim_set_hl(0, 'UserHlSearchNearest', { fg = '#BF616A' })
-	vim.api.nvim_set_hl(0, 'UserHlSearchBelow', { fg = '#81A1C1' })
+	vim.api.nvim_set_hl(0, 'kjuq_hlsearch_above', { fg = '#81A1C1' })
+	vim.api.nvim_set_hl(0, 'kjuq_hlsearch_nearest', { fg = '#BF616A' })
+	vim.api.nvim_set_hl(0, 'kjuq_hlsearch_below', { fg = '#81A1C1' })
 
 	return {
 		override_lens = function(render, posList, nearest, idx, relIdx)
@@ -63,11 +63,11 @@ spec.opts = function()
 			local space = ' '
 			local chunks
 			if nearest then
-				chunks = { { space }, { text, 'UserHlSearchNearest' } }
+				chunks = { { space }, { text, 'kjuq_hlsearch_nearest' } }
 			elseif above then
-				chunks = { { space }, { text, 'UserHlSearchAbove' } }
+				chunks = { { space }, { text, 'kjuq_hlsearch_above' } }
 			elseif below then
-				chunks = { { space }, { text, 'UserHlSearchBelow' } }
+				chunks = { { space }, { text, 'kjuq_hlsearch_below' } }
 			end
 
 			local lnum, col = unpack(posList[idx])
