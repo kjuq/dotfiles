@@ -15,6 +15,10 @@ c.hints.chars = 'arstghneiowfpluydm'
 
 c.tabs.position = 'left'
 c.tabs.padding = {'bottom': 5, 'left': 5, 'right': 5, 'top': 5}
+c.tabs.title.format = '{audio}:{current_title}'
+c.tabs.close_mouse_button = 'right'
+c.tabs.close_mouse_button_on_bar = 'ignore'
+c.tabs.mousewheel_switching = False
 
 c.completion.height = '20%'
 
