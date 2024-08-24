@@ -75,6 +75,7 @@ C.font = wez.font_with_fallback(fonts)
 --- }}}
 
 -- Keymaps {{{
+
 C.disable_default_key_bindings = true
 C.send_composed_key_when_left_alt_is_pressed = false
 C.send_composed_key_when_right_alt_is_pressed = false
@@ -111,6 +112,7 @@ C.keys = {
 -- }}}
 
 -- Device specific configurations {{{
+
 if os.execute("[ $(uname) = 'Darwin' ]") then
 	C.font_size = 22
 elseif os.execute("[ $(uname --nodename) = 'KSGO' ]") then
@@ -118,7 +120,7 @@ elseif os.execute("[ $(uname --nodename) = 'KSGO' ]") then
 elseif os.execute("[ $(uname --nodename) = 'KANTC' ]") then
 	C.font_size = 16
 elseif os.execute("[ $(uname --nodename) = 'KOXPX' ]") then
-	C.font_size = 12
+	C.font_size = 14
 end
 
 --- }}}
