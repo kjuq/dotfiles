@@ -12,7 +12,9 @@
 	defaultBranch = master
 
 [credential]
-	helper = !pass github.com/kjuq_repo_token
+	; https://git-scm.com/docs/gitcredentials#_custom_helpers
+	username = kjuq
+	helper = "!f() { echo password=$(pass github.com/kjuq_repo_token); }; f"
 
 [core]
 	pager = "nvim -R -c 'setlocal nonumber norelativenumber'"
