@@ -20,6 +20,16 @@ c.tabs.close_mouse_button = 'right'
 c.tabs.close_mouse_button_on_bar = 'ignore'
 c.tabs.mousewheel_switching = False
 
+c.statusbar.widgets = [
+	'keypress',
+	'search_match',
+	'url',
+	'history',
+	'progress',
+	'text: ',
+	'clock:%Y-%m-%d %H:%M',
+]
+
 c.completion.height = '20%'
 
 c.window.hide_decoration = True
