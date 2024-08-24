@@ -120,7 +120,7 @@ elseif os.execute("[ $(uname --nodename) = 'KSGO' ]") then
 elseif os.execute("[ $(uname --nodename) = 'KANTC' ]") then
 	C.font_size = 16
 elseif os.execute("[ $(uname --nodename) = 'KOXPX' ]") then
-	C.font_size = 14
+	C.font_size = 16
 end
 
 --- }}}
