@@ -8,12 +8,19 @@ vim.api.nvim_create_autocmd({ 'CmdwinEnter' }, { -- q:
 	end,
 })
 
+---@type boolean
+local relativenumber_bak
+---@type boolean
+local number_bak
+---@type boolean
+local cursorline_bak
+
 vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
 	group = group,
 	callback = function()
-		_G.kjuq_cur_relativenumber = vim.o.relativenumber
-		_G.kjuq_cur_number = vim.o.number
-		_G.kjuq_cur_cursorline = vim.o.cursorline
+		relativenumber_bak = vim.o.relativenumber
+		number_bak = vim.o.number
+		cursorline_bak = vim.o.cursorline
 		vim.opt.relativenumber = false
 		vim.opt.number = true
 		vim.opt.cursorline = true
@@ -23,9 +30,9 @@ vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
 vim.api.nvim_create_autocmd({ 'CmdlineLeave' }, {
 	group = group,
 	callback = function()
-		vim.opt.relativenumber = _G.kjuq_cur_relativenumber
-		vim.opt.number = _G.kjuq_cur_number
-		vim.o.cursorline = _G.kjuq_cur_cursorline
+		vim.opt.relativenumber = relativenumber_bak
+		vim.opt.number = number_bak
+		vim.o.cursorline = cursorline_bak
 	end,
 })
 

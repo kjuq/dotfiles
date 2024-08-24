@@ -2,14 +2,13 @@
 local spec = { 'willothy/flatten.nvim' }
 spec.event = { 'BufWinEnter' }
 
-spec.init = function()
-	_G.kjuq_flatten_number = vim.o.number
-	_G.kjuq_flatten_relativenumber = vim.o.relativenumber
-	_G.kjuq_flatten_list = vim.o.list
-end
+spec.lazy = os.getenv('NVIM') == nil
 
 spec.opts = function()
 	local saved_terminal
+	local number_bak = vim.o.number
+	local relativenumber_bak = vim.o.relativenumber
+	local list_bak = vim.o.list
 	return {
 		callbacks = {
 			pre_open = function()
@@ -18,10 +17,9 @@ spec.opts = function()
 				saved_terminal = term.get(termid)
 			end,
 			post_open = function(bufnr, _, filetype)
-				vim.opt.number = _G.kjuq_flatten_number
-				vim.opt.relativenumber = _G.kjuq_flatten_relativenumber
-				vim.opt.list = _G.kjuq_flatten_list
-
+				vim.o.number = number_bak
+				vim.o.relativenumber = relativenumber_bak
+				vim.o.list = list_bak
 				if saved_terminal then
 					saved_terminal:close()
 				end
