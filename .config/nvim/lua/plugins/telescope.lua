@@ -7,7 +7,7 @@ spec.cmd = { 'Telescope' }
 
 spec.keys = {
 	-- File pickers
-	map('fp', 'n', function()
+	map('ft', 'n', function()
 		require(tb).find_files({ hidden = true })
 	end, 'Files on current dir'),
 	map('fw', 'n', function()
@@ -100,9 +100,10 @@ spec.keys = {
 	-- Git pickers
 
 	-- Treesitter pickers
-	map('ft', 'n', function()
-		require(tb).treesitter()
-	end, 'Find via treesitter'),
+	-- I have no idea when I should use this
+	-- map('', 'n', function()
+	-- 	require(tb).treesitter()
+	-- end, 'Find via treesitter'),
 
 	-- Lists pickers
 	map('fs', 'n', function()
