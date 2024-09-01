@@ -57,6 +57,7 @@ acw
 battery
 brightmax
 brightmin
+check_terminal_escape_sequence
 clean_dotfiles
 cm
 cpl
