@@ -178,7 +178,7 @@ map('n', 'ga-', function()
 end, { desc = 'Change to upper directory' })
 
 -- variable keybinds on states
-local virtual_edit_replace = true
+local virtual_edit_replace = false
 map({ 'n' }, 'r', function()
 	return virtual_edit_replace and 'gr' or 'r'
 end, { expr = true })
