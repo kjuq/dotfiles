@@ -50,6 +50,7 @@ vim/vimrc
 w3m/keymap
 wezterm/wezterm.lua
 X11
+xautocfg.cfg
 "
 
 local_bin_files="

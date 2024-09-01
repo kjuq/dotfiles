@@ -33,6 +33,6 @@ xrandr --output eDP-1 --rotate left
 
 copyq &
 
-keyboard_init
+xautocfg &
 
 exec i3
