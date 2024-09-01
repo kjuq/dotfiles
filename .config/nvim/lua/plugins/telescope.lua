@@ -7,7 +7,7 @@ spec.cmd = { 'Telescope' }
 
 spec.keys = {
 	-- File pickers
-	map('ff', 'n', function()
+	map('fp', 'n', function()
 		require(tb).find_files({ hidden = true })
 	end, 'Files on current dir'),
 	map('fw', 'n', function()
@@ -22,8 +22,11 @@ spec.keys = {
 
 	-- Vim pickers
 	map('fh', 'n', function()
-		require(tb).oldfiles()
-	end, 'Old files'),
+		require(tb).oldfiles({ only_cwd = true })
+	end, 'MRU for current dir'),
+	map('fH', 'n', function()
+		require(tb).oldfiles({ only_cwd = false })
+	end, 'MRU for global files'),
 	map('fb', 'n', function()
 		require(tb).buffers()
 	end, 'Buffers'),
@@ -63,7 +66,7 @@ spec.keys = {
 	map('fj', 'n', function()
 		require(tb).jumplist()
 	end, 'Jumplist'),
-	map('fH', 'n', function()
+	map('fC', 'n', function()
 		require(tb).highlights()
 	end, 'Highlights'),
 	map('rf', 'n', function()
