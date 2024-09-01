@@ -42,18 +42,18 @@ spec.config = function(_, opts)
 
 	require('persistence').setup(opts)
 
-	local common = require('utils.common')
-	local empty_buffer = common.is_empty_buffer()
-	local cur_file_not_exists = not common.is_current_file_exists()
-	local no_args = #vim.fn.argv() == 0
-	local empty_bufname = vim.api.nvim_buf_get_name(0) == ''
-	local load_session = empty_buffer and cur_file_not_exists and no_args and empty_bufname
-	if load_session then
-		local delay_ms = 0
-		vim.defer_fn(function()
-			require('persistence').load()
-		end, delay_ms)
-	end
+	-- -- Restore session for cwd if `nvim` was launched without any arguments
+	-- local common = require('utils.common')
+	-- local empty_buffer = common.is_empty_buffer()
+	-- local cur_file_not_exists = not common.is_current_file_exists()
+	-- local no_args = #vim.fn.argv() == 0
+	-- local empty_bufname = vim.api.nvim_buf_get_name(0) == ''
+	-- local load_session = empty_buffer and cur_file_not_exists and no_args and empty_bufname
+	-- if load_session then
+	-- 	vim.schedule(function()
+	-- 		require('persistence').load()
+	-- 	end)
+	-- end
 end
 
 return spec
