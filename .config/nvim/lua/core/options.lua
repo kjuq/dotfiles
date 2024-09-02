@@ -42,6 +42,10 @@ opt.wildmode = { 'full' } -- use wildmenu any time
 opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
 opt.completeopt = { 'menuone', 'popup', 'noselect', 'fuzzy' }
 
+if vim.fn.has('nvim-0.11') == 0 then
+	opt.completeopt:remove('fuzzy')
+end
+
 opt.sessionoptions = {
 	'blank',
 	'buffers',
