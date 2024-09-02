@@ -40,10 +40,10 @@ opt.termguicolors = true
 opt.wildmenu = true
 opt.wildmode = { 'full' } -- use wildmenu any time
 opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
-opt.completeopt = { 'menuone', 'popup', 'noselect', 'fuzzy' }
+opt.completeopt = { 'menuone', 'popup', 'noselect' }
 
-if vim.fn.has('nvim-0.11') == 0 then
-	opt.completeopt:remove('fuzzy')
+if vim.fn.has('nvim-0.11') == 1 then
+	opt.completeopt:append('fuzzy')
 end
 
 opt.sessionoptions = {
