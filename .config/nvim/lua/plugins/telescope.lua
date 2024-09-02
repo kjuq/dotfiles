@@ -7,7 +7,7 @@ spec.cmd = { 'Telescope' }
 
 spec.keys = {
 	-- File pickers
-	map('ft', 'n', function()
+	map('fe', 'n', function()
 		require(tb).find_files({ hidden = true })
 	end, 'Files on current dir'),
 	map('fw', 'n', function()
