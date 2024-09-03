@@ -65,12 +65,13 @@ cpl
 cplus
 cpp-submit
 cpp-test
-cpustatus
+cpuset
 curfreq
 disable_mouse_acceleration
 extend_hidpi_display
 floatingnvim
 fix_treesitter_parser
+idletimer
 jman
 keyboard_init
 nvimcopy

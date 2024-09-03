@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+idle_max=$(xset q | grep timeout | awk '{print $2}')
+
+echo $(( "$idle_max" - $(xprintidle) / 1000 ))
