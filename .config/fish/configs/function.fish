@@ -16,3 +16,8 @@ function fisher_init
 
 	set --export pure_color_current_directory normal # fisher_init to take effect
 end
+
+# To avoid bad performance by being overridden by `pkgfile`
+function fish_command_not_found
+	__fish_default_command_not_found_handler $argv[1]
+end
