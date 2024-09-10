@@ -54,12 +54,21 @@ local on_attach = function(ev)
 	-- Diagnostics
 	map('n', 'grl', vim.diagnostic.setloclist, 'Set diagnostics into loclist')
 
-	map('n', '[e', function()
-		vim.diagnostic.jump({ count = -1, float = true })
-	end, 'Go to prev diagnostics')
-	map('n', ']e', function()
-		vim.diagnostic.jump({ count = 1, float = true })
-	end, 'Go to next diagnostics')
+	if vim.fn.has('nvim-0.11') == 1 then
+		map('n', '[e', function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end, 'Go to prev diagnostics')
+		map('n', ']e', function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end, 'Go to next diagnostics')
+	else
+		map('n', '[e', function()
+			vim.diagnostic.goto_prev()
+		end, 'Go to prev diagnostics')
+		map('n', ']e', function()
+			vim.diagnostic.goto_next()
+		end, 'Go to next diagnostics')
+	end
 
 	map('n', 'grv', function()
 		vt = not vt
