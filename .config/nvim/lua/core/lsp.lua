@@ -19,7 +19,7 @@ end
 
 local executed = false
 local delete_default_keymaps = function()
-	if executed then
+	if executed or vim.fn.has('nvim-0.11') == 0 then
 		return
 	end
 
