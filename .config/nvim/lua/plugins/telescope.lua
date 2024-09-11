@@ -114,8 +114,8 @@ spec.keys = {
 spec.opts = function()
 	local actions = require('telescope.actions')
 	local actions_layout = require('telescope.actions.layout')
-	local prev_up = '<C-y>'
-	local prev_down = '<C-e>'
+	local prev_up = require('utils.common').floatscrollup
+	local prev_down = require('utils.common').floatscrolldown
 	local prev_right = '<M-l>'
 	local prev_left = '<M-h>'
 
