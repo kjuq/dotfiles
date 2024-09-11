@@ -17,6 +17,29 @@ local virtual_text = function(enabled)
 	end
 end
 
+local executed = false
+local delete_default_keymaps = function()
+	if executed then
+		return
+	end
+
+	-- rename, code action, reference, and signature help are defined at vim/_defaults.lua
+	vim.keymap.del('n', 'grn')
+	vim.keymap.del({ 'n', 'x' }, 'gra')
+	vim.keymap.del('n', 'grr')
+	vim.keymap.del('i', '<C-s>')
+
+	vim.keymap.del('n', ']d')
+	vim.keymap.del('n', '[d')
+	vim.keymap.del('n', ']D')
+	vim.keymap.del('n', '[D')
+
+	vim.keymap.del('n', '<C-w>d')
+	vim.keymap.del('n', '<C-w><C-d>')
+
+	executed = true
+end
+
 local on_attach = function(ev)
 	local bufnr = ev.buf
 	-- Keymaps for LSP
@@ -26,11 +49,18 @@ local on_attach = function(ev)
 
 	local vlb = vim.lsp.buf
 
-	-- rename, code action, reference, and signature help will be defined at vim/_defaults.lua (?)
-
 	if not require('utils.common').is_keymap_set('gd', 'n') then
 		map('n', 'gd', vlb.definition, 'Go to definition')
 	end
+
+	delete_default_keymaps()
+
+	map('n', 'gr', '<Nop>')
+
+	map('n', 'grn', vim.lsp.buf.rename, 'Rename')
+	map({ 'n', 'x' }, 'gra', vim.lsp.buf.code_action, 'Code action')
+	map('n', 'grr', vim.lsp.buf.references, 'Go to references')
+
 	map('n', 'grt', vlb.type_definition, 'Go to type definition')
 	map('n', 'gri', vlb.implementation, 'Go to implementation')
 	map('n', 'grd', vlb.declaration, 'Go to Declaration')
@@ -56,10 +86,10 @@ local on_attach = function(ev)
 
 	if vim.fn.has('nvim-0.11') == 1 then
 		map('n', '[e', function()
-			vim.diagnostic.jump({ count = -1, float = true })
+			vim.diagnostic.jump({ count = -vim.v.count1, float = true })
 		end, 'Go to prev diagnostics')
 		map('n', ']e', function()
-			vim.diagnostic.jump({ count = 1, float = true })
+			vim.diagnostic.jump({ count = vim.v.count1, float = true })
 		end, 'Go to next diagnostics')
 	else
 		map('n', '[e', function()
