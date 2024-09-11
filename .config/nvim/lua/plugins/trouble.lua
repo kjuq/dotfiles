@@ -12,7 +12,9 @@ spec.keys = {
 	map('r', 'n', '<CMD>Trouble lsp<CR>', 'Toggle lsp'),
 }
 
-spec.opts = {}
+spec.opts = {
+	focus = true,
+}
 
 spec.specs = {
 	'nvim-tree/nvim-web-devicons',
