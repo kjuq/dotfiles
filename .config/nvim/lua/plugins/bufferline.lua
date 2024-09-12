@@ -6,6 +6,27 @@ local spec = { 'akinsho/bufferline.nvim' }
 spec.event = { 'BufNew', 'WinScrolled' }
 
 spec.keys = {
+	map('<leader>bb', 'n', function()
+		vim.cmd('BufferLinePick')
+	end, 'Pick'),
+	map('<leader>bp', 'n', function()
+		vim.cmd('BufferLineTogglePin')
+	end, 'Pin'),
+	map('<leader>bh', 'n', function()
+		vim.cmd('BufferLineMovePrev')
+	end, 'Move left'),
+	map('<leader>bl', 'n', function()
+		vim.cmd('BufferLineMoveNext')
+	end, 'Move right'),
+	map('<leader>bu', 'n', function()
+		vim.cmd('BufferLineCloseLeft')
+	end, 'Close left'),
+	map('<leader>bk', 'n', function()
+		vim.cmd('BufferLineCloseRight')
+	end, 'Close right'),
+	map('<leader>bx', 'n', function()
+		vim.cmd('BufferLineCloseOthers')
+	end, 'Close others'),
 	map('<leader>ab', 'n', function()
 		if vim.o.showtabline == 0 then
 			vim.opt.showtabline = 2
