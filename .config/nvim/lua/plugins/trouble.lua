@@ -8,11 +8,12 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('o', 'n', '<CMD>Trouble diagnostics<CR>', 'Toggle'),
+	map('o', 'n', '<CMD>Trouble diagnostics toggle<CR>', 'Toggle diagnostics'),
 	map('r', 'n', '<CMD>Trouble lsp<CR>', 'Toggle lsp'),
 }
 
 spec.opts = {
+	auto_preview = false,
 	focus = true,
 }
 
