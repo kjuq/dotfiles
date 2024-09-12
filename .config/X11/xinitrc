@@ -2,9 +2,16 @@
 
 mkdir --parents "$XDG_CACHE_HOME/X11"
 
+# shellcheck disable=SC2034
 USERXSESSION="$XDG_CACHE_HOME/X11/xsession"
+
+# shellcheck disable=SC2034
 USERXSESSIONRC="$XDG_CACHE_HOME/X11/xsessionrc"
+
+# shellcheck disable=SC2034
 ALTUSERXSESSION="$XDG_CACHE_HOME/X11/Xsession"
+
+# shellcheck disable=SC2034
 ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 
 userresources="$XDG_CONFIG_HOME/X11/Xresources"
@@ -15,15 +22,15 @@ fi
 
 echo 'Xcursor.theme: Adwaita' | xrdb -merge
 
-# Device specific configurations
-
 if [ "$(uname --nodename)" = "KOXPX" ]; then
 	echo 'Xft.dpi: 168' | xrdb -merge
 	echo 'Xcursor.size: 48' | xrdb -merge
 fi
 
+# Necessary!!
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+		# shellcheck disable=SC1090
 		[ -x "$f" ] && . "$f"
 	done
 	unset f
@@ -32,9 +39,5 @@ fi
 xrandr --output eDP-1 --rotate left
 xset dpms 900 1200 1500
 xset s noblank
-
-copyq &
-
-xautocfg &
 
 exec i3
