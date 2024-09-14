@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 if [ "$(uname --nodename)" == "KOXPX" ]; then
-	left="$(upower -i /org/freedesktop/UPower/devices/DisplayDevice | grep 'percentage' | awk '{print $2}')"
-	ac="$(cat /sys/class/power_supply/ADP1/online)"
-	if [ "$ac" = 1 ]; then
-		output="$left charging"
+	left="$(cat /sys/class/power_supply/BAT0/capacity)"
+	ac="$(cat /sys/class/power_supply/BAT0/status)"
+	if [ "$ac" = 'Charging' ]; then
+		output="$left% $ac"
 	else
-		output="$left"
+		output="$left%"
 	fi
 	echo "$output"
 fi
