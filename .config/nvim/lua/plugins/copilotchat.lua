@@ -78,7 +78,7 @@ spec.opts = function()
 				insert = '<C-g><C-n>',
 			},
 			close = {
-				normal = '<Nop>',
+				normal = 'gh',
 				insert = '<Nop>',
 			},
 			reset = {
