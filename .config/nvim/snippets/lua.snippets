@@ -18,7 +18,8 @@ snippet lazyspec
 
 	spec.opts = {}
 
-	spec.config = function(_, opts)
+	spec.config = function(spc, opts)
+		require(spc.name).setup(opts)
 	end
 
 	return spec
