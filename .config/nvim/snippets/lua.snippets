@@ -11,15 +11,15 @@ snippet autocmd
 
 snippet lazyspec
 	---@type LazySpec
-	local spec = { "${1}" }
+	local spec = { '${1}' }
 
-	local map = require("utils.lazy").generate_map("", "")
+	local map = require('utils.lazy').generate_map('', '')
 	spec.keys = {}
 
 	spec.opts = {}
 
-	spec.config = function(spc, opts)
-		require(spc.name).setup(opts)
+	spec.config = function(_, opts)
+		require('').setup(opts)
 	end
 
 	return spec
