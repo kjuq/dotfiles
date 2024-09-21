@@ -1,7 +1,5 @@
 local map = require('utils.lazy').generate_map('<leader>c', 'GP: ')
 
-local nv = { 'n', 'v' }
-
 ---@type LazySpec
 local spec = { 'robitx/gp.nvim' }
 
@@ -25,18 +23,21 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('n', nv, '<CMD>GpChatNew<CR>', 'Open new chat'),
-	map('p', nv, '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
-	map('c', nv, '<CMD>GpChatToggle<CR>', 'Open chat'),
-	map('f', nv, '<CMD>GpChatFinder<CR>', 'Search through chats'),
-	map('R', nv, '<CMD>GpChatRespond<CR>', 'Request a new GPT response'),
-	map('d', nv, '<CMD>GpChatDelete<CR>', 'Delete the current chat'),
-	map('r', nv, '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
-	map('j', nv, '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
-	map('k', nv, '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
-	map('.', nv, '<CMD>GpContext<CR>', 'Configure custom context per repo'),
-	map('i', nv, '<CMD>GpImage<CR>', 'Open prompt to generate image'),
-	map('q', nv, '<CMD>GpStop<CR>', 'Stop responses and jobs'),
+	map('c', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
+
+	map('q', 'n', '<CMD>GpStop<CR>', 'Stop responses and jobs'),
+	map('n', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
+	map('d', 'n', '<CMD>GpChatDelete<CR>', 'Delete the current chat'),
+	map('r', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
+
+	map('f', 'n', '<CMD>GpChatFinder<CR>', 'Search through chats'),
+	map('i', 'n', '<CMD>GpImage<CR>', 'Open prompt to generate image'),
+
+	map('y', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
+	map('j', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
+	map('k', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
+
+	map('X', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
 }
 
 spec.opts = {
@@ -46,15 +47,10 @@ spec.opts = {
 	chat_user_prefix = '󰭹 :',
 	chat_assistant_prefix = { '󰚩 :', '[{{agent}}]' },
 
-	chat_topic_gen_model = 'gpt-3.5-turbo-16k',
-
 	chat_confirm_delete = true,
 	chat_conceal_model_params = false,
 
 	chat_shortcut_respond = { modes = { 'n', 'i', 'v', 'x' }, shortcut = '<C-g><C-g>' },
-	chat_shortcut_delete = { modes = { 'n', 'i', 'v', 'x' }, shortcut = '<C-g>h' },
-	chat_shortcut_stop = { modes = { 'n', 'i', 'v', 'x' }, shortcut = '<C-g>c' },
-	chat_shortcut_new = { modes = { 'n', 'i', 'v', 'x' }, shortcut = '<C-g>n' },
 
 	-- how to display GpChatToggle or GpContext: popup / split / vsplit / tabnew
 	toggle_target = '', -- empty for keeping current layout
