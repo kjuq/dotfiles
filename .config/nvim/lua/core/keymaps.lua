@@ -99,7 +99,7 @@ map('n', 'gl', function()
 end, { desc = 'Delete the current buffer' })
 
 map('n', 'gL', function()
-	require('utils.common').buffer_delete('force')
+	require('utils.common').buffer_delete('others')
 end, { desc = 'Delete all buffers except for the current one' })
 
 map('n', 'gA', '<CMD>messages<CR>', { desc = 'History of messages' })
