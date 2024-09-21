@@ -140,7 +140,7 @@ spec.config = function()
 
 	cmp.setup({
 		completion = {
-			completeopt = 'menu,menuone,noselect',
+			completeopt = vim.o.completeopt .. ',noselect',
 			autocomplete = autocomplete,
 		},
 
@@ -183,7 +183,7 @@ spec.config = function()
 	cmp.setup.cmdline({ '/', '?' }, {
 		mapping = mapping_cmdline,
 		sources = { { name = 'buffer' } },
-		completion = { autocomplete = false },
+		-- completion = { autocomplete = false },
 	})
 
 	-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore).
@@ -193,7 +193,7 @@ spec.config = function()
 			{ name = 'path' },
 			{ name = 'cmdline' },
 		},
-		completion = { autocomplete = false },
+		-- completion = { autocomplete = false },
 	})
 
 	-- enable only skkeleton sources
