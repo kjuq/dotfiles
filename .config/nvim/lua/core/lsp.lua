@@ -93,9 +93,11 @@ local on_attach = function(ev)
 		end, 'Go to next diagnostics')
 	else
 		map('n', '[e', function()
+			---@diagnostic disable-next-line: deprecated
 			vim.diagnostic.goto_prev()
 		end, 'Go to prev diagnostics')
 		map('n', ']e', function()
+			---@diagnostic disable-next-line: deprecated
 			vim.diagnostic.goto_next()
 		end, 'Go to next diagnostics')
 	end
