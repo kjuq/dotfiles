@@ -7,7 +7,9 @@ spec.event = { 'BufNew', 'WinScrolled' }
 
 spec.keys = {
 	map('<C-Tab>', 'n', '<Cmd>BufferLineCycleNext<CR>', 'Pick'),
+	map('gt', 'n', '<Cmd>BufferLineCycleNext<CR>', 'Pick'),
 	map('<C-S-Tab>', 'n', '<Cmd>BufferLineCyclePrev<CR>', 'Pick'),
+	map('gT', 'n', '<Cmd>BufferLineCyclePrev<CR>', 'Pick'),
 	map('<leader>bb', 'n', '<Cmd>BufferLinePick<CR>', 'Pick'),
 	map('<leader>bp', 'n', '<Cmd>BufferLineTogglePin<CR>', 'Pin'),
 	map('<leader>bh', 'n', '<Cmd>BufferLineMovePrev<CR>', 'Move left'),

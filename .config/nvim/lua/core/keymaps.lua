@@ -46,8 +46,8 @@ map({ 'n', 'x', 'o' }, 'ge', jolyne.ge)
 -- Buffer movement instead of tab's
 map('n', 'gt', vim.cmd.bnext, { silent = true, desc = 'Go to the next buffer' })
 map('n', 'gT', vim.cmd.bprevious, { silent = true, desc = 'Go to the previous buffer' })
-map('n', '<C-Tab>', vim.cmd.bnext, { silent = true, desc = 'Go to the next buffer' })
-map('n', '<C-S-Tab>', vim.cmd.bprevious, { silent = true, desc = 'Go to the previous buffer' })
+map('n', '<C-Tab>', 'gt', { remap = true, silent = true, desc = 'Alias for `gt`' })
+map('n', '<C-S-Tab>', 'gT', { remap = true, silent = true, desc = 'Alias for `gT`' })
 
 -- tab movement
 map('n', ']T', vim.cmd.tabnext, { silent = true, desc = 'Go to the next tab' })
