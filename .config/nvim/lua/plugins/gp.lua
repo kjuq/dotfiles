@@ -82,4 +82,32 @@ spec.opts = {
 	},
 }
 
+spec.config = function(_, opts)
+	local gp = require('gp')
+	gp.setup(opts)
+
+	-- There are no way to close a chat window when setting `toggle_target = ''`
+	-- to render a chat window same as normal buffer.
+	-- To fix that, buffer-local keymap is set.
+	local chat_dir = opts.chat_dir or gp.config.chat_dir
+	local close_key = 'gh'
+	local is_buf_listed = function()
+		return vim.fn.buflisted(vim.fn.bufnr('%')) == 1
+	end
+	local set_close_key = function()
+		if is_buf_listed() then
+			return
+		end
+		vim.keymap.set('n', close_key, '<Cmd>bnext<CR>', { buffer = true })
+	end
+
+	vim.api.nvim_create_autocmd({ 'BufNew' }, {
+		pattern = chat_dir .. '*',
+		group = vim.api.nvim_create_augroup('kjuq_gp_bufnew', {}),
+		callback = function()
+			vim.schedule(set_close_key)
+		end,
+	})
+end
+
 return spec
