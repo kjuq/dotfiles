@@ -20,7 +20,9 @@ end)
 map('c', '<C-p>', '<Up>')
 map('c', '<C-n>', '<Down>')
 
+map('i', '<C-k>', '<Nop>')
 map('i', '<C-g><C-k>', '<C-k>')
+map('i', '<C-v>', '<Nop>')
 map('i', '<C-g><C-v>', '<C-v>')
 
 -- Move caret on display lines
