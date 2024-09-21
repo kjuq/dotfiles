@@ -16,6 +16,7 @@ spec.keys = {
 spec.opts = {
 	signs = false,
 	highlight = {
+		multiline = false,
 		pattern = [[.*<(KEYWORDS)\s*]],
 		before = 'fg',
 		keyword = 'wide',
