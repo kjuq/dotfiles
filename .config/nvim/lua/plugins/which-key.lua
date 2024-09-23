@@ -59,6 +59,7 @@ spec.config = function(_, opts)
 		{ 'ga', group = 'Additional actions' },
 		{ 'go', group = 'Edit specific file' },
 		{ '<leader>a', group = 'Additional' },
+		{ '<leader>b', group = 'Bufferline' },
 		{ '<leader>c', group = 'ChatGPT', icon = ' ' },
 		{ '<leader>d', group = 'Doc string' },
 		{ '<leader>D', group = 'Debug' },
