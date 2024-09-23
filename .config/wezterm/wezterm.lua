@@ -70,7 +70,7 @@ add_font('NotoColorEmoji') -- Emoji font `noto-fonts-emoji`
 C.font = wez.font_with_fallback(fonts)
 
 -- C.freetype_load_target = 'Normal' -- "Normal", "Light", "Mono"
--- C.freetype_load_flags = 'NO_HINTING'
+C.freetype_load_flags = 'NO_HINTING'
 
 --- }}}
 
