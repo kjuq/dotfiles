@@ -55,6 +55,7 @@ xautocfg.cfg
 
 local_bin_files="
 acw
+audiovol
 battery
 brightmax
 brightmin
