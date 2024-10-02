@@ -51,6 +51,7 @@ w3m/keymap
 wezterm/wezterm.lua
 X11
 xautocfg.cfg
+zathura/zathurarc
 "
 
 local_bin_files="
