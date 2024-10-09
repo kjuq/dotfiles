@@ -15,7 +15,17 @@ spec.opts = {
 
 	highlight = {
 		enable = true,
-		disable = { 'perl' },
+		-- disable = { 'perl' },
+		disable = function(lang, bufnr)
+			local lang_for_disable = { 'perl' }
+			if vim.tbl_contains(lang_for_disable, lang) then
+				return true
+			end
+			local max_line = 50000
+			if vim.api.nvim_buf_line_count(bufnr) > max_line then
+				return true
+			end
+		end,
 	},
 
 	indent = {
