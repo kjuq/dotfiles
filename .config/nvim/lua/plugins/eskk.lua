@@ -12,7 +12,7 @@ spec.config = function()
 	vim.g['eskk#directory'] = skk.skk_dir
 	vim.g['eskk#dictionary'] = { path = skk.jisyo_user, sorted = 1, encoding = 'utf-8' }
 	vim.g['eskk#large_dictionary'] = { path = large_dict, sorted = 1, encoding = 'euc-jp' }
-	vim.g['eskk#egg_like_newline'] = 1
+	vim.g['eskk#egg_like_newline'] = 0
 	vim.g['eskk#keep_state'] = 0
 	vim.g['eskk#enable_completion'] = 0
 	vim.g['eskk#no_default_mappings'] = 1

@@ -17,7 +17,7 @@ spec.config = function()
 	local lazy_root = require('lazy.core.config').options.root
 
 	vim.fn['skkeleton#config']({
-		eggLikeNewline = true,
+		eggLikeNewline = false,
 		setUndoPoint = false,
 		globalDictionaries = {
 			vim.fs.joinpath(lazy_root, 'dict', 'SKK-JISYO.L'),
