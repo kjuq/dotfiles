@@ -11,7 +11,27 @@ spec.opts = {
 
 spec.config = function(spc, opts)
 	require(spc.name).setup(opts)
-	vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+	local winbar_bak = vim.o.winbar
+	local navic_winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
+	local enable = function()
+		vim.o.winbar = navic_winbar
+	end
+
+	local disable = function()
+		vim.o.winbar = winbar_bak
+	end
+
+	local toggle_winbar = function()
+		if vim.o.winbar == winbar_bak then
+			enable()
+		else
+			disable()
+		end
+	end
+
+	vim.keymap.set('n', '<leader>an', toggle_winbar, { desc = 'Navic: Toggle' })
 end
 
 return spec
