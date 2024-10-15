@@ -94,5 +94,10 @@ bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
 
+# ESC is remapped to F11 by tmux
+bind generic,alias,attach,browser,index,compose,pager,pgp,smime,postpone,query <f11> exit
+macro index <f11> "<enter-command>echo 'Quit Neomutt with Meta-q!!'<enter>"
 macro index q "<enter-command>echo 'Quit Neomutt with Meta-q!!'<enter>"
 bind index <Esc>q quit
+# macro editor <f11> "<enter><shell-escape>xdotool key control+g<enter>"
+# bind editor <f11> exit
