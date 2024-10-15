@@ -99,5 +99,5 @@ bind generic,alias,attach,browser,index,compose,pager,pgp,smime,postpone,query <
 macro index <f11> "<enter-command>echo 'Quit Neomutt with Meta-q!!'<enter>"
 macro index q "<enter-command>echo 'Quit Neomutt with Meta-q!!'<enter>"
 bind index <Esc>q quit
-# macro editor <f11> "<enter><shell-escape>xdotool key control+g<enter>"
-# bind editor <f11> exit
+# ESC to close editor prompt (`:` and `/' for example)
+macro editor <f11> "\Cu\Ck<backspace>"
