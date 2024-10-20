@@ -1,5 +1,6 @@
 exec --no-startup-id copyq
 exec --no-startup-id xautocfg
+exec --no-startup-id xremap "$XDG_CONFIG_HOME/xremap/config.yml" --watch
 
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id nitrogen --restore; sleep 1; picom -b

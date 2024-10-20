@@ -1,6 +1,13 @@
 keymap:
-  - name: Test
+  - name: Delete -> C-d
     application:
-      only: Zathura
+      only: [Zathura,]
     remap:
       KEY_DELETE: C-d
+  - name: Copy Paste CUT
+    application:
+      only: [Brave-browser, Chromium]
+    remap:
+      KEY_COPY: C-c
+      KEY_PASTE: C-v
+      KEY_CUT: C-x
