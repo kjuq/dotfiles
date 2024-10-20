@@ -51,6 +51,7 @@ w3m/keymap
 wezterm/wezterm.lua
 X11
 xautocfg.cfg
+xremap/config.yml
 zathura/zathurarc
 "
 

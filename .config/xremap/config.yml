@@ -1,0 +1,6 @@
+keymap:
+  - name: Test
+    application:
+      only: Zathura
+    remap:
+      KEY_DELETE: C-d
