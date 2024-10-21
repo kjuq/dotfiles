@@ -25,10 +25,6 @@ if command --search --quiet nvim
 	alias nvimd="nvim +EditDailynote"
 end
 
-if command --search --quiet dust
-	alias dust="dust --reverse"
-end
-
 if command --search --quiet trash
 	alias dl="trash -r"
 	alias rm="echo '`rm` is dangerous so use `dl` instead. (Given args:'"

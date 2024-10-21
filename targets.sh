@@ -13,6 +13,7 @@ brewfile/Brewfile
 clangd/config.yaml
 clang-format
 docker/config.json
+dust/config.toml
 fish/config.fish
 fish/configs
 git
