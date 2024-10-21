@@ -58,6 +58,9 @@ set --export PSQL_HISTORY "$XDG_DATA_HOME/psql_history"
 # Dotnet
 set --export DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
 
+# CUDA
+set --export CUDA_CACHE_PATH "$XDG_CACHE_HOME"/nv
+
 # GnuPG
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
