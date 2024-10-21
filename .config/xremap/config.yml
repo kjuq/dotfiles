@@ -6,7 +6,7 @@ keymap:
       KEY_DELETE: C-d
   - name: Copy Paste CUT
     application:
-      only: [Brave-browser, Chromium]
+      only: [Zathura, Brave-browser, Chromium]
     remap:
       KEY_COPY: C-c
       KEY_PASTE: C-v
