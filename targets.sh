@@ -44,6 +44,7 @@ npm/npmrc
 nvim
 python/pythonrc.py
 qutebrowser/config.py
+ripgrep/ripgreprc
 ruff/ruff.toml
 spotifyd/spotifyd.conf
 stylua/stylua.toml
