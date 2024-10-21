@@ -49,6 +49,9 @@ set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 set --export RCLONE_PROGRESS true
 set --export RCLONE_EXCLUDE "*.DS_Store"
 
+# PostgreSQL
+set --export PSQL_HISTORY "$XDG_DATA_HOME/psql_history"
+
 # GnuPG
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
