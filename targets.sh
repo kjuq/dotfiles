@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=2034
+
 xdg_config_files="
 aerc/accounts.conf.template
 aerc/aerc.conf
@@ -14,6 +15,7 @@ clangd/config.yaml
 clang-format
 docker/config.json
 dust/config.toml
+fd/ignore
 fish/config.fish
 fish/configs
 git

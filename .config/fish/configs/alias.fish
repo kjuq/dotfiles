@@ -48,7 +48,7 @@ if command --search --quiet wget
 end
 
 if command --search --quiet fd
-	alias fd="fd --hidden --exclude .git/"
+	alias fd="fd --hidden"
 end
 
 if command --search --quiet lnks
