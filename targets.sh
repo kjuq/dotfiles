@@ -52,6 +52,7 @@ tmux/scripts
 vim/vimrc
 w3m/keymap
 wezterm/wezterm.lua
+wget/wgetrc
 X11
 xautocfg.cfg
 xremap/config.yml

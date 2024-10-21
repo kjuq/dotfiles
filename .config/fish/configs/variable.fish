@@ -64,6 +64,9 @@ set --export CUDA_CACHE_PATH "$XDG_CACHE_HOME"/nv
 # urxvt
 set --export RXVT_SOCKET "$XDG_RUNTIME_DIR"/urxvtd
 
+# wgetrc
+set --export WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
+
 # GnuPG
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
