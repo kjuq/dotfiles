@@ -61,6 +61,9 @@ set --export DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
 # CUDA
 set --export CUDA_CACHE_PATH "$XDG_CACHE_HOME"/nv
 
+# urxvt
+set --export RXVT_SOCKET "$XDG_RUNTIME_DIR"/urxvtd
+
 # GnuPG
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
