@@ -1,28 +1,5 @@
 local map = require('utils.lazy').generate_map('', 'Hlslens: ')
 
-local asterisk_installed = vim.fn.isdirectory(vim.fn.stdpath('data') .. '/lazy/vim-asterisk') == 1
-
-local rhs = function(key)
-	local asterisk = {
-		['*'] = '<Plug>(asterisk-z*)<CR>',
-		['g*'] = '<Plug>(asterisk-gz*)<CR>',
-		['#'] = '<Plug>(asterisk-z#)<CR>',
-		['g#'] = '<Plug>(asterisk-gz#)<CR>',
-	}
-	return function()
-		require('hlslens').start()
-		if asterisk_installed then
-			if vim.v.hlsearch == 0 then
-				return asterisk[key]
-			else
-				return 'n'
-			end
-		else
-			return vim.v.count1 .. key
-		end
-	end
-end
-
 ---@type LazySpec
 local spec = { 'kevinhwang91/nvim-hlslens' }
 spec.event = { 'CmdlineEnter' }
@@ -36,11 +13,6 @@ spec.keys = {
 		require('hlslens').start()
 		return 'N'
 	end, 'Previous matched word', { expr = true }),
-
-	map('*', 'n', rhs('*'), 'Search forward current word', { expr = true }),
-	map('#', 'n', rhs('#'), 'Search backward current word', { expr = true }),
-	map('g*', 'n', rhs('g*'), '* without "\\<" and "\\>"', { expr = true }),
-	map('g#', 'n', rhs('g*'), '# without "\\<" and "\\>"', { expr = true }),
 }
 
 spec.opts = function()
