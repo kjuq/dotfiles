@@ -5,13 +5,7 @@ local map = require('utils.lazy').generate_map('', 'Asterisk: ')
 local map_asterisk = function(key, plug)
 	local rhs = function()
 		if vim.v.hlsearch == 0 then
-			require('utils.common').feed_plug(plug)
-			local mode = vim.api.nvim_get_mode().mode
-			if mode == 'r' or mode == 'rm' then
-				return '<CR>'
-			else
-				return
-			end
+			return '<Plug>(' .. plug .. ')<CR>'
 		else
 			return 'n'
 		end
