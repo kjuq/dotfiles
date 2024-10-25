@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 action=$1
+sudo=$( [[ -n "${SUDO_ASKPASS}" ]] && echo "sudo -A" || echo "sudo" )
 
 case "$action" in
 	status)
@@ -20,19 +21,19 @@ case "$action" in
 		cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | uniq
 		;;
 	max)
-		sudo cpupower frequency-set -u 5GHz > /dev/null
+		$sudo cpupower frequency-set -u 5GHz > /dev/null
 		;;
 	high)
-		sudo cpupower frequency-set -u 4GHz > /dev/null
+		$sudo cpupower frequency-set -u 4GHz > /dev/null
 		;;
 	middle)
-		sudo cpupower frequency-set -u 2.5GHz > /dev/null
+		$sudo cpupower frequency-set -u 2.5GHz > /dev/null
 		;;
 	low)
-		sudo cpupower frequency-set -u 1.5GHz > /dev/null
+		$sudo cpupower frequency-set -u 1.5GHz > /dev/null
 		;;
 	min)
-		sudo cpupower frequency-set -u 1GHz > /dev/null
+		$sudo cpupower frequency-set -u 1GHz > /dev/null
 		;;
 	volt)
 		level=$2
@@ -40,17 +41,17 @@ case "$action" in
 			low)
 				volt=5000
 				temp=50
-				sudo ryzenadj --stapm-limit=$volt --fast-limit=$volt --slow-limit=$volt --tctl-temp=$temp --power-saving
+				$sudo ryzenadj --stapm-limit=$volt --fast-limit=$volt --slow-limit=$volt --tctl-temp=$temp --power-saving
 				;;
 			middle)
 				volt=10000
 				temp=65
-				sudo ryzenadj --stapm-limit=$volt --fast-limit=$volt --slow-limit=$volt --tctl-temp=$temp --power-saving
+				$sudo ryzenadj --stapm-limit=$volt --fast-limit=$volt --slow-limit=$volt --tctl-temp=$temp --power-saving
 				;;
 			high)
 				volt=20000
 				temp=80
-				sudo ryzenadj --stapm-limit=$volt --fast-limit=$volt --slow-limit=$volt --tctl-temp=$temp --power-saving
+				$sudo ryzenadj --stapm-limit=$volt --fast-limit=$volt --slow-limit=$volt --tctl-temp=$temp --power-saving
 				;;
 			*)
 				echo "Invalid arguments:" 1>&2
