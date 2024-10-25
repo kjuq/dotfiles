@@ -32,7 +32,7 @@ spec.opts = function()
 			},
 		},
 		messages = {
-			enabled = false,
+			enabled = true,
 			view_search = false,
 		},
 		popupmenu = { -- Noice's completion
@@ -66,6 +66,17 @@ spec.opts = function()
 		views = {
 			hover = {
 				scrollbar = true,
+			},
+			mini = {
+				timeout = 3000, -- ms
+				reverse = false,
+				position = {
+					row = 0,
+					col = -2,
+				},
+				border = {
+					style = 'single',
+				},
 			},
 		},
 	}
