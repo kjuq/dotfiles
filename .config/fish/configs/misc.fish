@@ -14,3 +14,8 @@ if command --search --quiet direnv
 	direnv hook fish | source
 	set --export DIRENV_LOG_FORMAT ""
 end
+
+# mise
+if command --search --quiet mise
+	mise activate fish | source
+end
