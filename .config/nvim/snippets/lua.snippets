@@ -23,3 +23,9 @@ snippet lazyspec
 	end
 
 	return spec
+
+snippet feedkeys
+	vim.api.nvim_feedkeys('${1}', 'n', true)
+
+snippet feedkeys.escape
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('${1}', true, false, true), 'n', false)
