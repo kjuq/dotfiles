@@ -64,6 +64,11 @@ spec.opts = function()
 			},
 		},
 		views = {
+			cmdline_popup = {
+				position = {
+					row = -1,
+				},
+			},
 			hover = {
 				scrollbar = true,
 			},
@@ -71,11 +76,11 @@ spec.opts = function()
 				timeout = 3000, -- ms
 				reverse = false,
 				position = {
-					row = 0,
+					row = 2,
 					col = -2,
 				},
 				border = {
-					style = 'single',
+					style = require('utils.common').floatwinborder,
 				},
 			},
 		},

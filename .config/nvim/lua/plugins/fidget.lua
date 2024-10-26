@@ -9,11 +9,12 @@ spec.keys = {
 
 spec.opts = {
 	notification = {
-		filter = vim.log.levels.TRACE,
+		filter = vim.log.levels.INFO,
 		override_vim_notify = true,
 		window = {
 			normal_hl = 'user_fidget_window',
 			winblend = 0,
+			border = require('utils.common').floatwinborder,
 		},
 	},
 }
