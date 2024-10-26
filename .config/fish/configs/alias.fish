@@ -19,6 +19,7 @@ alias l1="ls -1"
 alias trea="tree -a"
 
 if command --search --quiet nvim
+	alias Nvim="env NVIM_NO_USER_PLUGINS=1 nvim"
 	alias nvimt="nvim +EditTodo"
 	alias nvimb="nvim +EditBookmarks"
 	alias nvimr="nvim +EditReadinglist"

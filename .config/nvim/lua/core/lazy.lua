@@ -1,4 +1,4 @@
-if os.getenv('NOLAZY') then
+if os.getenv('NVIM_NO_USER_PLUGINS') == '1' then
 	return
 end
 
