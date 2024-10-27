@@ -4,7 +4,7 @@ local map = vim.keymap.set
 map({ 'n', 'v' }, '<Space>', '<Nop>')
 
 -- Disable Ctrl-c to allow <C-c> keymappings (e.g. <C-w><C-c>, etc
-map('n', '<C-c>', '<Nop>')
+-- map('n', '<C-c>', '<Nop>')
 
 -- Emacs-like cursor movement in command mode
 map('c', '<C-b>', '<Left>') -- Jumps to the beginning of a line by default

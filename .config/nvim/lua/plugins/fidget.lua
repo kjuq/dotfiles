@@ -9,7 +9,6 @@ spec.keys = {
 
 spec.opts = {
 	notification = {
-		filter = vim.log.levels.INFO,
 		override_vim_notify = true,
 		window = {
 			normal_hl = 'user_fidget_window',
