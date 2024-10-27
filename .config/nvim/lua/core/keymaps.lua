@@ -51,6 +51,9 @@ map({ 'n', 'x', 'o' }, 'ge', jolyne.ge)
 -- Asterisk
 local ast = require('asterisk-remix')
 map({ 'n' }, '*', ast.keys['*'])
+map({ 'n' }, '#', ast.keys['#'])
+map({ 'n' }, 'g*', ast.keys['g*'])
+map({ 'n' }, 'g#', ast.keys['g#'])
 
 -- Buffer movement instead of tab's
 map('n', 'gt', vim.cmd.bnext, { silent = true, desc = 'Go to the next buffer' })
