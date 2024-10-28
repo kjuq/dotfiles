@@ -9,8 +9,6 @@ end
 local is_focusing_search_word = function()
 	local cword = vim.fn.expand('<cword>')
 	local last_pat = vim.fn.getreg('/')
-	vim.notify('cword: ' .. cword)
-	vim.notify('last_pat: ' .. last_pat)
 	return vim.v.hlsearch == 1 and is_vim_regex_match(cword, last_pat)
 end
 
@@ -21,7 +19,6 @@ local rhs = function(key)
 	local search_backward = key == '#' or key == 'g#'
 	return function()
 		if is_focusing_search_word() then
-			vim.notify('focusing')
 			---@type boolean
 			local reverse = (vim.v.searchforward == 1 and search_backward)
 				or (vim.v.searchforward == 0 and search_forward)
