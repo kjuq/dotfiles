@@ -36,6 +36,9 @@ set --export PYTHON_HISTORY "$XDG_STATE_HOME/python/history" # not working so wr
 set --export PYTHONPYCACHEPREFIX "$XDG_CACHE_HOME/python" # no `__pycache__`
 set --export PYTHONUSERBASE "$XDG_DATA_HOME/python" # base dir where packages will be installed via `pip install --user`
 
+# Go
+set --export GOPATH "$XDG_DATA_HOME/go"
+
 # npm
 set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 
