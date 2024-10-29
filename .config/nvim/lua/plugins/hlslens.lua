@@ -4,6 +4,7 @@ local map = require('utils.lazy').generate_map('', 'Hlslens: ')
 local spec = { 'kevinhwang91/nvim-hlslens' }
 spec.event = { 'CmdlineEnter' }
 
+-- TODO: Add '*' '#' 'g*' 'g#' mappings
 spec.keys = {
 	map('n', 'n', function()
 		require('hlslens').start()
