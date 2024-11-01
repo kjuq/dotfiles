@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 			group = vim.api.nvim_create_augroup('kjuq_highlight_on_yank', {}),
 			callback = function()
 				local timeout = require('utils.common').highlight_duration
-				require('vim.highlight').on_yank({ higroup = 'kjuq_highlight_on_yank', timeout = timeout })
+				require('vim.hl').on_yank({ higroup = 'kjuq_highlight_on_yank', timeout = timeout })
 			end,
 		})
 	end,
