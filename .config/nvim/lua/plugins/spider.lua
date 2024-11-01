@@ -6,7 +6,7 @@ local spec = { 'chrisgrieser/nvim-spider' }
 -- Sub-Katakana (カタカナ補助) (U+31F0 - U+31FF)
 -- Kanji (U+4E00 - U+9FFF)
 -- CJK-compatible Kanji (U+F900 - U+FAFF)
-local japanese_regex = '[\u{3040}-\u{30FF}\u{31F0}-\u{31FF}\u{4E00}-\u{9FFF}\u{F900}-\u{FAFF}]+'
+local japanese_regex = '[\u{3040}-\u{30FF}\u{31F0}-\u{31FF}\u{4E00}-\u{9FFF}\u{F900}-\u{FAFF}]'
 
 ---@return string
 local get_char_under_cursor = function()
@@ -22,18 +22,18 @@ local is_japanese_letter = function(str)
 end
 
 local map = require('utils.lazy').generate_map('', 'Spider: ')
+---@param key 'w'|'b'|'e'|'ge'
 local map_spider = function(key)
 	local rhs = function()
-		-- FIXME: jolyne is not yet compatible with feedkeys
 		require('jolyne').motion(function()
 			if is_japanese_letter(get_char_under_cursor()) then
-				vim.api.nvim_feedkeys(key, 'n', true)
+				vim.cmd.normal({ key, bang = true })
 			else
 				require('spider').motion(key)
 			end
 		end)
 	end
-	return map(key, { 'n', 'x', 'o' }, rhs, 'w')
+	return map(key, { 'n', 'x', 'o' }, rhs, key)
 end
 spec.keys = {
 	map_spider('w'),
