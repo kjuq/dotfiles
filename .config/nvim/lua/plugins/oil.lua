@@ -7,7 +7,7 @@ spec.event = 'VeryLazy'
 
 local map = require('utils.lazy').generate_map('', 'Oil: ')
 spec.keys = {
-	map('g.', 'n', '<CMD>Oil<CR>', 'Open'),
+	map('gX', 'n', '<CMD>Oil<CR>', 'Open'),
 }
 
 spec.init = function()

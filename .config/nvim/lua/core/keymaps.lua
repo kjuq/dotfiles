@@ -212,7 +212,7 @@ map('n', 'gos', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
 map('n', 'goq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
 
 -- TODO: check if Netrw is loaded or not
-map('n', 'g.', function()
+map('n', 'gX', function()
 	vim.cmd('Explore')
 end, { desc = 'Open Netrw' })
 
