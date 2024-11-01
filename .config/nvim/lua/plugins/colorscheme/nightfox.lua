@@ -6,12 +6,14 @@ spec.priority = 9999
 spec.config = function()
 	require('nightfox').setup({
 		options = {
-			transparent = false, -- imperfect
-			dim_inactive = true, -- Non focused panes set to alternative background
+			transparent = true, -- imperfect
+			dim_inactive = false, -- Non focused panes set to alternative background
 		},
 	})
 	vim.cmd.colorscheme('nightfox')
-	vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#808080' })
+	vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'DarkGray' })
+	vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', ctermbg = 'NONE' })
+	vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', ctermbg = 'NONE' })
 end
 
 return spec
