@@ -1,0 +1,29 @@
+---@type boolean
+local relativenumber_bak
+---@type boolean
+local number_bak
+---@type boolean
+local cursorline_bak
+
+local group = vim.api.nvim_create_augroup('kjuq_num_in_cmdline', {})
+
+vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
+	group = group,
+	callback = function()
+		relativenumber_bak = vim.o.relativenumber
+		number_bak = vim.o.number
+		cursorline_bak = vim.o.cursorline
+		vim.opt.relativenumber = false
+		vim.opt.number = true
+		vim.opt.cursorline = true
+	end,
+})
+
+vim.api.nvim_create_autocmd({ 'CmdlineLeave' }, {
+	group = group,
+	callback = function()
+		vim.opt.relativenumber = relativenumber_bak
+		vim.opt.number = number_bak
+		vim.o.cursorline = cursorline_bak
+	end,
+})

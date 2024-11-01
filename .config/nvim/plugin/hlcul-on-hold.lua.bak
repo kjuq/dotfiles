@@ -1,0 +1,17 @@
+-- highlight cursorline when moving is finished
+
+local callback = function()
+	vim.opt.cursorline = true
+	vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+		group = vim.api.nvim_create_augroup('kjuq_hlcul_on_hold_disable', {}),
+		callback = function()
+			vim.opt.cursorline = false
+		end,
+		once = true,
+	})
+end
+
+vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+	group = vim.api.nvim_create_augroup('kjuq_hlcul_on_hold_enable', {}),
+	callback = callback,
+})
