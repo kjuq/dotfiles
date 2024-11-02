@@ -34,6 +34,12 @@ spec.config = function()
 	})
 
 	vim.fn['skkeleton#register_keymap']('henkan', '<C-h>', 'henkanBackward')
+	vim.fn['skkeleton#register_keymap']('henkan', '<C-w>', 'cancel')
+	vim.fn['skkeleton#register_keymap']('henkan', '<C-y>', 'kakutei')
+	vim.fn['skkeleton#register_keymap']('input', '<C-y>', 'kakutei')
+
+	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-w>') ]])
+	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-y>') ]])
 
 	-- remove "<C-g>" from mapped_keys
 	local remove_mapped_keys = function(key)
@@ -46,6 +52,7 @@ spec.config = function()
 		vim.g['skkeleton#mapped_keys'] = mapped_keys
 	end
 	remove_mapped_keys('<C-g>')
+	remove_mapped_keys('<C-j>')
 end
 
 spec.specs = {
