@@ -1,3 +1,5 @@
+-- TODO: <C-w> during Henkan causes a weird behavior
+
 local skk = require('utils.skk')
 
 ---@type LazySpec
