@@ -23,9 +23,8 @@ spec.opts = {
 spec.config = function(_, opts)
 	local has_yanky, yanky_int = pcall(require, 'yanky.integration')
 	if has_yanky then
-		opts.on_substitute = function()
-			yanky_int.substitute()
-		end
+		-- It is necessary to setup in `config` to integrate with yanky
+		opts.on_substitute = yanky_int.substitute()
 	end
 	require('substitute').setup(opts)
 end
