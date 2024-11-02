@@ -2,7 +2,6 @@ local skk = require('utils.skk')
 
 ---@type LazySpec
 local spec = { 'vim-skk/eskk.vim' }
-spec.cond = vim.fn.executable('deno') == 0 -- fallen-back from skkeleton
 spec.keys = skk.mappings('Eskk: ', 'eskk:enable', 'eskk:disable', 'eskk:toggle')
 
 spec.config = function()
