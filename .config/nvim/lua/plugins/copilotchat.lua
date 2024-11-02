@@ -74,11 +74,11 @@ spec.opts = function()
 		show_help = false,
 		mappings = {
 			complete = {
-				detail = 'Use @<C-g><C-n> or /<C-g><C-n> for options.',
-				insert = '<C-g><C-n>',
+				detail = 'Use @<C-x><C-b> or /<C-x><C-b> for options.',
+				insert = '<C-x><C-b>',
 			},
 			close = {
-				normal = 'gh',
+				normal = '<C-Tab>',
 				insert = '<Nop>',
 			},
 			reset = {
@@ -95,15 +95,23 @@ spec.opts = function()
 			},
 			yank_diff = {
 				normal = 'gy',
+				insert = '<Nop>',
 			},
 			show_diff = {
 				normal = 'gd',
+				insert = '<Nop>',
 			},
 			show_system_prompt = {
 				normal = 'dp', -- [d]isplay [p]rompt
+				insert = '<Nop>',
 			},
 			show_user_selection = {
 				normal = 'gV',
+				insert = '<Nop>',
+			},
+			show_help = {
+				normal = 'g?',
+				insert = '<Nop>',
 			},
 		},
 	}

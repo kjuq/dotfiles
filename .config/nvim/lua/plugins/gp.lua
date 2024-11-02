@@ -90,7 +90,7 @@ spec.config = function(_, opts)
 	-- to render a chat window same as normal buffer.
 	-- To fix that, buffer-local keymap is set.
 	local chat_dir = opts.chat_dir or gp.config.chat_dir
-	local close_key = 'gh'
+	local close_key = '<C-Tab>'
 	local is_buf_listed = function()
 		return vim.fn.buflisted(vim.fn.bufnr('%')) == 1
 	end
