@@ -6,18 +6,18 @@ spec.cmd = { 'ChatGPT', 'ChatGPTActAs', 'ChatGPTEditWithInstructions', 'ChatGPTR
 
 spec.keys = {
 	map('c', { 'n' }, '<CMD>ChatGPT<CR>', 'Open ChatGPT'),
-	map('e', { 'n', 'v' }, '<CMD>ChatGPTEditWithInstruction<CR>', 'Edit with instruction'),
-	map('g', { 'n', 'v' }, '<CMD>ChatGPTRun grammar_correction<CR>', 'Grammar Correction'),
-	map('t', { 'n', 'v' }, '<CMD>ChatGPTRun translate<CR>', 'Translate'),
-	map('k', { 'n', 'v' }, '<CMD>ChatGPTRun keywords<CR>', 'Keywords'),
-	map('d', { 'n', 'v' }, '<CMD>ChatGPTRun docstring<CR>', 'Docstring'),
-	map('a', { 'n', 'v' }, '<CMD>ChatGPTRun add_tests<CR>', 'Add Tests'),
-	map('o', { 'n', 'v' }, '<CMD>ChatGPTRun optimize_code<CR>', 'Optimize Code'),
-	map('s', { 'n', 'v' }, '<CMD>ChatGPTRun summarize<CR>', 'Summarize'),
-	map('f', { 'n', 'v' }, '<CMD>ChatGPTRun fix_bugs<CR>', 'Fix Bugs'),
-	map('x', { 'n', 'v' }, '<CMD>ChatGPTRun explain_code<CR>', 'Explain Code'),
-	map('r', { 'n', 'v' }, '<CMD>ChatGPTRun roxygen_edit<CR>', 'Roxygen Edit'),
-	map('l', { 'n', 'v' }, '<CMD>ChatGPTRun code_readability_analysis<CR>', 'Code Readability Analysis'),
+	map('e', { 'n', 'x' }, '<CMD>ChatGPTEditWithInstruction<CR>', 'Edit with instruction'),
+	map('g', { 'n', 'x' }, '<CMD>ChatGPTRun grammar_correction<CR>', 'Grammar Correction'),
+	map('t', { 'n', 'x' }, '<CMD>ChatGPTRun translate<CR>', 'Translate'),
+	map('k', { 'n', 'x' }, '<CMD>ChatGPTRun keywords<CR>', 'Keywords'),
+	map('d', { 'n', 'x' }, '<CMD>ChatGPTRun docstring<CR>', 'Docstring'),
+	map('a', { 'n', 'x' }, '<CMD>ChatGPTRun add_tests<CR>', 'Add Tests'),
+	map('o', { 'n', 'x' }, '<CMD>ChatGPTRun optimize_code<CR>', 'Optimize Code'),
+	map('s', { 'n', 'x' }, '<CMD>ChatGPTRun summarize<CR>', 'Summarize'),
+	map('f', { 'n', 'x' }, '<CMD>ChatGPTRun fix_bugs<CR>', 'Fix Bugs'),
+	map('x', { 'n', 'x' }, '<CMD>ChatGPTRun explain_code<CR>', 'Explain Code'),
+	map('r', { 'n', 'x' }, '<CMD>ChatGPTRun roxygen_edit<CR>', 'Roxygen Edit'),
+	map('l', { 'n', 'x' }, '<CMD>ChatGPTRun code_readability_analysis<CR>', 'Code Readability Analysis'),
 }
 
 spec.opts = {

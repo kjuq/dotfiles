@@ -8,11 +8,11 @@ spec.keys = {
 	map('c', 'n', function()
 		vim.cmd('Silicon')
 	end, 'Capture'),
-	map('c', 'v', function()
+	map('c', 'x', function()
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', false)
 		vim.cmd("'<,'>Silicon")
 	end, 'Capture'),
-	map('C', 'v', function()
+	map('C', 'x', function()
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', false)
 		vim.cmd("'<,'>Silicon!")
 	end, 'Capture with selection highlighted'),

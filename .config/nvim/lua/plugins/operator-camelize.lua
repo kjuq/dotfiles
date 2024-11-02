@@ -4,10 +4,10 @@ local map = require('utils.lazy').generate_map('', 'Op-camelize: ')
 local spec = { 'tyru/operator-camelize.vim' }
 
 spec.keys = {
-	map('gC', '', function()
+	map('gC', { 'n', 'x' }, function()
 		require('utils.common').feed_plug('operator-camelize')
 	end, 'Camelize'),
-	map('gB', '', function()
+	map('gB', { 'n', 'x' }, function()
 		require('utils.common').feed_plug('operator-decamelize')
 	end, 'Decamelize'),
 }
