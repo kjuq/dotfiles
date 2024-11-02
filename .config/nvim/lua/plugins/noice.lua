@@ -82,6 +82,9 @@ spec.opts = function()
 				border = {
 					style = require('utils.common').floatwinborder,
 				},
+				win_options = {
+					winblend = 0,
+				},
 			},
 		},
 	}
