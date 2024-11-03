@@ -149,9 +149,9 @@ opt.numberwidth = 1
 opt.helplang = { 'en', 'ja' }
 opt.fileencodings = { 'ucs-bom', 'utf-8', 'sjis', 'euc-jp', 'latin1' }
 
--- Disable a leader key time out (buggy when ssh-ing KSGO from KMMN)
+-- buggy if set `ttimeout = false` when SSH-ing
+opt.ttimeout = os.getenv('SSH_TTY') and true or false
 opt.timeout = false
-opt.ttimeout = false
 
 -- Disable welcome message
 opt.shortmess:append('I')
