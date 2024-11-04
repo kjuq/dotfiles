@@ -2,6 +2,12 @@
 local spec = { 'andymass/vim-matchup' }
 spec.event = 'VeryLazy'
 
+spec.init = function()
+	vim.g.matchup_surround_enabled = 1
+	vim.g.matchup_matchparen_deferred_show_delay = 50 -- default: 50
+	vim.g.matchup_matchparen_deferred_hide_delay = 700 -- default: 700
+end
+
 spec.config = function()
 	---@diagnostic disable-next-line: missing-fields
 	require('nvim-treesitter.configs').setup({
@@ -11,42 +17,28 @@ spec.config = function()
 			disable_virtual_text = true,
 		},
 	})
-	-- for lazy-load, reload filetype
-	-- TODO: use `:MatchupReload` ?
-	vim.bo.filetype = vim.bo.filetype
 
-	local is_big_file = function()
-		local max_line = 50000
-		return vim.api.nvim_buf_line_count(0) > max_line
+	local set_deferred_highlight = function(path, buffer)
+		local common = require('utils.common')
+		if common.is_bigfile(path) or common.is_bigbuf(buffer) then
+			vim.b.matchup_matchparen_deferred = 1
+		end
 	end
 
-	local reenable = function()
-		vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-			group = vim.api.nvim_create_augroup('kjuq_matchup_enable', {}),
-			callback = function()
-				vim.cmd('DoMatchParen')
-			end,
-			once = true,
-		})
-	end
-
-	local disable = function()
-		vim.schedule(function()
-			if is_big_file() then
-				vim.cmd('NoMatchParen')
-				reenable()
-			end
-		end)
-	end
-
-	disable()
-	vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-		group = vim.api.nvim_create_augroup('kjuq_matchup_disable', {}),
-		callback = disable,
+	vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+		group = vim.api.nvim_create_augroup('kjuq_matchup_bigfile', {}),
+		callback = function(ev)
+			vim.print(ev.buf)
+			set_deferred_highlight(ev.file, ev.buf)
+		end,
 	})
+
+	-- for lazy-load
+	vim.bo.filetype = vim.bo.filetype
+	set_deferred_highlight(vim.fn.expand('%'), 0)
 end
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-treesitter/nvim-treesitter',
 }
 

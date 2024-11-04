@@ -164,6 +164,26 @@ M.parent_directory_traversal = function(filename, path)
 	return nil
 end
 
+---@param path string
+M.is_bigfile = function(path)
+	local max_size = 1 * 1000 * 1000 -- bytes
+	local ok, stat = pcall(vim.uv.fs_stat, path)
+	if ok and stat and stat.size > max_size then
+		return true
+	end
+	return false
+end
+
+---@param buffer integer
+M.is_bigbuf = function(buffer)
+	local max_lines = 30000
+	local line_num = #vim.api.nvim_buf_get_lines(buffer, 0, -1, true)
+	if line_num > max_lines then
+		return true
+	end
+	return false
+end
+
 M.floatwinborder = 'single'
 M.floatscrolldown = '<M-f>'
 M.floatscrollup = '<M-b>'
