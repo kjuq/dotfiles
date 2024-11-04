@@ -31,13 +31,6 @@ spec.keys = {
 		require('various-textobjs').anyQuote('outer', 'outer')
 	end, 'Any Quote (outer)'),
 
-	map('ib', { 'o', 'x' }, function()
-		require('various-textobjs').anyBracket('inner', 'inner')
-	end, 'Any Bracket (inner)'),
-	map('ab', { 'o', 'x' }, function()
-		require('various-textobjs').anyBracket('outer', 'outer')
-	end, 'Any Bracket (outer)'),
-
 	map('gG', { 'o', 'x' }, function()
 		require('various-textobjs').entireBuffer()
 	end, 'Entire Buffer'),
