@@ -1,8 +1,8 @@
 ---@type LazySpec
 local spec = { 'goolord/alpha-nvim' }
-spec.cond = vim.fn.argc() == 0 -- if nvim was launched without files specified by args
-spec.lazy = false
--- spec.event = { 'BufWinEnter' }
+spec.lazy = vim.fn.argc() > 0
+
+spec.cmd = 'Alpha'
 
 spec.opts = function()
 	return require('alpha.themes.startify').config
