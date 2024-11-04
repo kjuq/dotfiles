@@ -19,4 +19,11 @@ spec.keys = {
 
 spec.opts = {}
 
+spec.config = function(_, opts)
+	require('git-conflict').setup(opts)
+
+	-- for lazy load
+	vim.cmd.GitConflictRefresh()
+end
+
 return spec
