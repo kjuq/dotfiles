@@ -1,13 +1,25 @@
--- NOTE: If you ssh from a tmux session to a remote system and run neovim there, pasting does not work.
--- In spite of copying is working flawlessly
+-- If you ssh from a tmux session to a remote system and run neovim there,
+-- **pasting** does not work. In spite of copying is working flawlessly
 -- https://github.com/neovim/neovim/discussions/29350#discussioncomment-11127983
+
+-- Thus, map `"+p`, `"*p`, `"+P`, ... in normal mode to Paste just like
+-- pressing <Super-V> and `<C-r>+` and `<C-r>*` in insert mode as well
+
+-- Alacritty doesn't support XTGETTCAP, so built-in `/runtime/plugin/osc52.lua`
+-- is not enough (`require('vim.termcap').query('Ms', function)` doesn't work
+-- as expected)
+-- https://github.com/alacritty/alacritty/issues/7268
+-- https://github.com/alacritty/vte/issues/98
+
+-- Wezterm has a bug that disables OSC52 copy to clipboard
+-- https://github.com/wez/wezterm/issues/5917
 
 if not os.getenv('SSH_TTY') then
 	return
 end
 
-local ssh_without_tmux = {
-	name = 'OSC 52 (ssh without tmux)',
+vim.g.clipboard = {
+	name = 'OSC 52 (Copy and paste)',
 	copy = {
 		['+'] = require('vim.ui.clipboard.osc52').copy('+'),
 		['*'] = require('vim.ui.clipboard.osc52').copy('*'),
@@ -17,30 +29,3 @@ local ssh_without_tmux = {
 		['*'] = require('vim.ui.clipboard.osc52').paste('*'),
 	},
 }
-
-local paste_nothing = function()
-	return {
-		vim.fn.split(vim.fn.getreg(''), '\n'),
-		vim.fn.getregtype(''),
-	}
-end
-
-local ssh_within_tmux = {
-	name = 'OSC 52 (SSH in tmux)',
-	copy = {
-		['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-		['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-	},
-	paste = {
-		['+'] = paste_nothing,
-		['*'] = paste_nothing,
-	},
-}
-
-require('vim.termcap').query('Ms', function(_, found, _)
-	if found then
-		vim.g.clipboard = ssh_without_tmux
-	else
-		vim.g.clipboard = ssh_within_tmux
-	end
-end)
