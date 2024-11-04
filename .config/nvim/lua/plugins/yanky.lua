@@ -42,6 +42,7 @@ spec.config = function()
 		ring = {
 			history_length = 20,
 			cancel_event = 'move',
+			ignore_registers = { '_', '+', '*' },
 			update_register_on_cycle = true,
 		},
 		system_clipboard = {
