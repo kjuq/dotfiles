@@ -19,7 +19,7 @@ bindsym $mod+space exec --no-startup-id dmenu_recency
 bindsym $sac+c exec --no-startup-id morc_menu
 
 # Start a terminal
-bindsym $sac+1 exec wezterm
+bindsym $sac+1 exec alacritty
 
 # Start Browser
 bindsym $sac+2 exec qutebrowser
