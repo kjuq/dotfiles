@@ -1,9 +1,9 @@
--- If you ssh from a tmux session to a remote system and run neovim there,
--- **pasting** does not work. In spite of copying is working flawlessly
+-- NOTE: If you ssh from a tmux session to a remote system and run neovim there,
+-- NOTE: **pasting** does not work. In spite of copying is working flawlessly
 -- https://github.com/neovim/neovim/discussions/29350#discussioncomment-11127983
 
--- Thus, map `"+p`, `"*p`, `"+P`, ... in normal mode to Paste just like
--- pressing <Super-V> and `<C-r>+` and `<C-r>*` in insert mode as well
+-- TODO: Thus, map `"+p`, `"*p`, `"+P`, ... in normal mode to Paste just like
+-- TODO: pressing <Super-V> and `<C-r>+` and `<C-r>*` in insert mode as well
 
 -- Alacritty doesn't support XTGETTCAP, so built-in `/runtime/plugin/osc52.lua`
 -- is not enough (`require('vim.termcap').query('Ms', function)` doesn't work
