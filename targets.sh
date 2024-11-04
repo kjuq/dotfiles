@@ -89,6 +89,7 @@ python-test
 rclone_init
 sudo_pass
 toggle_menubar
+ttyscreen
 vc
 x
 "
