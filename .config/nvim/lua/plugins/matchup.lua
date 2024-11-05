@@ -28,7 +28,6 @@ spec.config = function()
 	vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 		group = vim.api.nvim_create_augroup('kjuq_matchup_bigfile', {}),
 		callback = function(ev)
-			vim.print(ev.buf)
 			set_deferred_highlight(ev.file, ev.buf)
 		end,
 	})
