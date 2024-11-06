@@ -1,6 +1,7 @@
 # Install Theme
 # `set -l D $XDG_CONFIG_HOME/alacritty/themes; and [ ! -e $D ]; and mkdir -p $D; and git clone https://github.com/alacritty/alacritty-theme $D`
 
+[general]
 import = [
 	"~/.config/alacritty/macos.toml",
 	"~/.config/alacritty/linux.toml",
