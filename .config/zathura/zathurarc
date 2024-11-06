@@ -4,3 +4,6 @@ map <Right> navigate next
 map <Left> navigate previous
 map <C-f> navigate next
 map <C-b> navigate previous
+
+set selection-clipboard "clipboard"
+set selection-notification false
