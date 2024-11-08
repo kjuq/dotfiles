@@ -14,6 +14,8 @@
 -- Wezterm has a bug that disables OSC52 copy to clipboard
 -- https://github.com/wez/wezterm/issues/5917
 
+-- NOTE: Check $TERM? (tmux-*, or alacritty, etc)
+
 if not os.getenv('SSH_TTY') then
 	return
 end
