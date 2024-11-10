@@ -33,6 +33,7 @@ lazygit/config.yml
 lesskey
 mimeapps.list
 mypy/config
+nb/nbrc
 neomutt/color
 neomutt/common_gmail
 neomutt/common_outlook

@@ -86,6 +86,10 @@ set --export GPG_TTY (tty)
 # Password-store
 set --export PASSWORD_STORE_DIR "$LOCAL_HOME/password-store"
 
+# nb
+set --export NBRC_PATH "$XDG_CONFIG_HOME/nb/nbrc"
+set --export NB_DIR "$XDG_DATA_HOME/nb"
+
 # Xinit
 set --export XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
 set --export XSERVERRC "$XDG_CONFIG_HOME/X11/xserverrc"
