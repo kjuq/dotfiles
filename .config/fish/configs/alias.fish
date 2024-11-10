@@ -47,11 +47,6 @@ if command --search --quiet nvidia-settings
 	alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 end
 
-# Store wget-hsts in $XDG_CACHE_HOME
-if command --search --quiet wget
-	alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
-end
-
 if command --search --quiet fd
 	alias fd="fd --hidden"
 end
