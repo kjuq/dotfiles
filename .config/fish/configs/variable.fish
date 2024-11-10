@@ -73,6 +73,12 @@ set --export RXVT_SOCKET "$XDG_RUNTIME_DIR"/urxvtd
 # wgetrc
 set --export WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
 
+# cpanm
+set --export PERL_CPANM_HOME "$XDG_CACHE_HOME/cpanm"
+
+# OpenJDK (some applications don't respect this setting)
+set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
+
 # GnuPG
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
