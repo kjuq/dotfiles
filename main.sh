@@ -2,12 +2,12 @@
 
 # check if XDG_CONFIG_HOME is set
 if [ -z "$XDG_CONFIG_HOME" ]; then
-	echo "XDG_CONFIG_HOME is not set. Quit."
+	echo "XDG_CONFIG_HOME is not set. Quit." 1>&2
 	exit 1
 fi
 
 if [ -z "$LOCAL_BIN_PATH" ]; then
-	echo "LOCAL_BIN_PATH is not set. Quit."
+	echo "LOCAL_BIN_PATH is not set. Quit." 1>&2
 	exit 1
 fi
 
@@ -46,8 +46,8 @@ backup() {
 		dst="$script_library/$target_file"
 		parent_dir="$script_library/$(dirname "$target_file")"
 	else
-		echo "XDG option is invalid."
-		echo "Target: $target_file"
+		echo "XDG option is invalid." 1>&2
+		echo "Target: $target_file" 1>&2
 		exit 1
 	fi
 
@@ -92,8 +92,8 @@ symlink() {
 		dst="$HOME/$library_without_prefix/$target_file"
 		parent_dir="$HOME/$library_without_prefix/$(dirname "$target_file")"
 	else
-		echo "XDG option is invalid."
-		echo "Target: $target_file"
+		echo "XDG option is invalid." 1>&2
+		echo "Target: $target_file" 1>&2
 		exit 1
 	fi
 
@@ -118,7 +118,7 @@ symlink() {
 			elif [ -f "$dst" ]; then
 				rm "$dst"
 			else
-				echo "Unknown Filetype Error: when deleting $dst"
+				echo "Unknown Filetype Error: when deleting $dst" 1>&2
 				exit 1
 			fi
 		else
