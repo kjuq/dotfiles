@@ -11,16 +11,10 @@ spec.opts = {
 	notification = {
 		override_vim_notify = true,
 		window = {
-			normal_hl = 'user_fidget_window',
 			winblend = 0,
 			border = require('utils.common').floatwinborder,
 		},
 	},
 }
-
-spec.config = function(_, opts)
-	vim.api.nvim_set_hl(0, 'user_fidget_window', { bg = '#000000' })
-	require('fidget').setup(opts)
-end
 
 return spec

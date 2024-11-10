@@ -8,6 +8,8 @@ opt.swapfile = false
 opt.autoread = true
 opt.undofile = true
 
+opt.belloff = { 'esc', 'error' }
+
 opt.cmdheight = 0
 opt.laststatus = 3 -- global status line. `0` to hide
 opt.showcmdloc = 'statusline'
