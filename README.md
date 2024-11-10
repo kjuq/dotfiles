@@ -28,3 +28,11 @@ My ultimate dotfiles.
 ## Uninstall (unlink symlinks)
 
 TODO
+
+# `scripts/`
+
+Run the scripts in this directory **manually**.
+
+```bash
+find ./scripts -name '*.sh' -exec bash {} \;
+```
