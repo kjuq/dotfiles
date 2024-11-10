@@ -56,6 +56,7 @@ wezterm/wezterm.lua
 X11
 xautocfg.cfg
 xremap/config.yml
+yay/config.json
 zathura/zathurarc
 "
 
