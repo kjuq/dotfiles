@@ -14,18 +14,24 @@ import = [
 osc52 = "CopyPaste"
 
 [font]
-normal = { family = "Hack Nerd Font", style = "Regular" }
-bold = { family = "Hack Nerd Font", style = "Bold" }
-italic = { family = "Hack Nerd Font", style = "Italic" }
-bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+normal = { family = "CozetteVector", style = "Regular" }
+bold = { family = "CozetteVector", style = "Bold" }
+italic = { family = "CozetteVector", style = "Italic" }
+bold_italic = { family = "CozetteVector", style = "Bold Italic" }
+offset = { x = 0, y = 0 }
 
 [colors]
 cursor = { cursor = "#E5E9F0" }
 
+[bell]
+animation = 'EaseOutQuint'
+duration = 300
+color = '#303030'
+
 [window]
 opacity = 0.7
 dimensions = { columns = 220, lines = 60 }
-padding = { x = 6, y = 1 }
+padding = { x = 10, y = 10 }
 
 [keyboard]
 bindings = [
