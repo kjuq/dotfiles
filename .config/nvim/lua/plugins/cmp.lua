@@ -49,6 +49,7 @@ spec.config = function()
 		end
 	end
 
+	-- TODO: fallbacking in <C-x><C-k> not working
 	local abort = function(fallback)
 		if cmp.visible() and vim.fn.pumvisible() ~= 1 then
 			cmp.abort()
