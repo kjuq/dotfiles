@@ -229,6 +229,7 @@ spec.dependencies = {
 	'onsails/lspkind.nvim',
 	'saadparwaiz1/cmp_luasnip',
 	'mtoohey31/cmp-fish',
+	'uga-rosa/cmp-skkeleton',
 	{
 		'petertriho/cmp-git',
 		specs = 'nvim-lua/plenary.nvim',

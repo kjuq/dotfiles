@@ -63,7 +63,6 @@ spec.specs = {
 
 spec.dependencies = {
 	'vim-denops/denops.vim',
-	'rinx/cmp-skkeleton',
 	{
 		'delphinus/skkeleton_indicator.nvim',
 		opts = {
