@@ -1,3 +1,5 @@
+-- cursor moves right unintuitively when the cursor is beyond a first non-blank char (i.e. indent)
+
 local M = {}
 
 ---@return jolyne.Positions
@@ -14,12 +16,11 @@ local get_cur_poses = function()
 	}
 end
 
----@param pos jolyne.Positions
 ---@return boolean
-local counts_exceeded = function(pos)
+local counts_exceeded = function()
 	-- FIX: revert scroll after back_scroll and remove this section
 	-- HACK: alleviate unexpected scroll
-	local max_count = math.max(pos.height, pos.height - (vim.o.scrolloff + 1) * 2)
+	local max_count = vim.o.lines - (vim.o.scrolloff + 1) * 2
 	return vim.v.count1 > max_count
 end
 
@@ -67,11 +68,15 @@ local back_exceeded_scrolls = function(newpos, oldpos)
 	vim.cmd('execute "normal! ' .. scroll_count .. scroll_back .. '"')
 end
 
+---@param motion function
 M.motion = function(motion)
-	-- TODO: implement operator pending mode
-	-- TODO: not moving cursor when the cursor on the posision beyond a first non-blank char (ie. indent)
+	-- NOTE: Cannot use in operator-pending mode
+	if string.sub(vim.api.nvim_get_mode().mode, 2, 2) == 'o' then
+		vim.notify('Jolyne: Not allowed in operator-pending mode', vim.log.levels.WARN)
+		return
+	end
 	local initpos = get_cur_poses()
-	if counts_exceeded(initpos) then
+	if counts_exceeded() then
 		vim.notify('Jolyne: Too many counts (' .. vim.v.count1 .. ')', vim.log.levels.WARN)
 		return
 	end

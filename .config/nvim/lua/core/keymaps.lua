@@ -39,14 +39,14 @@ end, { expr = true, silent = true })
 
 -- word moves in only current line
 local jolyne = require('jolyne')
-map({ 'n', 'x', 'o' }, 'W', jolyne.W)
-map({ 'n', 'x', 'o' }, 'E', jolyne.E)
-map({ 'n', 'x', 'o' }, 'B', jolyne.B)
-map({ 'n', 'x', 'o' }, 'gE', jolyne.gE)
-map({ 'n', 'x', 'o' }, 'w', jolyne.w)
-map({ 'n', 'x', 'o' }, 'e', jolyne.e)
-map({ 'n', 'x', 'o' }, 'b', jolyne.b)
-map({ 'n', 'x', 'o' }, 'ge', jolyne.ge)
+map({ 'n', 'x' }, 'W', jolyne.W)
+map({ 'n', 'x' }, 'E', jolyne.E)
+map({ 'n', 'x' }, 'B', jolyne.B)
+map({ 'n', 'x' }, 'gE', jolyne.gE)
+map({ 'n', 'x' }, 'w', jolyne.w)
+map({ 'n', 'x' }, 'e', jolyne.e)
+map({ 'n', 'x' }, 'b', jolyne.b)
+map({ 'n', 'x' }, 'ge', jolyne.ge)
 
 -- Asterisk
 local ast = require('asterisk-remix')
