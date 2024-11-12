@@ -9,10 +9,17 @@ local callback = function()
 	if line < 1 or line > btmline or vim.tbl_contains(ignore_fts, vim.o.filetype) then
 		return
 	end
-	vim.cmd([[normal! g`"zz]])
+	vim.cmd([[normal! g`"]])
+	vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+		group = vim.api.nvim_create_augroup('kjuq_restore_cursor_centering', {}),
+		callback = function()
+			vim.cmd([[normal! zz]])
+		end,
+		once = true,
+	})
 end
 
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 	group = vim.api.nvim_create_augroup('kjuq_restore_cursor', {}),
 	callback = callback,
 })
