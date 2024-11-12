@@ -23,21 +23,21 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('c', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
+	map('g', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
 
-	map('q', 'n', '<CMD>GpStop<CR>', 'Stop responses and jobs'),
-	map('n', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
-	map('d', 'n', '<CMD>GpChatDelete<CR>', 'Delete the current chat'),
-	map('r', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
-
-	map('f', 'n', '<CMD>GpChatFinder<CR>', 'Search through chats'),
-	map('i', 'n', '<CMD>GpImage<CR>', 'Open prompt to generate image'),
-
-	map('y', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
-	map('j', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
-	map('k', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
-
-	map('X', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
+	-- map('q', 'n', '<CMD>GpStop<CR>', 'Stop responses and jobs'),
+	-- map('n', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
+	-- map('d', 'n', '<CMD>GpChatDelete<CR>', 'Delete the current chat'),
+	-- map('r', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
+	--
+	-- map('f', 'n', '<CMD>GpChatFinder<CR>', 'Search through chats'),
+	-- map('i', 'n', '<CMD>GpImage<CR>', 'Open prompt to generate image'),
+	--
+	-- map('y', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
+	-- map('j', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
+	-- map('k', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
+	--
+	-- map('X', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
 }
 
 spec.opts = {

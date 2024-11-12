@@ -32,12 +32,12 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('o', 'n', function()
+	map('<Nop>', 'n', function()
 		require('CopilotChat').open({ window = { layout = 'replace' } })
 	end, 'Open CopilotChat'),
-	map('e', { 'n', 'x' }, '<CMD>CopilotChatExplain<CR>', 'Explain code'),
-	map('t', { 'n', 'x' }, '<CMD>CopilotChatTests<CR>', 'Generate tests'),
-	map('x', { 'n', 'x' }, '<CMD>CopilotChatInPlace<CR>', 'Open In-place chat'),
+	map('<Nop>', { 'n', 'x' }, '<CMD>CopilotChatExplain<CR>', 'Explain code'),
+	map('<Nop>', { 'n', 'x' }, '<CMD>CopilotChatTests<CR>', 'Generate tests'),
+	map('<Nop>', { 'n', 'x' }, '<CMD>CopilotChatInPlace<CR>', 'Open In-place chat'),
 }
 
 spec.opts = function()
