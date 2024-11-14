@@ -38,7 +38,6 @@ spec.config = function()
 	vim.fn['skkeleton#register_keymap']('henkan', '<C-h>', 'henkanBackward')
 	vim.fn['skkeleton#register_keymap']('henkan', '<C-w>', 'cancel')
 	vim.fn['skkeleton#register_keymap']('henkan', '<C-y>', 'kakutei')
-	vim.fn['skkeleton#register_keymap']('input', '<C-y>', 'kakutei')
 
 	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-w>') ]])
 	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-y>') ]])
@@ -65,6 +64,7 @@ spec.dependencies = {
 	'vim-denops/denops.vim',
 	{
 		'delphinus/skkeleton_indicator.nvim',
+		event = 'VeryLazy',
 		opts = {
 			alwaysShown = false,
 			fadeOutMs = 0,
