@@ -133,7 +133,6 @@ keymap Q NULL
 
 # DONT USE C-g because it is remapped by tmux !!!!!
 
-keymap SPC UP
 keymap C-m GOTO_LINK
 keymap C-j GOTO_LINK
 
@@ -146,7 +145,6 @@ keymap gg BEGIN
 # keymap ESC-g GOTO_LINE
 keymap w NEXT_WORD
 keymap b PREV_WORD
-
 
 # Undo
 keymap C-r REDO
