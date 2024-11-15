@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+query=""
+while [ "$#" -gt 0 ]; do
+	query="$query $1"
+	shift
+done
+
+query=$(echo "$query" | sed 's/^[ \t]*//;s/[ \t]*$//')
+w3m "https://www.google.com/search?q=$query"

@@ -81,6 +81,7 @@ disable_mouse_acceleration
 extend_hidpi_display
 floatingnvim
 fix_treesitter_parser
+ggl
 idletimer
 jman
 keyboard_init
