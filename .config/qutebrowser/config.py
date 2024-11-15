@@ -19,7 +19,6 @@ c.tabs.title.format = '{audio}:{current_title}'
 c.tabs.close_mouse_button = 'right'
 c.tabs.close_mouse_button_on_bar = 'ignore'
 c.tabs.mousewheel_switching = False
-c.tabs.select_on_remove = 'prev'
 
 c.statusbar.widgets = [
 	'keypress',
