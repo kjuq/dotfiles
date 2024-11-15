@@ -209,7 +209,7 @@ map('n', 'gob', '<CMD>EditBookmarks<CR>', { desc = 'Edit bookmarks.txt' })
 map('n', 'gor', '<CMD>EditReadinglist<CR>', { desc = 'Edit readinglist.txt' })
 map('n', 'god', '<CMD>EditDailynote<CR>', { desc = 'Edit daily note' })
 map('n', 'gos', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
-map('n', 'goq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
+map('n', 'goc', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
 
 -- TODO: check if Netrw is loaded or not
 map('n', 'gX', function()

@@ -9,8 +9,8 @@ spec.opts = function()
 			winblend = 0,
 		},
 		func_map = {
-			open = '<CR>', -- <CR>
-			openc = 'o', -- "o"
+			open = 'o', -- <CR>
+			openc = '<CR>', -- "o"
 			drop = '<Nop>', -- "O" (I have no idea what this is)
 			tabdrop = '<Nop>', -- ""
 			tab = '<Nop>', -- "t"
