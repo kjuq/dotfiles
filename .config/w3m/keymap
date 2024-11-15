@@ -142,9 +142,9 @@ keymap ^ LINE_BEGIN
 keymap 0 LINE_BEGIN
 keymap G END
 keymap gg BEGIN
-# keymap ESC-g GOTO_LINE
 keymap w NEXT_WORD
 keymap b PREV_WORD
+keymap zz CENTER_V
 
 # Undo
 keymap C-r REDO
@@ -173,15 +173,15 @@ keymap n SEARCH_NEXT
 keymap N SEARCH_PREV
 
 # Commands
-keymap :: COMMAND
+keymap : COMMAND
 keymap g? HELP
-keymap :downloads DOWNLOAD_LIST
-keymap :hist HISTORY
-keymap :q EXIT
+keymap gd DOWNLOAD_LIST
+keymap gy HISTORY
 keymap gh EXIT
-keymap :settings OPTIONS
 
 # copy url to clipboard
 keymap yy EXTERN 'printf %s | xclip -selection clipboard'
 
 keymap I COMMAND "SET_OPTION display_image=toggle ; RESHAPE"
+keymap gx EXTERN
+keymap gX EXTERN_LINK
