@@ -10,11 +10,9 @@ require('core.options')
 require('core.keymaps')
 require('core.commands')
 require('core.mouse')
+require('core.colorscheme')
 
 require('core.lazy')
-
--- should load colorscheme after initialize plugins
-require('core.colorscheme')
 
 if myvimrc and vim.uv.fs_stat(vim.fn.fnamemodify(myvimrc, ':p:h') .. '/lua/initpostlocal.lua') then
 	require('initpostlocal')
