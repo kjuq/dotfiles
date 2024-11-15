@@ -3,9 +3,9 @@ local spec = { 'olimorris/codecompanion.nvim' }
 
 local map = require('utils.lazy').generate_map('<leader>c', 'CodeCompanion: ')
 spec.keys = {
-	map('o', 'n', '<Cmd>CodeCompanionChat<CR>', 'Chat'),
-	map('i', 'n', '<Cmd>CodeCompanion<CR>', 'Inline chat'),
-	map('a', 'n', '<Cmd>CodeCompanionActions<CR>', 'Actions'),
+	map('o', { 'n', 'x' }, '<Cmd>CodeCompanionChat Toggle<CR>', 'Chat'),
+	map('i', { 'n' }, '<Cmd>CodeCompanion<CR>', 'Inline chat'),
+	map('a', { 'n', 'x' }, '<Cmd>CodeCompanionActions<CR>', 'Actions'),
 }
 
 spec.opts = {
@@ -38,12 +38,12 @@ spec.opts = {
 				},
 				regenerate = {
 					modes = {
-						n = 'gr',
+						n = '<leader>cR',
 					},
 				},
 				close = {
 					modes = {
-						n = '<C-Tab>',
+						n = '<leader>cX',
 					},
 				},
 				stop = {
@@ -53,17 +53,17 @@ spec.opts = {
 				},
 				clear = {
 					modes = {
-						n = 'gx',
+						n = '<leader>cC',
 					},
 				},
 				codeblock = {
 					modes = {
-						n = 'gc',
+						n = '<Nop>',
 					},
 				},
 				yank_code = {
 					modes = {
-						n = 'gy',
+						n = '<Nop>',
 					},
 				},
 				next_chat = {
@@ -88,22 +88,22 @@ spec.opts = {
 				},
 				change_adapter = {
 					modes = {
-						n = 'ga',
+						n = '<leader>cA',
 					},
 				},
 				fold_code = {
 					modes = {
-						n = 'gf',
+						n = '<Nop>',
 					},
 				},
 				debug = {
 					modes = {
-						n = 'gd',
+						n = '<leader>cD',
 					},
 				},
 				system_prompt = {
 					modes = {
-						n = 'gs',
+						n = '<leader>cS',
 					},
 				},
 			},
@@ -115,22 +115,37 @@ spec.opts = {
 					modes = {
 						n = 'ga',
 					},
-					index = 1,
-					callback = 'keymaps.accept_change',
-					description = 'Accept change',
 				},
 				reject_change = {
 					modes = {
 						n = 'gr',
 					},
-					index = 2,
-					callback = 'keymaps.reject_change',
-					description = 'Reject change',
 				},
 			},
 		},
 	},
 }
+
+spec.config = function(_, opts)
+	require('codecompanion').setup(opts)
+
+	vim.api.nvim_create_autocmd({ 'FileType' }, {
+		pattern = 'codecompanion',
+		group = vim.api.nvim_create_augroup('kjuq_codecompanion', {}),
+		callback = function()
+			local toggle_map = function(key)
+				vim.keymap.set(
+					'n',
+					key,
+					'<Cmd>CodeCompanionChat Toggle<CR>',
+					{ desc = 'Codecompanion: Toggle', buffer = true }
+				)
+			end
+			toggle_map('<C-Tab>')
+			toggle_map('<C-S-Tab>')
+		end,
+	})
+end
 
 spec.specs = {
 	'nvim-lua/plenary.nvim',
