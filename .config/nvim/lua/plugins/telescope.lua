@@ -161,7 +161,7 @@ spec.opts = function()
 					[prev_down] = actions.preview_scrolling_down,
 					[prev_left] = actions.preview_scrolling_left,
 					[prev_right] = actions.preview_scrolling_right,
-					['?'] = actions.which_key,
+					['g?'] = actions.which_key,
 				},
 			},
 
