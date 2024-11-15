@@ -51,6 +51,10 @@ if command --search --quiet fd
 	alias fd="fd --hidden"
 end
 
+if command --search --quiet w3m
+	alias w3m='env TERM=xterm-256color w3m'
+end
+
 if command --search --quiet lnks
 	set --local lnks_dir "$HOME/docs/__bookmarks"
 	alias lnks="lnks --dir $lnks_dir"

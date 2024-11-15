@@ -53,6 +53,7 @@ tmux/tmux.conf
 tmux/scripts
 vim/vimrc
 w3m/keymap
+w3m/config
 wezterm/wezterm.lua
 X11
 xautocfg.cfg
