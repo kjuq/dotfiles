@@ -183,5 +183,5 @@ keymap gh EXIT
 keymap yy EXTERN 'printf %s | xclip -selection clipboard'
 
 keymap I COMMAND "SET_OPTION display_image=toggle ; RESHAPE"
-keymap gx EXTERN
-keymap gX EXTERN_LINK
+keymap gX EXTERN
+keymap gx EXTERN_LINK
