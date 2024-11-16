@@ -1,3 +1,10 @@
+vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+	group = vim.api.nvim_create_augroup('kjuq_override_colorscheme', {}),
+	callback = function()
+		vim.api.nvim_set_hl(0, 'MatchParen', { fg = 'NONE', bg = 'NONE' })
+	end,
+})
+
 -- load built-in colorscheme if no colorscheme is loaded by plugin manager
 if vim.g.colors_name == nil then
 	vim.cmd.colorscheme('default')
@@ -9,10 +16,3 @@ if vim.g.colors_name == nil then
 	vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', ctermbg = 'NONE' })
 	vim.api.nvim_set_hl(0, 'Pmenu', { bg = '#000000', ctermbg = 'NONE' })
 end
-
-vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
-	group = vim.api.nvim_create_augroup('kjuq_override_colorscheme', {}),
-	callback = function()
-		vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ff966c', bg = '#663434' })
-	end,
-})
