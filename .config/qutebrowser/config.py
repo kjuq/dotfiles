@@ -39,8 +39,8 @@ c.colors.webpage.darkmode.enabled = True
 
 c.auto_save.session = True
 
-c.url.default_page = 'https://duckduckgo.com'
-c.url.start_pages = 'https://duckduckgo.com'
+c.url.default_page = 'https://search.yahoo.co.jp'
+c.url.start_pages = 'https://search.yahoo.co.jp'
 
 c.scrolling.bar = 'always'
 
@@ -50,7 +50,7 @@ c.tabs.new_position.unrelated = 'next'
 c.messages.timeout = 1000  # ms
 
 c.url.searchengines = {
-	'DEFAULT': 'https://duckduckgo.com/?q={}',
+	'DEFAULT': 'https://search.yahoo.co.jp/search?p={}',
 	'g': 'https://github.com/search?q={}',
 	's': 'https://stackoverflow.com/search?q={}',
 	'y': 'https://www.youtube.com/results?search_query={}',
