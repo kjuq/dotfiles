@@ -13,6 +13,6 @@ end
 vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 	group = vim.api.nvim_create_augroup('kjuq_override_colorscheme', {}),
 	callback = function()
-		vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ff966c', bg = '#553434' })
+		vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ff966c', bg = '#663434' })
 	end,
 })
