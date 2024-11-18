@@ -18,8 +18,9 @@ spec.config = function()
 
 	vim.g.rainbow_delimiters = {
 		strategy = {
-			[''] = function()
-				if vim.fn.line('$') > 3000 then
+			[''] = function(bufnr)
+				local common = require('utils.common')
+				if common.is_bigbuf(bufnr) then
 					return nil
 				else
 					return rainbow.strategy['global']
