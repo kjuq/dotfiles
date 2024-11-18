@@ -7,16 +7,16 @@ local spec = { 'nvim-lualine/lualine.nvim' }
 spec.event = not hidden and 'VeryLazy' or {}
 
 spec.init = function()
-	vim.opt.laststatus = hidden and 0 or 2 -- to prevent from scrolling a line up when setting up
+	vim.opt.laststatus = hidden and 0 or 3 -- to prevent from scrolling a line up when `setup()`
 end
 
 local map = require('utils.lazy').generate_map('', 'Lualine: ')
 spec.keys = {
 	map('gas', 'n', function()
-		if hidden then
-			local opts = { unhide = true }
+		if hidden then -- unhide
+			local opts = { unhide = true } -- assigning opts is needed to suppress warning
 			require('lualine').hide(opts)
-		else
+		else -- hide
 			local opts = {}
 			require('lualine').hide(opts)
 		end
@@ -281,7 +281,6 @@ spec.opts = function()
 		color = { fg = colors.fg, gui = 'bold' },
 	}
 
-	ins_left(components.empty)
 	ins_left(components.filename)
 	ins_left(components.filesize, 0, 0)
 
@@ -297,7 +296,6 @@ spec.opts = function()
 	ins_right(components.encoding)
 	ins_right(components.fileformat)
 	ins_right(components.filetype)
-	ins_right(components.empty)
 
 	return opts
 end
