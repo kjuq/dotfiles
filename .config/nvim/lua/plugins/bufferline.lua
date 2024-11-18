@@ -41,12 +41,12 @@ spec.keys = {
 	end, 'Toggle tabline'),
 }
 
+-- need to use `config` because `bufferline.groups` module is required
 spec.config = function()
-	-- local transparent = "#000000"
 	require('bufferline').setup({
 		options = {
 			numbers = 'none', -- "ordinal", "buffer_id", "both"
-			diagnostics = 'nvim_lsp',
+			diagnostics = true,
 			always_show_bufferline = false,
 			separator_style = { '|', '|' }, -- "slant", "slope", "thick", "thin", { "", "" }
 			indicator = { style = 'none' }, -- "icon", "underline", "none"
@@ -75,13 +75,6 @@ spec.config = function()
 		},
 		highlights = {
 			separator = { fg = '#777777' },
-			-- Needed when using separator
-			-- fill                   = { bg = transparent, },
-			-- tab_separator          = { fg = transparent, },
-			-- tab_separator_selected = { fg = transparent, },
-			-- separator_selected     = { fg = transparent, bg = transparent },
-			-- separator_visible      = { fg = transparent, },
-			-- offset_separator       = { fg = transparent, },
 		},
 	})
 end
