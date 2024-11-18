@@ -1,15 +1,17 @@
 ---@type LazySpec
 local spec = { 'ellisonleao/gruvbox.nvim' }
-spec.lazy = false
+spec.lazy = _G.kjuq_colorscheme ~= 'gruvbox'
 spec.priority = 9999
 
-spec.config = function()
-	require('gruvbox').setup({
-		transparent_mode = true,
-		dim_inactive = false,
-	})
+spec.opts = {
+	transparent_mode = true,
+	dim_inactive = false,
+}
+
+spec.config = function(_, opts)
+	require('gruvbox').setup(opts)
 	vim.cmd.colorscheme('gruvbox')
-	vim.api.nvim_set_hl(0, 'statusline', { bg = 'NONE' })
+	vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE' })
 end
 
 return spec

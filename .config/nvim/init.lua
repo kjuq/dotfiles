@@ -1,7 +1,8 @@
 vim.loader.enable()
 
 local myvimrc = os.getenv('MYVIMRC')
-if myvimrc and vim.uv.fs_stat(vim.fn.fnamemodify(myvimrc, ':p:h') .. '/lua/initprelocal.lua') then
+local luahome = myvimrc and vim.fn.fnamemodify(myvimrc, ':p:h') .. '/lua' or nil -- mostly `$XDG_CONFIG_HOME/nvim/lua`
+if luahome and vim.uv.fs_stat(luahome .. '/initprelocal.lua') then
 	require('initprelocal')
 end
 
@@ -14,6 +15,6 @@ require('core.colorscheme')
 
 require('core.lazy')
 
-if myvimrc and vim.uv.fs_stat(vim.fn.fnamemodify(myvimrc, ':p:h') .. '/lua/initpostlocal.lua') then
+if myvimrc and vim.uv.fs_stat(luahome .. '/initpostlocal.lua') then
 	require('initpostlocal')
 end

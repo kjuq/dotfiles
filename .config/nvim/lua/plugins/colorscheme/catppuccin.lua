@@ -1,7 +1,7 @@
 ---@type LazySpec
 local spec = { 'catppuccin/nvim' }
+spec.lazy = _G.kjuq_colorscheme ~= 'catppuccin'
 spec.name = 'catppuccin'
-spec.lazy = false
 spec.priority = 9999
 
 spec.opts = {

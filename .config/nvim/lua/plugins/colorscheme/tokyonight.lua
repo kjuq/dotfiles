@@ -1,8 +1,9 @@
 ---@type LazySpec
 local spec = { 'folke/tokyonight.nvim' }
-spec.lazy = false
+spec.lazy = _G.kjuq_colorscheme ~= 'tokyonight'
 spec.priority = 9999
 
+---@class tokyonight.Config
 spec.opts = {
 	transparent = true,
 	dim_inactive = false,
