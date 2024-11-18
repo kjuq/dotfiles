@@ -33,7 +33,7 @@ local map_spider = function(key)
 			end
 		end)
 	end
-	return map(key, { 'n', 'x', 'o' }, rhs, key)
+	return map(key, { 'n', 'x' }, rhs, key)
 end
 spec.keys = {
 	map_spider('w'),
