@@ -11,7 +11,6 @@ spec.opts = {
 spec.config = function(_, opts)
 	require('gruvbox').setup(opts)
 	vim.cmd.colorscheme('gruvbox')
-	vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE' })
 end
 
 return spec

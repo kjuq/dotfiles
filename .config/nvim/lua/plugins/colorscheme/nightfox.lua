@@ -13,9 +13,6 @@ spec.opts = {
 spec.config = function(_, opts)
 	require('nightfox').setup(opts)
 	vim.cmd.colorscheme('nightfox')
-	vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'DarkGray' })
-	vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', ctermbg = 'NONE' })
-	vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', ctermbg = 'NONE' })
 end
 
 return spec

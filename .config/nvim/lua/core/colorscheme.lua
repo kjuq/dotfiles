@@ -2,6 +2,10 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 	group = vim.api.nvim_create_augroup('kjuq_override_colorscheme', {}),
 	callback = function()
 		vim.api.nvim_set_hl(0, 'MatchParen', { fg = 'NONE', bg = 'NONE' })
+		vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', ctermbg = 'NONE' })
+		vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', ctermbg = 'NONE' })
+		vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'DarkGray' })
+		vim.api.nvim_set_hl(0, 'VertSplit', { link = 'WinSeparator' })
 	end,
 })
 
@@ -10,9 +14,5 @@ if vim.g.colors_name == nil then
 	vim.cmd.colorscheme('default')
 	vim.api.nvim_set_hl(0, 'Cursor', { bg = 'LightGray', ctermbg = 'LightGray', fg = 'Black', ctermfg = 'Black' })
 	vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
-
-	vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'DarkGray' })
-	vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', ctermbg = 'NONE' })
-	vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NONE', ctermbg = 'NONE' })
 	vim.api.nvim_set_hl(0, 'Pmenu', { bg = '#000000', ctermbg = 'NONE' })
 end
