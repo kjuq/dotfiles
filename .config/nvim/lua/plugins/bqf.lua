@@ -3,6 +3,19 @@ local spec = { 'kevinhwang91/nvim-bqf' }
 spec.ft = 'qf'
 
 spec.opts = function()
+	vim.api.nvim_create_autocmd({ 'FileType' }, {
+		pattern = 'qf',
+		group = vim.api.nvim_create_augroup('kjuq_bqf_keymap', {}),
+		callback = function()
+			local rhs = function()
+				require('bqf.preview.handler').hideWindow()
+				vim.cmd([[execute "normal! \<C-w>w"]])
+			end
+			vim.keymap.set('n', '<C-w><C-w>', rhs, { buffer = true, desc = 'Bqf: move window' })
+			vim.keymap.set('n', '<C-w>w', rhs, { buffer = true, desc = 'Bqf: move window' })
+		end,
+		desc = 'Hide preview before moving windows with <C-w>w and <C-w><C-w>',
+	})
 	return {
 		preview = {
 			auto_preview = true,
