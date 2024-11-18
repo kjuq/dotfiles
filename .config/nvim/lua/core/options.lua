@@ -48,6 +48,8 @@ if vim.fn.has('nvim-0.11') == 1 then
 	opt.completeopt:append('fuzzy')
 end
 
+opt.viminfo = [['1000,<50,s10,h]]
+
 opt.sessionoptions = {
 	'blank',
 	'buffers',
