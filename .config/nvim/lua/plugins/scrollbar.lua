@@ -25,6 +25,7 @@ spec.opts = function()
 			'saga_codeaction',
 			'sagarename',
 			'DressingInput',
+			'dropbar_menu',
 		},
 	}
 end
