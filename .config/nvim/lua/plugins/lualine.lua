@@ -7,7 +7,7 @@ local spec = { 'nvim-lualine/lualine.nvim' }
 spec.event = not hidden and 'VeryLazy' or {}
 
 spec.init = function()
-	vim.opt.laststatus = 0
+	vim.opt.laststatus = hidden and 0 or 2 -- to prevent from scrolling a line up when setting up
 end
 
 local map = require('utils.lazy').generate_map('', 'Lualine: ')
@@ -25,6 +25,7 @@ spec.keys = {
 }
 
 spec.opts = function()
+	vim.opt.laststatus = 0
 	-- stylua: ignore
 	local colors = {
 		bg       = "#202328",
