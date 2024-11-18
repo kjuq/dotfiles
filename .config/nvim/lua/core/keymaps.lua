@@ -71,25 +71,10 @@ map('n', ']l', vim.cmd.cnext, { desc = 'Next location on QuickFix' })
 map('n', '[l', vim.cmd.cprevious, { desc = 'Previous location on QuickFix' })
 
 -- Frequently used keymaps
-local write = function(key)
-	map('n', key, '<Cmd>silent write<CR>', { desc = 'Write' })
-end
-local write_noautocmd = function(key)
-	map('n', key, '<Cmd>noautocmd silent write<CR>', { desc = 'Write w/o autocmd' })
-end
-local quit = function(key)
-	map('n', key, vim.cmd.quit, { silent = true, desc = 'Quit' })
-end
-local quit_force = function(key)
-	map('n', key, function()
-		vim.cmd.quit({ bang = true })
-	end, { silent = true, desc = 'Force quit' })
-end
-
-write('gs')
-write_noautocmd('gS')
-quit('gh')
-quit_force('gH')
+map('n', 'gs', '<Cmd>silent write<CR>', { desc = 'Write' })
+map('n', 'gS', '<Cmd>noautocmd silent write<CR>', { desc = 'Write w/o autocmd' })
+map('n', 'gh', vim.cmd.quit, { silent = true, desc = 'Quit' })
+map('n', 'gH', vim.cmd.quitall, { silent = true, desc = 'Force quit' })
 
 map('n', '<C-q>', '<C-w><C-w>', { desc = 'Switch window' })
 
