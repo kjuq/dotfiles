@@ -74,7 +74,9 @@ map('n', '[l', vim.cmd.cprevious, { desc = 'Previous location on QuickFix' })
 map('n', 'gs', '<Cmd>silent write<CR>', { desc = 'Write' })
 map('n', 'gS', '<Cmd>noautocmd silent write<CR>', { desc = 'Write w/o autocmd' })
 map('n', 'gh', vim.cmd.quit, { silent = true, desc = 'Quit' })
-map('n', 'gH', vim.cmd.quitall, { silent = true, desc = 'Force quit' })
+map('n', 'gH', vim.cmd.quitall, { silent = true, desc = 'Quit all' })
+map('n', 'gah', '<Cmd>quit!<CR>', { silent = true, desc = 'Force quit' })
+map('n', 'gaH', '<Cmd>quitall!<CR>', { silent = true, desc = 'Force quit all' })
 
 map('n', '<C-q>', '<C-w><C-w>', { desc = 'Switch window' })
 
@@ -121,11 +123,11 @@ map('n', 'gaS', function()
 	end
 end, { desc = 'Toggle spell check' })
 
-map('n', 'gah', function()
+map('n', 'gay', function()
 	vim.opt.cursorline = not vim.o.cursorline
 end, { desc = 'Toggle cursorline' })
 
-map('n', 'gaH', function()
+map('n', 'gaY', function()
 	vim.opt.cursorcolumn = not vim.o.cursorcolumn
 end, { desc = 'Toggle cursorcolumn' })
 
