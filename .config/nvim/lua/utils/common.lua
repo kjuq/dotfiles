@@ -71,12 +71,12 @@ M.buffer_prev = function()
 	end
 end
 
----@param mode 'others'|'force'|nil
+---@param mode 'others'|'force'|?
 M.buffer_delete = function(mode)
 	if mode == 'others' then
-		for _, value in pairs(get_valid_buffers()) do
-			if value ~= vim.api.nvim_get_current_buf() then
-				vim.api.nvim_buf_delete(value, {})
+		for _, bufnr in pairs(get_valid_buffers()) do
+			if bufnr ~= vim.api.nvim_get_current_buf() and not vim.bo[bufnr].modified then
+				vim.api.nvim_buf_delete(bufnr, {})
 			end
 		end
 	else

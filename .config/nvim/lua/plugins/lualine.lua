@@ -12,7 +12,7 @@ end
 
 local map = require('utils.lazy').generate_map('', 'Lualine: ')
 spec.keys = {
-	map('gal', 'n', function()
+	map('gas', 'n', function()
 		if hidden then
 			local opts = { unhide = true }
 			require('lualine').hide(opts)

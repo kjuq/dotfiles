@@ -106,8 +106,12 @@ map('n', 'gl', function()
 end, { desc = 'Delete the current buffer' })
 
 map('n', 'gL', function()
+	require('utils.common').buffer_delete('force')
+end, { desc = 'Delete the current buffer forcibly' })
+
+map('n', 'gal', function()
 	require('utils.common').buffer_delete('others')
-end, { desc = 'Delete all buffers except for the current one' })
+end, { desc = 'Delete all buffers except for a current one' })
 
 map('n', 'gA', '<CMD>messages<CR>', { desc = 'History of messages' })
 
@@ -144,9 +148,9 @@ map('n', 'gaL', function()
 	vim.opt.list = not vim.o.list
 end, { desc = 'Toggle list' })
 
-map('n', 'gal', function()
+map('n', 'gas', function()
 	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
-end, { desc = 'Toggle list' })
+end, { desc = 'Toggle statusline' })
 
 map('n', 'gan', function()
 	vim.opt.number = not vim.o.number
@@ -188,6 +192,10 @@ map('n', 'ga-', function()
 	vim.cmd('silent! cd ..')
 	vim.notify(vim.fn.getcwd())
 end, { desc = 'Change to upper directory' })
+
+map('n', 'gam', function()
+	vim.api.nvim_feedkeys('m', 'n', true)
+end, { desc = 'Set mark at cursor position' })
 
 -- variable keybinds on states
 local virtual_edit_replace = false
