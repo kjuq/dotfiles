@@ -20,7 +20,14 @@ spec.config = function()
 		{ name = 'emoji' },
 		{ name = 'fish' },
 		{ name = 'luasnip' },
-		{ name = 'nvim_lsp' },
+		{
+			name = 'nvim_lsp',
+			option = {
+				markdown_oxide = {
+					keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
+				},
+			},
+		},
 		{ name = 'nvim_lua' },
 		{ name = 'natdat' },
 	})
