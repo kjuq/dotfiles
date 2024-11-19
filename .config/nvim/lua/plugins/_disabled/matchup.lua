@@ -1,3 +1,5 @@
+-- NOTE: This plugin causes snippets to automatically be expanded unexpectedly
+
 ---@type LazySpec
 local spec = { 'andymass/vim-matchup' }
 spec.event = 'VeryLazy'
