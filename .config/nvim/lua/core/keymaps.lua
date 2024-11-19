@@ -180,6 +180,7 @@ map('n', 'ga-', function()
 	vim.notify(vim.fn.getcwd())
 end, { desc = 'Change to upper directory' })
 
+map({ 'n', 'x' }, 'm', '<Nop>')
 map('n', 'gam', function()
 	vim.api.nvim_feedkeys('m', 'n', true)
 end, { desc = 'Set mark at cursor position' })

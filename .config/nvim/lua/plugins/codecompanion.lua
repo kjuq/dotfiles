@@ -22,6 +22,17 @@ spec.opts = {
 		language = 'Japanese',
 		send_code = true,
 	},
+	adapters = {
+		copilot = function()
+			return require('codecompanion.adapters').extend('copilot', {
+				schema = {
+					model = {
+						default = 'claude-3.5-sonnet',
+					},
+				},
+			})
+		end,
+	},
 	strategies = {
 		chat = {
 			adapter = 'copilot',
@@ -49,7 +60,7 @@ spec.opts = {
 				},
 				stop = {
 					modes = {
-						n = '<C-q>',
+						n = '<leader>cq',
 					},
 				},
 				clear = {
