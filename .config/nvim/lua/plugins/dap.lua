@@ -78,14 +78,16 @@ spec.cmd = {
 	'DapVirtualTextToggle',
 }
 
-spec.config = function()
-	require('mason-nvim-dap').setup({
-		handlers = { -- https://zenn.dev/pluck/articles/17f0b3770146ad
-			function(config)
-				require('mason-nvim-dap').default_setup(config)
-			end,
-		},
-	})
+spec.opts = {
+	handlers = { -- https://zenn.dev/pluck/articles/17f0b3770146ad
+		function(config)
+			require('mason-nvim-dap').default_setup(config)
+		end,
+	},
+}
+
+spec.config = function(_, opts)
+	require('mason-nvim-dap').setup(opts)
 	vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#CA4F4F' })
 	vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' }) -- 󰧞 
 end
@@ -115,8 +117,7 @@ spec.dependencies = {
 	{
 		'theHamsta/nvim-dap-virtual-text',
 		opts = {
-			---@diagnostic disable-next-line: unused-local
-			display_callback = function(variable, buf, stackframe, node, options)
+			display_callback = function(variable, _, _, _, options)
 				if options.virt_text_pos == 'inline' then
 					return ' = ' .. variable.value
 				else

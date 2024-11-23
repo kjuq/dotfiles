@@ -1,5 +1,5 @@
 ---@type boolean
-local enable_on_start = false
+local enable_on_start = true
 ---@type string
 local dropbar_winbar = '%{%v:lua.dropbar.get_dropbar_str()%}'
 
