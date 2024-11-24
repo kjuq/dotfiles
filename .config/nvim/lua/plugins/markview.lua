@@ -18,16 +18,10 @@ local toggle = function()
 	toggle_enabled = not toggle_enabled
 end
 
-spec.init = function()
-	-- Lazy loading
-	vim.api.nvim_create_autocmd({ 'FileType' }, {
-		pattern = { 'markdown' },
-		group = vim.api.nvim_create_augroup('kjuq_markview', {}),
-		callback = function()
-			vim.keymap.set('n', 'K', toggle, { buffer = true, desc = 'Markview: Toggle split' })
-		end,
-	})
-end
+local map = require('utils.lazy').generate_map('', 'Markview: ')
+spec.keys = {
+	map('K', 'n', toggle, 'Toggle split', { ft = 'markdown' }),
+}
 
 spec.opts = {
 	initial_state = false,
