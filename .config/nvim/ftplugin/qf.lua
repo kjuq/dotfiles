@@ -5,6 +5,6 @@ vim.keymap.set('n', 'o', '<CR>:cclose<CR>', { buffer = true, silent = true, desc
 vim.keymap.set(
 	'n',
 	'O',
-	':<C-u>cdo edit<CR>:<C-u>cclose<CR>',
+	':<C-u>cfdo edit<CR>:<C-u>cclose<CR>',
 	{ buffer = true, silent = true, desc = 'Open all files' }
 )
