@@ -23,8 +23,6 @@ spec.cmd = {
 
 local map = require('utils.lazy').generate_map('<leader>c', 'GP: ')
 spec.keys = {
-	{ 'G', mode = 'c' }, -- lazyload commands
-
 	map('o', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
 	map('r', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
 	map('y', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
@@ -81,14 +79,17 @@ spec.opts = {
 	chat_shortcut_respond = {
 		modes = { 'n', 'i', 'v', 'x' },
 		shortcut = '<C-g><C-g>',
+		comment = 'GP: Make GP respond',
 	},
 	chat_shortcut_delete = {
 		modes = { 'n' },
 		shortcut = '<leader>cD',
+		comment = 'GP: Delete chat',
 	},
 	chat_shortcut_stop = {
 		modes = { 'n' },
 		shortcut = '<leader>cQ',
+		comment = 'GP: Stop responce',
 	},
 	chat_shortcut_new = {
 		modes = { 'n' },
