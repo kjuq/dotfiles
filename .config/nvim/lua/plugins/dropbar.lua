@@ -15,6 +15,10 @@ spec.keys = {
 	end, 'Toggle'),
 }
 
+spec.init = function()
+	vim.o.winbar = enable_on_start and ' ' or nil
+end
+
 spec.opts = {
 	bar = {
 		enable = false, -- it is confortable for me to configure `vim.o.winbar` manually
