@@ -21,17 +21,18 @@ spec.cmd = {
 	'GpImageAgent',
 }
 
-local map = require('utils.lazy').generate_map('<leader>c', 'GP: ')
+local map = require('utils.lazy').generate_map('', 'GP: ')
 spec.keys = {
-	map('o', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
-	map('r', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
-	map('y', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
-	map('j', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
-	map('k', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
+	map('<leader>co', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
+	map('<C-w><leader>co', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
+	map('<leader>cr', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
+	map('<leader>cy', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
+	map('<leader>cj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
+	map('<leader>ck', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
 
-	map('x', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
+	map('<leader>cx', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
 
-	map('n', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
+	map('<leader>cn', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
 }
 
 ---@type GpConfig

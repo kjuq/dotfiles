@@ -1,10 +1,17 @@
 ---@type LazySpec
 local spec = { 'olimorris/codecompanion.nvim' }
 
+spec.cmd = {
+	'CodeCompanion',
+	'CodeCompanionChat',
+	'CodeCompanionActions',
+	'CodeCompanionCmd',
+}
+
 local map = require('utils.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<leader>co', { 'n', 'x' }, '<Cmd>CodeCompanionChat Toggle<CR>', 'Chat'),
-	map('<C-w><leader>co', { 'n', 'x' }, '<Cmd>vsplit | CodeCompanionChat Toggle<CR>', 'Chat'),
+	map('<leader>cO', { 'n', 'x' }, '<Cmd>CodeCompanionChat Toggle<CR>', 'Chat'),
+	map('<C-w><leader>cO', { 'n', 'x' }, '<Cmd>vsplit | CodeCompanionChat Toggle<CR>', 'Chat'),
 	map('<leader>ci', { 'n' }, '<Cmd>CodeCompanion<CR>', 'Inline chat'),
 	map('<leader>ca', { 'n', 'x' }, '<Cmd>CodeCompanionActions<CR>', 'Actions'),
 }
