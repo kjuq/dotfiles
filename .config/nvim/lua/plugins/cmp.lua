@@ -1,7 +1,10 @@
 -- To you prefer "noinsert", use the code below instead of `cmp.select_next_item()`
 -- `cmp.select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Select })`
 
-local autocomplete = { 'InsertEnter', 'TextChanged' }
+---@type cmp.TriggerEvent[]|false
+-- set `false` to disable autocompletion on start
+-- set `{ 'InsertEnter', 'TextChanged' }` to enable it
+local autocomplete = false
 
 ---@type LazySpec
 local spec = { 'hrsh7th/nvim-cmp' }
@@ -146,26 +149,22 @@ spec.config = function()
 		['<C-o>'] = cmp.mapping(toggle_docs, { 'c' }),
 	}
 
-	cmp.setup({
+	local opts = {
 		completion = {
 			completeopt = vim.o.completeopt .. ',noselect',
 			autocomplete = autocomplete,
 		},
-
 		snippet = {
 			expand = function(args)
 				require('luasnip').lsp_expand(args.body)
 			end,
 		},
-
 		view = {
 			docs = {
 				auto_open = true,
 			},
 		},
-
 		mapping = mapping_insert,
-
 		sources = normal_sources,
 		window = {
 			-- completion = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
@@ -180,7 +179,9 @@ spec.config = function()
 				symbol_map = { Copilot = '' },
 			}),
 		},
-	})
+	}
+
+	cmp.setup(opts)
 
 	-- Set configuration for specific filetype.
 	cmp.setup.filetype('gitcommit', {
