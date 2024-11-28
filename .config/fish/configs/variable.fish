@@ -84,6 +84,9 @@ set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
 
+# tmux
+set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
+
 # Password-store
 set --export PASSWORD_STORE_DIR "$LOCAL_HOME/password-store"
 
