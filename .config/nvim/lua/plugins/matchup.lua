@@ -8,6 +8,7 @@ spec.init = function()
 	vim.g.matchup_surround_enabled = 1
 	vim.g.matchup_matchparen_deferred_show_delay = 50 -- default: 50
 	vim.g.matchup_matchparen_deferred_hide_delay = 700 -- default: 700
+	vim.g.matchup_matchparen_pumvisible = 0 -- fix cmp snippets (https://github.com/andymass/vim-matchup/issues/328)
 end
 
 spec.config = function()
