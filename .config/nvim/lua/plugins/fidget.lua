@@ -9,7 +9,7 @@ spec.keys = {
 
 spec.opts = {
 	notification = {
-		override_vim_notify = true,
+		override_vim_notify = false,
 		window = {
 			winblend = 0,
 			border = require('utils.common').floatwinborder,
