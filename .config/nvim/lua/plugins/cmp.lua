@@ -1,10 +1,10 @@
--- To you prefer "noinsert", use the code below instead of `cmp.select_next_item()`
--- `cmp.select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Select })`
-
+---@type { enable: cmp.TriggerEvent[], disable: boolean }
+local autocompletes = {
+	enable = { 'InsertEnter', 'TextChanged' },
+	disable = false,
+}
 ---@type cmp.TriggerEvent[]|false
--- set `false` to disable autocompletion on start
--- set `{ 'InsertEnter', 'TextChanged' }` to enable it
-local autocomplete = false
+local autocomplete = autocompletes.disable
 
 ---@type LazySpec
 local spec = { 'hrsh7th/nvim-cmp' }
@@ -44,6 +44,7 @@ spec.config = function()
 				completion = { autocomplete = autocomplete },
 			})
 			cmp.complete()
+			cmp.select_next_item()
 		end
 	end
 
@@ -56,6 +57,7 @@ spec.config = function()
 				completion = { autocomplete = autocomplete },
 			})
 			cmp.complete()
+			cmp.select_prev_item()
 		end
 	end
 
@@ -151,7 +153,7 @@ spec.config = function()
 
 	local opts = {
 		completion = {
-			completeopt = vim.o.completeopt .. ',noselect',
+			-- completeopt = vim.o.completeopt,
 			autocomplete = autocomplete,
 		},
 		snippet = {
@@ -209,11 +211,17 @@ spec.config = function()
 	local skkeleton_src = cmp.config.sources({ { name = 'skkeleton' } })
 
 	local function cmp_enable_skk()
-		cmp.setup.buffer({ sources = skkeleton_src })
+		cmp.setup.buffer({
+			sources = skkeleton_src,
+			completion = { autocomplete = autocompletes.enable },
+		})
 	end
 
 	local function cmp_disable_skk()
-		cmp.setup.buffer({ sources = normal_sources })
+		cmp.setup.buffer({
+			sources = normal_sources,
+			completion = { autocomplete = autocomplete },
+		})
 	end
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
