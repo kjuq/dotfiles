@@ -4,13 +4,15 @@ M.opts = {
 	settings = {
 		pylsp = {
 			plugins = {
-				pycodestyle = { enabled = false }, -- lint (contained to flake8)
-				pylint = { enabled = false },
-				mccabe = { enabled = false }, -- lint (contained to flake8)
-				pyflakes = { enabled = false }, -- lint (contained to flake8)
-				flake8 = { enabled = false },
-				pydocstyle = { enabled = false },
 				autopep8 = { enabled = false }, -- format
+				flake8 = { enabled = false },
+				jedi = {},
+				mccabe = { enabled = false }, -- lint (contained to flake8)
+				pycodestyle = { enabled = false }, -- lint (contained to flake8)
+				pydocstyle = { enabled = false },
+				pylint = { enabled = false },
+				pyflakes = { enabled = false }, -- lint (contained to flake8)
+				rope_autoimport = { enabled = false }, -- refactoring tool
 				yapf = { enabled = false }, -- format
 			},
 		},
