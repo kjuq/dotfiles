@@ -62,13 +62,9 @@ map('n', '<C-Tab>', 'gt', { remap = true, silent = true, desc = 'Alias for `gt`'
 map('n', '<C-S-Tab>', 'gT', { remap = true, silent = true, desc = 'Alias for `gT`' })
 
 -- tab movement
-map('n', ']T', vim.cmd.tabnext, { silent = true, desc = 'Go to the next tab' })
-map('n', '[T', vim.cmd.tabprevious, { silent = true, desc = 'Go to the previous tab' })
+map('n', ']<M-t>', vim.cmd.tabnext, { silent = true, desc = 'Go to the next tab' })
+map('n', '[<M-t>', vim.cmd.tabprevious, { silent = true, desc = 'Go to the previous tab' })
 map('n', 'zT', vim.cmd.tabclose, { silent = true, desc = 'Close current tab page' })
-
--- Quickfix
-map('n', ']l', vim.cmd.cnext, { desc = 'Next location on QuickFix' })
-map('n', '[l', vim.cmd.cprevious, { desc = 'Previous location on QuickFix' })
 
 -- Frequently used keymaps
 map('n', 'gs', '<Cmd>silent write<CR>', { desc = 'Write' })

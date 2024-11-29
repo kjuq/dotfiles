@@ -6,7 +6,7 @@ spec.branch = 'v3.x'
 spec.cmd = { 'Neotree' }
 
 spec.keys = {
-	map('aT', 'n', function()
+	map('aF', 'n', function()
 		require('neo-tree.command').execute({
 			source = 'filesystem',
 			position = 'left',
