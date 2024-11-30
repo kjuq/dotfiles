@@ -110,9 +110,9 @@ local on_attach = function(ev)
 	-- Format on save
 	local client_id = ev.data.client_id
 	local client = vim.lsp.get_client_by_id(client_id)
-	if client and client.supports_method('textDocument/formatting') then
+	if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
 		vim.api.nvim_create_autocmd('BufWritePre', {
-			group = vim.api.nvim_create_augroup('kjuq_auto_formatting', { clear = false }),
+			group = vim.api.nvim_create_augroup('kjuq_formatonsave_lsp', { clear = false }),
 			buffer = bufnr,
 			callback = function()
 				vim.lsp.buf.format({ async = false, id = client_id })
