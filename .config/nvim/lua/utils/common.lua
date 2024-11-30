@@ -169,15 +169,11 @@ end
 M.get_filepath_from_bufnr = function(bufnr)
 	bufnr = bufnr or vim.api.nvim_get_current_buf()
 	if not vim.api.nvim_buf_is_valid(bufnr) then
-		vim.notify(
-			"Invalid buffer",
-			vim.log.levels.ERROR,
-			{ title = "common.utils.get_filepath_from_bufnr()" }
-		)
+		vim.notify('Invalid buffer', vim.log.levels.ERROR, { title = 'common.utils.get_filepath_from_bufnr()' })
 		return nil
 	end
 	local path = vim.api.nvim_buf_get_name(bufnr)
-	if path == "" then
+	if path == '' then
 		return nil
 	end
 	return path
@@ -188,8 +184,6 @@ M.is_bigfile = function(path)
 	local max_size = 200 * 1000 -- bytes
 	local ok, stat = pcall(vim.uv.fs_stat, path)
 	if ok and stat and stat.size > max_size then
-		print('bigfile')
-		print(path)
 		return true
 	end
 	return false
@@ -200,7 +194,6 @@ M.is_bigbuf = function(buffer)
 	local max_lines = 30000
 	local line_num = #vim.api.nvim_buf_get_lines(buffer, 0, -1, true)
 	if line_num > max_lines then
-		print('bigbuf')
 		return true
 	end
 	return false
