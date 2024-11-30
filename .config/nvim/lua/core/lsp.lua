@@ -1,17 +1,22 @@
 local M = {}
 
+---@param ev table ref. `help event-args`
 local on_attach = function(ev)
-	local bufnr = ev.buf
-	-- Keymaps for LSP
-	local map = function(mode, lhs, rhs, desc)
-		vim.keymap.set(mode, lhs, rhs, { desc = 'LSP: ' .. desc, buffer = bufnr })
+	if not require('utils.common').is_keymap_set('gd', 'n') then
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition' })
 	end
 
-	if not require('utils.common').is_keymap_set('gd', 'n') then
-		map('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
-	end
+	vim.keymap.set('n', 'K', function()
+		vim.lsp.buf.hover({
+			title = ' Lsp: Hover ',
+			border = require('utils.common').floatwinborder,
+			max_width = M.float_max_width,
+			max_height = M.float_max_height,
+		})
+	end, { desc = 'LSP: Hover', buffer = ev.buf })
 
 	-- Format on save
+	local bufnr = ev.buf
 	local client_id = ev.data.client_id
 	local client = vim.lsp.get_client_by_id(client_id)
 	if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
@@ -35,20 +40,10 @@ end
 M.float_max_width = 80
 M.float_max_height = 20
 
-M._handlers = { -- disable this if you prefer noice-hover-scroll
-	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-		title = ' Lsp: Hover ',
-		border = require('utils.common').floatwinborder,
-		max_width = M.float_max_width,
-		max_height = M.float_max_height,
-	}),
-	['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		title = ' Lsp: Signature Help ',
-		border = require('utils.common').floatwinborder,
-		max_width = M.float_max_width,
-		max_height = M.float_max_height,
-	}),
-}
+-- M.handlers = { -- disable this if you prefer noice-hover-scroll
+-- 	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, ),
+-- 	['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, ),
+-- }
 
 M.setup = function()
 	vim.diagnostic.config({
@@ -62,6 +57,7 @@ M.setup = function()
 				return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)
 			end,
 		},
+		virtual_text = false,
 	})
 	vim.api.nvim_create_autocmd('LspAttach', {
 		pattern = '*',

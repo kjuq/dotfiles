@@ -244,30 +244,33 @@ map({ 'n' }, '<CR>', function()
 end, { expr = true, silent = true })
 
 -- LSP
-
+-- neovim/runtime/lua/vim/lsp.lua > lsp._set_defaults
+vim.keymap.set('n', 'K', '<Cmd>normal! K<CR>', { desc = 'K (Dummy to disable builtin behavior)' })
 vim.keymap.set('n', 'gr', '<Nop>')
-
 local vlb = vim.lsp.buf
-
 map('n', 'grt', vlb.type_definition, { desc = 'LSP: Go to type definition' })
 map('n', 'gri', vlb.implementation, { desc = 'LSP: Go to implementation' })
 map('n', 'grd', vlb.declaration, { desc = 'LSP: Go to Declaration' })
-
 map('n', 'grh', vlb.typehierarchy, { desc = 'LSP: Type hierarchy' })
 map('n', 'grc', vlb.incoming_calls, { desc = 'LSP: Incoming calls' })
 map('n', 'grg', vlb.outgoing_calls, { desc = 'LSP: Outgoing calls' })
 map('n', 'grf', vlb.format, { desc = 'LSP: Format' })
-
 map('n', '<M-e>', vim.diagnostic.open_float, { desc = 'LSP: Show diagnostics' })
-
 map('n', 'grwa', vlb.add_workspace_folder, { desc = 'LSP: Add folder to workspace' })
 map('n', 'grwr', vlb.remove_workspace_folder, { desc = 'LSP: Remove folder from workspace' })
 map('n', 'grww', function()
 	vim.notify(vim.inspect(vlb.list_workspace_folders()))
 end, { desc = 'LSP: List folders of workspaceh' })
-
--- Diagnostics
 map('n', 'grl', vim.diagnostic.setloclist, { desc = 'LSP: Set diagnostics into loclist' })
+
+map({ 'n', 's', 'i' }, '<C-s>', function()
+	vim.lsp.buf.signature_help({
+		title = ' Lsp: Signature Help ',
+		border = require('utils.common').floatwinborder,
+		max_width = require('core.lsp').float_max_width,
+		max_height = require('core.lsp').float_max_height,
+	})
+end, { desc = 'LSP: Signature Help' })
 
 local vt_bak
 map('n', 'grv', function()
