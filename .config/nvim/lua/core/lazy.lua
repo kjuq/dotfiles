@@ -31,16 +31,7 @@ local opts = {
 	ui = { border = require('utils.common').floatwinborder },
 	performance = {
 		rtp = {
-			disabled_plugins = { -- shorten start up time for 1 ms
-				'gzip',
-				'matchit',
-				'matchparen',
-				'netrwPlugin',
-				'tarPlugin',
-				'tohtml',
-				'tutor',
-				'zipPlugin',
-			},
+			disabled_plugins = {}, -- disable by `g:loaded_*`
 		},
 	},
 	dev = {

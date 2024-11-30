@@ -4,7 +4,7 @@ local autocompletes = {
 	disable = false,
 }
 ---@type cmp.TriggerEvent[]|false
-local autocomplete = autocompletes.disable
+local autocomplete = autocompletes.enable
 
 ---@type LazySpec
 local spec = { 'hrsh7th/nvim-cmp' }
