@@ -238,11 +238,6 @@ map({ 'i', 's' }, '<C-l>', function()
 	end
 end, { silent = true })
 
--- <NUM><CR> to go to line. i.e. 10<CR> -> 10G
-map({ 'n' }, '<CR>', function()
-	return vim.v.count ~= 0 and 'G' or '<CR>'
-end, { expr = true, silent = true })
-
 -- LSP
 -- neovim/runtime/lua/vim/lsp.lua > lsp._set_defaults
 vim.keymap.set('n', 'K', '<Cmd>normal! K<CR>', { desc = 'K (Dummy to disable builtin behavior)' })
