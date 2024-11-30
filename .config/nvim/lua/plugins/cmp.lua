@@ -1,4 +1,4 @@
----@type { enable: cmp.TriggerEvent[], disable: boolean }
+---@type { enable: cmp.TriggerEvent[], disable: false }
 local autocompletes = {
 	enable = { 'InsertEnter', 'TextChanged' },
 	disable = false,
@@ -41,7 +41,7 @@ spec.config = function()
 		else
 			cmp.setup({
 				sources = normal_sources,
-				completion = { autocomplete = autocomplete },
+				completion = { autocomplete = autocompletes.enable },
 			})
 			cmp.complete()
 		end
@@ -53,7 +53,7 @@ spec.config = function()
 		else
 			cmp.setup({
 				sources = copilot_source,
-				completion = { autocomplete = autocomplete },
+				completion = { autocomplete = autocompletes.enable },
 			})
 			cmp.complete()
 		end
@@ -62,8 +62,10 @@ spec.config = function()
 	-- TODO: fallbacking in <C-x><C-k> not working
 	local abort = function(fallback)
 		if cmp.visible() and vim.fn.pumvisible() ~= 1 then
+			cmp.setup({
+				completion = { autocomplete = autocompletes.disable },
+			})
 			cmp.abort()
-			cmp.setup({ completion = { autocomplete = false } })
 		else
 			fallback()
 		end
@@ -107,6 +109,24 @@ spec.config = function()
 		end
 	end
 
+	local cmd_select_next = function()
+		if cmp.visible() then
+			cmp.select_next_item()
+		else
+			cmp.complete()
+			cmp.select_next_item()
+		end
+	end
+
+	local cmd_select_prev = function()
+		if cmp.visible() then
+			cmp.select_prev_item()
+		else
+			cmp.complete()
+			cmp.select_prev_item()
+		end
+	end
+
 	local cmd_history_next = function(fallback)
 		if cmp.visible() then
 			cmp.select_next_item()
@@ -141,8 +161,8 @@ spec.config = function()
 	local mapping_cmdline = {
 		['<C-n>'] = cmp.mapping(cmd_history_next, { 'c' }),
 		['<C-p>'] = cmp.mapping(cmd_history_prev, { 'c' }),
-		['<C-i>'] = cmp.mapping(select_next, { 'c' }),
-		['<S-Tab>'] = cmp.mapping(select_prev, { 'c' }),
+		['<C-i>'] = cmp.mapping(cmd_select_next, { 'c' }),
+		['<S-Tab>'] = cmp.mapping(cmd_select_prev, { 'c' }),
 		['<C-l>'] = cmp.mapping(abort, { 'c' }),
 		['<C-e>'] = cmp.mapping(abort, { 'c' }),
 		['<C-y>'] = cmp.mapping(confirm, { 'c' }),
@@ -151,7 +171,6 @@ spec.config = function()
 
 	local opts = {
 		completion = {
-			-- completeopt = vim.o.completeopt,
 			autocomplete = autocomplete,
 		},
 		snippet = {
@@ -167,7 +186,7 @@ spec.config = function()
 		mapping = mapping_insert,
 		sources = normal_sources,
 		window = {
-			-- completion = cmp.config.window.bordered({ border = require("utils.common").floatwinborder }),
+			completion = cmp.config.window.bordered({ border = require('utils.common').floatwinborder }),
 			documentation = cmp.config.window.bordered({ border = require('utils.common').floatwinborder }),
 		},
 		---@diagnostic disable-next-line: missing-fields
@@ -192,7 +211,7 @@ spec.config = function()
 	cmp.setup.cmdline({ '/', '?' }, {
 		mapping = mapping_cmdline,
 		sources = { { name = 'buffer' } },
-		-- completion = { autocomplete = false },
+		completion = { autocomplete = autocompletes.disable },
 	})
 
 	-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore).
@@ -202,7 +221,15 @@ spec.config = function()
 			{ name = 'path' },
 			{ name = 'cmdline' },
 		},
-		-- completion = { autocomplete = false },
+		completion = { autocomplete = autocompletes.disable },
+	})
+
+	-- restore global autocomplete
+	vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+		group = vim.api.nvim_create_augroup('kjuq_cmp_restore_autocomplete', {}),
+		callback = function()
+			require('cmp').setup({ completion = { autocomplete = autocomplete } })
+		end,
 	})
 
 	-- enable only skkeleton sources
