@@ -1,5 +1,7 @@
 -- To setup `:Copilot auth`
 
+local auto_trigger = false
+
 ---@type LazySpec
 local spec = { 'zbirenbaum/copilot.lua' }
 spec.cmd = 'Copilot'
@@ -26,15 +28,6 @@ spec.keys = {
 			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-e>', true, false, true), 'n', false)
 		end
 	end, 'Dismiss suggestion'),
-	map('<leader>aA', 'n', function()
-		local cs = require('copilot.suggestion')
-		cs.toggle_auto_trigger()
-		if vim.b.copilot_suggestion_auto_trigger then
-			vim.notify('Copilot: Auto trigger enabled', vim.log.levels.INFO)
-		else
-			vim.notify('Copilot: Auto trigger disabled', vim.log.levels.INFO)
-		end
-	end, 'Toggle auto trigger'),
 }
 
 ---@type copilot_config
@@ -59,20 +52,13 @@ spec.opts = {
 }
 
 spec.config = function(_, opts)
-	vim.b.copilot_suggestion_auto_trigger = false
+	vim.b.copilot_suggestion_auto_trigger = auto_trigger
 	require('copilot').setup(opts)
 
-	local auto_trigger_bak = vim.b.copilot_suggestion_auto_trigger
-	vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
-		group = vim.api.nvim_create_augroup('kjuq_copilot_remember_autotrigger', {}),
-		callback = function()
-			auto_trigger_bak = vim.b.copilot_suggestion_auto_trigger
-		end,
-	})
 	vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
 		group = vim.api.nvim_create_augroup('kjuq_copilot_restore_autotrigger', {}),
 		callback = function()
-			vim.b.copilot_suggestion_auto_trigger = auto_trigger_bak
+			vim.b.copilot_suggestion_auto_trigger = auto_trigger
 		end,
 	})
 
