@@ -55,8 +55,8 @@ spec.opts = {
 				border = require('utils.common').floatwinborder,
 				position = { row = 2, col = 2 },
 				size = {
-					max_width = require('core.lsp').float_max_width,
-					max_height = require('core.lsp').float_max_height,
+					max_width = require('utils.lsp').float_max_width,
+					max_height = require('utils.lsp').float_max_height,
 				},
 			},
 		},

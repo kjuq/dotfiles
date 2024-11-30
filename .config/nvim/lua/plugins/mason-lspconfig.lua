@@ -8,7 +8,6 @@ spec.config = function()
 	local lspconfig = require('lspconfig')
 	local has_cmp_lsp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 	local common_opts = {
-		handlers = require('core.lsp').handlers,
 		capabilities = has_cmp_lsp and cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities()) or nil,
 	}
 
