@@ -19,12 +19,11 @@ spec.config = function()
 	vim.g.rainbow_delimiters = {
 		strategy = {
 			[''] = function(bufnr)
-				local common = require('utils.common')
-				if common.is_bigbuf(bufnr) then
+				local cmn = require('utils.common')
+				if cmn.is_bigfile(cmn.get_filepath_from_bufnr(bufnr)) or cmn.is_bigbuf(bufnr) then
 					return nil
-				else
-					return rainbow.strategy['global']
 				end
+				return rainbow.strategy['global'] -- default strategy
 			end,
 		},
 		highlight = {
@@ -35,13 +34,14 @@ spec.config = function()
 		},
 		blacklist = {
 			'markdown',
+			'help',
 		},
 	}
 
 	rainbow.enable(0) -- for lazy load
 end
 
-spec.dependencies = {
+spec.specs = {
 	'nvim-treesitter/nvim-treesitter',
 }
 
