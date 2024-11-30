@@ -51,17 +51,33 @@ spec.opts = {
 
 	agents = {
 		{
+			name = 'ChatCopilot-Claude',
 			provider = 'copilot',
-			name = 'ChatCopilot-Claude (kjuq configured)',
 			chat = true,
 			command = false,
-			-- string with model name or table with model name and parameters
 			model = { model = 'claude-3.5-sonnet', temperature = 1.1, top_p = 1 },
+			system_prompt = require('utils.ai').system_prompt('Japanese'),
+		},
+		{
+			name = 'ChatCopilot-GPT4o',
+			provider = 'copilot',
+			chat = true,
+			command = false,
+			model = { model = 'gpt-4o', temperature = 1.1, top_p = 1 },
+			system_prompt = require('utils.ai').system_prompt('Japanese'),
+		},
+		{
+			-- Unable to use `o1-mini` due to the error: `Bad request`
+			name = 'ChatCopilot-GPT4o-mini',
+			provider = 'copilot',
+			chat = true,
+			command = false,
+			model = { model = 'o1-mini', temperature = 1.1, top_p = 1 },
 			system_prompt = require('utils.ai').system_prompt('Japanese'),
 		},
 	},
 
-	default_chat_agent = 'ChatCopilot-Claude (kjuq configured)',
+	default_chat_agent = 'ChatCopilot-GPT4o',
 	default_command_agent = 'CodeCopilot',
 
 	chat_user_prefix = '󰭹 :',
@@ -143,13 +159,6 @@ spec.config = function(_, opts)
 			return
 		end
 		vim.keymap.set('n', key, '<Cmd>bnext<CR>', { buffer = true })
-	end
-
-	local setlocalkeys = function()
-		local map = function(key, cmd, desc)
-			return vim.keymap.set('n', key, '<CMD>' .. cmd .. '<CR>', { desc = desc })
-		end
-		vim.keymap.set('n', '<leader>cR', '<Cmd>GpChatRespond<CR>', { desc = 'Request new GPT Response(s)' })
 	end
 
 	local chat_dir = opts.chat_dir or gp.config.chat_dir
