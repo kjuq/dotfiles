@@ -86,13 +86,6 @@ M.buffer_delete = function(mode)
 	end
 end
 
----@param mode string
----@param keymap string
----@return boolean
-M.is_keymap_set = function(keymap, mode)
-	return not (vim.fn.maparg(keymap, mode) == '')
-end
-
 ---@param patterns string|string[]
 M.argv_contains = function(patterns)
 	patterns = type(patterns) == 'string' and { patterns } or patterns --[[@ as string[] ]]

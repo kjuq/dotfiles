@@ -2,9 +2,9 @@ local M = {}
 
 ---@param ev table ref. `help event-args`
 local on_attach = function(ev)
-	if not require('utils.common').is_keymap_set('gd', 'n') then
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition' })
-	end
+	local bufnr = ev.buf
+
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
 
 	vim.keymap.set('n', 'K', function()
 		vim.lsp.buf.hover({
@@ -16,7 +16,6 @@ local on_attach = function(ev)
 	end, { desc = 'LSP: Hover', buffer = ev.buf })
 
 	-- Format on save
-	local bufnr = ev.buf
 	local client_id = ev.data.client_id
 	local client = vim.lsp.get_client_by_id(client_id)
 	if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
@@ -30,20 +29,8 @@ local on_attach = function(ev)
 	end
 end
 
-local callback = function(ev)
-	-- execute AFTER `on_attach` of each clients
-	vim.schedule(function()
-		on_attach(ev)
-	end)
-end
-
 M.float_max_width = 80
 M.float_max_height = 20
-
--- M.handlers = { -- disable this if you prefer noice-hover-scroll
--- 	['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, ),
--- 	['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, ),
--- }
 
 M.setup = function()
 	vim.diagnostic.config({
@@ -62,7 +49,7 @@ M.setup = function()
 	vim.api.nvim_create_autocmd('LspAttach', {
 		pattern = '*',
 		group = vim.api.nvim_create_augroup('kjuq_user_lsp_config', {}),
-		callback = callback,
+		callback = on_attach,
 	})
 end
 
