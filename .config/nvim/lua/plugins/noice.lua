@@ -44,7 +44,7 @@ spec.opts = {
 			enabled = false,
 		},
 		hover = {
-			enabled = true,
+			enabled = false,
 		},
 		signature = {
 			enabled = true,
