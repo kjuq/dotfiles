@@ -20,6 +20,16 @@ spec.init = function()
 end
 
 spec.opts = {
+	icons = {
+		ui = {
+			bar = {
+				separator = ' > ',
+			},
+			menu = {
+				indicator = ' > ',
+			},
+		},
+	},
 	bar = {
 		enable = false, -- it is confortable for me to configure `vim.o.winbar` manually
 		bar = {
