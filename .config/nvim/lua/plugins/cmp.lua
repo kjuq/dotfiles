@@ -44,7 +44,6 @@ spec.config = function()
 				completion = { autocomplete = autocomplete },
 			})
 			cmp.complete()
-			cmp.select_next_item()
 		end
 	end
 
@@ -57,7 +56,6 @@ spec.config = function()
 				completion = { autocomplete = autocomplete },
 			})
 			cmp.complete()
-			cmp.select_prev_item()
 		end
 	end
 
@@ -103,7 +101,7 @@ spec.config = function()
 
 	local confirm = function(fallback)
 		if cmp.visible() then
-			cmp.confirm({ select = false })
+			cmp.confirm({ select = true })
 		else
 			fallback()
 		end
