@@ -242,3 +242,39 @@ end, { silent = true })
 map({ 'n' }, '<CR>', function()
 	return vim.v.count ~= 0 and 'G' or '<CR>'
 end, { expr = true, silent = true })
+
+-- LSP
+
+vim.keymap.set('n', 'gr', '<Nop>')
+
+local vlb = vim.lsp.buf
+
+map('n', 'grt', vlb.type_definition, { desc = 'LSP: Go to type definition' })
+map('n', 'gri', vlb.implementation, { desc = 'LSP: Go to implementation' })
+map('n', 'grd', vlb.declaration, { desc = 'LSP: Go to Declaration' })
+
+map('n', 'grh', vlb.typehierarchy, { desc = 'LSP: Type hierarchy' })
+map('n', 'grc', vlb.incoming_calls, { desc = 'LSP: Incoming calls' })
+map('n', 'grg', vlb.outgoing_calls, { desc = 'LSP: Outgoing calls' })
+map('n', 'grf', vlb.format, { desc = 'LSP: Format' })
+
+map('n', '<M-e>', vim.diagnostic.open_float, { desc = 'LSP: Show diagnostics' })
+
+map('n', 'grwa', vlb.add_workspace_folder, { desc = 'LSP: Add folder to workspace' })
+map('n', 'grwr', vlb.remove_workspace_folder, { desc = 'LSP: Remove folder from workspace' })
+map('n', 'grww', function()
+	vim.notify(vim.inspect(vlb.list_workspace_folders()))
+end, { desc = 'LSP: List folders of workspaceh' })
+
+-- Diagnostics
+map('n', 'grl', vim.diagnostic.setloclist, { desc = 'LSP: Set diagnostics into loclist' })
+
+local vt_bak
+map('n', 'grv', function()
+	vt_bak = vt_bak == nil and vim.diagnostic.config().virtual_text or vt_bak
+	if vim.diagnostic.config().virtual_text then
+		vim.diagnostic.config({ virtual_text = false })
+	else
+		vim.diagnostic.config({ virtual_text = vt_bak })
+	end
+end, { desc = 'LSP: Toggle virtual text of diagnotics' })
