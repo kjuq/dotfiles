@@ -9,15 +9,6 @@ spec.event = 'VeryLazy'
 
 spec.cmd = { 'Noice' }
 
-spec.keys = {
-	map(utils.floatscrolldown, { 'n', 'i' }, function()
-		require('noice.lsp').scroll(4)
-	end, 'Page down'),
-	map(utils.floatscrollup, { 'n', 'i' }, function()
-		require('noice.lsp').scroll(-4)
-	end, 'Page up'),
-}
-
 spec.opts = {
 	cmdline = {
 		format = {
