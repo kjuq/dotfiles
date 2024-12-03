@@ -21,10 +21,10 @@ spec.keys = {
 	end, 'Git files'),
 
 	-- Vim pickers
-	map('fh', 'n', function()
+	map('fH', 'n', function()
 		require(tb).oldfiles({ only_cwd = true })
 	end, 'MRU for current dir'),
-	map('fH', 'n', function()
+	map('fh', 'n', function()
 		require(tb).oldfiles({ only_cwd = false })
 	end, 'MRU for global files'),
 	map('fb', 'n', function()
