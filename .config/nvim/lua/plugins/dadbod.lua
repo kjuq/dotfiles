@@ -11,7 +11,7 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('d', 'n', '<CMD>DBUIToggle<CR>', 'Toggle'),
+	map('D', 'n', '<CMD>DBUIToggle<CR>', 'Open UI'),
 }
 
 spec.init = function()

@@ -4,20 +4,6 @@ local map = require('utils.lazy').generate_map('<Space>a', 'Silicon: ')
 local spec = { 'segeljakt/vim-silicon' }
 spec.cmd = 'Silicon'
 
-spec.keys = {
-	map('c', 'n', function()
-		vim.cmd('Silicon')
-	end, 'Capture'),
-	map('c', 'x', function()
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', false)
-		vim.cmd("'<,'>Silicon")
-	end, 'Capture'),
-	map('C', 'x', function()
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'x', false)
-		vim.cmd("'<,'>Silicon!")
-	end, 'Capture with selection highlighted'),
-}
-
 spec.config = function()
 	local store_dir = os.getenv('HOME') .. '/Documents/silicon'
 

@@ -4,8 +4,12 @@ local map = require('utils.lazy').generate_map('<Space>a', 'CCC: ')
 local spec = { 'uga-rosa/ccc.nvim' }
 spec.event = 'VeryLazy'
 
-spec.keys = {
-	map('C', 'n', '<CMD>CccPick<CR>', 'Open picker'),
+spec.cmd = {
+	'CccPick',
+	'CccConvert',
+	'CccHighlighterEnable',
+	'CccHighlighterDisable',
+	'CccHighlighterToggle',
 }
 
 spec.config = function()

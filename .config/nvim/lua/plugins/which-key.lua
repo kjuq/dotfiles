@@ -1,37 +1,9 @@
-local map = require('utils.lazy').generate_map('<Space>a', 'Which-key: ')
-
-local active = false
-
-local enable = function()
-	vim.o.timeout = true
-	vim.o.timeoutlen = 500
-	active = true
-end
-
-local disable = function()
-	vim.o.timeout = false
-	active = false
-end
-
-local toggle = function()
-	if active then
-		vim.notify('Which-key is inactive')
-		disable()
-	else
-		vim.notify('Which-key is active')
-		enable()
-	end
-end
-
 ---@type LazySpec
 local spec = { 'folke/which-key.nvim' }
 spec.event = 'VeryLazy'
 
-spec.keys = {
-	map('w', 'n', toggle, 'Toggle'),
-	map('W', 'n', function()
-		vim.cmd('WhichKey')
-	end, 'Show all keymaps'),
+spec.cmd = {
+	'WhichKey',
 }
 
 spec.opts = {

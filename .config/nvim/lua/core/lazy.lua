@@ -42,5 +42,3 @@ local opts = {
 }
 
 require('lazy').setup('plugins', opts) -- to load multiple dir https://zenn.dev/sisi0808/articles/36ff184554ddd6
-
-vim.keymap.set('n', '<Space>ap', '<Cmd>Lazy<CR>', { desc = 'Lazy.nvim: Manage plugins' })

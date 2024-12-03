@@ -5,13 +5,10 @@ local spec = { 'folke/todo-comments.nvim' }
 spec.event = 'VeryLazy'
 
 spec.keys = {
-	map(']t', 'n', function()
+	map(']t', 'n', function() -- set `:tnext` by `_defaults.lua`
 		require('todo-comments').jump_next()
 	end, 'Next todo comment'),
-	map('[t', 'n', function()
-		require('todo-comments').jump_prev()
-	end, 'Previous todo comment'),
-	map('<Space>aD', 'n', function()
+	map('[t', 'n', function() -- set `:tprevious` by `_defaults.lua`
 		require('todo-comments').jump_prev()
 	end, 'Previous todo comment'),
 }

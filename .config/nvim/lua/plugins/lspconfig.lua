@@ -1,9 +1,12 @@
 ---@type LazySpec
 local spec = { 'neovim/nvim-lspconfig' }
 
-local map = require('utils.lazy').generate_map('', 'Lspconfig: ')
-spec.keys = {
-	map('<Space>aL', 'n', '<CMD>LspInfo<CR>', 'LspInfo'),
+spec.cmd = {
+	'LspInfo',
+	'LspStart',
+	'LspRestart',
+	'LspStop',
+	'LspLog',
 }
 
 spec.config = function()
