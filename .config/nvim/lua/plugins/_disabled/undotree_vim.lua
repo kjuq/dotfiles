@@ -12,7 +12,7 @@ spec.cmd = {
 }
 
 spec.keys = {
-	map('<leader>au', 'n', '<Cmd>UndotreeToggle<CR>', 'Toggle'),
+	map('<Space>au', 'n', '<Cmd>UndotreeToggle<CR>', 'Toggle'),
 }
 
 return spec

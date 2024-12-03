@@ -4,7 +4,7 @@ spec.event = { 'LspAttach', 'VeryLazy' }
 
 local map = require('utils.lazy').generate_map('', 'Fidget: ')
 spec.keys = {
-	map('<leader>aa', 'n', '<Cmd>Fidget history<CR>', 'History'),
+	map('<Space>aa', 'n', '<Cmd>Fidget history<CR>', 'History'),
 }
 
 spec.opts = {

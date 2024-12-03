@@ -6,7 +6,7 @@ spec.event = show_on_start and { 'WinScrolled' } or {}
 
 local map = require('utils.lazy').generate_map('', 'Scrollbar: ')
 spec.keys = {
-	map('<leader>as', 'n', function()
+	map('<Space>as', 'n', function()
 		require('scrollbar.utils').toggle()
 	end, 'Toggle'),
 }

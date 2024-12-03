@@ -3,7 +3,7 @@ local spec = { 'bennypowers/nvim-regexplainer' }
 
 local map = require('utils.lazy').generate_map('', 'Regexplainer: ')
 spec.keys = {
-	map('<leader>aR', 'n', function()
+	map('<Space>aR', 'n', function()
 		require('regexplainer').show()
 	end, 'Show'),
 }

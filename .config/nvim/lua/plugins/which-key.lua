@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>a', 'Which-key: ')
+local map = require('utils.lazy').generate_map('<Space>a', 'Which-key: ')
 
 local active = false
 
@@ -56,16 +56,16 @@ spec.config = function(_, opts)
 	wk.add({
 		{ 'ga', group = 'Additional actions' },
 		{ 'go', group = 'Edit specific file' },
-		{ '<leader>a', group = 'Additional' },
-		{ '<leader>b', group = 'Bufferline' },
-		{ '<leader>c', group = 'ChatGPT', icon = ' ' },
-		{ '<leader>d', group = 'Doc string' },
-		{ '<leader>D', group = 'Debug' },
-		{ '<leader>f', group = 'Find' },
-		{ '<leader>g', group = 'Git' },
-		{ '<leader>r', group = 'Resume' },
-		{ '<leader>s', group = 'Substitute' },
-		{ '<leader>t', group = 'Trouble' },
+		{ '<Space>a', group = 'Additional' },
+		{ '<Space>b', group = 'Bufferline' },
+		{ '<Space>c', group = 'ChatGPT', icon = ' ' },
+		{ '<Space>d', group = 'Doc string' },
+		{ '<Space>D', group = 'Debug' },
+		{ '<Space>f', group = 'Find' },
+		{ '<Space>g', group = 'Git' },
+		{ '<Space>r', group = 'Resume' },
+		{ '<Space>s', group = 'Substitute' },
+		{ '<Space>t', group = 'Trouble' },
 	})
 	wk.setup(opts)
 end

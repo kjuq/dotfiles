@@ -1,4 +1,4 @@
-local cmap = require('utils.lazy').generate_map('<leader>', 'Mason: ')
+local cmap = require('utils.lazy').generate_map('<Space>', 'Mason: ')
 
 ---@type LazySpec
 local spec = { 'williamboman/mason.nvim' }

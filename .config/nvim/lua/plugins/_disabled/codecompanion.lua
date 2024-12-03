@@ -10,10 +10,10 @@ spec.cmd = {
 
 local map = require('utils.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<leader>cO', { 'n', 'x' }, '<Cmd>CodeCompanionChat Toggle<CR>', 'Chat'),
-	map('<C-w><leader>cO', { 'n', 'x' }, '<Cmd>vsplit | CodeCompanionChat Toggle<CR>', 'Chat'),
-	map('<leader>ci', { 'n' }, '<Cmd>CodeCompanion<CR>', 'Inline chat'),
-	map('<leader>ca', { 'n', 'x' }, '<Cmd>CodeCompanionActions<CR>', 'Actions'),
+	map('<Space>cO', { 'n', 'x' }, '<Cmd>CodeCompanionChat Toggle<CR>', 'Chat'),
+	map('<C-w><Space>cO', { 'n', 'x' }, '<Cmd>vsplit | CodeCompanionChat Toggle<CR>', 'Chat'),
+	map('<Space>ci', { 'n' }, '<Cmd>CodeCompanion<CR>', 'Inline chat'),
+	map('<Space>ca', { 'n', 'x' }, '<Cmd>CodeCompanionActions<CR>', 'Actions'),
 }
 
 spec.opts = {
@@ -57,22 +57,22 @@ spec.opts = {
 				},
 				regenerate = {
 					modes = {
-						n = '<leader>cR',
+						n = '<Space>cR',
 					},
 				},
 				close = {
 					modes = {
-						n = '<leader>cX',
+						n = '<Space>cX',
 					},
 				},
 				stop = {
 					modes = {
-						n = '<leader>cq',
+						n = '<Space>cq',
 					},
 				},
 				clear = {
 					modes = {
-						n = '<leader>cC',
+						n = '<Space>cC',
 					},
 				},
 				codeblock = {
@@ -107,7 +107,7 @@ spec.opts = {
 				},
 				change_adapter = {
 					modes = {
-						n = '<leader>cA',
+						n = '<Space>cA',
 					},
 				},
 				fold_code = {
@@ -117,12 +117,12 @@ spec.opts = {
 				},
 				debug = {
 					modes = {
-						n = '<leader>cD',
+						n = '<Space>cD',
 					},
 				},
 				system_prompt = {
 					modes = {
-						n = '<leader>cS',
+						n = '<Space>cS',
 					},
 				},
 			},

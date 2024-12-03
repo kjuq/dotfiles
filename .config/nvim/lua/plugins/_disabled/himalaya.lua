@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>a', 'Himalaya: ')
+local map = require('utils.lazy').generate_map('<Space>a', 'Himalaya: ')
 
 ---@type LazySpec
 local spec = { 'https://git.sr.ht/~soywod/himalaya-vim' }

@@ -8,7 +8,7 @@ local spec = { 'Bekaboo/dropbar.nvim' }
 
 spec.event = enable_on_start and 'VeryLazy' or {}
 
-local map = require('utils.lazy').generate_map('<leader>a', 'Dropbar: ')
+local map = require('utils.lazy').generate_map('<Space>a', 'Dropbar: ')
 spec.keys = {
 	map('n', 'n', function()
 		vim.o.winbar = vim.o.winbar == '' and dropbar_winbar or ''

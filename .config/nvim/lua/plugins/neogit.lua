@@ -5,7 +5,7 @@ spec.cmd = { 'Neogit' }
 
 local map = require('utils.lazy').generate_map('', 'Neogit: ')
 spec.keys = {
-	map('<leader>gn', 'n', '<Cmd>Neogit kind=replace<CR>', 'open'),
+	map('<Space>gn', 'n', '<Cmd>Neogit kind=replace<CR>', 'open'),
 }
 
 spec.opts = {}

@@ -3,7 +3,7 @@ local spec = { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' }
 
 spec.keys = {
 	{
-		'<leader>Ll',
+		'<Space>Ll',
 		mode = { 'n' },
 		function()
 			require('lsp_lines').toggle()

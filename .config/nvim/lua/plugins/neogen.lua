@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>d', 'Neogen: ') -- [d]oc string
+local map = require('utils.lazy').generate_map('<Space>d', 'Neogen: ') -- [d]oc string
 
 ---@type LazySpec
 local spec = { 'danymat/neogen' }

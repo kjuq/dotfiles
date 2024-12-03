@@ -13,8 +13,8 @@ spec.cmd = {
 
 local map = require('utils.lazy').generate_map('', 'Project: ')
 spec.keys = {
-	map('<leader>a.', 'n', '<Cmd>ProjectRoot<CR>', 'cd <project_root>'),
-	map('<leader>fP', 'n', function()
+	map('<Space>a.', 'n', '<Cmd>ProjectRoot<CR>', 'cd <project_root>'),
+	map('<Space>fP', 'n', function()
 		local has_telescope, telescope = pcall(require, 'telescope')
 		if has_telescope then
 			telescope.extensions.projects.projects({})

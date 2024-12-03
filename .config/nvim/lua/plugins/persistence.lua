@@ -2,7 +2,7 @@
 local spec = { 'folke/persistence.nvim' }
 spec.event = 'VeryLazy'
 
-local map = require('utils.lazy').generate_map('<leader>r', 'Persistence: ')
+local map = require('utils.lazy').generate_map('<Space>r', 'Persistence: ')
 spec.keys = {
 	map('s', 'n', function()
 		require('persistence').load()

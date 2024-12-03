@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>a', 'QuickHL: ')
+local map = require('utils.lazy').generate_map('<Space>a', 'QuickHL: ')
 
 ---@type LazySpec
 local spec = { 't9md/vim-quickhl' }

@@ -11,7 +11,7 @@ spec.keys = {
 	map('[t', 'n', function()
 		require('todo-comments').jump_prev()
 	end, 'Previous todo comment'),
-	map('<leader>aD', 'n', function()
+	map('<Space>aD', 'n', function()
 		require('todo-comments').jump_prev()
 	end, 'Previous todo comment'),
 }

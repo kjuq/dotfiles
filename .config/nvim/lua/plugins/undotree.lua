@@ -10,7 +10,7 @@ spec.opts = {
 }
 
 spec.keys = {
-	map('<leader>au', 'n', function()
+	map('<Space>au', 'n', function()
 		require('undotree').toggle()
 	end, 'Toggle'),
 }

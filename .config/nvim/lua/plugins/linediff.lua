@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>a', 'Linediff: ')
+local map = require('utils.lazy').generate_map('<Space>a', 'Linediff: ')
 
 ---@type LazySpec
 local spec = { 'AndrewRadev/linediff.vim' }

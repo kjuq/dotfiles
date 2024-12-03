@@ -12,27 +12,27 @@ spec.keys = {
 	map('gT', 'n', '<Cmd>BufferLineCyclePrev<CR>', 'Pick'),
 	map('gL', 'n', '<Cmd>BufferLineCloseOthers<CR>', 'Close others'),
 
-	map('<leader>bs', 'n', '<Cmd>BufferLinePick<CR>', 'Select'),
-	map('<leader>bi', 'n', '<Cmd>BufferLineTogglePin<CR>', 'Pin'),
-	map('<leader>bh', 'n', '<Cmd>BufferLineMovePrev<CR>', 'Move left'),
-	map('<leader>bl', 'n', '<Cmd>BufferLineMoveNext<CR>', 'Move right'),
+	map('<Space>bs', 'n', '<Cmd>BufferLinePick<CR>', 'Select'),
+	map('<Space>bi', 'n', '<Cmd>BufferLineTogglePin<CR>', 'Pin'),
+	map('<Space>bh', 'n', '<Cmd>BufferLineMovePrev<CR>', 'Move left'),
+	map('<Space>bl', 'n', '<Cmd>BufferLineMoveNext<CR>', 'Move right'),
 
-	map('<leader>bd', 'n', '<Cmd>BufferLineSortByDirectory<CR>', 'Sort by directory'),
-	map('<leader>br', 'n', '<Cmd>BufferLineSortByRelativeDirectory<CR>', 'Sort by relative directory'),
-	map('<leader>bx', 'n', '<Cmd>BufferLineSortByExtension<CR>', 'Sort by extension'),
+	map('<Space>bd', 'n', '<Cmd>BufferLineSortByDirectory<CR>', 'Sort by directory'),
+	map('<Space>br', 'n', '<Cmd>BufferLineSortByRelativeDirectory<CR>', 'Sort by relative directory'),
+	map('<Space>bx', 'n', '<Cmd>BufferLineSortByExtension<CR>', 'Sort by extension'),
 
-	map('<leader>b^', 'n', function()
+	map('<Space>b^', 'n', function()
 		require('bufferline').go_to(1, true)
 	end, 'Go to left most buffer'),
-	map('<leader>b0', 'n', function()
+	map('<Space>b0', 'n', function()
 		require('bufferline').go_to(1, true)
 	end, 'Go to left most buffer'),
 
-	map('<leader>b$', 'n', function()
+	map('<Space>b$', 'n', function()
 		require('bufferline').go_to(-1, true)
 	end, 'Go to right most buffer'),
 
-	map('<leader>ab', 'n', function()
+	map('<Space>ab', 'n', function()
 		if vim.o.showtabline == 0 then
 			vim.opt.showtabline = 2
 		else

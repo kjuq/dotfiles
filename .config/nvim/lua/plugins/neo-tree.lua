@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>', 'Neo-tree: ')
+local map = require('utils.lazy').generate_map('<Space>', 'Neo-tree: ')
 
 ---@type LazySpec
 local spec = { 'nvim-neo-tree/neo-tree.nvim' }

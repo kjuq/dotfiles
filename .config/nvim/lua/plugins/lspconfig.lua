@@ -3,7 +3,7 @@ local spec = { 'neovim/nvim-lspconfig' }
 
 local map = require('utils.lazy').generate_map('', 'Lspconfig: ')
 spec.keys = {
-	map('<leader>aL', 'n', '<CMD>LspInfo<CR>', 'LspInfo'),
+	map('<Space>aL', 'n', '<CMD>LspInfo<CR>', 'LspInfo'),
 }
 
 spec.config = function()

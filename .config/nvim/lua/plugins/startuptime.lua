@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>', 'Startuptime: ')
+local map = require('utils.lazy').generate_map('<Space>', 'Startuptime: ')
 
 ---@type LazySpec
 local spec = { 'dstein64/vim-startuptime' }

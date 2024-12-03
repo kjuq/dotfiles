@@ -8,7 +8,7 @@ spec.cmd = {
 local map = require('utils.lazy').generate_map('', 'Trouble: ')
 spec.keys = {
 	map('grl', 'n', '<CMD>Trouble diagnostics<CR>', 'Diagnostics'),
-	map('<leader>aT', 'n', '<CMD>Trouble<CR>', 'Menu'),
+	map('<Space>aT', 'n', '<CMD>Trouble<CR>', 'Menu'),
 }
 
 spec.opts = {

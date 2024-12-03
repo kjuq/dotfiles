@@ -31,7 +31,7 @@ spec.config = function(spc, opts)
 		end
 	end
 
-	vim.keymap.set('n', '<leader>an', toggle_winbar, { desc = 'Navic: Toggle' })
+	vim.keymap.set('n', '<Space>an', toggle_winbar, { desc = 'Navic: Toggle' })
 end
 
 return spec

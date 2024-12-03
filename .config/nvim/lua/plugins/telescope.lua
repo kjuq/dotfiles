@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>', 'Telescope: ')
+local map = require('utils.lazy').generate_map('<Space>', 'Telescope: ')
 local tb = 'telescope.builtin'
 
 ---@type LazySpec

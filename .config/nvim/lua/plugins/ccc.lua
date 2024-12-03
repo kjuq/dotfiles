@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<leader>a', 'CCC: ')
+local map = require('utils.lazy').generate_map('<Space>a', 'CCC: ')
 
 ---@type LazySpec
 local spec = { 'uga-rosa/ccc.nvim' }
