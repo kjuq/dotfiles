@@ -23,16 +23,16 @@ spec.cmd = {
 
 local map = require('utils.lazy').generate_map('', 'GP: ')
 spec.keys = {
-	map('<Space>co', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
+	map('<Space>po', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
 	map('<C-w><Space>co', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
-	map('<Space>cr', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
-	map('<Space>cy', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
-	map('<Space>cj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
-	map('<Space>ck', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
+	map('<Space>pr', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
+	map('<Space>py', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
+	map('<Space>pj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
+	map('<Space>pk', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
 
-	map('<Space>cx', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
+	map('<Space>px', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
 
-	map('<Space>cn', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
+	map('<Space>pn', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
 }
 
 ---@type GpConfig
@@ -100,12 +100,12 @@ spec.opts = {
 	},
 	chat_shortcut_delete = {
 		modes = { 'n' },
-		shortcut = '<Space>cD',
+		shortcut = '<Space>pD',
 		comment = 'GP: Delete chat',
 	},
 	chat_shortcut_stop = {
 		modes = { 'n' },
-		shortcut = '<Space>cQ',
+		shortcut = '<Space>pQ',
 		comment = 'GP: Stop responce',
 	},
 	chat_shortcut_new = {

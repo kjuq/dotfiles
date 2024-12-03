@@ -12,7 +12,7 @@ spec.opts = {
 spec.keys = {
 	map('<Space>au', 'n', function()
 		require('undotree').toggle()
-	end, 'Toggle'),
+	end, 'Open UI'),
 }
 
 spec.specs = { 'nvim-lua/plenary.nvim' }

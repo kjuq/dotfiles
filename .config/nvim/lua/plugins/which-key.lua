@@ -26,18 +26,15 @@ spec.opts = {
 spec.config = function(_, opts)
 	local wk = require('which-key')
 	wk.add({
-		{ 'ga', group = 'Additional actions' },
-		{ 'go', group = 'Edit specific file' },
 		{ '<Space>a', group = 'Additional' },
 		{ '<Space>b', group = 'Bufferline' },
-		{ '<Space>c', group = 'ChatGPT', icon = ' ' },
-		{ '<Space>d', group = 'Doc string' },
-		{ '<Space>D', group = 'Debug' },
+		{ '<Space>c', group = 'Change' },
 		{ '<Space>f', group = 'Find' },
 		{ '<Space>g', group = 'Git' },
+		{ '<Space>p', group = 'ChatGPT', icon = ' ' },
 		{ '<Space>r', group = 'Resume' },
-		{ '<Space>s', group = 'Substitute' },
-		{ '<Space>t', group = 'Trouble' },
+		{ '<Space>s', group = 'Scribe' },
+		{ '<Space>t', group = 'Toggle' },
 	})
 	wk.setup(opts)
 end

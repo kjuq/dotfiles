@@ -10,7 +10,7 @@ spec.keys = {
 	map('gt', 'n', '<Cmd>BufferLineCycleNext<CR>', 'Pick'),
 	map('<C-S-Tab>', 'n', '<Cmd>BufferLineCyclePrev<CR>', 'Pick'),
 	map('gT', 'n', '<Cmd>BufferLineCyclePrev<CR>', 'Pick'),
-	map('gL', 'n', '<Cmd>BufferLineCloseOthers<CR>', 'Close others'),
+	map('<Space><C-x>', 'n', '<Cmd>BufferLineCloseOthers<CR>', 'Close others'),
 
 	map('<Space>bs', 'n', '<Cmd>BufferLinePick<CR>', 'Select'),
 	map('<Space>bi', 'n', '<Cmd>BufferLineTogglePin<CR>', 'Pin'),
@@ -32,7 +32,7 @@ spec.keys = {
 		require('bufferline').go_to(-1, true)
 	end, 'Go to right most buffer'),
 
-	map('<Space>ab', 'n', function()
+	map('<Space>tb', 'n', function()
 		if vim.o.showtabline == 0 then
 			vim.opt.showtabline = 2
 		else

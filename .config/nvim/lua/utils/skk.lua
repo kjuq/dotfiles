@@ -74,7 +74,7 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 
 	return {
 		enable_tmp('<C-Space>'),
-		toggle_jp('gaj'),
+		toggle_jp('<Space>tj'),
 		i_jp('<M-i>'),
 		a_jp('<M-a>'),
 		o_jp('<M-o>'),

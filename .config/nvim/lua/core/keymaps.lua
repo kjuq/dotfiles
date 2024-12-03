@@ -1,10 +1,7 @@
 local map = vim.keymap.set
 
--- Space as leader key
+-- Space as leader-like key
 map({ 'n', 'x' }, '<Space>', '<Nop>')
-
--- Disable Ctrl-c to allow <C-c> keymappings (e.g. <C-w><C-c>, etc
--- map('n', '<C-c>', '<Nop>')
 
 -- Emacs-like cursor movement in command mode
 map('c', '<C-b>', '<Left>') -- Jumps to the beginning of a line by default
@@ -64,44 +61,35 @@ map('n', '<C-S-Tab>', 'gT', { remap = true, silent = true, desc = 'Alias for `gT
 -- tab movement
 map('n', ']<M-t>', vim.cmd.tabnext, { silent = true, desc = 'Go to the next tab' })
 map('n', '[<M-t>', vim.cmd.tabprevious, { silent = true, desc = 'Go to the previous tab' })
-map('n', 'zT', vim.cmd.tabclose, { silent = true, desc = 'Close current tab page' })
 
 -- Frequently used keymaps
-map('n', 'gs', '<Cmd>silent write<CR>', { desc = 'Write' })
-map('n', 'gS', '<Cmd>noautocmd silent write<CR>', { desc = 'Write w/o autocmd' })
-map('n', 'gh', vim.cmd.quit, { silent = true, desc = 'Quit' })
-map('n', 'gH', vim.cmd.quitall, { silent = true, desc = 'Quit all' })
-map('n', 'gah', '<Cmd>quit!<CR>', { silent = true, desc = 'Force quit' })
-map('n', 'gaH', '<Cmd>quitall!<CR>', { silent = true, desc = 'Force quit all' })
-
+map('n', '<Space>w', '<Cmd>silent write<CR>', { desc = 'Write' })
+map('n', '<Space>W', '<Cmd>noautocmd silent write<CR>', { desc = 'Write noautocmd' })
+map('n', '<Space>d', vim.cmd.quit, { silent = true, desc = 'Quit' })
+map('n', '<Space>D', vim.cmd.quitall, { silent = true, desc = 'Quit all' })
+map('n', '<Space>x', function()
+	require('utils.common').buffer_delete()
+end, { desc = 'Delete buffer' })
+map('n', '<Space>X', function()
+	require('utils.common').buffer_delete('force')
+end, { desc = 'Delete! buffer' })
+map('n', '<Space><C-x>', function()
+	require('utils.common').buffer_delete('others')
+end, { desc = 'Clear buffers' })
 map('n', '<C-q>', '<C-w><C-w>', { desc = 'Switch window' })
 
 local bduf = require('center-bduf')
-
 map({ 'n', 'x' }, '<C-d>', bduf.cd)
 map({ 'n', 'x' }, '<C-u>', bduf.cu)
 map({ 'n', 'x' }, '<C-f>', bduf.cf)
 map({ 'n', 'x' }, '<C-b>', bduf.cb)
 
--- Comfortable buffer deletion
-map('n', 'gl', function()
-	require('utils.common').buffer_delete()
-end, { desc = 'Delete the current buffer' })
-
-map('n', 'gL', function()
-	require('utils.common').buffer_delete('force')
-end, { desc = 'Delete the current buffer forcibly' })
-
-map('n', 'gal', function()
-	require('utils.common').buffer_delete('others')
-end, { desc = 'Delete all buffers except for a current one' })
-
-map('n', 'gA', '<CMD>messages<CR>', { desc = 'History of messages' })
+map('n', '<Space>am', '<CMD>messages<CR>', { desc = 'History of messages' })
 
 -- `ga*` keymaps
-map('n', 'ga', '<Nop>')
+-- map('n', 'ga', '<Nop>')
 
-map('n', 'gaw', function()
+map('n', '<Space>tw', function()
 	vim.opt.wrap = not vim.o.wrap
 	if vim.o.wrap then
 		vim.notify('Wrap enabled')
@@ -110,7 +98,7 @@ map('n', 'gaw', function()
 	end
 end, { desc = 'Toggle wrap' })
 
-map('n', 'gaS', function()
+map('n', '<Space>tS', function()
 	vim.opt.spell = not vim.o.spell
 	if vim.o.spell then
 		vim.notify('Spellcheck enabled')
@@ -119,31 +107,31 @@ map('n', 'gaS', function()
 	end
 end, { desc = 'Toggle spell check' })
 
-map('n', 'gay', function()
+map('n', '<Space>ty', function()
 	vim.opt.cursorline = not vim.o.cursorline
 end, { desc = 'Toggle cursorline' })
 
-map('n', 'gaY', function()
+map('n', '<Space>tY', function()
 	vim.opt.cursorcolumn = not vim.o.cursorcolumn
 end, { desc = 'Toggle cursorcolumn' })
 
-map('n', 'gaL', function()
+map('n', '<Space>tL', function()
 	vim.opt.list = not vim.o.list
 end, { desc = 'Toggle list' })
 
-map('n', 'gas', function()
+map('n', '<Space>ts', function()
 	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
 end, { desc = 'Toggle statusline' })
 
-map('n', 'gan', function()
+map('n', '<Space>tn', function()
 	vim.opt.number = not vim.o.number
-end, { desc = 'Toggle number style' })
+end, { desc = 'Toggle number' })
 
-map('n', 'gaN', function()
+map('n', '<Space>tN', function()
 	vim.opt.relativenumber = not vim.o.relativenumber
-end, { desc = 'Toggle relative number style' })
+end, { desc = 'Toggle relnum' })
 
-map('n', 'gac', function()
+map('n', '<Space>tc', function()
 	if vim.o.clipboard == '' then
 		vim.o.clipboard = 'unnamedplus'
 	else
@@ -153,7 +141,7 @@ map('n', 'gac', function()
 end, { desc = 'Toggle clipboard' })
 
 local vedit_default
-map('n', 'gav', function()
+map('n', '<Space>tv', function()
 	if not vedit_default then
 		vedit_default = vim.o.virtualedit
 	end
@@ -165,46 +153,32 @@ map('n', 'gav', function()
 	vim.notify('virtualedit=' .. vim.o.virtualedit)
 end, { desc = 'Toggle virtualedit' })
 
-map('n', 'gar', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
-map('x', 'gar', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
-
-map('n', 'gad', function()
-	vim.notify(vim.fn.getcwd())
-end, { desc = 'Print working directory' })
-map('n', 'ga-', function()
-	vim.cmd('silent! cd ..')
-	vim.notify(vim.fn.getcwd())
-end, { desc = 'Change to upper directory' })
-
-map({ 'n', 'x' }, 'm', '<Nop>')
-map('n', 'gam', function()
-	vim.api.nvim_feedkeys('m', 'n', true)
-end, { desc = 'Set mark at cursor position' })
+map('n', '<Space>cs', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
+map('x', '<Space>cs', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
 
 -- variable keybinds on states
-local virtual_edit_replace = false
+local vedit_replace = false
 map({ 'n' }, 'r', function()
-	return virtual_edit_replace and 'gr' or 'r'
+	return vedit_replace and 'gr' or 'r'
 end, { expr = true })
 map({ 'n' }, 'R', function()
-	return virtual_edit_replace and 'gR' or 'R'
+	return vedit_replace and 'gR' or 'R'
 end, { expr = true })
-map('n', 'gaR', function()
-	virtual_edit_replace = not virtual_edit_replace
-	vim.notify('Virtual edit replace: ' .. tostring(virtual_edit_replace))
-end, { desc = 'Toggle virtual edit replace' })
+map('n', '<Space>tr', function()
+	vedit_replace = not vedit_replace
+	vim.notify('Virtual edit replace: ' .. tostring(vedit_replace))
+end, { desc = 'Toggle vedit replace' })
 
 -- open specific files via keymaps
-map('n', 'go', '<Nop>')
-map('n', 'got', '<CMD>EditTodo<CR>', { desc = 'Edit todo.txt' })
-map('n', 'gob', '<CMD>EditBookmarks<CR>', { desc = 'Edit bookmarks.txt' })
-map('n', 'gor', '<CMD>EditReadinglist<CR>', { desc = 'Edit readinglist.txt' })
-map('n', 'god', '<CMD>EditDailynote<CR>', { desc = 'Edit daily note' })
-map('n', 'gos', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
-map('n', 'goc', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
+map('n', '<Space>st', '<CMD>EditTodo<CR>', { desc = 'Edit todo.txt' })
+map('n', '<Space>sb', '<CMD>EditBookmarks<CR>', { desc = 'Edit bookmarks.txt' })
+map('n', '<Space>sr', '<CMD>EditReadinglist<CR>', { desc = 'Edit readinglist.txt' })
+map('n', '<Space>sd', '<CMD>EditDailynote<CR>', { desc = 'Edit daily note' })
+map('n', '<Space>ss', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
+map('n', '<Space>sq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
 
 -- TODO: check if Netrw is loaded or not
-map('n', 'gX', function()
+map('n', '<Space>-', function()
 	vim.cmd('Explore')
 end, { desc = 'Open Netrw' })
 
@@ -268,7 +242,7 @@ map({ 'n', 's', 'i' }, '<C-s>', function()
 end, { desc = 'LSP: Signature Help' })
 
 local vt_bak
-map('n', 'grv', function()
+map('n', '<Space>td', function()
 	vt_bak = vt_bak == nil and vim.diagnostic.config().virtual_text or vt_bak
 	if vim.diagnostic.config().virtual_text then
 		vim.diagnostic.config({ virtual_text = false })
