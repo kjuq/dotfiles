@@ -3,7 +3,7 @@ local map = require('utils.lazy').generate_map('', 'Kensaku-search: ')
 ---@type LazySpec
 local spec = { 'lambdalisue/kensaku-search.vim' }
 
-spec.event = 'User UserDenopsActivated'
+spec.event = 'User kjuq_denops_activated'
 
 spec.keys = {
 	map('<C-s>', 'c', function()

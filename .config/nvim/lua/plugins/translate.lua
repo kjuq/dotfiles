@@ -3,7 +3,7 @@ local map = require('utils.lazy').generate_map('<Space>', 'Translate: ')
 ---@type LazySpec
 local spec = { 'skanehira/denops-translate.vim' }
 
-spec.event = 'User UserDenopsActivated'
+spec.event = 'User kjuq_denops_activated'
 
 spec.cmd = 'Translate'
 
