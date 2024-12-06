@@ -29,4 +29,8 @@ spec.cmd = {
 	'Gwrite',
 }
 
+spec.dependencies = {
+	'https://github.com/tpope/vim-rhubarb', -- for `:GBrowse`
+}
+
 return spec

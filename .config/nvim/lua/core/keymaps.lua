@@ -84,7 +84,7 @@ map({ 'n', 'x' }, '<C-u>', bduf.cu)
 map({ 'n', 'x' }, '<C-f>', bduf.cf)
 map({ 'n', 'x' }, '<C-b>', bduf.cb)
 
-map('n', '<Space>am', '<CMD>messages<CR>', { desc = 'History of messages' })
+map('n', '<Space>sm', '<CMD>messages<CR>', { desc = 'History of messages' })
 
 -- `ga*` keymaps
 -- map('n', 'ga', '<Nop>')
