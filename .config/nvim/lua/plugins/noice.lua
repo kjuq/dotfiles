@@ -1,7 +1,3 @@
-local map = require('utils.lazy').generate_map('', '')
-
-local utils = require('utils.common')
-
 ---@type LazySpec
 local spec = { 'folke/noice.nvim' }
 
@@ -28,7 +24,7 @@ spec.opts = {
 		enabled = false,
 	},
 	notify = {
-		enabled = true,
+		enabled = false,
 	},
 	lsp = {
 		progress = {

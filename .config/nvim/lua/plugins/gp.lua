@@ -24,7 +24,7 @@ spec.cmd = {
 local map = require('utils.lazy').generate_map('', 'GP: ')
 spec.keys = {
 	map('<Space>po', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
-	map('<C-w><Space>co', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
+	map('<C-w><Space>po', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
 	map('<Space>pr', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
 	map('<Space>py', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
 	map('<Space>pj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
