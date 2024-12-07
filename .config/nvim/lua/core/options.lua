@@ -157,6 +157,8 @@ opt.fileencodings = { 'ucs-bom', 'utf-8', 'sjis', 'euc-jp', 'latin1' }
 opt.ttimeout = os.getenv('SSH_TTY') and true or false
 opt.timeout = false
 
+opt.messagesopt = 'wait:500,history:500'
+
 -- Disable welcome message
 opt.shortmess:append('I')
 
