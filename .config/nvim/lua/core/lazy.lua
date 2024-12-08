@@ -1,3 +1,4 @@
+-- TODO: also add `sudo` check
 if os.getenv('NVIM_NO_USER_PLUGINS') == '1' then
 	return
 end
