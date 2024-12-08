@@ -19,7 +19,7 @@ spec.cmd = {
 
 local map = require('utils.lazy').generate_map('', 'Overseer: ')
 spec.keys = {
-	map('<Space>ar', 'n', '<Cmd>OverseerRun<CR>', 'Run'),
+	map('<Space>am', 'n', '<Cmd>OverseerRun<CR>', 'Run'),
 }
 
 spec.opts = {
