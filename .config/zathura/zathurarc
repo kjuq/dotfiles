@@ -5,7 +5,9 @@ map <Left> navigate previous
 map <C-f> navigate next
 map <C-b> navigate previous
 map <C-w> quit
-map gh quit
+
+map <Space> feedkeys g # make <Space> prefix key
+map gd quit
 
 set selection-clipboard "clipboard"
 set selection-notification false
