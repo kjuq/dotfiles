@@ -49,6 +49,8 @@ c.tabs.new_position.unrelated = 'next'
 
 c.messages.timeout = 1000  # ms
 
+c.content.pdfjs = True
+
 c.url.searchengines = {
 	'DEFAULT': 'https://search.yahoo.co.jp/search?p={}',
 	'g': 'https://github.com/search?q={}',
@@ -102,9 +104,6 @@ config.unbind('<Ctrl-x>', mode='normal')
 # Device specific configurations
 if os.uname()[0] == 'Linux':
 	config.bind('<Paste>', 'fake-key -g <Ctrl-v>', mode='command')
-	c.content.pdfjs = False
-elif os.uname()[0] == 'Darwin':
-	c.content.pdfjs = True
 
 if os.uname()[1] == 'KSGO':
 	c.fonts.default_size = '16pt'
