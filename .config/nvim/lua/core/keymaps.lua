@@ -157,12 +157,12 @@ map('n', '<Space>cr', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' 
 map('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
 
 -- sort motion
-_G.kjuq_sort = function()
+Kjuq_sort = function()
 	vim.cmd([[ '[,']sort ]])
 	vim.fn.setpos('.', vim.fn.getpos("''"))
 end
 
-map('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua.kjuq_sort'<CR>g@]], { desc = 'Sort' })
+map('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua.Kjuq_sort'<CR>g@]], { desc = 'Sort' })
 map('x', '<Space>cs', ':sort<CR>', { desc = 'Sort' })
 
 -- variable keybinds on states
