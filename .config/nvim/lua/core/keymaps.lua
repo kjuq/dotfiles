@@ -159,7 +159,6 @@ map('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substituti
 -- sort motion
 Kjuq_sort = function()
 	vim.cmd([[ '[,']sort ]])
-	vim.fn.setpos('.', vim.fn.getpos("''"))
 end
 
 map('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua.Kjuq_sort'<CR>g@]], { desc = 'Sort' })
