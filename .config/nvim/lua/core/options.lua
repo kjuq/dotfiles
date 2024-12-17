@@ -146,7 +146,7 @@ opt.fillchars = {
 	eob = ' ', -- hide tildes in blank space after end of file
 }
 
-opt.number = true
+opt.number = false
 opt.relativenumber = false
 opt.numberwidth = 1
 
