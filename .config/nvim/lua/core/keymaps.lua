@@ -153,8 +153,17 @@ map('n', '<Space>tv', function()
 	vim.notify('virtualedit=' .. vim.o.virtualedit)
 end, { desc = 'Toggle virtualedit' })
 
-map('n', '<Space>cs', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
-map('x', '<Space>cs', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
+map('n', '<Space>cr', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
+map('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
+
+-- sort motion
+_G.kjuq_sort = function()
+	vim.cmd([[ '[,']sort ]])
+	vim.fn.setpos('.', vim.fn.getpos("''"))
+end
+
+map('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua.kjuq_sort'<CR>g@]], { desc = 'Sort' })
+map('x', '<Space>cs', ':sort<CR>', { desc = 'Sort' })
 
 -- variable keybinds on states
 local vedit_replace = false
