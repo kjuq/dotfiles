@@ -9,7 +9,7 @@ snippet autocmd
 		end,
 	})
 
-snippet lazyspec
+snippet lazy.spec
 	---@type LazySpec
 	local spec = { '${1}' }
 
@@ -23,6 +23,10 @@ snippet lazyspec
 	end
 
 	return spec
+
+snippet lazy.keymap
+	local map = require('utils.lazy').generate_map('${1}', '${2}')
+	spec.keys = {${3}}
 
 snippet feedkeys
 	vim.api.nvim_feedkeys('${1}', 'n', true)
