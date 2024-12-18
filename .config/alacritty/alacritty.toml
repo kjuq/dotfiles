@@ -22,6 +22,7 @@ offset = { x = 0, y = 0 }
 
 [colors]
 cursor = { cursor = "#E5E9F0" }
+primary = { background = '#000000' }
 
 [bell]
 animation = 'EaseOutQuint'
