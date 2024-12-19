@@ -17,6 +17,7 @@ set --export EDITOR nvim
 set --export VISUAL nvim
 set --export MANPAGER nvim +Man!
 set --export BROWSER w3m
+set --export TERMINAL alacritty --command
 
 set --export SUDO_ASKPASS "$LOCAL_BIN_PATH/sudo_pass"
 
