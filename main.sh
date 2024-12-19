@@ -6,21 +6,10 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 	exit 1
 fi
 
-if [ -z "$LOCAL_BIN_PATH" ]; then
-	echo "LOCAL_BIN_PATH is not set. Quit." 1>&2
-	exit 1
-fi
-
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 xdg_config_without_prefix="${XDG_CONFIG_HOME/$HOME\//}"
 script_xdg_config="$script_dir/$xdg_config_without_prefix"
-
-local_bin_without_prefix="${LOCAL_BIN_PATH/$HOME\//}"
-script_local_bin="$script_dir/$local_bin_without_prefix"
-
-library_without_prefix="Library/Preferences"
-script_library="$script_dir/$library_without_prefix"
 
 source "$script_dir/targets.sh"
 
@@ -33,18 +22,10 @@ backup() {
 		src="$XDG_CONFIG_HOME/$target_file"
 		dst="$script_xdg_config/$target_file"
 		parent_dir="$script_xdg_config/$(dirname "$target_file")"
-	elif [ "$dirtype" == "local_bin" ]; then
-		src="$LOCAL_BIN_PATH/$target_file"
-		dst="$script_local_bin/$target_file"
-		parent_dir="$script_local_bin/$(dirname "$target_file")"
 	elif [ "$dirtype" == "root" ]; then
 		src="$HOME/$target_file"
 		dst="$script_dir/$target_file"
 		parent_dir="$(dirname "$target_file")"
-	elif [ "$dirtype" == "library" ]; then
-		src="$HOME/$library_without_prefix/$target_file"
-		dst="$script_library/$target_file"
-		parent_dir="$script_library/$(dirname "$target_file")"
 	else
 		echo "XDG option is invalid." 1>&2
 		echo "Target: $target_file" 1>&2
@@ -79,18 +60,10 @@ symlink() {
 		src="$script_xdg_config/$target_file"
 		dst="$XDG_CONFIG_HOME/$target_file"
 		parent_dir="$XDG_CONFIG_HOME/$(dirname "$target_file")"
-	elif [ "$dirtype" == "local_bin" ]; then
-		src="$script_local_bin/$target_file"
-		dst="$LOCAL_BIN_PATH/$target_file"
-		parent_dir="$LOCAL_BIN_PATH/$(dirname "$target_file")"
 	elif [ "$dirtype" == "root" ]; then
 		src="$script_dir/$target_file"
 		dst="$HOME/$target_file"
 		parent_dir="$HOME/$(dirname "$target_file")"
-	elif [ "$dirtype" == "library" ]; then
-		src="$script_library/$target_file"
-		dst="$HOME/$library_without_prefix/$target_file"
-		parent_dir="$HOME/$library_without_prefix/$(dirname "$target_file")"
 	else
 		echo "XDG option is invalid." 1>&2
 		echo "Target: $target_file" 1>&2
@@ -133,26 +106,6 @@ unsymlink() {
 	# TODO: remove symlinks and restore real files
 }
 
-link_xdg_to_library() {
-	f="$1"
-
-	src="$XDG_CONFIG_HOME/$f"
-	dst="$HOME/$library_without_prefix/$f"
-
-	if [ -L "$dst" ]; then
-		return 0
-	fi
-
-	echo "Symlinking: $dst"
-
-	ln -s "$src" "$dst"
-}
-
-unlink_xdg_to_library() {
-	false
-	# TODO
-}
-
 link_other() {
 	src="$1"
 	dst="$2"
@@ -178,6 +131,7 @@ linux_etc() {
 macos_etc() {
 	link_other "$XDG_CONFIG_HOME/alacritty/macos.toml.bak" "$XDG_CONFIG_HOME/alacritty/macos.toml"
 	link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
+	link_other "$XDG_CONFIG_HOME/clangd/config.yaml" "$HOME/Library/Preferences/clangd/config.yaml"
 
 	# These 3 lines need reboot to apply
 	defaults write -g KeyRepeat -int 2         # MacOS's minimum is 2 (30 ms)
@@ -212,20 +166,7 @@ main() {
 
 	IFS_BAK=$IFS
 	IFS=$'\n'
-	for f in $local_bin_files; do
-		IFS=$IFS_BAK
-		if ! [ "$f" == "" ]; then
-			if [ "$action" == "backup" ]; then
-				backup "$f" "local_bin"
-			elif [ "$action" == "symlink" ]; then
-				symlink "$f" "local_bin"
-			fi
-		fi
-	done
-
-	IFS_BAK=$IFS
-	IFS=$'\n'
-	for f in $root_files; do
+	for f in $root; do
 		IFS=$IFS_BAK
 		if ! [ "$f" == "" ]; then
 			if [ "$action" == "backup" ]; then
@@ -241,30 +182,7 @@ main() {
 	fi
 
 	if [ "$(uname)" == "Darwin" ]; then
-		IFS_BAK=$IFS
-		IFS=$'\n'
-		for f in $library; do
-			IFS=$IFS_BAK
-			if ! [ "$f" == "" ]; then
-				if [ "$action" == "backup" ]; then
-					backup "$f" "library"
-				elif [ "$action" == "symlink" ]; then
-					symlink "$f" "library"
-				fi
-			fi
-		done
-
-		IFS_BAK=$IFS
-		IFS=$'\n'
-		for f in $xdg_to_library; do
-			IFS=$IFS_BAK
-			if ! [ "$f" == "" ]; then
-				if [ "$action" == "symlink" ]; then
-					link_xdg_to_library "$f"
-					macos_etc
-				fi
-			fi
-		done
+		macos_etc
 	fi
 }
 

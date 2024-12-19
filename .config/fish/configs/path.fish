@@ -14,7 +14,5 @@ if [ -x $brew_path ]
 	eval ($brew_path shellenv)
 end
 
-if [ ! -d "$LOCAL_BIN_PATH" ]
-	mkdir "$LOCAL_BIN_PATH"
-end
-fish_add_path "$LOCAL_BIN_PATH"
+fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/.local/bin_kjuq"

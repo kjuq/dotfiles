@@ -4,10 +4,6 @@ set --query XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"
 set --query XDG_DATA_HOME; or set --export XDG_DATA_HOME "$HOME/.local/share"
 set --query XDG_STATE_HOME; or set --export XDG_STATE_HOME "$HOME/.local/state"
 
-# User defined
-set --export LOCAL_HOME "$HOME/.local"
-set --export LOCAL_BIN_PATH "$LOCAL_HOME/bin"
-
 # Environment variables
 set --export LC_ALL en_US.UTF-8
 set --export LANG en_US.UTF-8
@@ -19,7 +15,7 @@ set --export MANPAGER nvim +Man!
 set --export BROWSER w3m
 set --export TERMINAL alacritty --command
 
-set --export SUDO_ASKPASS "$LOCAL_BIN_PATH/sudo_pass"
+set --export SUDO_ASKPASS "$LOCAL_HOME/bin_kjuq/sudo_pass"
 
 # Homebrew
 set --export HOMEBREW_NO_ANALYTICS 1
