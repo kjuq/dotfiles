@@ -21,11 +21,13 @@ spec.config = function()
 	vim.fn['skkeleton#config']({
 		eggLikeNewline = false,
 		setUndoPoint = false,
+		selectCandidateKeys = 'arstnei',
 		globalDictionaries = {
 			vim.fs.joinpath(lazy_root, 'dict', 'SKK-JISYO.L'),
 			vim.fs.joinpath(lazy_root, 'dict', 'SKK-JISYO.jinmei'),
 		},
 		userDictionary = skk.jisyo_user,
+		completionRankFile = skk.completion_rank,
 	})
 
 	vim.fn['skkeleton#register_kanatable']('rom', {
