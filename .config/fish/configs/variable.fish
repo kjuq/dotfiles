@@ -15,7 +15,7 @@ set --export MANPAGER nvim +Man!
 set --export BROWSER w3m
 set --export TERMINAL alacritty --command
 
-set --export SUDO_ASKPASS "$LOCAL_HOME/bin_kjuq/sudo_pass"
+set --export SUDO_ASKPASS "$HOME/.local/bin_kjuq/sudo_pass"
 
 # Homebrew
 set --export HOMEBREW_NO_ANALYTICS 1
@@ -85,7 +85,7 @@ set --export GPG_TTY (tty)
 set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
 
 # Password-store
-set --export PASSWORD_STORE_DIR "$LOCAL_HOME/password-store"
+set --export PASSWORD_STORE_DIR "$HOME/.local/password-store"
 
 # nb
 set --export NBRC_PATH "$XDG_CONFIG_HOME/nb/nbrc"
