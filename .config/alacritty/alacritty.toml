@@ -39,8 +39,8 @@ bindings = [
 	{ key = "Minus", mods = "Command", action = "DecreaseFontSize" },
 	{ key = "Equals", mods = "Command|Shift", action = "IncreaseFontSize" },
 	{ key = "Equals", mods = "Command", action = "ResetFontSize" },
-	# { key = "Tab", mods = "Control", chars = "\u001B[27;5;9~" }, # ctrl-tab
-	# { key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab
+	{ key = "Tab", mods = "Control", chars = "\u001B[27;5;9~" }, # ctrl-tab (needed for tmux)
+	{ key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab (needed for tmux)
 	{ key = "Back", mods = "Control", chars = "\u0017" }, # word-del for Linux
 	{ key = "Back", mods = "Command", chars = "\u0015" }, # Ctrl-u for MacOS
 ]
