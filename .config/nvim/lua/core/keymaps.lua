@@ -184,6 +184,7 @@ map('n', '<Space>sr', '<CMD>EditReadinglist<CR>', { desc = 'Edit readinglist.txt
 map('n', '<Space>sd', '<CMD>EditDailynote<CR>', { desc = 'Edit daily note' })
 map('n', '<Space>ss', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
 map('n', '<Space>sq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
+map('n', '<Space>sQ', '<CMD>cclose<CR>', { desc = 'Close QuickFix window' })
 
 -- TODO: check if Netrw is loaded or not
 map('n', '<Space>-', function()
