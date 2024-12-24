@@ -6,9 +6,12 @@ snippet forauto
 	}
 
 snippet rep
-	for (int ${1:i} : views::iota(${2:a}, ${3:b})) {
+	for (int ${1:i} : rep(${2:0}, ${3:10})) {
 		${0}
 	}
+
+snippet skeleton.rep
+	auto rep(int begin, int end) { return views::iota(begin, end); }
 
 snippet cout
 	cout << ${1} << endl;
