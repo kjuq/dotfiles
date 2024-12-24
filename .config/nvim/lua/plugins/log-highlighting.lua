@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kjuq/vim-log-highlighting' }
+local spec = { 'MTDL9/vim-log-highlighting' }
 spec.ft = 'log'
 
 return spec
