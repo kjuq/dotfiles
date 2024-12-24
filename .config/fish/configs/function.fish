@@ -10,7 +10,7 @@ function fisher_init
 
 	fisher install rafaelrinaldi/pure
 	fisher install decors/fish-colored-man
-	fisher install kjuq/fish-pip-completion
+	fisher install d42/fish-pip-completion
 	fisher install PatrickF1/fzf.fish
 	fisher install decors/fish-ghq
 

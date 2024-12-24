@@ -177,7 +177,7 @@ keymap : COMMAND
 keymap g? HELP
 keymap gd DOWNLOAD_LIST
 keymap gy HISTORY
-keymap gh EXIT
+keymap SPCd EXIT
 
 # copy url to clipboard
 keymap yy EXTERN 'printf %s | xclip -selection clipboard'
