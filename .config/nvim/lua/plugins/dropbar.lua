@@ -1,7 +1,7 @@
 ---@type boolean
 local enable_on_start = true
 ---@type string
-local dropbar_winbar = '%{%v:lua.dropbar.get_dropbar_str()%}'
+local dropbar_winbar = '%{%v:lua.dropbar()%}'
 
 ---@type LazySpec
 local spec = { 'Bekaboo/dropbar.nvim' }
