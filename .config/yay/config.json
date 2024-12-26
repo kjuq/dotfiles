@@ -3,5 +3,6 @@
 	"cleanmenu": false,
 	"diffmenu": false,
 	"editmenu": false,
+	"removemake": "yes",
 	"maxconcurrentdownloads": 5
 }
