@@ -4,18 +4,19 @@ local spec = { 'chrisgrieser/nvim-various-textobjs' }
 local map = require('utils.lazy').generate_map('', 'Various-textobjs: ')
 spec.keys = {
 	map('ii', { 'o', 'x' }, function()
-		require('various-textobjs').indentation('inner', 'inner', 'noBlanks')
+		if vim.fn.indent('.') == 0 then
+			require('various-textobjs').entireBuffer()
+		else
+			require('various-textobjs').indentation('inner', 'inner')
+		end
 	end, 'Indentation (inner without blanks)'),
 	map('ai', { 'o', 'x' }, function()
-		require('various-textobjs').indentation('outer', 'outer', 'noBlanks')
+		if vim.fn.indent('.') == 0 then
+			require('various-textobjs').entireBuffer()
+		else
+			require('various-textobjs').indentation('outer', 'outer')
+		end
 	end, 'Indentation (outer without blanks)'),
-
-	map('iI', { 'o', 'x' }, function()
-		require('various-textobjs').indentation('inner', 'inner', 'withBlanks')
-	end, 'Indentation (inner with blanks)'),
-	map('aI', { 'o', 'x' }, function()
-		require('various-textobjs').indentation('outer', 'outer', 'withBlanks')
-	end, 'Indentation (outer with blanks)'),
 
 	map('ir', { 'o', 'x' }, function()
 		require('various-textobjs').subword('inner', 'inner')
@@ -52,11 +53,21 @@ spec.keys = {
 }
 
 spec.opts = {
-	lookForwardSmall = 5,
-	lookForwardBig = 15,
-
-	useDefaultKeymaps = false,
-	notifyNotFound = false,
+	lookForwarding = {
+		big = 15,
+		small = 5,
+	},
+	keymaps = {
+		useDefaults = false,
+	},
+	notify = {
+		whenObjectNotFound = false,
+	},
+	textobjs = {
+		indent = {
+			blanksAreDelimiter = true,
+		},
+	},
 }
 
 return spec
