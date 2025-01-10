@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Yanky: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Yanky: ')
 
 ---@type LazySpec
 local spec = { 'gbprod/yanky.nvim' }
@@ -51,7 +51,7 @@ spec.config = function()
 		highlight = {
 			on_put = true,
 			on_yank = false,
-			timer = require('utils.common').highlight_duration,
+			timer = require('kjuq.utils.common').highlight_duration,
 		},
 		picker = {
 			select = {

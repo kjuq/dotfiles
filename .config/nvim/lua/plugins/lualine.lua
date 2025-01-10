@@ -10,7 +10,7 @@ spec.init = function()
 	vim.opt.laststatus = hidden and 0 or 3 -- to prevent from scrolling a line up when `setup()`
 end
 
-local map = require('utils.lazy').generate_map('', 'Lualine: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Lualine: ')
 spec.keys = {
 	map('<Space>ts', 'n', function()
 		if hidden then -- unhide

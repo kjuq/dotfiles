@@ -1,7 +1,7 @@
 ---@type LazySpec
 local spec = { 'chrisgrieser/nvim-various-textobjs' }
 
-local map = require('utils.lazy').generate_map('', 'Various-textobjs: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Various-textobjs: ')
 spec.keys = {
 	map('ii', { 'o', 'x' }, function()
 		if vim.fn.indent('.') == 0 then

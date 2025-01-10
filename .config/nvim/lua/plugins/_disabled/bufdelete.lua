@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Bufdelete: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Bufdelete: ')
 
 ---@type LazySpec
 local spec = { 'famiu/bufdelete.nvim' }

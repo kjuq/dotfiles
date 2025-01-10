@@ -19,7 +19,7 @@ spec.config = function()
 	vim.g.rainbow_delimiters = {
 		strategy = {
 			[''] = function(bufnr)
-				local cmn = require('utils.common')
+				local cmn = require('kjuq.utils.common')
 				if cmn.is_bigfile(cmn.get_filepath_from_bufnr(bufnr)) or cmn.is_bigbuf(bufnr) then
 					return nil
 				end

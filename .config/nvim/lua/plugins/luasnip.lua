@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Luasnip: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Luasnip: ')
 
 ---@type LazySpec
 local spec = { 'L3MON4D3/LuaSnip' }

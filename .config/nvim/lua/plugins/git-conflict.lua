@@ -5,7 +5,7 @@ spec.version = '*'
 
 spec.event = 'VeryLazy'
 
-local map = require('utils.lazy').generate_map('', 'Git-conflict: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Git-conflict: ')
 spec.keys = {
 	map('<Space>gcl', 'n', '<Cmd>GitConflictListQf<CR>', 'List QuickFix'),
 	map('<Space>gc]', 'n', '<Cmd>GitConflictChooseTheirs<CR>', 'Choose theirs'),

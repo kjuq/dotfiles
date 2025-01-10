@@ -3,7 +3,7 @@
 
 -- authentication is automatically done when Copilot.lua is ready
 
-local map = require('utils.lazy').generate_map('<Space>c', 'CopilotChat: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>c', 'CopilotChat: ')
 
 ---@type LazySpec
 local spec = { 'CopilotC-Nvim/CopilotChat.nvim' }

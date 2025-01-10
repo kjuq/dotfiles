@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>a', 'Dadbod: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'Dadbod: ')
 
 ---@type LazySpec
 local spec = { 'kristijanhusak/vim-dadbod-ui' }

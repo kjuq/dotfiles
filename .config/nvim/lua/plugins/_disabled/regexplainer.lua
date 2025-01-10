@@ -1,7 +1,7 @@
 ---@type LazySpec
 local spec = { 'bennypowers/nvim-regexplainer' }
 
-local map = require('utils.lazy').generate_map('', 'Regexplainer: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Regexplainer: ')
 spec.keys = {
 	map('<Space>aR', 'n', function()
 		require('regexplainer').show()
@@ -17,7 +17,7 @@ spec.opts = {
 	popup = {
 		border = {
 			padding = { 0, 1 },
-			style = require('utils.common').floatwinborder,
+			style = require('kjuq.utils.common').floatwinborder,
 		},
 	},
 }

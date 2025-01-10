@@ -34,17 +34,6 @@ map({ 'n', 'x' }, 'j', function()
 	return vim.v.count == 0 and 'gj' or 'j'
 end, { expr = true, silent = true })
 
--- word moves in only current line
-local jolyne = require('jolyne')
-map({ 'n', 'x' }, 'W', jolyne.W)
-map({ 'n', 'x' }, 'E', jolyne.E)
-map({ 'n', 'x' }, 'B', jolyne.B)
-map({ 'n', 'x' }, 'gE', jolyne.gE)
-map({ 'n', 'x' }, 'w', jolyne.w)
-map({ 'n', 'x' }, 'e', jolyne.e)
-map({ 'n', 'x' }, 'b', jolyne.b)
-map({ 'n', 'x' }, 'ge', jolyne.ge)
-
 -- Asterisk
 local ast = require('asterisk-remix')
 map({ 'n' }, '*', ast.keys['*'])
@@ -68,26 +57,17 @@ map('n', '<Space>W', '<Cmd>noautocmd silent write<CR>', { desc = 'Write noautocm
 map('n', '<Space>d', vim.cmd.quit, { silent = true, desc = 'Quit' })
 map('n', '<Space>D', vim.cmd.quitall, { silent = true, desc = 'Quit all' })
 map('n', '<Space>x', function()
-	require('utils.common').buffer_delete()
+	require('kjuq.utils.common').buffer_delete()
 end, { desc = 'Delete buffer' })
 map('n', '<Space>X', function()
-	require('utils.common').buffer_delete('force')
+	require('kjuq.utils.common').buffer_delete('force')
 end, { desc = 'Delete! buffer' })
 map('n', '<Space><C-x>', function()
-	require('utils.common').buffer_delete('others')
+	require('kjuq.utils.common').buffer_delete('others')
 end, { desc = 'Clear buffers' })
 map('n', '<C-q>', '<C-w><C-w>', { desc = 'Switch window' })
 
-local bduf = require('center-bduf')
-map({ 'n', 'x' }, '<C-d>', bduf.cd)
-map({ 'n', 'x' }, '<C-u>', bduf.cu)
-map({ 'n', 'x' }, '<C-f>', bduf.cf)
-map({ 'n', 'x' }, '<C-b>', bduf.cb)
-
 map('n', '<Space>sm', '<CMD>messages<CR>', { desc = 'History of messages' })
-
--- `ga*` keymaps
--- map('n', 'ga', '<Nop>')
 
 map('n', '<Space>tw', function()
 	vim.opt.wrap = not vim.o.wrap
@@ -244,9 +224,9 @@ map('n', 'grl', vim.diagnostic.setloclist, { desc = 'LSP: Set diagnostics into l
 map({ 'n', 's', 'i' }, '<C-s>', function()
 	vim.lsp.buf.signature_help({
 		title = ' Lsp: Signature Help ',
-		border = require('utils.common').floatwinborder,
-		max_width = require('utils.lsp').float_max_width,
-		max_height = require('utils.lsp').float_max_height,
+		border = require('kjuq.utils.common').floatwinborder,
+		max_width = require('kjuq.utils.lsp').float_max_width,
+		max_height = require('kjuq.utils.lsp').float_max_height,
 	})
 end, { desc = 'LSP: Signature Help' })
 

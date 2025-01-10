@@ -2,7 +2,7 @@
 local spec = { 'HakonHarnes/img-clip.nvim' }
 spec.event = 'VeryLazy'
 
-local map = require('utils.lazy').generate_map('', 'Img-clip: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Img-clip: ')
 spec.keys = {
 	map('<Space>cP', 'n', '<Cmd>PasteImage<CR>', 'Paste image'),
 }

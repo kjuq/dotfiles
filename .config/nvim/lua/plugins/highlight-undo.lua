@@ -10,7 +10,7 @@ spec.keys = {
 }
 
 spec.opts = {
-	duration = require('utils.common').highlight_duration,
+	duration = require('kjuq.utils.common').highlight_duration,
 	undo = {
 		hlgroup = 'HighlightUndo',
 		mode = 'n',

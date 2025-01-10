@@ -8,7 +8,7 @@ spec.cmd = {
 	'CodeCompanionCmd',
 }
 
-local map = require('utils.lazy').generate_map('', 'CodeCompanion: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
 	map('<Space>cO', { 'n', 'x' }, '<Cmd>CodeCompanionChat Toggle<CR>', 'Chat'),
 	map('<C-w><Space>cO', { 'n', 'x' }, '<Cmd>vsplit | CodeCompanionChat Toggle<CR>', 'Chat'),

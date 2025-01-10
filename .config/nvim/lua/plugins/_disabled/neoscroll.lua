@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Neoscroll: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Neoscroll: ')
 
 local duration = 100
 
@@ -9,7 +9,7 @@ spec.keys = {
 
 	map('<C-u>', { 'n', 'x' }, function()
 		if
-			require('utils.common').floatscrollup == '<C-u>'
+			require('kjuq.utils.common').floatscrollup == '<C-u>'
 			and pcall(require, 'noice')
 			and require('noice.lsp').scroll(-4)
 		then
@@ -20,7 +20,7 @@ spec.keys = {
 
 	map('<C-d>', { 'n', 'x' }, function()
 		if
-			require('utils.common').floatscrolldown == '<C-d>'
+			require('kjuq.utils.common').floatscrolldown == '<C-d>'
 			and pcall(require, 'noice')
 			and require('noice.lsp').scroll(4)
 		then
@@ -31,7 +31,7 @@ spec.keys = {
 
 	map('<C-b>', { 'n', 'x' }, function()
 		if
-			require('utils.common').floatscrollup == '<C-b>'
+			require('kjuq.utils.common').floatscrollup == '<C-b>'
 			and pcall(require, 'noice')
 			and require('noice.lsp').scroll(-4)
 		then
@@ -42,7 +42,7 @@ spec.keys = {
 
 	map('<C-f>', { 'n', 'x' }, function()
 		if
-			require('utils.common').floatscrolldown == '<C-f>'
+			require('kjuq.utils.common').floatscrolldown == '<C-f>'
 			and pcall(require, 'noice')
 			and require('noice.lsp').scroll(4)
 		then

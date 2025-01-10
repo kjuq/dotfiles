@@ -5,7 +5,7 @@ spec.event = { 'VeryLazy' }
 
 spec.opts = {
 	input = {
-		border = require('utils.common').floatwinborder,
+		border = require('kjuq.utils.common').floatwinborder,
 		mappings = {
 			n = {
 				['<Esc>'] = 'Close',
@@ -24,11 +24,11 @@ spec.opts = {
 		backend = { 'builtin', 'nui', 'telescope', 'fzf_lua', 'fzf' },
 		nui = {
 			border = {
-				style = require('utils.common').floatwinborder,
+				style = require('kjuq.utils.common').floatwinborder,
 			},
 		},
 		builtin = {
-			border = require('utils.common').floatwinborder,
+			border = require('kjuq.utils.common').floatwinborder,
 			mappings = {
 				['<Esc>'] = 'Close',
 				['<C-c>'] = false, -- `false` to disable

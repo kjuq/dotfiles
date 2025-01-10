@@ -10,8 +10,8 @@ spec.cmd = {
 }
 
 spec.config = function()
-	require('utils.lsp').setup()
-	require('lspconfig.ui.windows').default_options.border = require('utils.common').floatwinborder
+	require('kjuq.utils.lsp').setup()
+	require('lspconfig.ui.windows').default_options.border = require('kjuq.utils.common').floatwinborder
 end
 
 return spec

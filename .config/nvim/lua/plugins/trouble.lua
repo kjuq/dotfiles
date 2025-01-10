@@ -5,7 +5,7 @@ spec.cmd = {
 	'Trouble',
 }
 
-local map = require('utils.lazy').generate_map('', 'Trouble: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Trouble: ')
 spec.keys = {
 	map('grl', 'n', '<CMD>Trouble diagnostics<CR>', 'Diagnostics'),
 	map('<Space>aT', 'n', '<CMD>Trouble<CR>', 'Menu'),

@@ -12,9 +12,6 @@ spec.cmd = {
 	'OctoRepoWeb',
 }
 
-local map = require('utils.lazy').generate_map('', '')
-spec.keys = {}
-
 spec.opts = {
 	projects_dir = os.getenv('GHQ_ROOT') and os.getenv('GHQ_ROOT') .. 'github.com' or '~/ghq/github.com/',
 	sort_repos_by = 'updated', -- Sort repositories by various parameters

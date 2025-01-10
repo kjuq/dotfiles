@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>', 'Telescope: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Telescope: ')
 local tb = 'telescope.builtin'
 
 ---@type LazySpec
@@ -114,8 +114,8 @@ spec.keys = {
 spec.opts = function()
 	local actions = require('telescope.actions')
 	local actions_layout = require('telescope.actions.layout')
-	local prev_up = require('utils.common').floatscrollup
-	local prev_down = require('utils.common').floatscrolldown
+	local prev_up = require('kjuq.utils.common').floatscrollup
+	local prev_down = require('kjuq.utils.common').floatscrolldown
 	local prev_right = '<M-l>'
 	local prev_left = '<M-h>'
 

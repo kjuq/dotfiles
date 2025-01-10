@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>g', 'Diffview: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>g', 'Diffview: ')
 
 ---@type LazySpec
 local spec = { 'sindrets/diffview.nvim' }

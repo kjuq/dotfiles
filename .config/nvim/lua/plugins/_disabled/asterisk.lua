@@ -1,7 +1,7 @@
 ---@type LazySpec
 local spec = { 'haya14busa/vim-asterisk' }
 
-local map = require('utils.lazy').generate_map('', 'Asterisk: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Asterisk: ')
 local map_asterisk = function(key, plug)
 	local rhs = function()
 		if vim.v.hlsearch == 0 then

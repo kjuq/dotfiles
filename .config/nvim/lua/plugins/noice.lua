@@ -13,7 +13,7 @@ spec.opts = {
 			filter = false,
 		},
 		opts = {
-			border = { style = require('utils.common').floatwinborder },
+			border = { style = require('kjuq.utils.common').floatwinborder },
 		},
 	},
 	messages = {
@@ -39,11 +39,11 @@ spec.opts = {
 		},
 		documentation = {
 			opts = {
-				border = require('utils.common').floatwinborder,
+				border = require('kjuq.utils.common').floatwinborder,
 				position = { row = 2, col = 2 },
 				size = {
-					max_width = require('utils.lsp').float_max_width,
-					max_height = require('utils.lsp').float_max_height,
+					max_width = require('kjuq.utils.lsp').float_max_width,
+					max_height = require('kjuq.utils.lsp').float_max_height,
 				},
 			},
 		},
@@ -65,7 +65,7 @@ spec.opts = {
 				col = -2,
 			},
 			border = {
-				style = require('utils.common').floatwinborder,
+				style = require('kjuq.utils.common').floatwinborder,
 			},
 			win_options = {
 				winblend = 0,

@@ -11,7 +11,7 @@ spec.cmd = {
 	'AddProject',
 }
 
-local map = require('utils.lazy').generate_map('', 'Project: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Project: ')
 spec.keys = {
 	map('<Space>a.', 'n', '<Cmd>ProjectRoot<CR>', 'cd <project_root>'),
 	map('<Space>fP', 'n', function()

@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Hlslens: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Hlslens: ')
 
 ---@type LazySpec
 local spec = { 'kevinhwang91/nvim-hlslens' }

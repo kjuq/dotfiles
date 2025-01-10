@@ -8,7 +8,7 @@ local spec = { 'Bekaboo/dropbar.nvim' }
 
 spec.event = enable_on_start and 'VeryLazy' or {}
 
-local map = require('utils.lazy').generate_map('', 'Dropbar: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Dropbar: ')
 spec.keys = {
 	map('<Space>tW', 'n', function()
 		vim.o.winbar = vim.o.winbar == '' and dropbar_winbar or ''
@@ -41,7 +41,7 @@ spec.opts = {
 			['q'] = '<Nop>',
 		},
 		win_configs = {
-			border = require('utils.common').floatwinborder,
+			border = require('kjuq.utils.common').floatwinborder,
 		},
 	},
 }

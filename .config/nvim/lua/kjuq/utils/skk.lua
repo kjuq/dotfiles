@@ -25,11 +25,11 @@ end
 
 M.mappings = function(desc_prefix, enable, disable, toggle)
 	local _, _ = disable, toggle -- supress unused-local
-	local map = require('utils.lazy').generate_map('', desc_prefix)
-	local skk = require('utils.skk')
+	local map = require('kjuq.utils.lazy').generate_map('', desc_prefix)
+	local skk = require('kjuq.utils.skk')
 	local toggle_japanese = function()
 		skk.toggle_japanese(function()
-			require('utils.common').feed_plug(enable)
+			require('kjuq.utils.common').feed_plug(enable)
 		end)
 	end
 
@@ -41,34 +41,34 @@ M.mappings = function(desc_prefix, enable, disable, toggle)
 
 	local enable_tmp = function(key)
 		return map(key, { 'i', 'c' }, function()
-			require('utils.common').feed_plug(enable)
+			require('kjuq.utils.common').feed_plug(enable)
 		end, 'Enable')
 	end
 
 	local i_jp = function(key)
 		return map(key, 'n', function()
-			require('utils.common').feed_plug(enable)
+			require('kjuq.utils.common').feed_plug(enable)
 			return 'i'
 		end, '`i` (SKK)', { expr = true })
 	end
 
 	local a_jp = function(key)
 		return map(key, 'n', function()
-			require('utils.common').feed_plug(enable)
+			require('kjuq.utils.common').feed_plug(enable)
 			return 'a'
 		end, '`a` (SKK)', { expr = true })
 	end
 
 	local o_jp = function(key)
 		return map(key, 'n', function()
-			require('utils.common').feed_plug(enable)
+			require('kjuq.utils.common').feed_plug(enable)
 			return 'o'
 		end, '`o` (SKK)', { expr = true })
 	end
 
 	local s_jp = function(key)
 		return map(key, 'n', function()
-			require('utils.common').feed_plug(enable)
+			require('kjuq.utils.common').feed_plug(enable)
 			return 's'
 		end, '`s` (SKK)', { expr = true })
 	end

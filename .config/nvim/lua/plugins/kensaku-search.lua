@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Kensaku-search: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Kensaku-search: ')
 
 ---@type LazySpec
 local spec = { 'lambdalisue/kensaku-search.vim' }

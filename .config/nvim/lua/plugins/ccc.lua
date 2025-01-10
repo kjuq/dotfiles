@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>a', 'CCC: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'CCC: ')
 
 ---@type LazySpec
 local spec = { 'uga-rosa/ccc.nvim' }
@@ -16,7 +16,7 @@ spec.config = function()
 	require('ccc').setup()
 
 	local enable_hl = function(path, buffer)
-		local common = require('utils.common')
+		local common = require('kjuq.utils.common')
 		if common.is_bigfile(path) or common.is_bigbuf(buffer) then
 			return
 		end

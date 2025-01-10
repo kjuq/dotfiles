@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>c', 'ChatGPT: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>c', 'ChatGPT: ')
 
 ---@type LazySpec
 local spec = { 'jackMort/ChatGPT.nvim' }

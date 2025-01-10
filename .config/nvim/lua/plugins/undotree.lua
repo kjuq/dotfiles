@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Undotree: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Undotree: ')
 
 ---@type LazySpec
 local spec = { 'jiaoshijie/undotree' }

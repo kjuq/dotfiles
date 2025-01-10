@@ -2,7 +2,7 @@
 local spec = { 'lewis6991/gitsigns.nvim' }
 spec.event = 'VeryLazy'
 
-local map = require('utils.lazy').generate_map('', 'Gitsigns: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Gitsigns: ')
 spec.keys = {
 	-- Navigation
 	map(']g', 'n', function()

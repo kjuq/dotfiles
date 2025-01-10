@@ -21,17 +21,15 @@ local is_japanese_letter = function(str)
 	return string.match(str, japanese_regex) ~= nil
 end
 
-local map = require('utils.lazy').generate_map('', 'Spider: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Spider: ')
 ---@param key 'w'|'b'|'e'|'ge'
 local map_spider = function(key)
 	local rhs = function()
-		require('jolyne').motion(function()
-			if is_japanese_letter(get_char_under_cursor()) then
-				vim.cmd.normal({ key, bang = true })
-			else
-				require('spider').motion(key)
-			end
-		end)
+		if is_japanese_letter(get_char_under_cursor()) then
+			vim.cmd.normal({ key, bang = true })
+		else
+			require('spider').motion(key)
+		end
 	end
 	return map(key, { 'n', 'x' }, rhs, key)
 end

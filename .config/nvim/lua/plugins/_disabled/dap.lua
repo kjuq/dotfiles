@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>D', 'Dap: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>D', 'Dap: ')
 
 ---@type LazySpec
 local spec = { 'mfussenegger/nvim-dap' }

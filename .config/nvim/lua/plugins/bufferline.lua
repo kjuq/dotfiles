@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Bufferline: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Bufferline: ')
 
 ---@type LazySpec
 local spec = { 'akinsho/bufferline.nvim' }

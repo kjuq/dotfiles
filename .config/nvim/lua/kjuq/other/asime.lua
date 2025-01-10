@@ -16,7 +16,7 @@ end
 
 ---@type function
 local yank_entire_buffer = function()
-	if require('utils.common').is_empty_buffer() then
+	if require('kjuq.utils.common').is_empty_buffer() then
 		vim.fn.setreg('+', ' ')
 		return
 	end
@@ -56,7 +56,6 @@ vim.opt_local.wrap = false
 
 vim.keymap.set('n', '<C-g><C-g>', confirm.n, { buffer = true })
 vim.keymap.set('i', '<C-g><C-g>', confirm.i, { buffer = true })
-vim.keymap.set('n', 'gh', confirm.n, { buffer = true })
 vim.keymap.set('n', '<Esc>', confirm.n, { buffer = true })
 
-require('other.specialkeys').setup()
+require('kjuq.other.specialkeys').setup()

@@ -143,7 +143,7 @@ spec.config = function()
 		end
 	end
 
-	local utils = require('utils.common')
+	local utils = require('kjuq.utils.common')
 	local scrolldown = utils.floatscrolldown
 	local scrollup = utils.floatscrollup
 
@@ -186,8 +186,8 @@ spec.config = function()
 		mapping = mapping_insert,
 		sources = normal_sources,
 		window = {
-			completion = cmp.config.window.bordered({ border = require('utils.common').floatwinborder }),
-			documentation = cmp.config.window.bordered({ border = require('utils.common').floatwinborder }),
+			completion = cmp.config.window.bordered({ border = require('kjuq.utils.common').floatwinborder }),
+			documentation = cmp.config.window.bordered({ border = require('kjuq.utils.common').floatwinborder }),
 		},
 		---@diagnostic disable-next-line: missing-fields
 		formatting = {

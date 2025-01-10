@@ -2,7 +2,7 @@
 local spec = { 'j-hui/fidget.nvim' }
 spec.event = { 'LspAttach', 'VeryLazy' }
 
-local map = require('utils.lazy').generate_map('', 'Fidget: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Fidget: ')
 spec.keys = {
 	map('<Space>aa', 'n', '<Cmd>Fidget history<CR>', 'History'),
 }
@@ -12,7 +12,7 @@ spec.opts = {
 		override_vim_notify = false,
 		window = {
 			winblend = 0,
-			border = require('utils.common').floatwinborder,
+			border = require('kjuq.utils.common').floatwinborder,
 		},
 	},
 }

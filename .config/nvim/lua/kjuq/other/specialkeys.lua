@@ -1,3 +1,5 @@
+-- Called by `asime.lua`
+
 local allmodes = { 'n', 'i', 'c', 'x', 's', 'o', 't', 'l' }
 
 ---@param lhs string

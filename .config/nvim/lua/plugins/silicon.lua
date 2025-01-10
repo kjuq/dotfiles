@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>a', 'Silicon: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'Silicon: ')
 
 ---@type LazySpec
 local spec = { 'segeljakt/vim-silicon' }

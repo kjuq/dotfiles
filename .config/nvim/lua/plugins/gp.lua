@@ -21,7 +21,7 @@ spec.cmd = {
 	'GpImageAgent',
 }
 
-local map = require('utils.lazy').generate_map('', 'GP: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'GP: ')
 spec.keys = {
 	map('<Space>po', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
 	map('<C-w><Space>po', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
@@ -56,7 +56,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'claude-3.5-sonnet', temperature = 1.1, top_p = 1 },
-			system_prompt = require('utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		},
 		{
 			name = 'ChatCopilot-GPT4o',
@@ -64,7 +64,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'gpt-4o', temperature = 1.1, top_p = 1 },
-			system_prompt = require('utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		},
 		{
 			-- Unable to use `o1-mini` due to the error: `Bad request`
@@ -73,7 +73,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'o1-mini', temperature = 1.1, top_p = 1 },
-			system_prompt = require('utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		},
 	},
 
@@ -122,7 +122,7 @@ spec.opts = {
 	toggle_target = '', -- empty for keeping current layout
 
 	-- styling for chatfinder
-	style_chat_finder_border = require('utils.common').floatwinborder,
+	style_chat_finder_border = require('kjuq.utils.common').floatwinborder,
 
 	style_chat_finder_margin_bottom = 8,
 	style_chat_finder_margin_left = 1,
@@ -132,7 +132,7 @@ spec.opts = {
 	style_chat_finder_preview_ratio = 0.5,
 
 	-- styling for popup
-	style_popup_border = require('utils.common').floatwinborder,
+	style_popup_border = require('kjuq.utils.common').floatwinborder,
 	-- margins are number of characters or lines
 	style_popup_margin_bottom = 8,
 	style_popup_margin_left = 1,

@@ -1,4 +1,4 @@
-local skk = require('utils.skk')
+local skk = require('kjuq.utils.skk')
 
 ---@type LazySpec
 local spec = { 'vim-skk/eskk.vim' }

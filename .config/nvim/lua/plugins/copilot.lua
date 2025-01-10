@@ -8,7 +8,7 @@ spec.cmd = 'Copilot'
 
 spec.event = { 'InsertEnter' }
 
-local map = require('utils.lazy').generate_map('', 'Copilot: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Copilot: ')
 spec.keys = {
 	map('<C-a>', 'i', function()
 		local cs = require('copilot.suggestion')

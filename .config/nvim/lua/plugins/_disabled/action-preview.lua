@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'Action-preview: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Action-preview: ')
 
 ---@type LazySpec
 local spec = { 'aznhe21/actions-preview.nvim' }

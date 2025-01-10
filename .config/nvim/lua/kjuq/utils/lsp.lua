@@ -9,7 +9,7 @@ local on_attach = function(ev)
 	vim.keymap.set('n', 'K', function()
 		vim.lsp.buf.hover({
 			title = ' Lsp: Hover ',
-			border = require('utils.common').floatwinborder,
+			border = require('kjuq.utils.common').floatwinborder,
 			max_width = M.float_max_width,
 			max_height = M.float_max_height,
 		})
@@ -38,7 +38,7 @@ M.setup = function()
 		float = {
 			max_width = M.float_max_width,
 			max_height = M.float_max_height,
-			border = require('utils.common').floatwinborder,
+			border = require('kjuq.utils.common').floatwinborder,
 			-- header = false,
 			format = function(diagnostic)
 				return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)

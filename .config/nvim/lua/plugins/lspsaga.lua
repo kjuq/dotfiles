@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('', 'LspSaga: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'LspSaga: ')
 
 ---@type LazySpec
 local spec = { 'nvimdev/lspsaga.nvim' }
@@ -11,11 +11,11 @@ spec.opts = {
 	symbol_in_winbar = { enable = false },
 	lightbulb = { enable = false },
 	scroll_preview = {
-		scroll_down = require('utils.common').floatscrolldown,
-		scroll_up = require('utils.common').floatscrollup,
+		scroll_down = require('kjuq.utils.common').floatscrolldown,
+		scroll_up = require('kjuq.utils.common').floatscrollup,
 	},
 	ui = {
-		border = require('utils.common').floatwinborder,
+		border = require('kjuq.utils.common').floatwinborder,
 	},
 	finder = {
 		max_height = 0.6,
@@ -60,8 +60,8 @@ spec.opts = {
 		},
 	},
 	hover = {
-		max_width = require('utils.lsp').float_max_width,
-		max_height = require('utils.lsp').float_max_height,
+		max_width = require('kjuq.utils.lsp').float_max_width,
+		max_height = require('kjuq.utils.lsp').float_max_height,
 		open_link = 'gx',
 		open_cmd = '!xdg-open',
 	},

@@ -5,7 +5,7 @@ local M = {}
 ---@return string?
 --- returns `nil` when `.clang-format` was not found
 local find_clang_format = function()
-	return require('utils.common').parent_directory_traversal('.clang-format', vim.uv.cwd())
+	return require('kjuq.utils.common').parent_directory_traversal('.clang-format', vim.uv.cwd())
 end
 
 local register = function()

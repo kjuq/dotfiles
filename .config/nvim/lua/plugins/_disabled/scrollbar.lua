@@ -4,7 +4,7 @@ local show_on_start = true
 local spec = { 'petertriho/nvim-scrollbar' }
 spec.event = show_on_start and { 'WinScrolled' } or {}
 
-local map = require('utils.lazy').generate_map('', 'Scrollbar: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Scrollbar: ')
 spec.keys = {
 	map('<Space>tp', 'n', function()
 		require('scrollbar.utils').toggle()

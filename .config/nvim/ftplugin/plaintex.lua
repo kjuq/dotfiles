@@ -1,1 +1,1 @@
-require('utils.skeleton').paste_skeleton('plaintex.tex')
+require('kjuq.utils.skeleton').paste_skeleton('plaintex.tex')

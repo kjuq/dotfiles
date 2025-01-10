@@ -1,4 +1,4 @@
-local map = require('utils.lazy').generate_map('<Space>a', 'Replacer: ')
+local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'Replacer: ')
 
 ---@type LazySpec
 local spec = { 'gabrielpoca/replacer.nvim' }

@@ -18,7 +18,7 @@ local toggle = function()
 	toggle_enabled = not toggle_enabled
 end
 
-local map = require('utils.lazy').generate_map('', 'Markview: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Markview: ')
 spec.keys = {
 	map('K', 'n', toggle, 'Toggle split', { ft = 'markdown' }),
 }

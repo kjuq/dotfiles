@@ -11,7 +11,7 @@ spec.config = function()
 		vim.keymap.set(mode, key, rhs, { desc = desc, buffer = true })
 	end
 
-	local plug = require('utils.common').feed_plug
+	local plug = require('kjuq.utils.common').feed_plug
 
 	local maps = function()
 		map({ 'n', 'o', 'x' }, ']#', function()

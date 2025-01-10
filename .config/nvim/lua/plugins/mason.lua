@@ -1,4 +1,4 @@
-local cmap = require('utils.lazy').generate_map('<Space>', 'Mason: ')
+local cmap = require('kjuq.utils.lazy').generate_map('<Space>', 'Mason: ')
 
 ---@type LazySpec
 local spec = { 'williamboman/mason.nvim' }
@@ -13,7 +13,7 @@ spec.cmd = {
 
 spec.opts = {
 	ui = {
-		border = require('utils.common').floatwinborder,
+		border = require('kjuq.utils.common').floatwinborder,
 	},
 }
 

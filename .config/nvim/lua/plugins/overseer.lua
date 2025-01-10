@@ -17,7 +17,7 @@ spec.cmd = {
 	'OverseerClearCache',
 }
 
-local map = require('utils.lazy').generate_map('', 'Overseer: ')
+local map = require('kjuq.utils.lazy').generate_map('', 'Overseer: ')
 spec.keys = {
 	map('<Space>am', 'n', '<Cmd>OverseerRun<CR>', 'Run'),
 }
