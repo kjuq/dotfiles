@@ -17,3 +17,23 @@ snippet traverse
 		for dirpath, _, filenames in os.walk(expanded_path):
 			for filename in filenames:
 				yield os.path.join(dirpath, filename)
+
+snippet debug
+	import logging
+	logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
+	logging.debug('MESSAGE')
+
+snippet graph
+	import matplotlib.pyplot as plt
+	import numpy as np
+
+	x = np.linspace(-10, 10, 400)  # range of x
+	y = ${1:x**2}
+
+	plt.plot(x, y)
+
+	plt.title('Graph of y = f(x)')
+	plt.xlabel('x')
+	plt.ylabel('y')
+
+	plt.show()
