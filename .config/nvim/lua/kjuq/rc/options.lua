@@ -153,8 +153,7 @@ opt.numberwidth = 1
 opt.helplang = { 'en', 'ja' }
 opt.fileencodings = { 'ucs-bom', 'utf-8', 'sjis', 'euc-jp', 'latin1' }
 
--- buggy if set `ttimeout = false` when SSH-ing
-opt.ttimeout = os.getenv('SSH_TTY') and true or false
+opt.ttimeout = true -- `false` is buggy when SSH-ing or Wezterm without tmux
 opt.timeout = false
 
 opt.messagesopt = 'wait:500,history:500'
