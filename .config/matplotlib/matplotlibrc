@@ -1,0 +1,2 @@
+savefig.format : svg
+savefig.directory: .

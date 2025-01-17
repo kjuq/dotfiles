@@ -31,6 +31,7 @@ kitty/kitty.conf
 latexmk/latexmkrc
 lazygit/config.yml
 lesskey
+matplotlib/matplotlibrc
 mimeapps.list
 mypy/config
 nb/nbrc
