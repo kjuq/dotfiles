@@ -19,6 +19,12 @@ spec.cmd = {
 	'GpAgent',
 	'GpImage',
 	'GpImageAgent',
+	-- Generated at config.hooks
+	'GpUnitTests',
+	'GpExplain',
+	'GpCodeReview',
+	'GpTranslator',
+	'GpBufferChatNew',
 }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'GP: ')
@@ -29,10 +35,10 @@ spec.keys = {
 	map('<Space>py', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
 	map('<Space>pj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
 	map('<Space>pk', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
-
 	map('<Space>px', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
-
 	map('<Space>pn', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
+	-- Generated at config.hooks
+	map('<Space>pb', 'n', '<CMD>GpBufferChatNew<CR>', 'Open new chat with entire buffer'),
 }
 
 ---@type GpConfig
@@ -68,13 +74,55 @@ spec.opts = {
 		},
 		{
 			-- Unable to use `o1-mini` due to the error: `Bad request`
-			name = 'ChatCopilot-GPT4o-mini',
+			name = 'ChatCopilot-GPT-o1-preview',
 			provider = 'copilot',
 			chat = true,
 			command = false,
-			model = { model = 'o1-mini', temperature = 1.1, top_p = 1 },
+			model = { model = 'o1', temperature = 1.1, top_p = 1 },
 			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		},
+	},
+
+	hooks = {
+		-- example of adding command which writes unit tests for the selected code
+		UnitTests = function(gp, params)
+			local template = 'I have the following code from {{filename}}:\n\n'
+				.. '```{{filetype}}\n{{selection}}\n```\n\n'
+				.. 'Please respond by writing table driven unit tests for the code above.'
+			local agent = gp.get_command_agent()
+			gp.Prompt(params, gp.Target.vnew, agent, template)
+		end,
+		-- example of adding command which explains the selected code
+		Explain = function(gp, params)
+			local template = 'I have the following code from {{filename}}:\n\n'
+				.. '```{{filetype}}\n{{selection}}\n```\n\n'
+				.. 'Please respond by explaining the code above.'
+			local agent = gp.get_chat_agent()
+			gp.Prompt(params, gp.Target.popup, agent, template)
+		end,
+		-- example of usig enew as a function specifying type for the new buffer
+		CodeReview = function(gp, params)
+			local template = 'I have the following code from {{filename}}:\n\n'
+				.. '```{{filetype}}\n{{selection}}\n```\n\n'
+				.. 'Please analyze for code smells and suggest improvements.'
+			local agent = gp.get_chat_agent()
+			gp.Prompt(params, gp.Target.enew('markdown'), agent, template)
+		end,
+		-- example of adding command which opens new chat dedicated for translation
+		Translator = function(gp, params)
+			local chat_system_prompt = 'You are a Translator, please translate between English and Japanese.'
+			gp.cmd.ChatNew(params, chat_system_prompt)
+
+			-- -- you can also create a chat with a specific fixed agent like this:
+			-- local agent = gp.get_chat_agent("ChatGPT4o")
+			-- gp.cmd.ChatNew(params, chat_system_prompt, agent)
+		end,
+		-- example of making :%GpChatNew a dedicated command which
+		-- opens new chat with the entire current buffer as a context
+		BufferChatNew = function(gp, _)
+			-- call GpChatNew command in range mode on whole buffer
+			vim.api.nvim_command('%' .. gp.config.cmd_prefix .. 'ChatNew')
+		end,
 	},
 
 	default_chat_agent = 'ChatCopilot-GPT4o',
