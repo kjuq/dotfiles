@@ -17,6 +17,9 @@ set --export TERMINAL alacritty --command
 
 set --export SUDO_ASKPASS "$HOME/.local/bin_kjuq/sudo_pass"
 
+# Kjuq created
+set --export KJUQ_DOCS "$HOME/docs"
+
 # Homebrew
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1

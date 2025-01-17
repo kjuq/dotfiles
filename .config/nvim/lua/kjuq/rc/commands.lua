@@ -8,7 +8,7 @@ vim.api.nvim_create_user_command('Sudowrite', function()
 end, {})
 
 local edit = vim.cmd.edit
-local doc = '~/docs'
+local doc = os.getenv('KJUQ_DOCS')
 local confroot = os.getenv('XDG_CONFIG_HOME') .. '/nvim'
 
 vim.api.nvim_create_user_command('EditTodo', function()

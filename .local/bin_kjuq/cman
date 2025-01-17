@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+set -o errexit
+set -o nounset
+
+edit=false
+dir="$KJUQ_DOCS/cmd"
+
+viewer='cat'
+if command -v glow &>/dev/null; then
+	viewer='glow'
+fi
+
+usage() {
+	echo "Usage: $(basename "$0") [OPTIONS...]"
+	echo "  -e  --edit    Edit notes about a specified command"
+	exit 0
+}
+
+while [[ "$#" -gt 0 ]]; do
+	case $1 in
+	-e | --edit)
+		edit=true
+		;;
+	-h | --help)
+		usage
+		;;
+	*)
+		if [[ "$#" -eq 1 ]]; then
+			cmd="$1"
+		else
+			echo "Unknown parameter passed: $1" >&2
+			exit 1
+		fi
+		;;
+	esac
+	shift
+done
+
+if $edit; then
+	$EDITOR "$dir/$cmd.md"
+else
+	$viewer "$dir/$cmd.md"
+fi
