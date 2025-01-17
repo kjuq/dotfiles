@@ -19,6 +19,16 @@ vim.api.nvim_create_user_command('EditBookmarks', function()
 	edit(doc .. '/bookmarks/bookmarks.txt')
 end, { desc = 'Edit bookmarks.txt' })
 
+vim.api.nvim_create_user_command('EditReponotes', function()
+	local handle = io.popen(
+		[[git remote get-url origin | sed -r 's~(^(http|https|git|ssh|rsync)://)|(.git)$~~g' | sed -r 's~^[^@]+@([^:]+):~\1/~g']]
+	)
+	assert(handle) -- nil check
+	local result = handle:read('*l')
+	handle:close()
+	edit(vim.fs.joinpath(doc, 'repo', result, 'index.md'))
+end, { desc = 'Edit readinglist.txt' })
+
 vim.api.nvim_create_user_command('EditReadinglist', function()
 	edit(doc .. '/bookmarks/readinglist.txt')
 end, { desc = 'Edit readinglist.txt' })
