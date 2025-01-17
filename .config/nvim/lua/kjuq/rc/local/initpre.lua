@@ -1,1 +1,0 @@
--- _G.kjuq_colorscheme = 'tokyonight'

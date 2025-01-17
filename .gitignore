@@ -1,2 +1,2 @@
 .config/nvim/lazy-lock.json
-.config/nvim/lua/init*local.lua
+.config/nvim/lua/kjuq/rc/local/*
