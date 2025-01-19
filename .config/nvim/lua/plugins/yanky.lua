@@ -26,14 +26,7 @@ spec.keys = {
 		end
 	end, 'Next entry', { expr = true }),
 
-	map('<Space>fy', 'n', function()
-		local has_telescope, telescope = pcall(require, 'telescope')
-		if has_telescope then
-			telescope.extensions.yank_history.yank_history()
-		else
-			vim.notify('Telescope is not installed', vim.log.levels.WARN)
-		end
-	end, 'search with Telescope'),
+	map('<Space>fy', 'n', '<CMD>YankyRingHistory<CR>', 'History'),
 }
 
 spec.config = function()
@@ -59,27 +52,6 @@ spec.config = function()
 			},
 		},
 	}
-
-	local has_telescope, telescope = pcall(require, 'telescope')
-	if has_telescope then
-		telescope.load_extension('yank_history')
-
-		local mapping = require('yanky.telescope.mapping')
-
-		opts.picker.telescope = {
-			use_default_mappings = false,
-			mappings = {
-				default = mapping.set_register(utils.get_default_register()),
-				i = {
-					['<C-x>'] = mapping.delete(),
-				},
-				n = {
-					d = mapping.delete(),
-				},
-			},
-		}
-	end
-
 	require('yanky').setup(opts)
 end
 

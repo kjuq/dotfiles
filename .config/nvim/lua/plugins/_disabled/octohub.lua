@@ -20,7 +20,7 @@ spec.opts = {
 
 spec.specs = {
 	'2kabhishek/utils.nvim',
-	'nvim-telescope/telescope.nvim',
+	-- 'nvim-telescope/telescope.nvim',
 }
 
 return spec

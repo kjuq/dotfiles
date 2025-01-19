@@ -21,7 +21,7 @@ spec.opts = {
 		},
 	},
 	select = {
-		backend = { 'builtin', 'nui', 'telescope', 'fzf_lua', 'fzf' },
+		backend = { 'builtin', 'nui', 'fzf_lua', 'telescope', 'fzf' },
 		nui = {
 			border = {
 				style = require('kjuq.utils.common').floatwinborder,

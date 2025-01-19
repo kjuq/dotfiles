@@ -10,13 +10,10 @@ spec.keys = {
 
 spec.opts = {}
 
-spec.dependencies = {
-	'sindrets/diffview.nvim',
-	'nvim-telescope/telescope.nvim',
-}
-
 spec.specs = {
 	'nvim-lua/plenary.nvim',
+	'sindrets/diffview.nvim',
+	'ibhagwan/fzf-lua',
 }
 
 return spec
