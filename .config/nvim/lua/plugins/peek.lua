@@ -10,7 +10,7 @@ spec.cmd = {
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Peek: ')
 spec.keys = {
-	map('<Space>ap', 'n', '<Cmd>PeekToggle<CR>', 'Toggle'),
+	map('<Space>aP', 'n', '<Cmd>PeekToggle<CR>', 'Toggle'),
 }
 
 spec.opts = {}

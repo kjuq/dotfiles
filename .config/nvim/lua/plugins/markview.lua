@@ -5,26 +5,13 @@ local spec = { 'OXY2DEV/markview.nvim' }
 
 spec.cmd = 'Markview'
 
-local toggle_enabled = false
-local toggle = function()
-	local mvc = require('markview').commands
-	if toggle_enabled then
-		-- I don't know why but disableAll is necessary to toggle flowlessly with one keymap
-		mvc.disableAll()
-		mvc.splitToggle()
-	else
-		mvc.splitToggle()
-	end
-	toggle_enabled = not toggle_enabled
-end
+spec.opts = {
+	initial_state = false,
+}
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Markview: ')
 spec.keys = {
-	map('K', 'n', toggle, 'Toggle split', { ft = 'markdown' }),
-}
-
-spec.opts = {
-	initial_state = false,
+	map('<Space>ap', 'n', '<Cmd>Markview toggle<CR>', 'Toggle'),
 }
 
 spec.config = function(_, opts)
