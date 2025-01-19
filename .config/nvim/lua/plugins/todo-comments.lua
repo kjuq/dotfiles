@@ -4,6 +4,10 @@ local map = require('kjuq.utils.lazy').generate_map('', 'Todo: ')
 local spec = { 'folke/todo-comments.nvim' }
 spec.event = 'VeryLazy'
 
+spec.init = function()
+	Kjuq_plugin_disabled = { highlight_todo = true }
+end
+
 spec.keys = {
 	map(']t', 'n', function() -- set `:tnext` by `_defaults.lua`
 		require('todo-comments').jump_next()
@@ -25,16 +29,6 @@ spec.opts = {
 		pattern = [[\b(KEYWORDS)\b]],
 	},
 }
-
-spec.config = function(_, opts)
-	require('todo-comments').setup(opts)
-
-	-- Disable plugin/highlight-todo.lua
-	vim.api.nvim_del_augroup_by_name('kjuq_highlight_todo')
-	for _, id in ipairs(Kjuq_hl_todo_ids) do
-		vim.fn.matchdelete(id)
-	end
-end
 
 spec.specs = { 'nvim-lua/plenary.nvim' }
 
