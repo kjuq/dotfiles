@@ -2,12 +2,12 @@
 local spec = { 'kjuq/instant-substituter.nvim' }
 
 spec.keys = {
-	{ 'gz', mode = { 'n', 'x' } },
+	{ '<Space>cq', mode = { 'n', 'x' }, desc = [[Instant-substituter: ' -> " ]] },
 }
 
 spec.opts = {
 	keys = {
-		['gz'] = { "'", '"' },
+		['<Space>cq'] = { "'", '"' },
 	},
 }
 
