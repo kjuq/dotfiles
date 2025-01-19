@@ -26,6 +26,16 @@ spec.opts = {
 	},
 }
 
+spec.config = function(_, opts)
+	require('todo-comments').setup(opts)
+
+	-- Disable plugin/highlight-todo.lua
+	vim.api.nvim_del_augroup_by_name('kjuq_highlight_todo')
+	for _, id in ipairs(Kjuq_hl_todo_ids) do
+		vim.fn.matchdelete(id)
+	end
+end
+
 spec.specs = { 'nvim-lua/plenary.nvim' }
 
 return spec
