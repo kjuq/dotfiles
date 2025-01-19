@@ -9,7 +9,7 @@ local map = require('kjuq.utils.lazy').generate_map('<Space>f', 'Fzf-Lua: ')
 spec.keys = {
 	map('a', 'n', '<Cmd>FzfLua<CR>', 'Select from all sources'),
 	map('e', 'n', '<Cmd>FzfLua files<CR>', 'Find files on current dir'),
-	map('w', 'n', '<Cmd>FzfLua cWORD<CR>', 'Grep <CWORD>'),
+	map('w', 'n', '<Cmd>FzfLua grep_cword<CR>', 'Grep <CWORD>'),
 	map('g', 'n', '<Cmd>FzfLua live_grep<CR>', 'Live grep'),
 	map('G', 'n', '<Cmd>FzfLua git_files<CR>', 'Git files'),
 	map('h', 'n', '<Cmd>FzfLua oldfiles<CR>', 'MRU'),
