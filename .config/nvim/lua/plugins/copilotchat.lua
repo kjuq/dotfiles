@@ -3,12 +3,8 @@
 
 -- authentication is automatically done when Copilot.lua is ready
 
-local map = require('kjuq.utils.lazy').generate_map('<Space>c', 'CopilotChat: ')
-
 ---@type LazySpec
 local spec = { 'CopilotC-Nvim/CopilotChat.nvim' }
-
-spec.branch = 'canary'
 
 spec.cmd = {
 	'CopilotChat',
@@ -31,20 +27,15 @@ spec.cmd = {
 	'CopilotChatCommitStaged',
 }
 
+local map = require('kjuq.utils.lazy').generate_map('<Space>p', 'CopilotChat: ')
 spec.keys = {
-	map('<Nop>', 'n', function()
-		require('CopilotChat').open({ window = { layout = 'replace' } })
-	end, 'Open CopilotChat'),
-	map('<Nop>', { 'n', 'x' }, '<CMD>CopilotChatExplain<CR>', 'Explain code'),
-	map('<Nop>', { 'n', 'x' }, '<CMD>CopilotChatTests<CR>', 'Generate tests'),
-	map('<Nop>', { 'n', 'x' }, '<CMD>CopilotChatInPlace<CR>', 'Open In-place chat'),
+	map('O', { 'n', 'x' }, '<CMD>CopilotChatOpen<CR>', 'Open'),
+	map('e', { 'n', 'x' }, '<CMD>CopilotChatExplain<CR>', 'Explain code'),
+	map('T', { 'n', 'x' }, '<CMD>CopilotChatTests<CR>', 'Generate tests'),
+	map('i', { 'n', 'x' }, '<CMD>CopilotChatInPlace<CR>', 'Open In-place chat'),
 }
 
 spec.opts = function()
-	if pcall(require, 'cmp') then
-		require('CopilotChat.integrations.cmp').setup()
-	end
-
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		pattern = 'copilot-chat',
 		group = vim.api.nvim_create_augroup('kjuq_copilot_chat', {}),
@@ -66,12 +57,19 @@ spec.opts = function()
 			vim.schedule(function()
 				vim.opt_local.conceallevel = conceallevel
 				vim.opt_local.cursorline = cursorline
+				vim.keymap.set('n', '<C-Tab>', '<Cmd>bnext<CR>', { desc = 'CopilotChat: Close', buffer = true })
 			end)
 		end,
 	})
 
 	return {
+		model = 'o1-mini',
+		system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		show_help = false,
+		chat_autocomplete = true,
+		window = {
+			layout = 'replace',
+		},
 		mappings = {
 			complete = {
 				detail = 'Use @<C-x><C-b> or /<C-x><C-b> for options.',
@@ -101,11 +99,11 @@ spec.opts = function()
 				normal = 'gd',
 				insert = '<Nop>',
 			},
-			show_system_prompt = {
+			show_info = {
 				normal = 'dp', -- [d]isplay [p]rompt
 				insert = '<Nop>',
 			},
-			show_user_selection = {
+			show_context = {
 				normal = 'gV',
 				insert = '<Nop>',
 			},
