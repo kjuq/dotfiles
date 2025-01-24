@@ -3,8 +3,6 @@ if [ -e "$localinitpre" ]
 	source "$localinitpre"
 end
 
-source "$__fish_config_dir/configs/checkhealth.fish"
-
 source "$__fish_config_dir/configs/variable.fish" # need to load first
 
 source "$__fish_config_dir/configs/path.fish"

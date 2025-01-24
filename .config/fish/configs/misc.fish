@@ -1,4 +1,4 @@
-if command --search --quiet fzf
+if command --search --quiet fzf_configure_bindings
 	fzf_configure_bindings --directory=\cs --variables=\ev
 	set fzf_fd_opts --hidden --exclude .git # used by fzf.fish
 	set --export FZF_DEFAULT_COMMAND "fd --type f $fzf_fd_opts"

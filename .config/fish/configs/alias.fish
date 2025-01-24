@@ -27,6 +27,10 @@ if command --search --quiet nvim
 	alias nvimd="nvim +EditDailynote"
 end
 
+if command --search --quiet python
+	alias python='python -q'
+end
+
 if command --search --quiet git
 	alias groot='cd $(git rev-parse --show-toplevel)'
 end
