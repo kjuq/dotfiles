@@ -12,7 +12,6 @@ set --export LANGUAGE en_US.UTF-8
 set --export EDITOR nvim
 set --export VISUAL nvim
 set --export MANPAGER nvim +Man!
-set --export BROWSER w3m
 set --export TERMINAL alacritty --command
 
 set --export SUDO_ASKPASS "$HOME/.local/bin_kjuq/sudo_pass"

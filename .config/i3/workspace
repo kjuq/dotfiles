@@ -63,6 +63,9 @@ assign [class="qutebrowser"] $ws5
 # for_window [title="File Transfer*"] floating enable
 for_window [class="FloatingVim"] floating enable
 
+# Open specific applications without being focused
+no_focus [title="^Peek preview$"]
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 

@@ -14,4 +14,6 @@ rm "$HOME/.pulse-cookie"
 
 rm "$HOME/.viminfo"
 
+rm "$HOME/java.log.*"
+
 mv "$HOME/.pki" "$XDG_DATA_HOME/pki"

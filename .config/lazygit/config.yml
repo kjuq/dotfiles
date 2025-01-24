@@ -1,7 +1,12 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+
 quitOnTopLevelReturn: true # Quit with esc
 promptToReturnFromSubprocess: false
 gui:
   showIcons: true
+  showRandomTip: false
+  showCommandLog: false
+  showBottomLine: false
 git:
   disableForcePushing: true
 keybinding:

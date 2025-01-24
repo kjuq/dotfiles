@@ -22,8 +22,13 @@ if command --search --quiet nvim
 	alias Nvim="env NVIM_NO_USER_PLUGINS=1 nvim"
 	alias nvimt="nvim +EditTodo"
 	alias nvimb="nvim +EditBookmarks"
-	alias nvimr="nvim +EditReadinglist"
+	alias nvimr="nvim +EditReponotes"
+	alias nvimR="nvim +EditReadinglist"
 	alias nvimd="nvim +EditDailynote"
+end
+
+if command --search --quiet git
+	alias groot='cd $(git rev-parse --show-toplevel)'
 end
 
 if command --search --quiet trash
