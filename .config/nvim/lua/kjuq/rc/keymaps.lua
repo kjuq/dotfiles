@@ -51,6 +51,8 @@ map('n', '<C-S-Tab>', 'gT', { remap = true, silent = true, desc = 'Alias for `gT
 map('n', ']<M-t>', vim.cmd.tabnext, { silent = true, desc = 'Go to the next tab' })
 map('n', '[<M-t>', vim.cmd.tabprevious, { silent = true, desc = 'Go to the previous tab' })
 
+map('n', '<Space>cv', '`[v`]', { desc = 'Select last pasted range' })
+
 -- Frequently used keymaps
 map('n', '<Space>w', '<Cmd>silent write<CR>', { desc = 'Write' })
 map('n', '<Space>W', '<Cmd>noautocmd silent write<CR>', { desc = 'Write noautocmd' })

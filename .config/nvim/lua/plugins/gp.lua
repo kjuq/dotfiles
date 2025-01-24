@@ -73,6 +73,14 @@ spec.opts = {
 			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		},
 		{
+			name = 'ChatCopilot-GPT4o-mini',
+			provider = 'copilot',
+			chat = true,
+			command = false,
+			model = { model = 'gpt-4o-mini', temperature = 1.1, top_p = 1 },
+			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+		},
+		{
 			-- Unable to use `o1-mini` due to the error: `Bad request`
 			name = 'ChatCopilot-GPT-o1-preview',
 			provider = 'copilot',
@@ -125,7 +133,7 @@ spec.opts = {
 		end,
 	},
 
-	default_chat_agent = 'ChatCopilot-GPT4o',
+	default_chat_agent = 'ChatCopilot-GPT4o-mini',
 	default_command_agent = 'CodeCopilot',
 
 	chat_user_prefix = '󰭹 :',
