@@ -52,6 +52,11 @@ set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 set --export RCLONE_PROGRESS true
 set --export RCLONE_EXCLUDE "*.DS_Store"
 
+# fzf
+set fzf_fd_opts "--hidden --exclude .git"
+set --export FZF_DEFAULT_COMMAND "fd --type f $fzf_fd_opts"
+set --export FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+
 # ripgrep
 set --export RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
