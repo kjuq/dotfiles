@@ -32,7 +32,7 @@ end
 
 if command --search --quiet eza
 	function ls --wraps='eza --group-directories-first --icons --classify'
-		eza --group-directories-first --icons --classify $argv
+		command eza --group-directories-first --icons --classify $argv
 	end
 	function tree --wraps='ls --tree --level=3 --ignore-glob "node_modules|.git|.cache"'
 		ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\" $argv
@@ -70,57 +70,57 @@ end
 
 if command --search --quiet python
 	function python --wraps='python -q'
-		python -q $argv
+		command python -q $argv
 	end
 end
 
 if command --search --quiet git
 	function groot --wraps='cd $(git rev-parse --show-toplevel)'
-		cd $(git rev-parse --show-toplevel) $argv
+		command cd $(git rev-parse --show-toplevel) $argv
 	end
 end
 
 if command --search --quiet trash
 	function dl --wraps='trash -r'
-		trash -r $argv
+		command trash -r $argv
 	end
 	function rm --wraps="echo '`rm` is dangerous so use `dl` instead. (Given args:'"
-		echo '`rm` is dangerous so use `dl` instead. (Given args:' $argv
+		command echo '`rm` is dangerous so use `dl` instead. (Given args:' $argv
 	end
 end
 
 if command --search --quiet sudo
 	function sudo --wraps='sudo -AE'
-		sudo -AE $argv
+		command sudo -AE $argv
 	end
 end
 
 if command --search --quiet nvidia-settings
 	function nvidia-settings --wraps='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
-		nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings $argv
+		command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings $argv
 	end
 end
 
 if command --search --quiet fd
 	function fd --wraps='fd --hidden'
-		fd --hidden $argv
+		command fd --hidden $argv
 	end
 end
 
 if command --search --quiet w3m
 	function w3m --wraps='env TERM=xterm-256color w3m'
-		env TERM=xterm-256color w3m $argv
+		env TERM=xterm-256color command w3m $argv
 	end
 end
 
 if [ (uname) = "Linux" ]
 	function pbcopy --wraps='xsel --clipboard --input'
-		xsel --clipboard --input $argv
+		command xsel --clipboard --input $argv
 	end
 	function pbpaste --wraps='xsel --clipboard --output'
-		xsel --clipboard --output $argv
+		command xsel --clipboard --output $argv
 	end
 	function open --wraps='xdg-open'
-		xdg-open $argv
+		command xdg-open $argv
 	end
 end
