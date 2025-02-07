@@ -100,7 +100,7 @@ set --export NB_DIR "$XDG_DATA_HOME/nb"
 
 # Xinit
 set --export XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
-set --export XSERVERRC "$XDG_CONFIG_HOME/X11/xserverrc"
+# set --export XSERVERRC "$XDG_CONFIG_HOME/X11/xserverrc" # `startx` fails
 
 # GUI toolkit
 set --export GTK2_RC_FILES "$XDG_CONFIG_HOME/gtkrc-2.0/gtkrc"
