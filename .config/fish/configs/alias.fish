@@ -35,7 +35,7 @@ if command --search --quiet eza
 		command eza --group-directories-first --icons --classify $argv
 	end
 	function tree --wraps='ls --tree --level=3 --ignore-glob "node_modules|.git|.cache"'
-		ls --tree --level=3 --ignore-glob \"node_modules|.git|.cache\" $argv
+		ls --tree --level=3 --ignore-glob "node_modules|.git|.cache" $argv
 	end
 else if [ (uname) = "Linux" ]
 	function ls --wraps='command ls --color=auto --classify --group-directories-first'
