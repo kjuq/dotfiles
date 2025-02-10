@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Reset all options for keyboard. Mainly for disableing `terminate:ctrl_alt_bksp`
-# Or, see ~/docs/notes/disable_ctrl_alt_backspace.md
+# Or, see $KJUQ_DOCS/notes/disable_ctrl_alt_backspace.md
 setxkbmap -option
 
 # Faster key repeat rate
