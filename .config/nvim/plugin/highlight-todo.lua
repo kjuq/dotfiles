@@ -1,4 +1,4 @@
-if Kjuq_plugin_disabled.highlight_todo then
+if Kjuq_plugin_disabled and Kjuq_plugin_disabled.highlight_todo then
 	return
 end
 
