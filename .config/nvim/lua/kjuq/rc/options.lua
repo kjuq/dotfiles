@@ -15,27 +15,7 @@ opt.laststatus = 3 -- global status line. `0` to hide
 opt.showcmdloc = 'statusline'
 opt.ruler = false
 
-local stl = {
-	fullpath = '%F',
-	readonly = '%r',
-	modified = '%m',
-	separator = '%=',
-	filetype = '%{&filetype}',
-	blank = ' ',
-}
-
-local statusline = {
-	stl.blank,
-	stl.fullpath,
-	stl.readonly,
-	stl.readonly,
-	stl.modified,
-	stl.separator,
-	stl.filetype,
-	stl.blank,
-}
-
-opt.statusline = table.concat(statusline, '')
+opt.statusline = require('kjuq.utils.statusline')
 
 opt.termguicolors = true
 
