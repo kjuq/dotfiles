@@ -12,11 +12,13 @@ local doc = os.getenv('KJUQ_DOCS')
 local confroot = os.getenv('XDG_CONFIG_HOME') .. '/nvim'
 
 vim.api.nvim_create_user_command('EditTodo', function()
-	edit(doc .. '/todo/todo.txt')
+	local path = vim.fs.joinpath(doc, 'todo/todo.txt')
+	edit(path)
 end, { desc = 'Edit todo.txt' })
 
 vim.api.nvim_create_user_command('EditBookmarks', function()
-	edit(doc .. '/bookmarks/bookmarks.txt')
+	local path = vim.fs.joinpath(doc, 'bookmarks/bookmarks.txt')
+	edit(path)
 end, { desc = 'Edit bookmarks.txt' })
 
 vim.api.nvim_create_user_command('EditReponotes', function()
@@ -30,11 +32,13 @@ vim.api.nvim_create_user_command('EditReponotes', function()
 end, { desc = 'Edit readinglist.txt' })
 
 vim.api.nvim_create_user_command('EditReadinglist', function()
-	edit(doc .. '/bookmarks/readinglist.txt')
+	local path = vim.fs.joinpath(doc, 'bookmarks/readinglist.txt')
+	edit(path)
 end, { desc = 'Edit readinglist.txt' })
 
 vim.api.nvim_create_user_command('EditDailynote', function()
-	edit(doc .. '/daily/' .. os.date('%Y-%m-%d.md'))
+	local path = vim.fs.joinpath(doc, 'daily', os.date('%Y-%m-%d.md'))
+	edit(path)
 end, { desc = 'Edit daily note' })
 
 vim.api.nvim_create_user_command('EditSnippet', function()
