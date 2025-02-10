@@ -76,7 +76,7 @@ end
 
 if command --search --quiet git
 	function groot --wraps='cd $(git rev-parse --show-toplevel)'
-		command cd $(git rev-parse --show-toplevel) $argv
+		cd $(git rev-parse --show-toplevel) $argv
 	end
 end
 
