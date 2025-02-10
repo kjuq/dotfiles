@@ -7,7 +7,7 @@ local snpft = {
 	lua = require('kjuq.snippet.ft.lua').snippets,
 	markdown = require('kjuq.snippet.ft.markdown').snippets,
 	python = require('kjuq.snippet.ft.python').snippets,
-	sh = require('kjuq.snippet.ft.sh').snippets,
+	bash = require('kjuq.snippet.ft.bash').snippets,
 	tex = require('kjuq.snippet.ft.tex').snippets,
 	typst = require('kjuq.snippet.ft.typst').snippets,
 }
