@@ -182,7 +182,7 @@ spec.opts = function()
 			return '[JAPANESE INPUT]'
 		end,
 		cond = function()
-			return _G.kjuq_skk_jp_mode_enabled
+			return require('kjuq.utils.skk').is_skk_jp_mode_enabled()
 		end,
 		color = { fg = colors.orange },
 	}

@@ -4,12 +4,16 @@ M.skk_dir = os.getenv('XDG_CONFIG_HOME') .. '/skk'
 M.jisyo_user = M.skk_dir .. '/my_jisyo'
 M.completion_rank = M.skk_dir .. '/completion_rank'
 
-_G.kjuq_skk_jp_mode_enabled = false
+local is_skk_jp_mode_enabled = false
 local group = vim.api.nvim_create_augroup('kjuq_skk_toggle', {})
+
+function M.is_skk_jp_mode_enabled()
+	return is_skk_jp_mode_enabled
+end
 
 ---@param callback fun()
 M.toggle_japanese = function(callback)
-	if _G.kjuq_skk_jp_mode_enabled then
+	if is_skk_jp_mode_enabled then
 		vim.notify('Japanese mode disabled (English)')
 		vim.api.nvim_clear_autocmds({ group = group })
 	else
@@ -20,7 +24,7 @@ M.toggle_japanese = function(callback)
 			callback = callback,
 		})
 	end
-	_G.kjuq_skk_jp_mode_enabled = not _G.kjuq_skk_jp_mode_enabled
+	is_skk_jp_mode_enabled = not is_skk_jp_mode_enabled
 end
 
 M.mappings = function(desc_prefix, enable, disable, toggle)
