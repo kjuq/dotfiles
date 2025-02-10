@@ -1,10 +1,11 @@
-function Kjuq_stl_macrorec()
+function _G.kjuq_stl_macrorec()
 	if vim.fn.reg_recording() == '' then
 		return ''
 	end
 	return vim.fn.reg_recording() .. ' '
 end
-function Kjuq_stl_searchcount()
+
+function _G.kjuq_stl_searchcount()
 	if vim.v.hlsearch == 0 then
 		return ''
 	end
@@ -15,7 +16,7 @@ function Kjuq_stl_searchcount()
 	return string.format('%d/%d ', result.current, denominator)
 end
 
-function Kjuq_stl_encoding()
+function _G.kjuq_stl_encoding()
 	local enc = vim.o.fileencoding
 	if enc == 'utf-8' then
 		return ''
@@ -23,7 +24,7 @@ function Kjuq_stl_encoding()
 	return string.upper(enc) .. ' '
 end
 
-function Kjuq_stl_fileformat()
+function _G.kjuq_stl_fileformat()
 	local ffmt = vim.o.fileformat
 	if ffmt == 'unix' then
 		return ''
@@ -31,7 +32,7 @@ function Kjuq_stl_fileformat()
 	return string.upper(ffmt) .. ' '
 end
 
-function Kjuq_stl_diagnostic_error()
+function _G.kjuq_stl_diagnostic_error()
 	if vim.diagnostic.count == nil then -- neovim >= 0.10.0 is required
 		return ''
 	end
@@ -44,7 +45,7 @@ function Kjuq_stl_diagnostic_error()
 	return 'E:' .. err .. ' '
 end
 
-function Kjuq_stl_diagnostic_warn()
+function _G.kjuq_stl_diagnostic_warn()
 	if vim.diagnostic.count == nil then -- neovim >= 0.10.0 is required
 		return ''
 	end
@@ -57,7 +58,7 @@ function Kjuq_stl_diagnostic_warn()
 	return 'W:' .. warn .. ' '
 end
 
-function Kjuq_stl_diagnostic_info()
+function _G.kjuq_stl_diagnostic_info()
 	if vim.diagnostic.count == nil then -- neovim >= 0.10.0 is required
 		return ''
 	end
@@ -70,7 +71,7 @@ function Kjuq_stl_diagnostic_info()
 	return 'I:' .. info .. ' '
 end
 
-function Kjuq_stl_diagnostic_hint()
+function _G.kjuq_stl_diagnostic_hint()
 	if vim.diagnostic.count == nil then -- neovim >= 0.10.0 is required
 		return ''
 	end
@@ -83,7 +84,7 @@ function Kjuq_stl_diagnostic_hint()
 	return 'H:' .. hint .. ' '
 end
 
-function Kjuq_stl_skk()
+function _G.kjuq_stl_skk()
 	return require('kjuq.utils.skk').is_skk_jp_mode_enabled() and 'JP ' or ''
 end
 
@@ -99,15 +100,15 @@ local components = {
 	modified = color('StatusLine', ' %m'),
 	separator = '%=',
 	filetype = color('StatusLine', '%{&filetype}'),
-	macro_rec = color('Number', '%{v:lua.Kjuq_stl_macrorec()}'),
-	searchcount = color('Label', '%{v:lua.Kjuq_stl_searchcount()}'),
-	encoding = color('Error', '%{v:lua.Kjuq_stl_encoding()}'),
-	fileformat = color('Error', '%{v:lua.Kjuq_stl_fileformat()}'),
-	diagnostic_error = color('DiagnosticError', '%{v:lua.Kjuq_stl_diagnostic_error()}'),
-	diagnostic_warn = color('DiagnosticWarn', '%{v:lua.Kjuq_stl_diagnostic_warn()}'),
-	diagnostic_info = color('DiagnosticInfo', '%{v:lua.Kjuq_stl_diagnostic_info()}'),
-	diagnostic_hint = color('DiagnosticHint', '%{v:lua.Kjuq_stl_diagnostic_hint()}'),
-	skk = color('Type', '%{v:lua.Kjuq_stl_skk()}'),
+	macro_rec = color('Number', '%{v:lua._G.kjuq_stl_macrorec()}'),
+	searchcount = color('Label', '%{v:lua._G.kjuq_stl_searchcount()}'),
+	encoding = color('Error', '%{v:lua._G.kjuq_stl_encoding()}'),
+	fileformat = color('Error', '%{v:lua._G.kjuq_stl_fileformat()}'),
+	diagnostic_error = color('DiagnosticError', '%{v:lua._G.kjuq_stl_diagnostic_error()}'),
+	diagnostic_warn = color('DiagnosticWarn', '%{v:lua._G.kjuq_stl_diagnostic_warn()}'),
+	diagnostic_info = color('DiagnosticInfo', '%{v:lua._G.kjuq_stl_diagnostic_info()}'),
+	diagnostic_hint = color('DiagnosticHint', '%{v:lua._G.kjuq_stl_diagnostic_hint()}'),
+	skk = color('Type', '%{v:lua._G.kjuq_stl_skk()}'),
 	blank = ' ',
 
 	-- TODO: add diff and branch?
