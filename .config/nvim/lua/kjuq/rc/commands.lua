@@ -38,7 +38,8 @@ vim.api.nvim_create_user_command('EditDailynote', function()
 end, { desc = 'Edit daily note' })
 
 vim.api.nvim_create_user_command('EditSnippet', function()
-	edit(confroot .. '/snippets/' .. vim.o.ft .. '.snippets')
+	local path = vim.fs.joinpath(confroot, 'lua/kjuq/snippet/ft', vim.o.ft .. '.lua')
+	edit(path)
 end, { desc = 'Edit snippet' })
 
 vim.api.nvim_create_user_command('ExMode', function()

@@ -17,12 +17,15 @@ spec.config = function()
 
 	local cmp = require('cmp')
 
+	require('kjuq.snippet.cmp').register_cmp_source()
+
 	local copilot_source = cmp.config.sources({ { name = 'copilot' } })
 	local normal_sources = cmp.config.sources({
 		{ name = 'path' },
 		{ name = 'emoji' },
 		{ name = 'fish' },
-		{ name = 'luasnip' },
+		-- { name = 'luasnip' },
+		{ name = 'kjuq_snippet' },
 		{
 			name = 'nvim_lsp',
 			option = {
@@ -175,7 +178,8 @@ spec.config = function()
 		},
 		snippet = {
 			expand = function(args)
-				require('luasnip').lsp_expand(args.body)
+				vim.snippet.expand(args.body)
+				-- require('luasnip').lsp_expand(args.body)
 			end,
 		},
 		view = {
