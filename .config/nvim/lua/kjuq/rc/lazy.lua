@@ -36,7 +36,11 @@ local opts = {
 		},
 	},
 	dev = {
-		path = '~/codes/_nvim_plugins',
+		---@param spec LazyPlugin
+		path = function(spec)
+			local dir = spec.url:gsub('^http[s]+://', ''):gsub([[.git$]], '')
+			return vim.fs.joinpath(os.getenv('GHQ_ROOT'), dir)
+		end,
 		patterns = { 'kjuq' },
 		fallback = true,
 	},
