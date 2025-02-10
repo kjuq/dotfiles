@@ -14,8 +14,11 @@ backup() {
 	while read -r line; do
 		local="$(eval echo "$line")"
 		remote="${local//$HOME/$script_dir}"
-		mkdir --parents "$(dirname remote)"
-		echo "$local" "$remote"
+		if [ ! -e "$remote" ]; then
+			mkdir --parents "$(dirname remote)"
+			echo "$local"
+			mv "$local" "$remote"
+		fi
 	done <"$script_dir"/targets.txt
 }
 
@@ -24,15 +27,22 @@ symlink() {
 		local="$(eval echo "$line")"
 		remote="${local//$HOME/$script_dir}"
 		mkdir --parents "$(dirname local)"
-		echo "$remote" "$local"
+		ln --symbolic "$remote" "$local"
 	done <"$script_dir"/targets.txt
 }
 
 unlink() {
+	status=0
 	while read -r line; do
 		local="$(eval echo "$line")"
-		echo "unlink" "$local"
+		if [ -L "$local" ]; then # is symlink
+			rm "$local"
+		elif [ -e "$local" ]; then
+			echo "$local"
+			status=1
+		fi
 	done <"$script_dir"/targets.txt
+	return $status
 }
 
 linux_etc() {
