@@ -6,7 +6,9 @@ local spec = { 'OXY2DEV/markview.nvim' }
 spec.cmd = 'Markview'
 
 spec.opts = {
-	initial_state = false,
+	preview = {
+		enable = false,
+	},
 }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Markview: ')
@@ -19,14 +21,14 @@ spec.config = function(_, opts)
 	mv.setup(opts)
 
 	-- for lazy load
-	mv.commands.attach()
+	-- mv.commands.attach()
 	-- NOTE: Use this method once it is fixed that `nvim_exec_autocmds` takes `pattern` and `buffer` at the same time
-	-- for _, winid in ipairs(vim.api.nvim_list_wins()) do
-	-- 	local bufnr = vim.api.nvim_win_get_buf(winid)
-	-- 	if vim.bo[bufnr].filetype == 'markdown' then
-	-- 		mv.commands.attach(bufnr)
-	-- 	end
-	-- end
+	for _, winid in ipairs(vim.api.nvim_list_wins()) do
+		local bufnr = vim.api.nvim_win_get_buf(winid)
+		if vim.bo[bufnr].filetype == 'markdown' then
+			mv.commands.attach(bufnr)
+		end
+	end
 end
 
 spec.specs = {
