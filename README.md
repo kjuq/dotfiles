@@ -17,22 +17,20 @@ My ultimate dotfiles.
 
 # Usage
 
-## Backup
-
-`./main.sh b` backs up files listed in `targets.sh`
-
-## Sync
-
-`./main.sh s` creates symlinks
-
-## Uninstall (unlink symlinks)
-
-TODO
-
-# `scripts/`
-
-Run the scripts in this directory **manually**.
+## Install
 
 ```bash
-find ./scripts -name '*.sh' -exec bash {} \;
+./main.sh uninstall && ./main.sh install
+```
+
+## Uninstall
+
+```bash
+./main.sh uninstall
+```
+
+## Backup
+
+```bash
+./main.sh backup
 ```

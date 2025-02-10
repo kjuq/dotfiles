@@ -11,8 +11,19 @@ line="cookie-file = $cookie_path"
 
 if grep "^$line$" $conf_path >/dev/null; then
 	echo "'$conf_path' is already set. Quit." 1>&2
-	exit 1
+	exit 0
 fi
 
 sudo=$([[ -n "${SUDO_ASKPASS}" ]] && echo "sudo -A" || echo "sudo")
-echo "$line" | $sudo tee --append $conf_path >/dev/null
+
+install() {
+	$sudo mkdir --parents "$(dirname conf_path)"
+	echo "$line" | $sudo tee --append $conf_path >/dev/null
+}
+
+if [ "$1" == "install" ]; then
+	install
+else
+	echo "Unknown or no argument was given. Quit."
+	exit 1
+fi

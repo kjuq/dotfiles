@@ -45,41 +45,40 @@ unlink() {
 	return $status
 }
 
-linux_etc() {
-	if [ ! "$(uname)" == "Linux" ]; then
-		echo 'This machine is not Linux' 1>&2
-		exit 1
+install() {
+	symlink
+	"$script_dir"/module/wget.sh install
+	if [ "$(uname)" == "Linux" ]; then
+		"$script_dir/module/linux.sh" install
+	elif [ "$(uname)" == "Darwin" ]; then
+		"$script_dir"/module/macos.sh install
+	else
+		echo "Unknown OS detected" 1>&2
+		return 1
 	fi
-	link_other "$XDG_CONFIG_HOME/alacritty/linux.toml.bak" "$XDG_CONFIG_HOME/alacritty/linux.toml"
 }
 
-macos_etc() {
-	if [ ! "$(uname)" == "Darwin" ]; then
-		echo 'This machine is not MacOS' 1>&2
-		exit 1
+uninstall() {
+	unlink
+	"$script_dir"/module/wget.sh uninstall
+	if [ "$(uname)" == "Linux" ]; then
+		"$script_dir"/module/linux.sh uninstall
+	elif [ "$(uname)" == "Darwin" ]; then
+		"$script_dir"/module/macos.sh uninstall
+	else
+		echo "Unknown OS detected" 1>&2
+		return 1
 	fi
-	link_other "$XDG_CONFIG_HOME/alacritty/macos.toml.bak" "$XDG_CONFIG_HOME/alacritty/macos.toml"
-	link_other "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
-	link_other "$XDG_CONFIG_HOME/clangd/config.yaml" "$HOME/Library/Preferences/clangd/config.yaml"
-	defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"
-	# These 3 lines need a reboot to apply
-	defaults write -g KeyRepeat -int 2         # MacOS's minimum is 2 (30 ms)
-	defaults write -g InitialKeyRepeat -int 15 # MacOS's minimum is 15 (225 ms)
-	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 }
 
 # ------------------------- main ------------------------- #
 
-if [ "$1" == "backup" ] || [ "$1" == "b" ]; then
+if [ "$1" == "install" ] || [ "$1" == "i" ]; then
+	install
+elif [ "$1" == "uninstall" ] || [ "$1" == "u" ]; then
+	uninstall
+elif [ "$1" == "backup" ] || [ "$1" == "b" ]; then
 	backup
-elif [ "$1" == "symlink" ] || [ "$1" == "s" ]; then
-	symlink
-elif [ "$1" == "unlink" ] || [ "$1" == "u" ]; then
-	unlink
-elif [ "$1" == "linux" ]; then
-	linux_etc
-elif [ "$1" == "macos" ]; then
-	macos_etc
 else
 	echo "Unknown or no argument was given. Quit."
 	exit 1
