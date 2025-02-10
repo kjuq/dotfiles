@@ -66,6 +66,9 @@ if command --search --quiet nvim
 	function nvimd --wraps='nvim +EditDailynote'
 		nvim +EditDailynote $argv
 	end
+	function nvimq --wraps="nvim +'set bufhidden=wipe | cgetbuffer | only! | split | set bufhidden=wipe'" --description='rg --vimgrep QUERY | nvimq'
+		nvim +'set bufhidden=wipe | cgetbuffer | only! | split | set bufhidden=wipe'
+	end
 end
 
 if command --search --quiet python
