@@ -1,4 +1,4 @@
-.local/bin_kjuq
+$HOME/.local/kjuq_bin
 $XDG_CONFIG_HOME/aerc/accounts.conf.template
 $XDG_CONFIG_HOME/aerc/aerc.conf
 $XDG_CONFIG_HOME/aerc/binds.conf

@@ -1,4 +1,4 @@
--- Loaded by `$HOME/.local/bin_kjuq/nvimcopy`
+-- Loaded by `nvimcopy`
 
 local is_linux = vim.fn.has('linux') == 1
 local is_macos = vim.fn.has('mac') == 1
