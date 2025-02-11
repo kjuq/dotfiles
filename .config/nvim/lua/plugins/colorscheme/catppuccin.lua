@@ -10,7 +10,7 @@ spec.opts = {
 		light = 'latte',
 		dark = 'mocha',
 	},
-	transparent_background = true, -- disables setting the background color.
+	transparent_background = _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent,
 	dim_inactive = {
 		enabled = false, -- dims the background color of inactive window
 		shade = 'dark',
