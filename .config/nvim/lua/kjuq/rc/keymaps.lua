@@ -139,11 +139,11 @@ map('n', '<Space>cr', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' 
 map('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
 
 -- sort motion
-Kjuq_sort = function()
+_G.kjuq_sort = function()
 	vim.cmd([[ '[,']sort n ]]) -- 'n' for numerical sort
 end
 
-map('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua.Kjuq_sort'<CR>g@]], { desc = 'Sort' })
+map('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua._G.kjuq_sort'<CR>g@]], { desc = 'Sort' })
 map('x', '<Space>cs', ':sort<CR>', { desc = 'Sort' })
 
 -- variable keybinds on states
@@ -192,21 +192,18 @@ map('i', '<C-g><C-t>', insert_time, { desc = 'Insert time' })
 map('n', '<Esc>', function()
 	vim.cmd.nohlsearch()
 	vim.cmd.fclose({ bang = true })
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', false)
+	vim.cmd.execute([['normal \<Esc>']])
 end, { silent = true })
 
-map({ 'i', 's' }, '<C-l>', function()
-	local mode = vim.api.nvim_get_mode().mode
-	if mode == 'ix' then -- completion with <C-x>
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-l>', true, false, true), 'n', false)
-	else
+map({ 'i' }, '<C-l>', function()
+	if vim.api.nvim_get_mode().mode ~= 'ix' then --  not in completion with <C-x>
 		vim.cmd.fclose({ bang = true })
 	end
+	vim.cmd.normal({ '<C-l>' })
 end, { silent = true })
 
 -- LSP
 -- neovim/runtime/lua/vim/lsp.lua > lsp._set_defaults
-vim.keymap.set('n', 'K', '<Cmd>normal! K<CR>', { desc = 'K (Dummy to disable builtin behavior)' })
 vim.keymap.set('n', 'gr', '<Nop>')
 local vlb = vim.lsp.buf
 map('n', 'grt', vlb.type_definition, { desc = 'LSP: Go to type definition' })
