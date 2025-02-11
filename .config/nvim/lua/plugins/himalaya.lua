@@ -1,9 +1,10 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'Himalaya: ')
 
 ---@type LazySpec
-local spec = { 'https://git.sr.ht/~soywod/himalaya-vim' }
-spec.commit = '64fb17067cf5dbf5349726b9ed1b1b38065cdb82'
+local spec = { 'https://github.com/pimalaya/himalaya-vim' }
 spec.cmd = 'Himalaya'
+
+spec.event = 'CmdLineEnter'
 
 spec.keys = {
 	map('h', 'n', '<CMD>Himalaya<CR>', 'Open'),
