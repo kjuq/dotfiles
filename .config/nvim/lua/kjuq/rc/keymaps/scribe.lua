@@ -1,0 +1,10 @@
+-- open specific files via keymaps
+vim.keymap.set('n', '<Space>st', '<CMD>EditTodo<CR>', { desc = 'Edit todo.txt' })
+vim.keymap.set('n', '<Space>sb', '<CMD>EditBookmarks<CR>', { desc = 'Edit bookmarks.txt' })
+vim.keymap.set('n', '<Space>sr', '<CMD>EditReponotes<CR>', { desc = 'Edit repository specific notes' })
+vim.keymap.set('n', '<Space>sR', '<CMD>EditReadinglist<CR>', { desc = 'Edit readinglist.txt' })
+vim.keymap.set('n', '<Space>sd', '<CMD>EditDailynote<CR>', { desc = 'Edit daily note' })
+vim.keymap.set('n', '<Space>ss', '<CMD>EditSnippet<CR>', { desc = 'Edit snippet' })
+vim.keymap.set('n', '<Space>sq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
+vim.keymap.set('n', '<Space>sQ', '<CMD>cclose<CR>', { desc = 'Close QuickFix window' })
+vim.keymap.set('n', '<Space>sm', '<CMD>messages<CR>', { desc = 'History of messages' })
