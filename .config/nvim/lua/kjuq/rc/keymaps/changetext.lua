@@ -19,4 +19,5 @@ function _G.kjuq_source()
 	vim.cmd([[ '[,']source ]])
 end
 vim.keymap.set('n', '<Space>cx', [[m'<Cmd>lua vim.o.operatorfunc='v:lua._G.kjuq_source'<CR>g@]], { desc = 'Source' })
+vim.keymap.set('n', '<Space>cxx', '<Cmd>.source<CR>', { desc = 'Source' })
 vim.keymap.set('x', '<Space>cx', ':source<CR>', { desc = 'Source' })
