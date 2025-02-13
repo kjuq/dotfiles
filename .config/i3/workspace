@@ -55,7 +55,9 @@ bindsym $mod+Mod1+b move workspace to output left
 
 # Open applications on specific workspaces
 assign [class="Vivaldi"] $ws2
+assign [class="Chromium"] $ws2
 assign [class="org.wezfurlong.wezterm"] $ws4
+assign [class="Alacritty"] $ws4
 assign [class="qutebrowser"] $ws5
 # assign [class="Evince"] $ws6
 
