@@ -41,7 +41,6 @@ vim.keymap.set({ 'i' }, '<C-l>', function()
 	if vim.api.nvim_get_mode().mode ~= 'ix' then --  not in completion with <C-x>
 		vim.cmd.fclose({ bang = true })
 	end
-	vim.cmd.normal({ '<C-l>' })
 end, { silent = true })
 
 -- Asterisk
