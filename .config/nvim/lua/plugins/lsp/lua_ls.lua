@@ -1,3 +1,5 @@
+-- /home/kjuq/.local/ghq/github.com/LuaLS/lua-language-server/doc/en-us/config.md
+
 local M = {}
 
 M.opts = {

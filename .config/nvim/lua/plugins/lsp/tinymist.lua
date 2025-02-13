@@ -1,3 +1,7 @@
+-- For a full list of available settings
+-- `$GHQ_ROOT/github.com/Myriad-Dreamin/tinymist/editors/neovim/Configuration.md`
+-- Or https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/Configuration.md
+
 local M = {}
 
 M.opts = {

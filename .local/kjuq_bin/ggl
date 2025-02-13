@@ -8,7 +8,13 @@ done
 
 query=$(echo "$query" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
-# w3m "https://www.google.com/search?q=$query"
-# w3m "https://duckduckgo.com/?q=$query"
-# w3m "https://www.bing.com/search?q=$query"
-w3m "https://search.yahoo.co.jp/search?p=$query"
+if [ "$(uname)" = 'Linux' ]; then
+	ggl_browser='xdg-open'
+else
+	ggl_browser='open'
+fi
+
+$ggl_browser "https://www.google.com/search?q=$query"
+# $ggl_browser "https://duckduckgo.com/?q=$query"
+# $ggl_browser "https://www.bing.com/search?q=$query"
+# $ggl_browser "https://search.yahoo.co.jp/search?p=$query"

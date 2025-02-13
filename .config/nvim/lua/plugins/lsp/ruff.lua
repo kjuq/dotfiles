@@ -22,6 +22,7 @@ local callback = function()
 			vim.cmd.write()
 		end,
 		once = true,
+		buffer = 0,
 	})
 end
 
