@@ -1,5 +1,8 @@
 local M = {}
 
+M.float_max_width = 80
+M.float_max_height = 20
+
 ---@param ev table ref. `help event-args`
 local on_attach = function(ev)
 	local bufnr = ev.buf
@@ -7,12 +10,7 @@ local on_attach = function(ev)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
 
 	vim.keymap.set('n', 'K', function()
-		vim.lsp.buf.hover({
-			title = ' Lsp: Hover ',
-			border = require('kjuq.utils.common').floatwinborder,
-			max_width = M.float_max_width,
-			max_height = M.float_max_height,
-		})
+		vim.lsp.buf.hover(M.hover_opts)
 	end, { desc = 'LSP: Hover', buffer = ev.buf })
 
 	-- Format on save
@@ -29,25 +27,30 @@ local on_attach = function(ev)
 	end
 end
 
-M.float_max_width = 80
-M.float_max_height = 20
+M.hover_opts = {
+	title = ' Lsp: Hover ',
+	border = require('kjuq.utils.common').floatwinborder,
+	max_width = M.float_max_width,
+	max_height = M.float_max_height,
+}
+
+M.diagnostic_opts = {
+	signs = false,
+	float = {
+		max_width = M.float_max_width,
+		max_height = M.float_max_height,
+		border = require('kjuq.utils.common').floatwinborder,
+		-- header = false,
+		format = function(diagnostic)
+			return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)
+		end,
+	},
+	virtual_text = false,
+}
 
 M.setup = function()
-	vim.diagnostic.config({
-		signs = false,
-		float = {
-			max_width = M.float_max_width,
-			max_height = M.float_max_height,
-			border = require('kjuq.utils.common').floatwinborder,
-			-- header = false,
-			format = function(diagnostic)
-				return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)
-			end,
-		},
-		virtual_text = false,
-	})
+	vim.diagnostic.config(M.diagnostic_opts)
 	vim.api.nvim_create_autocmd('LspAttach', {
-		pattern = '*',
 		group = vim.api.nvim_create_augroup('kjuq_user_lsp_config', {}),
 		callback = on_attach,
 	})

@@ -16,11 +16,22 @@ vim.keymap.set('n', 'grww', function()
 end, { desc = 'LSP: List folders of workspaceh' })
 vim.keymap.set('n', 'grl', vim.diagnostic.setloclist, { desc = 'LSP: Set diagnostics into loclist' })
 
+local utils = require('kjuq.utils.lsp')
+
 vim.keymap.set({ 'n', 's', 'i' }, '<C-s>', function()
-	vim.lsp.buf.signature_help({
-		title = ' Lsp: Signature Help ',
-		border = require('kjuq.utils.common').floatwinborder,
-		max_width = require('kjuq.utils.lsp').float_max_width,
-		max_height = require('kjuq.utils.lsp').float_max_height,
-	})
+	vim.lsp.buf.signature_help(utils.hover_opts)
 end, { desc = 'LSP: Signature Help' })
+
+vim.keymap.set('n', ']d', function()
+	vim.diagnostic.jump({
+		float = utils.hover_opts,
+		count = vim.v.count1,
+	})
+end, { desc = 'Jump to the next diagnostic in the current buffer' })
+
+vim.keymap.set('n', '[d', function()
+	vim.diagnostic.jump({
+		float = utils.hover_opts,
+		count = -vim.v.count1,
+	})
+end, { desc = 'Jump to the previous diagnostic in the current buffer' })
