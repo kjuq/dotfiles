@@ -1,4 +1,4 @@
--- TODO: Dot repeat of Visual mode is broken
+-- TODO: Dot repeat of Visual mode is not implemented yet
 
 ---@alias kjuq.rm-multibytes.mapping table<string, string>
 
@@ -84,30 +84,45 @@ local function substitute(pat, sub, start, stop)
 	vim.cmd(string.format([[ %d,%d s/%s/%s/ge ]], start, stop, pat, sub))
 end
 
+---@param mappings kjuq.rm-multibytes.mapping
+---@param start integer
+---@param stop integer
+local function substitute_all(mappings, start, stop)
+	local reg_bak = vim.fn.getreg('/')
+	for pat, sub in pairs(mappings) do
+		substitute(pat, sub, start, stop)
+	end
+	vim.fn.setreg('/', reg_bak)
+end
+
+---@type integer, integer
+local lnum, col
+
 local function init()
 	vim.api.nvim_create_user_command(opts.cmd, function(args)
-		local start = args.line1
-		local stop = args.line2
-		for pat, sub in pairs(opts.maps) do
-			substitute(pat, sub, start, stop)
-		end
+		substitute_all(opts.maps, args.line1, args.line2)
 	end, { range = true })
 
 	function _G.kjuq_rm_multibytes()
 		vim.cmd(string.format([[ '[,'] %s ]], opts.cmd))
+		vim.api.nvim_win_set_cursor(0, { lnum, col })
 	end
 end
 
 function M.map()
 	local mode = vim.api.nvim_get_mode().mode:sub(1, 1)
 	if not vim.tbl_contains({ 'n', 'v', 'V' }, mode) then
-		vim.notify('Unexpected mode detected', vim.log.levels.ERROR)
+		vim.notify('kjuq/Rm-multibytes: Unexpected mode detected', vim.log.levels.ERROR)
 		return nil
 	end
 	if mode == 'n' then
-		return [[m'<Cmd>lua vim.o.operatorfunc='v:lua._G.kjuq_rm_multibytes'<CR>g@]]
+		local mark_cur = '.'
+		lnum, col = vim.fn.line(mark_cur), vim.fn.col(mark_cur)
+		vim.o.operatorfunc = 'v:lua._G.kjuq_rm_multibytes'
+		return 'g@'
 	elseif mode == 'v' or mode == 'V' then
-		return string.format(':%s<CR>', opts.cmd)
+		vim.o.operatorfunc = nil
+		return string.format([[:%s<CR>]], opts.cmd)
 	end
 end
 
