@@ -5,4 +5,4 @@
 setxkbmap -option
 
 # Faster key repeat rate
-xset r rate 225 30
+xset r rate 200 30

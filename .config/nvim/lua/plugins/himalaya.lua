@@ -4,6 +4,8 @@ local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'Himalaya: ')
 local spec = { 'https://github.com/pimalaya/himalaya-vim' }
 spec.cmd = 'Himalaya'
 
+spec.cond = vim.fn.executable('himalaya') == 1
+
 spec.event = 'CmdLineEnter'
 
 spec.keys = {
