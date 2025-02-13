@@ -13,7 +13,7 @@ spec.opts = {
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Markview: ')
 spec.keys = {
-	map('<Space>ap', 'n', '<Cmd>Markview toggle<CR>', 'Toggle'),
+	map('<Space>ap', 'n', '<Cmd>Markview toggle<CR>', 'Toggle', { ft = 'markdown' }),
 }
 
 spec.config = function(_, opts)
