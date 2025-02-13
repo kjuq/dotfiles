@@ -144,7 +144,7 @@ opt.fileencodings = { 'ucs-bom', 'utf-8', 'sjis', 'euc-jp', 'latin1' }
 opt.ttimeout = true -- `false` is buggy when SSH-ing or Wezterm without tmux
 opt.timeout = false
 
-opt.messagesopt = 'wait:500,history:500'
+opt.messagesopt = 'hitenter,history:500'
 
 -- Disable welcome message
 opt.shortmess:append('I')
