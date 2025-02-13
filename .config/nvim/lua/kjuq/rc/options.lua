@@ -112,6 +112,14 @@ opt.expandtab = false
 opt.shiftwidth = 0 -- obey tabstop
 opt.shiftround = true
 
+opt.guicursor = table.concat({
+	'n-v-sm:block-Cursor',
+	'c-i-ci-ve:ver25-Cursor',
+	'r-cr:hor20-Cursor',
+	'o:hor50-Cursor',
+	't:block-TermCursor',
+}, ',')
+
 opt.list = true
 opt.listchars = {
 	trail = '◊',

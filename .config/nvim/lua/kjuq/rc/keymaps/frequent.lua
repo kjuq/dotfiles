@@ -13,6 +13,8 @@ vim.keymap.set('n', '<Space><C-x>', function()
 	require('kjuq.utils.common').buffer_delete('others')
 end, { desc = 'Clear buffers' })
 
+vim.keymap.set('n', '<Space>y', '<C-w><C-w>', { desc = '<C-w>w' })
+
 vim.keymap.set('n', '<Space>-', function()
 	vim.cmd('Explore')
 end, { desc = 'Open Netrw' })
