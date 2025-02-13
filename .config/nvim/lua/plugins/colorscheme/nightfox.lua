@@ -12,7 +12,7 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('nightfox').setup(opts)
-	vim.cmd.colorscheme('nightfox')
+	vim.cmd.colorscheme(_G.kjuq_colorscheme)
 end
 
 return spec

@@ -1,6 +1,14 @@
+-- `set background=light` will load `kanagawa-lotus`
+-- Don't use `colorscheme kanagawa-lotus`
+
 ---@type LazySpec
 local spec = { 'rebelot/kanagawa.nvim' }
-spec.lazy = _G.kjuq_colorscheme ~= 'kanagawa'
+spec.lazy = not vim.tbl_contains({
+	'kanagawa',
+	'kanagawa-wave',
+	'kanagawa-lotus',
+	'kanagawa-dragon',
+}, _G.kjuq_colorscheme)
 spec.priority = 9999
 
 spec.opts = {
@@ -15,7 +23,7 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('kanagawa').setup(opts)
-	vim.cmd.colorscheme('kanagawa')
+	vim.cmd.colorscheme(_G.kjuq_colorscheme)
 end
 
 return spec

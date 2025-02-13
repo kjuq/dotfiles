@@ -10,7 +10,7 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('gruvbox').setup(opts)
-	vim.cmd.colorscheme('gruvbox')
+	vim.cmd.colorscheme(_G.kjuq_colorscheme)
 end
 
 return spec

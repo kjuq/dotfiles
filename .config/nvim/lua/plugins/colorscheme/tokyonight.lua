@@ -1,24 +1,27 @@
 ---@type LazySpec
 local spec = { 'folke/tokyonight.nvim' }
-spec.lazy = _G.kjuq_colorscheme ~= 'tokyonight'
+spec.lazy = not vim.tbl_contains({
+	'tokyonight',
+	'tokyonight-day',
+	'tokyonight-moon',
+	'tokyonight-night',
+	'tokyonight-storm',
+}, _G.kjuq_colorscheme)
 spec.priority = 9999
 
----@type table|fun(LazyPlugin, opts:table):tokyonight.Config
-spec.opts = function(_, opts)
-	local t = (_G.kjuq_colorscheme_transparent or _G.kjuq_colorscheme_transparent == nil) and 'transparent' or 'normal'
-	return {
-		transparent = t,
-		dim_inactive = false,
-		styles = {
-			sidebars = t, -- "dark", "transparent", "normal"
-			floats = t, -- "dark", "transparent", "normal"
-		},
-	}
-end
+---@type tokyonight.Config
+spec.opts = {
+	transparent = _G.kjuq_colorscheme_transparent,
+	dim_inactive = false,
+	styles = {
+		sidebars = _G.kjuq_colorscheme_transparent,
+		floats = _G.kjuq_colorscheme_transparent,
+	},
+}
 
 spec.config = function(_, opts)
 	require('tokyonight').setup(opts)
-	vim.cmd.colorscheme('tokyonight')
+	vim.cmd.colorscheme(_G.kjuq_colorscheme)
 end
 
 return spec
