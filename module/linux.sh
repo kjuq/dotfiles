@@ -10,12 +10,11 @@ fi
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 install() {
-	ln --symbolic "$XDG_CONFIG_HOME/alacritty/linux.toml.bak" "$XDG_CONFIG_HOME/alacritty/linux.toml"
 	"$script_dir"/pulseaudio.sh install
 }
 
 uninstall() {
-	f="$XDG_CONFIG_HOME/alacritty/linux.toml" && [ -L "$f" ] && rm "$f" || return 0
+	: # `:` creates empty block. It is similar to `pass` in Python
 }
 
 # ------------------------- main ------------------------- #

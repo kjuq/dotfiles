@@ -16,13 +16,11 @@ etc() {
 }
 
 install() {
-	ln --symbolic "$XDG_CONFIG_HOME/alacritty/macos.toml.bak" "$XDG_CONFIG_HOME/alacritty/macos.toml"
 	ln --symbolic "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
 	ln --symbolic "$XDG_CONFIG_HOME/clangd/config.yaml" "$HOME/Library/Preferences/clangd/config.yaml"
 }
 
 uninstall() {
-	rm "$XDG_CONFIG_HOME/alacritty/macos.toml"
 	rm "$HOME/.qutebrowser/config.py"
 	rm "$HOME/Library/Preferences/clangd/config.yaml"
 }
