@@ -52,7 +52,8 @@ c.messages.timeout = 1000  # ms
 c.content.pdfjs = True
 
 c.url.searchengines = {
-	'DEFAULT': 'https://search.yahoo.co.jp/search?p={}',
+	# 'DEFAULT': 'https://search.yahoo.co.jp/search?p={}',
+	'DEFAULT': 'https://www.google.com/search?q={}',
 	'g': 'https://github.com/search?q={}',
 	's': 'https://stackoverflow.com/search?q={}',
 	'y': 'https://www.youtube.com/results?search_query={}',
