@@ -1,3 +1,6 @@
+-- NOTE: Make sure that `webkit2gtk' is installed
+-- `pacman -S webkit2gtk`
+
 ---@type LazySpec
 local spec = { 'toppair/peek.nvim' }
 spec.build = 'deno task --quiet build:fast'
@@ -10,7 +13,14 @@ spec.cmd = {
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Peek: ')
 spec.keys = {
-	map('<Space>aP', 'n', '<Cmd>PeekToggle<CR>', 'Toggle', { ft = 'markdown' }),
+	map('<Space>aP', 'n', function()
+		local md = require('kjuq.utils.ft.markdown')
+		if md.is_marp_buffer(0) then
+			md.open_marp(0)
+		else
+			vim.cmd.PeekToggle()
+		end
+	end, 'Toggle', { ft = 'markdown' }),
 }
 
 spec.opts = {}
