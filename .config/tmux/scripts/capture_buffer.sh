@@ -3,7 +3,7 @@
 set -eu
 
 limit=2000
-file="$/tmp/tmux_buffers/$(date +"%Y-%m-%d_%H-%M-%S_%3N")"
+file="/tmp/tmux_buffers/$(date +"%Y-%m-%d_%H-%M-%S_%3N")"
 
 mkdir --parents "$(dirname "$file")"
 
