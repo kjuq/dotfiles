@@ -26,7 +26,11 @@ symlink() {
 	while read -r line; do
 		local="$(eval echo "$line")"
 		remote="${local//$HOME/$script_dir}"
-		mkdir --parents "$(dirname local)"
+		mkdir --parents "$(dirname "$local")"
+		if [ -L "$local" ]; then
+			# The target is already symlinked
+			return 0
+		fi
 		ln --symbolic "$remote" "$local"
 	done <"$script_dir"/targets.txt
 }

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 if [ -z "$XDG_CONFIG_HOME" ]; then
 	echo "XDG_CONFIG_HOME is not set. Quit." 1>&2
 	exit 1
@@ -17,12 +19,13 @@ fi
 
 install() {
 	if [ -e "$WGETRC" ]; then
-		echo "'wgetrc' already exists. Quit" 1>&2
-		exit 1
+		# echo "'wgetrc' already exists. Skipped" 1>&2
+		return 0
 	fi
 
 	mkdir --parents "$(dirname "$WGETRC")"
 	echo "hsts-file = $XDG_CACHE_HOME/wget-hsts" >>"$WGETRC"
+	echo "'wgetrc' is successfully created"
 }
 
 uninstall() {
