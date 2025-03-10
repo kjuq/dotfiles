@@ -17,7 +17,7 @@ M.opts = {
 					error(('code: %d, stderr: %s'):format(job.code, job.stderr))
 				end
 			end)
-		end, { buffer = true })
+		end, { buffer = true, desc = 'Tinymist: Preview' })
 	end,
 	settings = {
 		exportPdf = 'onSave',
