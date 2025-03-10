@@ -16,11 +16,11 @@ vim.keymap.set('n', '<Space>tS', function()
 	end
 end, { desc = 'Toggle spell check' })
 
-vim.keymap.set('n', '<Space>ty', function()
+vim.keymap.set('n', '<Space>th', function()
 	vim.opt.cursorline = not vim.o.cursorline
 end, { desc = 'Toggle cursorline' })
 
-vim.keymap.set('n', '<Space>tY', function()
+vim.keymap.set('n', '<Space>tH', function()
 	vim.opt.cursorcolumn = not vim.o.cursorcolumn
 end, { desc = 'Toggle cursorcolumn' })
 
@@ -32,11 +32,11 @@ vim.keymap.set('n', '<Space>ts', function()
 	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
 end, { desc = 'Toggle statusline' })
 
-vim.keymap.set('n', '<Space>tn', function()
+vim.keymap.set('n', '<Space>ti', function()
 	vim.opt.number = not vim.o.number
 end, { desc = 'Toggle number' })
 
-vim.keymap.set('n', '<Space>tN', function()
+vim.keymap.set('n', '<Space>tI', function()
 	vim.opt.relativenumber = not vim.o.relativenumber
 end, { desc = 'Toggle relnum' })
 

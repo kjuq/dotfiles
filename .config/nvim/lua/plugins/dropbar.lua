@@ -1,5 +1,5 @@
 ---@type boolean
-local enable_on_start = true
+local enable_on_start = false
 ---@type string
 local dropbar_winbar = '%{%v:lua.dropbar()%}'
 
@@ -10,8 +10,8 @@ spec.event = enable_on_start and 'VeryLazy' or {}
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Dropbar: ')
 spec.keys = {
-	map('<Space>tW', 'n', function()
-		vim.o.winbar = vim.o.winbar == '' and dropbar_winbar or ''
+	map('<Space>ty', 'n', function()
+		vim.wo.winbar = vim.o.winbar == '' and dropbar_winbar or ''
 	end, 'Toggle'),
 }
 
