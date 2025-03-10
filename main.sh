@@ -15,7 +15,7 @@ backup() {
 		local="$(eval echo "$line")"
 		remote="${local//$HOME/$script_dir}"
 		if [ ! -e "$remote" ]; then
-			mkdir --parents "$(dirname remote)"
+			mkdir --parents "$(dirname "$remote")"
 			echo "$local"
 			mv "$local" "$remote"
 		fi
