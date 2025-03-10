@@ -18,3 +18,6 @@ vim.keymap.set('n', '<Space>y', '<C-w><C-w>', { desc = '<C-w>w' })
 vim.keymap.set('n', '<Space>-', function()
 	vim.cmd('Explore')
 end, { desc = 'Open Netrw' })
+
+vim.keymap.set('t', '<C-Tab>', '<Cmd>bnext<CR>', { desc = ':bnext' })
+vim.keymap.set('t', '<S-Tab>', [[<C-\><C-n>]], { desc = 'Exit insert mode' })

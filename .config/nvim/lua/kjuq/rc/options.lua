@@ -117,7 +117,7 @@ opt.guicursor = table.concat({
 	'c-i-ci-ve:ver25-Cursor',
 	'r-cr:hor20-Cursor',
 	'o:hor50-Cursor',
-	't:block-TermCursor',
+	't:ver25-TermCursor',
 }, ',')
 
 opt.list = true
