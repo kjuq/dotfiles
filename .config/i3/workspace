@@ -54,10 +54,23 @@ bindsym $mod+Mod1+f move workspace to output right
 bindsym $mod+Mod1+b move workspace to output left
 
 # Open applications on specific workspaces
-assign [class="Vivaldi"] $ws2
-assign [class="Chromium"] $ws2
+
+# To get class name, `xprop | grep WM_CLASS`
+
+# +---+---+---+---+---+
+# |   | 9 | 8 | 7 |   |
+# +---+---+---+---+---+
+# |   | 6 | 5 | 4 |   |
+# +---+---+---+---+---+
+# |   | 3 | 2 | 1 |   |
+# +---+---+---+---+---+
+
+assign [class="Vivaldi"] $ws1
+assign [class="Chromium"] $ws1
+assign [class="Station"] $ws2
 assign [class="org.wezfurlong.wezterm"] $ws4
 assign [class="Alacritty"] $ws4
+assign [class="kitty"] $ws4
 assign [class="qutebrowser"] $ws5
 # assign [class="Evince"] $ws6
 
@@ -65,7 +78,7 @@ assign [class="qutebrowser"] $ws5
 # for_window [title="File Transfer*"] floating enable
 for_window [class="FloatingVim"] floating enable
 
-# Open specific applications without being focused
+# github.com/toppair/peek.nvim
 no_focus [title="^Peek preview$"]
 
 # switch to workspace with urgent window automatically
