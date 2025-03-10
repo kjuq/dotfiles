@@ -20,7 +20,7 @@ My ultimate dotfiles.
 ## Install
 
 ```bash
-./main.sh uninstall && ./main.sh install
+./main.sh install
 ```
 
 ## Uninstall
