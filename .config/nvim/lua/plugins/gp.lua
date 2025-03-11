@@ -133,7 +133,7 @@ spec.opts = {
 		end,
 	},
 
-	default_chat_agent = 'ChatCopilot-GPT4o-mini',
+	default_chat_agent = 'ChatCopilot-Claude',
 	default_command_agent = 'CodeCopilot',
 
 	chat_user_prefix = '󰭹 :',
