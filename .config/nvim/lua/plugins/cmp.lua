@@ -24,7 +24,7 @@ spec.config = function()
 		{ name = 'path' },
 		{ name = 'emoji' },
 		{ name = 'fish' },
-		-- { name = 'luasnip' },
+		{ name = 'git' },
 		{ name = 'kjuq_snippet' },
 		{
 			name = 'nvim_lsp',
@@ -35,7 +35,6 @@ spec.config = function()
 			},
 		},
 		{ name = 'nvim_lua' },
-		{ name = 'natdat' },
 	})
 
 	local select_next = function()
@@ -279,13 +278,10 @@ spec.dependencies = {
 	{
 		'petertriho/cmp-git',
 		specs = 'nvim-lua/plenary.nvim',
-	},
-	{
-		'zbirenbaum/copilot-cmp',
 		opts = {},
 	},
 	{
-		'Gelio/cmp-natdat',
+		'zbirenbaum/copilot-cmp',
 		opts = {},
 	},
 }
