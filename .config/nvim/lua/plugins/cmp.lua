@@ -235,17 +235,14 @@ spec.config = function()
 		end,
 	})
 
-	-- enable only skkeleton sources
 	local skkeleton_src = cmp.config.sources({ { name = 'skkeleton' } })
-
-	local function cmp_enable_skk()
+	local function enable_skk()
 		cmp.setup.buffer({
 			sources = skkeleton_src,
 			completion = { autocomplete = autocompletes.enable },
 		})
 	end
-
-	local function cmp_disable_skk()
+	local function disable_skk()
 		cmp.setup.buffer({
 			sources = normal_sources,
 			completion = { autocomplete = autocomplete },
@@ -253,15 +250,37 @@ spec.config = function()
 	end
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
-		pattern = { 'skkeleton-enable-pre', 'eskk-enable-pre' },
-		group = vim.api.nvim_create_augroup('kjuq_skk_enable_pre', {}),
-		callback = cmp_enable_skk,
+		pattern = 'kjuq_enable_jp_mode',
+		group = vim.api.nvim_create_augroup('kjuq_skk_enable_jp_mode', {}),
+		callback = enable_skk,
 	})
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
-		pattern = { 'skkeleton-disable-pre', 'eskk-disable-pre' },
+		pattern = 'kjuq_disable_jp_mode',
+		group = vim.api.nvim_create_augroup('kjuq_skk_disable_jp_mode', {}),
+		callback = disable_skk,
+	})
+
+	vim.api.nvim_create_autocmd({ 'User' }, {
+		pattern = { 'kjuq_enable_jp_mode', 'skkeleton-enable-pre', 'eskk-enable-pre' },
+		group = vim.api.nvim_create_augroup('kjuq_skk_enable_pre', {}),
+		callback = function()
+			if require('kjuq.utils.skk').is_skk_jp_mode_enabled() then
+				return
+			end
+			enable_skk()
+		end,
+	})
+
+	vim.api.nvim_create_autocmd({ 'User' }, {
+		pattern = { 'kjuq_disable_jp_mode', 'skkeleton-disable-pre', 'eskk-disable-pre' },
 		group = vim.api.nvim_create_augroup('kjuq_skk_disable_pre', {}),
-		callback = cmp_disable_skk,
+		callback = function()
+			if require('kjuq.utils.skk').is_skk_jp_mode_enabled() then
+				return
+			end
+			disable_skk()
+		end,
 	})
 end
 

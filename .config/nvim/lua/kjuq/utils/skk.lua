@@ -16,6 +16,7 @@ M.toggle_japanese = function(callback)
 	if is_skk_jp_mode_enabled then
 		vim.notify('Japanese mode disabled (English)')
 		vim.api.nvim_clear_autocmds({ group = group })
+		vim.api.nvim_exec_autocmds('User', { pattern = 'kjuq_disable_jp_mode' })
 	else
 		vim.notify('Japanese mode enabled (Japanese)')
 		vim.api.nvim_create_autocmd('InsertEnter', {
@@ -23,6 +24,7 @@ M.toggle_japanese = function(callback)
 			pattern = '*',
 			callback = callback,
 		})
+		vim.api.nvim_exec_autocmds('User', { pattern = 'kjuq_enable_jp_mode' })
 	end
 	is_skk_jp_mode_enabled = not is_skk_jp_mode_enabled
 end
