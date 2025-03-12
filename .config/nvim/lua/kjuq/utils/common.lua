@@ -195,6 +195,6 @@ end
 M.floatwinborder = 'single'
 M.floatscrolldown = '<M-f>'
 M.floatscrollup = '<M-b>'
-M.highlight_duration = 200 -- ms
+M.highlight_duration = 150 -- ms
 
 return M
