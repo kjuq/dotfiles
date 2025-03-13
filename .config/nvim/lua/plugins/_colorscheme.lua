@@ -6,5 +6,7 @@ end
 ---@type LazySpec
 local spec = {}
 
+spec.event = 'VeryLazy'
+
 spec.import = 'plugins/colorscheme'
 return spec
