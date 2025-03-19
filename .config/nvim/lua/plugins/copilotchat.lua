@@ -63,13 +63,10 @@ spec.opts = function()
 	})
 
 	return {
-		model = 'o1-mini',
+		model = 'o3-mini',
 		system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		show_help = false,
 		chat_autocomplete = true,
-		window = {
-			layout = 'replace',
-		},
 		mappings = {
 			complete = {
 				detail = 'Use @<C-x><C-b> or /<C-x><C-b> for options.',

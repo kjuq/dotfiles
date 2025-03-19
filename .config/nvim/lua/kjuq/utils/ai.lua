@@ -32,6 +32,8 @@ M.system_prompt = function(lang)
 			[[- Use actual line breaks instead of '\n' in your response to begin new lines.]],
 			[[- Use '\n' only when you want a literal backslash followed by a character 'n'.]],
 			[[- All non-code responses must use %s.]],
+			[[- Use tabs instead of spaces.]],
+			[[- Insert a blank line after headings that start with # (sharp).]],
 			[[When given a task:]],
 			[[1. Think step-by-step and describe your plan for what to build in pseudocode, written out in great detail, unless asked not to do so.]],
 			[[2. Output the code in a single code block, being careful to only return relevant code.]],

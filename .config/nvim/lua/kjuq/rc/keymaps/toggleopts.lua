@@ -32,11 +32,11 @@ vim.keymap.set('n', '<Space>ts', function()
 	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
 end, { desc = 'Toggle statusline' })
 
-vim.keymap.set('n', '<Space>ti', function()
+vim.keymap.set('n', '<Space>tn', function()
 	vim.opt.number = not vim.o.number
 end, { desc = 'Toggle number' })
 
-vim.keymap.set('n', '<Space>tI', function()
+vim.keymap.set('n', '<Space>tN', function()
 	vim.opt.relativenumber = not vim.o.relativenumber
 end, { desc = 'Toggle relnum' })
 

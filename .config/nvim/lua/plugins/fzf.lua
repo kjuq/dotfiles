@@ -30,6 +30,9 @@ spec.opts = function()
 	return {
 		winopts = {
 			border = require('kjuq.utils.common').floatwinborder,
+			preview = {
+				layout = 'horizonal',
+			},
 		},
 		grep = {
 			rg_opts = '--hidden --glob "!.git/*" --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',

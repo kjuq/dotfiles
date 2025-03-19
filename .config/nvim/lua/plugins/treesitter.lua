@@ -15,9 +15,8 @@ spec.opts = {
 
 	highlight = {
 		enable = true,
-		-- disable = { 'perl' },
 		disable = function(lang, bufnr)
-			local lang_for_disable = { 'perl' }
+			local lang_for_disable = {}
 			if vim.tbl_contains(lang_for_disable, lang) then
 				return true
 			end
