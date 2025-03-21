@@ -1,46 +1,36 @@
-[Default Applications]
-x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/chrome=org.qutebrowser.qutebrowser.desktop;
-text/html=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-htm=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-html=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-shtml=org.qutebrowser.qutebrowser.desktop;
-application/xhtml+xml=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-xhtml=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-xht=org.qutebrowser.qutebrowser.desktop;
-image/jpeg=viewnior.desktop;gpicview.desktop;
-image/png=viewnior.desktop;gpicview.desktop;
-image/heic=viewnior.desktop;gpicview.desktop;
-image/heif=viewnior.desktop;gpicview.desktop;
-image/svg+xml=viewnior.desktop;gpicview.desktop;
-text/plain=mousepad.desktop;
-x-scheme-handler/mailto=userapp-Thunderbird.desktop;
-message/rfc822=userapp-Thunderbird.desktop;
-application/pdf=org.pwmt.zathura.desktop;
-application/x-bittorrent=deluge.desktop;
-x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
+; Check MIME type with `xdg-mime query filetype /path/to/file`
+; Check Default application associated that file:
+; `xdg-mime query default $(xdg-mime query filetype /path/to/file)`
 
-[Added Associations]
+[Default Applications]
+
+inode/directory=pcmanfm.desktop;
+
+application/pdf=org.pwmt.zathura.desktop;
+
+image/heic=feh.desktop;
+image/heif=feh.desktop;
+image/jpeg=feh.desktop;
+image/png=feh.desktop;
+image/svg+xml=feh.desktop;
+
+x-scheme-handler/chrome=chromium.desktop;
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop;
+x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/ftp=org.qutebrowser.qutebrowser.desktop;
-x-scheme-handler/chrome=org.qutebrowser.qutebrowser.desktop;
-text/html=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-htm=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-html=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-shtml=org.qutebrowser.qutebrowser.desktop;
-application/xhtml+xml=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-xhtml=org.qutebrowser.qutebrowser.desktop;
-application/x-extension-xht=org.qutebrowser.qutebrowser.desktop;
-image/jpeg=viewnior.desktop;gpicview.desktop;
-image/png=viewnior.desktop;gpicview.desktop;
-image/svg+xml=viewnior.desktop;gpicview.desktop;
-image/heic=viewnior.desktop;gpicview.desktop;
-image/heif=viewnior.desktop;gpicview.desktop;
-text/plain=mousepad.desktop;
-x-scheme-handler/mailto=userapp-Thunderbird.desktop;
-message/rfc822=userapp-Thunderbird.desktop;
-application/pdf=mupdf.desktop;
-application/x-bittorrent=deluge.desktop;
+
+text/css=nvim.desktop;
+text/csv=nvim.desktop;
+text/html=nvim.desktop;
+text/javascript=nvim.desktop;
+text/markdown=nvim.desktop;
+text/plain=nvim.desktop;
+text/tab-separated-values=nvim.desktop;
+text/x-asm=nvim.desktop;
+text/x-c=nvim.desktop;
+text/x-fortran=nvim.desktop;
+text/x-java-source=nvim.desktop;
+text/x-lua=nvim.desktop;
+text/x-pascal=nvim.desktop;
+text/x-python=nvim.desktop;
