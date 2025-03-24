@@ -1,2 +1,9 @@
 [mypy]
+
+; Disable errors that conflict with **Ruff**
+; cf. https://mypy.readthedocs.io/en/stable/error_code_list.html
+; name-defined: F821
+disable_error_code = name-defined
+
+; Conflicts with pyright
 ignore_missing_imports = True

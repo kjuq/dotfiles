@@ -34,6 +34,14 @@ M.opts = {
 			callback = callback,
 		})
 	end,
+	-- https://docs.astral.sh/ruff/editors/settings
+	init_options = {
+		settings = {
+			lint = {
+				ignore = { 'E741' },
+			},
+		},
+	},
 }
 
 return M
