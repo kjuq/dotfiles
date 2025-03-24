@@ -102,9 +102,15 @@ config.bind(ctrl_u, ':rl-unix-line-discard', mode='command')
 config.unbind('<Ctrl-a>', mode='normal')
 config.unbind('<Ctrl-x>', mode='normal')
 
+# config.unbind('<Shift-Ins>', mode='insert')
+# config.unbind('<Shift-Ins>', mode='command')
+config.bind('<Shift-Ins>', 'insert-text -- {clipboard}', mode='insert')
+config.bind('<Shift-Ins>', 'fake-key -g <Ctrl-v>', mode='command')
+config.bind('<Paste>', 'fake-key -g <Ctrl-v>', mode='command')
+
 # Device specific configurations
 if os.uname()[0] == 'Linux':
-	config.bind('<Paste>', 'fake-key -g <Ctrl-v>', mode='command')
+	pass
 
 if os.uname()[1] == 'KSGO':
 	c.fonts.default_size = '16pt'
