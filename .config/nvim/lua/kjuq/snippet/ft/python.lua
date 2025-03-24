@@ -43,4 +43,12 @@ pysnp:add('graph', {
 	[[plt.show()]],
 })
 
+pysnp:add('exec.sync', {
+	[=[cmd: list[str] = ['echo', 'hello']]=],
+	[[result = subprocess.run(cmd, capture_output=True, text=True)]],
+	[[print(result.stdout)]],
+	[[if result.stderr:]],
+	[[	print('Error:', result.stderr)]],
+})
+
 return pysnp
