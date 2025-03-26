@@ -29,7 +29,7 @@ symlink() {
 		mkdir --parents "$(dirname "$local")"
 		if [ -L "$local" ]; then
 			# The target is already symlinked
-			return 0
+			continue
 		fi
 		ln --symbolic "$remote" "$local"
 	done <"$script_dir"/targets.txt
