@@ -40,7 +40,6 @@ $XDG_CONFIG_HOME/nano/nanorc
 $XDG_CONFIG_HOME/npm/npmrc
 $XDG_CONFIG_HOME/nvim
 $XDG_CONFIG_HOME/pacman/makepkg.conf
-$XDG_CONFIG_HOME/pcmanfm/default/pcmanfm.conf
 $XDG_CONFIG_HOME/python/pythonrc.py
 $XDG_CONFIG_HOME/qutebrowser/config.py
 $XDG_CONFIG_HOME/ripgrep/ripgreprc
