@@ -4,7 +4,7 @@
 
 [Default Applications]
 
-inode/directory=pcmanfm.desktop;
+inode/directory=thunar.desktop;
 
 application/pdf=org.pwmt.zathura.desktop;
 
