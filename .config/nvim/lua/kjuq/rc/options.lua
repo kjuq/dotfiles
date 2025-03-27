@@ -1,11 +1,7 @@
 local opt = vim.opt
 
 opt.backup = true
-opt.writebackup = true
 opt.backupdir = os.getenv('XDG_STATE_HOME') .. '/nvim/backup//'
-
-opt.swapfile = false
-opt.autoread = true
 opt.undofile = true
 
 opt.belloff = { 'esc', 'error' }
