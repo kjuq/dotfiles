@@ -22,6 +22,7 @@ opt.completeopt = { 'menuone', 'popup' }
 
 if vim.fn.has('nvim-0.11') == 1 then
 	opt.completeopt:append('fuzzy')
+	opt.winborder = 'rounded'
 end
 
 opt.viminfo = [['1000,<50,s10,h]]

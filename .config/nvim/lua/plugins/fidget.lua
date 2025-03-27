@@ -12,7 +12,7 @@ spec.opts = {
 		override_vim_notify = false,
 		window = {
 			winblend = 0,
-			border = require('kjuq.utils.common').floatwinborder,
+			border = vim.o.winborder,
 		},
 	},
 }

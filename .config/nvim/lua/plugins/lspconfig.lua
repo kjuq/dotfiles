@@ -11,7 +11,7 @@ spec.cmd = {
 
 spec.config = function()
 	require('kjuq.utils.lsp').setup()
-	require('lspconfig.ui.windows').default_options.border = require('kjuq.utils.common').floatwinborder
+	-- require('lspconfig.ui.windows').default_options.border = vim.o.winborder
 end
 
 return spec

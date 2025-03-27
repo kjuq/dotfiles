@@ -189,8 +189,8 @@ spec.config = function()
 		mapping = mapping_insert,
 		sources = normal_sources,
 		window = {
-			completion = cmp.config.window.bordered({ border = require('kjuq.utils.common').floatwinborder }),
-			documentation = cmp.config.window.bordered({ border = require('kjuq.utils.common').floatwinborder }),
+			completion = cmp.config.window.bordered({ border = vim.o.winborder }),
+			documentation = cmp.config.window.bordered({ border = vim.o.winborder }),
 		},
 		---@diagnostic disable-next-line: missing-fields
 		formatting = {

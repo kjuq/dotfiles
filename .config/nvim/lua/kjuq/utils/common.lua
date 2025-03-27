@@ -192,7 +192,6 @@ M.is_bigbuf = function(buffer)
 	return false
 end
 
-M.floatwinborder = 'single'
 M.floatscrolldown = '<M-f>'
 M.floatscrollup = '<M-b>'
 M.highlight_duration = 150 -- ms

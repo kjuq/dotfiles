@@ -41,7 +41,7 @@ spec.opts = {
 			['q'] = '<Nop>',
 		},
 		win_configs = {
-			border = require('kjuq.utils.common').floatwinborder,
+			border = vim.o.winborder,
 		},
 	},
 }

@@ -29,7 +29,7 @@ spec.opts = function()
 	local actions = require('fzf-lua.actions')
 	return {
 		winopts = {
-			border = require('kjuq.utils.common').floatwinborder,
+			border = vim.o.winborder,
 			preview = {
 				layout = 'horizonal',
 			},

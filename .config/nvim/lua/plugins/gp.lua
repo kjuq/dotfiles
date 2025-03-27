@@ -178,7 +178,7 @@ spec.opts = {
 	toggle_target = '', -- empty for keeping current layout
 
 	-- styling for chatfinder
-	style_chat_finder_border = require('kjuq.utils.common').floatwinborder,
+	style_chat_finder_border = vim.o.winborder,
 
 	style_chat_finder_margin_bottom = 8,
 	style_chat_finder_margin_left = 1,

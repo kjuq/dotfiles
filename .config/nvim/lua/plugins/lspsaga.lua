@@ -15,7 +15,7 @@ spec.opts = {
 		scroll_up = require('kjuq.utils.common').floatscrollup,
 	},
 	ui = {
-		border = require('kjuq.utils.common').floatwinborder,
+		border = vim.o.winborder,
 	},
 	finder = {
 		max_height = 0.6,

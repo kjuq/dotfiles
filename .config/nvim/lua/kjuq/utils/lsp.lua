@@ -29,7 +29,7 @@ end
 
 M.hover_opts = {
 	title = ' Lsp: Hover ',
-	border = require('kjuq.utils.common').floatwinborder,
+	border = vim.o.winborder,
 	max_width = M.float_max_width,
 	max_height = M.float_max_height,
 }
@@ -39,7 +39,7 @@ M.diagnostic_opts = {
 	float = {
 		max_width = M.float_max_width,
 		max_height = M.float_max_height,
-		border = require('kjuq.utils.common').floatwinborder,
+		-- border = require('kjuq.utils.common').floatwinborder,
 		-- header = false,
 		format = function(diagnostic)
 			return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)

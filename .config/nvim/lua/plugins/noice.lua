@@ -13,7 +13,7 @@ spec.opts = {
 			filter = false,
 		},
 		opts = {
-			border = { style = require('kjuq.utils.common').floatwinborder },
+			border = { style = vim.o.winborder },
 		},
 	},
 	messages = {

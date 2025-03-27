@@ -17,7 +17,7 @@ spec.opts = {
 	popup = {
 		border = {
 			padding = { 0, 1 },
-			style = require('kjuq.utils.common').floatwinborder,
+			style = vim.o.winborder,
 		},
 	},
 }

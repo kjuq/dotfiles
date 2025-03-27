@@ -29,7 +29,7 @@ local opts = {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
-	ui = { border = require('kjuq.utils.common').floatwinborder },
+	ui = { border = vim.o.winborder },
 	performance = {
 		rtp = {
 			disabled_plugins = {}, -- disable by `g:loaded_*`

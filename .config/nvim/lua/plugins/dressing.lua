@@ -5,7 +5,7 @@ spec.event = { 'VeryLazy' }
 
 spec.opts = {
 	input = {
-		border = require('kjuq.utils.common').floatwinborder,
+		border = vim.o.winborder,
 		mappings = {
 			n = {
 				['<Esc>'] = 'Close',

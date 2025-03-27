@@ -13,7 +13,7 @@ spec.cmd = {
 
 spec.opts = {
 	ui = {
-		border = require('kjuq.utils.common').floatwinborder,
+		border = vim.o.winborder,
 	},
 }
 
