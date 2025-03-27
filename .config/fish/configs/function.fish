@@ -5,13 +5,9 @@ function fisher_init
 		command rm $fisher_completions_path
 	end
 
-	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source; \
-		and fisher install jorgebucaran/fisher
+	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
-	fisher install rafaelrinaldi/pure
-	fisher install d42/fish-pip-completion
-	fisher install PatrickF1/fzf.fish
-	fisher install decors/fish-ghq
+	fisher update
 
 	set --export pure_color_current_directory normal # fisher_init to take effect
 end
