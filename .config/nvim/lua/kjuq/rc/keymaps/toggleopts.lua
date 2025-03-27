@@ -36,6 +36,10 @@ vim.keymap.set('n', '<Space>tn', function()
 	vim.opt.number = not vim.o.number
 end, { desc = 'Toggle number' })
 
+vim.keymap.set('n', '<M-n>', function()
+	vim.opt.number = not vim.o.number
+end, { desc = 'Toggle number' })
+
 vim.keymap.set('n', '<Space>tN', function()
 	vim.opt.relativenumber = not vim.o.relativenumber
 end, { desc = 'Toggle relnum' })
