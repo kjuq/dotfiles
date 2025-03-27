@@ -7,6 +7,10 @@ if [ -e $brew_path ]
 	eval ($brew_path shellenv)
 end
 
+if command --search --quiet go
+	set --export PATH "$GOPATH/bin:$PATH"
+end
+
 # Use builtin command `set` instead of `fish_add_path` because it is slow
 set --export PATH "$HOME/.local/bin:$PATH"
 set --export PATH "$HOME/.local/kjuq_bin:$PATH"
