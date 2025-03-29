@@ -72,6 +72,7 @@ assign [class="org.wezfurlong.wezterm"] $ws4
 assign [class="Alacritty"] $ws4
 assign [class="kitty"] $ws4
 assign [class="qutebrowser"] $ws5
+assign [class="Brave-browser"] $ws5
 # assign [class="Evince"] $ws6
 
 # Open specific applications in floating mode

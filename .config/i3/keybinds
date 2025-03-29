@@ -22,7 +22,7 @@ bindsym $sac+c exec --no-startup-id morc_menu
 bindsym $sac+1 exec kitty
 
 # Start Browser
-bindsym $sac+2 exec qutebrowser
+bindsym $sac+2 exec brave
 
 # Start Filer
 bindsym $sac+3 exec pcmanfm
