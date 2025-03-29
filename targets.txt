@@ -11,6 +11,9 @@ $XDG_CONFIG_HOME/docker/config.json
 $XDG_CONFIG_HOME/dust/config.toml
 $XDG_CONFIG_HOME/dunst/dunstrc
 $XDG_CONFIG_HOME/fd/ignore
+$XDG_CONFIG_HOME/feh/themes
+$XDG_CONFIG_HOME/feh/keys
+$XDG_CONFIG_HOME/feh/buttons
 $XDG_CONFIG_HOME/fish/config.fish
 $XDG_CONFIG_HOME/fish/configs
 $XDG_CONFIG_HOME/fish/fish_plugins
