@@ -1,18 +1,14 @@
-; Check MIME type with `xdg-mime query filetype /path/to/file`
-; Check Default application associated that file:
-; `xdg-mime query default $(xdg-mime query filetype /path/to/file)`
-
 [Default Applications]
 
-inode/directory=thunar.desktop;
+inode/directory=thunar.desktop
 
-application/pdf=org.pwmt.zathura.desktop;
+application/pdf=org.pwmt.zathura.desktop
 
-image/heic=feh.desktop;
-image/heif=feh.desktop;
-image/jpeg=feh.desktop;
-image/png=feh.desktop;
-image/svg+xml=feh.desktop;
+image/heic=feh.desktop
+image/heif=feh.desktop
+image/jpeg=feh.desktop
+image/png=feh.desktop
+image/svg+xml=feh.desktop
 
 x-scheme-handler/chrome=chromium.desktop;
 x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop;
@@ -20,17 +16,17 @@ x-scheme-handler/ftp=brave-browser.desktop;
 x-scheme-handler/http=brave-browser.desktop;
 x-scheme-handler/https=brave-browser.desktop;
 
-text/css=nvim.desktop;
-text/csv=nvim.desktop;
-text/html=nvim.desktop;
-text/javascript=nvim.desktop;
-text/markdown=nvim.desktop;
-text/plain=nvim.desktop;
-text/tab-separated-values=nvim.desktop;
-text/x-asm=nvim.desktop;
-text/x-c=nvim.desktop;
-text/x-fortran=nvim.desktop;
-text/x-java-source=nvim.desktop;
-text/x-lua=nvim.desktop;
-text/x-pascal=nvim.desktop;
-text/x-python=nvim.desktop;
+text/css=nvim.desktop
+text/csv=nvim.desktop
+text/html=nvim.desktop
+text/javascript=nvim.desktop
+text/markdown=nvim.desktop
+text/plain=nvim.desktop
+text/tab-separated-values=nvim.desktop
+text/x-asm=nvim.desktop
+text/x-c=nvim.desktop
+text/x-fortran=nvim.desktop
+text/x-java-source=nvim.desktop
+text/x-lua=nvim.desktop
+text/x-pascal=nvim.desktop
+text/x-python=nvim.desktop
