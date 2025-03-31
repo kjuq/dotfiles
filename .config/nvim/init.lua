@@ -16,6 +16,8 @@ require('kjuq.rc.commands')
 require('kjuq.rc.mouse')
 require('kjuq.rc.colorscheme')
 
+require('kjuq.rc.lsp')
+
 require('kjuq.rc.lazy')
 
 -- if myvimrc and vim.uv.fs_stat(luahome .. '/initpostlocal.lua') then
