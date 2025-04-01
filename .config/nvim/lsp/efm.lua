@@ -25,27 +25,25 @@ local settings = {
 				formatStdin = true,
 			},
 		},
-		-- python = {
-		-- 	{
-		-- 		-- prefix = 'mypy',
-		-- 		lintSource = 'efm/mypy',
-		-- 		lintCommand = 'mypy --show-column-numbers --strict --strict-equality --shadow-file ${INPUT} ',
-		-- 		lintAfterOpen = true,
-		-- 		lintOnSave = false,
-		-- 		lintIgnoreExitCode = true,
-		-- 		lintStdin = false,
-		-- 		lintFormats = {
-		-- 			'%.%#:%l:%c: %trror: %m',
-		-- 			'%.%#:%l:%c: %tarning: %m',
-		-- 			'%.%#:%l:%c: %tote: %m',
-		-- 		},
-		-- 		rootMarkers = {
-		-- 			'mypy.ini',
-		-- 			'pyproject.toml',
-		-- 			'setup.cfg',
-		-- 		},
-		-- 	},
-		-- },
+		python = {
+			{
+				lintSource = 'efm/mypy',
+				lintCommand = 'mypy --show-column-numbers --strict --strict-equality --shadow-file ${INPUT} <(cat) ${INPUT}',
+				lintAfterOpen = true,
+				lintIgnoreExitCode = true,
+				lintStdin = true,
+				lintFormats = {
+					'%.%#:%l:%c: %trror: %m',
+					'%.%#:%l:%c: %tarning: %m',
+					'%.%#:%l:%c: %tote: %m',
+				},
+				rootMarkers = {
+					'mypy.ini',
+					'pyproject.toml',
+					'setup.cfg',
+				},
+			},
+		},
 	},
 }
 
