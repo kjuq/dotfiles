@@ -8,17 +8,20 @@ local listls = function(dir)
 	end
 	local result = {}
 	while true do
-		local name, _ = vim.uv.fs_scandir_next(req)
-		if not name then
+		local name, type = vim.uv.fs_scandir_next(req)
+		if not name then -- no more entries
 			break
-		end -- no more entries
+		end
+		if type == 'directory' then
+			goto continue
+		end
 		local filename = string.gsub(name, [[.lua$]], '')
 		result[#result + 1] = filename
+		::continue::
 	end
 	return result
 end
 
--- local all_ls = {'lua_ls', 'clangd', 'pyright', 'ruff', 'markdown-oxide'}
 local all_ls = listls(os.getenv('XDG_CONFIG_HOME') .. '/nvim/lsp') or {}
 
 vim.lsp.enable(all_ls)
