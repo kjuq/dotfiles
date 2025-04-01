@@ -8,6 +8,9 @@ spec.opts = {
 		'lazy.nvim',
 		{ path = 'luvit-meta/library', words = { 'vim%.uv' } },
 	},
+	integrations = {
+		lspconfig = false,
+	},
 }
 
 spec.config = function(_, opts)
