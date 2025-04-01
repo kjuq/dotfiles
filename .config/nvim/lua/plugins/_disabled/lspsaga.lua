@@ -60,8 +60,8 @@ spec.opts = {
 		},
 	},
 	hover = {
-		max_width = require('kjuq.utils.lsp').float_max_width,
-		max_height = require('kjuq.utils.lsp').float_max_height,
+		-- max_width = require('kjuq.utils.lsp').float_max_width,
+		-- max_height = require('kjuq.utils.lsp').float_max_height,
 		open_link = 'gx',
 		open_cmd = '!xdg-open',
 	},

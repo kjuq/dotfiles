@@ -1,6 +1,9 @@
 -- neovim/runtime/lua/vim/lsp.lua > lsp._set_defaults
+
 vim.keymap.set('n', 'gr', '<Nop>')
+
 local vlb = vim.lsp.buf
+
 vim.keymap.set('n', 'grt', vlb.type_definition, { desc = 'LSP: Go to type definition' })
 vim.keymap.set('n', 'grd', vlb.declaration, { desc = 'LSP: Go to Declaration' })
 vim.keymap.set('n', 'grh', vlb.typehierarchy, { desc = 'LSP: Type hierarchy' })
@@ -13,24 +16,6 @@ vim.keymap.set('n', 'grwr', vlb.remove_workspace_folder, { desc = 'LSP: Remove f
 vim.keymap.set('n', 'grww', function()
 	vim.notify(vim.inspect(vlb.list_workspace_folders()))
 end, { desc = 'LSP: List folders of workspaceh' })
-vim.keymap.set('n', 'grl', vim.diagnostic.setloclist, { desc = 'LSP: Set diagnostics into loclist' })
+vim.keymap.set('n', 'grq', vim.diagnostic.setqflist, { desc = 'LSP: Set diagnostics into qflist' })
 
-local utils = require('kjuq.utils.lsp')
-
-vim.keymap.set({ 'n', 's', 'i' }, '<C-s>', function()
-	vim.lsp.buf.signature_help(utils.hover_opts)
-end, { desc = 'LSP: Signature Help' })
-
-vim.keymap.set('n', ']d', function()
-	vim.diagnostic.jump({
-		float = utils.hover_opts,
-		count = vim.v.count1,
-	})
-end, { desc = 'Jump to the next diagnostic in the current buffer' })
-
-vim.keymap.set('n', '[d', function()
-	vim.diagnostic.jump({
-		float = utils.hover_opts,
-		count = -vim.v.count1,
-	})
-end, { desc = 'Jump to the previous diagnostic in the current buffer' })
+vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })

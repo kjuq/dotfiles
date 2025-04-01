@@ -1,11 +1,12 @@
 local settings = {
 	lintDebounce = '0.1s',
+	formatDebounce = '1s',
 	languages = {
 		lua = {
 			{
 				rootMarkers = { 'stylua.toml', '.stylua.toml' },
 				formatCanRange = true,
-				formatCommand = 'stylua --search-parent-directories -',
+				formatCommand = 'stylua --search-parent-directories ${--range-start=charStart} ${--range-end=charEnd} -',
 				formatStdin = true,
 			},
 			{
@@ -14,7 +15,6 @@ local settings = {
 				lintIgnoreExitCode = true,
 				lintStdin = true,
 				lintAfterOpen = true,
-				lintOnSave = false,
 				lintFormats = { '%.%#:%l:%c: (%t%n) %m' },
 				rootMarkers = { '.luacheckrc' },
 			},
@@ -23,6 +23,7 @@ local settings = {
 			{
 				formatCommand = 'shfmt -',
 				formatStdin = true,
+				formatCanRange = false,
 			},
 		},
 		python = {
@@ -30,7 +31,6 @@ local settings = {
 				lintSource = 'efm/mypy',
 				lintCommand = 'mypy --show-column-numbers --strict --strict-equality --shadow-file ${INPUT} <(cat) ${INPUT}',
 				lintAfterOpen = true,
-				lintIgnoreExitCode = true,
 				lintStdin = true,
 				lintFormats = {
 					'%.%#:%l:%c: %trror: %m',

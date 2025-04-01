@@ -42,8 +42,8 @@ spec.opts = {
 				border = require('kjuq.utils.common').floatwinborder,
 				position = { row = 2, col = 2 },
 				size = {
-					max_width = require('kjuq.utils.lsp').float_max_width,
-					max_height = require('kjuq.utils.lsp').float_max_height,
+					-- max_width = require('kjuq.utils.lsp').float_max_width,
+					-- max_height = require('kjuq.utils.lsp').float_max_height,
 				},
 			},
 		},
