@@ -4,6 +4,7 @@ $XDG_CONFIG_HOME/aerc/aerc.conf
 $XDG_CONFIG_HOME/aerc/binds.conf
 $XDG_CONFIG_HOME/aerc/stylesets
 $XDG_CONFIG_HOME/alacritty/alacritty.toml
+$XDG_CONFIG_HOME/autostart/pcmanfm-daemon.desktop
 $XDG_CONFIG_HOME/brewfile/Brewfile
 $XDG_CONFIG_HOME/clangd/config.yaml
 $XDG_CONFIG_HOME/clang-format
