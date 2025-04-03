@@ -54,6 +54,7 @@ $XDG_CONFIG_HOME/stylua/stylua.toml
 $XDG_CONFIG_HOME/Thunar/accels.scm
 $XDG_CONFIG_HOME/tmux/tmux.conf
 $XDG_CONFIG_HOME/tmux/scripts
+$XDG_CONFIG_HOME/uncrustify/uncrustify.cfg
 $XDG_CONFIG_HOME/vim/vimrc
 $XDG_CONFIG_HOME/w3m/keymap
 $XDG_CONFIG_HOME/w3m/config

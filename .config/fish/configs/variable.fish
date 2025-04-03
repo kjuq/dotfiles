@@ -91,6 +91,9 @@ set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 set --export GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 set --export GPG_TTY (tty)
 
+# Uncrustify
+set --export UNCRUSTIFY_CONFIG "$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
+
 # tmux
 set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
 
