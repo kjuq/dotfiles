@@ -78,6 +78,7 @@ assign [class="Brave-browser"] $ws5
 # Open specific applications in floating mode
 # for_window [title="File Transfer*"] floating enable
 for_window [class="FloatingVim"] floating enable
+for_window [window_role="GtkFileChooserDialog"] floating disable
 
 # github.com/toppair/peek.nvim
 no_focus [title="^Peek preview$"]
