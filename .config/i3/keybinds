@@ -1,39 +1,21 @@
 # Super + Alt + Ctrl
 set $sac Mod4+Mod1+Ctrl
 
-# change borders
-bindsym $sac+Shift+u border none
-bindsym $sac+Shift+y border pixel 1
-bindsym $sac+Shift+n border normal
-
 # Kill Window
-bindsym $sac+q kill
 bindsym $sac+BackSpace kill
 bindsym $sac+Shift+q --release exec --no-startup-id xkill
 
-# start program launcher
-bindsym $sac+d exec --no-startup-id dmenu_recency
-bindsym $mod+space exec --no-startup-id dmenu_recency
-
-# launch categorized menu
-bindsym $sac+c exec --no-startup-id morc_menu
-
-# Start a terminal
+# Launch applications
 bindsym $sac+1 exec kitty
-
-# Start Browser
 bindsym $sac+2 exec brave
-
-# Start Filer
 bindsym $sac+3 exec pcmanfm
 
-# Screenshot
+# Screenshot like MacOS
 bindsym $mod+Shift+3 exec --no-startup-id i3-scrot
 bindsym $mod+Shift+4 --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+5 --release exec --no-startup-id i3-scrot -w
 
 # change focus
-bindsym $sac+t focus next
 bindsym $sac+9 focus next
 
 # move focused window
@@ -71,52 +53,14 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $sac+apostrophe scratchpad show
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-	bindsym l exec --no-startup-id i3exit lock, mode "default"
-		bindsym s exec --no-startup-id i3exit suspend, mode "default"
-		bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-		bindsym e exec --no-startup-id i3exit logout, mode "default"
-		bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-		bindsym r exec --no-startup-id i3exit reboot, mode "default"
-		bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-		# exit system mode: "Enter" or "Escape"
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-}
-
 # Resize window (you can also use the mouse for that)
 bindsym $sac+r mode "resize"
 mode "resize" {
-	# These bindings trigger as soon as you enter the resize mode
-	# Pressing left will shrink the window’s width.
-	# Pressing right will grow the window’s width.
-	# Pressing up will shrink the window’s height.
-	# Pressing down will grow the window’s height.
 	bindsym h resize shrink width 5 px or 5 ppt
 	bindsym k resize grow height 5 px or 5 ppt
 	bindsym j resize shrink height 5 px or 5 ppt
 	bindsym l resize grow width 5 px or 5 ppt
 
-	# same bindings, but for the arrow keys
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
-
-	# exit resize mode: Enter or Escape
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
@@ -124,14 +68,7 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# hide/unhide i3status bar
-bindsym $sac+m bar mode toggle
-
 # bindsym XF86PowerOff exec systemctl hibernate
-
-# Sound Mixer
-# bindsym $mod+m exec terminal -e 'alsamixer'
-# bindsym $mod+Ctrl+m exec pavucontrol
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "brightnessctl set 10%+"

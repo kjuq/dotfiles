@@ -4,10 +4,6 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-include $XDG_CONFIG_HOME/i3/appearance
-include $XDG_CONFIG_HOME/i3/autostart
 include $XDG_CONFIG_HOME/i3/keybinds
 include $XDG_CONFIG_HOME/i3/misc
 include $XDG_CONFIG_HOME/i3/workspace
-
-include $XDG_CONFIG_HOME/i3/gaps

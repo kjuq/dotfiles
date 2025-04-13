@@ -5,9 +5,9 @@
 set $ws1 1
 set $ws2 2
 set $ws3 3
-set $ws4 4:terminal
-set $ws5 5:browser
-set $ws6 6:preview
+set $ws4 4
+set $ws5 5
+set $ws6 6
 set $ws7 7
 set $ws8 8
 set $ws9 9
@@ -67,12 +67,17 @@ bindsym $mod+Mod1+b move workspace to output left
 
 assign [class="Vivaldi"] $ws1
 assign [class="Chromium"] $ws1
+
 assign [class="Station"] $ws2
+assign [class="Ferdium"] $ws2
+
 assign [class="org.wezfurlong.wezterm"] $ws4
 assign [class="Alacritty"] $ws4
 assign [class="kitty"] $ws4
+
 assign [class="qutebrowser"] $ws5
 assign [class="Brave-browser"] $ws5
+
 # assign [class="Evince"] $ws6
 
 # Open specific applications in floating mode
@@ -88,7 +93,5 @@ for_window [urgent=latest] focus
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # vim: set filetype=i3config :
