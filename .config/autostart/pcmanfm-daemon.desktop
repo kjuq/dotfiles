@@ -1,8 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=PCManFM Daemon
+Name=PCManFM-Daemon
 Comment=Start PCManFM as a daemon
 Exec=pcmanfm --daemon-mode
 Terminal=false
-Categories=System;FileManager;
-X-GNOME-Autostart-enabled=true
