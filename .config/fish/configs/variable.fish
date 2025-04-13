@@ -18,6 +18,7 @@ set --export SUDO_ASKPASS "$HOME/.local/kjuq_bin/sudo_pass"
 
 # Kjuq created
 set --export KJUQ_DOCS "$HOME/.local/kjuq_docs"
+set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
 
 # Homebrew
 set --export HOMEBREW_NO_ANALYTICS 1
@@ -93,9 +94,6 @@ set --export GPG_TTY (tty)
 
 # Uncrustify
 set --export UNCRUSTIFY_CONFIG "$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
-
-# tmux
-set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
 
 # Password-store
 set --export PASSWORD_STORE_DIR "$HOME/.local/password-store"
