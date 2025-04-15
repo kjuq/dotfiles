@@ -7,6 +7,16 @@ spec.keys = {
 	map('gO', 'n', '<CMD>AerialToggle<CR>', 'Toggle'),
 }
 
+spec.init = function()
+	vim.api.nvim_create_autocmd({ 'FileType' }, {
+		pattern = 'markdown',
+		group = vim.api.nvim_create_augroup('kjuq_disable_builtin_gO', {}),
+		callback = function()
+			vim.keymap.del('n', 'gO', { buffer = true })
+		end,
+	})
+end
+
 spec.opts = {
 	backends = { 'lsp', 'treesitter', 'markdown', 'man' },
 	keymaps = {
@@ -18,11 +28,8 @@ spec.opts = {
 	},
 }
 
-spec.dependencies = {
-	'nvim-treesitter/nvim-treesitter',
-}
-
 spec.specs = {
+	'nvim-treesitter/nvim-treesitter',
 	'nvim-tree/nvim-web-devicons',
 }
 
