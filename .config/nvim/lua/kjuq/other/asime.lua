@@ -30,7 +30,7 @@ end
 -- OS-specific function. Linux uses i3wm and MacOS may use Hammerspoon
 local hide_and_paste = function(delay)
 	if is_linux then
-		local cmd = string.format([[!bash -c 'i3-msg scratchpad show && sleep %s && xdotool key XF86Paste']], delay)
+		local cmd = string.format([[!bash -c 'i3-msg scratchpad show && sleep %s && xdotool key shift+Insert']], delay)
 		vim.cmd(string.format([[silent execute "%s"]], cmd))
 	elseif is_macos then
 		-- TODO: Implement this
