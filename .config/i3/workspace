@@ -77,6 +77,7 @@ assign [class="kitty"] $ws4
 
 assign [class="qutebrowser"] $ws5
 assign [class="Brave-browser"] $ws5
+assign [class="firefox"] $ws5
 
 # assign [class="Evince"] $ws6
 
