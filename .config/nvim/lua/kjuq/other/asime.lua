@@ -53,6 +53,7 @@ local confirm = {
 vim.opt_local.number = false
 vim.opt_local.relativenumber = false
 vim.opt_local.wrap = false
+vim.opt_local.swapfile = false
 
 vim.keymap.set('n', '<C-g><C-g>', confirm.n, { buffer = true })
 vim.keymap.set('i', '<C-g><C-g>', confirm.i, { buffer = true })
