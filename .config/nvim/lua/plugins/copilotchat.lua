@@ -74,7 +74,7 @@ spec.opts = function()
 			},
 			close = {
 				normal = '<C-Tab>',
-				insert = '<Nop>',
+				insert = nil,
 			},
 			reset = {
 				normal = '<C-l>',
@@ -90,23 +90,23 @@ spec.opts = function()
 			},
 			yank_diff = {
 				normal = 'gy',
-				insert = '<Nop>',
+				insert = nil,
 			},
 			show_diff = {
 				normal = 'gd',
-				insert = '<Nop>',
+				insert = nil,
 			},
 			show_info = {
 				normal = 'dp', -- [d]isplay [p]rompt
-				insert = '<Nop>',
+				insert = nil,
 			},
 			show_context = {
 				normal = 'gV',
-				insert = '<Nop>',
+				insert = nil,
 			},
 			show_help = {
 				normal = 'g?',
-				insert = '<Nop>',
+				insert = nil,
 			},
 		},
 	}

@@ -165,12 +165,11 @@ spec.opts = {
 		comment = 'GP: Stop responce',
 	},
 	chat_shortcut_new = {
-		modes = { 'n' },
-		shortcut = '<Nop>',
+		modes = {},
 	},
-	chat_finder_mappings = {
-		delete = { modes = { 'n', 'i', 'v', 'x' }, shortcut = '<Nop>' },
-	},
+	-- chat_finder_mappings = {
+	-- 	delete = { modes = { 'n', 'i', 'v', 'x' }, shortcut = '<Nop>' },
+	-- },
 
 	chat_free_cursor = true,
 
