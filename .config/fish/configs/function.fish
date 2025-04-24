@@ -39,3 +39,62 @@ function postexec_esckey --on-event fish_postexec
 		command rm "$KJUQ_TMUX_ESCAPE" # rm is aliased
 	end
 end
+
+function fish_greeting
+end
+
+function fish_prompt
+	set -l last_pipestatus $pipestatus
+	set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
+	set -q fish_color_status; or set -g fish_color_status red
+
+	# Color the prompt differently when we're root
+	set fish_color_cwd normal
+	set -l color_cwd $fish_color_cwd
+	set -l suffix '❯'
+	if functions -q fish_is_root_user; and fish_is_root_user
+		if set -q fish_color_cwd_root
+			set color_cwd $fish_color_cwd_root
+		end
+		set suffix '#'
+	end
+
+	# Write pipestatus
+	# If the status was carried over (if no command is issued or if `set` leaves the status untouched), don't bold it.
+	set -l bold_flag --bold
+	set -q __fish_prompt_status_generation; or set -g __fish_prompt_status_generation $status_generation
+	if test $__fish_prompt_status_generation = $status_generation
+		set bold_flag
+	end
+	set __fish_prompt_status_generation $status_generation
+	set -l status_color (set_color $fish_color_status)
+	set -l statusb_color (set_color $bold_flag $fish_color_status)
+	set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
+
+	set -l user_and_hostname ''
+	if test "$SSH_CONNECTION" != ''
+		set user_and_hostname " $USER@$hostname"
+	end
+
+	echo -n -s \
+		$(set_color $color_cwd) (dirs) \
+		$(set_color brblack) $(fish_vcs_prompt | tr -d '()') \
+		$(set_color brblack) "$user_and_hostname" \
+		" "$prompt_status \
+		\n $suffix " "
+end
+
+set --global _kjuq_fresh_session true
+function _pure_prompt_new_line \
+	--description "Do not add a line break to a brand new session" \
+	--on-event fish_prompt
+
+	set --local new_line ''
+	if test "$_kjuq_fresh_session" = false
+		set new_line "\n"
+	end
+
+	set --local clear_line "\r\033[K"
+	echo -e -n -s "$clear_line" "$new_line"
+	set _kjuq_fresh_session false
+end
