@@ -7,7 +7,9 @@ function fisher_init
 
 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
-	fisher update
+	fisher install patrickf1/fzf.fish
+	fisher install decors/fish-ghq
+	fisher install d42/fish-pip-completion
 
 	set --export pure_color_current_directory normal # fisher_init to take effect
 end
