@@ -76,18 +76,34 @@ function fish_prompt
 		set user_and_hostname " $USER@$hostname"
 	end
 
+	# Git dirty symbol
+	set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)
+	set --local is_git_dirty (
+		if command git rev-list --max-count=1 HEAD -- >/dev/null 2>&1;
+			not command git diff-index --ignore-submodules --cached --quiet HEAD -- >/dev/null 2>&1;
+		else;
+			not command git diff --staged --ignore-submodules --no-ext-diff --quiet --exit-code >/dev/null 2>&1;
+		end
+		or not command git diff --ignore-submodules --no-ext-diff --quiet --exit-code >/dev/null 2>&1
+		or command git ls-files --others --exclude-standard --directory --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>&1
+		and echo "true"
+	)
+	set --local git_dirty_symbol
+	if test -n "$is_git_dirty" && test -n "$is_git_repository"  # untracked or un-commited files
+		set git_dirty_symbol '*'
+	end
+
 	echo -n -s \
 		$(set_color $color_cwd) (dirs) \
 		$(set_color brblack) $(fish_vcs_prompt | tr -d '()') \
+		$(set_color brblack) "$git_dirty_symbol" \
 		$(set_color brblack) "$user_and_hostname" \
-		" "$prompt_status \
+		" $prompt_status" \
 		\n $suffix " "
 end
 
 set --global _kjuq_fresh_session true
-function _pure_prompt_new_line \
-	--description "Do not add a line break to a brand new session" \
-	--on-event fish_prompt
+function _pure_prompt_new_line --on-event fish_prompt --description "Do not add a line break to a brand new session"
 
 	set --local new_line ''
 	if test "$_kjuq_fresh_session" = false
