@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -u
 
 if [ ! "$(uname)" == "Darwin" ]; then
 	echo 'This machine is not MacOS' 1>&2

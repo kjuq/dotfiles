@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -u
 
 if [ ! "$(uname)" == "Linux" ]; then
 	echo 'This machine is not Linux' 1>&2

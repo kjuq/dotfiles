@@ -51,6 +51,7 @@ unlink() {
 
 install() {
 	symlink
+	set +e
 	"$script_dir"/module/wget.sh install
 	if [ "$(uname)" == "Linux" ]; then
 		"$script_dir/module/linux.sh" install
@@ -60,10 +61,12 @@ install() {
 		echo "Unknown OS detected" 1>&2
 		return 1
 	fi
+	set -e
 }
 
 uninstall() {
 	unlink
+	set +e
 	"$script_dir"/module/wget.sh uninstall
 	if [ "$(uname)" == "Linux" ]; then
 		"$script_dir"/module/linux.sh uninstall
@@ -73,6 +76,7 @@ uninstall() {
 		echo "Unknown OS detected" 1>&2
 		return 1
 	fi
+	set -e
 }
 
 # ------------------------- main ------------------------- #
