@@ -3,7 +3,7 @@
 set -u
 
 if [ ! "$(uname)" == "Linux" ]; then
-	echo 'This machine is not Linux' 1>&2
+	echo 'This machine is not Linux. linux.sh is quitted' 1>&2
 	exit 1
 fi
 

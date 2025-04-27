@@ -3,7 +3,7 @@
 set -u
 
 if [ ! "$(uname)" == "Darwin" ]; then
-	echo 'This machine is not MacOS' 1>&2
+	echo 'This machine is not MacOS. macos.sh is quitted' 1>&2
 	exit 1
 fi
 

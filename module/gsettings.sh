@@ -3,12 +3,12 @@
 set -eu
 
 if [ -z "$XDG_CONFIG_HOME" ]; then
-	echo 'XDG_CONFIG_HOME is not set. Quit' 1>&2
+	echo 'XDG_CONFIG_HOME is not set. gsettings.sh is skipped' 1>&2
 	exit 1
 fi
 
 if { ! command -v gsettings >/dev/null; } 2>&1; then
-	echo 'gsettings is not installled. Quit' 1>&2
+	echo 'gsettings is not installled. gsettings.sh is skipped' 1>&2
 	exit 1
 fi
 
