@@ -7,7 +7,7 @@ bindsym $sac+Shift+q --release exec --no-startup-id xkill
 
 # Launch applications
 bindsym $sac+1 exec kitty
-bindsym $sac+2 exec firefox
+bindsym $sac+2 exec brave
 bindsym $sac+3 exec pcmanfm
 
 # Screenshot like MacOS

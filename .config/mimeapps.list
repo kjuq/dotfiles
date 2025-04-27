@@ -12,9 +12,9 @@ image/svg+xml=feh.desktop
 
 x-scheme-handler/chrome=chromium.desktop;
 x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop;
-x-scheme-handler/ftp=firefox.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/ftp=brave-browser.desktop;
+x-scheme-handler/http=brave-browser.desktop;
+x-scheme-handler/https=brave-browser.desktop;
 
 text/css=nvim.desktop
 text/csv=nvim.desktop
