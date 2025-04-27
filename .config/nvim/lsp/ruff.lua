@@ -24,19 +24,22 @@ local callback = function()
 	})
 end
 
-local on_attach = function(client, _)
-	client.server_capabilities.hoverProvider = false
-	vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-		group = vim.api.nvim_create_augroup('kjuq_ruff_codeaction_onsave', {}),
-		callback = callback,
-	})
-end
+vim.api.nvim_create_autocmd({ 'LspAttach' }, {
+	group = vim.api.nvim_create_augroup('kjuq_lspattach_ruff', {}),
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+		if client.name ~= 'ruff' then
+			return
+		end
+		client.server_capabilities.hoverProvider = false
+		vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+			group = vim.api.nvim_create_augroup('kjuq_ruff_codeaction_onsave', {}),
+			callback = callback,
+		})
+	end,
+})
 
 return {
-	cmd = { 'ruff', 'server' },
-	filetypes = { 'python' },
-	root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml' },
-	single_file_support = true,
 	init_options = {
 		settings = {
 			lint = {
@@ -44,5 +47,4 @@ return {
 			},
 		},
 	},
-	on_attach = on_attach,
 }

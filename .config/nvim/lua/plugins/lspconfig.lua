@@ -9,6 +9,4 @@ spec.cmd = {
 	'LspLog',
 }
 
-spec.event = 'LspAttach'
-
 return spec
