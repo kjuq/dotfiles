@@ -26,6 +26,7 @@ spec.config = function(_, opts)
 	local exceptions = {
 		lua_language_server = 'lua_ls',
 		css_lsp = 'cssls',
+		bash_language_server = 'bashls',
 	}
 
 	local servers_to_enable = {}
