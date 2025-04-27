@@ -58,8 +58,8 @@ local on_attach = function(ev)
 
 	-- Format on save
 	local client_id = ev.data.client_id
-	local client = vim.lsp.get_client_by_id(client_id)
-	if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
+	local client = assert(vim.lsp.get_client_by_id(client_id))
+	if client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
 		vim.api.nvim_create_autocmd('BufWritePre', {
 			group = vim.api.nvim_create_augroup(
 				string.format('kjuq_formatonsave_%s_buf_%d', client.name, bufnr),
@@ -73,9 +73,13 @@ local on_attach = function(ev)
 	end
 
 	-- -- Built-in auto completion
-	-- if client and client:supports_method('textDocument/completion') then
+	-- if client:supports_method('textDocument/completion') then
 	-- 	vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 	-- end
+
+	if client:supports_method('textDocument/documentColor') then
+		vim.lsp.document_color.enable(true, bufnr)
+	end
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
