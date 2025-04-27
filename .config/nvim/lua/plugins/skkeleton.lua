@@ -21,6 +21,7 @@ spec.config = function()
 	vim.fn['skkeleton#config']({
 		eggLikeNewline = false,
 		setUndoPoint = false,
+		showCandidatesCount = 3,
 		selectCandidateKeys = 'arstnei',
 		globalDictionaries = {
 			vim.fs.joinpath(lazy_root, 'dict', 'SKK-JISYO.L'),
@@ -35,14 +36,25 @@ spec.config = function()
 		['?'] = { '?', '' },
 		[':'] = { ':', '' },
 		['~'] = { '～', '' },
+		[' '] = { ' ', '' },
 	})
-
-	-- vim.fn['skkeleton#register_keymap']('henkan', '<C-h>', 'henkanBackward')
-	vim.fn['skkeleton#register_keymap']('henkan', '<C-w>', 'cancel')
-	vim.fn['skkeleton#register_keymap']('henkan', '<C-y>', 'kakutei')
 
 	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-w>') ]])
 	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-y>') ]])
+	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-p>') ]])
+	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-n>') ]])
+
+	vim.fn['skkeleton#register_keymap']('henkan', '<C-w>', 'cancel')
+	vim.fn['skkeleton#register_keymap']('input', '<C-w>', 'cancel')
+	vim.fn['skkeleton#register_keymap']('henkan', '<C-y>', 'kakutei')
+	vim.fn['skkeleton#register_keymap']('input', '<C-y>', 'kakutei')
+	vim.fn['skkeleton#register_keymap']('henkan', '<C-p>', 'henkanBackward')
+	vim.fn['skkeleton#register_keymap']('input', '<C-p>', 'henkanBackward')
+	vim.fn['skkeleton#register_keymap']('henkan', '<C-n>', 'henkanForward')
+	vim.fn['skkeleton#register_keymap']('input', '<C-n>', 'henkanFirst')
+	vim.fn['skkeleton#register_keymap']('henkan', '<space>', '')
+	vim.fn['skkeleton#register_keymap']('input', '<space>', '')
+	vim.fn['skkeleton#register_keymap']('henkan', 'x', '')
 
 	-- remove "<C-g>" from mapped_keys
 	local remove_mapped_keys = function(key)
@@ -70,7 +82,7 @@ spec.dependencies = {
 		opts = {
 			alwaysShown = false,
 			fadeOutMs = 0,
-			zindex = 9999,
+			zindex = 1,
 		},
 	},
 }

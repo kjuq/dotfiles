@@ -235,11 +235,11 @@ spec.config = function()
 		end,
 	})
 
-	local skkeleton_src = cmp.config.sources({ { name = 'skkeleton' } })
 	local function enable_skk()
 		cmp.setup.buffer({
-			sources = skkeleton_src,
-			completion = { autocomplete = autocompletes.enable },
+			-- sources = cmp.config.sources({ { name = 'skkeleton' } }),
+			-- completion = { autocomplete = autocompletes.enable },
+			sources = {},
 		})
 	end
 	local function disable_skk()
@@ -293,7 +293,6 @@ spec.dependencies = {
 	'onsails/lspkind.nvim',
 	'saadparwaiz1/cmp_luasnip',
 	'mtoohey31/cmp-fish',
-	'uga-rosa/cmp-skkeleton',
 	{
 		'petertriho/cmp-git',
 		specs = 'nvim-lua/plenary.nvim',
