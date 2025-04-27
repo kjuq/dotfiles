@@ -7,6 +7,11 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 	exit 1
 fi
 
+if { ! command -v gsettings >/dev/null; } 2>&1; then
+	echo 'gsettings is not installled. Quit' 1>&2
+	exit 1
+fi
+
 install() {
 	gsettings set org.gtk.Settings.FileChooser sort-directories-first true
 }
