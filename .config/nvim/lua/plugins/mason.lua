@@ -21,9 +21,13 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('mason').setup(opts)
+
+	-- `Mason's server name` : `nvim-lspconfig's name`
 	local exceptions = {
 		lua_language_server = 'lua_ls',
+		css_lsp = 'cssls',
 	}
+
 	local servers_to_enable = {}
 	for _, v in ipairs(require('mason-registry').get_installed_packages()) do
 		if vim.tbl_contains(v.spec.categories, 'LSP') then
