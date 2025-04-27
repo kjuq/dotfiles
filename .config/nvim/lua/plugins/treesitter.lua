@@ -28,8 +28,8 @@ spec.opts = {
 	},
 
 	indent = {
-		enable = false,
-		disable = { 'python' }, -- buggy in py file where tabs are used for indentation?
+		enable = true,
+		-- disable = { 'python' }, -- buggy in py file where tabs are used for indentation?
 	},
 
 	incremental_selection = {
