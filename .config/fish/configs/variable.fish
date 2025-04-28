@@ -17,7 +17,11 @@ set --export TERMINAL alacritty --command
 set --export SUDO_ASKPASS "$HOME/.local/kjuq_bin/sudo_pass"
 
 # Kjuq created
-set --export KJUQ_DOCS "$HOME/.local/kjuq_docs"
+if [ -n "$TERMUX_VERSION" ]
+	set --export KJUQ_DOCS "$HOME/storage/shared/local/kjuq_docs"
+else
+	set --export KJUQ_DOCS "$HOME/.local/kjuq_docs"
+end
 set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
 
 # Homebrew
@@ -96,7 +100,11 @@ set --export GPG_TTY (tty)
 set --export UNCRUSTIFY_CONFIG "$XDG_CONFIG_HOME"/uncrustify/uncrustify.cfg
 
 # Password-store
-set --export PASSWORD_STORE_DIR "$HOME/.local/password-store"
+if [ -n "$TERMUX_VERSION" ]
+	set --export PASSWORD_STORE_DIR "$HOME/storage/shared/local/password-store"
+else
+	set --export PASSWORD_STORE_DIR "$HOME/.local/password-store"
+end
 
 # nb
 set --export NBRC_PATH "$XDG_CONFIG_HOME/nb/nbrc"
