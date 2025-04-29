@@ -66,6 +66,15 @@ vim.keymap.set('n', '<Space>tv', function()
 	vim.notify('virtualedit=' .. vim.o.virtualedit)
 end, { desc = 'Toggle virtualedit' })
 
+vim.keymap.set('n', '<Space>tf', function()
+	if vim.o.foldmethod == 'expr' then
+		vim.opt.foldmethod = 'marker'
+	else
+		vim.opt.foldmethod = 'expr'
+	end
+	vim.notify('foldmethod=' .. vim.o.foldmethod)
+end, { desc = 'Toggle foldmethod' })
+
 -- variable keybinds on states
 local vedit_replace = false
 vim.keymap.set({ 'n' }, 'r', function()

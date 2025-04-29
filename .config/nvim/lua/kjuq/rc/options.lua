@@ -77,9 +77,11 @@ opt.smartcase = true
 opt.infercase = true
 opt.wildignorecase = true
 
-opt.foldmethod = 'marker'
+opt.foldmethod = 'expr'
 opt.foldopen:remove('block')
--- opt.foldtext = "v:lua.vim.treesitter.foldtext()" -- buggy and laggy?
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldtext = ''
+opt.foldlevel = 9999
 
 opt.wrap = false
 opt.smoothscroll = true
@@ -126,6 +128,7 @@ opt.listchars = {
 }
 opt.fillchars = {
 	eob = ' ', -- hide tildes in blank space after end of file
+	fold = ' ',
 }
 
 opt.number = false
