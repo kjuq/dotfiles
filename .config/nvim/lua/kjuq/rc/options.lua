@@ -18,12 +18,9 @@ opt.termguicolors = true
 opt.wildmenu = true
 opt.wildmode = { 'full' } -- use wildmenu any time
 opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
-opt.completeopt = { 'menuone', 'popup' }
+opt.completeopt = { 'menuone', 'popup', 'fuzzy' }
 
-if vim.fn.has('nvim-0.11') == 1 then
-	opt.completeopt:append('fuzzy')
-	opt.winborder = 'rounded'
-end
+opt.winborder = 'single'
 
 opt.viminfo = [['1000,<50,s10,h]]
 
