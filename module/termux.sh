@@ -11,7 +11,7 @@ script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 
 install() {
 	! command -v rsync >/dev/null 2>&1 && echo 'rsync is not installed (termux.sh)' 1>&2 && exit 1
-	rsync "$script_dir"/termux/shortcuts ~/.shortcuts
+	rsync "$script_dir"/../termux/shortcuts ~/.shortcuts
 }
 
 uninstall() {
