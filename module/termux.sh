@@ -2,7 +2,7 @@
 
 set -u
 
-if [ -n "${TERMUX_VERSION:-}" ]; then
+if [ -z "${TERMUX_VERSION:-}" ]; then
 	echo 'This environment is not Termux. Quit' 1>&2
 	exit 1
 fi
