@@ -81,6 +81,8 @@ assign [class="firefox"] $ws5
 
 # assign [class="Evince"] $ws6
 
+assign [class="steam"] $ws7
+
 # Open specific applications in floating mode
 # for_window [title="File Transfer*"] floating enable
 for_window [class="FloatingVim"] floating enable
