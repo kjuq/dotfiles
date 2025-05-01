@@ -53,7 +53,9 @@ install() {
 	symlink
 	set +e
 	"$script_dir"/module/wget.sh install
-	if [ "$(uname)" == "Linux" ]; then
+	if [ -n "${TERMUX_VERSION:-}" ]; then
+		"$script_dir/module/termux.sh" install
+	elif [ "$(uname)" == "Linux" ]; then
 		"$script_dir/module/linux.sh" install
 	elif [ "$(uname)" == "Darwin" ]; then
 		"$script_dir"/module/macos.sh install
@@ -68,7 +70,9 @@ uninstall() {
 	unlink
 	set +e
 	"$script_dir"/module/wget.sh uninstall
-	if [ "$(uname)" == "Linux" ]; then
+	if [ -n "${TERMUX_VERSION:-}" ]; then
+		"$script_dir/module/termux.sh" uninstall
+	elif [ "$(uname)" == "Linux" ]; then
 		"$script_dir"/module/linux.sh uninstall
 	elif [ "$(uname)" == "Darwin" ]; then
 		"$script_dir"/module/macos.sh uninstall

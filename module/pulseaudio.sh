@@ -2,7 +2,7 @@
 
 set -eu
 
-if [ -n "$TERMUX_VERSION" ]; then
+if [ -n "${TERMUX_VERSION:-}" ]; then
 	echo 'Termux does not need pulseaudio.sh. pulseaudio.sh is skipped' 1>&2
 	exit 1
 fi
