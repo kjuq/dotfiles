@@ -1,6 +1,6 @@
 ---@type LazySpec
 local spec = { 'j-hui/fidget.nvim' }
-spec.event = { 'LspAttach', 'VeryLazy' }
+spec.event = { 'LspAttach' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Fidget: ')
 spec.keys = {
@@ -10,8 +10,12 @@ spec.keys = {
 spec.opts = {
 	notification = {
 		override_vim_notify = false,
+		view = {
+			stack_upwards = false, -- Display notification items from bottom to top
+		},
 		window = {
 			winblend = 0,
+			align = 'top',
 			border = vim.o.winborder,
 		},
 	},

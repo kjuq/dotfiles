@@ -7,7 +7,7 @@ opt.undofile = true
 opt.belloff = { 'esc', 'error' }
 
 opt.cmdheight = 0
-opt.laststatus = 3 -- global status line. `0` to hide
+opt.laststatus = 0 -- global status line. `0` to hide
 opt.showcmdloc = 'statusline'
 opt.ruler = false
 

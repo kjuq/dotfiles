@@ -21,7 +21,7 @@ spec.opts = {
 		},
 	},
 	messages = {
-		enabled = true,
+		enabled = false,
 		view_search = false,
 	},
 	popupmenu = { -- Noice's completion
