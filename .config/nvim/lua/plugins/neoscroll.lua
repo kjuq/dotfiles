@@ -20,7 +20,7 @@ spec.keys = {
 	end, 'Up'),
 
 	map('<C-f>', { 'n', 'x' }, function()
-		require('neoscroll').scroll(vim.api.nvim_win_get_height(0), true, duration * 2)
+		require('neoscroll').scroll(vim.api.nvim_win_get_height(0), { move_cursor = true, duration = duration * 2 })
 	end, 'Down'),
 
 	map('zt', { 'n', 'x' }, function()
