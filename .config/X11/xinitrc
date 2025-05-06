@@ -40,6 +40,10 @@ if { command -v xrandr >/dev/null; } 2>&1; then
 	xrandr --output eDP-1 --rotate left
 fi
 
+if { command -v xinput >/dev/null; } 2>&1; then
+	xinput --map-to-output 'NVTK0603:00 0603:F001' eDP-1
+fi
+
 # if { command -v xset > /dev/null; } 2>&1 ; then
 # 	xset dpms 900 1200 1500
 # 	xset s noblank
