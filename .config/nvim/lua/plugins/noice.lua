@@ -55,7 +55,7 @@ spec.opts = {
 	views = {
 		cmdline_popup = {
 			position = {
-				row = -1,
+				row = -2,
 			},
 		},
 		hover = {
