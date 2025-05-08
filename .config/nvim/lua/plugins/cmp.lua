@@ -210,23 +210,6 @@ spec.config = function()
 		sources = { { name = 'git' } },
 	})
 
-	-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline({ '/', '?' }, {
-		mapping = mapping_cmdline,
-		sources = { { name = 'buffer' } },
-		completion = { autocomplete = autocompletes.disable },
-	})
-
-	-- Use cmdline & path source for ":" (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline(':', {
-		mapping = mapping_cmdline,
-		sources = {
-			{ name = 'path' },
-			{ name = 'cmdline' },
-		},
-		completion = { autocomplete = autocompletes.disable },
-	})
-
 	-- restore global autocomplete
 	vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
 		group = vim.api.nvim_create_augroup('kjuq_cmp_restore_autocomplete', {}),
