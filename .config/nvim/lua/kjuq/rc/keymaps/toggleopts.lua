@@ -28,17 +28,17 @@ vim.keymap.set('n', '<Space>tL', function()
 	vim.opt.list = not vim.o.list
 end, { desc = 'Toggle list' })
 
-vim.keymap.set('n', '<Space>ts', function()
+local function toggle_statusline()
 	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
-end, { desc = 'Toggle statusline' })
+end
+vim.keymap.set('n', '<Space>ts', toggle_statusline, { desc = 'Toggle statusline' })
+vim.keymap.set('n', '<M-s>', toggle_statusline, { desc = 'Toggle statusline' })
 
-vim.keymap.set('n', '<Space>tn', function()
+local function toggle_number()
 	vim.opt.number = not vim.o.number
-end, { desc = 'Toggle number' })
-
-vim.keymap.set('n', '<M-n>', function()
-	vim.opt.number = not vim.o.number
-end, { desc = 'Toggle number' })
+end
+vim.keymap.set('n', '<Space>tn', toggle_number, { desc = 'Toggle number' })
+vim.keymap.set('n', '<M-n>', toggle_number, { desc = 'Toggle number' })
 
 vim.keymap.set('n', '<Space>tN', function()
 	vim.opt.relativenumber = not vim.o.relativenumber
