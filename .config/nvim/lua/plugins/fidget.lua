@@ -9,7 +9,7 @@ spec.keys = {
 
 spec.opts = {
 	notification = {
-		override_vim_notify = false,
+		override_vim_notify = true,
 		view = {
 			stack_upwards = false, -- Display notification items from bottom to top
 		},
