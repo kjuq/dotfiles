@@ -25,6 +25,7 @@ local settings = {
 	outputPath = '/tmp/typst_output/$root/$dir/$name',
 }
 
+---@type vim.lsp.Config
 return {
 	settings = settings,
 }

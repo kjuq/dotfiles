@@ -22,6 +22,7 @@ local settings = {
 	},
 }
 
+---@type vim.lsp.Config
 return {
 	settings = settings,
 }

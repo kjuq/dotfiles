@@ -74,6 +74,7 @@ for lang, _ in pairs(settings.languages) do
 	langs[#langs + 1] = lang
 end
 
+---@type vim.lsp.Config
 return {
 	cmd = { 'efm-langserver' },
 	root_markers = { '.git' },
