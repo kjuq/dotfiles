@@ -5,9 +5,11 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 		if client.name ~= 'clangd' then
 			return
 		end
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-		client.server_capabilities.documentOnTypeFormattingProvider = nil
+		local bufnr = args.buf
+		local groupname = string.format('kjuq_formatonsave_%s_buf_%d', client.name, bufnr)
+		vim.schedule(function()
+			vim.api.nvim_del_augroup_by_name(groupname)
+		end)
 	end,
 })
 
