@@ -3,11 +3,15 @@ local spec = { 'yioneko/nvim-yati' }
 
 spec.event = 'VeryLazy'
 
+spec.cond = false
+
 spec.config = function()
 	local ts_opts = {
 		yati = {
 			enable = true,
-			disable = {},
+			disable = function(lang)
+				return lang ~= 'python'
+			end,
 			default_lazy = true,
 			default_fallback = 'auto',
 		},
