@@ -3,7 +3,7 @@ local spec = { 'yioneko/nvim-yati' }
 
 spec.event = 'VeryLazy'
 
-spec.cond = false
+-- spec.cond = false
 
 spec.config = function()
 	local ts_opts = {
