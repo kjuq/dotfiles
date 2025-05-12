@@ -13,6 +13,9 @@ spec.config = function()
 			default_lazy = true,
 			default_fallback = 'auto',
 		},
+		indent = {
+			disable = { 'python' },
+		},
 	}
 	require('nvim-treesitter.configs').setup(ts_opts)
 end
