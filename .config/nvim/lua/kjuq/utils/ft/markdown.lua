@@ -15,6 +15,9 @@ local function get_frontmatter(bufnr)
 			break
 		end
 		local key, value = line:match('(%w+):%s*(.+)')
+		if not key then
+			goto continue
+		end
 		result[key] = value
 		::continue::
 	end
