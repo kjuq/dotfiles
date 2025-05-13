@@ -4,7 +4,7 @@ require('vim._extui').enable({
 		---@type 'box'|'cmd'
 		pos = 'box',
 		box = {
-			timeout = 4000,
+			timeout = 6000, -- ms
 		},
 	},
 })
