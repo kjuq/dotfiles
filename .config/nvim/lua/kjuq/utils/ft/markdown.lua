@@ -14,7 +14,7 @@ local function get_frontmatter(bufnr)
 		if line == '---' then
 			break
 		end
-		local key, value = line:match('(%w+):%s*(%w+)')
+		local key, value = line:match('(%w+):%s*(.+)')
 		result[key] = value
 		::continue::
 	end
