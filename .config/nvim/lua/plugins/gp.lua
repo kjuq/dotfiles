@@ -46,16 +46,38 @@ spec.opts = {
 	-- chat_dir = os.getenv("HOME") .. "/documents/chatgpt",
 	providers = {
 		openai = {
+			disable = true,
 			secret = { 'pass', 'openai.com/api_key' },
 		},
 		copilot = {
-			disable = false,
-			-- Secret is automatically fetched with `copilot.vim`
-			-- `$XDG_CONFIG_HOME/github-copilot/hosts.json`
+			disable = true,
+			-- Secret is automatically fetched with copilot.vim at `$XDG_CONFIG_HOME/github-copilot/hosts.json`
+		},
+		googleai = {
+			secret = { 'pass', 'google.com/gemini_api_key' },
 		},
 	},
 
+	default_chat_agent = 'Gemini-Plain',
+	default_command_agent = 'Gemini-Plain',
+
 	agents = {
+		{
+			name = 'Gemini-Plain',
+			provider = 'googleai',
+			chat = true,
+			command = true,
+			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			system_prompt = 'You are an AI assistant',
+		},
+		{
+			name = 'Chat-Gemini-Code',
+			provider = 'googleai',
+			chat = true,
+			command = false,
+			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+		},
 		{
 			name = 'ChatCopilot-Claude',
 			provider = 'copilot',
@@ -89,6 +111,27 @@ spec.opts = {
 			model = { model = 'o1', temperature = 1.1, top_p = 1 },
 			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
 		},
+
+		-- Disable all builtin agents
+		{ name = 'ChatGPT4o', disable = true },
+		{ name = 'ChatGPT4o-mini', disable = true },
+		{ name = 'ChatGPT-o3-mini', disable = true },
+		{ name = 'ChatCopilot', disable = true },
+		{ name = 'ChatGemini', disable = true },
+		{ name = 'ChatPerplexityLlama3.1-8B', disable = true },
+		{ name = 'ChatClaude-3-7-Sonnet', disable = true },
+		{ name = 'ChatClaude-3-5-Haiku', disable = true },
+		{ name = 'ChatOllamaLlama3.1-8B', disable = true },
+		{ name = 'ChatLMStudio', disable = true },
+		{ name = 'CodeGPT4o', disable = true },
+		{ name = 'CodeGPT-o3-mini', disable = true },
+		{ name = 'CodeGPT4o-mini', disable = true },
+		{ name = 'CodeCopilot', disable = true },
+		{ name = 'CodeGemini', disable = true },
+		{ name = 'CodePerplexityLlama3.1-8B', disable = true },
+		{ name = 'CodeClaude-3-7-Sonnet', disable = true },
+		{ name = 'CodeClaude-3-5-Haiku', disable = true },
+		{ name = 'CodeOllamaLlama3.1-8B', disable = true },
 	},
 
 	hooks = {
@@ -132,9 +175,6 @@ spec.opts = {
 			vim.api.nvim_command('%' .. gp.config.cmd_prefix .. 'ChatNew')
 		end,
 	},
-
-	default_chat_agent = 'ChatCopilot-Claude',
-	default_command_agent = 'CodeCopilot',
 
 	chat_user_prefix = '󰭹 :',
 	chat_assistant_prefix = { '󰚩 :', '[{{agent}}]' },
