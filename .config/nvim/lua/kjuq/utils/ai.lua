@@ -2,7 +2,7 @@ local M = {}
 
 ---@param lang 'Japanese'|'English'
 ---@return string
-M.system_prompt = function(lang)
+M.coding_prompt = function(lang)
 	-- From CodeCompanion.nvim
 	-- https://github.com/olimorris/codecompanion.nvim/blob/926027bec8d7251730fe696794ced003152033fc/lua/codecompanion/config.lua#L876-L908
 	return string.format(
@@ -33,12 +33,25 @@ M.system_prompt = function(lang)
 			[[- Use '\n' only when you want a literal backslash followed by a character 'n'.]],
 			[[- All non-code responses must use %s.]],
 			[[- Use tabs instead of spaces.]],
-			[[- Insert a blank line after headings that start with # (sharp).]],
+			[[- Insert blank line after headings that start with # (sharp).]],
 			[[When given a task:]],
 			[[1. Think step-by-step and describe your plan for what to build in pseudocode, written out in great detail, unless asked not to do so.]],
 			[[2. Output the code in a single code block, being careful to only return relevant code.]],
 			[[3. You should always generate short suggestions for the next user turns that are relevant to the conversation.]],
 			[[4. You can only give one reply for each conversation turn.]],
+		}, '\n'),
+		lang
+	)
+end
+
+---@param lang 'Japanese'|'English'
+---@return string
+M.plain_prompt = function(lang)
+	-- From CodeCompanion.nvim
+	-- https://github.com/olimorris/codecompanion.nvim/blob/926027bec8d7251730fe696794ced003152033fc/lua/codecompanion/config.lua#L876-L908
+	return string.format(
+		table.concat({
+			[[You must return all non-code responses in %s.]],
 		}, '\n'),
 		lang
 	)

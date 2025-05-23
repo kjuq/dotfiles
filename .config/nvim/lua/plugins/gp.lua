@@ -58,25 +58,41 @@ spec.opts = {
 		},
 	},
 
-	default_chat_agent = 'Gemini-Plain',
-	default_command_agent = 'Gemini-Plain',
+	default_chat_agent = 'Gemini-Plain-JP',
+	default_command_agent = 'Gemini-Plain-JP',
 
 	agents = {
 		{
-			name = 'Gemini-Plain',
+			name = 'Gemini-Plain-JP',
 			provider = 'googleai',
 			chat = true,
 			command = true,
 			model = { model = 'gemini-2.5-flash-preview-05-20' },
-			system_prompt = 'You are an AI assistant',
+			system_prompt = require('kjuq.utils.ai').plain_prompt('Japanese'),
 		},
 		{
-			name = 'Chat-Gemini-Code',
+			name = 'Gemini-Plain-EN',
+			provider = 'googleai',
+			chat = true,
+			command = true,
+			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			system_prompt = require('kjuq.utils.ai').plain_prompt('English'),
+		},
+		{
+			name = 'Chat-Gemini-Code-JP',
 			provider = 'googleai',
 			chat = true,
 			command = false,
 			model = { model = 'gemini-2.5-flash-preview-05-20' },
-			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
+		},
+		{
+			name = 'Chat-Gemini-Code-EN',
+			provider = 'googleai',
+			chat = true,
+			command = false,
+			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			system_prompt = require('kjuq.utils.ai').coding_prompt('English'),
 		},
 		{
 			name = 'ChatCopilot-Claude',
@@ -84,7 +100,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'claude-3.5-sonnet', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
 		},
 		{
 			name = 'ChatCopilot-GPT4o',
@@ -92,7 +108,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'gpt-4o', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
 		},
 		{
 			name = 'ChatCopilot-GPT4o-mini',
@@ -100,7 +116,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'gpt-4o-mini', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
 		},
 		{
 			-- Unable to use `o1-mini` due to the error: `Bad request`
@@ -109,7 +125,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'o1', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').system_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
 		},
 
 		-- Disable all builtin agents
