@@ -84,6 +84,7 @@ opt.foldtext = ''
 opt.foldlevel = 9999
 
 opt.wrap = false
+opt.wrapscan = true
 opt.smoothscroll = true
 opt.scrolloff = 8
 opt.sidescrolloff = 1
