@@ -9,14 +9,16 @@ local is_focusing_search_word = function()
 	return vim.v.hlsearch == 1 and vim.fn.match(cword, last_pat) ~= -1
 end
 
----@param key '*'|'#'|'g*'|'g#'
+---@param key AsteriskKeys
 ---@return boolean
 local search_forward = function(key)
+	assert(key == '*' or key == '#' or key == 'g*' or key == 'g#')
 	return key == '*' or key == 'g*'
 end
 
 ---@param key AsteriskKeys
 function M.normal_search(key)
+	assert(key == '*' or key == '#' or key == 'g*' or key == 'g#')
 	-- To deal with v:count1, this function uses `:normal` command
 	-- rather than returning a key sequence along with `{ expr = true }`
 	if vim.fn.expand('<cword>') == '' then
@@ -26,7 +28,12 @@ function M.normal_search(key)
 		vim.v.searchforward = search_forward(key) and 1 or 0
 		vim.cmd([[:silent! :normal! ]] .. vim.v.count1 .. 'n')
 	else
-		local search = [[\V]] .. vim.fn.expand('<cword>')
+		local search ---@type string
+		if key == '*' or key == '#' then
+			search = [[\<]] .. vim.fn.expand('<cword>') .. [[\>]]
+		else
+			search = vim.fn.expand('<cword>')
+		end
 		vim.fn.setreg('/', search)
 		vim.fn.histadd('/', search)
 		vim.v.searchforward = search_forward(key) and 1 or 0
@@ -37,13 +44,40 @@ function M.normal_search(key)
 	end
 end
 
+local ope_key ---@type AsteriskKeys
+
+function _G._kjuq_asterisk_operator_search()
+	-- When a custom operator is executed, Neovim automatically sets the start position
+	-- of the selected range to the '`[' mark, and the end position to the '`]' mark.
+	local start_row, start_col = unpack(vim.api.nvim_buf_get_mark(0, '['))
+	local end_row, end_col = unpack(vim.api.nvim_buf_get_mark(0, ']'))
+	local lines = vim.api.nvim_buf_get_text(0, start_row - 1, start_col, end_row - 1, end_col + 1, {})
+	local search = table.concat(lines, '\n')
+	vim.fn.setreg('/', search)
+	vim.fn.histadd('/', search)
+	vim.v.hlsearch = true
+	vim.v.searchforward = search_forward(ope_key) and 1 or 0
+end
+
+---@param key AsteriskKeys
+function M.operator_search(key)
+	local mode = vim.api.nvim_get_mode().mode:sub(1, 1)
+	if not vim.tbl_contains({ 'n' }, mode) then
+		vim.notify('AsteriskRemix: Unexpected mode detected', vim.log.levels.ERROR)
+		return nil
+	end
+	ope_key = key
+	vim.o.operatorfunc = 'v:lua._kjuq_asterisk_operator_search'
+	return 'g@'
+end
+
 -- This function is modified version of 'neovim/runtime/lua/vim/_defaults.lua/_visual_search()'
 -- Copyright Neovim contributors and kjuq. All rights reserved.
 -- Licensed under the terms of the Apache 2.0 license. (https://github.com/neovim/neovim/blob/master/LICENSE.txt)
----@param forward 0|1
+---@param key AsteriskKeys
 ---@return string
-function M.visual_search(forward)
-	assert(forward == 0 or forward == 1)
+function M.visual_search(key)
+	assert(key == '*' or key == '#' or key == 'g*' or key == 'g#')
 	local pos = vim.fn.getpos('.')
 	local vpos = vim.fn.getpos('v')
 	local mode = vim.fn.mode()
@@ -62,7 +96,7 @@ function M.visual_search(forward)
 
 	vim.fn.setreg('/', search)
 	vim.fn.histadd('/', search)
-	vim.v.searchforward = forward
+	vim.v.searchforward = search_forward(key) and 1 or 0
 
 	if vim.v.count1 == 1 then
 		vim.v.hlsearch = true
@@ -76,7 +110,7 @@ function M.visual_search(forward)
 		-- The count has to be adjusted when searching backwards and the cursor
 		-- isn't positioned at the beginning of the selection
 		local count = vim.v.count1 - 1
-		if forward == 0 then
+		if vim.v.count1 == 0 then
 			local _, line, col, _ = unpack(pos)
 			local _, vline, vcol, _ = unpack(vpos)
 			if
