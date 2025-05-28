@@ -9,28 +9,21 @@ local is_focusing_search_word = function()
 	return vim.v.hlsearch == 1 and vim.fn.match(cword, last_pat) ~= -1
 end
 
----@param key AsteriskKeys
+---@param key '*'|'#'|'g*'|'g#'
+---@return boolean
 local search_forward = function(key)
 	return key == '*' or key == 'g*'
 end
 
 ---@param key AsteriskKeys
-local search_backward = function(key)
-	return key == '#' or key == 'g#'
-end
-
----@param key AsteriskKeys
 function M.normal_search(key)
+	-- To deal with v:count1, this function uses `:normal` command
+	-- rather than returning a key sequence along with `{ expr = true }`
 	if vim.fn.expand('<cword>') == '' then
 		return
 	end
 	if is_focusing_search_word() then
-		if vim.v.searchforward == 1 and search_backward(key) then
-			vim.v.searchforward = 0
-		elseif vim.v.searchforward == 0 and search_forward(key) then
-			vim.v.searchforward = 1
-		end
-
+		vim.v.searchforward = search_forward(key) and 1 or 0
 		vim.cmd([[:silent! :normal! ]] .. vim.v.count1 .. 'n')
 	else
 		local search = [[\V]] .. vim.fn.expand('<cword>')
