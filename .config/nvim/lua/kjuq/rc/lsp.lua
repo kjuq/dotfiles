@@ -59,12 +59,20 @@ local on_attach = function(ev)
 	-- Format on save
 	local client_id = ev.data.client_id
 	local client = assert(vim.lsp.get_client_by_id(client_id))
+	local fix_cursor = vim.tbl_contains({ 'efm' }, client.name)
 	if client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
 		vim.api.nvim_create_autocmd('BufWritePre', {
 			group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', client.name, bufnr), {}),
 			buffer = bufnr,
 			callback = function()
+				local v ---@type vim.fn.winsaveview.ret
+				if fix_cursor then
+					v = vim.fn.winsaveview()
+				end
 				vim.lsp.buf.format({ async = false, id = client_id })
+				if fix_cursor then
+					vim.fn.winrestview(v)
+				end
 			end,
 		})
 	end
