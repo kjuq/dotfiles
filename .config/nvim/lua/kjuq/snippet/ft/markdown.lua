@@ -4,6 +4,7 @@ mdsnp:add('marp.init', {
 	[[---]],
 	[[marp: true]],
 	[[math: mathjax]],
+	[[style: section { font-size: 22px; }]],
 	[[---]],
 	[[]],
 	[[# ${0}]],
