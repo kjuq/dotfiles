@@ -1,7 +1,5 @@
 ---@type LazySpec
-local spec = { 'https://github.com/kjuq/asterisk-remix' }
-
--- spec.dev = true
+local spec = { 'https://github.com/kjuq/asterisk-remix.nvim' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Asterisk: ')
 spec.keys = {
