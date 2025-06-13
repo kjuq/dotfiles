@@ -1,11 +1,14 @@
--- TODO: also add `sudo` check
+-- If a current Neovim instance is launched as root user, skip activating plugins
+if vim.uv.getuid() == 0 then
+	return
+end
 if os.getenv('NVIM_NO_USER_PLUGINS') == '1' then
 	return
 end
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
 	local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
 	if vim.v.shell_error ~= 0 then
@@ -20,6 +23,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+---@type LazyConfig
 local opts = {
 	defaults = {
 		lazy = true,
@@ -29,6 +33,7 @@ local opts = {
 		enabled = true,
 		notify = false, -- get a notification when changes are found
 	},
+	concurrency = vim.uv.available_parallelism() * 2,
 	ui = { border = vim.o.winborder },
 	performance = {
 		rtp = {
