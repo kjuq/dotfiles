@@ -82,7 +82,8 @@ local on_attach = function(ev)
 	-- 	vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 	-- end
 
-	if client:supports_method('textDocument/documentColor') then
+	-- NOTE: cutting edge
+	if vim.fn.has('nvim-0.12') and client:supports_method('textDocument/documentColor') then
 		vim.lsp.document_color.enable(true, bufnr)
 	end
 end
