@@ -76,14 +76,14 @@ vim.keymap.set('n', '<Space>tf', function()
 end, { desc = 'Toggle foldmethod' })
 
 -- variable keybinds on states
-local vedit_replace = false
+local vedit_replace = true
 vim.keymap.set({ 'n' }, 'r', function()
 	return vedit_replace and 'gr' or 'r'
 end, { expr = true })
 vim.keymap.set({ 'n' }, 'R', function()
 	return vedit_replace and 'gR' or 'R'
 end, { expr = true })
-vim.keymap.set('n', '<Space>tr', function()
+vim.keymap.set('n', '<Space>tR', function()
 	vedit_replace = not vedit_replace
 	vim.notify('Virtual edit replace: ' .. tostring(vedit_replace))
 end, { desc = 'Toggle vedit replace' })

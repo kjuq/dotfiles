@@ -10,7 +10,7 @@ spec.event = enable_on_start and 'VeryLazy' or {}
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Dropbar: ')
 spec.keys = {
-	map('<Space>ty', 'n', function()
+	map('<Space>tr', 'n', function()
 		vim.wo.winbar = vim.o.winbar == '' and dropbar_winbar or ''
 	end, 'Toggle'),
 }
