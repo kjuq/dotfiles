@@ -1,8 +1,9 @@
 -- Frequently used keymaps
 vim.keymap.set('n', '<Space>w', '<Cmd>silent write<CR>', { desc = 'Write' })
 vim.keymap.set('n', '<Space>W', '<Cmd>noautocmd silent write<CR>', { desc = 'Write noautocmd' })
-vim.keymap.set('n', '<Space>d', vim.cmd.quit, { silent = true, desc = 'Quit' })
-vim.keymap.set('n', '<Space>D', vim.cmd.quitall, { silent = true, desc = 'Quit all' })
+vim.keymap.set('n', '<Space>d', vim.cmd.quit, { desc = 'Quit' })
+vim.keymap.set('n', '<Space>D', vim.cmd.quitall, { desc = 'Quit all' })
+vim.keymap.set('n', '<Space>Q', vim.cmd.restart, { desc = 'Restart' })
 vim.keymap.set('n', '<Space>x', function()
 	require('kjuq.utils.common').buffer_delete()
 end, { desc = 'Delete buffer' })
