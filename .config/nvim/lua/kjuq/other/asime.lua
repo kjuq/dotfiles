@@ -34,6 +34,7 @@ local hide_and_paste = function(delay)
 		vim.cmd(string.format([[silent execute "%s"]], cmd))
 	elseif is_macos then
 		-- TODO: Implement this
+		vim.notify('MacOS is currently not supported')
 	end
 end
 
