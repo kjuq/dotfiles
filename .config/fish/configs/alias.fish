@@ -92,12 +92,6 @@ if command --search --quiet trash
 	end
 end
 
-if command --search --quiet sudo
-	function sudo --wraps='sudo -AE'
-		command sudo -AE $argv
-	end
-end
-
 if command --search --quiet nvidia-settings
 	function nvidia-settings --wraps='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 		command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings $argv

@@ -14,8 +14,6 @@ set --export VISUAL nvim
 set --export MANPAGER nvim +Man!
 set --export TERMINAL alacritty --command
 
-set --export SUDO_ASKPASS "$HOME/.local/kjuq_bin/sudo_pass"
-
 # Kjuq created
 if [ -n "$TERMUX_VERSION" ]
 	set --export KJUQ_DOCS "$HOME/storage/shared/local/kjuq_docs"

@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-pass _computers/"$(uname --nodename)" | sed -n 1p
