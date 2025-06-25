@@ -10,6 +10,7 @@ set --export LANG en_US.UTF-8
 set --export LANGUAGE en_US.UTF-8
 
 set --export EDITOR nvim
+set --export SUDO_EDITOR vim
 set --export VISUAL nvim
 set --export MANPAGER nvim +Man!
 set --export TERMINAL alacritty --command
