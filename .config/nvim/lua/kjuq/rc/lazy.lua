@@ -1,7 +1,3 @@
--- If a current Neovim instance is launched as root user, skip activating plugins
-if vim.uv.getuid() == 0 then
-	return
-end
 if os.getenv('NVIM_NO_USER_PLUGINS') == '1' then
 	return
 end
