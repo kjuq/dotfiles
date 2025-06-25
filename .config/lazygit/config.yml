@@ -9,6 +9,3 @@ gui:
   showBottomLine: false
 git:
   disableForcePushing: true
-keybinding:
-  commits:
-    viewResetOptions: D
