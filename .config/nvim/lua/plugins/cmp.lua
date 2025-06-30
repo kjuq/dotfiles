@@ -34,7 +34,6 @@ spec.config = function()
 				},
 			},
 		},
-		{ name = 'nvim_lua' },
 	})
 
 	local select_next = function()
@@ -178,7 +177,6 @@ spec.config = function()
 		snippet = {
 			expand = function(args)
 				vim.snippet.expand(args.body)
-				-- require('luasnip').lsp_expand(args.body)
 			end,
 		},
 		view = {
@@ -269,12 +267,9 @@ end
 
 spec.dependencies = {
 	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-buffer',
 	'hrsh7th/cmp-path',
 	'hrsh7th/cmp-cmdline',
-	'hrsh7th/cmp-emoji',
 	'onsails/lspkind.nvim',
-	'saadparwaiz1/cmp_luasnip',
 	'mtoohey31/cmp-fish',
 	{
 		'petertriho/cmp-git',
@@ -284,6 +279,13 @@ spec.dependencies = {
 	{
 		'zbirenbaum/copilot-cmp',
 		opts = {},
+	},
+	{
+		'allaman/emoji.nvim',
+		specs = 'nvim-lua/plenary.nvim',
+		opts = {
+			enable_cmp_integration = true,
+		},
 	},
 }
 
