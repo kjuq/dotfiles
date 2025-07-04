@@ -1,5 +1,5 @@
 -- NOTE: cutting edge
-if not vim.fn.has('nvim-0.12') then
+if vim.fn.has('nvim-0.12') == 0 then
 	return
 end
 
