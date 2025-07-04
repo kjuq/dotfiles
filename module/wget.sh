@@ -12,12 +12,10 @@ if [ -z "$XDG_CACHE_HOME" ]; then
 	exit 1
 fi
 
-set +e
-if [ -z "$WGETRC" ]; then
+if [ -n "${WGETRC:-}" ]; then
 	echo "WGETRC is not set. wget.sh is skipped" 1>&2
 	exit 1
 fi
-set -e
 
 install() {
 	if [ -e "$WGETRC" ]; then
