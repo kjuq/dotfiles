@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+if ! command -v curl &>/dev/null; then
+	echo "Error: 'curl' not found"
+	exit 1
+fi
+
+usage() {
+	echo "Usage: $0 [-l] <image_path>"
+	exit 1
+}
+
+# オプション解析用変数
+use_local="false"
+
+# オプション解析
+while getopts "l" opt; do
+	case "$opt" in
+	l)
+		use_local="true"
+		;;
+	*)
+		usage
+		;;
+	esac
+done
+shift "$((OPTIND - 1))"
+
+# 画像パスを引数から取得し、PATH にバインド (注意: PATH は環境変数と衝突するので本来は別名推奨)
+if [ -z "$1" ]; then
+	usage
+fi
+filepath="$1"
+
+HOSTNAME='krp4b'
+PORT=5000
+
+# -l オプションが指定された場合は HOSTNAME に .local を付加
+if [ "$use_local" = "true" ]; then
+	HOSTNAME="${HOSTNAME}.local"
+fi
+
+curl -s -X POST -F "image=@$filepath" "http://$HOSTNAME:$PORT/upload-image" | jq -r '.url'
