@@ -118,7 +118,7 @@ local get_parent_directory = function(path)
 	return parent_path
 end
 
----@param filename string
+---@param filename string filename which ends with `/` indicates directory
 ---@param directory string
 ---@return boolean
 local file_exists_in_directory = function(filename, directory)
@@ -129,7 +129,10 @@ local file_exists_in_directory = function(filename, directory)
 			if not name then
 				break
 			end
-			if type == 'file' and name == filename then
+			if
+				filename:find('/$') and type == 'directory' and name == filename:sub(1, -2)
+				or not filename:find('/$') and type == 'file' and name == filename
+			then
 				return true
 			end
 		end
@@ -137,6 +140,8 @@ local file_exists_in_directory = function(filename, directory)
 	return false
 end
 
+---@param filename string filename which ends with `/` indicates directory
+---@param path string
 ---@return string?
 --- returns `nil` when file was not found
 M.parent_directory_traversal = function(filename, path)
@@ -145,13 +150,14 @@ M.parent_directory_traversal = function(filename, path)
 	end
 
 	-- Remove trailing slash if present
-	path = path:gsub('/$', '')
+	local p ---@type string?
+	p = path:gsub('/$', '')
 
-	while path do
-		if file_exists_in_directory(filename, path) then
-			return path .. '/' .. filename
+	while p do
+		if file_exists_in_directory(filename, p) then
+			return p .. '/' .. filename
 		end
-		path = get_parent_directory(path)
+		p = get_parent_directory(p)
 	end
 
 	return nil
