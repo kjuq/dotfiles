@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+
+# 全ての非コード応答は日本語を使用します
+
+# ヘルプメッセージを表示する関数
+usage() {
+	echo "このスクリプトは、JPEG/PNGなどの画像ファイルのファイル名を、その撮影日時または最終変更日時に基づいて変更します。"
+	echo "ファイル名の衝突回避のため、末尾にUUIDが付与されます。"
+	echo "要件:"
+	echo "	- Exif に撮影日時が存在する場合、その日時を使用します。"
+	echo "	- Exif に撮影日時が存在しない場合、ファイルの最終変更日時を参照します。"
+	echo "	- Exif 情報の取得には ImageMagick の 'identify' コマンドを使用します。"
+	echo "	- 最終変更日時の取得には 'stat' コマンドを使用します。"
+	echo "	- UUID の生成には 'uuid' コマンドを使用します。"
+	echo "	- ファイル名の形式は 'year-month-day_hour-minite-second_millisecond_uuid' です。"
+	echo ""
+	echo "使用法: $0 <画像ファイルPATH ...>"
+	echo "例: $0 IMG_*.JPG photo.png \"私の写真.jpeg\""
+	echo ""
+	echo "前提条件: 'identify' (ImageMagick), 'stat', 'uuid' コマンドが利用可能である必要があります。"
+	echo "	pacman -S imagemagick coreutils && yay -S uuid"
+	echo "	apt install imagemagick coreutils ossp-uuid"
+	echo "注意: このスクリプトはファイルを直接リネームします。実行前に必ずバックアップを取ってください。"
+	exit 1
+}
+
+# 必須コマンドの存在チェック
+for cmd in identify stat uuid; do
+	if ! command -v "$cmd" &>/dev/null; then
+		echo "エラー: 必要なコマンド '$cmd' が見つかりません。インストールしてください。" >&2
+		exit 1
+	fi
+done
+
+# 引数がない場合はヘルプを表示して終了
+if [ "$#" -eq 0 ]; then
+	usage
+fi
+
+# 各ファイルに対して処理を行う
+for file in "$@"; do
+	# ファイルが存在するか確認
+	if [ ! -f "$file" ]; then
+		echo "エラー: '$file' は存在するファイルではありません。スキップします。" >&2
+		continue
+	fi
+
+	# Exifの日時を取得
+	# identify -format '%[exif:DateTimeOriginal]' は 'YYYY:MM:DD HH:MM:SS' 形式で返します。
+	# Exif情報がない場合は空文字列を返します。エラー出力は抑制します。
+
+	# ファイルの拡張子を小文字で取得
+	ext=$(printf "%s" "${file##*.}" | tr '[:upper:]' '[:lower:]')
+
+	case "$ext" in
+	# ファイルが動画のとき、Exif の日時は取得しない
+	mp4 | mov | avi | mkv)
+		exif_datetime=''
+		;;
+	*)
+		exif_datetime=$(identify -format '%[exif:DateTimeOriginal]' "$file" 2>/dev/null)
+		;;
+	esac
+
+	formatted_datetime=""
+	source_type=""
+
+	# Exif日時が存在するかどうかで処理を分岐
+	if [[ -n "$exif_datetime" ]]; then
+		# Exif日時が存在する場合
+		# 'YYYY:MM:DD HH:MM:SS' を 'YYYY-MM-DD_HH-MM-SS' に変換
+		# Exifにはミリ秒情報が含まれないため、'_000' を付与します。
+		formatted_datetime=$(echo "$exif_datetime" | sed 's/:/-/g; s/ /_/g')_000
+		source_type="Exif"
+	else
+		# Exif日時が存在しない場合、ファイルの最終変更日時を参照
+		# stat -c %y の出力例: '2023-10-27 10:30:45.123456789 +0900'
+		modify_datetime=$(stat -c %y "$file")
+
+		# 正規表現を使用して 'YYYY-MM-DD HH:MM:SS.ミリ秒' を抽出
+		# stat はナノ秒まで表示するため、最初の3桁をミリ秒として扱います。
+		if [[ "$modify_datetime" =~ ([0-9]{4}-[0-9]{2}-[0-9]{2})\ ([0-9]{2}:[0-9]{2}:[0-9]{2})\.([0-9]{3}) ]]; then
+			# 'YYYY-MM-DD_HH-MM-SS_ms' 形式に整形
+			formatted_datetime="${BASH_REMATCH[1]}_${BASH_REMATCH[2]}_${BASH_REMATCH[3]}"
+			source_type="最終変更日時"
+		elif [[ "$modify_datetime" =~ ([0-9]{4}-[0-9]{2}-[0-9]{2})\ ([0-9]{2}:[0-9]{2}:[0-9]{2}) ]]; then
+			# ミリ秒部分がない場合（非常に稀ですが念のため）
+			formatted_datetime="${BASH_REMATCH[1]}_${BASH_REMATCH[2]}_000"
+			source_type="最終変更日時 (ミリ秒なし)"
+		else
+			echo "エラー: '$file' の日時情報を取得できませんでした。スキップします。" >&2
+			continue
+		fi
+
+		# 時刻のコロンをハイフンに変換 (例: 'HH:MM:SS' -> 'HH-MM-SS')
+		formatted_datetime=$(echo "$formatted_datetime" | sed 's/:/-/g')
+	fi
+
+	# フォーマットされた日時情報が空でないか確認
+	if [ -z "$formatted_datetime" ]; then
+		echo "エラー: '$file' の日時情報を整形できませんでした。スキップします。" >&2
+		continue
+	fi
+
+	# UUIDを生成
+	generated_uuid=$(uuid)
+	if [ -z "$generated_uuid" ]; then
+		echo "エラー: UUIDの生成に失敗しました。スキップします。" >&2
+		continue
+	fi
+
+	# 元のファイル名から拡張子を抽出 (例: .jpg, .png)
+	# ファイル名にドットが含まれる場合でも、最後のドットより後ろを拡張子とします。
+	extension="${file##*.}"
+
+	# 新しいファイル名の基本部分 (日時_UUID)
+	new_filename_base="${formatted_datetime}_${generated_uuid}"
+	# 新しいファイル名 (基本部分.拡張子)
+	new_filename="${new_filename_base}.${extension}"
+
+	# 元のファイル名と新しいファイル名がUUID以外は同じ場合はスキップ考慮。
+	# ただしUUIDが付くため、ほぼ毎回リネームされる。
+	# 完全一致のみのスキップロジックはUUIDが付くため不要。
+	# 完全に同じファイル名になることはUUIDが付与されるため実質無い。
+
+	# ファイルのリネームを実行
+	# -v オプションで詳細な出力を表示します。
+	mv "$file" "$new_filename"
+	if [ $? -eq 0 ]; then
+		echo "変更: '$(basename "$file")' -> '$new_filename' ($source_type より取得)"
+	else
+		echo "エラー: '$(basename "$file")' を '$new_filename' に変更できませんでした。" >&2
+	fi
+done
