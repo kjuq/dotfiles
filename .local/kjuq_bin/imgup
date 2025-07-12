@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 if ! command -v curl &>/dev/null; then
 	echo "Error: 'curl' not found"
 	exit 1
@@ -30,14 +32,21 @@ shift "$((OPTIND - 1))"
 if [ -z "$1" ]; then
 	usage
 fi
-filepath="$1"
+input="$1"
 
-HOSTNAME='krp4b'
-PORT=5000
+hostname='krp4b'
+port=8000
+username='kjuq'
 
 # -l オプションが指定された場合は HOSTNAME に .local を付加
 if [ "$use_local" = "true" ]; then
-	HOSTNAME="${HOSTNAME}.local"
+	hostname="${hostname}.local"
 fi
 
-curl -s -X POST -F "image=@$filepath" "http://$HOSTNAME:$PORT/upload-image" | jq -r '.url'
+extension="${input##*.}"
+output="$(date +'%Y-%m-%d_%H-%M-%S_%N')_$(printf '%05d' $RANDOM).$extension"
+output_dir='./mount/buffalo_stick_ssd/storage/assets/img'
+
+scp -q "$input" "$username@$hostname:$output_dir/$output"
+
+echo "http://$hostname:$port/img/$output"
