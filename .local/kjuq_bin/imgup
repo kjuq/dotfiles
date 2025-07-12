@@ -45,8 +45,9 @@ fi
 
 extension="${input##*.}"
 output="$(date +'%Y-%m-%d_%H-%M-%S_%N')_$(printf '%05d' $RANDOM).$extension"
-output_dir='./mount/buffalo_stick_ssd/storage/assets/img'
+remote_home='./mount/buffalo_stick_ssd/storage'
+remote_path='assets/img'
 
-scp -q "$input" "$username@$hostname:$output_dir/$output"
+scp -q "$input" "$username@$hostname:$remote_home/$remote_path/$output"
 
-echo "http://$hostname:$port/img/$output"
+echo "http://$hostname:$port/$remote_path/$output"
