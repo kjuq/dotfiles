@@ -5,6 +5,8 @@
 local spec = { 'toppair/peek.nvim' }
 spec.build = 'deno task --quiet build:fast'
 
+spec.cond = vim.fn.executable('deno') ~= 0
+
 spec.cmd = {
 	'PeekOpen',
 	'PeekClose',

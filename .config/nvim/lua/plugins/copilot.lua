@@ -6,6 +6,8 @@ local auto_trigger = false
 local spec = { 'zbirenbaum/copilot.lua' }
 spec.cmd = 'Copilot'
 
+spec.cond = vim.fn.executable('node') ~= 0
+
 spec.event = { 'InsertEnter' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Copilot: ')
