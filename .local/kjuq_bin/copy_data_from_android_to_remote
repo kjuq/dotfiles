@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if ! command -v rsync &>/dev/null; then
+	echo "Error: 'rsync' not found"
+	exit 1
+fi
+
+user="kjuq"
+host="krp4b"
+local_path="~/storage/dcim/"
+remote_home='./mount/buffalo_stick_ssd/storage'
+remote_path='pictures/_android/'
+
+rsync -av "$local_path" "$user@$host:$remote_home/$remote_path/"
