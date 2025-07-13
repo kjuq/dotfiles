@@ -2,14 +2,19 @@
 
 set -eu
 
+if [ -z "${TERMUX_VERSION:-}" ]; then
+	echo 'This environment is not Termux. Quit' 1>&2
+	exit 1
+fi
+
 if ! command -v rsync &>/dev/null; then
-	echo "Error: 'rsync' not found"
+	echo "Error: 'rsync' not found" 1>&2
 	exit 1
 fi
 
 user="kjuq"
 host="krp4b"
-local_path="~/storage/dcim/"
+local_path="$HOME/storage/dcim/"
 remote_home='./mount/buffalo_stick_ssd/storage'
 remote_path='pictures/_android/'
 
