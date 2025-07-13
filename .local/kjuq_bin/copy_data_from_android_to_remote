@@ -18,8 +18,8 @@ remote_home='./mount/buffalo_stick_ssd/storage'
 
 local_path="$HOME/storage/dcim/"
 remote_path='pictures/_android/dcim/'
-rsync -av "$local_path" "$user@$host:$remote_home/$remote_path/"
+rsync -av --exclude='.thumbnails' "$local_path" "$user@$host:$remote_home/$remote_path/"
 
 local_path="$HOME/storage/pictures/"
 remote_path='pictures/_android/pictures/'
-rsync -av "$local_path" "$user@$host:$remote_home/$remote_path/"
+rsync -av --exclude='.thumbnails' "$local_path" "$user@$host:$remote_home/$remote_path/"
