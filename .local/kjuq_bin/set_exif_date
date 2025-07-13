@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+
+# 日本語メッセージ設定
+LANG=ja_JP.UTF-8
+
+# 初期値
+BASE_DATE=""
+BASE_TIME=""
+FILES=()
+
+# ヘルプメッセージを表示して終了する関数
+usage() {
+	echo "使用方法: $(basename $0) -d <年月日> -t <時刻> [ファイル1] [ファイル2] ..."
+	echo "例: $(basename $0) -d 2023/10/26 -t 10:00:00 photo1.jpg image_001.jpeg HEIC_IMG.heic"
+	echo ""
+	echo "  -d <年月日> : 基準となる年月日 (例: 2023/10/26)"
+	echo "  -t <時刻>   : 基準となる時刻 (例: 10:00:00)"
+	echo "  [ファイル...] : 日時を変更する画像ファイルのパス (ワイルドカードも使用可能例: *.jpg)"
+	exit 1
+}
+
+# --- オプション解析 ---
+while getopts "d:t:" opt; do
+	case "$opt" in
+	d) BASE_DATE="$OPTARG" ;;
+	t) BASE_TIME="$OPTARG" ;;
+	\?) # 不明なオプションが指定された場合
+		echo "エラー: 不明なオプション '-$OPTARG' が指定されました。" >&2
+		usage >&2
+		;;
+	:) # オプション引数が不足している場合
+		echo "エラー: オプション '-$OPTARG' には引数が必要です。" >2
+		usage >&2
+		;;
+	esac
+done
+
+# getopts により処理されたオプションを引数リストから削除
+# これにより、$@ にはオプションではない残りの引数 (ファイルパス) だけが残る
+shift $((OPTIND - 1))
+FILES=("$@") # 残りの引数をFILES配列に格納
+
+# --- 入力値の検証 ---
+# 基準日時が両方指定されているか確認
+if [ -z "$BASE_DATE" ] || [ -z "$BASE_TIME" ]; then
+	echo "エラー: 基準となる年月日と時刻の両方を -d オプションと -t オプションで指定してください。" >&2
+	usage >&2
+fi
+
+# 処理対象ファイルが指定されているか確認
+if [ ${#FILES[@]} -eq 0 ]; then
+	echo "エラー: 処理対象の画像ファイルが指定されていません。" >&2
+	usage >&2
+fi
+
+# exiftoolがインストールされているか確認
+if ! command -v exiftool >/dev/null; then
+	echo "エラー: exiftool が見つかりません。" >&2
+	echo "exiftool をインストールしてください (例: 'brew install exiftool' または 'sudo apt-get install libimage-exiftool-perl')。" >&2
+	exit 1
+fi
+
+# GNU dateが使えるか確認 (特にmacOSユーザー向け)
+if ! (command -v date | grep -q "GNU date" || date --version 2>&1 | head -n1 | grep -q "GNU"); then
+	echo "警告: お使いの date コマンドは GNU date ではない可能性があります。" >&2
+	echo "スクリプトが正しく動作しない場合がありますので、GNU date (gdate) のインストールを推奨します。" >&2
+	echo "macOSの場合: 'brew install coreutils' でgdateをインストールし、gnubinをPATHに追加してください。" >&2
+	echo "  例: echo 'export PATH=\"/usr/local/opt/coreutils/libexec/gnubin:\$PATH\"' >> ~/.bash_profile (または ~/.zshrc)" >&2
+	read -p "続行しますか？ (y/N): " confirm
+	[[ "$confirm" =~ ^[Yy]$ ]] || {
+		echo "処理を中断します。" >&2
+		exit 1
+	}
+fi
+
+# 基準日時を結合
+BASE_DATETIME="${BASE_DATE} ${BASE_TIME}"
+
+echo ""
+echo "設定された基準日時: $BASE_DATETIME"
+echo "処理を開始します..."
+echo ""
+
+# ファイル名にスペースが含まれていても処理できるようにIFSを変更 (サブシェル)
+# ここでの shopt は、ユーザーがワイルドカードでファイル指定した場合などを考慮して念のため残す
+# (シェルがワイルドカードを展開してファイルリストを渡すため、この段階では必須ではないが、悪い影響もない)
+(
+	shopt -s nullglob # マッチするファイルがない場合に glob パターンを空に展開
+	# shopt -s nocaseglob # 大文字小文字を区別しない (対象ファイルパスは既に解決されているため不要)
+
+	i=0 # 秒数をずらすためのカウンタ
+
+	# 指定された画像ファイルをループ処理
+	for file in "${FILES[@]}"; do
+		# ファイルが存在するか、かつ通常のファイルであるかを確認
+		if [[ ! -f "$file" ]]; then
+			echo "警告: ファイル '$file' が見つからないか、通常ファイルではありません。スキップします。" >&2
+			continue # 次のファイルへ
+		fi
+
+		# 現在の時刻に秒数を加算して計算
+		TARGET_DATE_EXIF=$(date -d "${BASE_DATETIME} ${i} seconds" +"%Y/%m/%d %T" 2>&1)
+		TARGET_DATE_TOUCH=$(date -d "${BASE_DATETIME} ${i} seconds" +"%Y-%m-%d %H:%M:%S" 2>&1)
+
+		# date コマンドのエラーチェック
+		if [[ "$TARGET_DATE_EXIF" == *"invalid date"* || "$TARGET_DATE_TOUCH" == *"invalid date"* ]]; then
+			echo "エラー: date コマンドによる日時計算に失敗しました。" >&2
+			echo "基準日時 '$BASE_DATETIME' のフォーマットが正しいか確認してください。" >&2
+			echo "ファイル: $file" >&2
+			exit 1
+		fi
+
+		echo "=> ${file} を ${TARGET_DATE_EXIF} に設定中..."
+
+		# 1. EXIFのDateTimeOriginalタグを変更
+		# -overwrite_original オプションで元のファイルを上書きし、_originalファイルを作成しない
+		# -q オプションで出力を簡潔にする (成功時のみ表示)
+		if ! exiftool -overwrite_original -q -DateTimeOriginal="${TARGET_DATE_EXIF}" "$file"; then
+			echo "  エラー: exiftool コマンドでファイル '$file' のEXIF日時を変更できませんでした。" >&2
+		fi
+
+		# 2. ファイルの最終更新日時 (mtime) を変更
+		# exiftool の変更で現在時刻に mtime が更新されるため、後に行う必要がある
+		if ! touch -d "${TARGET_DATE_TOUCH}" "$file"; then
+			echo "  エラー: touch コマンドでファイル '$file' の更新日時を変更できませんでした。" >&2
+		fi
+
+		((i++)) # カウンタをインクリメント
+	done
+
+	echo ""
+	echo "すべてのファイルの処理が完了しました。"
+	echo "変更されたファイル数: $i"
+) # サブシェルを終了
