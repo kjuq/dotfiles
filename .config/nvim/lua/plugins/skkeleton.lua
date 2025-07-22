@@ -76,15 +76,15 @@ spec.specs = {
 
 spec.dependencies = {
 	'vim-denops/denops.vim',
-	{
-		'delphinus/skkeleton_indicator.nvim',
-		event = 'VeryLazy',
-		opts = {
-			alwaysShown = false,
-			fadeOutMs = 0,
-			zindex = 1,
-		},
-	},
+	-- {
+	-- 	'delphinus/skkeleton_indicator.nvim',
+	-- 	event = 'VeryLazy',
+	-- 	opts = {
+	-- 		alwaysShown = false,
+	-- 		fadeOutMs = 0,
+	-- 		zindex = 1,
+	-- 	},
+	-- },
 }
 
 return spec
