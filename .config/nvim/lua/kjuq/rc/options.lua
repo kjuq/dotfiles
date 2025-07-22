@@ -147,6 +147,8 @@ opt.messagesopt = 'hit-enter,history:2000'
 -- Disable welcome message
 -- opt.shortmess:append('I')
 
+opt.exrc = true
+
 opt.spell = false
 opt.spellfile = vim.fs.joinpath(os.getenv('XDG_STATE_HOME'), 'nvim', 'spell.en.utf-8.add')
 opt.spelllang = { 'en', 'cjk' }
