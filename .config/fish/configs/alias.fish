@@ -71,12 +71,6 @@ if command --search --quiet nvim
 	end
 end
 
-if command --search --quiet python
-	function python --wraps='python -q'
-		command python -q $argv
-	end
-end
-
 if command --search --quiet git
 	function groot --wraps='cd $(git rev-parse --show-toplevel)'
 		cd $(git rev-parse --show-toplevel) $argv
