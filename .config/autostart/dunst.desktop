@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Dunst
+Comment=Dunst is a notification server
+Exec=dunst
+Terminal=false

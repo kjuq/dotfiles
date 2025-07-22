@@ -49,10 +49,6 @@ fi
 # 	xset s noblank
 # fi
 
-if { command -v dunst >/dev/null; } 2>&1; then
-	dunst &
-fi
-
 if { command -v keyboard_init >/dev/null; } 2>&1; then
 	keyboard_init # ~/.local/kjuq_bin/keyboard_init
 fi
