@@ -185,7 +185,7 @@ spec.opts = function()
 				},
 			},
 
-			layout_strategy = 'vertical', -- center, vertical, horizontal, flex
+			layout_strategy = 'flex', -- center, vertical, horizontal, flex
 			scroll_strategy = 'limit',
 			path_display = { truncate = 3 },
 			-- preview = {
@@ -206,6 +206,7 @@ spec.opts = function()
 				'node_modules/',
 			},
 			borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }, -- presets such as "single" and "rounded" are not supported
+			border = false,
 		},
 	}
 end

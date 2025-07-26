@@ -25,10 +25,11 @@ spec.opts = {
 				return true
 			end
 		end,
+		additional_vim_regex_highlighting = { 'python' },
 	},
 
 	indent = {
-		enable = true,
+		enable = false,
 		-- disable = { 'python' }, -- buggy in py file where tabs are used for indentation?
 	},
 

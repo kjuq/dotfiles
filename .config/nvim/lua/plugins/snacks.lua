@@ -44,6 +44,16 @@ spec.opts = {
 			float = false,
 		},
 	},
+	input = {},
+	picker = {
+		win = {
+			input = {
+				keys = {
+					['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+				},
+			},
+		},
+	},
 }
 
 spec.config = function(_, opts)
