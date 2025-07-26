@@ -24,6 +24,9 @@ bindsym $sac+j move down
 bindsym $sac+k move up
 bindsym $sac+l move right
 
+# dismiss notification
+bindsym $sac+m exec dunstctl close
+
 # split orientation
 # bindsym $sac+h split h;exec notify-send 'tile horizontally'
 # bindsym $sac+v split v;exec notify-send 'tile vertically'
