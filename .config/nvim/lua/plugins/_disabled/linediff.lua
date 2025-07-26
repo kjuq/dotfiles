@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'Linediff: ')
 
 ---@type LazySpec
-local spec = { 'AndrewRadev/linediff.vim' }
+local spec = { 'https://github.com/AndrewRadev/linediff.vim' }
 spec.cmd = { 'Linediff' }
 
 spec.keys = {

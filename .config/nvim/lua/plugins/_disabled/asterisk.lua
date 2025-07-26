@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'haya14busa/vim-asterisk' }
+local spec = { 'https://github.com/haya14busa/vim-asterisk' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Asterisk: ')
 local map_asterisk = function(key, plug)

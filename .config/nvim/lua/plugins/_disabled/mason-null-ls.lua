@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'jay-babu/mason-null-ls.nvim' }
+local spec = { 'https://github.com/jay-babu/mason-null-ls.nvim' }
 spec.event = { 'LspAttach', 'VeryLazy' }
 
 spec.opts = function()

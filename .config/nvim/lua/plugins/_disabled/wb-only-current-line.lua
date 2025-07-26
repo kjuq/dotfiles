@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'yutkat/wb-only-current-line.nvim' }
+local spec = { 'https://github.com/yutkat/wb-only-current-line.nvim' }
 
 spec.keys = {
 	{ 'w', mode = { 'n', 'x' } },

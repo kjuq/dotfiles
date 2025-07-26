@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'coachshea/vim-textobj-markdown' }
+local spec = { 'https://github.com/coachshea/vim-textobj-markdown' }
 spec.ft = 'markdown'
 
 spec.init = function()

@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Undotree: ')
 
 ---@type LazySpec
-local spec = { 'mbbill/undotree' }
+local spec = { 'https://github.com/mbbill/undotree' }
 
 spec.cmd = {
 	'UndotreeToggle',

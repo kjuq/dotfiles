@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'nacro90/numb.nvim' }
+local spec = { 'https://github.com/nacro90/numb.nvim' }
 spec.event = { 'CmdlineEnter' }
 
 spec.opts = {}

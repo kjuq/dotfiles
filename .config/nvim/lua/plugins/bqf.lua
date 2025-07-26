@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kevinhwang91/nvim-bqf' }
+local spec = { 'https://github.com/kevinhwang91/nvim-bqf' }
 spec.ft = 'qf'
 
 spec.opts = function()

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'vim-jp/vimdoc-ja' }
+local spec = { 'https://github.com/vim-jp/vimdoc-ja' }
 
 spec.event = 'VeryLazy'
 

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'nvimtools/none-ls.nvim' }
+local spec = { 'https://github.com/nvimtools/none-ls.nvim' }
 
 spec.opts = {
 	on_attach = function(client, bufnr)

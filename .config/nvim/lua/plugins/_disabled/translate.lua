@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Translate: ')
 
 ---@type LazySpec
-local spec = { 'skanehira/denops-translate.vim' }
+local spec = { 'https://github.com/skanehira/denops-translate.vim' }
 
 spec.event = 'User DenopsReady'
 

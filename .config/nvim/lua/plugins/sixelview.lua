@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kjuq/sixelview.nvim' }
+local spec = { 'https://github.com/kjuq/sixelview.nvim' }
 
 spec.event = 'VeryLazy'
 

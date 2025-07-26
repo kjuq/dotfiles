@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'antosha417/nvim-lsp-file-operations' }
+local spec = { 'https://github.com/antosha417/nvim-lsp-file-operations' }
 spec.event = { 'LspAttach' }
 
 spec.config = function()

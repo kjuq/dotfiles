@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'ellisonleao/gruvbox.nvim' }
+local spec = { 'https://github.com/ellisonleao/gruvbox.nvim' }
 spec.lazy = _G.kjuq_colorscheme ~= 'gruvbox'
 spec.priority = 9999
 

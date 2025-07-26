@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'neovim/nvim-lspconfig' }
+local spec = { 'https://github.com/neovim/nvim-lspconfig' }
 
 spec.cmd = {
 	'LspInfo',

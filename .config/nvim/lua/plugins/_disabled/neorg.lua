@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'nvim-neorg/neorg' }
+local spec = { 'https://github.com/nvim-neorg/neorg' }
 spec.build = ':Neorg sync-parsers'
 spec.ft = 'norg'
 spec.cmd = 'Neorg'

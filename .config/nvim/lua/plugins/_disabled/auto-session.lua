@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'rmagatti/auto-session' }
+local spec = { 'https://github.com/rmagatti/auto-session' }
 spec.lazy = false
 
 spec.opts = function()

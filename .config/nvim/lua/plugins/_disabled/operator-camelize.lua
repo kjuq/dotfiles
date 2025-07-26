@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Op-camelize: ')
 
 ---@type LazySpec
-local spec = { 'tyru/operator-camelize.vim' }
+local spec = { 'https://github.com/tyru/operator-camelize.vim' }
 
 spec.keys = {
 	map('<Space>cc', { 'n', 'x' }, function()

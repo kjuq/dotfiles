@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'windwp/nvim-autopairs' }
+local spec = { 'https://github.com/windwp/nvim-autopairs' }
 spec.event = 'InsertEnter'
 
 spec.opts = {

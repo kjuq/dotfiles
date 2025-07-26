@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Yanky: ')
 
 ---@type LazySpec
-local spec = { 'gbprod/yanky.nvim' }
+local spec = { 'https://github.com/gbprod/yanky.nvim' }
 
 spec.event = { 'TextYankPost' }
 

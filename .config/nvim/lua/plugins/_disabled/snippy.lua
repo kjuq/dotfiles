@@ -1,7 +1,7 @@
 local expand_key = '<Tab>'
 
 ---@type LazySpec
-local spec = { 'dcampos/nvim-snippy' }
+local spec = { 'https://github.com/dcampos/nvim-snippy' }
 
 spec.keys = {
 	{ expand_key, mode = { 'i' } },

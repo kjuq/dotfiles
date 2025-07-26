@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'thinca/vim-qfreplace' }
+local spec = { 'https://github.com/thinca/vim-qfreplace' }
 
 spec.ft = 'qf'
 

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'tpope/vim-fugitive' }
+local spec = { 'https://github.com/tpope/vim-fugitive' }
 
 spec.cmd = {
 	'G',

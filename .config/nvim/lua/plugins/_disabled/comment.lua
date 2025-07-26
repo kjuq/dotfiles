@@ -1,7 +1,7 @@
 -- `gc` and `gb` are mapped by default
 
 ---@type LazySpec
-local spec = { 'numToStr/Comment.nvim' }
+local spec = { 'https://github.com/numToStr/Comment.nvim' }
 
 spec.keys = {
 	{ 'gc', mode = { 'n', 'x', 'o' }, desc = 'Comment: add line comment' },

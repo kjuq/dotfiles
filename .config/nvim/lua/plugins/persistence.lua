@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'folke/persistence.nvim' }
+local spec = { 'https://github.com/folke/persistence.nvim' }
 spec.event = 'VeryLazy'
 
 local map = require('kjuq.utils.lazy').generate_map('<Space>r', 'Persistence: ')

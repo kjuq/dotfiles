@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>d', 'Neogen: ') -- [d]oc string
 
 ---@type LazySpec
-local spec = { 'danymat/neogen' }
+local spec = { 'https://github.com/danymat/neogen' }
 
 spec.keys = {
 	map('f', 'n', function()

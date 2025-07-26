@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'gbprod/substitute.nvim' }
+local spec = { 'https://github.com/gbprod/substitute.nvim' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Substitute: ')
 spec.keys = {

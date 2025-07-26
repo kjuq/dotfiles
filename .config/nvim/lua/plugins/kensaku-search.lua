@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Kensaku-search: ')
 
 ---@type LazySpec
-local spec = { 'lambdalisue/kensaku-search.vim' }
+local spec = { 'https://github.com/lambdalisue/kensaku-search.vim' }
 
 spec.event = 'User DenopsReady'
 

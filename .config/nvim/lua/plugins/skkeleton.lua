@@ -3,7 +3,7 @@
 local skk = require('kjuq.utils.skk')
 
 ---@type LazySpec
-local spec = { 'vim-skk/skkeleton' }
+local spec = { 'https://github.com/vim-skk/skkeleton' }
 spec.cond = vim.fn.executable('deno') ~= 0
 
 spec.event = { 'User DenopsReady', 'InsertEnter' }

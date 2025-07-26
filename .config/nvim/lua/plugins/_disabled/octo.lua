@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'pwntester/octo.nvim' }
+local spec = { 'https://github.com/pwntester/octo.nvim' }
 
 spec.cmd = { 'Octo' }
 

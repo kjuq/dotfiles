@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kylechui/nvim-surround' }
+local spec = { 'https://github.com/kylechui/nvim-surround' }
 spec.version = '*' -- Use for stability; omit to use `main` branch for the latest features
 
 spec.keys = {

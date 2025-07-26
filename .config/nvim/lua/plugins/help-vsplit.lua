@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'anuvyklack/help-vsplit.nvim' }
+local spec = { 'https://github.com/anuvyklack/help-vsplit.nvim' }
 spec.keys = { { 'h', mode = 'c' } }
 spec.ft = { 'fzf', 'TelescopePrompt' }
 

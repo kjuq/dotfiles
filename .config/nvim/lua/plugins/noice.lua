@@ -1,7 +1,7 @@
 ---@module 'noice'
 
 ---@type LazySpec
-local spec = { 'folke/noice.nvim' }
+local spec = { 'https://github.com/folke/noice.nvim' }
 
 spec.event = 'VeryLazy'
 

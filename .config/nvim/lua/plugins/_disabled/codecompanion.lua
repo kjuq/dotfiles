@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'olimorris/codecompanion.nvim' }
+local spec = { 'https://github.com/olimorris/codecompanion.nvim' }
 
 spec.cmd = {
 	'CodeCompanion',

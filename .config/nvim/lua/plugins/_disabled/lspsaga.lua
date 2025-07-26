@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'LspSaga: ')
 
 ---@type LazySpec
-local spec = { 'nvimdev/lspsaga.nvim' }
+local spec = { 'https://github.com/nvimdev/lspsaga.nvim' }
 
 spec.event = 'LspAttach'
 

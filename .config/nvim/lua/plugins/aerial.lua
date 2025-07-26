@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Aerial: ')
 
 ---@type LazySpec
-local spec = { 'stevearc/aerial.nvim' }
+local spec = { 'https://github.com/stevearc/aerial.nvim' }
 
 spec.keys = {
 	map('gO', 'n', '<CMD>AerialToggle<CR>', 'Toggle'),

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'chrishrb/gx.nvim' }
+local spec = { 'https://github.com/chrishrb/gx.nvim' }
 spec.keys = { { 'gx', '<cmd>Browse<cr>', mode = { 'n', 'x' } } }
 spec.cmd = { 'Browse' }
 

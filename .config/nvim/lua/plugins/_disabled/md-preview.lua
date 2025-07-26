@@ -1,7 +1,7 @@
 local ft = { 'markdown', 'markdownpreview' }
 
 ---@type LazySpec
-local spec = { 'topazape/md-preview.nvim' }
+local spec = { 'https://github.com/topazape/md-preview.nvim' }
 spec.cond = vim.fn.executable('glow') ~= 0
 spec.ft = ft
 

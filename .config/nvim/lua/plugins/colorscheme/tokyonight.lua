@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'folke/tokyonight.nvim' }
+local spec = { 'https://github.com/folke/tokyonight.nvim' }
 spec.lazy = not vim.tbl_contains({
 	'tokyonight',
 	'tokyonight-day',

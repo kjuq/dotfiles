@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'NeogitOrg/neogit' }
+local spec = { 'https://github.com/NeogitOrg/neogit' }
 
 spec.cmd = { 'Neogit' }
 

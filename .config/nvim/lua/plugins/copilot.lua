@@ -3,7 +3,7 @@
 local auto_trigger = false
 
 ---@type LazySpec
-local spec = { 'zbirenbaum/copilot.lua' }
+local spec = { 'https://github.com/zbirenbaum/copilot.lua' }
 spec.cmd = 'Copilot'
 
 spec.cond = vim.fn.executable('node') ~= 0

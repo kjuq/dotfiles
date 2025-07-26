@@ -1,7 +1,7 @@
 -- `MasonInstall pyright ruff bashls clangd lua-language-server markdown-oxide tinymist efm stylua luacheck uncrustify clang-format mypy shfmt`
 
 ---@type LazySpec
-local spec = { 'williamboman/mason.nvim' }
+local spec = { 'https://github.com/williamboman/mason.nvim' }
 
 spec.event = 'VeryLazy'
 

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'folke/neodev.nvim' }
+local spec = { 'https://github.com/folke/neodev.nvim' }
 spec.ft = { 'lua' }
 
 spec.opts = {

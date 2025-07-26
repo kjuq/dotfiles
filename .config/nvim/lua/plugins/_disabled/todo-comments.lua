@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Todo: ')
 
 ---@type LazySpec
-local spec = { 'folke/todo-comments.nvim' }
+local spec = { 'https://github.com/folke/todo-comments.nvim' }
 spec.event = 'VeryLazy'
 
 spec.init = function()

@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Action-preview: ')
 
 ---@type LazySpec
-local spec = { 'aznhe21/actions-preview.nvim' }
+local spec = { 'https://github.com/aznhe21/actions-preview.nvim' }
 
 spec.keys = {
 	map('', { 'n', 'x' }, function()

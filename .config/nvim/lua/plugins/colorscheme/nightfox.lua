@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'EdenEast/nightfox.nvim' }
+local spec = { 'https://github.com/EdenEast/nightfox.nvim' }
 spec.lazy = _G.kjuq_colorscheme ~= 'nightfox'
 spec.priority = 9999
 

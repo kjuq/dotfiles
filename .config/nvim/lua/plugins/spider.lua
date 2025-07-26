@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'chrisgrieser/nvim-spider' }
+local spec = { 'https://github.com/chrisgrieser/nvim-spider' }
 
 -- Hiragana (U+3040 - U+309F)
 -- Katakana (U+30A0 - U+30FF)

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'HiPhish/rainbow-delimiters.nvim' }
+local spec = { 'https://github.com/HiPhish/rainbow-delimiters.nvim' }
 spec.event = 'VeryLazy'
 
 spec.config = function()

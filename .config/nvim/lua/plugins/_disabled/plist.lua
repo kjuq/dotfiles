@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'darfink/vim-plist' }
+local spec = { 'https://github.com/darfink/vim-plist' }
 spec.lazy = false -- necessary
 
 return spec

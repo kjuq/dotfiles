@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'chrisgrieser/nvim-various-textobjs' }
+local spec = { 'https://github.com/chrisgrieser/nvim-various-textobjs' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Various-textobjs: ')
 spec.keys = {

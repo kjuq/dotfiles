@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'robitx/gp.nvim' }
+local spec = { 'https://github.com/robitx/gp.nvim' }
 
 spec.cmd = {
 	'GpChatNew',

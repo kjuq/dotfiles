@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kana/vim-smartword' }
+local spec = { 'https://github.com/kana/vim-smartword' }
 
 spec.keys = {}
 

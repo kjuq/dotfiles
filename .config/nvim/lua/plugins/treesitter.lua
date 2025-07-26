@@ -2,7 +2,7 @@
 -- rust and scala take much time to install
 
 ---@type LazySpec
-local spec = { 'nvim-treesitter/nvim-treesitter' }
+local spec = { 'https://github.com/nvim-treesitter/nvim-treesitter' }
 spec.event = 'VeryLazy'
 spec.build = function()
 	require('nvim-treesitter.install').update({ with_sync = false })()

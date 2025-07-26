@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Neo-tree: ')
 
 ---@type LazySpec
-local spec = { 'nvim-neo-tree/neo-tree.nvim' }
+local spec = { 'https://github.com/nvim-neo-tree/neo-tree.nvim' }
 spec.branch = 'v3.x'
 spec.cmd = { 'Neotree' }
 

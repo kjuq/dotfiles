@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'bennypowers/nvim-regexplainer' }
+local spec = { 'https://github.com/bennypowers/nvim-regexplainer' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Regexplainer: ')
 spec.keys = {

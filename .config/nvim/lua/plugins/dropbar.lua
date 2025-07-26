@@ -4,7 +4,7 @@ local enable_on_start = false
 local dropbar_winbar = '%{%v:lua.dropbar()%}'
 
 ---@type LazySpec
-local spec = { 'Bekaboo/dropbar.nvim' }
+local spec = { 'https://github.com/Bekaboo/dropbar.nvim' }
 
 spec.event = enable_on_start and 'VeryLazy' or {}
 

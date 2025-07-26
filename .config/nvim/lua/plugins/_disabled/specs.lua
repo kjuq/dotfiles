@@ -1,7 +1,7 @@
 -- NOTE: Buggy when using with Japanese letters
 
 ---@type LazySpec
-local spec = { 'cxwx/specs.nvim' }
+local spec = { 'https://github.com/cxwx/specs.nvim' }
 
 -- TODO: load on keypresses that potentially jump long
 spec.event = 'VeryLazy'

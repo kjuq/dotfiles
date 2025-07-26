@@ -7,7 +7,7 @@ local autocompletes = {
 local autocomplete = autocompletes.enable
 
 ---@type LazySpec
-local spec = { 'hrsh7th/nvim-cmp' }
+local spec = { 'https://github.com/hrsh7th/nvim-cmp' }
 
 spec.event = { 'InsertEnter', 'CmdlineEnter' }
 

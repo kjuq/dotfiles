@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'mattn/vim-maketable' }
+local spec = { 'https://github.com/mattn/vim-maketable' }
 
 spec.cmd = {
 	'MakeTable',

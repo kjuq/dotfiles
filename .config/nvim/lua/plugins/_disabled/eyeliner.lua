@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'jinh0/eyeliner.nvim' }
+local spec = { 'https://github.com/jinh0/eyeliner.nvim' }
 
 spec.keys = {
 	{ 'f', mode = { 'n', 'x' } },

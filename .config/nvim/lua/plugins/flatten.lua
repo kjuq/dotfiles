@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'willothy/flatten.nvim' }
+local spec = { 'https://github.com/willothy/flatten.nvim' }
 
 spec.lazy = os.getenv('NVIM') == nil
 

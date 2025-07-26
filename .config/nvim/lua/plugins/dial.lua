@@ -3,7 +3,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Dial: ')
 
 ---@type LazySpec
-local spec = { 'monaqa/dial.nvim' }
+local spec = { 'https://github.com/monaqa/dial.nvim' }
 
 spec.keys = {
 	-- stylua: ignore start

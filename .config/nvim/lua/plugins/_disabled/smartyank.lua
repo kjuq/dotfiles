@@ -2,7 +2,7 @@
 -- local client -> local tmux -- ssh --> remote env
 
 ---@type LazySpec
-local spec = { 'ibhagwan/smartyank.nvim' }
+local spec = { 'https://github.com/ibhagwan/smartyank.nvim' }
 spec.event = { 'BufReadPost' }
 
 spec.opts = {

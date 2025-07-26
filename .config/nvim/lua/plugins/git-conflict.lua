@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'akinsho/git-conflict.nvim' }
+local spec = { 'https://github.com/akinsho/git-conflict.nvim' }
 
 spec.version = '*'
 

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'dstein64/vim-startuptime' }
+local spec = { 'https://github.com/dstein64/vim-startuptime' }
 spec.cmd = { 'StartupTime' }
 
 spec.config = function()

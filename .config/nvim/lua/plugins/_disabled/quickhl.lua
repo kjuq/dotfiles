@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 't9md/vim-quickhl' }
+local spec = { 'https://github.com/t9md/vim-quickhl' }
 
 local map = require('kjuq.utils.lazy').generate_map('<Space>', 'QuickHL: ')
 spec.keys = {

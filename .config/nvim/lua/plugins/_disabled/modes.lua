@@ -1,5 +1,5 @@
 --- @type LazySpec
-local spec = { 'mvllow/modes.nvim' }
+local spec = { 'https://github.com/mvllow/modes.nvim' }
 
 spec.event = { 'ModeChanged' }
 

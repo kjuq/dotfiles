@@ -2,7 +2,7 @@
 -- `pacman -S webkit2gtk`
 
 ---@type LazySpec
-local spec = { 'toppair/peek.nvim' }
+local spec = { 'https://github.com/toppair/peek.nvim' }
 spec.build = 'deno task --quiet build:fast'
 
 spec.cond = vim.fn.executable('deno') ~= 0

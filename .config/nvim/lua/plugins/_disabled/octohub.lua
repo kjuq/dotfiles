@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { '2KAbhishek/octohub.nvim' }
+local spec = { 'https://github.com/2KAbhishek/octohub.nvim' }
 
 spec.cmd = {
 	'OctoRepos',

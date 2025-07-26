@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'j-hui/fidget.nvim' }
+local spec = { 'https://github.com/j-hui/fidget.nvim' }
 spec.event = { 'LspAttach' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Fidget: ')

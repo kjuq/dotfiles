@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Luasnip: ')
 
 ---@type LazySpec
-local spec = { 'L3MON4D3/LuaSnip' }
+local spec = { 'https://github.com/L3MON4D3/LuaSnip' }
 
 spec.keys = {
 	map('<C-k>', { 'i', 's' }, function()

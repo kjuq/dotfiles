@@ -3,7 +3,7 @@ local map = require('kjuq.utils.lazy').generate_map('', 'ToggleTerm: ')
 local open_cmd = 'ToggleTerm dir=%:p:h'
 
 ---@type LazySpec
-local spec = { 'akinsho/toggleterm.nvim' }
+local spec = { 'https://github.com/akinsho/toggleterm.nvim' }
 spec.version = '*'
 
 spec.keys = {

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'lukas-reineke/indent-blankline.nvim' }
+local spec = { 'https://github.com/lukas-reineke/indent-blankline.nvim' }
 spec.main = 'ibl'
 spec.event = 'VeryLazy'
 

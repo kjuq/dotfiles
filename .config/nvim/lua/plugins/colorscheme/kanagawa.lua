@@ -2,7 +2,7 @@
 -- Don't use `colorscheme kanagawa-lotus`
 
 ---@type LazySpec
-local spec = { 'rebelot/kanagawa.nvim' }
+local spec = { 'https://github.com/rebelot/kanagawa.nvim' }
 spec.lazy = not vim.tbl_contains({
 	'kanagawa',
 	'kanagawa-wave',

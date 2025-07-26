@@ -2,7 +2,7 @@
 -- See: https://github.com/tzachar/highlight-undo.nvim/issues/2
 
 ---@type LazySpec
-local spec = { 'tzachar/highlight-undo.nvim' }
+local spec = { 'https://github.com/tzachar/highlight-undo.nvim' }
 
 spec.keys = {
 	{ 'u', mode = 'n' },

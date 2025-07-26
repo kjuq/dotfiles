@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kana/vim-textobj-entire' }
+local spec = { 'https://github.com/kana/vim-textobj-entire' }
 
 spec.keys = {
 	{ 'i', mode = '' },

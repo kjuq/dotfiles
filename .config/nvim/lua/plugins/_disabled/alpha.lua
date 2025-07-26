@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'goolord/alpha-nvim' }
+local spec = { 'https://github.com/goolord/alpha-nvim' }
 spec.lazy = vim.fn.argc() > 0
 
 spec.cmd = 'Alpha'

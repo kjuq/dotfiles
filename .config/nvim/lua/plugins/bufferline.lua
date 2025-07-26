@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Bufferline: ')
 
 ---@type LazySpec
-local spec = { 'akinsho/bufferline.nvim' }
+local spec = { 'https://github.com/akinsho/bufferline.nvim' }
 -- spec.version = "*"
 spec.event = { 'BufNew', 'WinScrolled' }
 

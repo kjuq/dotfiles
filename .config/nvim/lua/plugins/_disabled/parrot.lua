@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'frankroeder/parrot.nvim' }
+local spec = { 'https://github.com/frankroeder/parrot.nvim' }
 
 spec.cmd = {
 	'PrtChatNew',

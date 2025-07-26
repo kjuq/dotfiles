@@ -1,7 +1,7 @@
 local show_on_start = true
 
 ---@type LazySpec
-local spec = { 'petertriho/nvim-scrollbar' }
+local spec = { 'https://github.com/petertriho/nvim-scrollbar' }
 spec.event = show_on_start and { 'WinScrolled' } or {}
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Scrollbar: ')

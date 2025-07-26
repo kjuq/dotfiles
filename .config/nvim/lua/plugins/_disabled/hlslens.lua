@@ -1,7 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Hlslens: ')
 
 ---@type LazySpec
-local spec = { 'kevinhwang91/nvim-hlslens' }
+local spec = { 'https://github.com/kevinhwang91/nvim-hlslens' }
 spec.event = { 'CmdlineEnter' }
 
 -- TODO: Add '*' '#' 'g*' 'g#' mappings

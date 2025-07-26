@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'folke/flash.nvim' }
+local spec = { 'https://github.com/folke/flash.nvim' }
 
 spec.keys = {
 	{ 'f', mode = { 'n', 'x' } },

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'winston0410/range-highlight.nvim' }
+local spec = { 'https://github.com/winston0410/range-highlight.nvim' }
 spec.event = { 'CmdlineEnter' }
 spec.opts = {}
 

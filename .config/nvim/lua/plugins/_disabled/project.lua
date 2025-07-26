@@ -1,7 +1,7 @@
 local manual_mode = false
 
 ---@type LazySpec
-local spec = { 'ahmedkhalf/project.nvim' }
+local spec = { 'https://github.com/ahmedkhalf/project.nvim' }
 spec.name = 'project_nvim'
 
 spec.event = not manual_mode and { 'BufNewFile', 'BufReadPost' } or {}

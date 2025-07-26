@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'kjuq/instant-substituter.nvim' }
+local spec = { 'https://github.com/kjuq/instant-substituter.nvim' }
 
 spec.keys = {
 	{ '<Space>cq', mode = { 'n', 'x' }, desc = [[Instant-substituter: ' -> " ]] },

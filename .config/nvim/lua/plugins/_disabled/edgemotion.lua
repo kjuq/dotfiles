@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'haya14busa/vim-edgemotion' }
+local spec = { 'https://github.com/haya14busa/vim-edgemotion' }
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Edgemotion: ')
 spec.keys = {

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'levouh/tint.nvim' }
+local spec = { 'https://github.com/levouh/tint.nvim' }
 spec.event = { 'FocusLost', 'WinLeave' } -- buggy on first launch of telescope
 
 spec.opts = {

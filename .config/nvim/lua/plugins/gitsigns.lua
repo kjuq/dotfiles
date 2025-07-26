@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'lewis6991/gitsigns.nvim' }
+local spec = { 'https://github.com/lewis6991/gitsigns.nvim' }
 spec.event = 'VeryLazy'
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Gitsigns: ')

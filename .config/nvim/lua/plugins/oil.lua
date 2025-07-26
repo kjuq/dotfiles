@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'stevearc/oil.nvim' }
+local spec = { 'https://github.com/stevearc/oil.nvim' }
 
 spec.lazy = not require('kjuq.utils.common').argv_contains('oil-ssh://')
 

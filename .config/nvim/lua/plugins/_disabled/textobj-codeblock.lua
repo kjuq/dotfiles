@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'christoomey/vim-textobj-codeblock' }
+local spec = { 'https://github.com/christoomey/vim-textobj-codeblock' }
 spec.keys = {
 	{ 'i', mode = '' },
 	{ 'a', mode = '' },

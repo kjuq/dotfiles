@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'SmiteshP/nvim-navic' }
+local spec = { 'https://github.com/SmiteshP/nvim-navic' }
 
 spec.event = 'LspAttach'
 

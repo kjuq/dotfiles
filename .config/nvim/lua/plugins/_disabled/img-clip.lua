@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'HakonHarnes/img-clip.nvim' }
+local spec = { 'https://github.com/HakonHarnes/img-clip.nvim' }
 spec.event = 'VeryLazy'
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Img-clip: ')

@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'iamcco/markdown-preview.nvim' }
+local spec = { 'https://github.com/iamcco/markdown-preview.nvim' }
 
 spec.cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' }
 spec.ft = { 'markdown' }

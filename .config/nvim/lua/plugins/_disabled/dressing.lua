@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'stevearc/dressing.nvim' }
+local spec = { 'https://github.com/stevearc/dressing.nvim' }
 
 spec.event = { 'VeryLazy' }
 

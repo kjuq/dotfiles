@@ -1,5 +1,5 @@
 ---@type LazySpec
-local spec = { 'linrongbin16/gitlinker.nvim' }
+local spec = { 'https://github.com/linrongbin16/gitlinker.nvim' }
 
 spec.cmd = 'GitLink'
 
