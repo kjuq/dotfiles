@@ -39,9 +39,6 @@ spec.keys = {
 	map('fQ', 'n', function()
 		require(tb).quickfix()
 	end, 'Quickfix'),
-	map('fr', 'n', function()
-		require(tb).registers()
-	end, 'Registers'),
 	map('fk', 'n', function()
 		require(tb).keymaps()
 	end, 'Keymaps'),
@@ -69,7 +66,7 @@ spec.keys = {
 	map('fC', 'n', function()
 		require(tb).highlights()
 	end, 'Highlights'),
-	map('rf', 'n', function()
+	map('fr', 'n', function()
 		require(tb).resume()
 	end, 'Resume finding'),
 
@@ -185,7 +182,13 @@ spec.opts = function()
 				},
 			},
 
+			sorting_strategy = 'ascending',
 			layout_strategy = 'flex', -- center, vertical, horizontal, flex
+			layout_config = {
+				height = 0.8,
+				width = 0.8,
+				prompt_position = 'top',
+			},
 			scroll_strategy = 'limit',
 			path_display = { truncate = 3 },
 			-- preview = {
