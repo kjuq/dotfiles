@@ -65,6 +65,17 @@ spec.config = function(_, opts)
 			vim.keymap.set('n', '<C-Tab>', '<Cmd>bdelete<CR>', { desc = 'Snacks.Image: Close', buffer = true })
 		end,
 	})
+	vim.api.nvim_create_autocmd({ 'FileType' }, {
+		pattern = 'snacks_input',
+		group = vim.api.nvim_create_augroup('kjuq_keymaps_for_snacks_input', {}),
+		callback = function()
+			vim.keymap.set('i', '<C-b>', '<Left>', { buffer = true })
+			vim.keymap.set('i', '<C-f>', '<Right>', { buffer = true })
+			vim.keymap.set('i', '<C-a>', '<Home>', { buffer = true })
+			vim.keymap.set('i', '<C-e>', '<End>', { buffer = true })
+			vim.keymap.set('i', '<C-d>', '<Del>', { buffer = true })
+		end,
+	})
 end
 
 return spec
