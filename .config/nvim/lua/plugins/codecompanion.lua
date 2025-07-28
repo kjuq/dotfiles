@@ -146,7 +146,7 @@ spec.opts = {
 					modes = { n = pfx .. 'D' },
 				},
 				system_prompt = {
-					modes = { n = pfx .. 'S' },
+					modes = { n = '<Nop>' },
 				},
 				auto_tool_mode = {
 					modes = { n = '<Nop>' },
@@ -212,7 +212,7 @@ spec.specs = {
 
 spec.dependencies = {
 	{
-		'j-hui/fidget.nvim',
+		'https://github.com/j-hui/fidget.nvim',
 		config = function(_, opts)
 			-- https://github.com/olimorris/codecompanion.nvim/discussions/813#discussioncomment-12031954
 			local progress = require('fidget.progress')
@@ -282,6 +282,73 @@ spec.dependencies = {
 
 			init()
 			require('fidget').setup(opts)
+		end,
+	},
+	{
+		'https://github.com/ravitemer/codecompanion-history.nvim',
+		keys = {
+			{ '<Space>ph', mode = 'n', '<Cmd>CodeCompanionHistory<CR>' },
+		},
+		config = function()
+			local plugopts = {
+				keymap = '<Nop>', -- Keymap to open history from chat buffer (default: gh)
+				save_chat_keymap = '<Nop>', -- Keymap to save the current chat manually (when auto_save is disabled)
+				auto_save = true, -- Save all chats by default (disable to save only manually using 'sc')
+				expiration_days = 0, -- Number of days after which chats are automatically deleted (0 to disable)
+				picker = nil, --- "telescope", "snacks", "fzf-lua", or "default" (`nil` to auto resolve to a valid picker)
+				chat_filter = nil, ---@type function(chat_data) return boolean | Filter function to control which chats are shown
+				picker_keymaps = { -- Customize picker keymaps (optional)
+					rename = { n = 'r', i = '<M-r>' },
+					delete = { n = 'd', i = '<M-d>' },
+					duplicate = { n = '<M-y>', i = '<M-y>' },
+				},
+				auto_generate_title = true, ---Automatically generate titles for new chats
+				title_generation_opts = {
+					adapter = nil, ---Adapter for generating titles (`nil` to current chat adapter) "copilot"
+					model = nil, ---Model for generating titles (`nil` to current chat model) "gpt-4o"
+					refresh_every_n_prompts = 0, -- Number of prompts after which to refresh the title
+					max_refreshes = 3, ---Maximum number of times to refresh the title (default: 3)
+					format_title = function(original_title)
+						-- this can be a custom function that applies some custom formatting to the title.
+						return original_title
+					end,
+				},
+				continue_last_chat = false, -- On exiting and entering neovim, loads the last chat on opening chat
+				delete_on_clearing_chat = false, -- When chat is cleared with `gx` delete the chat from history
+				dir_to_save = vim.fn.stdpath('data') .. '/codecompanion-history', -- Directory path to save the chats
+				enable_logging = false, -- Enable detailed logging for history extension
+
+				summary = { -- Summary system
+					create_summary_keymap = '<Nop>', -- Keymap to generate summary for current chat (default: "gcs")
+					browse_summaries_keymap = '<Nop>', -- Keymap to browse summaries (default: "gbs")
+
+					generation_opts = {
+						adapter = nil, -- defaults to current chat adapter
+						model = nil, -- defaults to current chat model
+						context_size = 90000, -- max tokens that the model supports
+						include_references = true, -- include slash command content
+						include_tool_outputs = true, -- include tool execution results
+						system_prompt = nil, -- custom system prompt (string or function)
+						format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
+					},
+				},
+
+				memory = { -- Memory system (requires VectorCode CLI)
+					auto_create_memories_on_summary_generation = true, -- Automatically index summaries when they are generated
+					vectorcode_exe = 'vectorcode', -- Path to the VectorCode executable
+					tool_opts = { -- Tool configuration
+						default_num = 10, -- Default number of memories to retrieve
+					},
+					notify = true, -- Enable notifications for indexing progress
+					index_on_startup = false, -- Index existing memories on startup (needs VectorCode 0.6.12+ for efficiency)
+				},
+			}
+
+			local opts = spec.opts --[[@ as table]]
+			opts = vim.tbl_deep_extend('error', opts, {
+				extensions = { history = { enabled = true, opts = plugopts } },
+			})
+			require('codecompanion').setup(opts)
 		end,
 	},
 }
