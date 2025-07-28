@@ -19,10 +19,7 @@ spec.keys = {
 spec.config = function(_, opts)
 	local mv = require('markview')
 	mv.setup(opts)
-
 	-- for lazy load
-	-- mv.commands.attach()
-	-- NOTE: Use this method once it is fixed that `nvim_exec_autocmds` takes `pattern` and `buffer` at the same time
 	for _, winid in ipairs(vim.api.nvim_list_wins()) do
 		local bufnr = vim.api.nvim_win_get_buf(winid)
 		if vim.bo[bufnr].filetype == 'markdown' then
