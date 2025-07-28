@@ -9,3 +9,4 @@ gui:
   showBottomLine: false
 git:
   disableForcePushing: true
+  overrideGpg: true
