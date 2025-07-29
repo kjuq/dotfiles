@@ -14,22 +14,35 @@ local map = require('kjuq.utils.lazy').generate_map('', 'Copilot: ')
 spec.keys = {
 	map('<C-a>', 'i', function()
 		local cs = require('copilot.suggestion')
+		if not cs.is_visible() then
+			return
+		end
+		cs.accept()
+	end, 'Accept'),
+	map('<C-g><C-a>', 'i', function()
+		local cs = require('copilot.suggestion')
 		if cs.is_visible() then
 			cs.accept()
 		else
 			cs.next()
 			vim.b.copilot_suggestion_auto_trigger = true
 		end
-	end, 'Accept suggestion'),
+	end, 'Start'),
+	map('<C-g><C-e>', 'i', function()
+		local cs = require('copilot.suggestion')
+		if not cs.is_visible() then
+			return
+		end
+		cs.dismiss()
+		vim.b.copilot_suggestion_auto_trigger = false
+	end, 'Stop'),
 	map('<C-e>', 'i', function()
 		local cs = require('copilot.suggestion')
-		if cs.is_visible() then
-			cs.dismiss()
-			vim.b.copilot_suggestion_auto_trigger = false
-		else
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-e>', true, false, true), 'n', false)
+		if not cs.is_visible() then
+			return '<C-e>'
 		end
-	end, 'Dismiss suggestion'),
+		cs.accept()
+	end, 'Accept', { expr = true }),
 }
 
 ---@type copilot_config
