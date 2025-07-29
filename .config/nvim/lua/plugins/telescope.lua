@@ -209,7 +209,6 @@ spec.opts = function()
 				'node_modules/',
 			},
 			borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }, -- presets such as "single" and "rounded" are not supported
-			border = false,
 		},
 	}
 end
