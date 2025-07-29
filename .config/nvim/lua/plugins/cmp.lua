@@ -20,8 +20,6 @@ spec.config = function()
 	require('kjuq.snippet.cmp').register_cmp_source()
 
 	local sources = cmp.config.sources({
-		{ name = 'path' },
-		{ name = 'emoji' },
 		{ name = 'fish' },
 		{ name = 'git' },
 		{
@@ -33,6 +31,24 @@ spec.config = function()
 			},
 		},
 	})
+
+	---@param srcname string
+	local function create_subcmp(srcname)
+		return function()
+			if cmp.visible() then
+				return
+			end
+			cmp.complete({ config = {
+				sources = cmp.config.sources({ { name = srcname } }),
+			} })
+			cmp.select_next_item()
+		end
+	end
+
+	local subcmp = {
+		path = create_subcmp('path'),
+		emoji = create_subcmp('emoji'),
+	}
 
 	local select_next = function()
 		if cmp.visible() then
@@ -107,40 +123,6 @@ spec.config = function()
 		end
 	end
 
-	local cmd_select_next = function()
-		if cmp.visible() then
-			cmp.select_next_item()
-		else
-			cmp.complete()
-			cmp.select_next_item()
-		end
-	end
-
-	local cmd_select_prev = function()
-		if cmp.visible() then
-			cmp.select_prev_item()
-		else
-			cmp.complete()
-			cmp.select_prev_item()
-		end
-	end
-
-	local cmd_history_next = function(fallback)
-		if cmp.visible() then
-			cmp.select_next_item()
-		else
-			fallback()
-		end
-	end
-
-	local cmd_history_prev = function(fallback)
-		if cmp.visible() then
-			cmp.select_prev_item()
-		else
-			fallback()
-		end
-	end
-
 	local utils = require('kjuq.utils.common')
 	local scrolldown = utils.floatscrolldown
 	local scrollup = utils.floatscrollup
@@ -154,6 +136,8 @@ spec.config = function()
 		['<C-e>'] = cmp.mapping(abort, { 'i', 's' }),
 		['<C-y>'] = cmp.mapping(confirm, { 'i', 's' }),
 		['<C-o>'] = cmp.mapping(toggle_docs, { 'i', 's' }),
+		['<C-x><C-f>'] = cmp.mapping(subcmp.path, { 'i', 's' }),
+		['<C-x>:'] = cmp.mapping(subcmp.emoji, { 'i', 's' }),
 	}
 
 	local opts = {
