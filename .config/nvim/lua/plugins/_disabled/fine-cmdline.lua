@@ -22,11 +22,19 @@ spec.opts = {
 		size = {
 			width = '50%',
 		},
+		zindex = 999,
+		border = {
+			style = vim.o.winborder,
+			text = {
+				top = ' Cmdline ',
+				top_align = 'center',
+			},
+		},
 	},
 	hooks = {
 		after_mount = function(input)
-			vim.keymap.set('i', '<C-p>', require('fine-cmdline').fn.up_history, { buffer = input.bufnr })
-			vim.keymap.set('i', '<C-n>', require('fine-cmdline').fn.down_history, { buffer = input.bufnr })
+			vim.keymap.set('i', '<C-p>', require('fine-cmdline').fn.up_search_history, { buffer = input.bufnr })
+			vim.keymap.set('i', '<C-n>', require('fine-cmdline').fn.down_search_history, { buffer = input.bufnr })
 		end,
 	},
 }
