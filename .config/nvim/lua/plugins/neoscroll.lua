@@ -24,13 +24,13 @@ spec.keys = {
 	end, 'Down'),
 
 	map('zt', { 'n', 'x' }, function()
-		require('neoscroll').zt(duration * 0.75)
+		require('neoscroll').zt({ half_win_duration = duration * 0.75 })
 	end, 'Top this line'),
 	map('zz', { 'n', 'x' }, function()
-		require('neoscroll').zz(duration * 0.75)
+		require('neoscroll').zz({ half_win_duration = duration * 0.75 })
 	end, 'Center this line'),
 	map('zb', { 'n', 'x' }, function()
-		require('neoscroll').zb(duration * 0.75)
+		require('neoscroll').zb({ half_win_duration = duration * 0.75 })
 	end, 'Bottom this line'),
 }
 
