@@ -8,6 +8,6 @@ require('vim._extui').enable({
 	msg = {
 		---@type 'cmd'|'msg'
 		target = 'msg',
-		timeout = 6000, -- ms
+		timeout = 1500, -- ms
 	},
 })
