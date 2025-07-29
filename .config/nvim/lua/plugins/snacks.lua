@@ -4,8 +4,6 @@ local spec = { 'https://github.com/folke/snacks.nvim' }
 
 spec.lazy = false
 
--- spec.cond = false
-
 local map = require('kjuq.utils.lazy').generate_map('', 'Snacks: ')
 spec.keys = {
 	map('<Space>ai', 'n', function()

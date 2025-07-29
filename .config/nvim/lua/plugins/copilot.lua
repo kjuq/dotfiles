@@ -6,7 +6,7 @@ local auto_trigger = false
 local spec = { 'https://github.com/zbirenbaum/copilot.lua' }
 spec.cmd = 'Copilot'
 
-spec.cond = vim.fn.executable('node') ~= 0
+spec.enabled = vim.fn.executable('node') ~= 0
 
 spec.event = { 'InsertEnter' }
 
