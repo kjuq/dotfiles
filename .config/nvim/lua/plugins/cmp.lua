@@ -4,7 +4,7 @@ local autocompletes = {
 	disable = false,
 }
 ---@type cmp.TriggerEvent[]|false
-local autocomplete = autocompletes.enable
+local autocomplete = _G.kjuq_auto_completion and autocompletes.enable or autocompletes.disable
 
 ---@type LazySpec
 local spec = { 'https://github.com/hrsh7th/nvim-cmp' }
@@ -19,13 +19,11 @@ spec.config = function()
 
 	require('kjuq.snippet.cmp').register_cmp_source()
 
-	local copilot_source = cmp.config.sources({ { name = 'copilot' } })
-	local normal_sources = cmp.config.sources({
+	local sources = cmp.config.sources({
 		{ name = 'path' },
 		{ name = 'emoji' },
 		{ name = 'fish' },
 		{ name = 'git' },
-		{ name = 'kjuq_snippet' },
 		{
 			name = 'nvim_lsp',
 			option = {
@@ -41,10 +39,10 @@ spec.config = function()
 			cmp.select_next_item()
 		else
 			cmp.setup({
-				sources = normal_sources,
 				completion = { autocomplete = autocompletes.enable },
 			})
 			cmp.complete()
+			cmp.select_next_item()
 		end
 	end
 
@@ -52,11 +50,10 @@ spec.config = function()
 		if cmp.visible() then
 			cmp.select_prev_item()
 		else
-			cmp.setup({
-				sources = copilot_source,
-				completion = { autocomplete = autocompletes.enable },
-			})
-			cmp.complete()
+			cmp.complete({ config = {
+				sources = cmp.config.sources({ { name = 'kjuq_snippet' } }),
+			} })
+			cmp.select_prev_item()
 		end
 	end
 
@@ -159,18 +156,10 @@ spec.config = function()
 		['<C-o>'] = cmp.mapping(toggle_docs, { 'i', 's' }),
 	}
 
-	local mapping_cmdline = {
-		['<C-n>'] = cmp.mapping(cmd_history_next, { 'c' }),
-		['<C-p>'] = cmp.mapping(cmd_history_prev, { 'c' }),
-		['<C-i>'] = cmp.mapping(cmd_select_next, { 'c' }),
-		['<S-Tab>'] = cmp.mapping(cmd_select_prev, { 'c' }),
-		['<C-l>'] = cmp.mapping(abort, { 'c' }),
-		['<C-e>'] = cmp.mapping(abort, { 'c' }),
-		['<C-y>'] = cmp.mapping(confirm, { 'c' }),
-		['<C-o>'] = cmp.mapping(toggle_docs, { 'c' }),
-	}
-
 	local opts = {
+		performance = {
+			debounce = 0,
+		},
 		completion = {
 			autocomplete = autocomplete,
 		},
@@ -185,7 +174,7 @@ spec.config = function()
 			},
 		},
 		mapping = mapping_insert,
-		sources = normal_sources,
+		sources = sources,
 		window = {
 			completion = cmp.config.window.bordered({ border = vim.o.winborder }),
 			documentation = cmp.config.window.bordered({ border = vim.o.winborder }),
@@ -209,60 +198,65 @@ spec.config = function()
 	})
 
 	-- restore global autocomplete
-	vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+	vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
 		group = vim.api.nvim_create_augroup('kjuq_cmp_restore_autocomplete', {}),
 		callback = function()
 			require('cmp').setup({ completion = { autocomplete = autocomplete } })
 		end,
 	})
 
-	local function enable_skk()
-		cmp.setup.buffer({
-			-- sources = cmp.config.sources({ { name = 'skkeleton' } }),
-			-- completion = { autocomplete = autocompletes.enable },
-			sources = {},
+	local skk_completion = false
+	if not skk_completion then
+		return
+	end
+	do -- skk
+		local function enable_skk()
+			cmp.setup.buffer({
+				sources = cmp.config.sources({ { name = 'skkeleton' } }),
+				completion = { autocomplete = autocompletes.enable },
+			})
+		end
+		local function disable_skk()
+			cmp.setup.buffer({
+				sources = sources,
+				completion = { autocomplete = autocomplete },
+			})
+		end
+
+		vim.api.nvim_create_autocmd({ 'User' }, {
+			pattern = 'kjuq_enable_jp_mode',
+			group = vim.api.nvim_create_augroup('kjuq_skk_enable_jp_mode', {}),
+			callback = enable_skk,
+		})
+
+		vim.api.nvim_create_autocmd({ 'User' }, {
+			pattern = 'kjuq_disable_jp_mode',
+			group = vim.api.nvim_create_augroup('kjuq_skk_disable_jp_mode', {}),
+			callback = disable_skk,
+		})
+
+		vim.api.nvim_create_autocmd({ 'User' }, {
+			pattern = { 'kjuq_enable_jp_mode', 'skkeleton-enable-pre', 'eskk-enable-pre' },
+			group = vim.api.nvim_create_augroup('kjuq_skk_enable_pre', {}),
+			callback = function()
+				if require('kjuq.utils.skk').is_skk_jp_mode_enabled() then
+					return
+				end
+				enable_skk()
+			end,
+		})
+
+		vim.api.nvim_create_autocmd({ 'User' }, {
+			pattern = { 'kjuq_disable_jp_mode', 'skkeleton-disable-pre', 'eskk-disable-pre' },
+			group = vim.api.nvim_create_augroup('kjuq_skk_disable_pre', {}),
+			callback = function()
+				if require('kjuq.utils.skk').is_skk_jp_mode_enabled() then
+					return
+				end
+				disable_skk()
+			end,
 		})
 	end
-	local function disable_skk()
-		cmp.setup.buffer({
-			sources = normal_sources,
-			completion = { autocomplete = autocomplete },
-		})
-	end
-
-	vim.api.nvim_create_autocmd({ 'User' }, {
-		pattern = 'kjuq_enable_jp_mode',
-		group = vim.api.nvim_create_augroup('kjuq_skk_enable_jp_mode', {}),
-		callback = enable_skk,
-	})
-
-	vim.api.nvim_create_autocmd({ 'User' }, {
-		pattern = 'kjuq_disable_jp_mode',
-		group = vim.api.nvim_create_augroup('kjuq_skk_disable_jp_mode', {}),
-		callback = disable_skk,
-	})
-
-	vim.api.nvim_create_autocmd({ 'User' }, {
-		pattern = { 'kjuq_enable_jp_mode', 'skkeleton-enable-pre', 'eskk-enable-pre' },
-		group = vim.api.nvim_create_augroup('kjuq_skk_enable_pre', {}),
-		callback = function()
-			if require('kjuq.utils.skk').is_skk_jp_mode_enabled() then
-				return
-			end
-			enable_skk()
-		end,
-	})
-
-	vim.api.nvim_create_autocmd({ 'User' }, {
-		pattern = { 'kjuq_disable_jp_mode', 'skkeleton-disable-pre', 'eskk-disable-pre' },
-		group = vim.api.nvim_create_augroup('kjuq_skk_disable_pre', {}),
-		callback = function()
-			if require('kjuq.utils.skk').is_skk_jp_mode_enabled() then
-				return
-			end
-			disable_skk()
-		end,
-	})
 end
 
 spec.dependencies = {
@@ -274,10 +268,6 @@ spec.dependencies = {
 	{
 		'petertriho/cmp-git',
 		specs = 'nvim-lua/plenary.nvim',
-		opts = {},
-	},
-	{
-		'zbirenbaum/copilot-cmp',
 		opts = {},
 	},
 	{

@@ -54,7 +54,7 @@ spec.opts = {
 		enabled = true,
 		auto_trigger = true, -- `vim.b.copilot_suggestion_auto_trigger` is prioritized
 		hide_during_completion = false, -- true and false are reversed?
-		debounce = 15,
+		debounce = 0,
 		keymap = {
 			accept = false,
 			accept_word = false,
@@ -70,22 +70,22 @@ spec.config = function(_, opts)
 	vim.b.copilot_suggestion_auto_trigger = auto_trigger
 	require('copilot').setup(opts)
 
-	vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+	vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
 		group = vim.api.nvim_create_augroup('kjuq_copilot_restore_autotrigger', {}),
 		callback = function()
 			vim.b.copilot_suggestion_auto_trigger = auto_trigger
 		end,
 	})
 
-	local has_cmp, cmp = pcall(require, 'cmp')
-	if has_cmp then
-		cmp.event:on('menu_opened', function()
-			vim.b.copilot_suggestion_hidden = true
-		end)
-		cmp.event:on('menu_closed', function()
-			vim.b.copilot_suggestion_hidden = false
-		end)
-	end
+	-- local has_cmp, cmp = pcall(require, 'cmp')
+	-- if has_cmp then
+	-- 	cmp.event:on('menu_opened', function()
+	-- 		vim.b.copilot_suggestion_hidden = true
+	-- 	end)
+	-- 	cmp.event:on('menu_closed', function()
+	-- 		vim.b.copilot_suggestion_hidden = false
+	-- 	end)
+	-- end
 end
 
 return spec
