@@ -2,6 +2,8 @@
 local spec = { 'https://github.com/j-hui/fidget.nvim' }
 spec.event = { 'LspAttach' }
 
+spec.commit = 'e4e71e9'
+
 local map = require('kjuq.utils.lazy').generate_map('', 'Fidget: ')
 spec.keys = {
 	map('<Space>an', 'n', '<Cmd>Fidget history<CR>', 'History'),
