@@ -2,8 +2,6 @@
 local spec = { 'https://github.com/j-hui/fidget.nvim' }
 spec.event = { 'LspAttach' }
 
-spec.commit = 'e4e71e9'
-
 local map = require('kjuq.utils.lazy').generate_map('', 'Fidget: ')
 spec.keys = {
 	map('<Space>an', 'n', '<Cmd>Fidget history<CR>', 'History'),
@@ -24,7 +22,7 @@ spec.opts = {
 		},
 	},
 	notification = {
-		override_vim_notify = true,
+		override_vim_notify = false,
 		configs = {
 			default = vim.tbl_extend('force', require('fidget.notification').default_config, {
 				ttl = 1.5,
