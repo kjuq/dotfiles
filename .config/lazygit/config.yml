@@ -7,6 +7,7 @@ gui:
   showRandomTip: false
   showCommandLog: false
   showBottomLine: false
+  nerdFontsVersion: "3"
 git:
   disableForcePushing: true
   overrideGpg: true
