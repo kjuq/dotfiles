@@ -163,6 +163,14 @@ spec.config = function()
 			completion = cmp.config.window.bordered({ border = vim.o.winborder }),
 			documentation = cmp.config.window.bordered({ border = vim.o.winborder }),
 		},
+		formatting = {
+			format = require('lspkind').cmp_format({
+				mode = 'text_symbol', -- show only symbol annotations
+				maxwidth = 50, -- prevent the popup from showing more than provided characters (50 will not show more than 50 chars)
+				ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+				symbol_map = { Copilot = '' },
+			}),
+		},
 	}
 
 	cmp.setup(opts)
@@ -238,6 +246,7 @@ spec.dependencies = {
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-path',
 	'mtoohey31/cmp-fish',
+	'onsails/lspkind.nvim',
 	{
 		'petertriho/cmp-git',
 		specs = 'nvim-lua/plenary.nvim',

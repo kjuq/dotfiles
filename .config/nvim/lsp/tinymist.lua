@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 })
 
 local settings = {
-	exportPdf = 'onSave',
+	exportPdf = 'onType',
 	outputPath = '/tmp/typst_output/$root/$dir/$name',
 }
 

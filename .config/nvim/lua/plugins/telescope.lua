@@ -94,14 +94,6 @@ spec.keys = {
 		require(tb).lsp_type_definitions()
 	end, 'Type definitions'),
 
-	-- Git pickers
-
-	-- Treesitter pickers
-	-- I have no idea when I should use this
-	-- map('', 'n', function()
-	-- 	require(tb).treesitter()
-	-- end, 'Find via treesitter'),
-
 	-- Lists pickers
 	map('fs', 'n', function()
 		require(tb).symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji', 'nerd' } })

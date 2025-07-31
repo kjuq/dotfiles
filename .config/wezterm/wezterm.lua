@@ -52,7 +52,6 @@ local add_font = function(font)
 	elseif type(font) == 'table' then
 		fontname = font.family
 	end
-
 	local cmd = os.getenv('SHELL') .. " -c 'fc-list --quiet " .. fontname .. "'"
 	if os.execute(cmd) then
 		table.insert(fonts, font)
