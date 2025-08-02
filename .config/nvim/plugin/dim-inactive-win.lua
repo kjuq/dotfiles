@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'FocusLost' }, {
 })
 
 -- When entering a window, restore all highlight groups to original
-vim.api.nvim_create_autocmd({ 'WinEnter', 'FocusGained' }, {
+vim.api.nvim_create_autocmd({ 'WinEnter', 'FocusGained', 'BufWinEnter' }, {
 	callback = function()
 		vim.wo.winhighlight = ''
 	end,
