@@ -1,6 +1,6 @@
 -- To setup `:Copilot auth`
 
-local auto_trigger = false
+local auto_trigger = _G.kjuq_auto_copilot_suggestion == nil and false or _G.kjuq_auto_copilot_suggestion
 
 ---@type LazySpec
 local spec = { 'https://github.com/zbirenbaum/copilot.lua' }
@@ -52,7 +52,7 @@ spec.opts = {
 	},
 	suggestion = {
 		enabled = true,
-		auto_trigger = true, -- `vim.b.copilot_suggestion_auto_trigger` is prioritized
+		auto_trigger = auto_trigger, -- `vim.b.copilot_suggestion_auto_trigger` is prioritized
 		hide_during_completion = false, -- true and false are reversed?
 		debounce = 0,
 		keymap = {
@@ -70,7 +70,7 @@ spec.config = function(_, opts)
 	vim.b.copilot_suggestion_auto_trigger = auto_trigger
 	require('copilot').setup(opts)
 
-	vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+	vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
 		group = vim.api.nvim_create_augroup('kjuq_copilot_restore_autotrigger', {}),
 		callback = function()
 			vim.b.copilot_suggestion_auto_trigger = auto_trigger

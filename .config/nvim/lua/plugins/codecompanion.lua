@@ -11,7 +11,6 @@ spec.cmd = {
 local pfx = '<Space>p'
 
 -- adopters
-local light = 'gemini_flash_lite'
 local pro = 'gemini_pro'
 local default_adapter = pro
 
@@ -20,17 +19,11 @@ local default_adapter = pro
 
 local map = require('kjuq.utils.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', light), 'Light model'),
-	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', light), 'Light model'),
+	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', pro), 'Pro model'),
+	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', pro), 'Pro model'),
 
-	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', light), 'Light model in split'),
-	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR>', light), 'Light model in split'),
-
-	map('<Space>pM', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', pro), 'Pro model'),
-	map('<Space>pM', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', pro), 'Pro model'),
-
-	map('<Space>pm', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', pro), 'Pro model in split'),
-	map('<Space>pm', 'x', string.format(':CodeCompanionChat %s<CR>', pro), 'Pro model in split'),
+	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', pro), 'Pro model in split'),
+	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR>', pro), 'Pro model in split'),
 
 	map('<Space>pi', 'n', '<Cmd>CodeCompanion<CR>', 'Inline chat'),
 	map('<Space>pi', 'x', ':CodeCompanion<CR>', 'Inline chat'),
