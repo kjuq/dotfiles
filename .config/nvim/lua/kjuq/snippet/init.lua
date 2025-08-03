@@ -52,7 +52,8 @@ end
 
 ---@return kjuq.snippet.snippet[]
 local function get_snips_by_ft(filetype)
-	local snips = snpft.all
+	local snips = {}
+	vim.list_extend(snips, snpft.all)
 	if filetype and snpft[filetype] then
 		vim.list_extend(snips, snpft[filetype])
 	end
