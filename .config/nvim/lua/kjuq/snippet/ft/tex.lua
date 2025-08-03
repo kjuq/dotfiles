@@ -1,29 +1,42 @@
-local texsnp = require('kjuq.snippet.module').snippets.new()
+local M = {}
 
-texsnp:add('thebibliography', {
-	[[\begin{thebibliography}{99}]],
-	[[	\item{${1:LABEL}} ${2:TARGET}]],
-	[[\end{thebibliography}]],
-})
+M.snippets = {
+	{
+		trigger = 'thebibliography',
+		body = {
+			[[\begin{thebibliography}{99}]],
+			[[	\item{${1:LABEL}} ${2:TARGET}]],
+			[[\end{thebibliography}]],
+		},
+	},
+	{
+		trigger = 'bibitem',
+		body = {
+			[[\bibitem{${1:LABEL}} ${2:TARGET}]],
+		},
+	},
+	{
+		trigger = 'url',
+		body = {
+			[[\url{${1:TARGET}}]],
+		},
+	},
+	{
+		trigger = 'lstinputlisting',
+		body = {
+			[[\lstinputlisting[caption = ${1:CAPTION}, label = ${2:LABEL}]{${3:PATH_TO_FILE}}]],
+		},
+	},
+	{
+		trigger = 'image',
+		body = {
+			[=[\begin{figure}[${1:POSITION}]]=],
+			[[	\includegraphics[${2:OPTION}]{${3:PATH}}]],
+			[[	\caption{${4}]],
+			[[	\label{${5}]],
+			[=[\end{figure}]=],
+		},
+	},
+}
 
-texsnp:add('bibitem', {
-	[[\bibitem{${1:LABEL}} ${2:TARGET}]],
-})
-
-texsnp:add('url', {
-	[[\url{${1:TARGET}}]],
-})
-
-texsnp:add('lstinputlisting', {
-	[[\lstinputlisting[caption = ${1:CAPTION}, label = ${2:LABEL}]{${3:PATH_TO_FILE}}]],
-})
-
-texsnp:add('image', {
-	[=[\begin{figure}[${1:POSITION}]]=],
-	[[	\includegraphics[${2:OPTION}]{${3:PATH}}]],
-	[[	\caption{${4}]],
-	[[	\label{${5}]],
-	[=[\end{figure}]=],
-})
-
-return texsnp
+return M

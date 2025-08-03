@@ -1,12 +1,17 @@
-local texsnp = require('kjuq.snippet.module').snippets.new()
+local M = {}
 
-texsnp:add('image', {
-	[[#figure(]],
-	[[	image("${1:PATH}", width: 80%),]],
-	[[	caption: []],
-	[[		A caption. This is an example text.]],
-	[[	],]],
-	[[) <${2:LABEL}>]],
-})
+M.snippets = {
+	{
+		trigger = 'image',
+		body = {
+			[[#figure(]],
+			[[	image("${1:PATH}", width: 80%),]],
+			[[	caption: []],
+			[[		A caption. This is an example text.]],
+			[[	],]],
+			[[) <${2:LABEL}>]],
+		},
+	},
+}
 
-return texsnp
+return M

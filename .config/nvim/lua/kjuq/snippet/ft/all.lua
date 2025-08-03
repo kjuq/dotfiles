@@ -1,13 +1,30 @@
-local allsnp = require('kjuq.snippet.module').snippets.new()
+local M = {}
 
-allsnp:add('^date', function()
-	return os.date('%Y-%m-%d') --[[@ as string]]
-end)
+---@type kjuq.snippet.snippet[]
+M.snippets = {
+	{
+		trigger = 'date',
+		body = function()
+			return os.date('%Y-%m-%d') --[[@ as string]]
+		end,
+	},
+	{
+		trigger = 'time',
+		body = function()
+			return os.date('%H:%M:%S') --[[@ as string]]
+		end,
+	},
+	{
+		trigger = 'shebang',
+		body = '#!/usr/bin/env ${0}',
+	},
+	{
+		trigger = 'list',
+		body = {
+			[[hello, ${1}]],
+			[[world, ${2}]],
+		},
+	},
+}
 
-allsnp:add('^time', function()
-	return os.date('%H:%M:%S') --[[@ as string]]
-end)
-
-allsnp:add('shebang', [[#!/usr/bin/env ${0}]])
-
-return allsnp
+return M

@@ -20,6 +20,7 @@ require('kjuq.rc.commands')
 require('kjuq.rc.mouse')
 require('kjuq.rc.colorscheme')
 require('kjuq.rc.experimental')
+require('kjuq.rc.internal_plugin')
 
 require('kjuq.rc.lsp')
 

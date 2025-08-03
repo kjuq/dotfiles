@@ -1,7 +1,14 @@
-local shsnp = require('kjuq.snippet.module').snippets.new()
+local M = {}
 
--- shsnp:add('scriptdir', [[script_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"]])
-shsnp:add('scriptdir', [[script_dir="\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"]])
-shsnp:add('scriptname', [[script_name="$(basename "$0")"]])
+M.snippets = {
+	{
+		trigger = 'scriptdir',
+		body = [[script_dir="\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"]],
+	},
+	{
+		trigger = 'scriptname',
+		body = [[script_name="$(basename "$0")"]],
+	},
+}
 
-return shsnp
+return M

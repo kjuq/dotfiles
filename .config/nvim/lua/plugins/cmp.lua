@@ -17,8 +17,6 @@ spec.config = function()
 
 	local cmp = require('cmp')
 
-	require('kjuq.snippet.cmp').register_cmp_source()
-
 	local sources = cmp.config.sources({
 		{ name = 'fish' },
 		{
@@ -29,7 +27,6 @@ spec.config = function()
 				},
 			},
 		},
-		-- 	{ name = 'git' },
 	})
 
 	---@param srcname string
@@ -62,14 +59,11 @@ spec.config = function()
 		end
 	end
 
-	local select_prev = function()
+	local select_prev = function(fallback)
 		if cmp.visible() then
 			cmp.select_prev_item()
 		else
-			cmp.complete({ config = {
-				sources = cmp.config.sources({ { name = 'kjuq_snippet' } }),
-			} })
-			cmp.select_prev_item()
+			fallback()
 		end
 	end
 
