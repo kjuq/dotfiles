@@ -22,8 +22,8 @@ end
 
 -- `:help complete-items`
 ---@param snippets kjuq.snippet.snippet[]
----@return table
-local function generate_complete_item(snippets)
+---@return vim.v.completed_item[]
+local function generate_complete_items(snippets)
 	local cmpitems = {}
 	for _, snippet in ipairs(snippets) do
 		cmpitems[#cmpitems + 1] = {
@@ -67,7 +67,7 @@ end
 
 function _G.kjuq_complete_snippets(findstart, base)
 	if findstart == 1 then
-		-- findstartがtrueの場合、補完を開始する列番号を見つける
+		-- 補完を開始する列番号を見つける
 		local line = vim.api.nvim_get_current_line()
 		-- カーソル位置の列番号（0ベース）を取得
 		local start_col = vim.api.nvim_win_get_cursor(0)[2]
@@ -77,17 +77,12 @@ function _G.kjuq_complete_snippets(findstart, base)
 		end
 		return start_col
 	else
-		-- findstartがfalseの場合、一致する候補を返す
+		-- 一致する候補を返す
 		local matches = {}
-		local snippets = generate_complete_item(get_buf_snips())
+		local snippets = generate_complete_items(get_buf_snips())
 		for _, snippet in ipairs(snippets) do
+			local abbr = type(snippet) == 'table' and snippet.abbr or snippet --[[@ as string]]
 			-- 'base'で始まるプレフィックスを検索
-			local abbr
-			if type(snippet) == 'table' then
-				abbr = snippet.abbr
-			else
-				abbr = snippet
-			end
 			if abbr:lower():find(base, 1, true) == 1 then
 				table.insert(matches, snippet)
 			end
@@ -121,7 +116,7 @@ function M.setup(opts)
 		callback = function()
 			-- v:completed_item は補完が完了した項目の辞書
 			-- ユーザーが何も選択せずに補完を中断した場合は空になるのでチェックする
-			-- ただし候補を選択してから <Esc> で抜けるとスニペットが展開されてしまうので注意
+			-- NOTE: ただし候補を選択してから <Esc> で抜けるとスニペットが展開されてしまうので注意
 			local completed_item = vim.v.completed_item
 			if completed_item and completed_item.info and completed_item.info ~= '' then
 				vim.snippet.expand(completed_item.info)
