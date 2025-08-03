@@ -2,11 +2,11 @@ local M = {}
 
 M.snippets = {
 	{
-		trigger = 'scriptdir',
+		trigger = 'scriptDir',
 		body = [[script_dir="\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"]],
 	},
 	{
-		trigger = 'scriptname',
+		trigger = 'scriptName',
 		body = [[script_name="$(basename "$0")"]],
 	},
 }

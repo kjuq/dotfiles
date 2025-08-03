@@ -9,7 +9,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'ifmain.exit',
+		trigger = 'ifmainExit',
 		body = {
 			[[if __name__ != '__main__':]],
 			[[	exit()]],
@@ -55,7 +55,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'exec.sync',
+		trigger = 'execSync',
 		body = {
 			[=[cmd: list[str] = ['echo', 'hello']]=],
 			[[result = subprocess.run(cmd, capture_output=True, text=True)]],

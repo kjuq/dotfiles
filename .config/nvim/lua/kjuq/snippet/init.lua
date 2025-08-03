@@ -88,7 +88,7 @@ function _G.kjuq_complete_snippets(findstart, base)
 			else
 				abbr = snippet
 			end
-			if abbr:find(base, 1, true) == 1 then
+			if abbr:lower():find(base, 1, true) == 1 then
 				table.insert(matches, snippet)
 			end
 		end

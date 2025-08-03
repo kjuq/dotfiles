@@ -2,7 +2,7 @@ local M = {}
 
 M.snippets = {
 	{
-		trigger = 'marp.init',
+		trigger = 'marpInit',
 		body = {
 			[[---]],
 			[[marp: true]],
@@ -16,7 +16,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'marp.latexmath',
+		trigger = 'marpLatexmath',
 		body = {
 			[[<!-- https://qiita.com/tomtsutom0122/items/e0ab6b6ccbd369db1aa2 -->]],
 			[[<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>]],
@@ -31,7 +31,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'marp.smalltable',
+		trigger = 'marpSmalltable',
 		body = {
 			[[<style scoped>]],
 			[[	table { table-layout: fixed; width: 100%; display:table; font-size: 18px; }]],
@@ -45,7 +45,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'image.left',
+		trigger = 'imageLeft',
 		body = {
 			[[![${1:description} bg right width:600](${2:imgpath})]],
 		},

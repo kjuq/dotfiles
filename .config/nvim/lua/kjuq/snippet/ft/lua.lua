@@ -12,7 +12,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'lazy.spec',
+		trigger = 'lazySpec',
 		body = {
 			[[---@type LazySpec]],
 			[[local spec = { '${0}' }]],
@@ -30,7 +30,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'lazy.keymap',
+		trigger = 'lazyKeymap',
 		body = {
 			[[local map = require('kjuq.utils.lazy').generate_map('${1:KEY_PREFIX}', '${2:DESC_PREFIX}')]],
 			[[spec.keys = {${0}}]],
@@ -43,7 +43,7 @@ M.snippets = {
 		},
 	},
 	{
-		trigger = 'feedkeys.escape',
+		trigger = 'feedkeysEscape',
 		body = {
 			[[vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('${0}', true, false, true), 'n', false)]],
 		},
