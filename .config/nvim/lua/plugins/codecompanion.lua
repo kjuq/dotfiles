@@ -19,11 +19,11 @@ local default_adapter = pro
 
 local map = require('kjuq.utils.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', pro), 'Pro model'),
-	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', pro), 'Pro model'),
+	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', pro), 'Pro model'),
+	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', pro), 'Pro model'),
 
-	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', pro), 'Pro model in split'),
-	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR>', pro), 'Pro model in split'),
+	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', pro), 'Pro model in split'),
+	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR>', pro), 'Pro model in split'),
 
 	map('<Space>pi', 'n', '<Cmd>CodeCompanion<CR>', 'Inline chat'),
 	map('<Space>pi', 'x', ':CodeCompanion<CR>', 'Inline chat'),
@@ -63,6 +63,7 @@ spec.opts = {
 		end,
 		gemini_pro = function()
 			return require('codecompanion.adapters').extend('gemini', {
+				name = 'gemini_pro',
 				formatted_name = 'Gemini Pro',
 				env = { api_key = 'cmd:pass google.com/gemini_api_key' },
 				schema = {
@@ -72,6 +73,7 @@ spec.opts = {
 		end,
 		gemini_flash_lite = function()
 			return require('codecompanion.adapters').extend('gemini', {
+				name = 'gemini_flash_lite',
 				formatted_name = 'Gemini Flash-Lite',
 				env = { api_key = 'cmd:pass google.com/gemini_api_key' },
 				schema = {
@@ -177,7 +179,6 @@ spec.config = function(_, opts)
 		group = vim.api.nvim_create_augroup('kjuq_codecompanion_keymap_for_close', {}),
 		callback = function()
 			local toggle_map = function(key)
-				-- vim.keymap.set( 'n', key, '<Cmd>CodeCompanionChat Toggle<CR>', { desc = 'Codecompanion: Toggle', buffer = true })
 				vim.keymap.set('n', key, '<Cmd>bnext<CR>', { desc = ':bnext', buffer = true })
 			end
 			toggle_map('<C-Tab>')
