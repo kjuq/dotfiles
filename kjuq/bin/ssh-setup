@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if ! command -v pass &>/dev/null; then
+	echo 'pass is not installed'
+	exit 1
+fi
+
+for hostname in $(ls "$PASSWORD_STORE_DIR/_ssh/"); do
+	echo "Add $hostname"
+	pass "_ssh/$hostname/passphrase" | SSH_ASKPASS_REQUIRE=never setsid ssh-add <(pass "_ssh/$hostname/sec") >/dev/null 2>&1
+done
