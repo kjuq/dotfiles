@@ -63,6 +63,10 @@ M.snippets = {
 			[=[}]=],
 		},
 	},
+	{
+		trigger = 'setHeading',
+		body = '#set heading(numbering: "1.1")',
+	},
 }
 
 return M

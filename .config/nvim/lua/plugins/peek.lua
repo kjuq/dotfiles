@@ -13,6 +13,8 @@ spec.cmd = {
 	'PeekToggle',
 }
 
+local ft = { 'markdown', 'codecompanion' }
+
 local map = require('kjuq.utils.lazy').generate_map('', 'Peek: ')
 spec.keys = {
 	map('<Space>aP', 'n', function()
@@ -22,10 +24,12 @@ spec.keys = {
 		else
 			vim.cmd.PeekToggle()
 		end
-	end, 'Toggle', { ft = 'markdown' }),
+	end, 'Toggle', { ft = ft }),
 }
 
-spec.opts = {}
+spec.opts = {
+	filetype = ft,
+}
 
 spec.config = function(_, opts)
 	-- webkitgtk has an issue with Nvidia card. See,
