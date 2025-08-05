@@ -1,11 +1,23 @@
 #!/usr/bin/env bash
 
+set -eu
+
+if command -v osc52 &>/dev/null; then
+	printf "%s" "$(cat)" | osc52
+	exit 0
+fi
+
 if [ "$(uname)" = 'Darwin' ]; then
 	# May work but not tested yet
-	pbcopy $@
-	return
+	printf "%s" "$(cat)" | pbcopy
+	exit 0
 fi
 
 # If Linux
+if command -v xsel &>/dev/null; then
+	printf "%s" "$(cat)" | xsel --clipboard --input
+	exit 0
+fi
 
-command xsel --clipboard --input
+echo 'No clipboard provider is installed. Quit'
+exit 1
