@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ "$(uname)" = 'Darwin' ]; then
+	# May work but not tested yet
+	pbcopy $@
+	return
+fi
+
+# If Linux
+
+command xsel --clipboard --input
