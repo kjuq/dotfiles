@@ -103,15 +103,3 @@ if command --search --quiet w3m
 		env TERM=xterm-256color command w3m $argv
 	end
 end
-
-if [ (uname) = "Linux" ]
-	function pbcopy --wraps='xsel --clipboard --input'
-		command xsel --clipboard --input $argv
-	end
-	function pbpaste --wraps='xsel --clipboard --output'
-		command xsel --clipboard --output $argv
-	end
-	function open --wraps='xdg-open'
-		command xdg-open $argv
-	end
-end
