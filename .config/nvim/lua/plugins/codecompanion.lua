@@ -43,6 +43,10 @@ spec.opts = {
 		chat = {
 			window = {
 				layout = 'vertical', -- float|vertical|horizontal|buffer
+				width = 0.5,
+				opts = {
+					linebreak = false,
+				},
 			},
 			intro_message = '',
 		},
