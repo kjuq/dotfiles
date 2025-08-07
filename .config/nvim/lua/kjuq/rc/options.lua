@@ -103,7 +103,8 @@ opt.splitbelow = false
 
 opt.virtualedit = { 'block' }
 
-opt.smartindent = true
+opt.cindent = true
+opt.cinoptions:append('0#')
 opt.tabstop = 4
 opt.expandtab = false
 opt.shiftwidth = 0 -- obey tabstop

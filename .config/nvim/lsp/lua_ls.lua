@@ -12,6 +12,7 @@ local settings = {
 			enable = true,
 			disable = {
 				'unused-function', -- avoid dimmed contents of functions (hard to read (!!))
+				'empty-block',
 			},
 		},
 	},

@@ -29,11 +29,11 @@ spec.opts = {
 	},
 
 	indent = {
-		-- Enable only for python
 		enable = true,
-		disable = function(lang)
-			return lang ~= 'python'
-		end,
+		-- -- Enable only for python
+		-- disable = function(lang)
+		-- 	return lang ~= 'python'
+		-- end,
 	},
 
 	incremental_selection = {
