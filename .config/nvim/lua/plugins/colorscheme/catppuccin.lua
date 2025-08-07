@@ -17,6 +17,10 @@ spec.opts = {
 		dark = 'mocha',
 	},
 	transparent_background = _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent,
+	float = {
+		transparent = true, -- enable transparent floating windows
+		solid = true, -- use solid styling for floating windows, see |winborder|
+	},
 	dim_inactive = {
 		enabled = false, -- dims the background color of inactive window
 		shade = 'dark',
