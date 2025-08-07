@@ -64,6 +64,16 @@ M.snippets = {
 			[[	print('Error:', result.stderr)]],
 		},
 	},
+	{
+		trigger = 'dependencies',
+		body = {
+			[=[# /// script]=],
+			[=[# dependencies = []=],
+			[=[# 	'matplotlib',]=],
+			[=[# ]]=],
+			[=[# ///]=],
+		},
+	},
 }
 
 return M
