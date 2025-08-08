@@ -30,12 +30,12 @@ spec.cmd = {
 local map = require('kjuq.utils.lazy').generate_map('', 'GP: ')
 spec.keys = {
 	map('<Space>po', 'n', '<CMD>GpChatToggle<CR>', 'Open chat'),
-	map('<C-w><Space>po', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
-	map('<Space>pr', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
-	map('<Space>py', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
-	map('<Space>pj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
-	map('<Space>pk', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
-	map('<Space>px', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
+	-- map('<C-w><Space>po', 'n', '<CMD>GpChatToggle vsplit<CR>', 'Open chat'),
+	-- map('<Space>pr', 'n', '<CMD>GpRewrite<CR>', 'Open prompt to rewrite codes'),
+	-- map('<Space>py', 'x', '<CMD>GpChatPaste<CR>', 'Paste selected text to a chat'),
+	-- map('<Space>pj', 'n', '<CMD>GpAppend<CR>', 'Open prompt to append codes'),
+	-- map('<Space>pk', 'n', '<CMD>GpPrepend<CR>', 'Open prompt to prepend codes'),
+	-- map('<Space>px', 'n', '<CMD>GpContext<CR>', 'Configure custom context per repo'),
 	map('<Space>pn', 'n', '<CMD>GpChatNew<CR>', 'Open new chat'),
 	-- Generated at config.hooks
 	map('<Space>pb', 'n', '<CMD>GpBufferChatNew<CR>', 'Open new chat with entire buffer'),
@@ -67,7 +67,7 @@ spec.opts = {
 			provider = 'googleai',
 			chat = true,
 			command = true,
-			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			model = { model = 'gemini-2.5-pro' },
 			system_prompt = require('kjuq.utils.ai').plain_prompt('Japanese'),
 		},
 		{
@@ -75,7 +75,7 @@ spec.opts = {
 			provider = 'googleai',
 			chat = true,
 			command = true,
-			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			model = { model = 'gemini-2.5-pro' },
 			system_prompt = require('kjuq.utils.ai').plain_prompt('English'),
 		},
 		{
@@ -83,7 +83,7 @@ spec.opts = {
 			provider = 'googleai',
 			chat = true,
 			command = false,
-			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			model = { model = 'gemini-2.5-pro' },
 			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
 		},
 		{
@@ -91,43 +91,9 @@ spec.opts = {
 			provider = 'googleai',
 			chat = true,
 			command = false,
-			model = { model = 'gemini-2.5-flash-preview-05-20' },
+			model = { model = 'gemini-2.5-pro' },
 			system_prompt = require('kjuq.utils.ai').coding_prompt('English'),
 		},
-		{
-			name = 'ChatCopilot-Claude',
-			provider = 'copilot',
-			chat = true,
-			command = false,
-			model = { model = 'claude-3.5-sonnet', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
-		},
-		{
-			name = 'ChatCopilot-GPT4o',
-			provider = 'copilot',
-			chat = true,
-			command = false,
-			model = { model = 'gpt-4o', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
-		},
-		{
-			name = 'ChatCopilot-GPT4o-mini',
-			provider = 'copilot',
-			chat = true,
-			command = false,
-			model = { model = 'gpt-4o-mini', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
-		},
-		{
-			-- Unable to use `o1-mini` due to the error: `Bad request`
-			name = 'ChatCopilot-GPT-o1-preview',
-			provider = 'copilot',
-			chat = true,
-			command = false,
-			model = { model = 'o1', temperature = 1.1, top_p = 1 },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
-		},
-
 		-- Disable all builtin agents
 		{ name = 'ChatGPT4o', disable = true },
 		{ name = 'ChatGPT4o-mini', disable = true },
@@ -212,7 +178,7 @@ spec.opts = {
 	},
 	chat_shortcut_delete = {
 		modes = { 'n' },
-		shortcut = '<Space>pD',
+		shortcut = '<Nop>',
 		comment = 'GP: Delete chat',
 	},
 	chat_shortcut_stop = {
