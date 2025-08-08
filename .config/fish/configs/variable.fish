@@ -95,6 +95,20 @@ set --export WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
 # cpanm
 set --export PERL_CPANM_HOME "$XDG_CACHE_HOME/cpanm"
 
+# irb
+set --export IRBRC "$XDG_CONFIG_HOME"/irb/irbrc
+
+# Ruby bundler
+set --export BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME"/bundle
+set --export BUNDLE_USER_CACHE "$XDG_CACHE_HOME"/bundle
+set --export BUNDLE_USER_PLUGIN "$XDG_DATA_HOME"/bundle
+
+# Rustup
+set --export RUSTUP_HOME "$XDG_DATA_HOME"/rustup
+
+# Android
+set --export ANDROID_USER_HOME "$XDG_DATA_HOME"/android
+
 # OpenJDK (some applications don't respect this setting)
 set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 
@@ -122,5 +136,5 @@ end
 
 # SSH-agent
 if command --search --quiet ssh-agent
-    eval "$(ssh-agent -c)"
+    eval "$(ssh-agent -c)" >/dev/null
 end
