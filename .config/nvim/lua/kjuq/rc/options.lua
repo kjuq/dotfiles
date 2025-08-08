@@ -91,6 +91,10 @@ opt.sidescrolloff = 1
 
 opt.startofline = true
 
+opt.autoindent = true
+opt.smartindent = false
+opt.cindent = true
+opt.cinoptions:append('0#')
 opt.breakindent = true
 -- opt.breakindentopt:append("list:-1") -- indent wrapped list
 opt.showbreak = '> '
@@ -103,8 +107,6 @@ opt.splitbelow = false
 
 opt.virtualedit = { 'block' }
 
-opt.cindent = true
-opt.cinoptions:append('0#')
 opt.tabstop = 4
 opt.expandtab = false
 opt.shiftwidth = 0 -- obey tabstop
