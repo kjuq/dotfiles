@@ -44,3 +44,7 @@ vim.keymap.set('n', '<Space>cxx', '<Cmd>.source<CR>', { desc = '`:source` curren
 local rmb = require('rm-multibytes')
 rmb.setup()
 vim.keymap.set({ 'n', 'x' }, '<Space>cj', rmb.map, { expr = true, desc = 'Remove multibytes' })
+
+local jpspc = require('jp-spacing')
+jpspc.setup()
+vim.keymap.set({ 'n', 'x' }, '<Space>c<Space>', jpspc.map, { expr = true, desc = 'Format EN and JP' })

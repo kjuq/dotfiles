@@ -288,7 +288,7 @@ function M.map()
 	end
 	if mode == 'n' then
 		local mark_cur = '.'
-		lnum, col = vim.fn.line(mark_cur), vim.fn.col(mark_cur)
+		lnum, col = vim.fn.line(mark_cur), vim.fn.col(mark_cur) - 1
 		vim.o.operatorfunc = 'v:lua._G.kjuq_rm_multibytes'
 		return 'g@'
 	elseif mode == 'v' or mode == 'V' then
