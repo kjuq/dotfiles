@@ -11,10 +11,15 @@ local opts = {
 ---@param stop integer
 local function substitute(start, stop)
 	local reg_bak = vim.fn.getreg('/')
-	local latin = [=[[0-9A-Za-z\-=`\/\[\]',.;\_+~?{}"<>|!@#$%%^&*()]+]=]
-	local japanese = [=[[ぁ-んァ-ヶ一-龠]]=]
-	vim.cmd(string.format([=[ %d,%d s/\v(%s)(%s)/\1 \2/ge ]=], start, stop, latin, japanese))
-	vim.cmd(string.format([=[ %d,%d s/\v(%s)(%s)/\1 \2/ge ]=], start, stop, japanese, latin))
+	-- local latin = [=[\[0-9A-Za-z\-=`\/,.;\_+~?|!@#$%%^&*]]=]
+	local alphanum = [=[0-9A-Za-z]=]
+	local symbol = [=[-=`/\,.;_+~?|!@#$%%^&*]=]
+	local latinwd = string.format([=[\[%s]\[%s%s]\*\[%s]]=], alphanum, alphanum, symbol, alphanum)
+	local japanese = [=[ぁ-んァ-ヶ一-龠]=]
+	-- local open = [=[<(\{\[]=]
+	-- local close = [=[>)\}\]:]=]
+	vim.cmd(string.format([=[ %d,%d s/\V\(%s\)\ze\[%s]/\1 /ge ]=], start, stop, latinwd, japanese))
+	vim.cmd(string.format([=[ %d,%d s/\V\[%s]\zs\(%s\)/ \1/ge ]=], start, stop, japanese, latinwd))
 	vim.fn.setreg('/', reg_bak)
 	vim.cmd.nohlsearch()
 end
