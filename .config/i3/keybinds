@@ -35,6 +35,9 @@ bindsym $sac+Shift+s split toggle
 # toggle fullscreen mode for the focused container
 bindsym $sac+Shift+f fullscreen toggle
 
+# Rescue builtin display
+bindsym $sac+Shift+d exec xrandr | grep 'connected' | grep -v 'eDP-1' | cut -d ' ' -f 1 | xargs -I {} xrandr --output '{}' --off
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $sac+s layout stacking
 bindsym $sac+w layout tabbed
