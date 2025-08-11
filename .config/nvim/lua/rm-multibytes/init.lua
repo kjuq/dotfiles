@@ -266,15 +266,12 @@ local function substitute_all(mappings, start, stop)
 	vim.fn.setreg('/', reg_bak)
 end
 
----@type integer, integer
-local lnum, col
-
 local function init()
 	vim.api.nvim_create_user_command(opts.cmd, function(args)
 		substitute_all(opts.maps, args.line1, args.line2)
 	end, { range = true })
-
 	function _G.kjuq_rm_multibytes()
+		local lnum, col = vim.fn.line('.'), vim.fn.col('.') - 1
 		vim.cmd(string.format([[ '[,'] %s ]], opts.cmd))
 		vim.api.nvim_win_set_cursor(0, { lnum, col })
 	end
@@ -287,8 +284,6 @@ function M.map()
 		return nil
 	end
 	if mode == 'n' then
-		local mark_cur = '.'
-		lnum, col = vim.fn.line(mark_cur), vim.fn.col(mark_cur) - 1
 		vim.o.operatorfunc = 'v:lua._G.kjuq_rm_multibytes'
 		return 'g@'
 	elseif mode == 'v' or mode == 'V' then
