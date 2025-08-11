@@ -10,29 +10,29 @@ local opts = {
 ---@param start integer
 ---@param stop integer
 local function substitute(start, stop)
+	-- 可読性が最悪だ \(^o^)/
 	local reg_bak = vim.fn.getreg('/')
 	-- local latin = [=[\[0-9A-Za-z\-=`\/,.;\_+~?|!@#$%%^&*]]=]
 	local alphanum = [=[0-9A-Za-z]=]
 	local symbol = [=[-=`/\,.;_+~?|!@#$%%^&*]=]
 	local latinwd = string.format([=[\[%s]\[%s%s]\*\[%s]]=], alphanum, alphanum, symbol, alphanum)
 	local japanese = [=[ぁ-んァ-ヶ一-龠]=]
-	-- local open = [=[<(\{\[]=]
-	-- local close = [=[>)\}\]:]=]
+	local open = [=[\[<([{]\+]=]
+	local close = [=[\[>)}\]:]\+]=]
 	vim.cmd(string.format([=[ %d,%d s/\V\(%s\)\ze\[%s]/\1 /ge ]=], start, stop, latinwd, japanese))
 	vim.cmd(string.format([=[ %d,%d s/\V\[%s]\zs\(%s\)/ \1/ge ]=], start, stop, japanese, latinwd))
+	vim.cmd(string.format([=[ %d,%d s/\V\(%s\)\ze\[%s]/\1 /ge ]=], start, stop, close, japanese))
+	vim.cmd(string.format([=[ %d,%d s/\V\[%s]\zs\(%s\)/ \1/ge ]=], start, stop, japanese, open))
 	vim.fn.setreg('/', reg_bak)
 	vim.cmd.nohlsearch()
 end
-
----@type integer, integer
-local lnum, col
 
 local function init()
 	vim.api.nvim_create_user_command(opts.cmd, function(args)
 		substitute(args.line1, args.line2)
 	end, { range = true })
-
 	function _G.kjuq_jp_spacing()
+		local lnum, col = vim.fn.line('.'), vim.fn.col('.') - 1
 		vim.cmd(string.format([[ '[,'] %s ]], opts.cmd))
 		vim.api.nvim_win_set_cursor(0, { lnum, col })
 	end
@@ -45,8 +45,6 @@ function M.map()
 		return nil
 	end
 	if mode == 'n' then
-		local mark_cur = '.'
-		lnum, col = vim.fn.line(mark_cur), vim.fn.col(mark_cur) - 1
 		vim.o.operatorfunc = 'v:lua._G.kjuq_jp_spacing'
 		return 'g@'
 	elseif mode == 'v' or mode == 'V' then
