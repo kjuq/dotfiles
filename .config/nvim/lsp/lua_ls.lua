@@ -6,7 +6,7 @@ local settings = {
 			-- path = { '?.lua', '?/init.lua' }, -- same as a default value
 		},
 		workspace = {
-			library = vim.api.nvim_get_runtime_file('lua', true),
+			library = vim.api.nvim_get_runtime_file('lua', true), -- does not detect lazy-loaded plugins
 			checkThirdParty = 'disable',
 		},
 		format = {
@@ -25,6 +25,7 @@ local settings = {
 				'unused-function', -- avoid dimmed contents of functions (hard to read (!!))
 				'empty-block',
 			},
+			libraryFiles = 'Disable',
 		},
 	},
 }
