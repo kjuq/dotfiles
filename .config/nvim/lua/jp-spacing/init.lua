@@ -23,6 +23,7 @@ local function substitute(start, stop)
 	vim.cmd(string.format([=[ %d,%d s/\V\[%s]\zs\(%s\)/ \1/ge ]=], start, stop, japanese, latinwd))
 	vim.cmd(string.format([=[ %d,%d s/\V\(%s\)\ze\[%s]/\1 /ge ]=], start, stop, close, japanese))
 	vim.cmd(string.format([=[ %d,%d s/\V\[%s]\zs\(%s\)/ \1/ge ]=], start, stop, japanese, open))
+	vim.cmd(string.format([=[ %d,%d s/\V\S\zs\s\+/ /ge ]=], start, stop))
 	vim.fn.setreg('/', reg_bak)
 	vim.cmd.nohlsearch()
 end
