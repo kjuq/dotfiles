@@ -55,7 +55,7 @@ function M.map()
 	end
 end
 
----@param user_opts kjuq.JpSpacing.opts
+---@param user_opts kjuq.JpSpacing.opts?
 function M.setup(user_opts)
 	if user_opts then
 		opts = vim.tbl_deep_extend('force', opts, user_opts)

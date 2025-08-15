@@ -10,7 +10,7 @@ spec.keys = {
 			return ']g'
 		end
 		vim.schedule(function()
-			require('gitsigns').next_hunk()
+			require('gitsigns').nav_hunk('next')
 		end)
 		return '<Ignore>'
 	end, 'Go to next hunk', { expr = true }),
@@ -20,7 +20,7 @@ spec.keys = {
 			return '[g'
 		end
 		vim.schedule(function()
-			require('gitsigns').prev_hunk()
+			require('gitsigns').nav_hunk('prev')
 		end)
 		return '<Ignore>'
 	end, 'Go to next hunk', { expr = true }),

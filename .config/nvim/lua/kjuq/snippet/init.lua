@@ -65,6 +65,7 @@ local function get_buf_snips()
 	return get_snips_by_ft(vim.bo.filetype)
 end
 
+---@diagnostic disable-next-line: duplicate-set-field
 function _G.kjuq_complete_snippets(findstart, base)
 	if findstart == 1 then
 		-- 補完を開始する列番号を見つける
