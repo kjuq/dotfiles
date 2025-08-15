@@ -3,103 +3,45 @@
 
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-treesitter/nvim-treesitter' }
+spec.branch = 'main'
+spec.build = ':TSUpdate'
+
 spec.event = 'VeryLazy'
-spec.build = function()
-	require('nvim-treesitter.install').update({ with_sync = false })()
-end
 
 spec.opts = {
-	ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'regex', 'markdown', 'markdown_inline', 'bash' },
-	sync_install = false,
-	auto_install = false, -- don't turn this on, it causes error when `tree-sitter` CLI is not installed
-
-	highlight = {
-		enable = true,
-		disable = function(lang, bufnr)
-			local lang_for_disable = {}
-			if vim.tbl_contains(lang_for_disable, lang) then
-				return true
-			end
-			local max_line = 50000
-			if vim.api.nvim_buf_line_count(bufnr) > max_line then
-				return true
-			end
-		end,
-		-- additional_vim_regex_highlighting = { 'python' },
-	},
-
-	indent = {
-		enable = true,
-		-- -- Enable only for python
-		-- disable = function(lang)
-		-- 	return lang ~= 'python'
-		-- end,
-	},
-
-	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = '<M-v>',
-			node_incremental = '<M-v>',
-			-- scope_incremental = "",
-			node_decremental = '<M-b>',
-		},
-	},
-
-	textobjects = {
-		select = {
-			enable = true,
-			lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-			keymaps = {
-				-- You can use the capture groups defined in textobjects.scm
-				['aa'] = '@parameter.outer',
-				['ia'] = '@parameter.inner',
-				['af'] = '@function.outer',
-				['if'] = '@function.inner',
-				['aC'] = '@class.outer',
-				['iC'] = '@class.inner',
-				['aT'] = '@conditional.outer', -- [T]rue
-				['iT'] = '@conditional.inner',
-				['al'] = '@loop.outer',
-				['il'] = '@loop.inner',
-				['a/'] = '@comment.outer',
-				['i/'] = '@comment.inner',
-			},
-		},
-		move = {
-			enable = true,
-			set_jumps = true, -- whether to set jumps in the jumplist
-			goto_next_start = {
-				[']f'] = '@function.outer',
-			},
-			goto_next_end = {
-				[']F'] = '@function.outer',
-			},
-			goto_previous_start = {
-				['[f'] = '@function.outer',
-			},
-			goto_previous_end = {
-				['[F'] = '@function.outer',
-			},
-		},
-		swap = {
-			enable = true,
-			swap_next = {
-				['<M-t>'] = '@parameter.inner',
-			},
-			swap_previous = {
-				['g<M-t>'] = '@parameter.inner',
-			},
-		},
-	},
+	install_dir = vim.fn.stdpath('data') .. '/site',
 }
 
 spec.config = function(_, opts)
-	require('nvim-treesitter.configs').setup(opts)
+	local ts = require('nvim-treesitter')
+	ts.setup(opts)
+	vim.api.nvim_create_autocmd({ 'FileType' }, {
+		group = vim.api.nvim_create_augroup('kjuq_treesitter_start', {}),
+		callback = function(args)
+			local ft = vim.bo[args.buf].ft
+			local lang = vim.treesitter.language.get_lang(ft)
+			local installed = require('nvim-treesitter.config').get_installed
+			local function enable()
+				vim.treesitter.start(args.buf)
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
+			if not vim.tbl_contains(installed(), lang) then
+				ts.install({ lang }):await(function(err)
+					if err then
+						vim.notify('Treesitter install error\nft: ' .. ft .. '\nerr: ' .. err, vim.log.level.error)
+						return
+					end
+					if vim.tbl_contains(installed(), lang) then -- if `lang` was newly installed
+						enable()
+					end
+				end)
+				return
+			end
+			enable() -- if `lang` was already installed
+		end,
+	})
+	-- for lazy loading
+	vim.bo.filetype = vim.bo.filetype
 end
-
-spec.dependencies = {
-	'nvim-treesitter/nvim-treesitter-textobjects',
-}
 
 return spec

@@ -12,30 +12,26 @@ spec.init = function()
 	-- vim.g.matchup_matchparen_pumvisible = 0 -- (https://github.com/andymass/vim-matchup/issues/328)
 end
 
-spec.config = function()
-	---@diagnostic disable-next-line: missing-fields
-	require('nvim-treesitter.configs').setup({
-		matchup = {
-			enable = true,
-			enable_quotes = true,
-			disable_virtual_text = true,
-		},
-	})
+spec.opts = {
+	treesitter = {
+		stopline = 500,
+	},
+}
 
+spec.config = function(_, opts)
+	require('match-up').setup(opts)
 	local set_deferred_highlight = function(path, buffer)
 		local common = require('kjuq.utils.common')
 		if common.is_bigfile(path) or common.is_bigbuf(buffer) then
 			vim.b.matchup_matchparen_deferred = 1
 		end
 	end
-
 	vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 		group = vim.api.nvim_create_augroup('kjuq_matchup_bigfile', {}),
 		callback = function(ev)
 			set_deferred_highlight(ev.file, ev.buf)
 		end,
 	})
-
 	-- for lazy-load
 	vim.bo.filetype = vim.bo.filetype
 	set_deferred_highlight(vim.fn.expand('%'), 0)
