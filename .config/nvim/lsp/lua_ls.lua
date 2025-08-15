@@ -3,14 +3,21 @@ local settings = {
 		runtime = {
 			version = 'LuaJIT',
 			pathStrict = true,
-			path = { '?.lua', '?/init.lua' },
+			-- path = { '?.lua', '?/init.lua' }, -- same as a default value
 		},
 		workspace = {
 			library = vim.api.nvim_get_runtime_file('lua', true),
 			checkThirdParty = 'disable',
 		},
-		format = { enable = false }, -- Use StyLua
-		hint = { enable = true },
+		format = {
+			enable = false, -- Use StyLua
+		},
+		hint = {
+			enable = true,
+		},
+		semantic = {
+			annotation = false, -- Use `luadoc` treesitter (https://blog.atusy.net/2025/07/15/prefer-luadoc-to-luals-semantictokens/)
+		},
 		diagnostics = {
 			-- NOTE: Make sure to `luacheck` is NOT installed to any paths
 			enable = true,
