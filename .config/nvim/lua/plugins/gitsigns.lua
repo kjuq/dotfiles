@@ -35,9 +35,6 @@ spec.keys = {
 	map('<Space>gs', 'n', function()
 		require('gitsigns').stage_buffer()
 	end, 'Stage buffer'),
-	map('<Space>gu', 'n', function()
-		require('gitsigns').undo_stage_hunk()
-	end, 'Undo stage hunk'),
 	map('<Space>gR', 'n', function()
 		require('gitsigns').reset_buffer()
 	end, 'Reset buffer'),
@@ -51,7 +48,7 @@ spec.keys = {
 		require('gitsigns').diffthis()
 	end, 'Diff this'),
 	map('<Space>gt', 'n', function()
-		require('gitsigns').toggle_deleted()
+		require('gitsigns').preview_hunk_inline()
 	end, 'Toggle deleted'),
 	map('<Space>gh', 'x', function()
 		require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })

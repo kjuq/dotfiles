@@ -45,7 +45,6 @@ spec.keys = {
 	end, 'Accept', { expr = true }),
 }
 
----@type copilot_config
 spec.opts = {
 	panel = {
 		enabled = false,

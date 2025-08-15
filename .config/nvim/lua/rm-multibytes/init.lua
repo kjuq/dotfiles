@@ -1,14 +1,14 @@
 -- TODO: Dot repeat of Visual mode is not implemented yet
 
----@alias kjuq.rm-multibytes.mapping table<string, string>
+---@alias kjuq.RmMultibytes.mapping table<string, string>
 
----@class kjuq.rm-multibytes.opts
+---@class kjuq.RmMultibytes.opts
 ---@field cmd string
----@field maps kjuq.rm-multibytes.mapping
+---@field maps kjuq.RmMultibytes.mapping
 
 local M = {}
 
----@type kjuq.rm-multibytes.mapping
+---@type kjuq.RmMultibytes.mapping
 local maps = {
 	-- [ [[、]] ] = [[,]],
 	-- [ [[。]] ] = [[.]],
@@ -241,7 +241,7 @@ local maps = {
 	[ [[㈨]] ] = [[(九)]],
 }
 
----@class kjuq.rm-multibytes.opts
+---@class kjuq.RmMultibytes.opts
 local opts = {
 	maps = maps,
 	cmd = 'KjuqRmMB',
@@ -255,7 +255,7 @@ local function substitute(pat, sub, start, stop)
 	vim.cmd(string.format([[ %d,%d s/%s/%s/ge ]], start, stop, pat, sub))
 end
 
----@param mappings kjuq.rm-multibytes.mapping
+---@param mappings kjuq.RmMultibytes.mapping
 ---@param start integer
 ---@param stop integer
 local function substitute_all(mappings, start, stop)
@@ -270,6 +270,7 @@ local function init()
 	vim.api.nvim_create_user_command(opts.cmd, function(args)
 		substitute_all(opts.maps, args.line1, args.line2)
 	end, { range = true })
+	---@diagnostic disable-next-line: duplicate-set-field
 	function _G.kjuq_rm_multibytes()
 		local lnum, col = vim.fn.line('.'), vim.fn.col('.') - 1
 		vim.cmd(string.format([[ '[,'] %s ]], opts.cmd))

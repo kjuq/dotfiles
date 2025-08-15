@@ -27,8 +27,6 @@ spec.cmd = {
 	'AvanteSwitchSelectorProvider',
 }
 
----@module 'avante'
----@type avante.Config
 spec.opts = {
 	provider = 'gemini',
 	auto_suggestions_provider = 'gemini',

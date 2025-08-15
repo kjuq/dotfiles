@@ -2,7 +2,7 @@
 
 local M = {}
 
----@class kjuq.rm-multibytes.opts
+---@class kjuq.JpSpacing.opts
 local opts = {
 	cmd = 'KjuqJpSpacing',
 }
@@ -32,6 +32,7 @@ local function init()
 	vim.api.nvim_create_user_command(opts.cmd, function(args)
 		substitute(args.line1, args.line2)
 	end, { range = true })
+	---@diagnostic disable-next-line: duplicate-set-field
 	function _G.kjuq_jp_spacing()
 		local lnum, col = vim.fn.line('.'), vim.fn.col('.') - 1
 		vim.cmd(string.format([[ '[,'] %s ]], opts.cmd))
@@ -54,6 +55,7 @@ function M.map()
 	end
 end
 
+---@param user_opts kjuq.JpSpacing.opts
 function M.setup(user_opts)
 	if user_opts then
 		opts = vim.tbl_deep_extend('force', opts, user_opts)

@@ -7,8 +7,6 @@ spec.event = 'VeryLazy'
 
 spec.cmd = { 'Noice' }
 
----@type NoiceConfig
----@diagnostic disable-next-line: missing-fields
 spec.opts = {
 	cmdline = {
 		format = {
