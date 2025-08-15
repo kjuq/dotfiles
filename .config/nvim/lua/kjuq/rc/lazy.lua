@@ -50,7 +50,6 @@ local opts = {
 require('lazy').setup('plugins', opts) -- to load multiple dir https://zenn.dev/sisi0808/articles/36ff184554ddd6
 
 local library = {
-	vim.fs.joinpath(vim.fn.stdpath('config'), '/lua'),
 	vim.fs.joinpath(vim.env.VIMRUNTIME, '/lua'),
 }
 for _, v in pairs(require('lazy.core.config').plugins) do
