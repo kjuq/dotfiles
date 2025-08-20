@@ -48,8 +48,8 @@ else if [ (uname) = Darwin ]
 end
 
 if command --search --quiet nvim
-    function Nvim --wraps='env NVIM_NO_USER_PLUGINS=1 nvim'
-        env NVIM_NO_USER_PLUGINS=1 nvim $argv
+    function Nvim --wraps='env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim'
+        env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim $argv
     end
     function nvimt --wraps='nvim +EditTodo'
         nvim +EditTodo $argv

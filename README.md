@@ -10,7 +10,7 @@ My ultimate dotfiles.
 			- I understood how Linux works perfectly
 	- Arch Linux
 - Window manager: i3
-- Terminal Emulator: Wezterm
+- Terminal Emulator: Kitty
 - Terminal Multiplexer: Tmux
 - Shell: Fish
 - Editor: Neovim
@@ -34,3 +34,19 @@ My ultimate dotfiles.
 ```bash
 ./main.sh backup
 ```
+
+---
+
+# Neovim Configuration
+
+## Environment variables
+
+- `KJUQ_NVIM_NO_EXT_PLUGINS`: Set any value to disable loading external plugins
+- `KJUQ_NVIM_LOAD_ALL_RUNTIME_PATH`: Add all external plugins path to LuaLS's library on start
+
+## Global variables
+
+- `_G.kjuq_colorscheme`
+- `_G.kjuq_colorscheme_transparent`
+- `_G.kjuq_auto_completion`
+- `_G.kjuq_auto_copilot_suggestion`

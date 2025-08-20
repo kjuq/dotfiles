@@ -1,4 +1,4 @@
-if os.getenv('NVIM_NO_USER_PLUGINS') == '1' then
+if os.getenv('KJUQ_NVIM_NO_EXT_PLUGINS') == '1' then
 	return
 end
 
