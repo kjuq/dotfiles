@@ -18,4 +18,13 @@ vim.keymap.set('n', 'grww', function()
 end, { desc = 'LSP: List folders of workspaceh' })
 vim.keymap.set('n', 'grq', vim.diagnostic.setqflist, { desc = 'LSP: Set diagnostics into qflist' })
 
+-- NOTE: There are few LSP which supports `workspace/diagnostic` though
+vim.keymap.set('n', 'grwq', vim.lsp.buf.workspace_diagnostics, { desc = 'LSP: Workspace diagnostics' })
+vim.keymap.set(
+	'n',
+	'grwo',
+	require('kjuq.utils.lsp').workspace_didopen,
+	{ desc = 'LSP: Send `textDocument/didOpen` for all files' }
+)
+
 vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })

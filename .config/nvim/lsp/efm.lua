@@ -5,15 +5,15 @@ local lua = {
 		formatCommand = 'stylua --search-parent-directories ${--range-start=charStart} ${--range-end=charEnd} -',
 		formatStdin = true,
 	},
-	{
-		lintSource = 'efm/luacheck',
-		lintCommand = 'luacheck --codes --no-color --globals vim -- -',
-		lintIgnoreExitCode = true,
-		lintStdin = true,
-		lintAfterOpen = true,
-		lintFormats = { '%.%#:%l:%c: (%t%n) %m' },
-		rootMarkers = { '.luacheckrc' },
-	},
+	-- {
+	-- 	lintSource = 'efm/luacheck',
+	-- 	lintCommand = 'luacheck --codes --no-color --globals vim -- -',
+	-- 	lintIgnoreExitCode = true,
+	-- 	lintStdin = true,
+	-- 	lintAfterOpen = true,
+	-- 	lintFormats = { '%.%#:%l:%c: (%t%n) %m' },
+	-- 	rootMarkers = { '.luacheckrc' },
+	-- },
 }
 local c = {
 	{

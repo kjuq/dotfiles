@@ -7,7 +7,10 @@ local settings = {
 		},
 		workspace = {
 			-- library = vim.api.nvim_get_runtime_file('lua', true), -- does not detect lazy-loaded plugins
-			library = { vim.fs.joinpath(vim.env.VIMRUNTIME, '/lua') },
+			library = {
+				vim.fs.joinpath(vim.env.VIMRUNTIME, '/lua'),
+				-- vim.fs.joinpath(vim.fn.stdpath('config'), '/lua'), -- NOTE: If `lazydev` is enabled comment-out this
+			},
 			checkThirdParty = 'disable',
 		},
 		format = {

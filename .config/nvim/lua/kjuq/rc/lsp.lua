@@ -19,6 +19,12 @@ local on_attach = function(ev)
 
 	-- Buffer-local keymaps
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
+	vim.keymap.set(
+		'n',
+		'grQ',
+		vim.lsp.buf.workspace_diagnostics,
+		{ desc = 'LSP: Workspace diagnostics', buffer = bufnr }
+	)
 	local vl_enabled = false
 	vim.keymap.set('n', '<M-l>', function()
 		vim.diagnostic.config({
@@ -55,7 +61,7 @@ local on_attach = function(ev)
 	-- end
 
 	-- NOTE: cutting edge
-	if vim.fn.has('nvim-0.12') and client:supports_method('textDocument/documentColor') then
+	if vim.fn.has('nvim-0.12') and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentColor) then
 		vim.lsp.document_color.enable(true, bufnr)
 	end
 end

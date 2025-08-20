@@ -49,16 +49,22 @@ local opts = {
 
 require('lazy').setup('plugins', opts) -- to load multiple dir https://zenn.dev/sisi0808/articles/36ff184554ddd6
 
--- local library = { vim.fs.joinpath(vim.env.VIMRUNTIME, '/lua') },
--- for _, v in pairs(require('lazy.core.config').plugins) do
--- 	library[#library + 1] = vim.fs.joinpath(v.dir, '/lua')
--- end
--- vim.lsp.config.lua_ls = {
--- 	settings = {
--- 		Lua = {
--- 			workspace = {
--- 				library = library,
--- 			},
--- 		},
--- 	},
--- }
+if not os.getenv('KJUQ_NVIM_LOAD_ALL_RUNTIME_PATH') then
+	return
+end
+local library = {
+	vim.fs.joinpath(vim.env.VIMRUNTIME, '/lua'),
+	vim.fs.joinpath(vim.fn.stdpath('config'), '/lua'),
+}
+for _, v in pairs(require('lazy.core.config').plugins) do
+	library[#library + 1] = vim.fs.joinpath(v.dir, '/lua')
+end
+vim.lsp.config.lua_ls = {
+	settings = {
+		Lua = {
+			workspace = {
+				library = library,
+			},
+		},
+	},
+}
