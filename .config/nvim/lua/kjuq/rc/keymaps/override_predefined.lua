@@ -11,8 +11,20 @@ vim.keymap.set('c', '<C-x>', function()
 end)
 
 -- recall history beginning with typed characters
-vim.keymap.set('c', '<C-p>', '<Up>')
-vim.keymap.set('c', '<C-n>', '<Down>')
+vim.keymap.set('c', '<C-p>', function()
+	if vim.fn.pumvisible() == 0 then -- when popup menu is hidden
+		return '<Up>'
+	else
+		return '<C-p>'
+	end
+end, { expr = true })
+vim.keymap.set('c', '<C-n>', function()
+	if vim.fn.pumvisible() == 0 then -- when popup menu is hidden
+		return '<Down>'
+	else
+		return '<C-n>'
+	end
+end, { expr = true })
 
 vim.keymap.set('i', '<C-k>', '<Nop>')
 vim.keymap.set('i', '<C-g><C-k>', '<C-k>')
