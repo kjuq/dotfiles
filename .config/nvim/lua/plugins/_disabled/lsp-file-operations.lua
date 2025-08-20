@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/antosha417/nvim-lsp-file-operations' }
 spec.event = { 'LspAttach' }

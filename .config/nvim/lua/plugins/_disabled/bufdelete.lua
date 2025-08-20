@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Bufdelete: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/famiu/bufdelete.nvim' }
 spec.cmd = { 'Bdelete', 'Bwipeout' }

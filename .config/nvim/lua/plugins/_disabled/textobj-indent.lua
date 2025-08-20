@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Textobj-indent: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/kana/vim-textobj-indent' }
 

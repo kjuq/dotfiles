@@ -1,5 +1,6 @@
 -- This plugin takes much time to be loaded. So I recommend to load lazily somehow
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/OXY2DEV/markview.nvim' }
 

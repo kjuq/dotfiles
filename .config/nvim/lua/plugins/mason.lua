@@ -1,5 +1,6 @@
 -- `MasonInstall pyright ruff bashls clangd lua-language-server markdown-oxide tinymist efm stylua luacheck uncrustify clang-format mypy shfmt`
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/williamboman/mason.nvim' }
 

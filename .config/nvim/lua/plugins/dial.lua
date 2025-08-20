@@ -2,6 +2,7 @@
 
 local map = require('kjuq.utils.lazy').generate_map('', 'Dial: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/monaqa/dial.nvim' }
 

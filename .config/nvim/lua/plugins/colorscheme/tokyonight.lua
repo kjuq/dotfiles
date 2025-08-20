@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/folke/tokyonight.nvim' }
 spec.lazy = not vim.tbl_contains({

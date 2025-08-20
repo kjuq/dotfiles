@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-neorg/neorg' }
 spec.build = ':Neorg sync-parsers'

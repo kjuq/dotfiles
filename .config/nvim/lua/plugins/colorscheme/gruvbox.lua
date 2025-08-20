@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/ellisonleao/gruvbox.nvim' }
 spec.lazy = _G.kjuq_colorscheme ~= 'gruvbox'

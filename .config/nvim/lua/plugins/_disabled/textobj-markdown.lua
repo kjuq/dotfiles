@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/coachshea/vim-textobj-markdown' }
 spec.ft = 'markdown'

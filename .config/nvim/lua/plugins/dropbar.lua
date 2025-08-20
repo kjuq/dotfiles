@@ -3,6 +3,7 @@ local enable_on_start = false
 ---@type string
 local dropbar_winbar = '%{%v:lua.dropbar()%}'
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/Bekaboo/dropbar.nvim' }
 

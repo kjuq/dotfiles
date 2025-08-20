@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/folke/persistence.nvim' }
 spec.event = 'VeryLazy'

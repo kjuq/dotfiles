@@ -1,6 +1,7 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Telescope: ')
 local tb = 'telescope.builtin'
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-telescope/telescope.nvim' }
 spec.cmd = { 'Telescope' }

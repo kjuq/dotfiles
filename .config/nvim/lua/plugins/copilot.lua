@@ -2,6 +2,7 @@
 
 local auto_trigger = _G.kjuq_auto_copilot_suggestion == nil and false or _G.kjuq_auto_copilot_suggestion
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/zbirenbaum/copilot.lua' }
 spec.cmd = 'Copilot'

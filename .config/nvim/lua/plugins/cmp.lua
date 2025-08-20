@@ -6,6 +6,7 @@ local autocompletes = {
 ---@type cmp.TriggerEvent[]|false
 local autocomplete = _G.kjuq_auto_completion and autocompletes.enable or autocompletes.disable
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/hrsh7th/nvim-cmp' }
 

@@ -1,5 +1,6 @@
 -- NOTE: Buggy when using with Japanese letters
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/cxwx/specs.nvim' }
 

@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/rmagatti/auto-session' }
 spec.lazy = false

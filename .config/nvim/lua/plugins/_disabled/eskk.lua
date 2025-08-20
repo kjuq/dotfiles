@@ -1,5 +1,6 @@
 local skk = require('kjuq.utils.skk')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/vim-skk/eskk.vim' }
 spec.keys = skk.mappings('Eskk: ', 'eskk:enable', 'eskk:disable', 'eskk:toggle')

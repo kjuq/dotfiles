@@ -1,6 +1,7 @@
 -- `set background=light` will load `kanagawa-lotus`
 -- Don't use `colorscheme kanagawa-lotus`
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/rebelot/kanagawa.nvim' }
 spec.lazy = not vim.tbl_contains({

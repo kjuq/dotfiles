@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
 spec.branch = 'main'

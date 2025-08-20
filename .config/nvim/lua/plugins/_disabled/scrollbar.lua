@@ -1,5 +1,6 @@
 local show_on_start = true
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/petertriho/nvim-scrollbar' }
 spec.event = show_on_start and { 'WinScrolled' } or {}

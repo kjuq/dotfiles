@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' }
 

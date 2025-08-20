@@ -1,5 +1,6 @@
 -- NOTE: `Cursor` of highlight group does not get applied
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/sphamba/smear-cursor.nvim' }
 spec.event = 'VeryLazy'

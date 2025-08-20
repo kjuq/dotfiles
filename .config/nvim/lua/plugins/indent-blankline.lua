@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/lukas-reineke/indent-blankline.nvim' }
 spec.main = 'ibl'

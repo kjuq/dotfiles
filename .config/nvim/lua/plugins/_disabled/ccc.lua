@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('<Space>a', 'CCC: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/uga-rosa/ccc.nvim' }
 spec.event = 'VeryLazy'

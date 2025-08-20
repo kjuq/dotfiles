@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/HiPhish/rainbow-delimiters.nvim' }
 spec.event = 'VeryLazy'

@@ -2,6 +2,7 @@
 
 local skk = require('kjuq.utils.skk')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/vim-skk/skkeleton' }
 spec.enabled = vim.fn.executable('deno') ~= 0

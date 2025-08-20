@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/andersevenrud/nvim_context_vt' }
 spec.event = 'VeryLazy'

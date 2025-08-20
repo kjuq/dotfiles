@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'TreeSJ: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/Wansmer/treesj' }
 

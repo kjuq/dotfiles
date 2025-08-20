@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Aerial: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/stevearc/aerial.nvim' }
 

@@ -2,6 +2,7 @@ local map = require('kjuq.utils.lazy').generate_map('', 'Neoscroll: ')
 
 local duration = 50
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/karb94/neoscroll.nvim' }
 

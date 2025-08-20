@@ -1,5 +1,6 @@
 local manual_mode = false
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/ahmedkhalf/project.nvim' }
 spec.name = 'project_nvim'

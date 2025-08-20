@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/levouh/tint.nvim' }
 spec.event = { 'FocusLost', 'WinLeave' } -- buggy on first launch of telescope

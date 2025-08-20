@@ -1,6 +1,7 @@
 -- necessary when
 -- local client -> local tmux -- ssh --> remote env
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/ibhagwan/smartyank.nvim' }
 spec.event = { 'BufReadPost' }

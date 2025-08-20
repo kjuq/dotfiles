@@ -1,6 +1,7 @@
 -- This plugin may be incompatible with nvim-cmp
 -- See: https://github.com/tzachar/highlight-undo.nvim/issues/2
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/tzachar/highlight-undo.nvim' }
 

@@ -3,6 +3,7 @@ if not _G.kjuq_colorscheme then
 	_G.kjuq_colorscheme = 'catppuccin'
 end
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = {}
 

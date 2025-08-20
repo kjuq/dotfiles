@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/chrishrb/gx.nvim' }
 spec.keys = { { 'gx', '<cmd>Browse<cr>', mode = { 'n', 'x' } } }

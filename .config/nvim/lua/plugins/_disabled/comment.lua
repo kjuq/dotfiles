@@ -1,5 +1,6 @@
 -- `gc` and `gb` are mapped by default
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/numToStr/Comment.nvim' }
 

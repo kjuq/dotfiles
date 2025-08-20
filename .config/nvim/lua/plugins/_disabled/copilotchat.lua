@@ -3,6 +3,7 @@
 
 -- authentication is automatically done when Copilot.lua is ready
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/CopilotC-Nvim/CopilotChat.nvim' }
 

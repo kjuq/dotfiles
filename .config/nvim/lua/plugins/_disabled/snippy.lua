@@ -1,5 +1,6 @@
 local expand_key = '<Tab>'
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/dcampos/nvim-snippy' }
 

@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Treesitter-unit: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/David-Kunz/treesitter-unit' }
 

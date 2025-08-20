@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Op-camelize: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/tyru/operator-camelize.vim' }
 

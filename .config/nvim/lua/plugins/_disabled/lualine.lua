@@ -2,6 +2,7 @@ local hidden = false
 
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-lualine/lualine.nvim' }
 spec.event = not hidden and 'VeryLazy' or {}

@@ -1,6 +1,7 @@
 -- NOTE: Make sure that `webkit2gtk' is installed
 -- `pacman -S webkit2gtk`
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/toppair/peek.nvim' }
 spec.build = 'deno task --quiet build:fast'

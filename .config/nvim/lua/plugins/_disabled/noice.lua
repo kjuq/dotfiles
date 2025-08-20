@@ -1,5 +1,6 @@
 ---@module 'noice'
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/folke/noice.nvim' }
 

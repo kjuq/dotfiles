@@ -1,5 +1,6 @@
 local map = require('kjuq.utils.lazy').generate_map('', 'Hlslens: ')
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/kevinhwang91/nvim-hlslens' }
 spec.event = { 'CmdlineEnter' }

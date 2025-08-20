@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/goolord/alpha-nvim' }
 spec.lazy = vim.fn.argc() > 0

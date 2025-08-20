@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/j-hui/fidget.nvim' }
 spec.event = { 'LspAttach' }

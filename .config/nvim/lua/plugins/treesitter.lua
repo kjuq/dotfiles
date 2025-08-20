@@ -1,6 +1,7 @@
 -- Do `:TSInstall all` manually
 -- rust and scala take much time to install
 
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-treesitter/nvim-treesitter' }
 spec.branch = 'main'

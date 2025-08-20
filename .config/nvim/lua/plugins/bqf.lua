@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/kevinhwang91/nvim-bqf' }
 spec.ft = 'qf'

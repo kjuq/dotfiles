@@ -1,3 +1,4 @@
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/winston0410/range-highlight.nvim' }
 spec.event = { 'CmdlineEnter' }
