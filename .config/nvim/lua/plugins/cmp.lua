@@ -137,7 +137,7 @@ spec.config = function()
 
 	local opts = {
 		performance = {
-			debounce = 0,
+			debounce = 1,
 		},
 		completion = {
 			autocomplete = autocomplete,

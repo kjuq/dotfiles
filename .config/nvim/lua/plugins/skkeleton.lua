@@ -57,6 +57,16 @@ spec.config = function()
 	vim.fn['skkeleton#register_keymap']('input', '<space>', '')
 	vim.fn['skkeleton#register_keymap']('henkan', 'x', '')
 
+	vim.api.nvim_create_autocmd({ 'User' }, {
+		pattern = 'skkeleton-enable-post',
+		group = vim.api.nvim_create_augroup('kjuq_skkeleton_space', {}),
+		callback = function()
+			vim.keymap.set('i', '<Space>', function()
+				vim.fn['skkeleton#handle']('handleKey', { key = { '<c-j>', '<space>' } })
+			end, { buffer = true, nowait = true })
+		end,
+	})
+
 	-- remove "<C-g>" from mapped_keys
 	local remove_mapped_keys = function(key)
 		local mapped_keys = {}
@@ -69,6 +79,27 @@ spec.config = function()
 	end
 	remove_mapped_keys('<C-g>')
 	remove_mapped_keys('<C-j>')
+
+	vim.api.nvim_create_autocmd({ 'User' }, {
+		pattern = 'skkeleton-enable-post',
+		group = vim.api.nvim_create_augroup('kjuq_skkeleton_disables_cmp', {}),
+		callback = function()
+			local ok, cmp = pcall(require, 'cmp')
+			if ok then
+				cmp.setup({ enabled = false })
+			end
+		end,
+	})
+	vim.api.nvim_create_autocmd({ 'User' }, {
+		pattern = 'skkeleton-disable-post',
+		group = vim.api.nvim_create_augroup('kjuq_skkeleton_enables_cmp', {}),
+		callback = function()
+			local ok, cmp = pcall(require, 'cmp')
+			if ok then
+				cmp.setup({ enabled = true })
+			end
+		end,
+	})
 end
 
 spec.specs = {
@@ -77,15 +108,15 @@ spec.specs = {
 
 spec.dependencies = {
 	'vim-denops/denops.vim',
-	-- {
-	-- 	'delphinus/skkeleton_indicator.nvim',
-	-- 	event = 'VeryLazy',
-	-- 	opts = {
-	-- 		alwaysShown = false,
-	-- 		fadeOutMs = 0,
-	-- 		zindex = 1,
-	-- 	},
-	-- },
+	{
+		'delphinus/skkeleton_indicator.nvim',
+		event = 'VeryLazy',
+		opts = {
+			alwaysShown = false,
+			fadeOutMs = 0,
+			zindex = 1,
+		},
+	},
 }
 
 return spec
