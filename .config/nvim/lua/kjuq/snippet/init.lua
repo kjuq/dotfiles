@@ -1,8 +1,6 @@
 ---@alias kjuq.snippet.word (fun():string)|string|string[]
 
----@class kjuq.snippet.snippet
----@field trigger string
----@field body kjuq.snippet.word
+---@alias kjuq.snippet.snippet kjuq.snippet.word[]
 
 local M = {}
 
@@ -25,11 +23,11 @@ end
 ---@return vim.v.completed_item[]
 local function generate_complete_items(snippets)
 	local cmpitems = {}
-	for _, snippet in ipairs(snippets) do
+	for trigger, body in pairs(snippets) do
 		cmpitems[#cmpitems + 1] = {
-			abbr = snippet.trigger,
+			abbr = trigger,
 			word = '',
-			info = create_word(snippet.body),
+			info = create_word(body),
 			empty = true,
 			dup = true,
 		}
@@ -53,9 +51,9 @@ end
 ---@return kjuq.snippet.snippet[]
 local function get_snips_by_ft(filetype)
 	local snips = {}
-	vim.list_extend(snips, snpft.all)
+	snips = vim.tbl_deep_extend('error', snips, snpft.all)
 	if filetype and snpft[filetype] then
-		vim.list_extend(snips, snpft[filetype])
+		snips = vim.tbl_deep_extend('error', snips, snpft[filetype])
 	end
 	return snips
 end
