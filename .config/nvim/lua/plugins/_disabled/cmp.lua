@@ -10,6 +10,8 @@ local autocomplete = _G.kjuq_auto_completion and autocompletes.enable or autocom
 ---@type LazySpec
 local spec = { 'https://github.com/hrsh7th/nvim-cmp' }
 
+spec.cond = false
+
 spec.event = { 'InsertEnter', 'CmdlineEnter' }
 
 spec.config = function()
