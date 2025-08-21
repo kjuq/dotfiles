@@ -37,7 +37,15 @@ My ultimate dotfiles.
 
 ---
 
-# Neovim Configuration
+# Neovim
+
+## Local configs
+
+Put files at `$XDG_CONFIG_HOME/nvim/lua/kjuq/rc/local/*`
+
+- `initpost.lua`
+- `initpre.lua`
+- `pluginpre.lua`
 
 ## Environment variables
 
