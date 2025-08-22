@@ -35,18 +35,21 @@ local function generate_complete_items(snippets)
 	return cmpitems
 end
 
-local snpft = {}
 -- Called by `setup()`
+---@return table<string, kjuq.snippet.word>
 local function generate_filetype_snippets()
-	snpft.all = require('kjuq.snippet.ft.all').snippets
+	local ftsnippets = {}
+	ftsnippets.all = require('kjuq.snippet.ft.all').snippets
 	local dirpath = vim.fn.stdpath('config') .. '/lua/kjuq/snippet/ft/'
 	for filename, fileattr in vim.fs.dir(dirpath) do
 		if fileattr == 'file' then
 			local filetype = filename:gsub('%.lua$', '')
-			snpft[filetype] = require('kjuq.snippet.ft.' .. filetype).snippets
+			ftsnippets[filetype] = require('kjuq.snippet.ft.' .. filetype).snippets
 		end
 	end
+	return ftsnippets
 end
+local snpft = generate_filetype_snippets()
 
 ---@return kjuq.snippet.snippet[]
 local function get_snips_by_ft(filetype)
