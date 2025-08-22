@@ -1,103 +1,34 @@
-local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Telescope: ')
-local tb = 'telescope.builtin'
-
 ---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/nvim-telescope/telescope.nvim' }
 spec.cmd = { 'Telescope' }
 
+local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Telescope: ')
 spec.keys = {
 	-- File pickers
-	map('fe', 'n', function()
-		require(tb).find_files({ hidden = true })
-	end, 'Files on current dir'),
-	map('fw', 'n', function()
-		require(tb).grep_string()
-	end, 'Word on the cursor'),
-	map('fg', 'n', function()
-		require(tb).live_grep()
-	end, 'Live grep'),
-	map('gf', 'n', function()
-		require(tb).git_files()
-	end, 'Git files'),
+	map('fe', 'n', '<Cmd>Telescope find_files hidden=true<CR>', 'Files on current dir'),
+	map('fw', 'n', '<Cmd>Telescope grep_string<CR>', 'Word on the cursor'),
+	map('fg', 'n', '<Cmd>Telescope live_grep<CR>', 'Live grep'),
+	map('fG', 'n', '<Cmd>Telescope git_files<CR>', 'Git files'),
 
 	-- Vim pickers
-	map('fH', 'n', function()
-		require(tb).oldfiles({ only_cwd = true })
-	end, 'MRU for current dir'),
-	map('fh', 'n', function()
-		require(tb).oldfiles({ only_cwd = false })
-	end, 'MRU for global files'),
-	map('fb', 'n', function()
-		require(tb).buffers()
-	end, 'Buffers'),
-	map('fi', 'n', function()
-		require(tb).help_tags()
-	end, 'Help tags'),
-	map('fm', 'n', function()
-		require(tb).marks()
-	end, 'Marks'),
-	map('fQ', 'n', function()
-		require(tb).quickfix()
-	end, 'Quickfix'),
-	map('fk', 'n', function()
-		require(tb).keymaps()
-	end, 'Keymaps'),
-	map('fn', 'n', function()
-		require(tb).current_buffer_fuzzy_find()
-	end, 'Fuzzy search'),
-	map('fc', 'n', function()
-		require(tb).command_history()
-	end, 'Commands history'),
-	map('fN', 'n', function()
-		require(tb).search_history()
-	end, 'Search history'),
-	map('fM', 'n', function()
-		require(tb).man_pages()
-	end, 'Man pages'),
-	map('fq', 'n', function()
-		require(tb).quickfixhistory()
-	end, 'Quickfix history'),
-	map('fL', 'n', function()
-		require(tb).loclist()
-	end, 'Loclist'),
-	map('fj', 'n', function()
-		require(tb).jumplist()
-	end, 'Jumplist'),
-	map('fC', 'n', function()
-		require(tb).highlights()
-	end, 'Highlights'),
-	map('fr', 'n', function()
-		require(tb).resume()
-	end, 'Resume finding'),
-
-	-- Neovim LSP pickers
-	-- using lspsaga's same function now
-	-- map("<KEYBIND>", "n", function() require(tb).lsp_references() end, "Lsp references"),
-	-- map("<KEYBIND>", "n", function() require(tb).lsp_incoming_calls() end, "Incoming calls"),
-	-- map("<KEYBIND>", "n", function() require(tb).lsp_outgoing_calls() end, "Outgoing calls"),
-	map('fd', 'n', function()
-		require(tb).diagnostics()
-	end, 'Diagnostics'),
-	map('fS', 'n', function()
-		require(tb).lsp_document_symbols()
-	end, 'Document symbols'),
-	map('fW', 'n', function()
-		require(tb).lsp_dynamic_workspace_symbols()
-	end, 'Doc Symbols'),
-	map('fI', 'n', function()
-		require(tb).lsp_implementations()
-	end, 'Implementations'),
-	map('fD', 'n', function()
-		require(tb).lsp_definitions()
-	end, 'Definitions'),
-	map('fT', 'n', function()
-		require(tb).lsp_type_definitions()
-	end, 'Type definitions'),
+	map('fH', 'n', '<Cmd>Telescope oldfiles only_cwd=true<CR>', 'MRU for current dir'),
+	map('fh', 'n', '<Cmd>Telescope oldfiles only_cwd=false<CR>', 'MRU for current dir'),
+	map('fb', 'n', '<Cmd>Telescope buffers<CR>', 'Buffers'),
+	map('fi', 'n', '<Cmd>Telescope help_tags<CR>', 'Help tags'),
+	map('fM', 'n', '<Cmd>Telescope marks<CR>', 'Marks'),
+	map('fk', 'n', '<Cmd>Telescope keymaps<CR>', 'Keymaps'),
+	map('fn', 'n', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', 'Fuzzy search'),
+	map('f:', 'n', '<Cmd>Telescope command_history<CR>', 'Commands history'),
+	map('f/', 'n', '<Cmd>Telescope search_history<CR>', 'Search history'),
+	map('fm', 'n', '<Cmd>Telescope man_pages<CR>', 'Man pages'),
+	map('fq', 'n', '<Cmd>Telescope quickfixhistory<CR>', 'Quickfix history'),
+	map('fC', 'n', '<Cmd>Telescope highlights<CR>', 'Highlights'),
+	map('fr', 'n', '<Cmd>Telescope resume<CR>', 'Resume finding'),
 
 	-- Lists pickers
 	map('fs', 'n', function()
-		require(tb).symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji', 'nerd' } })
+		require('telescope.builtin').symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji', 'nerd' } })
 	end, 'Symbols'),
 }
 
