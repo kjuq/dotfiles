@@ -2,8 +2,8 @@ local M = {}
 
 M.snippets = {
 	autocmd = {
-		[[vim.api.nvim_create_autocmd({ '${1:EVENTS}' }, {]],
-		[[	pattern = '${2:*}',]],
+		[[vim.api.nvim_create_autocmd({ '${1}' }, {]],
+		[[	pattern = '${2}',]],
 		[[	group = vim.api.nvim_create_augroup('${3}', {}),]],
 		[[	callback = function()${0}end]],
 		[[})]],
@@ -24,7 +24,7 @@ M.snippets = {
 		[[return spec]],
 	},
 	lazyKeymap = {
-		[[local map = require('kjuq.utils.lazy').generate_map('${1:KEY_PREFIX}', '${2:DESC_PREFIX}')]],
+		[[local map = require('kjuq.utils.lazy').generate_map('${1}', '${2}')]],
 		[[spec.keys = {${0}}]],
 	},
 	feedkeys = {
