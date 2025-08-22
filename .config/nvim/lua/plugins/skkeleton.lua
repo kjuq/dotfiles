@@ -21,7 +21,7 @@ spec.config = function()
 
 	vim.fn['skkeleton#config']({
 		eggLikeNewline = false,
-		setUndoPoint = false,
+		setUndoPoint = true,
 		showCandidatesCount = 3,
 		selectCandidateKeys = 'arstnei',
 		globalDictionaries = {
@@ -82,8 +82,13 @@ spec.config = function()
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = 'skkeleton-enable-post',
-		group = vim.api.nvim_create_augroup('kjuq_skkeleton_disables_cmp', {}),
-		callback = function()
+		group = vim.api.nvim_create_augroup('kjuq_skkeleton_disables_completion', {}),
+		callback = function(ev)
+			for _, client in ipairs(vim.lsp.get_clients()) do
+				if client:supports_method('textDocument/completion', ev.buf) then
+					vim.lsp.completion.enable(false, client.id, ev.buf)
+				end
+			end
 			local ok, cmp = pcall(require, 'cmp')
 			if ok then
 				cmp.setup({ enabled = false })
@@ -92,8 +97,13 @@ spec.config = function()
 	})
 	vim.api.nvim_create_autocmd({ 'User' }, {
 		pattern = 'skkeleton-disable-post',
-		group = vim.api.nvim_create_augroup('kjuq_skkeleton_enables_cmp', {}),
-		callback = function()
+		group = vim.api.nvim_create_augroup('kjuq_skkeleton_enables_completion', {}),
+		callback = function(ev)
+			for _, client in ipairs(vim.lsp.get_clients()) do
+				if client:supports_method('textDocument/completion', ev.buf) then
+					vim.lsp.completion.enable(true, client.id, ev.buf)
+				end
+			end
 			local ok, cmp = pcall(require, 'cmp')
 			if ok then
 				cmp.setup({ enabled = true })
