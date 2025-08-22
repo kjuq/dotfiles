@@ -1,4 +1,5 @@
 ---@module 'snacks'
+---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/folke/snacks.nvim' }
 
