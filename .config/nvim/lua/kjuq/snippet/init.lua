@@ -90,6 +90,43 @@ function _G.kjuq_complete_snippets(findstart, base)
 	end
 end
 
+function M.select()
+	local colpos = vim.api.nvim_win_get_cursor(0)[2] + 1 -- zero-indexed
+	local linesize = #vim.api.nvim_get_current_line()
+	local mode = vim.api.nvim_get_mode().mode:sub(1, 1)
+	local snippets = get_buf_snips()
+	local candidates = {}
+	for trigger, _ in pairs(snippets) do
+		candidates[#candidates + 1] = trigger
+	end
+	vim.ui.select(candidates, {
+		prompt = 'Select snippet:',
+		format_item = function(item)
+			return item
+		end,
+	}, function(choice)
+		local word = choice and create_word(snippets[choice]) or nil
+		if not word then
+			if mode == 'n' then
+				return
+			end
+			local opts = (linesize < colpos) and { bang = true } or {}
+			vim.cmd.startinsert(opts)
+			return
+		end
+		-- Expand a snippet
+		if linesize < colpos then -- At the end of a line
+			vim.cmd.startinsert({ bang = true })
+		else
+			if colpos > 1 then -- At the middle of a line
+				vim.api.nvim_feedkeys('l', 'x', true)
+			end
+			vim.cmd.startinsert()
+		end
+		vim.snippet.expand(word)
+	end)
+end
+
 ---@class kjuq.snippet.config
 ---@field key string
 
