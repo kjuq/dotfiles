@@ -1,1 +1,0 @@
-require('kjuq.snippet').setup()
