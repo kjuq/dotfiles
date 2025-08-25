@@ -51,7 +51,7 @@ spec.opts = {
 			secret = { 'pass', 'openai.com/api_key' },
 		},
 		copilot = {
-			disable = true,
+			disable = false,
 			-- Secret is automatically fetched with copilot.vim at `$XDG_CONFIG_HOME/github-copilot/hosts.json`
 		},
 		googleai = {
@@ -59,8 +59,8 @@ spec.opts = {
 		},
 	},
 
-	default_chat_agent = 'Gemini-Plain-JP',
-	default_command_agent = 'Gemini-Plain-JP',
+	default_chat_agent = 'ChatCopilot',
+	default_command_agent = 'CodeCopilot',
 
 	agents = {
 		{
@@ -94,6 +94,22 @@ spec.opts = {
 			command = false,
 			model = { model = 'gemini-2.5-pro' },
 			system_prompt = require('kjuq.utils.ai').coding_prompt('English'),
+		},
+		{
+			name = 'Chat-Gemini-Code-EN',
+			provider = 'googleai',
+			chat = true,
+			command = false,
+			model = { model = 'gemini-2.5-pro' },
+			system_prompt = require('kjuq.utils.ai').coding_prompt('English'),
+		},
+		{
+			name = 'Copilot-Plain-JP',
+			provider = 'copilot',
+			chat = true,
+			command = true,
+			model = { model = 'gemini-2.5-pro' },
+			system_prompt = require('kjuq.utils.ai').plain_prompt('Japanese'),
 		},
 		-- Disable all builtin agents
 		{ name = 'ChatGPT4o', disable = true },
@@ -146,7 +162,6 @@ spec.opts = {
 		Translator = function(gp, params)
 			local chat_system_prompt = 'You are a Translator, please translate between English and Japanese.'
 			gp.cmd.ChatNew(params, chat_system_prompt)
-
 			-- -- you can also create a chat with a specific fixed agent like this:
 			-- local agent = gp.get_chat_agent("ChatGPT4o")
 			-- gp.cmd.ChatNew(params, chat_system_prompt, agent)
