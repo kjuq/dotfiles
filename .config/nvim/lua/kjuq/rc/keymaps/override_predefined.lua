@@ -60,3 +60,15 @@ vim.keymap.set('n', 'gt', vim.cmd.bnext, { silent = true, desc = 'Go to the next
 vim.keymap.set('n', 'gT', vim.cmd.bprevious, { silent = true, desc = 'Go to the previous buffer' })
 vim.keymap.set('n', '<C-Tab>', 'gt', { remap = true, silent = true, desc = 'Alias for `gt`' })
 vim.keymap.set('n', '<C-S-Tab>', 'gT', { remap = true, silent = true, desc = 'Alias for `gT`' })
+
+-- Asterisk-remix
+-- stylua: ignore start
+vim.keymap.set('n', '*', function() require('asterisk-remix').normal_search('*') end)
+vim.keymap.set('n', '#', function() require('asterisk-remix').normal_search('#') end)
+vim.keymap.set('n', 'g*', function() require('asterisk-remix').normal_search('g*') end)
+vim.keymap.set('n', 'g#', function() require('asterisk-remix').normal_search('g#') end)
+vim.keymap.set('x', '*', function() return require('asterisk-remix').visual_search('*') end, { expr = true })
+vim.keymap.set('x', '#', function() return require('asterisk-remix').visual_search('#') end, { expr = true })
+vim.keymap.set('n', '<Space>*', function() return require('asterisk-remix').operator_search('*') end, { expr = true })
+vim.keymap.set('n', '<Space>#', function() return require('asterisk-remix').operator_search('#') end, { expr = true })
+-- stylua: ignore end
