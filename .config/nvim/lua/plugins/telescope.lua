@@ -12,21 +12,19 @@ spec.keys = {
 	map('fG', 'n', '<Cmd>Telescope git_files<CR>', 'Git files'),
 
 	-- Vim pickers
-	map('fH', 'n', '<Cmd>Telescope oldfiles only_cwd=true<CR>', 'MRU for current dir'),
-	map('fh', 'n', '<Cmd>Telescope oldfiles only_cwd=false<CR>', 'MRU for current dir'),
-	map('fb', 'n', '<Cmd>Telescope buffers<CR>', 'Buffers'),
-	map('fi', 'n', '<Cmd>Telescope help_tags<CR>', 'Help tags'),
-	map('fM', 'n', '<Cmd>Telescope marks<CR>', 'Marks'),
-	map('fk', 'n', '<Cmd>Telescope keymaps<CR>', 'Keymaps'),
-	map('fn', 'n', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', 'Fuzzy search'),
-	map('f:', 'n', '<Cmd>Telescope command_history<CR>', 'Commands history'),
-	map('f/', 'n', '<Cmd>Telescope search_history<CR>', 'Search history'),
-	map('fm', 'n', '<Cmd>Telescope man_pages<CR>', 'Man pages'),
-	map('fq', 'n', '<Cmd>Telescope quickfixhistory<CR>', 'Quickfix history'),
-	map('fC', 'n', '<Cmd>Telescope highlights<CR>', 'Highlights'),
+	map('fh', 'n', '<Cmd>Telescope oldfiles only_cwd=true<CR>', 'MRU for current dir'),
+	map('fH', 'n', '<Cmd>Telescope oldfiles only_cwd=false<CR>', 'MRU for current dir'),
 	map('fr', 'n', '<Cmd>Telescope resume<CR>', 'Resume finding'),
 
-	-- Lists pickers
+	-- NOTE: Probably can make my own pickers
+	map('fC', 'n', '<Cmd>Telescope highlights<CR>', 'Highlights'),
+	map('fm', 'n', '<Cmd>Telescope man_pages<CR>', 'Man pages'),
+	map('f:', 'n', '<Cmd>Telescope command_history<CR>', 'Commands history'),
+	map('f/', 'n', '<Cmd>Telescope search_history<CR>', 'Search history'),
+	map('fi', 'n', '<Cmd>Telescope help_tags<CR>', 'Help tags'),
+	map('fb', 'n', '<Cmd>Telescope buffers<CR>', 'Buffers'),
+	map('fk', 'n', '<Cmd>Telescope keymaps<CR>', 'Keymaps'),
+	map('fq', 'n', '<Cmd>Telescope quickfixhistory<CR>', 'Quickfix history'),
 	map('fs', 'n', function()
 		require('telescope.builtin').symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji', 'nerd' } })
 	end, 'Symbols'),
