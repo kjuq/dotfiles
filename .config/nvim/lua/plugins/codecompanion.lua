@@ -12,7 +12,7 @@ spec.cmd = {
 local pfx = '<Space>p'
 
 -- adopters
-local pro = 'gemini_pro'
+local pro = 'copilot'
 local default_adapter = pro
 
 -- NOTE: This article shows usecases
@@ -61,7 +61,7 @@ spec.opts = {
 			return require('codecompanion.adapters').extend('copilot', {
 				schema = {
 					model = {
-						default = 'claude-3.5-sonnet',
+						default = 'gemini-2.5-pro',
 					},
 				},
 			})
@@ -178,7 +178,6 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('codecompanion').setup(opts)
-
 	vim.api.nvim_create_autocmd('FileType', {
 		pattern = 'codecompanion',
 		group = vim.api.nvim_create_augroup('kjuq_codecompanion_keymap_for_close', {}),
@@ -190,7 +189,6 @@ spec.config = function(_, opts)
 			toggle_map('<C-S-Tab>')
 		end,
 	})
-
 	vim.api.nvim_create_autocmd('User', {
 		pattern = 'CodeCompanionChatSubmitted',
 		group = vim.api.nvim_create_augroup('kjuq_codecompanion_submitted', {}),
@@ -205,88 +203,11 @@ spec.config = function(_, opts)
 end
 
 spec.specs = {
-	'nvim-lua/plenary.nvim',
-	'nvim-treesitter/nvim-treesitter',
-}
-
-spec.dependencies = {
-	{
-		'https://github.com/j-hui/fidget.nvim',
-		config = function(_, opts)
-			-- https://github.com/olimorris/codecompanion.nvim/discussions/813#discussioncomment-12031954
-			local progress = require('fidget.progress')
-			local handles = {}
-
-			local function store_progress_handle(id, handle)
-				handles[id] = handle
-			end
-
-			local function pop_progress_handle(id)
-				local handle = handles[id]
-				handles[id] = nil
-				return handle
-			end
-
-			local function llm_role_title(adapter)
-				local parts = {}
-				table.insert(parts, adapter.formatted_name)
-				if adapter.model and adapter.model ~= '' then
-					table.insert(parts, '(' .. adapter.model .. ')')
-				end
-				return table.concat(parts, ' ')
-			end
-
-			local function create_progress_handle(request)
-				return progress.handle.create({
-					title = ' Requesting assistance (' .. request.data.strategy .. ')',
-					message = 'In progress...',
-					lsp_client = {
-						name = llm_role_title(request.data.adapter),
-					},
-				})
-			end
-
-			local function report_exit_status(handle, request)
-				if request.data.status == 'success' then
-					handle.message = 'Completed'
-				elseif request.data.status == 'error' then
-					handle.message = ' Error'
-				else
-					handle.message = '󰜺 Cancelled'
-				end
-			end
-
-			local function init()
-				local group = vim.api.nvim_create_augroup('CodeCompanionFidgetHooks', {})
-				vim.api.nvim_create_autocmd({ 'User' }, {
-					pattern = 'CodeCompanionRequestStarted',
-					group = group,
-					callback = function(request)
-						local handle = create_progress_handle(request)
-						store_progress_handle(request.data.id, handle)
-					end,
-				})
-				vim.api.nvim_create_autocmd({ 'User' }, {
-					pattern = 'CodeCompanionRequestFinished',
-					group = group,
-					callback = function(request)
-						local handle = pop_progress_handle(request.data.id)
-						if handle then
-							report_exit_status(handle, request)
-							handle:finish()
-						end
-					end,
-				})
-			end
-
-			init()
-			require('fidget').setup(opts)
-		end,
-	},
+	{'nvim-lua/plenary.nvim'},
 	{
 		'https://github.com/ravitemer/codecompanion-history.nvim',
 		keys = {
-			{ '<Space>ph', mode = 'n', '<Cmd>CodeCompanionHistory<CR>' },
+			{ '<Space>ph', mode = 'n', '<Cmd>CodeCompanionHistory<CR>', desc = 'CodeCompanion-history: Open' },
 		},
 		config = function()
 			local plugopts = {
@@ -316,11 +237,9 @@ spec.dependencies = {
 				delete_on_clearing_chat = false, -- When chat is cleared with `gx` delete the chat from history
 				dir_to_save = vim.fn.stdpath('data') .. '/codecompanion-history', -- Directory path to save the chats
 				enable_logging = false, -- Enable detailed logging for history extension
-
 				summary = { -- Summary system
 					create_summary_keymap = '<Nop>', -- Keymap to generate summary for current chat (default: "gcs")
 					browse_summaries_keymap = '<Nop>', -- Keymap to browse summaries (default: "gbs")
-
 					generation_opts = {
 						adapter = nil, -- defaults to current chat adapter
 						model = nil, -- defaults to current chat model
@@ -331,7 +250,6 @@ spec.dependencies = {
 						format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
 					},
 				},
-
 				memory = { -- Memory system (requires VectorCode CLI)
 					auto_create_memories_on_summary_generation = true, -- Automatically index summaries when they are generated
 					vectorcode_exe = 'vectorcode', -- Path to the VectorCode executable
@@ -342,12 +260,80 @@ spec.dependencies = {
 					index_on_startup = false, -- Index existing memories on startup (needs VectorCode 0.6.12+ for efficiency)
 				},
 			}
-
 			local opts = spec.opts --[[@ as table]]
 			opts = vim.tbl_deep_extend('error', opts, {
 				extensions = { history = { enabled = true, opts = plugopts } },
 			})
 			require('codecompanion').setup(opts)
+		end,
+	},
+}
+
+spec.dependencies = {
+	{
+		'https://github.com/j-hui/fidget.nvim',
+		config = function(_, opts)
+			-- https://github.com/olimorris/codecompanion.nvim/discussions/813#discussioncomment-12031954
+			local progress = require('fidget.progress')
+			local handles = {}
+			local function store_progress_handle(id, handle)
+				handles[id] = handle
+			end
+			local function pop_progress_handle(id)
+				local handle = handles[id]
+				handles[id] = nil
+				return handle
+			end
+			local function llm_role_title(adapter)
+				local parts = {}
+				table.insert(parts, adapter.formatted_name)
+				if adapter.model and adapter.model ~= '' then
+					table.insert(parts, '(' .. adapter.model .. ')')
+				end
+				return table.concat(parts, ' ')
+			end
+			local function create_progress_handle(request)
+				return progress.handle.create({
+					title = ' Requesting assistance (' .. request.data.strategy .. ')',
+					message = 'In progress...',
+					lsp_client = {
+						name = llm_role_title(request.data.adapter),
+					},
+				})
+			end
+			local function report_exit_status(handle, request)
+				if request.data.status == 'success' then
+					handle.message = 'Completed'
+				elseif request.data.status == 'error' then
+					handle.message = ' Error'
+				else
+					handle.message = '󰜺 Cancelled'
+				end
+			end
+			local function init()
+				local group = vim.api.nvim_create_augroup('CodeCompanionFidgetHooks', {})
+				vim.api.nvim_create_autocmd({ 'User' }, {
+					pattern = 'CodeCompanionRequestStarted',
+					group = group,
+					callback = function(request)
+						local handle = create_progress_handle(request)
+						store_progress_handle(request.data.id, handle)
+					end,
+				})
+				vim.api.nvim_create_autocmd({ 'User' }, {
+					pattern = 'CodeCompanionRequestFinished',
+					group = group,
+					callback = function(request)
+						local handle = pop_progress_handle(request.data.id)
+						if handle then
+							report_exit_status(handle, request)
+							handle:finish()
+						end
+					end,
+				})
+			end
+			init()
+			require('fidget').setup(opts)
 		end,
 	},
 }
