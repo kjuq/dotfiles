@@ -30,21 +30,15 @@ function trea --wraps='tree -a'
     tree -a $argv
 end
 
-if command --search --quiet eza
-    function ls --wraps='eza --group-directories-first --icons --classify'
-        command eza --group-directories-first --icons --classify $argv
-    end
-    function tree --wraps='ls --tree --level=3 --ignore-glob "node_modules|.git|.cache"'
-        ls --tree --level=3 --ignore-glob "node_modules|.git|.cache" $argv
-    end
-else if [ (uname) = Linux ]
-    function ls --wraps='command ls --color=auto --classify --group-directories-first'
-        command ls --color=auto --classify --group-directories-first $argv
-    end
-else if [ (uname) = Darwin ]
-    function ls --wraps='ls -GF'
-        command ls -GF $argv
-    end
+switch $(uname)
+    case Linux
+        function ls --wraps='command ls --color=auto --classify --group-directories-first'
+            command ls --color=auto --classify --group-directories-first $argv
+        end
+    case Darwin
+        function ls --wraps='ls -GF'
+            ls -GF $argv
+        end
 end
 
 if command --search --quiet nvim

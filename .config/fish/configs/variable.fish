@@ -21,7 +21,6 @@ if [ -n "$TERMUX_VERSION" ]
 else
     set --export KJUQ_DOCS "$HOME/kjuq/docs"
 end
-set --export KJUQ_TMUX_ESCAPE "$XDG_STATE_HOME/kjuq_tmuxescape"
 
 # Password-store
 if [ -n "$TERMUX_VERSION" ]
