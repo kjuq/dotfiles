@@ -167,6 +167,18 @@ local on_attach = function(ev)
 	if client:supports_method(vim.lsp.protocol.Methods.completionItem_resolve) then
 		enable_completion_documentation(client, bufnr)
 	end
+
+	vim.keymap.set('i', '<C-a>', vim.lsp.inline_completion.get, { desc = 'Get the current inline completion' })
+	if client:supports_method('textDocument/inlineCompletion') then
+		-- https://github.com/neovim/nvim-lspconfig/pull/4029
+		-- To sign-in `:LspCopilotSignIn`
+		vim.keymap.set('n', '<Space>ti', function()
+			vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+		end, { buffer = bufnr, desc = 'Enable inline completion' })
+		vim.keymap.set('n', '<Space>tI', function()
+			vim.lsp.inline_completion.enable(false, { bufnr = bufnr })
+		end, { buffer = bufnr, desc = 'Disable inline completion' })
+	end
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
