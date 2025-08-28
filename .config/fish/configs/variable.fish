@@ -16,16 +16,16 @@ set --export MANPAGER nvim +Man!
 
 # Kjuq created
 if [ -n "$TERMUX_VERSION" ]
-    set --export KJUQ_DOCS "$HOME/storage/shared/kjuq/docs"
+	set --export KJUQ_DOCS "$HOME/storage/shared/kjuq/docs"
 else
-    set --export KJUQ_DOCS "$HOME/kjuq/docs"
+	set --export KJUQ_DOCS "$HOME/kjuq/docs"
 end
 
 # Password-store
 if [ -n "$TERMUX_VERSION" ]
-    set --export PASSWORD_STORE_DIR "$HOME/storage/shared/kjuq/password-store"
+	set --export PASSWORD_STORE_DIR "$HOME/storage/shared/kjuq/password-store"
 else
-    set --export PASSWORD_STORE_DIR "$HOME/kjuq/password-store"
+	set --export PASSWORD_STORE_DIR "$HOME/kjuq/password-store"
 end
 
 # ghq
@@ -129,10 +129,10 @@ set --export QT_QPA_PLATFORMTHEME qt5ct
 
 # Xauthority
 if set --query XDG_RUNTIME_DIR
-    set --export XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
+	set --export XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 end
 
 # SSH-agent
 if command --search --quiet ssh-agent
-    eval "$(ssh-agent -c)" >/dev/null
+	eval "$(ssh-agent -c)" >/dev/null
 end
