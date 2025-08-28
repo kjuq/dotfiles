@@ -13,7 +13,6 @@ set --export EDITOR nvim
 set --export SUDO_EDITOR vim
 set --export VISUAL nvim
 set --export MANPAGER nvim +Man!
-set --export TERMINAL alacritty --command
 
 # Kjuq created
 if [ -n "$TERMUX_VERSION" ]
