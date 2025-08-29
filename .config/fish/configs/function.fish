@@ -29,15 +29,7 @@ function fish_prompt
 	set -q fish_color_status; or set -g fish_color_status red
 
 	# Color the prompt differently when we're root
-	set fish_color_cwd normal
-	set -l color_cwd $fish_color_cwd
 	set -l suffix '❯'
-	if functions -q fish_is_root_user; and fish_is_root_user
-		if set -q fish_color_cwd_root
-			set color_cwd $fish_color_cwd_root
-		end
-		set suffix '#'
-	end
 
 	# Write pipestatus
 	# If the status was carried over (if no command is issued or if `set` leaves the status untouched), don't bold it.
@@ -56,8 +48,10 @@ function fish_prompt
 		set user_and_hostname " $USER@$hostname"
 	end
 
-	# Git dirty symbol
+	# Git branch and dirty symbol
+	set --local git_vcs_prompt ''
 	if not string match -q 'fuse*' -- $(df --output=fstype . | tail -n1 ) # if cwd is NOT mounted as fuse
+		set git_vcs_prompt $(fish_vcs_prompt | tr -d '()')
 		set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)
 		set --local is_git_dirty (
 		if command git rev-list --max-count=1 HEAD -- >/dev/null 2>&1;
@@ -76,8 +70,8 @@ function fish_prompt
 	end
 
 	echo -n -s \
-	$(set_color $color_cwd) (dirs) \
-	$(set_color brblack) $(fish_vcs_prompt | tr -d '()') \
+	$(set_color normal) $(dirs) \
+	$(set_color brblack) "$git_vcs_prompt" \
 	$(set_color brblack) "$git_dirty_symbol" \
 	$(set_color brblack) "$user_and_hostname" \
 	" $prompt_status" \
