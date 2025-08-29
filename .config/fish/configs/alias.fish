@@ -26,18 +26,21 @@ end
 function l1 --wraps='ls -1'
 	ls -1 $argv
 end
-function trea --wraps='tree -a'
-	tree -a $argv
-end
 
 switch $(uname)
 case Linux
-	function ls --wraps='command ls --color=auto --classify --group-directories-first'
+	function ls
 		command ls --color=auto --classify --group-directories-first $argv
 	end
 case Darwin
-	function ls --wraps='ls -GF'
+	function ls
 		ls -GF $argv
+	end
+end
+
+if command --search --quiet eza
+	function ls --wraps='eza'
+		command eza --icons --classify --group-directories-first $argv
 	end
 end
 
