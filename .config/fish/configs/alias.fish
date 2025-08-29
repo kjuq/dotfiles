@@ -38,12 +38,6 @@ case Darwin
 	end
 end
 
-if command --search --quiet eza
-	function ls --wraps='eza'
-		command eza --icons --classify --group-directories-first $argv
-	end
-end
-
 if command --search --quiet nvim
 	function Nvim --wraps='env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim'
 		env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim $argv
