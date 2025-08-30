@@ -18,10 +18,10 @@ function ........ --wraps='cd ../../../../../../..'
 end
 
 function la --wraps='ls --all'
-	ls --all $argv
+	ls --almost-all $argv
 end
 function lla --wraps='ll --all'
-	ll --all $argv
+	ll --almost-all $argv
 end
 function l1 --wraps='ls -1'
 	ls -1 $argv
@@ -35,6 +35,12 @@ case Linux
 case Darwin
 	function ls
 		ls -GF $argv
+	end
+end
+
+if command --search --quiet lsd
+	function ls --wraps='lsd'
+		lsd --group-directories-first --classify $argv
 	end
 end
 
