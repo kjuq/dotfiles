@@ -12,6 +12,9 @@ function _G.kjuq_stl_searchcount()
 	local maxcount = 999
 	local timeout = 500
 	local result = vim.fn.searchcount({ maxcount = maxcount, timeout = timeout })
+	if not (result.total or result.maxcount) then
+		return
+	end
 	local denominator = math.min(result.total, result.maxcount)
 	return string.format('%d/%d ', result.current, denominator)
 end
