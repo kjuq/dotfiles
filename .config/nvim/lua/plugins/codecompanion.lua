@@ -57,35 +57,37 @@ spec.opts = {
 		send_code = true,
 	},
 	adapters = {
-		copilot = function()
-			return require('codecompanion.adapters').extend('copilot', {
-				schema = {
-					model = {
-						default = 'gemini-2.5-pro',
+		http = {
+			copilot = function()
+				return require('codecompanion.adapters').extend('copilot', {
+					schema = {
+						model = {
+							default = 'gemini-2.5-pro',
+						},
 					},
-				},
-			})
-		end,
-		gemini_pro = function()
-			return require('codecompanion.adapters').extend('gemini', {
-				name = 'gemini_pro',
-				formatted_name = 'Gemini Pro',
-				env = { api_key = 'cmd:pass google.com/gemini_api_key' },
-				schema = {
-					model = { default = 'gemini-2.5-pro' },
-				},
-			})
-		end,
-		gemini_flash_lite = function()
-			return require('codecompanion.adapters').extend('gemini', {
-				name = 'gemini_flash_lite',
-				formatted_name = 'Gemini Flash-Lite',
-				env = { api_key = 'cmd:pass google.com/gemini_api_key' },
-				schema = {
-					model = { default = 'gemini-2.5-flash-lite' },
-				},
-			})
-		end,
+				})
+			end,
+			gemini_pro = function()
+				return require('codecompanion.adapters').extend('gemini', {
+					name = 'gemini_pro',
+					formatted_name = 'Gemini Pro',
+					env = { api_key = 'cmd:pass google.com/gemini_api_key' },
+					schema = {
+						model = { default = 'gemini-2.5-pro' },
+					},
+				})
+			end,
+			gemini_flash_lite = function()
+				return require('codecompanion.adapters').extend('gemini', {
+					name = 'gemini_flash_lite',
+					formatted_name = 'Gemini Flash-Lite',
+					env = { api_key = 'cmd:pass google.com/gemini_api_key' },
+					schema = {
+						model = { default = 'gemini-2.5-flash-lite' },
+					},
+				})
+			end,
+		},
 	},
 	strategies = {
 		chat = {
@@ -203,7 +205,7 @@ spec.config = function(_, opts)
 end
 
 spec.specs = {
-	{'nvim-lua/plenary.nvim'},
+	{ 'nvim-lua/plenary.nvim' },
 	{
 		'https://github.com/ravitemer/codecompanion-history.nvim',
 		keys = {
