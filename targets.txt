@@ -55,7 +55,7 @@ $XDG_CONFIG_HOME/ruff/ruff.toml
 $XDG_CONFIG_HOME/solargraph/config.yml
 $XDG_CONFIG_HOME/spotifyd/spotifyd.conf
 $XDG_CONFIG_HOME/stylua/stylua.toml
-$XDG_CONFIG_HOME/sway/config
+$XDG_CONFIG_HOME/sway
 $XDG_CONFIG_HOME/Thunar/accels.scm
 $XDG_CONFIG_HOME/tmux/tmux.conf
 $XDG_CONFIG_HOME/tmux/scripts
