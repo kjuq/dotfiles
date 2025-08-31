@@ -1,1 +1,14 @@
-include ./i3config
+include $XDG_CONFIG_HOME/i3/config
+
+input type:pointer {
+	left_handed disabled
+	tap disabled
+	natural_scroll disabled
+	dwt enabled
+	accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+	pointer_accel 0.0 # set mouse sensitivity (between -1 and 1)
+}
+input type:keyboard {
+	repeat_rate 30
+	repeat_delay 200
+}
