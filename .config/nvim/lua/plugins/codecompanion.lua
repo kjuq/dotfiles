@@ -150,9 +150,6 @@ spec.opts = {
 				system_prompt = {
 					modes = { n = '<Nop>' },
 				},
-				auto_tool_mode = {
-					modes = { n = '<Nop>' },
-				},
 				goto_file_under_cursor = {
 					modes = { n = '<Nop>' },
 				},
