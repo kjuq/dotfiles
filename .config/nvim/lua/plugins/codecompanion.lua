@@ -203,6 +203,9 @@ end
 
 spec.specs = {
 	{ 'nvim-lua/plenary.nvim' },
+}
+
+spec.dependencies = {
 	{
 		'https://github.com/ravitemer/codecompanion-history.nvim',
 		keys = {
@@ -266,9 +269,6 @@ spec.specs = {
 			require('codecompanion').setup(opts)
 		end,
 	},
-}
-
-spec.dependencies = {
 	{
 		'https://github.com/j-hui/fidget.nvim',
 		config = function(_, opts)

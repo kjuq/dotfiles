@@ -1,3 +1,7 @@
+if [ -n $_KJUQ_FISH_CONFIG_LOADED ]
+	return
+end
+
 # Reset fish_user_paths
 set -eU fish_user_paths
 

@@ -1,3 +1,7 @@
+if [ -n $_KJUQ_FISH_CONFIG_LOADED ]
+	return
+end
+
 # XDG Base Directories (NEED TO LOAD FIRST!!!!)
 set --query XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME "$HOME/.config"
 set --query XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"

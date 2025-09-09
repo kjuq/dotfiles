@@ -20,14 +20,4 @@ if not os.getenv('SSH_TTY') then
 	return
 end
 
-vim.g.clipboard = {
-	name = 'OSC 52 (Copy and paste)',
-	copy = {
-		['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-		['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-	},
-	paste = {
-		['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-		['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-	},
-}
+vim.g.clipboard = 'osc52'
