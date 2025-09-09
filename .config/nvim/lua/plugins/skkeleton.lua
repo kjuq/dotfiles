@@ -1,5 +1,3 @@
--- TODO: <C-w> during Henkan causes a weird behavior
-
 local skk = require('kjuq.utils.skk')
 
 ---@module 'lazy'
@@ -40,21 +38,13 @@ spec.config = function()
 		[' '] = { ' ', '' },
 	})
 
-	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-w>') ]])
-	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-y>') ]])
 	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-p>') ]])
 	vim.cmd([[ call add(g:skkeleton#mapped_keys, '<C-n>') ]])
 
-	vim.fn['skkeleton#register_keymap']('henkan', '<C-w>', 'cancel')
-	vim.fn['skkeleton#register_keymap']('input', '<C-w>', 'cancel')
-	vim.fn['skkeleton#register_keymap']('henkan', '<C-y>', 'kakutei')
-	vim.fn['skkeleton#register_keymap']('input', '<C-y>', '')
 	vim.fn['skkeleton#register_keymap']('henkan', '<C-p>', 'henkanBackward')
 	vim.fn['skkeleton#register_keymap']('input', '<C-p>', 'henkanBackward')
 	vim.fn['skkeleton#register_keymap']('henkan', '<C-n>', 'henkanForward')
 	vim.fn['skkeleton#register_keymap']('input', '<C-n>', 'henkanFirst')
-	vim.fn['skkeleton#register_keymap']('henkan', '<space>', '')
-	vim.fn['skkeleton#register_keymap']('input', '<space>', '')
 	vim.fn['skkeleton#register_keymap']('henkan', 'x', '')
 
 	vim.api.nvim_create_autocmd({ 'User' }, {
@@ -64,6 +54,32 @@ spec.config = function()
 			vim.keymap.set('i', '<Space>', function()
 				vim.fn['skkeleton#handle']('handleKey', { key = { '<c-j>', '<space>' } })
 			end, { buffer = true, nowait = true })
+			vim.keymap.set('i', '<C-y>', function()
+				local phase = vim.g['skkeleton#state'].phase
+				if vim.tbl_contains({ 'input:okurinasi', 'input:okuriari', 'henkan' }, phase) then
+					vim.fn['skkeleton#handle']('handleKey', { ['function'] = 'kakutei' })
+					return ''
+				else
+					return '<C-y>'
+				end
+			end, { buffer = true, nowait = true, expr = true })
+			vim.keymap.set('i', '<C-w>', function()
+				local phase = vim.g['skkeleton#state'].phase
+				if vim.tbl_contains({ 'input:okurinasi', 'input:okuriari', 'henkan' }, phase) then
+					vim.fn['skkeleton#handle']('handleKey', { ['function'] = 'cancel' })
+					return ''
+				else
+					return '<C-w>'
+				end
+			end, { buffer = true, nowait = true, expr = true })
+			vim.keymap.set('i', '<C-i>', function()
+				local phase = vim.g['skkeleton#state'].phase
+				if vim.tbl_contains({ 'input:okurinasi', 'input:okuriari', 'henkan' }, phase) then
+					return ''
+				else
+					return '<C-i>'
+				end
+			end, { buffer = true, nowait = true, expr = true })
 		end,
 	})
 
