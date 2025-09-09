@@ -2,5 +2,17 @@
 
 output="/tmp/cplus_output"
 
-g++ -std=c++23 -Wall -Wextra -D_GLIBCXX_DEBUG -D_LIBCPP_ENABLE_DEBUG_MODE -o "$output" "$@" && "$output"
+debug_opts="-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC"
+
+while getopts "t" opt; do
+	case "$opt" in
+	t) # traceback
+		debug_opts=""
+		shift 1
+		;;
+	esac
+done
+
+# echo "$@"
+g++-14 -std=c++23 -Wall -Wextra -g -fsanitize=address,undefined $debug_opts -o "$output" "$@" && "$output"
 command rm "$output"
