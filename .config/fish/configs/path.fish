@@ -1,4 +1,4 @@
-if [ -n $_KJUQ_FISH_CONFIG_LOADED ]
+if [ -n "$_KJUQ_FISH_CONFIG_LOADED" ]
 	return
 end
 
