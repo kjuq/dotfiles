@@ -26,7 +26,7 @@ local settings = {
 			-- NOTE: Make sure to `luacheck` is NOT installed to any paths
 			enable = true,
 			disable = {
-				'unused-function', -- avoid dimmed contents of functions (hard to read (!!))
+				-- 'unused-function', -- avoid dimmed contents of functions (hard to read (!!))
 				'empty-block',
 			},
 			libraryFiles = 'Disable',
