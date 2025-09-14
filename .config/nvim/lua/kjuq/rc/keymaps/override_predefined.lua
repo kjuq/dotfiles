@@ -34,6 +34,19 @@ vim.keymap.set('i', '<C-g><C-v>', '<C-v>')
 vim.keymap.set('n', 'x', '"_x')
 vim.keymap.set('n', 'X', '"_X')
 
+vim.keymap.set('i', '<C-y>', function()
+	local mode = vim.api.nvim_get_mode().mode
+	if mode ~= 'ic' then
+		return '<C-y>'
+	end
+	local selected = vim.fn.complete_info({ 'selected' }).selected ~= -1
+	if not selected then
+		return '<C-n><C-y>'
+	else
+		return '<C-y>'
+	end
+end, { expr = true })
+
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
 vim.keymap.set({ 'n', 'x' }, 'k', function()

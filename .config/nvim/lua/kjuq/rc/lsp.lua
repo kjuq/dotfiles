@@ -149,9 +149,14 @@ local on_attach = function(ev)
 		vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 	end
 
-	-- completion is triggered only on inserting new characters,
-	-- if we delete char to adjust the match, popup disappears
-	-- this solves it
+	-- Completion is triggered only on inserting new characters,
+	-- if we delete char to adjust the match, popup disappears this solves it
+	local function is_at_start_of_line()
+		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		local current_line = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1] or ''
+		local before_cursor = current_line:sub(1, col)
+		return before_cursor:match('^%s*$') ~= nil
+	end
 	local trigger_debounce_ms = 1
 	local trigger_timer = assert(vim.uv.new_timer(), 'cannot create timer')
 	for _, keys in ipairs({ '<BS>', '<C-h>', '<C-w>', '<C-u>' }) do
@@ -159,7 +164,16 @@ local on_attach = function(ev)
 			trigger_timer:stop()
 			if vim.fn.pumvisible() or trigger_timer:get_due_in() > 0 then
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', false)
-				trigger_timer:start(trigger_debounce_ms, 0, vim.schedule_wrap(vim.lsp.completion.get))
+				trigger_timer:start(
+					trigger_debounce_ms,
+					0,
+					vim.schedule_wrap(function()
+						if is_at_start_of_line() then
+							return
+						end
+						vim.lsp.completion.get()
+					end)
+				)
 				return
 			end
 			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', false)
