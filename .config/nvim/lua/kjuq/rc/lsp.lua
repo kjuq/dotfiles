@@ -13,6 +13,8 @@ vim.diagnostic.config({
 	},
 })
 
+vim.lsp.enable('snippet')
+
 ---@param selected_index integer
 ---@param result table
 ---@param client vim.lsp.Client
