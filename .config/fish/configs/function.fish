@@ -51,7 +51,7 @@ function fish_prompt
 	# Git branch and dirty symbol
 	set --local git_vcs_prompt
 	set --local git_dirty_symbol
-	if not string match -q 'fuse*' -- $(df -T . | tail -n 1 | tr -s ' ' | cut -d ' ' -f 2) # if cwd is NOT mounted as fuse
+	if [ -n "$TERMUX_VERSION" ]; or not string match -q 'fuse*' -- $(df --output=fstype . | tail -n 1) # if cwd is NOT mounted as fuse
 		set git_vcs_prompt $(fish_vcs_prompt | tr -d '()')
 		set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)
 		set --local is_git_dirty (
