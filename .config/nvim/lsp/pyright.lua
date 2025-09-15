@@ -2,7 +2,7 @@ local settings = {
 	-- https://github.com/astral-sh/ruff-lsp/issues/384#issuecomment-2038623937
 	pyright = {
 		disableOrganizeImports = true,
-		disableTaggedHints = true,
+		-- disableTaggedHints = true,
 	},
 	python = {
 		analysis = {
