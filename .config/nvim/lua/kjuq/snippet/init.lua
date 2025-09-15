@@ -32,10 +32,10 @@ local function generate_filetype_snippets()
 	end
 	return ftsnippets
 end
-local snpft = generate_filetype_snippets()
 
 ---@return kjuq.snippet.snippet[]
 local function get_snips_by_ft(filetype)
+	local snpft = generate_filetype_snippets()
 	local snips = {}
 	snips = vim.tbl_deep_extend('error', snips, snpft.all)
 	if filetype and snpft[filetype] then
