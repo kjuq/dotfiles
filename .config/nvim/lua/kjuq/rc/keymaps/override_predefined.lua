@@ -47,6 +47,8 @@ vim.keymap.set('i', '<C-y>', function()
 	end
 end, { expr = true })
 
+vim.keymap.set('n', '>>', 'a<C-t><Esc>^') -- fixes indenting the line starts with '#'
+
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
 vim.keymap.set({ 'n', 'x' }, 'k', function()
