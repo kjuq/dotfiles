@@ -94,7 +94,9 @@ opt.startofline = true
 opt.autoindent = true
 opt.smartindent = false
 opt.cindent = true
-opt.cinoptions:append('0#')
+opt.cinoptions:append('#9') -- Allow indent the line which starts with '#'
+opt.cinoptions:append('j9') -- `:help java-cinoptions`
+opt.cinoptions:append('J9') -- `:help javascript-cinoptions`
 opt.breakindent = true
 -- opt.breakindentopt:append("list:-1") -- indent wrapped list
 opt.showbreak = '> '
