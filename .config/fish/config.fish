@@ -1,3 +1,7 @@
+if not status is-interactive
+	exit 1
+end
+
 set --local localinitpre "$__fish_config_dir/configs/local/initpre.fish"
 if [ -e "$localinitpre" ]
 	source "$localinitpre"
