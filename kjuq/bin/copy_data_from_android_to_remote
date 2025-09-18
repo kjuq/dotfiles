@@ -13,8 +13,8 @@ if ! command -v rsync &>/dev/null; then
 fi
 
 user="kjuq"
-host="krp4b"
-remote_home='./mount/buffalo_stick_ssd/storage'
+host="kun150p"
+remote_home='/mnt/extstrg/storage'
 
 local_path="$HOME/storage/dcim/"
 remote_path='pictures/_android/dcim/'
