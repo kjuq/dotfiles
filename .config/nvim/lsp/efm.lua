@@ -1,10 +1,10 @@
 local lua = {
-	{
-		rootMarkers = { 'stylua.toml', '.stylua.toml' },
-		formatCanRange = true,
-		formatCommand = 'stylua --search-parent-directories ${--range-start=charStart} ${--range-end=charEnd} -',
-		formatStdin = true,
-	},
+	-- {
+	-- 	rootMarkers = { 'stylua.toml', '.stylua.toml' },
+	-- 	formatCanRange = true,
+	-- 	formatCommand = 'stylua --search-parent-directories ${--range-start=charStart} ${--range-end=charEnd} -',
+	-- 	formatStdin = true,
+	-- },
 	-- {
 	-- 	lintSource = 'efm/luacheck',
 	-- 	lintCommand = 'luacheck --codes --no-color --globals vim -- -',
