@@ -1,6 +1,6 @@
 -- Frequently used keymaps
-vim.keymap.set('n', '<Space>w', '<Cmd>silent write<CR>', { desc = 'Write' })
-vim.keymap.set('n', '<Space>W', '<Cmd>noautocmd silent write<CR>', { desc = 'Write noautocmd' })
+vim.keymap.set('n', '<Space>w', vim.cmd.write, { desc = 'Write' })
+vim.keymap.set('n', '<Space>W', '<Cmd>noautocmd write<CR>', { desc = 'Write noautocmd' })
 vim.keymap.set('n', '<Space>d', vim.cmd.quit, { desc = 'Quit' })
 vim.keymap.set('n', '<Space>D', vim.cmd.quitall, { desc = 'Quit all' })
 vim.keymap.set('n', '<Space>Q', vim.cmd.restart, { desc = 'Restart' })
