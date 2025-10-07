@@ -150,14 +150,16 @@ local on_attach = function(ev)
 	-- so retry several times until dynamic registration has done
 	-- https://github.com/neovim/neovim/issues/24229
 	local successed = format_on_save(client, bufnr)
+	local retrynum = 3
+	local waitms = 1000
 	if not successed then
-		for i = 1, 4 do
+		for i = 1, retrynum do
 			vim.defer_fn(function()
 				if successed then
 					return
 				end
 				successed = format_on_save(client, bufnr)
-			end, 250 * i)
+			end, waitms * i)
 		end
 	end
 
