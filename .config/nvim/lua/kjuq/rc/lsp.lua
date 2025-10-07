@@ -117,25 +117,48 @@ local on_attach = function(ev)
 		-- TODO: disable when cursor moved beyond lines
 	end, { desc = 'LSP: Toggle virtual lines of diagnostic' })
 
-	-- Format on save
 	local client_id = ev.data.client_id
 	local client = assert(vim.lsp.get_client_by_id(client_id))
+
 	local fix_cursor = vim.tbl_contains({ 'efm' }, client.name)
-	if client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
-		vim.api.nvim_create_autocmd('BufWritePre', {
-			group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', client.name, bufnr), {}),
-			buffer = bufnr,
-			callback = function()
-				local v ---@type vim.fn.winsaveview.ret
-				if fix_cursor then
-					v = vim.fn.winsaveview()
+
+	---@param clnt vim.lsp.Client
+	---@param buf integer
+	---@return boolean success or not
+	local function format_on_save(clnt, buf)
+		if clnt:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
+				buffer = buf,
+				callback = function()
+					local v ---@type vim.fn.winsaveview.ret
+					if fix_cursor then
+						v = vim.fn.winsaveview()
+					end
+					vim.lsp.buf.format({ async = false, id = clnt.id })
+					if fix_cursor then
+						vim.fn.winrestview(v)
+					end
+				end,
+			})
+			return true
+		end
+		return false
+	end
+
+	-- Neovim currently does not support dynamic capabilities
+	-- so retry several times until dynamic registration has done
+	-- https://github.com/neovim/neovim/issues/24229
+	local successed = format_on_save(client, bufnr)
+	if not successed then
+		for i = 1, 4 do
+			vim.defer_fn(function()
+				if successed then
+					return
 				end
-				vim.lsp.buf.format({ async = false, id = client_id })
-				if fix_cursor then
-					vim.fn.winrestview(v)
-				end
-			end,
-		})
+				successed = format_on_save(client, bufnr)
+			end, 250 * i)
+		end
 	end
 
 	-- Built-in auto completion
