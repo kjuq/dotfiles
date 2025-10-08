@@ -125,12 +125,12 @@ local on_attach = function(ev)
 	---@param clnt vim.lsp.Client
 	---@param buf integer
 	---@return boolean success or not
-	local function format_on_save(clnt, buf)
+	local function register_format_on_save(clnt, buf)
 		if clnt:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
 				buffer = buf,
-				callback = function()
+				callback = function(ev)
 					local v ---@type vim.fn.winsaveview.ret
 					if fix_cursor then
 						v = vim.fn.winsaveview()
@@ -149,7 +149,7 @@ local on_attach = function(ev)
 	-- Neovim currently does not support dynamic capabilities
 	-- so retry several times until dynamic registration has done
 	-- https://github.com/neovim/neovim/issues/24229
-	local successed = format_on_save(client, bufnr)
+	local successed = register_format_on_save(client, bufnr)
 	local retrynum = 3
 	local waitms = 1000
 	if not successed then
@@ -158,10 +158,13 @@ local on_attach = function(ev)
 				if successed then
 					return
 				end
-				successed = format_on_save(client, bufnr)
+				successed = register_format_on_save(client, bufnr)
 			end, waitms * i)
 		end
 	end
+
+	-- CodeAction on save
+	require('kjuq.utils.codeactions-on-save').register({ '*' }, { 'source.fixAll' })
 
 	-- Built-in auto completion
 	if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
