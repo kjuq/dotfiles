@@ -130,7 +130,7 @@ local on_attach = function(ev)
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
 				buffer = buf,
-				callback = function(ev)
+				callback = function()
 					local v ---@type vim.fn.winsaveview.ret
 					if fix_cursor then
 						v = vim.fn.winsaveview()
@@ -162,9 +162,6 @@ local on_attach = function(ev)
 			end, waitms * i)
 		end
 	end
-
-	-- CodeAction on save
-	require('kjuq.utils.codeactions-on-save').register({ '*' }, { 'source.fixAll' })
 
 	-- Built-in auto completion
 	if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
