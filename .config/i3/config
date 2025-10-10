@@ -45,11 +45,6 @@ bindsym $sac+Shift+f fullscreen toggle
 # Rescue builtin display
 bindsym $sac+Shift+d exec xrandr | grep 'connected' | grep -v 'eDP-1' | cut -d ' ' -f 1 | xargs -I {} xrandr --output '{}' --off --output eDP-1 --auto --primary --rotate left
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $sac+s layout stacking
-bindsym $sac+w layout tabbed
-bindsym $sac+e layout toggle split
-
 # toggle tiling / floating
 bindsym $sac+Shift+l floating toggle
 
