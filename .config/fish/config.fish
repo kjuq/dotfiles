@@ -14,8 +14,8 @@ source "$__fish_config_dir/configs/function.fish"
 source "$__fish_config_dir/configs/misc.fish"
 source "$__fish_config_dir/configs/option.fish"
 
-# set cursor shape line
-printf '\033[5 q'
+# # set cursor shape line
+# printf '\033[5 q'
 
 set --local localinitpost "$__fish_config_dir/configs/local/initpost.fish"
 if [ -e "$localinitpost" ]

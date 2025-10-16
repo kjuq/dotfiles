@@ -50,29 +50,29 @@ function fish_prompt
 
 	# Git branch and dirty symbol
 	set --local git_vcs_prompt
-	set --local git_dirty_symbol
-	if [ -n "$TERMUX_VERSION" ]; or not string match -q 'fuse*' -- $(df --output=fstype . | tail -n 1) # if cwd is NOT mounted as fuse
-		set git_vcs_prompt $(fish_vcs_prompt | tr -d '()')
-		set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)
-		set --local is_git_dirty (
-			if command git rev-list --max-count=1 HEAD -- >/dev/null 2>&1;
-				not command git diff-index --ignore-submodules --cached --quiet HEAD -- >/dev/null 2>&1;
-			else;
-				not command git diff --staged --ignore-submodules --no-ext-diff --quiet --exit-code >/dev/null 2>&1;
-			end
-			or not command git diff --ignore-submodules --no-ext-diff --quiet --exit-code >/dev/null 2>&1
-			or command git ls-files --others --exclude-standard --directory --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>&1
-			and echo "true"
-		)
-		if test -n "$is_git_dirty" && test -n "$is_git_repository" # untracked or un-commited files
-			set git_dirty_symbol '*'
-		end
-	end
+	# set --local git_dirty_symbol
+	# if [ -n "$TERMUX_VERSION" ]; or not string match -q 'fuse*' -- $(df --output=fstype . | tail -n 1) # if cwd is NOT mounted as fuse
+	# 	set git_vcs_prompt $(fish_vcs_prompt | tr -d '()')
+	# 	set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)
+	# 	set --local is_git_dirty (
+	# 		if command git rev-list --max-count=1 HEAD -- >/dev/null 2>&1;
+	# 			not command git diff-index --ignore-submodules --cached --quiet HEAD -- >/dev/null 2>&1;
+	# 		else;
+	# 			not command git diff --staged --ignore-submodules --no-ext-diff --quiet --exit-code >/dev/null 2>&1;
+	# 		end
+	# 		or not command git diff --ignore-submodules --no-ext-diff --quiet --exit-code >/dev/null 2>&1
+	# 		or command git ls-files --others --exclude-standard --directory --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>&1
+	# 		and echo "true"
+	# 	)
+	# 	if test -n "$is_git_dirty" && test -n "$is_git_repository" # untracked or un-commited files
+	# 		set git_dirty_symbol '*'
+	# 	end
+	# end
 
 	echo -n -s \
 		$(set_color normal) $(dirs) \
-		$(set_color brblack) "$git_vcs_prompt" \
-		$(set_color brblack) "$git_dirty_symbol" \
+		# $(set_color brblack) "$git_vcs_prompt" \
+		# $(set_color brblack) "$git_dirty_symbol" \
 		$(set_color brblack) "$user_and_hostname" \
 		" $prompt_status" \
 		\n $suffix " "
