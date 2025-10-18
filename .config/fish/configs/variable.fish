@@ -58,6 +58,9 @@ set --export GOPATH "$XDG_DATA_HOME/go"
 # npm
 set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 
+# Claude code
+set --export CLAUDE_CONFIG_DIR "$XDG_CONFIG_HOME/claude"
+
 # Cargo
 set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
 
