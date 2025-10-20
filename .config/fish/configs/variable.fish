@@ -26,11 +26,7 @@ else
 end
 
 # Password-store
-if [ -n "$TERMUX_VERSION" ]
-	set --export PASSWORD_STORE_DIR "$HOME/storage/shared/kjuq/password-store"
-else
-	set --export PASSWORD_STORE_DIR "$HOME/kjuq/password-store"
-end
+set --export PASSWORD_STORE_DIR "$HOME/kjuq/password-store"
 
 # ghq
 set --export GHQ_ROOT "$HOME/kjuq/ghq"
