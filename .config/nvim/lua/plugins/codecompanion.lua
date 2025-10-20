@@ -62,7 +62,7 @@ spec.opts = {
 				return require('codecompanion.adapters').extend('copilot', {
 					schema = {
 						model = {
-							default = 'gemini-2.5-pro',
+							default = 'claude-sonnet-4.5',
 						},
 					},
 				})
@@ -106,7 +106,7 @@ spec.opts = {
 					modes = { n = pfx .. 'R' },
 				},
 				close = {
-					modes = { n = '<Space>x', i = '<Nop>' },
+					modes = { n = '<Space>x', i = nil },
 				},
 				stop = {
 					modes = { n = pfx .. 'Q' },
@@ -115,10 +115,10 @@ spec.opts = {
 					modes = { n = pfx .. 'C' },
 				},
 				codeblock = {
-					modes = { n = '<Nop>' },
+					modes = { n = nil },
 				},
 				yank_code = {
-					modes = { n = '<Nop>' },
+					modes = { n = nil },
 				},
 				pin = {
 					modes = { n = pfx .. 'P' },
@@ -142,16 +142,16 @@ spec.opts = {
 					modes = { n = pfx .. 'A' },
 				},
 				fold_code = {
-					modes = { n = '<Nop>' },
+					modes = { n = nil },
 				},
 				debug = {
 					modes = { n = pfx .. 'D' },
 				},
 				system_prompt = {
-					modes = { n = '<Nop>' },
+					modes = { n = nil },
 				},
 				goto_file_under_cursor = {
-					modes = { n = '<Nop>' },
+					modes = { n = nil },
 				},
 				copilot_stats = {
 					modes = { n = pfx .. 'C' },
