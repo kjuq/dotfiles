@@ -8,6 +8,7 @@ $XDG_CONFIG_HOME/autostart
 $XDG_CONFIG_HOME/brewfile/Brewfile
 $XDG_CONFIG_HOME/clangd/config.yaml
 $XDG_CONFIG_HOME/clang-format
+$XDG_CONFIG_HOME/claude/settings.json
 $XDG_CONFIG_HOME/docker/config.json
 $XDG_CONFIG_HOME/dust/config.toml
 $XDG_CONFIG_HOME/dunst/dunstrc
