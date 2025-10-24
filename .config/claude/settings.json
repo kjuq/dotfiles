@@ -1,3 +1,27 @@
 {
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send 'Claude Code' 'Approval required' && paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send 'Claude Code' 'Task finished' && paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga"
+          }
+        ]
+      }
+    ]
+  }
 }

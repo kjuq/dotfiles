@@ -25,7 +25,7 @@
 	# dynamic width from 0 to 300
 	# width = (0, 300)
 	# constant width of 300
-	width = 300
+	width = (0, 300)
 
 	# The height of a single notification, excluding the frame.
 	# dynamic height from 0 to 300
@@ -41,7 +41,7 @@
 	# Offset from the origin
 	# NOTE: Dunst from version 1.11 and older use this alternative notation
 	# offset = 10x50
-	offset = (10, 50)
+	offset = (30, 20)
 
 	# Scale factor. It is auto-detected if value is 0.
 	scale = 0
@@ -108,10 +108,10 @@
 
 	# Defines width in pixels of frame around the notification window.
 	# Set to 0 to disable.
-	frame_width = 3
+	frame_width = 1
 
 	# Defines color of the frame around the notification window.
-	frame_color = "#aaaaaa"
+	frame_color = "#444444"
 
 	# Size of gap to display between notifications - requires a compositor.
 	# If value is greater than 0, separator_height will be ignored and a border
@@ -184,7 +184,7 @@
 	#   %n  progress value if set without any extra characters
 	#   %%  Literal %
 	# Markup is allowed
-	format = "<b>%s</b>\n%b"
+	format = "<b>%s</b>\n> <b>%b</b>"
 
 	# Alignment of message text.
 	# Possible values are "left", "center" and "right".
@@ -207,7 +207,7 @@
 	ignore_newline = no
 
 	# Stack together notifications with the same content
-	stack_duplicates = true
+	stack_duplicates = false
 
 	# Hide the count of stacked notifications with the same content
 	hide_duplicate_count = false
@@ -227,7 +227,7 @@
 	# icon_theme = "Adwaita, breeze"
 
 	# Align icons left/right/top/off
-	icon_position = left
+	icon_position = off
 
 	# Scale small icons up to this size, set to 0 to disable. Helpful
 	# for e.g. small files or high-dpi screens. In case of conflict,
@@ -323,9 +323,9 @@
 	# * context_all: Open context menu for all notifications.
 	# These values can be strung together for each mouse event, and
 	# will be executed in sequence.
-	mouse_left_click = close_current
-	mouse_middle_click = do_action, close_current
-	mouse_right_click = close_all
+	mouse_left_click = do_action, close_current
+	mouse_middle_click = close_all
+	mouse_right_click = close_current
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -341,15 +341,15 @@
 [urgency_low]
 	# IMPORTANT: colors have to be defined in quotation marks.
 	# Otherwise the "#" and following would be interpreted as a comment.
-	background = "#222222"
-	foreground = "#888888"
+	background = "#444444"
+	foreground = "#dddddd"
 	timeout = 3
 	# Icon for notifications with low urgency
 	default_icon = dialog-information
 
 [urgency_normal]
-	background = "#285577"
-	foreground = "#ffffff"
+	background = "#222222"
+	foreground = "#eeeeee"
 	timeout = 3
 	override_pause_level = 30
 	# Icon for notifications with normal urgency
