@@ -13,6 +13,8 @@ spec.opts = {
 	install_dir = vim.fn.stdpath('data') .. '/site',
 }
 
+local indent_lang = { 'python' }
+
 spec.config = function(_, opts)
 	local ts = require('nvim-treesitter')
 	ts.setup(opts)
@@ -22,7 +24,9 @@ spec.config = function(_, opts)
 		local installed = require('nvim-treesitter.config').get_installed
 		local function enable()
 			vim.treesitter.start(args.buf)
-			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			if vim.tbl_contains(indent_lang, lang) then
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
 		end
 		if not vim.tbl_contains(installed(), lang) then
 			ts.install({ lang }):await(function(err)
