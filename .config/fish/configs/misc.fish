@@ -6,9 +6,9 @@ if command --search --quiet zoxide
 	zoxide init --cmd c fish | source
 end
 
-if command --query --search mise
-	mise activate fish | source
-end
+# if command --query --search mise
+# 	mise activate fish | source
+# end
 
 # if command --search --quiet direnv
 # 	direnv hook fish | source

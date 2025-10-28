@@ -64,7 +64,6 @@ set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 
 # rclone
-set --export RCLONE_PROGRESS true
 set --export RCLONE_EXCLUDE "*.DS_Store"
 
 # fzf
