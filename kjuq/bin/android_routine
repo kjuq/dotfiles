@@ -2,6 +2,32 @@
 
 set -u
 
+# Parse Arguments
+loop=false
+pic=false
+doc=false
+while getopts "lpda" opt; do
+	case "$opt" in
+	l)
+		loop=true
+		;;
+	p)
+		pic=true
+		;;
+	d)
+		doc=true
+		;;
+	a)
+		pic=true
+		doc=true
+		;;
+	*)
+		exit 1
+		;;
+	esac
+done
+shift "$((OPTIND - 1))"
+
 checkhealth() {
 	if [ -z "${TERMUX_VERSION:-}" ]; then
 		echo 'This environment is not Termux. Quit' 1>&2
@@ -92,12 +118,27 @@ pushdoc() {
 	fi
 }
 
-# echo '============ 2025-10-28_19-28-26 ============'
-echo -e "\n\n============ $(date '+%Y-%m-%d_%H-%M-%S') ============"
-checkhealth
-sshsetup
-copyimg
-pulldoc
-pushdoc
-echo -e '\n\nEverything done!'
-echo '============================================='
+exec_all() {
+	echo -e "\n\n============ $(date '+%Y-%m-%d_%H-%M-%S') ============"
+	checkhealth
+	sshsetup
+	[ "$pic" = true ] && copyimg
+	[ "$doc" = true ] && pulldoc
+	[ "$doc" = true ] && pushdoc
+	echo -e '\n\nEverything done!'
+	echo '============================================='
+}
+
+main() {
+	exec_all 2>&1 | tee -a $XDG_CACHE_HOME/android_routine.log
+}
+
+if [ $loop = true ]; then
+	while true; do
+		exec_all
+		sleep $((60 * 60 * 24))
+	done
+else
+	exec_all
+
+fi
