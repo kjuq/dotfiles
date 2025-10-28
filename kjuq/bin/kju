@@ -1,29 +1,44 @@
 #!/usr/bin/env bash
 
-# set -eu
+set -u
 
 checkhealth() {
 	if [ -z "${TERMUX_VERSION:-}" ]; then
 		echo 'This environment is not Termux. Quit' 1>&2
+		echo '============================================='
 		exit 1
 	fi
 	if ! command -v rsync &>/dev/null; then
 		echo "Error: 'rsync' not found" 1>&2
+		echo '============================================='
 		exit 1
 	fi
 	if ! command -v cloudflared &>/dev/null; then
 		echo "Error: 'cloudflared' not found" 1>&2
+		echo '============================================='
 		exit 1
 	fi
 	if [ ! -e "$HOME/.cloudflared/cert.pem" ]; then
 		echo 'Error: Not logged in to Cloudflare. Do `cloudflared login`' 1>&2
+		echo '============================================='
+		exit 1
+	fi
+	if ! echo ';o;' | gpg --passphrase-fd 0 --pinentry-mode=loopback -o $PREFIX/tmp/pass_dummy --yes $PASSWORD_STORE_DIR/__dummy/__is_decryption_success.gpg > /dev/null 2>&1; then
+		# if ! pass __dummy/__is_decryption_success > /dev/null 2>&1; then
+		echo 'Error: passphrase of `gpg-agent` is not entered' 1>&2
+		echo '============================================='
 		exit 1
 	fi
 }
 
+sshsetup() {
+	echo '#*# Register SSH keys #*#'
+	ssh-setup
+}
+
 # Copy local image to remote
 copyimg() {
-	echo '#*# Sending local images to remote #*#'
+	echo -e '\n\n#*# Sending local images to remote #*#'
 	user="kjuq"
 	host="ssh.kjuq.dpdns.org" # Cloudflare
 	if timeout 1 ping -c 1 100.100.100.100 >/dev/null; then
@@ -77,10 +92,12 @@ pushdoc() {
 	fi
 }
 
+# echo '============ 2025-10-28_19-28-26 ============'
+echo -e "\n\n============ $(date '+%Y-%m-%d_%H-%M-%S') ============"
 checkhealth
+sshsetup
 copyimg
-ssh-setup
 pulldoc
 pushdoc
-
 echo -e '\n\nEverything done!'
+echo '============================================='
