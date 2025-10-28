@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+# set -eu
+
+checkhealth() {
+	if [ -z "${TERMUX_VERSION:-}" ]; then
+		echo 'This environment is not Termux. Quit' 1>&2
+		exit 1
+	fi
+	if ! command -v rsync &>/dev/null; then
+		echo "Error: 'rsync' not found" 1>&2
+		exit 1
+	fi
+	if ! command -v cloudflared &>/dev/null; then
+		echo "Error: 'cloudflared' not found" 1>&2
+		exit 1
+	fi
+	if [ ! -e "$HOME/.cloudflared/cert.pem" ]; then
+		echo 'Error: Not logged in to Cloudflare. Do `cloudflared login`' 1>&2
+		exit 1
+	fi
+}
+
+# Copy local image to remote
+copyimg() {
+	echo '#*# Sending local images to remote #*#'
+	user="kjuq"
+	host="ssh.kjuq.dpdns.org" # Cloudflare
+	if timeout 1 ping -c 1 100.100.100.100 >/dev/null; then
+		host="kun150p" # Tailscale
+		echo 'Use Tailscale connection'
+	else
+		echo 'Use Cloudflare connection'
+	fi
+	remote_home='/mnt/extstrg/storage'
+	local_path="$HOME/storage/dcim/"
+	remote_path='pictures/_android/dcim/'
+	rsync -av --exclude='.thumbnails' "$local_path" "$user@$host:$remote_home/$remote_path/"
+	local_path="$HOME/storage/pictures/"
+	remote_path='pictures/_android/pictures/'
+	rsync -av --exclude='.thumbnails' "$local_path" "$user@$host:$remote_home/$remote_path/"
+}
+
+# Pull remote doc
+pulldoc() {
+	echo -e '\n\n#*# Git Pull #*#'
+	git -C "$KJUQ_DOCS" pull
+	if [ ! $? -eq 0 ]; then
+		echo '`git pull` failed' 1>&2
+		exit 1
+	fi
+}
+
+# Push local doc
+pushdoc() {
+	echo -e '\n\n#*# Git Add #*#'
+	git -C "$KJUQ_DOCS" add -A
+	if [ ! $? -eq 0 ]; then
+		echo '`git add -A` failed' 1>&2
+		exit 1
+	fi
+	echo -e '\n\n#*# Git Commit #*#'
+	if [ ! -z "$(git -C "$KJUQ_DOCS" diff --cached --name-only)" ]; then # Check if at least one file is staged
+		git -C "$KJUQ_DOCS" commit -m 'Update from termux'
+		if [ ! $? -eq 0 ]; then
+			echo '`git commit` failed' 1>&2
+			exit 1
+		fi
+	else
+		echo 'Nothing was added. Skip committing'
+	fi
+	echo -e '\n\n#*# Git Push #*#'
+	git -C "$KJUQ_DOCS" push
+	if [ ! $? -eq 0 ]; then
+		echo '`git push` failed' 1>&2
+		exit 1
+	fi
+}
+
+checkhealth
+copyimg
+ssh-setup
+pulldoc
+pushdoc
+
+echo -e '\n\nEverything done!'
