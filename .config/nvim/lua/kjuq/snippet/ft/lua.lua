@@ -9,6 +9,7 @@ M.snippets = {
 		[[})]],
 	},
 	lazySpec = {
+		[[---@module 'lazy']],
 		[[---@type LazySpec]],
 		[[local spec = { '${0}' }]],
 		[[]],
@@ -22,10 +23,6 @@ M.snippets = {
 		[[end]],
 		[[]],
 		[[return spec]],
-	},
-	lazyKeymap = {
-		[[local map = require('kjuq.utils.lazy').generate_map('${1}', '${2}')]],
-		[[spec.keys = {${0}}]],
 	},
 	feedkeys = {
 		[[vim.api.nvim_feedkeys('${0}', 'n', true)]],
