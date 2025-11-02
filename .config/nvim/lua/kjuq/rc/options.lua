@@ -92,9 +92,9 @@ opt.sidescrolloff = 1
 opt.startofline = true
 
 opt.autoindent = true
-opt.smartindent = false
+opt.smartindent = false -- DON'T ENABLE THIS so that '#' at the beginning of a line be indented properly
 opt.cindent = true
-opt.cinoptions:append('#9') -- Allow indent the line which starts with '#'
+opt.cinkeys:remove('0#')
 opt.cinoptions:append('j9') -- `:help java-cinoptions`
 opt.cinoptions:append('J9') -- `:help javascript-cinoptions`
 opt.breakindent = true
