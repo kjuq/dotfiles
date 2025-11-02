@@ -120,48 +120,9 @@ local on_attach = function(ev)
 	local client_id = ev.data.client_id
 	local client = assert(vim.lsp.get_client_by_id(client_id))
 
-	local fix_cursor = vim.tbl_contains({ 'efm' }, client.name)
-
-	---@param clnt vim.lsp.Client
-	---@param buf integer
-	---@return boolean success or not
-	local function register_format_on_save(clnt, buf)
-		if clnt:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
-				buffer = buf,
-				callback = function()
-					local v ---@type vim.fn.winsaveview.ret
-					if fix_cursor then
-						v = vim.fn.winsaveview()
-					end
-					vim.lsp.buf.format({ async = false, id = clnt.id })
-					if fix_cursor then
-						vim.fn.winrestview(v)
-					end
-				end,
-			})
-			return true
-		end
-		return false
-	end
-
-	-- Neovim currently does not support dynamic capabilities
-	-- so retry several times until dynamic registration has done
-	-- https://github.com/neovim/neovim/issues/24229
-	local successed = register_format_on_save(client, bufnr)
-	local retrynum = 3
-	local waitms = 1000
-	if not successed then
-		for i = 1, retrynum do
-			vim.defer_fn(function()
-				if successed then
-					return
-				end
-				successed = register_format_on_save(client, bufnr)
-			end, waitms * i)
-		end
-	end
+	require('kjuq.utils.lsp').register_format_on_save(client, bufnr, {
+		fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
+	})
 
 	-- Built-in auto completion
 	if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
@@ -171,7 +132,9 @@ local on_attach = function(ev)
 			ascii[#ascii + 1] = string.char(i)
 		end
 		client.server_capabilities.completionProvider.triggerCharacters = ascii
-		vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		-- vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		vim.lsp.completion.enable(true, client.id, ev.buf)
+		vim.keymap.set('i', '<C-n>', '<C-x><C-o>', { buffer = true })
 	end
 
 	-- Completion is triggered only on inserting new characters,

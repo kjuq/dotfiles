@@ -53,4 +53,50 @@ function M.workspace_didopen()
 	end
 end
 
+---@param clnt vim.lsp.Client
+---@param buf integer
+---@param opt table? { fix_cursor, retry }
+function M.register_format_on_save(clnt, buf, opt)
+	if not opt then
+		opt = {}
+	end
+	---@return boolean success or not
+	local function reg()
+		if clnt:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
+				buffer = buf,
+				callback = function()
+					local v ---@type vim.fn.winsaveview.ret
+					if opt.fix_cursor then
+						v = vim.fn.winsaveview()
+					end
+					vim.lsp.buf.format({ async = false, id = clnt.id })
+					if opt.fix_cursor then
+						vim.fn.winrestview(v)
+					end
+				end,
+			})
+			return true
+		end
+		return false
+	end
+	-- Neovim currently does not support dynamic capabilities
+	-- so retry several times until dynamic registration has done
+	-- https://github.com/neovim/neovim/issues/24229
+	local successed = reg()
+	local retrynum = opt.retry or 3
+	local waitms = 1000
+	if not successed then
+		for i = 1, retrynum do
+			vim.defer_fn(function()
+				if successed then
+					return
+				end
+				successed = reg()
+			end, waitms * i)
+		end
+	end
+end
+
 return M
