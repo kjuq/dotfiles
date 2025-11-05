@@ -43,6 +43,7 @@ local on_attach = function(ev)
 		fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
 	})
 	require('kjuq.utils.lsp').register_autocompletion(client, bufnr, false, false)
+	require('kjuq.utils.lsp').register_completion_documentation(client, bufnr)
 	require('kjuq.utils.lsp').register_inlinecompletion(client, bufnr)
 end
 

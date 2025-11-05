@@ -128,7 +128,11 @@ end
 local documentation_is_enabled = true
 ---@param client vim.lsp.Client
 ---@param bufnr integer
-local function enable_completion_documentation(client, bufnr)
+function M.register_completion_documentation(client, bufnr)
+	if not client:supports_method(vim.lsp.protocol.Methods.completionItem_resolve) then
+		return
+	end
+
 	local _, cancel_prev = nil, function() end
 
 	vim.api.nvim_create_autocmd('CompleteChanged', {
@@ -161,10 +165,10 @@ local function enable_completion_documentation(client, bufnr)
 				completion_item,
 				function(err, item)
 					if err ~= nil then
-						vim.notify(
-							'Error from client ' .. client .. ' when getting documentation\n' .. vim.inspect(err),
-							vim.log.levels.WARN
-						)
+						-- vim.notify(
+						-- 	'Error from client ' .. client.name .. ' when getting documentation\n' .. vim.inspect(err),
+						-- 	vim.log.levels.WARN
+						-- )
 						-- at this stage just disable it
 						documentation_is_enabled = false
 						return
@@ -232,9 +236,6 @@ function M.register_autocompletion(client, bufnr, autotrigger, triggerall)
 		end
 		vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = autotrigger })
 		vim.opt.complete = 'o'
-	end
-	if client:supports_method(vim.lsp.protocol.Methods.completionItem_resolve) then
-		enable_completion_documentation(client, bufnr)
 	end
 end
 
