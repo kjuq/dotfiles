@@ -97,16 +97,40 @@ local function generate_complete_item(label, body)
 		},
 		insertTextFormat = vim.lsp.protocol.InsertTextFormat.Snippet,
 		insertText = body,
-		sortText = 1.02, -- Ensure a low score by setting a high sortText value, not sure
+		-- sortText = 'ZZZZZZZZZ' .. label, -- Omnifunc does not support `sortText`
+		filterText = label,
 	}
 end
 
+---@param params table: The completion parameters from LSP
 ---@return table: A table containing completion results formatted for LSP
-local function get_lsp_snippets()
+local function get_lsp_snippets(params)
 	local completion_results = {
 		isIncomplete = false,
 		items = {},
 	}
+	local bufnr = 0
+	local col = params.position and params.position.character
+	local row = params.position and params.position.line
+	if not (col and row) then
+		vim.notify('Snippet server could not obtain cursor position', vim.log.levels.ERROR)
+		return completion_results
+	end
+
+	local line = vim.api.nvim_buf_get_lines(bufnr, row, row + 1, true)[1]
+	local before_cursor = line:sub(1, col)
+
+	-- 空行または空白のみの場合は補完候補を返さない
+	if before_cursor:match('^%s*$') then
+		return completion_results
+	end
+
+	-- 最低限のトリガー文字数を設定(例: 2文字以上)
+	local minletter = 3
+	local trigger_word = before_cursor:match('%w+$') or ''
+	if #trigger_word < minletter then
+		return completion_results
+	end
 	for label, body in pairs(get_buf_snips()) do
 		table.insert(completion_results.items, generate_complete_item(label, create_word(body)))
 	end
@@ -119,7 +143,7 @@ function M.new_server()
 	local function server(dispatchers)
 		local closing = false
 		local srv = {}
-		function srv.request(method, _, handler)
+		function srv.request(method, params, handler)
 			if method == 'initialize' then
 				handler(nil, {
 					capabilities = {
@@ -127,7 +151,7 @@ function M.new_server()
 					},
 				})
 			elseif method == 'textDocument/completion' then
-				handler(nil, get_lsp_snippets())
+				handler(nil, get_lsp_snippets(params))
 			elseif method == 'shutdown' then
 				handler(nil, nil)
 			end

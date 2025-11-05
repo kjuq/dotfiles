@@ -8,7 +8,6 @@ M.snippets = {
 	time = function()
 		return os.date('%H:%M:%S') --[[@ as string]]
 	end,
-	shebang = '#!/usr/bin/env ${0}',
 }
 
 return M
