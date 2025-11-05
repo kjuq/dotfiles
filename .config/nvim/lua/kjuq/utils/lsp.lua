@@ -180,30 +180,16 @@ local function enable_completion_documentation(client, bufnr)
 	})
 end
 
----@param client vim.lsp.Client
+local function is_at_start_of_line()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	local current_line = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1] or ''
+	local before_cursor = current_line:sub(1, col)
+	return before_cursor:match('^%s*$') ~= nil
+end
 ---@param bufnr integer
----@param autotrigger boolean?
-function M.register_autocompletion(client, bufnr, autotrigger)
-	-- Built-in auto completion
-	if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-		vim.opt.completeopt:append({ 'noselect' })
-		local ascii = {}
-		for i = 32, 126 do
-			ascii[#ascii + 1] = string.char(i)
-		end
-		client.server_capabilities.completionProvider.triggerCharacters = ascii
-		vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = autotrigger })
-		vim.opt.complete = 'o'
-	end
-
+local function register_completion_on_deletion(bufnr)
 	-- Completion is triggered only on inserting new characters,
 	-- if we delete char to adjust the match, popup disappears this solves it
-	local function is_at_start_of_line()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		local current_line = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1] or ''
-		local before_cursor = current_line:sub(1, col)
-		return before_cursor:match('^%s*$') ~= nil
-	end
 	local trigger_debounce_ms = 1
 	local trigger_timer = assert(vim.uv.new_timer(), 'cannot create timer')
 	for _, keys in ipairs({ '<BS>', '<C-h>', '<C-w>', '<C-u>' }) do
@@ -226,7 +212,27 @@ function M.register_autocompletion(client, bufnr, autotrigger)
 			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', false)
 		end, { desc = keys .. ' and trigger LSP completion', buffer = bufnr, expr = true })
 	end
+end
 
+---@param client vim.lsp.Client
+---@param bufnr integer
+---@param autotrigger boolean?
+---@param triggerall boolean?
+function M.register_autocompletion(client, bufnr, autotrigger, triggerall)
+	local ascii = {}
+	for i = 32, 126 do
+		ascii[#ascii + 1] = string.char(i)
+	end
+	-- Built-in auto completion
+	if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
+		vim.opt.completeopt:append({ 'noselect' })
+		if triggerall then
+			client.server_capabilities.completionProvider.triggerCharacters = ascii
+			register_completion_on_deletion(bufnr)
+		end
+		vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = autotrigger })
+		vim.opt.complete = 'o'
+	end
 	if client:supports_method(vim.lsp.protocol.Methods.completionItem_resolve) then
 		enable_completion_documentation(client, bufnr)
 	end
