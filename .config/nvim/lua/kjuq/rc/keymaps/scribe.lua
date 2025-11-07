@@ -1,5 +1,5 @@
 -- open specific files via keymaps
-vim.keymap.set('n', '<Space>st', '<CMD>EditTodo<CR>', { desc = 'Edit todo.txt' })
+vim.keymap.set('n', '<Space>st', '<CMD>EditDashboard<CR>', { desc = 'Edit Dashboard' })
 vim.keymap.set('n', '<Space>sb', '<CMD>EditBookmarks<CR>', { desc = 'Edit bookmarks.txt' })
 vim.keymap.set('n', '<Space>sr', '<CMD>EditReponotes<CR>', { desc = 'Edit repository specific notes' })
 vim.keymap.set('n', '<Space>sR', '<CMD>EditReadinglist<CR>', { desc = 'Edit readinglist.txt' })

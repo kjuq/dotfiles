@@ -11,10 +11,10 @@ local edit = vim.cmd.edit
 local doc = os.getenv('KJUQ_DOCS')
 local confroot = os.getenv('XDG_CONFIG_HOME') .. '/nvim'
 
-vim.api.nvim_create_user_command('EditTodo', function()
-	local path = vim.fs.joinpath(doc, 'todo/todo.txt')
+vim.api.nvim_create_user_command('EditDashboard', function()
+	local path = vim.fs.joinpath(doc, '__index.md')
 	edit(path)
-end, { desc = 'Edit todo.txt' })
+end, { desc = 'Edit Dashboard' })
 
 vim.api.nvim_create_user_command('EditBookmarks', function()
 	local path = vim.fs.joinpath(doc, 'bookmarks/bookmarks.txt')
