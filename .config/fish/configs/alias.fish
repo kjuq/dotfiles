@@ -48,8 +48,8 @@ if command --search --quiet nvim
 	function Nvim --wraps='env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim'
 		env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim $argv
 	end
-	function nvimt --wraps='nvim +EditTodo'
-		nvim +EditTodo $argv
+	function nvimt --wraps='nvim +EditDashboard'
+		nvim +EditDashboard $argv
 	end
 	function nvimb --wraps='nvim +EditBookmarks'
 		nvim +EditBookmarks $argv
