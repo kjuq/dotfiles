@@ -38,12 +38,6 @@ case Darwin
 	end
 end
 
-if command --search --quiet lsd
-	function ls --wraps='lsd'
-		lsd --group-directories-first --classify $argv
-	end
-end
-
 if command --search --quiet nvim
 	function Nvim --wraps='env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim'
 		env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim $argv
