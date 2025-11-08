@@ -1,5 +1,4 @@
 {
-  "alwaysThinkingEnabled": true,
   "hooks": {
     "Notification": [
       {
@@ -23,5 +22,6 @@
         ]
       }
     ]
-  }
+  },
+  "alwaysThinkingEnabled": true
 }
