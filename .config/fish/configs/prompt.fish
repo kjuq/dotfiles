@@ -1,10 +1,3 @@
-if [ -z "$_KJUQ_FISH_CONFIG_LOADED" ]
-	# Fish prompt
-	set --export __fish_git_prompt_showdirtystate true
-	set --export __fish_git_prompt_showstashstate true
-	set --export __fish_git_prompt_char_stateseparator ''
-end
-
 function fish_prompt
 	# NOTE: Performance https://github.com/fish-shell/fish-shell/issues/7903
 	set -l last_pipestatus $pipestatus
@@ -26,7 +19,6 @@ function fish_prompt
 
 	echo -n -s \
 		$(set_color normal) $(dirs) \
-		$(set_color brblack) "$(fish_vcs_prompt | tr -d '()')" \
 		$(set_color brblack) "$user_and_hostname" \
 		" $prompt_status" \
 		\n \
