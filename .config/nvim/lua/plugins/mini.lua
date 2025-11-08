@@ -2,6 +2,8 @@
 ---@type LazySpec
 local spec = { 'https://github.com/echasnovski/mini.nvim' }
 
+spec.lazy = false
+
 spec.keys = {
 	{ 'ga', mode = { 'n', 'x' } }, -- for align
 	{ 'gA', mode = { 'n', 'x' } }, -- for align
@@ -13,6 +15,51 @@ spec.config = function()
 		mappings = {
 			start = 'ga',
 			start_with_preview = 'gA',
+		},
+	})
+	require('mini.pick').setup({
+		delay = {
+			-- Delay between forcing asynchronous behavior
+			async = 1,
+			-- Delay between computation start and visual feedback about it
+			busy = 50,
+		},
+		mappings = {
+			caret_left = '<C-b>',
+			caret_right = '<C-f>',
+
+			choose = '<CR>',
+			choose_in_split = '<C-s>',
+			choose_in_tabpage = '',
+			choose_in_vsplit = '<C-v>',
+			choose_marked = '<M-CR>',
+
+			delete_char = '<C-h>',
+			delete_char_right = '<C-d>',
+			delete_left = '<C-u>',
+			delete_word = '<C-w>',
+
+			mark = '<C-x>',
+			mark_all = '',
+
+			move_down = '<C-n>',
+			move_start = '<C-g>',
+			move_up = '<C-p>',
+
+			paste = '<C-r>',
+
+			refine = '<C-Space>',
+			refine_marked = '<M-Space>',
+
+			scroll_down = '<M-n>',
+			scroll_left = '<M-b>',
+			scroll_right = '<M-f>',
+			scroll_up = '<M-p>',
+
+			stop = '<Esc>',
+
+			toggle_info = '<S-Tab>',
+			toggle_preview = '<Tab>',
 		},
 	})
 end
