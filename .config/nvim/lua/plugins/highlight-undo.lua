@@ -5,10 +5,7 @@
 ---@type LazySpec
 local spec = { 'https://github.com/tzachar/highlight-undo.nvim' }
 
-spec.keys = {
-	{ 'u', mode = 'n' },
-	{ '<C-r>', mode = 'n' },
-}
+spec.lazy = false
 
 spec.opts = {
 	duration = require('kjuq.utils.common').highlight_duration,
