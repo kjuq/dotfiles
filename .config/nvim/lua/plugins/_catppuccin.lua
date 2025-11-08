@@ -2,13 +2,7 @@
 ---@type LazySpec
 local spec = { 'https://github.com/catppuccin/nvim' }
 spec.name = 'catppuccin'
-spec.lazy = not vim.tbl_contains({
-	'catppuccin',
-	'catppuccin-latte',
-	'catppuccin-mocha',
-	'catppuccin-frappe',
-	'catppuccin-macchiato',
-}, _G.kjuq_colorscheme)
+spec.lazy = false
 spec.priority = 9999
 
 spec.opts = {
@@ -45,7 +39,7 @@ spec.opts = {
 
 spec.config = function(_, opts)
 	require('catppuccin').setup(opts) -- `setup` must be called before loading
-	vim.cmd.colorscheme(_G.kjuq_colorscheme)
+	vim.cmd.colorscheme('catppuccin')
 	vim.api.nvim_set_hl(0, 'LineNr', { fg = '#888888' })
 end
 

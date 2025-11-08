@@ -1,7 +1,7 @@
 ---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/EdenEast/nightfox.nvim' }
-spec.lazy = _G.kjuq_colorscheme ~= 'nightfox'
+spec.lazy = false
 spec.priority = 9999
 
 spec.opts = {
@@ -10,10 +10,5 @@ spec.opts = {
 		dim_inactive = false, -- Non focused panes set to alternative background
 	},
 }
-
-spec.config = function(_, opts)
-	require('nightfox').setup(opts)
-	vim.cmd.colorscheme(_G.kjuq_colorscheme)
-end
 
 return spec

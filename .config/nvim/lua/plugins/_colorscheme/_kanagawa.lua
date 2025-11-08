@@ -4,12 +4,7 @@
 ---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/rebelot/kanagawa.nvim' }
-spec.lazy = not vim.tbl_contains({
-	'kanagawa',
-	'kanagawa-wave',
-	'kanagawa-lotus',
-	'kanagawa-dragon',
-}, _G.kjuq_colorscheme)
+spec.lazy = false
 spec.priority = 9999
 
 spec.opts = {
@@ -21,10 +16,5 @@ spec.opts = {
 		light = 'lotus',
 	},
 }
-
-spec.config = function(_, opts)
-	require('kanagawa').setup(opts)
-	vim.cmd.colorscheme(_G.kjuq_colorscheme)
-end
 
 return spec
