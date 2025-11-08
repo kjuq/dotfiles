@@ -34,8 +34,9 @@ if [ -z "$1" ]; then
 fi
 input="$1"
 
-hostname='krp4b'
-port=8000
+cfhost='ssh.kjuq.dpdns.org'
+tshost='kun150p'
+port='8000'
 username='kjuq'
 
 # -l オプションが指定された場合は HOSTNAME に .local を付加
@@ -45,9 +46,9 @@ fi
 
 extension="${input##*.}"
 output="$(date +'%Y-%m-%d_%H-%M-%S_%N')_$(printf '%05d' $RANDOM).$extension"
-remote_home='./mount/buffalo_stick_ssd/storage'
+remote_home='./storage/'
 remote_path='assets/img'
 
-scp -q "$input" "$username@$hostname:$remote_home/$remote_path/$output"
+scp -q "$input" "$username@$cfhost:$remote_home/$remote_path/$output"
 
-echo "http://$hostname:$port/$remote_path/$output"
+echo "http://$tshost:$port/$remote_path/$output"
