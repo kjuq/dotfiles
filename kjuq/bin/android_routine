@@ -49,7 +49,7 @@ checkhealth() {
 		echo '============================================='
 		exit 1
 	fi
-	if ! echo ';o;' | gpg --passphrase-fd 0 --pinentry-mode=loopback -o $PREFIX/tmp/pass_dummy --yes $PASSWORD_STORE_DIR/__dummy/__is_decryption_success.gpg > /dev/null 2>&1; then
+	if ! echo ';o;' | gpg --passphrase-fd 0 --pinentry-mode=loopback -o $PREFIX/tmp/pass_dummy --yes $PASSWORD_STORE_DIR/__dummy/__is_decryption_success.gpg >/dev/null 2>&1; then
 		# if ! pass __dummy/__is_decryption_success > /dev/null 2>&1; then
 		echo 'Error: passphrase of `gpg-agent` is not entered' 1>&2
 		echo '============================================='
@@ -68,7 +68,7 @@ copyimg() {
 	user="kjuq"
 	host="ssh.kjuq.dpdns.org" # Cloudflare
 	if timeout 1 ping -c 1 100.100.100.100 >/dev/null; then
-		host="kun150p" # Tailscale
+		host="100.70.238.62" # Tailscale
 		echo 'Use Tailscale connection'
 	else
 		echo 'Use Cloudflare connection'

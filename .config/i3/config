@@ -10,7 +10,6 @@ set $sac Mod4+Mod1+Ctrl
 
 # Kill Window
 bindsym $sac+BackSpace kill
-bindsym $sac+Shift+q --release exec --no-startup-id xkill
 
 # Launch applications
 bindsym $sac+1 exec kitty
@@ -72,11 +71,6 @@ mode "resize" {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-
-# Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
-
-# bindsym XF86PowerOff exec systemctl hibernate
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "brightnessctl set 10%+"
