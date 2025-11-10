@@ -12,15 +12,9 @@ import = [
 osc52 = "CopyPaste"
 
 [font]
-normal = { family = "CozetteVector", style = "Regular" }
-bold = { family = "CozetteVector", style = "Bold" }
-italic = { family = "CozetteVector", style = "Italic" }
-bold_italic = { family = "CozetteVector", style = "Bold Italic" }
+normal = { family = "Hack Nerd Font", style = "Regular" }
 offset = { x = 0, y = 0 }
-size = 16.0
-
-[cursor]
-style = "Beam"
+size = 10.0
 
 [colors]
 cursor = { cursor = "#E5E9F0" }
@@ -46,5 +40,6 @@ bindings = [
 	{ key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab (needed for tmux)
 	{ key = "Back", mods = "Control", chars = "\u0017" }, # word-del for Linux
 	{ key = "Back", mods = "Command", chars = "\u0015" }, # Ctrl-u for MacOS
+	{ key = "Back", mods = "Control|Shift", chars = "\u0015" }, # word-del for Linux
 	{ key = "F11", mods = "Command|Control", action = "ToggleSimpleFullscreen" }, # For MacOS
 ]
