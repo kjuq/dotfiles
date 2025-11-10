@@ -31,7 +31,6 @@ spec.opts = {
 
 spec.specs = {
 	'nvim-treesitter/nvim-treesitter',
-	'nvim-tree/nvim-web-devicons',
 }
 
 return spec

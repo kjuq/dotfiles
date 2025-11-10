@@ -2,12 +2,7 @@
 ---@type LazySpec
 local spec = { 'https://github.com/echasnovski/mini.nvim' }
 
-spec.lazy = false
-
-spec.keys = {
-	{ 'ga', mode = { 'n', 'x' } }, -- for align
-	{ 'gA', mode = { 'n', 'x' } }, -- for align
-}
+spec.event = 'VeryLazy'
 
 spec.config = function()
 	require('mini.align').setup({
@@ -60,6 +55,14 @@ spec.config = function()
 
 			toggle_info = '<S-Tab>',
 			toggle_preview = '<Tab>',
+		},
+	})
+	require('mini.icons').setup()
+	require('mini.splitjoin').setup({
+		mappings = {
+			toggle = 'gS',
+			split = 'gS',
+			join = '',
 		},
 	})
 end
