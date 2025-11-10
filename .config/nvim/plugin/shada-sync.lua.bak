@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd({ 'TextYankPost', 'FocusLost', 'CmdlineLeave' }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ 'FocusGained', 'CmdLineEnter' }, {
+vim.api.nvim_create_autocmd({ 'FocusGained', 'CmdlineEnter' }, {
 	group = group,
 	callback = function()
 		vim.cmd.rshada()
