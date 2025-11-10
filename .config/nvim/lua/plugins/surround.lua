@@ -17,7 +17,7 @@ spec.keys = {
 
 spec.opts = {
 	surrounds = {
-		['c'] = { -- Markdown fenced code blocks
+		['<C-f>'] = { -- Markdown fenced code blocks
 			add = function()
 				return { '```', '```' }
 			end,
