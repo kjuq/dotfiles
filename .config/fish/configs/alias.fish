@@ -30,7 +30,7 @@ end
 switch $(uname)
 case Linux
 	function ls
-		command ls --color=auto --classify --group-directories-first $argv
+		LC_ALL=C command ls --color=auto --classify --group-directories-first $argv
 	end
 case Darwin
 	function ls
