@@ -41,5 +41,7 @@ bindings = [
 	{ key = "Delete", mods = "Control|Shift", chars = "\u000b" }, # Ctrl-k for Linux
 	{ key = "Back", mods = "Control", chars = "\u0017" }, # Ctrl-w for Linux
 	{ key = "Back", mods = "Control|Shift", chars = "\u0015" }, # Ctrl-w for Linux
+	{ key = "Insert", mods = "Shift", action = "Paste" }, # Use CLIPBOARD register rather than PRIMARY register of X11
+	{ key = "Paste", action = "Paste" },
 	{ key = "Back", mods = "Command", chars = "\u0015" }, # Ctrl-u for MacOS
 ]

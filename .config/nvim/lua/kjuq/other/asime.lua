@@ -18,11 +18,13 @@ end
 local yank_entire_buffer = function()
 	if require('kjuq.utils.common').is_empty_buffer() then
 		vim.fn.setreg('+', ' ')
+		vim.fn.setreg('*', ' ')
 		return
 	end
 	local move_left = is_last_line_empty() and '' or 'h'
 	local cmd = 'ggvG$' .. move_left .. '"+d'
 	vim.cmd.normal({ cmd, bang = true }) -- yank entire buffer
+	vim.fn.setreg('*', vim.fn.getreg('+'))
 end
 
 ---@type function
