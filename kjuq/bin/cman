@@ -5,7 +5,7 @@ set -o errexit
 set -o nounset
 
 edit=false
-dir="$KJUQ_DOCS/cmd"
+dir="$KJUQ_DOCS/notes"
 
 # Calculate width of current terminal window
 if command -v tput &>/dev/null; then
