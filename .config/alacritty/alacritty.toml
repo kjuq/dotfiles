@@ -13,7 +13,6 @@ osc52 = "CopyPaste"
 
 [font]
 normal = { family = "Hack Nerd Font", style = "Regular" }
-offset = { x = 0, y = 0 }
 size = 10.0
 
 [colors]
@@ -31,15 +30,16 @@ dimensions = { columns = 220, lines = 60 }
 padding = { x = 6, y = 2 }
 option_as_alt = "Both" # for MacOS
 
+[mouse]
+hide_when_typing = true
+
 [keyboard]
 bindings = [
-	{ key = "Minus", mods = "Command", action = "DecreaseFontSize" },
-	{ key = "Equals", mods = "Command|Shift", action = "IncreaseFontSize" },
-	{ key = "Equals", mods = "Command", action = "ResetFontSize" },
 	{ key = "Tab", mods = "Control", chars = "\u001B[27;5;9~" }, # ctrl-tab (needed for tmux)
 	{ key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab (needed for tmux)
-	{ key = "Back", mods = "Control", chars = "\u0017" }, # word-del for Linux
+	# Shift-tab works without such configurations
+	{ key = "Delete", mods = "Control|Shift", chars = "\u000b" }, # Ctrl-k for Linux
+	{ key = "Back", mods = "Control", chars = "\u0017" }, # Ctrl-w for Linux
+	{ key = "Back", mods = "Control|Shift", chars = "\u0015" }, # Ctrl-w for Linux
 	{ key = "Back", mods = "Command", chars = "\u0015" }, # Ctrl-u for MacOS
-	{ key = "Back", mods = "Control|Shift", chars = "\u0015" }, # word-del for Linux
-	{ key = "F11", mods = "Command|Control", action = "ToggleSimpleFullscreen" }, # For MacOS
 ]
