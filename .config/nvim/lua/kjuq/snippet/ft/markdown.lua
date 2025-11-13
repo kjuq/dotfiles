@@ -4,12 +4,20 @@ M.snippets = {
 	marpInit = {
 		[[---]],
 		[[marp: true]],
-		[[math: mathjax]],
-		[[style: section { font-size: 22px; }]],
-		[[---]],
-		[[]],
-		[[# ${0}]],
-		[[]],
+		[[theme: default]],
+		[[paginate: true]],
+		[[lang: ja # Necessary for Japanese-word-breaking]],
+		[[style: |]],
+		[[  h1, h2, h3, h4, h5, h6, p { word-break: auto-phrase; }]],
+		[[  h1 { color: #2c5aa0; }]],
+		[[  h2 { color: #4a7ba7; }]],
+		[[  section { font-size: 18px; }]],
+		[[  table { font-size: 0.8em; }]],
+		[[  .columns { /* Split screen */]],
+		[[    display: grid;]],
+		[[    grid-template-columns: repeat(2, minmax(0, 1fr));]],
+		[[    gap: 1rem;]],
+		[[  }]],
 		[[---]],
 	},
 	marpLatexmath = {
@@ -24,6 +32,19 @@ M.snippets = {
 		[[	});]],
 		[[</script>]],
 	},
+	marpMermaid = {
+		[[<script type="module">]],
+		[[	import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs';]],
+		[[	mermaid.initialize({ startOnLoad: false });]],
+		[[	await mermaid.run({ querySelector: '.language-mermaid', });]],
+		[[	// Set auto-scaling to true for Mermaid diagrams only]],
+		[[	document.querySelectorAll('marp-pre[is="marp-pre"][data-auto-scaling]').forEach(pre => {]],
+		[[		if (pre.querySelector('code.language-mermaid')) {]],
+		[[			pre.setAttribute('data-auto-scaling', 'true');]],
+		[[		}]],
+		[[	});]],
+		[[</script>]],
+	},
 	marpSmalltable = {
 		[[<style scoped>]],
 		[[	table { table-layout: fixed; width: 100%; display:table; font-size: 18px; }]],
@@ -34,12 +55,6 @@ M.snippets = {
 	},
 	imageLeft = {
 		[[![${1:description} bg right width:600](${2:imgpath})]],
-	},
-	comment = {
-		[[<!-- ${1} -->]],
-	},
-	link = {
-		[[[${1:description}](${2:path})]],
 	},
 }
 
