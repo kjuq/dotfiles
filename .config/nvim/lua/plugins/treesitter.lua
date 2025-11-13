@@ -13,7 +13,7 @@ spec.opts = {
 	install_dir = vim.fn.stdpath('data') .. '/site',
 }
 
-local indent_lang = { 'python', 'markdown' }
+local indent_lang = { 'python' }
 
 spec.config = function(_, opts)
 	local ts = require('nvim-treesitter')
