@@ -1,5 +1,3 @@
-require('kjuq.utils.skeleton').paste_skeleton('python.py')
-
 vim.g.python_recommended_style = false
 
 -- not working in Lua way
