@@ -69,7 +69,7 @@ spec.opts = {
 			chat = true,
 			command = true,
 			model = { model = 'gemini-2.5-pro' },
-			system_prompt = require('kjuq.utils.ai').plain_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai_module').plain_prompt('Japanese'),
 		},
 		{
 			name = 'Gemini-Plain-EN',
@@ -77,7 +77,7 @@ spec.opts = {
 			chat = true,
 			command = true,
 			model = { model = 'gemini-2.5-pro' },
-			system_prompt = require('kjuq.utils.ai').plain_prompt('English'),
+			system_prompt = require('kjuq.utils.ai_module').plain_prompt('English'),
 		},
 		{
 			name = 'Chat-Gemini-Code-JP',
@@ -85,7 +85,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'gemini-2.5-pro' },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai_module').coding_prompt('Japanese'),
 		},
 		{
 			name = 'Chat-Gemini-Code-EN',
@@ -93,7 +93,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'gemini-2.5-pro' },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('English'),
+			system_prompt = require('kjuq.utils.ai_module').coding_prompt('English'),
 		},
 		{
 			name = 'Chat-Gemini-Code-EN',
@@ -101,7 +101,7 @@ spec.opts = {
 			chat = true,
 			command = false,
 			model = { model = 'gemini-2.5-pro' },
-			system_prompt = require('kjuq.utils.ai').coding_prompt('English'),
+			system_prompt = require('kjuq.utils.ai_module').coding_prompt('English'),
 		},
 		{
 			name = 'Copilot-Plain-JP',
@@ -109,7 +109,7 @@ spec.opts = {
 			chat = true,
 			command = true,
 			model = { model = 'gemini-2.5-pro' },
-			system_prompt = require('kjuq.utils.ai').plain_prompt('Japanese'),
+			system_prompt = require('kjuq.utils.ai_module').plain_prompt('Japanese'),
 		},
 		-- Disable all builtin agents
 		{ name = 'ChatGPT4o', disable = true },

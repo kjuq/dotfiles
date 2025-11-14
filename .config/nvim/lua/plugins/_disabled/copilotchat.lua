@@ -65,7 +65,7 @@ spec.opts = function()
 
 	return {
 		model = 'o3-mini',
-		system_prompt = require('kjuq.utils.ai').coding_prompt('Japanese'),
+		system_prompt = require('kjuq.utils.ai_module').coding_prompt('Japanese'),
 		show_help = false,
 		chat_autocomplete = true,
 		mappings = {
