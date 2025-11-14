@@ -17,7 +17,7 @@ spec.keys = {
 
 spec.opts = {
 	highlight_substituted_text = {
-		timer = require('kjuq.utils.common').highlight_duration,
+		timer = require('kjuq.utils.helper').highlight_duration,
 	},
 }
 

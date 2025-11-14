@@ -20,9 +20,6 @@ end
 
 spec.opts = {
 	backends = { 'lsp', 'treesitter', 'markdown', 'man' },
-	keymaps = {
-		['<Esc>'] = 'actions.close',
-	},
 	show_guides = true,
 	layout = {
 		default_direction = 'prefer_left',

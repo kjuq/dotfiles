@@ -17,7 +17,7 @@ spec.config = function()
 	require('ccc').setup()
 
 	local enable_hl = function(path, buffer)
-		local common = require('kjuq.utils.common')
+		local common = require('kjuq.utils.helper')
 		if common.is_bigfile(path) or common.is_bigbuf(buffer) then
 			return
 		end

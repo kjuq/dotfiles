@@ -1,7 +1,5 @@
 ---@alias AsteriskKeys '*'|'#'|'g*'|'g#'
 
-local M = {}
-
 ---@return boolean
 local is_focusing_search_word = function()
 	local cword = vim.fn.expand('<cword>')
@@ -17,7 +15,7 @@ local search_forward = function(key)
 end
 
 ---@param key AsteriskKeys
-function M.normal_search(key)
+local function normal_search(key)
 	assert(key == '*' or key == '#' or key == 'g*' or key == 'g#')
 	-- To deal with v:count1, this function uses `:normal` command
 	-- rather than returning a key sequence along with `{ expr = true }`
@@ -60,7 +58,7 @@ function _G._kjuq_asterisk_operator_search()
 end
 
 ---@param key AsteriskKeys
-function M.operator_search(key)
+local function operator_search(key)
 	local mode = vim.api.nvim_get_mode().mode:sub(1, 1)
 	if not vim.tbl_contains({ 'n' }, mode) then
 		vim.notify('AsteriskRemix: Unexpected mode detected', vim.log.levels.ERROR)
@@ -76,7 +74,7 @@ end
 -- Licensed under the terms of the Apache 2.0 license. (https://github.com/neovim/neovim/blob/master/LICENSE.txt)
 ---@param key AsteriskKeys
 ---@return string
-function M.visual_search(key)
+local function visual_search(key)
 	assert(key == '*' or key == '#' or key == 'g*' or key == 'g#')
 	local pos = vim.fn.getpos('.')
 	local vpos = vim.fn.getpos('v')
@@ -126,4 +124,17 @@ function M.visual_search(key)
 	end
 end
 
-return M
+local function setup()
+	-- stylua: ignore start
+	vim.keymap.set('n', '*', function() normal_search('*') end)
+	vim.keymap.set('n', '#', function() normal_search('#') end)
+	vim.keymap.set('n', 'g*', function() normal_search('g*') end)
+	vim.keymap.set('n', 'g#', function() normal_search('g#') end)
+	vim.keymap.set('x', '*', function() return visual_search('*') end, { expr = true })
+	vim.keymap.set('x', '#', function() return visual_search('#') end, { expr = true })
+	vim.keymap.set('n', '<Space>*', function() return operator_search('*') end, { expr = true })
+	vim.keymap.set('n', '<Space>#', function() return operator_search('#') end, { expr = true })
+	-- stylua: ignore end
+end
+
+setup()

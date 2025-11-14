@@ -120,7 +120,7 @@ spec.config = function()
 		end
 	end
 
-	local utils = require('kjuq.utils.common')
+	local utils = require('kjuq.utils.helper')
 	local scrolldown = utils.floatscrolldown
 	local scrollup = utils.floatscrollup
 

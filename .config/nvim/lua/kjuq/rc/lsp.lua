@@ -39,12 +39,12 @@ local on_attach = function(ev)
 	local client_id = ev.data.client_id
 	local client = assert(vim.lsp.get_client_by_id(client_id))
 
-	require('kjuq.utils.lsp').register_format_on_save(client, bufnr, {
+	require('kjuq.utils.lsp_module').register_format_on_save(client, bufnr, {
 		fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
 	})
-	require('kjuq.utils.lsp').register_autocompletion(client, bufnr, false, false)
-	require('kjuq.utils.lsp').register_completion_documentation(client, bufnr)
-	require('kjuq.utils.lsp').register_inlinecompletion(client, bufnr)
+	require('kjuq.utils.lsp_module').register_autocompletion(client, bufnr, false, false)
+	require('kjuq.utils.lsp_module').register_completion_documentation(client, bufnr)
+	require('kjuq.utils.lsp_module').register_inlinecompletion(client, bufnr)
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {

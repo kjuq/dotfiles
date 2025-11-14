@@ -20,13 +20,8 @@ end
 
 loadlocalconf('initpre')
 
-require('kjuq.rc.general')
 require('kjuq.rc.options')
 require('kjuq.rc.keymaps')
-require('kjuq.rc.commands')
-require('kjuq.rc.mouse')
-require('kjuq.rc.colorscheme')
-require('kjuq.rc.experimental')
 require('kjuq.rc.lsp')
 
 loadlocalconf('pluginpre')

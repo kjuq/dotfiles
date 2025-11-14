@@ -42,7 +42,7 @@ spec.opts = {
 		},
 		documentation = {
 			opts = {
-				border = require('kjuq.utils.common').floatwinborder,
+				border = require('kjuq.utils.helper').floatwinborder,
 				position = { row = 2, col = 2 },
 				size = {
 					-- max_width = require('kjuq.utils.lsp').float_max_width,
@@ -68,7 +68,7 @@ spec.opts = {
 				col = -2,
 			},
 			border = {
-				style = require('kjuq.utils.common').floatwinborder,
+				style = require('kjuq.utils.helper').floatwinborder,
 			},
 			win_options = {
 				winblend = 0,

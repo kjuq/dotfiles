@@ -52,8 +52,8 @@ spec.opts = function()
 				['<F7>'] = 'toggle-preview-ts-ctx', -- `ts-ctx` binds require `nvim-treesitter-context`
 				['<F8>'] = 'preview-ts-ctx-dec',
 				['<F9>'] = 'preview-ts-ctx-inc',
-				[require('kjuq.utils.common').floatscrolldown] = 'preview-down',
-				[require('kjuq.utils.common').floatscrollup] = 'preview-up',
+				[require('kjuq.utils.helper').floatscrolldown] = 'preview-down',
+				[require('kjuq.utils.helper').floatscrollup] = 'preview-up',
 			},
 			fzf = {
 				-- fzf '--bind=' options

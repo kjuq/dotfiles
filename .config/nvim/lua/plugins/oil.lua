@@ -2,7 +2,7 @@
 ---@type LazySpec
 local spec = { 'https://github.com/stevearc/oil.nvim' }
 
-spec.lazy = not require('kjuq.utils.common').argv_contains('oil-ssh://')
+spec.lazy = not require('kjuq.utils.helper').argv_contains('oil-ssh://')
 
 spec.event = 'VeryLazy'
 

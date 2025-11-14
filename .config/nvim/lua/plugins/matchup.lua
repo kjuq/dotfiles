@@ -22,7 +22,7 @@ spec.opts = {
 spec.config = function(_, opts)
 	require('match-up').setup(opts)
 	local set_deferred_highlight = function(path, buffer)
-		local common = require('kjuq.utils.common')
+		local common = require('kjuq.utils.helper')
 		if common.is_bigfile(path) or common.is_bigbuf(buffer) then
 			vim.b.matchup_matchparen_deferred = 1
 		end

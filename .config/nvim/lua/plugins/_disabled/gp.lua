@@ -225,7 +225,7 @@ spec.opts = {
 	style_chat_finder_preview_ratio = 0.5,
 
 	-- styling for popup
-	style_popup_border = require('kjuq.utils.common').floatwinborder,
+	style_popup_border = require('kjuq.utils.helper').floatwinborder,
 	-- margins are number of characters or lines
 	style_popup_margin_bottom = 8,
 	style_popup_margin_left = 1,

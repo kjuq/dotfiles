@@ -1,7 +1,113 @@
-require('kjuq.rc.keymaps.override_predefined')
-require('kjuq.rc.keymaps.toggleopts')
-require('kjuq.rc.keymaps.scribe')
-require('kjuq.rc.keymaps.lsp')
-require('kjuq.rc.keymaps.changetext')
-require('kjuq.rc.keymaps.frequent')
-require('kjuq.rc.keymaps.snippet')
+vim.keymap.set({ 'n', 'x' }, '<Space>', '<Nop>')
+
+-- Emacs-like cursor movement in command mode
+vim.keymap.set('c', '<C-b>', '<Left>') -- Jumps to the beginning of a line by default
+vim.keymap.set('c', '<C-f>', '<Right>') -- Opens a command-line window (q:) by default
+vim.keymap.set('c', '<C-a>', '<Home>') -- Inserts all matched candidates by default, so <C-i> is enough
+vim.keymap.set('c', '<C-d>', '<Del>') -- Lists completions by default, so <C-i> is enough
+-- map("c", "<C-k>", "<c-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>") -- Digraph is important
+vim.keymap.set('c', '<C-x>', function()
+	vim.fn.setreg('', vim.fn.getcmdline())
+end)
+
+-- recall history beginning with typed characters
+vim.keymap.set('c', '<C-p>', function()
+	return vim.fn.pumvisible() == 0 and '<Up>' or '<C-p>'
+end, { expr = true })
+vim.keymap.set('c', '<C-n>', function()
+	return vim.fn.pumvisible() == 0 and '<Down>' or '<C-n>'
+end, { expr = true })
+
+vim.keymap.set('i', '<C-k>', '<Nop>')
+vim.keymap.set('i', '<C-g><C-k>', '<C-k>')
+vim.keymap.set('i', '<C-v>', '<Nop>')
+vim.keymap.set('i', '<C-g><C-v>', '<C-v>')
+
+vim.keymap.set('n', 'x', '"_x')
+vim.keymap.set('n', 'X', '"_X')
+
+vim.keymap.set('i', '<C-y>', function()
+	local mode = vim.api.nvim_get_mode().mode
+	if mode ~= 'ic' then
+		return '<C-y>'
+	end
+	local selected = vim.fn.complete_info({ 'selected' }).selected ~= -1
+	if not selected then
+		return '<C-n><C-y>'
+	else
+		return '<C-y>'
+	end
+end, { expr = true })
+
+-- Move caret on display lines
+-- Comfortable line specify movement by v:count
+vim.keymap.set({ 'n', 'x' }, 'k', function()
+	return vim.v.count == 0 and 'gk' or 'k'
+end, { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'j', function()
+	return vim.v.count == 0 and 'gj' or 'j'
+end, { expr = true, silent = true })
+
+vim.keymap.set('n', '<Esc>', function()
+	vim.cmd.nohlsearch()
+	return '<Esc>'
+	-- vim.cmd.execute([['normal \<Esc>']])
+end, { expr = true, silent = true })
+
+vim.keymap.set({ 'i' }, '<C-l>', function()
+	if vim.api.nvim_get_mode().mode ~= 'ix' then --  not in completion with <C-x>
+		vim.cmd.fclose({ bang = true })
+	end
+end, { silent = true })
+
+vim.keymap.set('n', '<Space>cr', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
+vim.keymap.set('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
+
+vim.keymap.set('n', '<Space>cv', '`[v`]', { desc = 'Select last pasted range' })
+
+vim.keymap.set('n', '<Space>sq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
+vim.keymap.set('n', '<Space>sQ', '<CMD>cclose<CR>', { desc = 'Close QuickFix window' })
+vim.keymap.set('n', '<Space>sm', '<CMD>messages<CR>', { desc = 'History of messages' })
+
+-- Frequently used keymaps
+vim.keymap.set('n', '<Space>w', vim.cmd.write, { desc = 'Write' })
+vim.keymap.set('n', '<Space>W', '<Cmd>noautocmd write<CR>', { desc = 'Write noautocmd' })
+vim.keymap.set('n', '<Space>d', vim.cmd.quit, { desc = 'Quit' })
+vim.keymap.set('n', '<Space>D', vim.cmd.quitall, { desc = 'Quit all' })
+vim.keymap.set('n', '<Space>Q', vim.cmd.restart, { desc = 'Restart' })
+
+vim.keymap.set('n', '<Space>-', '<Cmd>Explore<CR>', { desc = ':Explore' })
+
+vim.keymap.set('t', '<S-Tab>', [[<C-\><C-n>]], { desc = 'Exit insert mode' })
+
+-- LSP:
+-- neovim/runtime/lua/vim/lsp.lua > lsp._set_defaults
+vim.keymap.set('n', 'gr', '<Nop>')
+
+local vlb = vim.lsp.buf
+
+vim.keymap.set('n', 'grR', '<Cmd>LspRestart<CR><Cmd>echomsg "Done :LspRestart"<CR>', { desc = 'LSP: Restart LS' })
+vim.keymap.set('n', 'grt', vlb.type_definition, { desc = 'LSP: Go to type definition' })
+vim.keymap.set('n', 'grd', vlb.declaration, { desc = 'LSP: Go to Declaration' })
+vim.keymap.set('n', 'grh', vlb.typehierarchy, { desc = 'LSP: Type hierarchy' })
+vim.keymap.set('n', 'grc', vlb.incoming_calls, { desc = 'LSP: Incoming calls' })
+vim.keymap.set('n', 'grg', vlb.outgoing_calls, { desc = 'LSP: Outgoing calls' })
+vim.keymap.set({ 'n', 'x' }, 'grf', vlb.format, { desc = 'LSP: Format' })
+vim.keymap.set('n', '<M-e>', vim.diagnostic.open_float, { desc = 'LSP: Show diagnostics' })
+vim.keymap.set('n', 'grwa', vlb.add_workspace_folder, { desc = 'LSP: Add folder to workspace' })
+vim.keymap.set('n', 'grwr', vlb.remove_workspace_folder, { desc = 'LSP: Remove folder from workspace' })
+vim.keymap.set('n', 'grww', function()
+	vim.notify(vim.inspect(vlb.list_workspace_folders()))
+end, { desc = 'LSP: List folders of workspaceh' })
+vim.keymap.set('n', 'grq', vim.diagnostic.setqflist, { desc = 'LSP: Set diagnostics into qflist' })
+
+-- NOTE: There are few LSP which supports `workspace/diagnostic` though
+vim.keymap.set('n', 'grwq', vim.lsp.buf.workspace_diagnostics, { desc = 'LSP: Workspace diagnostics' })
+vim.keymap.set(
+	'n',
+	'grwo',
+	require('kjuq.utils.lsp_module').workspace_didopen,
+	{ desc = 'LSP: Send `textDocument/didOpen` for all files' }
+)
+
+vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })

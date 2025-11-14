@@ -45,7 +45,7 @@ spec.config = function()
 		highlight = {
 			on_put = true,
 			on_yank = false,
-			timer = require('kjuq.utils.common').highlight_duration,
+			timer = require('kjuq.utils.helper').highlight_duration,
 		},
 		picker = {
 			select = {

@@ -298,6 +298,7 @@ function M.setup(user_opts)
 		opts = vim.tbl_deep_extend('force', opts, user_opts)
 	end
 	init()
+	vim.keymap.set({ 'n', 'x' }, '<Space>cj', M.map, { expr = true, desc = 'Remove multibytes' })
 end
 
 return M

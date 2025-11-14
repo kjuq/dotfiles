@@ -2,7 +2,6 @@
 
 ---@param bufnr? integer
 local function cdroot(bufnr)
-	vim.print(bufnr)
 	if not bufnr then
 		bufnr = 0
 	end

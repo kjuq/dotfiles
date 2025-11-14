@@ -1,18 +1,10 @@
-local success, conf_dir = pcall(os.getenv, 'XDG_CONFIG_HOME')
-if not success then
-	conf_dir = os.getenv('HOME') .. '/.config'
-end
-
-local common = require('kjuq.utils.common')
-
 local M = {}
 
-M.skel_path = conf_dir .. '/nvim/skeleton/'
-
+local helper = require('kjuq.utils.helper')
 M.paste_skeleton = function(filename)
-	if (not common.is_current_file_exists()) and common.is_empty_buffer() then
+	if (not helper.is_current_file_exists()) and helper.is_empty_buffer() then
 		vim.cmd.read({
-			args = { require('kjuq.utils.skeleton').skel_path .. filename },
+			args = { vim.fn.stdpath('config') .. '/nvim/skeleton/' .. filename },
 			mods = { silent = true },
 		})
 		vim.cmd.delete({

@@ -25,11 +25,11 @@ spec.opts = {
 		backend = { 'builtin', 'nui', 'fzf_lua', 'telescope', 'fzf' },
 		nui = {
 			border = {
-				style = require('kjuq.utils.common').floatwinborder,
+				style = require('kjuq.utils.helper').floatwinborder,
 			},
 		},
 		builtin = {
-			border = require('kjuq.utils.common').floatwinborder,
+			border = require('kjuq.utils.helper').floatwinborder,
 			mappings = {
 				['<Esc>'] = 'Close',
 				['<C-c>'] = false, -- `false` to disable

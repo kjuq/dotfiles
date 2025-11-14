@@ -14,17 +14,10 @@ spec.cmd = {
 	'PeekToggle',
 }
 
-local ft = { 'markdown', 'codecompanion' }
-
 local map = require('kjuq.utils.lazy').generate_map('', 'Peek: ')
 spec.keys = {
 	map('<Space>aP', 'n', function()
-		local md = require('kjuq.utils.ft.markdown')
-		if md.is_marp_buffer(0) then
-			md.open_marp(0)
-		else
-			vim.cmd.PeekToggle()
-		end
+		vim.cmd.PeekToggle()
 	end, 'Toggle', { ft = ft }),
 }
 

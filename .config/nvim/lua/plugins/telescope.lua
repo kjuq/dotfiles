@@ -33,8 +33,8 @@ spec.keys = {
 spec.opts = function()
 	local actions = require('telescope.actions')
 	local actions_layout = require('telescope.actions.layout')
-	local prev_up = require('kjuq.utils.common').floatscrollup
-	local prev_down = require('kjuq.utils.common').floatscrolldown
+	local prev_up = require('kjuq.utils.helper').floatscrollup
+	local prev_down = require('kjuq.utils.helper').floatscrolldown
 	local prev_right = '<M-l>'
 	local prev_left = '<M-h>'
 

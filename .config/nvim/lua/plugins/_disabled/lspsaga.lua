@@ -12,8 +12,8 @@ spec.opts = {
 	symbol_in_winbar = { enable = false },
 	lightbulb = { enable = false },
 	scroll_preview = {
-		scroll_down = require('kjuq.utils.common').floatscrolldown,
-		scroll_up = require('kjuq.utils.common').floatscrollup,
+		scroll_down = require('kjuq.utils.helper').floatscrolldown,
+		scroll_up = require('kjuq.utils.helper').floatscrollup,
 	},
 	ui = {
 		border = vim.o.winborder,

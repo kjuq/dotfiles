@@ -1,5 +1,3 @@
-local skk = require('kjuq.utils.skk')
-
 ---@module 'lazy'
 ---@type LazySpec
 local spec = { 'https://github.com/vim-skk/skkeleton' }
@@ -7,12 +5,46 @@ spec.enabled = vim.fn.executable('deno') ~= 0
 
 spec.event = { 'User DenopsReady', 'InsertEnter' }
 
-spec.keys = skk.mappings('Skkeleton: ', 'skkeleton-enable', 'skkeleton-disable', 'skkeleton-toggle')
+local is_skk_jp_mode_enabled = false
+local skk_dir = os.getenv('XDG_CONFIG_HOME') .. '/skk'
+local jisyo_user = skk_dir .. '/my_jisyo'
+local completion_rank = skk_dir .. '/completion_rank'
+
+local group = vim.api.nvim_create_augroup('kjuq_skk_toggle', {})
+
+local toggle_japanese = function()
+	if is_skk_jp_mode_enabled then
+		vim.notify('Japanese mode disabled (English)')
+		vim.api.nvim_clear_autocmds({ group = group })
+		vim.api.nvim_exec_autocmds('User', { pattern = 'kjuq_disable_jp_mode' })
+	else
+		vim.notify('Japanese mode enabled (Japanese)')
+		vim.api.nvim_create_autocmd('InsertEnter', {
+			group = group,
+			pattern = '*',
+			callback = function()
+				require('kjuq.utils.helper').feed_plug('skkeleton-enable')
+			end,
+		})
+		vim.api.nvim_exec_autocmds('User', { pattern = 'kjuq_enable_jp_mode' })
+	end
+	is_skk_jp_mode_enabled = not is_skk_jp_mode_enabled
+end
+
+-- spec.keys = {
+-- 	{ '<C-Space>', mode = 'i', '<Plug>(skkeleton-enable)', expr = true },
+-- 	{ '<Space>tj', toggle_japanese, expr = true },
+-- }
 
 spec.config = function()
+	vim.keymap.set('i', '<C-Space>', function()
+		require('kjuq.utils.helper').feed_plug('skkeleton-enable')
+	end, { expr = true })
+	vim.keymap.set('n', '<Space>tj', toggle_japanese)
+
 	-- create $XDG_CONFIG_HOME/skk dir if it doesn't exist
-	if vim.fn.isdirectory(skk.skk_dir) == 0 then
-		vim.fn.mkdir(skk.skk_dir, 'p')
+	if vim.fn.isdirectory(skk_dir) == 0 then
+		vim.fn.mkdir(skk_dir, 'p')
 	end
 
 	local lazy_root = require('lazy.core.config').options.root
@@ -26,8 +58,8 @@ spec.config = function()
 			vim.fs.joinpath(lazy_root, 'dict', 'SKK-JISYO.L'),
 			vim.fs.joinpath(lazy_root, 'dict', 'SKK-JISYO.jinmei'),
 		},
-		userDictionary = skk.jisyo_user,
-		completionRankFile = skk.completion_rank,
+		userDictionary = jisyo_user,
+		completionRankFile = completion_rank,
 	})
 
 	vim.fn['skkeleton#register_kanatable']('rom', {

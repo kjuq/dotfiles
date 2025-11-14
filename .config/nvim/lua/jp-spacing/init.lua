@@ -61,6 +61,7 @@ function M.setup(user_opts)
 		opts = vim.tbl_deep_extend('force', opts, user_opts)
 	end
 	init()
+	vim.keymap.set({ 'n', 'x' }, '<Space>c<Space>', M.map, { expr = true, desc = 'Format EN and JP' })
 end
 
 return M

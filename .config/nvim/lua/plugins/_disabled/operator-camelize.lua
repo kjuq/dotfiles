@@ -6,10 +6,10 @@ local spec = { 'https://github.com/tyru/operator-camelize.vim' }
 
 spec.keys = {
 	map('<Space>cc', { 'n', 'x' }, function()
-		require('kjuq.utils.common').feed_plug('operator-camelize')
+		require('kjuq.utils.helper').feed_plug('operator-camelize')
 	end, 'Camelize'),
 	map('<Space>cC', { 'n', 'x' }, function()
-		require('kjuq.utils.common').feed_plug('operator-decamelize')
+		require('kjuq.utils.helper').feed_plug('operator-decamelize')
 	end, 'Decamelize'),
 }
 

@@ -140,4 +140,8 @@ local statusline = {
 	components.blank,
 }
 
-return table.concat(statusline, '')
+local function setup()
+	vim.opt.statusline = table.concat(statusline, '')
+end
+
+setup()

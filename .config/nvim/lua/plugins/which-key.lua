@@ -14,8 +14,8 @@ spec.opts = {
 		border = 'single',
 	},
 	keys = {
-		scroll_down = require('kjuq.utils.common').floatscrolldown,
-		scroll_up = require('kjuq.utils.common').floatscrollup,
+		scroll_down = require('kjuq.utils.helper').floatscrolldown,
+		scroll_up = require('kjuq.utils.helper').floatscrollup,
 	},
 	layout = {
 		width = { max = 80 }, -- min and max width of the columns

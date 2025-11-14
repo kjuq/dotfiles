@@ -11,8 +11,6 @@ opt.laststatus = 0 -- global status line. `0` to hide
 opt.showcmdloc = 'statusline'
 opt.ruler = false
 
-opt.statusline = require('kjuq.utils.statusline')
-
 opt.termguicolors = true
 
 opt.wildmenu = true
