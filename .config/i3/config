@@ -13,7 +13,7 @@ bindsym $sac+BackSpace kill
 
 # Launch applications
 bindsym $sac+1 exec alacritty
-bindsym $sac+2 exec brave
+bindsym $sac+2 exec firefox
 bindsym $sac+3 exec pcmanfm
 
 # Screenshot like MacOS

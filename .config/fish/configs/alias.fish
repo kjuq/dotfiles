@@ -30,7 +30,7 @@ end
 switch $(uname)
 case Linux
 	function ls
-		LC_ALL=C command ls --color=auto --classify --group-directories-first $argv
+		command ls --color=auto --classify --group-directories-first $argv
 	end
 case Darwin
 	function ls
@@ -97,6 +97,6 @@ end
 
 if command --search --quiet adb && [ -n "$ANDROID_USER_HOME" ]
 	function adb --wraps='HOME="$ANDROID_USER_HOME" adb'
-		HOME="$ANDROID_USER_HOME" adb $argv
+		HOME="$ANDROID_USER_HOME" command adb $argv
 	end
 end
