@@ -13,8 +13,6 @@ vim.diagnostic.config({
 	},
 })
 
-vim.lsp.enable('snippet')
-
 ---@param ev table ref. `help event-args`
 local on_attach = function(ev)
 	local bufnr = ev.buf

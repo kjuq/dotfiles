@@ -1,10 +1,10 @@
----@alias kjuq.snippet.word (fun():string)|string|string[]
+---@alias snippet_ls.word (fun():string)|string|string[]
 
----@alias kjuq.snippet.snippet kjuq.snippet.word[]
+---@alias snippet_ls.snippet snippet_ls.word[]
 
 local M = {}
 
----@param word kjuq.snippet.word
+---@param word snippet_ls.word
 ---@return string
 local function create_word(word)
 	if type(word) == 'string' then
@@ -19,21 +19,21 @@ local function create_word(word)
 end
 
 -- Called by `setup()`
----@return table<string, kjuq.snippet.word>
+---@return table<string, snippet_ls.word>
 local function generate_filetype_snippets()
 	local ftsnippets = {}
-	ftsnippets.all = require('kjuq.snippet.ft.all').snippets
+	ftsnippets.all = require('snippet-ls.ft.all').snippets
 	local dirpath = vim.fn.stdpath('config') .. '/lua/kjuq/snippet/ft/'
 	for filename, fileattr in vim.fs.dir(dirpath) do
 		if fileattr == 'file' then
 			local filetype = filename:gsub('%.lua$', '')
-			ftsnippets[filetype] = require('kjuq.snippet.ft.' .. filetype).snippets
+			ftsnippets[filetype] = require('snippet-ls.ft.' .. filetype).snippets
 		end
 	end
 	return ftsnippets
 end
 
----@return kjuq.snippet.snippet[]
+---@return snippet_ls.snippet[]
 local function get_snips_by_ft(filetype)
 	local snpft = generate_filetype_snippets()
 	local snips = {}
@@ -44,11 +44,12 @@ local function get_snips_by_ft(filetype)
 	return snips
 end
 
----@return kjuq.snippet.snippet[]
+---@return snippet_ls.snippet[]
 local function get_buf_snips()
 	return get_snips_by_ft(vim.bo.filetype)
 end
 
+-- A function to select snippets using `vim.ui.select`
 function M.select()
 	local colpos = vim.api.nvim_win_get_cursor(0)[2] + 1 -- zero-indexed
 	local linesize = #vim.api.nvim_get_current_line()
@@ -139,7 +140,7 @@ end
 
 ---@return function: A function that creates a new server instance
 -- https://gist.github.com/DimitrisDimitropoulos/f8c8b13a50994d30296fc190c8004e60
-function M.new_server()
+local function new_server()
 	local function server(dispatchers)
 		local closing = false
 		local srv = {}
@@ -171,4 +172,15 @@ function M.new_server()
 	end
 	return server
 end
+
+local function setup()
+	vim.lsp.config('snippet', {
+		name = 'kjuq_snippet_ls',
+		cmd = new_server(),
+	})
+	vim.lsp.enable('snippet')
+end
+
+setup()
+
 return M
