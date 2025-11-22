@@ -21,7 +21,7 @@ spec.opts = {
 	cleanup_delay_ms = false,
 	constrain_cursor = 'editable', -- 'editable' | 'name' | false
 	columns = {
-		'icon',
+		-- 'icon',
 		-- "permissions",
 		-- 'size',
 		-- 'mtime',
