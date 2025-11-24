@@ -12,9 +12,7 @@ set $sac Mod4+Mod1+Ctrl
 bindsym $sac+BackSpace kill
 
 # Launch applications
-bindsym $sac+1 exec alacritty
-bindsym $sac+2 exec firefox
-bindsym $sac+3 exec pcmanfm
+bindsym $sac+Shift+m exec alacritty
 
 # Screenshot like MacOS
 bindsym $mod+Shift+3 exec --no-startup-id i3-scrot
@@ -24,40 +22,43 @@ bindsym $mod+Shift+5 --release exec --no-startup-id i3-scrot -w
 # change focus
 bindsym $sac+9 focus next
 
-# move focused window
-bindsym $sac+h move left
-bindsym $sac+j move down
-bindsym $sac+k move up
-bindsym $sac+l move right
+# move focused window (hjkl)
+bindsym $sac+0 focus left
+bindsym $sac+comma focus down
+bindsym $sac+period focus up
+bindsym $sac+7 focus right
+bindsym $sac+Shift+0 move left
+bindsym $sac+Shift+comma move down
+bindsym $sac+Shift+period move up
+bindsym $sac+Shift+7 move right
 
 # dismiss notification
-bindsym $sac+m exec dunstctl close
+# bindsym $sac+m exec dunstctl close
 
 # split orientation
-# bindsym $sac+h split h;exec notify-send 'tile horizontally'
-# bindsym $sac+v split v;exec notify-send 'tile vertically'
-bindsym $sac+Shift+s split toggle
+bindsym $sac+s split h;exec notify-send 'tile horizontally'
+bindsym $sac+v split v;exec notify-send 'tile vertically'
+# bindsym $sac+Shift+s split toggle
 
 # toggle fullscreen mode for the focused container
-bindsym $sac+Shift+f fullscreen toggle
+bindsym $sac+o fullscreen toggle
 
 # Rescue builtin display
-bindsym $sac+Shift+d exec xrandr | grep 'connected' | grep -v 'eDP-1' | cut -d ' ' -f 1 | xargs -I {} xrandr --output '{}' --off --output eDP-1 --auto --primary --rotate left
+bindsym $sac+d exec xrandr | grep 'connected' | grep -v 'eDP-1' | cut -d ' ' -f 1 | xargs -I {} xrandr --output '{}' --off --output eDP-1 --auto --primary --rotate left
 
 # toggle tiling / floating
-bindsym $sac+Shift+l floating toggle
+bindsym $sac+l floating toggle
 
-# change focus between tiling / floating windows
-bindsym $sac+f focus mode_toggle
+# # change focus between tiling / floating windows
+# bindsym $sac+f focus mode_toggle
 
-# focus the parent container
-bindsym $sac+p focus parent
+# # focus the parent container
+# bindsym $sac+p focus parent
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $sac+g move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
+# Show the next scratchpad window or hide the focused scratchpad window. If there are multiple scratchpad windows, this command cycles through them.
 bindsym $sac+apostrophe scratchpad show
 
 # Resize window (you can also use the mouse for that)
@@ -83,10 +84,85 @@ bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 # End: Keybinds }}}
 
+# Workspace {{{
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+
+set $wskey1 backslash
+set $wskey2 semicolon
+set $wskey3 bracketright
+set $wskey4 bracketleft
+set $wskey5 slash
+set $wskey6 grave
+set $wskey7 equal
+set $wskey8 minus
+
+# switch to workspace
+bindsym $sac+$wskey1 workspace 1
+bindsym $sac+$wskey2 workspace 2
+bindsym $sac+$wskey3 workspace 3
+bindsym $sac+$wskey4 workspace 4
+bindsym $sac+$wskey5 workspace 5
+bindsym $sac+$wskey6 workspace 6
+bindsym $sac+$wskey7 workspace 7
+bindsym $sac+$wskey8 workspace 8
+
+# Move to workspace with focused container
+bindsym Shift+$sac+$wskey1 move container to workspace 1; workspace $ws1
+bindsym Shift+$sac+$wskey2 move container to workspace 2; workspace $ws2
+bindsym Shift+$sac+$wskey3 move container to workspace 3; workspace $ws3
+bindsym Shift+$sac+$wskey4 move container to workspace 4; workspace $ws4
+bindsym Shift+$sac+$wskey5 move container to workspace 5; workspace $ws5
+bindsym Shift+$sac+$wskey6 move container to workspace 6; workspace $ws6
+bindsym Shift+$sac+$wskey7 move container to workspace 7; workspace $ws7
+bindsym Shift+$sac+$wskey8 move container to workspace 8; workspace $ws8
+
+# Move window to other displays (Super + Alt)
+bindsym $sac+p move workspace to output up
+bindsym $sac+n move workspace to output down
+bindsym $sac+f move workspace to output right
+bindsym $sac+b move workspace to output left
+
+# Open applications on specific workspaces
+# To get class name, `xprop | grep WM_CLASS`
+
+# +---+---+---+---+---+
+# |   | 8 | 7 | 6 |   |
+# +---+---+---+---+---+
+# |   | 5 | 4 | 3 |   |
+# +---+---+---+---+---+
+# |   |   |   | 2 | 1 |
+# +---+---+---+---+---+
+
+# Open specific applications in floating mode
+# for_window [title="File Transfer*"] floating enable
+for_window [class="FloatingVim"] floating enable
+for_window [window_role="GtkFileChooserDialog"] floating disable
+
+# github.com/toppair/peek.nvim
+no_focus [title="^Peek preview$"]
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+
+# End: Workspace }}}
+
 # Misc {{{
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 2
 default_floating_border pixel
+
+focus_wrapping no
 
 # Hide borders
 hide_edge_borders none
@@ -124,103 +200,3 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #2B2C2B
 
 # End: Misc }}}
-
-# Workspace {{{
-# Workspace names
-# to display names or symbols instead of plain workspace numbers you can use
-# something like: set $ws1 1:mail
-#                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
-
-# Super + Ctrl + Alt
-set $wsmod Mod1+Mod4+Ctrl
-
-set $wskey1 semicolon
-set $wskey2 period
-set $wskey3 comma
-set $wskey4 bracketright
-set $wskey5 bracketleft
-set $wskey6 slash
-set $wskey7 grave
-set $wskey8 equal
-set $wskey9 minus
-
-# switch to workspace
-bindsym $wsmod+$wskey1 workspace $ws1
-bindsym $wsmod+$wskey2 workspace $ws2
-bindsym $wsmod+$wskey3 workspace $ws3
-bindsym $wsmod+$wskey4 workspace $ws4
-bindsym $wsmod+$wskey5 workspace $ws5
-bindsym $wsmod+$wskey6 workspace $ws6
-bindsym $wsmod+$wskey7 workspace $ws7
-bindsym $wsmod+$wskey8 workspace $ws8
-bindsym $wsmod+$wskey9 workspace $ws9
-
-# Move to workspace with focused container
-bindsym Shift+$wsmod+$wskey1 move container to workspace $ws1; workspace $ws1
-bindsym Shift+$wsmod+$wskey2 move container to workspace $ws2; workspace $ws2
-bindsym Shift+$wsmod+$wskey3 move container to workspace $ws3; workspace $ws3
-bindsym Shift+$wsmod+$wskey4 move container to workspace $ws4; workspace $ws4
-bindsym Shift+$wsmod+$wskey5 move container to workspace $ws5; workspace $ws5
-bindsym Shift+$wsmod+$wskey6 move container to workspace $ws6; workspace $ws6
-bindsym Shift+$wsmod+$wskey7 move container to workspace $ws7; workspace $ws7
-bindsym Shift+$wsmod+$wskey8 move container to workspace $ws8; workspace $ws8
-bindsym Shift+$wsmod+$wskey9 move container to workspace $ws9; workspace $ws9
-
-# Move window to other displays (Super + Alt)
-bindsym $mod+Mod1+p move workspace to output up
-bindsym $mod+Mod1+n move workspace to output down
-bindsym $mod+Mod1+f move workspace to output right
-bindsym $mod+Mod1+b move workspace to output left
-
-# Open applications on specific workspaces
-
-# To get class name, `xprop | grep WM_CLASS`
-
-# +---+---+---+---+---+
-# |   | 9 | 8 | 7 |   |
-# +---+---+---+---+---+
-# |   | 6 | 5 | 4 |   |
-# +---+---+---+---+---+
-# |   | 3 | 2 | 1 |   |
-# +---+---+---+---+---+
-
-# assign [class="Vivaldi"] $ws1
-# assign [class="Chromium"] $ws1
-#
-# assign [class="Station"] $ws2
-# assign [class="Ferdium"] $ws2
-#
-# assign [class="org.wezfurlong.wezterm"] $ws4
-# assign [class="Alacritty"] $ws4
-# assign [class="kitty"] $ws4
-#
-# assign [class="qutebrowser"] $ws5
-# assign [class="Brave-browser"] $ws5
-# assign [class="firefox"] $ws5
-#
-# assign [class="steam"] $ws7
-
-# Open specific applications in floating mode
-# for_window [title="File Transfer*"] floating enable
-for_window [class="FloatingVim"] floating enable
-for_window [window_role="GtkFileChooserDialog"] floating disable
-
-# github.com/toppair/peek.nvim
-no_focus [title="^Peek preview$"]
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
-# workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-
-# End: Workspace }}}
