@@ -1,3 +1,5 @@
+local M = {}
+
 function _G.kjuq_stl_macrorec()
 	if vim.fn.reg_recording() == '' then
 		return ''
@@ -87,10 +89,6 @@ function _G.kjuq_stl_diagnostic_hint()
 	return 'H:' .. hint .. ' '
 end
 
-function _G.kjuq_stl_skk()
-	return require('kjuq.utils.skk').is_skk_jp_mode_enabled() and 'JP ' or ''
-end
-
 ---@param highlight string
 ---@param item string
 local function color(highlight, item)
@@ -111,13 +109,12 @@ local components = {
 	diagnostic_warn = color('DiagnosticWarn', '%{v:lua._G.kjuq_stl_diagnostic_warn()}'),
 	diagnostic_info = color('DiagnosticInfo', '%{v:lua._G.kjuq_stl_diagnostic_info()}'),
 	diagnostic_hint = color('DiagnosticHint', '%{v:lua._G.kjuq_stl_diagnostic_hint()}'),
-	skk = color('Type', '%{v:lua._G.kjuq_stl_skk()}'),
 	blank = ' ',
 
 	-- TODO: add diff and branch?
 }
 
-local statusline = {
+M.statusline = table.concat({
 	components.blank,
 
 	components.fullpath,
@@ -128,7 +125,6 @@ local statusline = {
 
 	components.macro_rec,
 	components.searchcount,
-	components.skk,
 	components.diagnostic_error,
 	components.diagnostic_warn,
 	components.diagnostic_info,
@@ -138,10 +134,6 @@ local statusline = {
 	components.filetype,
 
 	components.blank,
-}
+}, '')
 
-local function setup()
-	vim.opt.statusline = table.concat(statusline, '')
-end
-
-setup()
+return M

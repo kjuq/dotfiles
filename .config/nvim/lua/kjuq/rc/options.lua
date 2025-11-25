@@ -8,6 +8,8 @@ opt.belloff = { 'esc', 'error' }
 
 opt.cmdheight = 0
 opt.laststatus = 0 -- global status line. `0` to hide
+opt.statusline = require('kjuq.utils.statusline').statusline
+
 opt.showcmdloc = 'statusline'
 opt.ruler = false
 
