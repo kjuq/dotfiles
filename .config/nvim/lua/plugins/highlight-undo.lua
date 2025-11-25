@@ -8,7 +8,7 @@ local spec = { 'https://github.com/tzachar/highlight-undo.nvim' }
 spec.lazy = false
 
 spec.opts = {
-	duration = require('kjuq.utils.helper').highlight_duration,
+	duration = require('kjuq.helper').highlight_duration,
 	undo = {
 		hlgroup = 'HighlightUndo',
 		mode = 'n',

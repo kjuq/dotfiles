@@ -3,7 +3,7 @@
 local spec = { 'https://github.com/nvim-telescope/telescope.nvim' }
 spec.cmd = { 'Telescope' }
 
-local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Telescope: ')
+local map = require('kjuq.lazy').generate_map('<Space>', 'Telescope: ')
 spec.keys = {
 	-- File pickers
 	map('fe', 'n', '<Cmd>Telescope find_files hidden=true<CR>', 'Files on current dir'),
@@ -33,8 +33,8 @@ spec.keys = {
 spec.opts = function()
 	local actions = require('telescope.actions')
 	local actions_layout = require('telescope.actions.layout')
-	local prev_up = require('kjuq.utils.helper').floatscrollup
-	local prev_down = require('kjuq.utils.helper').floatscrolldown
+	local prev_up = require('kjuq.helper').floatscrollup
+	local prev_down = require('kjuq.helper').floatscrolldown
 	local prev_right = '<M-l>'
 	local prev_left = '<M-h>'
 

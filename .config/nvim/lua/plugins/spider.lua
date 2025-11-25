@@ -22,7 +22,7 @@ local is_japanese_letter = function(str)
 	return string.match(str, japanese_regex) ~= nil
 end
 
-local map = require('kjuq.utils.lazy').generate_map('', 'Spider: ')
+local map = require('kjuq.lazy').generate_map('', 'Spider: ')
 ---@param key 'w'|'b'|'e'|'ge'
 local map_spider = function(key)
 	local rhs = function()

@@ -2,11 +2,11 @@
 ---@type LazySpec
 local spec = { 'https://github.com/stevearc/oil.nvim' }
 
-spec.lazy = not require('kjuq.utils.helper').argv_contains('oil-ssh://')
+spec.lazy = not require('kjuq.helper').argv_contains('oil-ssh://')
 
 spec.event = 'VeryLazy'
 
-local map = require('kjuq.utils.lazy').generate_map('', 'Oil: ')
+local map = require('kjuq.lazy').generate_map('', 'Oil: ')
 spec.keys = {
 	map('<Space>-', 'n', '<CMD>Oil<CR>', 'Open'),
 }

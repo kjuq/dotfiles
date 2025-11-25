@@ -3,7 +3,7 @@
 local spec = { 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
 spec.branch = 'main'
 
-local map = require('kjuq.utils.lazy').generate_map('', 'TS-textobjs: ')
+local map = require('kjuq.lazy').generate_map('', 'TS-textobjs: ')
 spec.keys = {
 	map('aa', { 'x', 'o' }, function()
 		require('nvim-treesitter-textobjects.select').select_textobject('@parameter.outer', 'textobjects')

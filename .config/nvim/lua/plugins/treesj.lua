@@ -1,4 +1,4 @@
-local map = require('kjuq.utils.lazy').generate_map('', 'TreeSJ: ')
+local map = require('kjuq.lazy').generate_map('', 'TreeSJ: ')
 
 ---@module 'lazy'
 ---@type LazySpec

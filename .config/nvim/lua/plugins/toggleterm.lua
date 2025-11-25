@@ -1,4 +1,4 @@
-local map = require('kjuq.utils.lazy').generate_map('', 'ToggleTerm: ')
+local map = require('kjuq.lazy').generate_map('', 'ToggleTerm: ')
 
 local open_cmd = 'ToggleTerm dir=%:p:h'
 

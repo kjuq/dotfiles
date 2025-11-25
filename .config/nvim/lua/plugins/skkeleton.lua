@@ -23,7 +23,7 @@ local toggle_japanese = function()
 			group = group,
 			pattern = '*',
 			callback = function()
-				require('kjuq.utils.helper').feed_plug('skkeleton-enable')
+				require('kjuq.helper').feed_plug('skkeleton-enable')
 			end,
 		})
 		vim.api.nvim_exec_autocmds('User', { pattern = 'kjuq_enable_jp_mode' })
@@ -38,7 +38,7 @@ end
 
 spec.config = function()
 	vim.keymap.set('i', '<C-Space>', function()
-		require('kjuq.utils.helper').feed_plug('skkeleton-enable')
+		require('kjuq.helper').feed_plug('skkeleton-enable')
 	end, { expr = true })
 	vim.keymap.set('n', '<Space>tj', toggle_japanese)
 

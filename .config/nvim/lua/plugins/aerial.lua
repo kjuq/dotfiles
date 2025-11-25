@@ -1,4 +1,4 @@
-local map = require('kjuq.utils.lazy').generate_map('', 'Aerial: ')
+local map = require('kjuq.lazy').generate_map('', 'Aerial: ')
 
 ---@module 'lazy'
 ---@type LazySpec

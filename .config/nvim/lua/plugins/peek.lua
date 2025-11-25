@@ -14,7 +14,7 @@ spec.cmd = {
 	'PeekToggle',
 }
 
-local map = require('kjuq.utils.lazy').generate_map('', 'Peek: ')
+local map = require('kjuq.lazy').generate_map('', 'Peek: ')
 spec.keys = {
 	map('<Space>aP', 'n', function()
 		vim.cmd.PeekToggle()

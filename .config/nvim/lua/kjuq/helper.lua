@@ -81,7 +81,7 @@ M.buffer_delete = function(mode)
 		end
 	else
 		local cur_bufnr = vim.api.nvim_get_current_buf()
-		require('kjuq.utils.common').buffer_prev()
+		require('kjuq.common').buffer_prev()
 		vim.api.nvim_buf_delete(cur_bufnr, { force = mode == 'force' })
 	end
 end

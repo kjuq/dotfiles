@@ -18,7 +18,7 @@ local default_adapter = pro
 -- NOTE: This article shows usecases
 -- https://minerva.mamansoft.net/2025-03-21-codecompanion-neovim-ai-coding#%E5%AE%9F%E9%9A%9B%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%A7%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9
 
-local map = require('kjuq.utils.lazy').generate_map('', 'CodeCompanion: ')
+local map = require('kjuq.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
 	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', pro), 'Pro model'),
 	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', pro), 'Pro model'),

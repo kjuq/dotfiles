@@ -1,4 +1,4 @@
-local map = require('kjuq.utils.lazy').generate_map('<Space>', 'Neo-tree: ')
+local map = require('kjuq.lazy').generate_map('<Space>', 'Neo-tree: ')
 
 ---@module 'lazy'
 ---@type LazySpec

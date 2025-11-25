@@ -14,7 +14,7 @@ vim.opt.belloff = { 'esc', 'error' }
 
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 0 -- global status line. `0` to hide
-vim.opt.statusline = require('kjuq.utils.statusline').statusline
+vim.opt.statusline = require('kjuq.statusline').statusline
 
 vim.opt.showcmdloc = 'statusline'
 vim.opt.ruler = false
@@ -204,7 +204,7 @@ vim.keymap.set('n', 'grwq', vim.lsp.buf.workspace_diagnostics, { desc = 'LSP: Wo
 vim.keymap.set(
 	'n',
 	'grwo',
-	require('kjuq.utils.lsp_module').workspace_didopen,
+	require('kjuq.lsp_module').workspace_didopen,
 	{ desc = 'LSP: Send `textDocument/didOpen` for all files' }
 )
 
@@ -251,12 +251,12 @@ local on_attach = function(ev)
 	local client_id = ev.data.client_id
 	local client = assert(vim.lsp.get_client_by_id(client_id))
 
-	require('kjuq.utils.lsp_module').register_format_on_save(client, bufnr, {
+	require('kjuq.lsp_module').register_format_on_save(client, bufnr, {
 		fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
 	})
-	require('kjuq.utils.lsp_module').register_autocompletion(client, bufnr, false, false)
-	require('kjuq.utils.lsp_module').register_completion_documentation(client, bufnr)
-	require('kjuq.utils.lsp_module').register_inlinecompletion(client, bufnr)
+	require('kjuq.lsp_module').register_autocompletion(client, bufnr, false, false)
+	require('kjuq.lsp_module').register_completion_documentation(client, bufnr)
+	require('kjuq.lsp_module').register_inlinecompletion(client, bufnr)
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {

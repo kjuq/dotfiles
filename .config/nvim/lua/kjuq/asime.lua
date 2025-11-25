@@ -16,7 +16,7 @@ end
 
 ---@type function
 local yank_entire_buffer = function()
-	if require('kjuq.utils.helper').is_empty_buffer() then
+	if require('kjuq.helper').is_empty_buffer() then
 		vim.fn.setreg('+', ' ')
 		vim.fn.setreg('*', ' ')
 		return

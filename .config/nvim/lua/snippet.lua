@@ -32,7 +32,7 @@ M.lua = {
 		[[---@type LazySpec]],
 		[[local spec = { '${0}' }]],
 		[[]],
-		[[local map = require('kjuq.utils.lazy').generate_map('', '')]],
+		[[local map = require('kjuq.lazy').generate_map('', '')]],
 		[[spec.keys = {}]],
 		[[]],
 		[[spec.opts = {}]],

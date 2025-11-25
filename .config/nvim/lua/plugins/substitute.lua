@@ -2,7 +2,7 @@
 ---@type LazySpec
 local spec = { 'https://github.com/gbprod/substitute.nvim' }
 
-local map = require('kjuq.utils.lazy').generate_map('', 'Substitute: ')
+local map = require('kjuq.lazy').generate_map('', 'Substitute: ')
 spec.keys = {
 	map('s', 'n', function()
 		require('substitute').operator()
@@ -17,7 +17,7 @@ spec.keys = {
 
 spec.opts = {
 	highlight_substituted_text = {
-		timer = require('kjuq.utils.helper').highlight_duration,
+		timer = require('kjuq.helper').highlight_duration,
 	},
 }
 
