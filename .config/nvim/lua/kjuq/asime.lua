@@ -45,6 +45,7 @@ local confirm = {
 	n = function()
 		yank_entire_buffer()
 		vim.cmd.startinsert()
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-Space>', true, false, true), 'm', false) -- Enables SKK
 		hide_and_paste(0)
 	end,
 	i = function()
