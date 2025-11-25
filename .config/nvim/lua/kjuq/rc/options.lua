@@ -1,165 +1,85 @@
-local opt = vim.opt
+vim.opt.backup = true
+vim.opt.backupdir = os.getenv('XDG_STATE_HOME') .. '/nvim/backup//'
+vim.opt.undofile = true
 
-opt.backup = true
-opt.backupdir = os.getenv('XDG_STATE_HOME') .. '/nvim/backup//'
-opt.undofile = true
+vim.opt.belloff = { 'esc', 'error' }
 
-opt.belloff = { 'esc', 'error' }
+vim.opt.cmdheight = 0
+vim.opt.laststatus = 0 -- global status line. `0` to hide
+vim.opt.statusline = require('kjuq.utils.statusline').statusline
 
-opt.cmdheight = 0
-opt.laststatus = 0 -- global status line. `0` to hide
-opt.statusline = require('kjuq.utils.statusline').statusline
+vim.opt.showcmdloc = 'statusline'
+vim.opt.ruler = false
 
-opt.showcmdloc = 'statusline'
-opt.ruler = false
+-- vim.opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
+vim.opt.wildoptions:append('fuzzy')
+vim.opt.completeopt = { 'menuone', 'popup', 'fuzzy' }
 
-opt.termguicolors = true
+vim.opt.winborder = 'single'
 
-opt.wildmenu = true
-opt.wildmode = { 'full' } -- use wildmenu any time
-opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
-opt.completeopt = { 'menuone', 'popup', 'fuzzy' }
+vim.opt.dictionary:append('/usr/share/dict/words') -- For Archlinux, `pacman -S words`
 
-opt.winborder = 'single'
-
-opt.viminfo = [['1000,<50,s10,h]]
-
-opt.sessionoptions = {
-	'blank',
-	'buffers',
-	'folds',
-	'help',
-	'tabpages',
-	'terminal',
-	'winpos',
-	'winsize',
-}
-
-opt.wildignore:append({
-	'*.a',
-	'*.aux',
-	'*.class',
-	'*.dll',
-	'*.exe',
-	'*.hg',
-	'*.javac',
-	'*.lib',
-	'*.o',
-	'*.obj',
-	'*.orig',
-	'*.out',
-	'*.pyc',
-	'*.pyc',
-	'*.pyd',
-	'*.pyo',
-	'*.so',
-	'*.swo',
-	'*.swp',
-	'*.toc',
-	'.DS_Store',
-	'.git',
-	'node_modules',
-})
-
-opt.suffixesadd:append({ '.java', '.rs' })
-
--- To install on Arch `pacman -S words`
-opt.dictionary:append('/usr/share/dict/words')
-
-opt.pumheight = 10
-opt.pumwidth = 40
+vim.opt.pumheight = 10
+vim.opt.pumwidth = 40
 -- o.pumblend = 20 -- Disable this when using transparent env
 
-opt.updatetime = 200
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.infercase = true
+vim.opt.wildignorecase = true
 
-opt.ignorecase = true
-opt.smartcase = true
-opt.infercase = true
-opt.wildignorecase = true
+vim.opt.foldmethod = 'expr'
+vim.opt.foldopen:remove('block')
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext = ''
+vim.opt.foldlevel = 9999
 
-opt.foldmethod = 'expr'
-opt.foldopen:remove('block')
-opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-opt.foldtext = ''
-opt.foldlevel = 9999
+vim.opt.wrap = false
+vim.opt.wrapscan = true
+vim.opt.smoothscroll = true
+-- vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 1
 
-opt.wrap = false
-opt.wrapscan = true
-opt.smoothscroll = true
-opt.scrolloff = 8
-opt.sidescrolloff = 1
+vim.opt.startofline = true
 
-opt.startofline = true
+vim.opt.autoindent = true
+vim.opt.smartindent = false -- DON'T ENABLE THIS so that '#' at the beginning of a line be indented properly
+vim.opt.cindent = true
+vim.opt.cinkeys:remove('0#')
+vim.opt.cinoptions:append('j9') -- `:help java-cinoptions`
+vim.opt.cinoptions:append('J9') -- `:help javascript-cinoptions`
+vim.opt.breakindent = true
+-- vim.opt.breakindentopt:append("list:-1") -- indent wrapped list
+vim.opt.showbreak = '> '
 
-opt.autoindent = true
-opt.smartindent = false -- DON'T ENABLE THIS so that '#' at the beginning of a line be indented properly
-opt.cindent = true
-opt.cinkeys:remove('0#')
-opt.cinoptions:append('j9') -- `:help java-cinoptions`
-opt.cinoptions:append('J9') -- `:help javascript-cinoptions`
-opt.breakindent = true
--- opt.breakindentopt:append("list:-1") -- indent wrapped list
-opt.showbreak = '> '
+vim.opt.cursorlineopt = { 'screenline' }
 
--- opt.cursorline = true
-opt.cursorlineopt = { 'screenline' }
+vim.opt.splitright = true
+vim.opt.splitbelow = false
 
-opt.splitright = true
-opt.splitbelow = false
+vim.opt.virtualedit = { 'block' }
 
-opt.virtualedit = { 'block' }
+vim.opt.tabstop = 4
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 0 -- obey tabstop
+vim.opt.shiftround = true
 
-opt.tabstop = 4
-opt.expandtab = false
-opt.shiftwidth = 0 -- obey tabstop
-opt.shiftround = true
-
-opt.guicursor = table.concat({
-	'n-v-sm:block-Cursor',
-	'c-i-ci-ve:ver25-Cursor',
-	'r-cr:hor20-Cursor',
-	'o:hor50-Cursor',
-	't:ver25-TermCursor',
-}, ',')
-
-opt.list = true
-opt.listchars = {
+vim.opt.list = true
+vim.opt.listchars = {
 	trail = '◊',
 	tab = '│ ',
-	-- space = "⋅",
-	-- eol = "↵",
 	nbsp = '▶',
-	extends = '»',
-	precedes = '«',
-}
-opt.fillchars = {
-	eob = ' ', -- hide tildes in blank space after end of file
-	fold = ' ',
 }
 
-opt.number = false
-opt.relativenumber = false
-opt.numberwidth = 1
+vim.opt.numberwidth = 1
 
-opt.helplang = { 'en', 'ja' }
-opt.fileencodings = { 'ucs-bom', 'utf-8', 'sjis', 'euc-jp', 'latin1' }
+vim.opt.timeout = false
 
-opt.ttimeout = true -- `false` is buggy when SSH-ing or Wezterm without tmux
-opt.timeout = false
+vim.opt.exrc = true
 
-opt.messagesopt = 'hit-enter,history:2000'
+vim.opt.spelllang = { 'en', 'cjk' }
 
--- Disable welcome message
--- opt.shortmess:append('I')
-
-opt.exrc = true
-
-opt.spell = false
-opt.spellfile = vim.fs.joinpath(os.getenv('XDG_STATE_HOME'), 'nvim', 'spell.en.utf-8.add')
-opt.spelllang = { 'en', 'cjk' }
-opt.spelloptions = 'camel'
-
-opt.matchpairs:append({
+vim.opt.matchpairs:append({
 	'「:」',
 	'（:）',
 	'［:］',
