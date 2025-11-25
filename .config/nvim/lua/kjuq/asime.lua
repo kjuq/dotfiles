@@ -1,4 +1,4 @@
--- Loaded by `nvimcopy`
+-- Usage: `nvim -c 'lua require("kjuq.asime")'`
 
 local is_linux = vim.fn.has('linux') == 1
 local is_macos = vim.fn.has('mac') == 1

@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-tmp="/tmp/nvim_asime_tmp.md"
-confpath="$XDG_CONFIG_HOME/nvim/lua/kjuq/asime.lua"
-
-nvim -c "luafile $confpath" "$tmp"
