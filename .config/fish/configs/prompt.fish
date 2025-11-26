@@ -22,7 +22,7 @@ function fish_prompt
 		$(set_color brblack) "$user_and_hostname" \
 		" $prompt_status" \
 		\n \
-		'❯ '
+		'$ '
 end
 
 set --global _kjuq_fresh_session true
