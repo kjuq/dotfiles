@@ -17,15 +17,15 @@ function ........ --wraps='cd ../../../../../../..'
 	cd ../../../../../../..
 end
 
-# function la --wraps='ls --all'
-# 	ls --almost-all $argv
-# end
-# function lla --wraps='ll --all'
-# 	ll --almost-all $argv
-# end
-# function l1 --wraps='ls -1'
-# 	ls -1 $argv
-# end
+function la --wraps='ls --all'
+	ls --almost-all $argv
+end
+function lla --wraps='ll --all'
+	ll --almost-all $argv
+end
+function l1 --wraps='ls -1'
+	ls -1 $argv
+end
 
 switch $(uname)
 case Linux
@@ -53,9 +53,9 @@ if command --search --quiet nvim
 	end
 end
 
-if command --search --quiet git
-	function groot --wraps='cd $(git rev-parse --show-toplevel)'
-		cd $(git rev-parse --show-toplevel) $argv
+if command --search --quiet ghq
+	function ghf
+		set --local repo "$(ghq list | fzf)" && cd "$(ghq root)/$repo"
 	end
 end
 
@@ -68,26 +68,8 @@ if command --search --quiet trash
 	end
 end
 
-if command --search --quiet nvidia-settings
-	function nvidia-settings --wraps='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
-		command nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings $argv
-	end
-end
-
-if command --search --quiet fd
-	function fd --wraps='fd --hidden'
-		command fd --hidden $argv
-	end
-end
-
 if command --search --quiet w3m
 	function w3m --wraps='env TERM=xterm-256color w3m'
 		env TERM=xterm-256color command w3m $argv
-	end
-end
-
-if command --search --quiet adb && [ -n "$ANDROID_USER_HOME" ]
-	function adb --wraps='HOME="$ANDROID_USER_HOME" adb'
-		HOME="$ANDROID_USER_HOME" command adb $argv
 	end
 end
