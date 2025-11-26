@@ -57,11 +57,6 @@ checkhealth() {
 	fi
 }
 
-sshsetup() {
-	echo '#*# Register SSH keys #*#'
-	ssh-setup
-}
-
 # Copy local image to remote
 copyimg() {
 	echo -e '\n\n#*# Sending local images to remote #*#'
@@ -121,7 +116,6 @@ pushdoc() {
 exec_all() {
 	echo -e "\n\n============ $(date '+%Y-%m-%d_%H-%M-%S') ============"
 	checkhealth
-	sshsetup
 	[ "$pic" = true ] && copyimg
 	[ "$doc" = true ] && pulldoc
 	[ "$doc" = true ] && pushdoc
