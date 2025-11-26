@@ -10,6 +10,6 @@ source "$__fish_config_dir/configs/misc.fish"
 source "$__fish_config_dir/configs/option.fish"
 source "$__fish_config_dir/configs/prompt.fish"
 
-if [ "$_KJUQ_FISH_CONFIG_LOADED" -ne 0 ];
+if ! [ "$_KJUQ_FISH_CONFIG_LOADED" = '0' ];
 	set --export _KJUQ_FISH_CONFIG_LOADED 1
 end
