@@ -9,9 +9,9 @@ set --query XDG_DATA_HOME; or set --export XDG_DATA_HOME "$HOME/.local/share"
 set --query XDG_STATE_HOME; or set --export XDG_STATE_HOME "$HOME/.local/state"
 
 # Environment variables
-set --export LC_ALL en_US.UTF-8
 set --export LANG en_US.UTF-8
 set --export LANGUAGE en_US.UTF-8
+set --export LC_COLLATE C # sort ASCII order rather than alphabetical one
 
 set --export EDITOR nvim
 set --export SUDO_EDITOR vim
