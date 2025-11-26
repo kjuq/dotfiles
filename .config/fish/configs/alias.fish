@@ -17,15 +17,15 @@ function ........ --wraps='cd ../../../../../../..'
 	cd ../../../../../../..
 end
 
-function la --wraps='ls --all'
-	ls --almost-all $argv
-end
-function lla --wraps='ll --all'
-	ll --almost-all $argv
-end
-function l1 --wraps='ls -1'
-	ls -1 $argv
-end
+# function la --wraps='ls --all'
+# 	ls --almost-all $argv
+# end
+# function lla --wraps='ll --all'
+# 	ll --almost-all $argv
+# end
+# function l1 --wraps='ls -1'
+# 	ls -1 $argv
+# end
 
 switch $(uname)
 case Linux
@@ -45,20 +45,11 @@ if command --search --quiet nvim
 	function nvimt --wraps='nvim +EditDashboard'
 		nvim +EditDashboard $argv
 	end
-	function nvimb --wraps='nvim +EditBookmarks'
-		nvim +EditBookmarks $argv
-	end
 	function nvimr --wraps='nvim +EditReponotes'
 		nvim +EditReponotes $argv
 	end
-	function nvimR --wraps='nvim +EditReadinglist'
-		nvim +EditReadinglist $argv
-	end
 	function nvimd --wraps='nvim +EditDailynote'
 		nvim +EditDailynote $argv
-	end
-	function nvimq --wraps="nvim +'set bufhidden=wipe | cgetbuffer | only! | split | set bufhidden=wipe'" --description='rg --vimgrep QUERY | nvimq'
-		nvim +'set bufhidden=wipe | cgetbuffer | only! | split | set bufhidden=wipe'
 	end
 end
 
