@@ -200,7 +200,9 @@ end, { desc = 'LSP: List folders of workspaceh' })
 vim.keymap.set('n', 'grq', vim.diagnostic.setqflist, { desc = 'LSP: Set diagnostics into qflist' })
 
 -- NOTE: There are few LSP which supports `workspace/diagnostic` though
-vim.keymap.set('n', 'grwq', vim.lsp.buf.workspace_diagnostics, { desc = 'LSP: Workspace diagnostics' })
+if vim.fn.has('nvim-0.12') == 1 then
+	vim.keymap.set('n', 'grwq', vim.lsp.buf.workspace_diagnostics, { desc = 'LSP: Workspace diagnostics' })
+end
 vim.keymap.set(
 	'n',
 	'grwo',
@@ -233,12 +235,14 @@ local on_attach = function(ev)
 
 	-- Buffer-local keymaps
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
-	vim.keymap.set(
-		'n',
-		'grQ',
-		vim.lsp.buf.workspace_diagnostics,
-		{ desc = 'LSP: Workspace diagnostics', buffer = bufnr }
-	)
+	if vim.fn.has('nvim-0.12') == 1 then
+		vim.keymap.set(
+			'n',
+			'grQ',
+			vim.lsp.buf.workspace_diagnostics,
+			{ desc = 'LSP: Workspace diagnostics', buffer = bufnr }
+		)
+	end
 	local vl_enabled = false
 	vim.keymap.set('n', '<M-l>', function()
 		vim.diagnostic.config({
@@ -254,9 +258,11 @@ local on_attach = function(ev)
 	require('kjuq.lsp_module').register_format_on_save(client, bufnr, {
 		fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
 	})
-	require('kjuq.lsp_module').register_autocompletion(client, bufnr, false, false)
+	if vim.fn.has('nvim-0.12') == 1 then
+		require('kjuq.lsp_module').register_autocompletion(client, bufnr, false, false)
+		require('kjuq.lsp_module').register_inlinecompletion(client, bufnr)
+	end
 	require('kjuq.lsp_module').register_completion_documentation(client, bufnr)
-	require('kjuq.lsp_module').register_inlinecompletion(client, bufnr)
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
