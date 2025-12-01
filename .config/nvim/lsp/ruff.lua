@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 		vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 			group = vim.api.nvim_create_augroup('kjuq_ruff_codeaction_onsave', {}),
 			callback = function()
-				require('kjuq.codeactions-on-save').apply_codeaction(client, 'source.fixAll.ruff', args.buf)
+				require('kjuq.codeactions-sync').apply_codeaction(client, 'source.fixAll.ruff', args.buf)
 			end,
 		})
 	end,
