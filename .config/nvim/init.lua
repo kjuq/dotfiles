@@ -170,6 +170,17 @@ vim.keymap.set('n', '<Space>cv', '`[v`]', { desc = 'Select last pasted range' })
 vim.keymap.set('n', '<Space>sq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
 vim.keymap.set('n', '<Space>sm', '<CMD>messages<CR>', { desc = 'History of messages' })
 
+vim.keymap.set('n', '<space>am', function()
+	vim.ui.input({ prompt = '$ ', completion = 'shellcmdline' }, function(c)
+		if c and c ~= '' then
+			vim.cmd('noswapfile enew')
+			vim.bo.buftype = 'nofile'
+			-- vim.bo.bufhidden = 'wipe'
+			vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.systemlist(c))
+		end
+	end)
+end)
+
 -- Frequently used keymaps
 vim.keymap.set('n', '<Space>w', vim.cmd.write, { desc = 'Write' })
 vim.keymap.set('n', '<Space>d', vim.cmd.quit, { desc = 'Quit' })
