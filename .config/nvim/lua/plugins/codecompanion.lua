@@ -11,20 +11,18 @@ spec.cmd = {
 
 local pfx = '<Space>p'
 
--- adopters
-local pro = 'copilot'
-local default_adapter = pro
+local default_adp = 'copilot'
 
 -- NOTE: This article shows usecases
 -- https://minerva.mamansoft.net/2025-03-21-codecompanion-neovim-ai-coding#%E5%AE%9F%E9%9A%9B%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%A7%E3%82%88%E3%81%8F%E4%BD%BF%E3%81%86%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9
 
 local map = require('kjuq.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', pro), 'Pro model'),
-	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', pro), 'Pro model'),
+	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', default_adp), 'Pro model'),
+	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', default_adp), 'Pro model'),
 
-	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', pro), 'Pro model in split'),
-	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR>', pro), 'Pro model in split'),
+	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', default_adp), 'Pro model in split'),
+	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR>', default_adp), 'Pro model in split'),
 
 	map('<Space>pi', 'n', '<Cmd>CodeCompanion<CR>', 'Inline chat'),
 	map('<Space>pi', 'x', ':CodeCompanion<CR>', 'Inline chat'),
@@ -40,6 +38,7 @@ spec.keys = {
 }
 
 spec.opts = {
+	ignore_warnings = true,
 	display = {
 		chat = {
 			window = {
@@ -57,33 +56,38 @@ spec.opts = {
 		send_code = true,
 	},
 	adapters = {
+		acp = {
+			opts = {
+				show_defaults = false,
+			},
+			claude_code = function()
+				return require('codecompanion.adapters').extend('claude_code', {
+					env = {
+						CLAUDE_CODE_OAUTH_TOKEN = 'cmd:pass claude.ai/main | head -n1',
+					},
+				})
+			end,
+			gemini_cli = function()
+				return require('codecompanion.adapters').extend('gemini_cli', {
+					defaults = {
+						auth_method = 'oauth-personal', -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+					},
+					-- env = {
+					-- 	GEMINI_API_KEY = 'cmd:op read op://personal/Gemini_API/credential --no-newline',
+					-- },
+				})
+			end,
+		},
 		http = {
+			opts = {
+				show_defaults = false,
+			},
 			copilot = function()
 				return require('codecompanion.adapters').extend('copilot', {
 					schema = {
 						model = {
-							default = 'claude-sonnet-4.5',
+							default = 'claude-sonnet-4.5', -- 'claude-opus-4.5'
 						},
-					},
-				})
-			end,
-			gemini_pro = function()
-				return require('codecompanion.adapters').extend('gemini', {
-					name = 'gemini_pro',
-					formatted_name = 'Gemini Pro',
-					env = { api_key = 'cmd:pass google.com/gemini_api_key' },
-					schema = {
-						model = { default = 'gemini-2.5-pro' },
-					},
-				})
-			end,
-			gemini_flash_lite = function()
-				return require('codecompanion.adapters').extend('gemini', {
-					name = 'gemini_flash_lite',
-					formatted_name = 'Gemini Flash-Lite',
-					env = { api_key = 'cmd:pass google.com/gemini_api_key' },
-					schema = {
-						model = { default = 'gemini-2.5-flash-lite' },
 					},
 				})
 			end,
@@ -91,7 +95,7 @@ spec.opts = {
 	},
 	strategies = {
 		chat = {
-			adapter = default_adapter,
+			adapter = default_adp,
 			keymaps = {
 				options = {
 					modes = { n = 'g?' },
@@ -159,7 +163,7 @@ spec.opts = {
 			},
 		},
 		inline = {
-			adapter = default_adapter,
+			adapter = default_adp,
 			keymaps = {
 				accept_change = {
 					modes = { n = pfx .. 'Y' },
@@ -170,7 +174,7 @@ spec.opts = {
 			},
 		},
 		cmd = {
-			adapter = default_adapter,
+			adapter = default_adp,
 		},
 	},
 }
@@ -179,13 +183,9 @@ spec.config = function(_, opts)
 	require('codecompanion').setup(opts)
 	vim.api.nvim_create_autocmd('FileType', {
 		pattern = 'codecompanion',
-		group = vim.api.nvim_create_augroup('kjuq_codecompanion_keymap_for_close', {}),
+		group = vim.api.nvim_create_augroup('kjuq_codecompanion_buf_setting', {}),
 		callback = function()
-			local toggle_map = function(key)
-				vim.keymap.set('n', key, '<Cmd>bnext<CR>', { desc = ':bnext', buffer = true })
-			end
-			toggle_map('<C-Tab>')
-			toggle_map('<C-S-Tab>')
+			-- vim.bo.bufhidden = 'wipe'
 		end,
 	})
 	vim.api.nvim_create_autocmd('User', {
@@ -226,7 +226,7 @@ spec.dependencies = {
 				},
 				auto_generate_title = true, ---Automatically generate titles for new chats
 				title_generation_opts = {
-					adapter = nil, ---Adapter for generating titles (`nil` to current chat adapter) "copilot"
+					adapter = 'copilot', ---Adapter for generating titles (`nil` to current chat adapter) "copilot"
 					model = nil, ---Model for generating titles (`nil` to current chat model) "gpt-4o"
 					refresh_every_n_prompts = 0, -- Number of prompts after which to refresh the title
 					max_refreshes = 3, ---Maximum number of times to refresh the title (default: 3)
