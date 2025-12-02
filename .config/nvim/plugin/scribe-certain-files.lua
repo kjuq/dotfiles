@@ -17,7 +17,7 @@ vim.api.nvim_create_user_command('EditReponotes', function()
 end, { desc = 'Edit readinglist.txt' })
 
 vim.api.nvim_create_user_command('EditDailynote', function()
-	local path = vim.fs.joinpath(doc, 'daily', os.date('%Y-%m-%d.md'))
+	local path = vim.fs.joinpath(doc, os.date('%Y-%m-%d.md'))
 	vim.cmd.edit(path)
 end, { desc = 'Edit daily note' })
 

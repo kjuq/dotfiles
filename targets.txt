@@ -35,6 +35,7 @@ $XDG_CONFIG_HOME/lazygit/config.yml
 $XDG_CONFIG_HOME/lesskey
 $XDG_CONFIG_HOME/matplotlib/matplotlibrc
 $XDG_CONFIG_HOME/mimeapps.list
+$XDG_CONFIG_HOME/moxide/settings.toml
 $XDG_CONFIG_HOME/mypy/config
 $XDG_CONFIG_HOME/nb/nbrc
 $XDG_CONFIG_HOME/neomutt/color
