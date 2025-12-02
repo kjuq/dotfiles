@@ -16,7 +16,7 @@ spec.keys = {
 
 spec.config = function()
 	function _G.kjuq_maketable()
-		vim.cmd([[ '[,']MakeTable! ]])
+		vim.cmd([[ '[,']MakeTable ]])
 	end
 end
 
