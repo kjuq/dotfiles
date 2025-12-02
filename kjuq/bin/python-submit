@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$#" -ne 1 ]; then
-	echo -e "Error: Invalid argument.\nUsage: 'python-submit main.py'"
-	exit 1
-fi
-
-python-test "$1" && acc submit "$1" -- --language 5055

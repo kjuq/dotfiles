@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$NVIM" ]; then
-	printf "\033]7;file://%s\033\\" "$PWD"
-else
-	echo "This terminal is not subprocess of Neovim"
-	exit 1
-fi
