@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 			local dir = vim.fn.expand('%:p:h')
 			local filename = vim.fn.expand('%:t'):gsub([[.[^.]*$]], '.pdf')
 			local path = vim.fs.joinpath('/tmp/typst_output/', dir, filename)
-
 			vim.system({ open, path }, { text = true }, function(job)
 				if job.code ~= 0 then
 					error(('code: %d, stderr: %s'):format(job.code, job.stderr))
@@ -23,6 +22,8 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 local settings = {
 	exportPdf = 'onType',
 	outputPath = '/tmp/typst_output/$root/$dir/$name',
+	formatterMode = 'typstyle', -- need to install `typstyle` via Mason
+	formatterIndentSize = 4,
 }
 
 ---@type vim.lsp.Config
