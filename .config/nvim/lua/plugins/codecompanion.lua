@@ -18,10 +18,10 @@ local default_adp = 'copilot'
 
 local map = require('kjuq.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR><Cmd>only<CR>', default_adp), 'Pro model'),
-	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR><Cmd>only<CR>', default_adp), 'Pro model'),
+	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s<CR>', default_adp), 'Pro model'),
+	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR>', default_adp), 'Pro model'),
 
-	map('<Space>pO', 'n', string.format('<Cmd>CodeCompanionChat %s Toggle<CR>', default_adp), 'Pro model in split'),
+	map('<Space>pO', 'n', string.format('<Cmd>vsplit | CodeCompanionChat %s<CR>', default_adp), 'Pro model in split'),
 	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR>', default_adp), 'Pro model in split'),
 
 	map('<Space>pi', 'n', '<Cmd>CodeCompanion<CR>', 'Inline chat'),
@@ -42,7 +42,7 @@ spec.opts = {
 	display = {
 		chat = {
 			window = {
-				layout = 'vertical', -- float|vertical|horizontal|buffer
+				layout = 'buffer', -- float|vertical|horizontal|buffer
 				width = 0.5,
 				opts = {
 					linebreak = false,
