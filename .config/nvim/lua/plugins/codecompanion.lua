@@ -18,23 +18,15 @@ local default_adp = 'copilot'
 
 local map = require('kjuq.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<Space>po', 'n', string.format('<Cmd>CodeCompanionChat %s<CR>', default_adp), 'Pro model'),
-	map('<Space>po', 'x', string.format(':CodeCompanionChat %s<CR>', default_adp), 'Pro model'),
+	map('<Space>po', { 'n', 'x' }, string.format('<Cmd>CodeCompanionChat %s<CR>', default_adp), 'Open'),
+	map('<Space>pO', { 'n', 'x' }, string.format('<Cmd>vsplit | CodeCompanionChat %s<CR>', default_adp), 'Split'),
+	map('<Space>pa', { 'n', 'x' }, '<Cmd>CodeCompanionActions<CR>', 'Actions'),
 
-	map('<Space>pO', 'n', string.format('<Cmd>vsplit | CodeCompanionChat %s<CR>', default_adp), 'Pro model in split'),
-	map('<Space>pO', 'x', string.format(':CodeCompanionChat %s<CR>', default_adp), 'Pro model in split'),
+	map('<Space>pe', 'n', '<Cmd>vsplit | %CodeCompanion /explain<CR>', 'Explain'),
+	map('<Space>pe', 'x', '<Cmd>vsplit | CodeCompanion /explain<CR>', 'Explain'),
 
-	map('<Space>pi', 'n', '<Cmd>CodeCompanion<CR>', 'Inline chat'),
-	map('<Space>pi', 'x', ':CodeCompanion<CR>', 'Inline chat'),
-
-	map('<Space>pa', 'n', '<Cmd>CodeCompanionActions<CR>', 'Actions'),
-	map('<Space>pa', 'x', ':CodeCompanionActions<CR>', 'Actions'),
-
-	map('<Space>pe', 'n', '<Cmd>%CodeCompanion /explain<CR>', 'Explain'),
-	map('<Space>pe', 'x', ':CodeCompanion /explain<CR>', 'Explain'),
-
-	map('<Space>pd', 'n', '<Cmd>%CodeCompanion /lsp<CR>', 'LSP diagnostics'),
-	map('<Space>pd', 'x', ':CodeCompanion /lsp<CR>', 'LSP diagnostics'),
+	map('<Space>pd', 'n', '<Cmd>vsplit | %CodeCompanion /lsp<CR>', 'LSP diagnostics'),
+	map('<Space>pd', 'x', '<Cmd>vsplit | CodeCompanion /lsp<CR>', 'LSP diagnostics'),
 }
 
 spec.opts = {
