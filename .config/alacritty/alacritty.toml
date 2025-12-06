@@ -12,7 +12,7 @@ import = [
 osc52 = "CopyPaste"
 
 [font]
-normal = { family = "Hack Nerd Font", style = "Regular" }
+normal = { family = "UDEV Gothic", style = "Regular" }
 size = 10.0
 
 [colors]
