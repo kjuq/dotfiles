@@ -1,6 +1,6 @@
-set __fish_git_prompt_showdirtystate true
-set __fish_git_prompt_showuntrackedfiles false
-set __fish_git_prompt_char_stateseparator ''
+# set __fish_git_prompt_showdirtystate true
+# set __fish_git_prompt_showuntrackedfiles false
+# set __fish_git_prompt_char_stateseparator ''
 
 function fish_prompt
 	# NOTE: Performance https://github.com/fish-shell/fish-shell/issues/7903
