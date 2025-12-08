@@ -14,7 +14,7 @@ export LC_COLLATE=C # sort ASCII order rather than alphabetical one
 export EDITOR=nvim
 export SUDO_EDITOR=vim
 export VISUAL=nvim
-export MANPAGER=nvim +Man!
+export MANPAGER='nvim +Man!'
 
 # Path
 export PATH="$HOME/.local/bin:$PATH"
@@ -138,7 +138,7 @@ fi
 
 # SSH-agent
 if [[ -x "$(command -v ssh-agent)" ]]; then
-	eval "$(ssh-agent -c)" >/dev/null
+	eval "$(ssh-agent)" >/dev/null
 fi
 
 # }}}

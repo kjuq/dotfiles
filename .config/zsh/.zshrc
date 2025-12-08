@@ -21,6 +21,10 @@ KEYTIMEOUT=1
 # Not Exit with Ctrl-D
 setopt ignoreeof
 
+bindkey \^U backward-kill-line
+
+WORDCHARS='-'
+
 # Alias {{{
 
 alias ...='cd ../..'
@@ -30,14 +34,13 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 
-alias ls='lsd'
 alias la='ls --almost-all $argv'
 alias lla='ll --almost-all $argv'
 alias l1='ls -1 $argv'
 
 case "$(uname)" in
 	Linux)
-		ls='ls --color=auto --classify --group-directories-first'
+		alias ls='ls --color=auto --classify --group-directories-first'
 		;;
 	Darwin)
 		alias ls='ls -GF'
