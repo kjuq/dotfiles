@@ -71,3 +71,4 @@ $XDG_CONFIG_HOME/xautocfg.cfg
 $XDG_CONFIG_HOME/xremap/config.yml
 $XDG_CONFIG_HOME/yay/config.json
 $XDG_CONFIG_HOME/zathura/zathurarc
+$XDG_CONFIG_HOME/zsh
