@@ -34,13 +34,14 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 
-alias la='ls --almost-all $argv'
-alias lla='ll --almost-all $argv'
-alias l1='ls -1 $argv'
+alias la='ls --almost-all'
+alias lla='ll --almost-all'
+alias l1='ls -1'
 
 case "$(uname)" in
 	Linux)
 		alias ls='ls --color=auto --classify --group-directories-first'
+		alias open='xdg-open'
 		;;
 	Darwin)
 		alias ls='ls -GF'
@@ -48,10 +49,14 @@ case "$(uname)" in
 esac
 
 if type nvim &> /dev/null; then
-	alias Nvim='env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim $argv'
-	alias nvimt='nvim +EditDashboard $argv'
-	alias nvimr='nvim +EditReponotes $argv'
-	alias nvimd='nvim +EditDailynote $argv'
+	alias Nvim='env KJUQ_NVIM_NO_EXT_PLUGINS=1 nvim'
+	alias nvimt='nvim +EditDashboard'
+	alias nvimr='nvim +EditReponotes'
+	alias nvimd='nvim +EditDailynote'
+fi
+
+if type ghq &> /dev/null; then
+	alias ghf='repo="$(ghq list | fzf)" && cd "$(ghq root)/$repo"'
 fi
 
 if type trash &> /dev/null; then
@@ -60,14 +65,14 @@ if type trash &> /dev/null; then
 fi
 
 if type w3m &> /dev/null; then
-	alias w3m='env TERM=xterm-256color command w3m $argv'
+	alias w3m='env TERM=xterm-256color command w3m'
 fi
 
 # }}}
 
-if type zoxide &> /dev/null; then
-	eval "$(zoxide init --cmd c zsh)"
-fi
+# if type zoxide &> /dev/null; then
+# 	eval "$(zoxide init --cmd c zsh)"
+# fi
 
 _kjuq_fresh_session=true
 
