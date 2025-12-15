@@ -28,11 +28,9 @@
 	prompt = false
 
 [merge]
-	tool = nvimmerge
-[mergetool]
-	prompt = false
+	tool = nvimdiff
 [mergetool "nvimdiff"]
-	path = nvim
+	layout = "LOCAL,BASE,REMOTE / MERGED"
 
 [safe]
 	directory = /storage/emulated/0/*
