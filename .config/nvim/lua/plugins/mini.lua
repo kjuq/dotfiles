@@ -62,15 +62,6 @@ spec.config = function()
 		})
 	end
 	do
-		require('mini.splitjoin').setup({
-			mappings = {
-				toggle = 'gS',
-				split = 'gS',
-				join = '',
-			},
-		})
-	end
-	do
 		require('mini.sessions').setup()
 		vim.keymap.set('n', '<Space>sl', '<Cmd>lua MiniSessions.read()<CR>', { desc = 'Mini.sessions: Read' })
 		vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
