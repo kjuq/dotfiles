@@ -36,21 +36,6 @@ spec.keys = {
 	map('gG', { 'o', 'x' }, function()
 		require('various-textobjs').entireBuffer()
 	end, 'Entire Buffer'),
-
-	map('ic', { 'o', 'x' }, function()
-		if vim.o.ft == 'python' then
-			require('various-textobjs').pyTripleQuotes('inner', 'inner')
-		else
-			require('various-textobjs').mdFencedCodeBlock('inner', 'inner')
-		end
-	end, 'Fenced code block (inner)'),
-	map('ac', { 'o', 'x' }, function()
-		if vim.o.ft == 'python' then
-			require('various-textobjs').pyTripleQuotes('outer', 'outer')
-		else
-			require('various-textobjs').mdFencedCodeBlock('outer', 'outer')
-		end
-	end, 'Fenced code block (outer)'),
 }
 
 spec.opts = {

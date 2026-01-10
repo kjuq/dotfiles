@@ -17,6 +17,14 @@ spec.keys = {
 	map('if', { 'x', 'o' }, function()
 		require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
 	end, '@function.inner'),
+
+	map('ac', { 'x', 'o' }, function()
+		require('nvim-treesitter-textobjects.select').select_textobject('@codeblock.outer', 'textobjects')
+	end, '@function.outer'),
+	map('ic', { 'x', 'o' }, function()
+		require('nvim-treesitter-textobjects.select').select_textobject('@codeblock.inner', 'textobjects')
+	end, '@function.inner'),
+
 	map('aC', { 'x', 'o' }, function()
 		require('nvim-treesitter-textobjects.select').select_textobject('@class.outer', 'textobjects')
 	end, '@class.outer'),
