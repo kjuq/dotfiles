@@ -153,7 +153,7 @@ end, { expr = true, silent = true })
 
 vim.keymap.set('n', '<Esc>', function()
 	vim.cmd.nohlsearch()
-	return '<Esc>'
+	return '<Cmd>fclose<CR><Esc>'
 end, { expr = true, silent = true })
 
 vim.keymap.set({ 'i' }, '<C-l>', function()
@@ -208,26 +208,7 @@ vim.keymap.set('n', 'grd', vlb.declaration, { desc = 'LSP: Go to Declaration' })
 vim.keymap.set('n', 'grh', vlb.typehierarchy, { desc = 'LSP: Type hierarchy' })
 vim.keymap.set('n', 'grc', vlb.incoming_calls, { desc = 'LSP: Incoming calls' })
 vim.keymap.set('n', 'grg', vlb.outgoing_calls, { desc = 'LSP: Outgoing calls' })
-vim.keymap.set({ 'n', 'x' }, 'grf', vlb.format, { desc = 'LSP: Format' })
 vim.keymap.set('n', '<M-e>', vim.diagnostic.open_float, { desc = 'LSP: Show diagnostics' })
-vim.keymap.set('n', 'grwa', vlb.add_workspace_folder, { desc = 'LSP: Add folder to workspace' })
-vim.keymap.set('n', 'grwr', vlb.remove_workspace_folder, { desc = 'LSP: Remove folder from workspace' })
-vim.keymap.set('n', 'grww', function()
-	vim.notify(vim.inspect(vlb.list_workspace_folders()))
-end, { desc = 'LSP: List folders of workspaceh' })
-vim.keymap.set('n', 'grq', vim.diagnostic.setqflist, { desc = 'LSP: Set diagnostics into qflist' })
-
--- NOTE: There are few LSP which supports `workspace/diagnostic` though
-if vim.fn.has('nvim-0.12') == 1 then
-	vim.keymap.set('n', 'grwq', vim.lsp.buf.workspace_diagnostics, { desc = 'LSP: Workspace diagnostics' })
-end
-vim.keymap.set(
-	'n',
-	'grwo',
-	require('kjuq.lsp_module').workspace_didopen,
-	{ desc = 'LSP: Send `textDocument/didOpen` for all files' }
-)
-
 vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signature Help' })
 -- }}}
 
@@ -247,45 +228,31 @@ vim.diagnostic.config({
 	},
 })
 
----@param ev table ref. `help event-args`
-local on_attach = function(ev)
-	local bufnr = ev.buf
-
-	-- Buffer-local keymaps
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
-	if vim.fn.has('nvim-0.12') == 1 then
-		vim.keymap.set(
-			'n',
-			'grQ',
-			vim.lsp.buf.workspace_diagnostics,
-			{ desc = 'LSP: Workspace diagnostics', buffer = bufnr }
-		)
-	end
-	local vl_enabled = false
-	vim.keymap.set('n', '<M-l>', function()
-		vim.diagnostic.config({
-			virtual_lines = not vl_enabled and { current_line = true } or false,
-		})
-		vl_enabled = not vl_enabled
-		-- TODO: disable when cursor moved beyond lines
-	end, { desc = 'LSP: Toggle virtual lines of diagnostic' })
-
-	local client_id = ev.data.client_id
-	local client = assert(vim.lsp.get_client_by_id(client_id))
-
-	require('kjuq.lsp_module').register_format_on_save(client, bufnr, {
-		fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
-	})
-	if vim.fn.has('nvim-0.12') == 1 then
-		require('kjuq.lsp_module').register_autocompletion(client, bufnr, false, false)
-		require('kjuq.lsp_module').register_inlinecompletion(client, bufnr)
-	end
-	require('kjuq.lsp_module').register_completion_documentation(client, bufnr)
-end
-
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('kjuq_user_lsp_config', {}),
-	callback = on_attach,
+	callback = function(ev)
+		local bufnr = ev.buf
+		-- Buffer-local keymaps
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
+		local vl_enabled = false
+		vim.keymap.set('n', '<M-l>', function()
+			vim.diagnostic.config({
+				virtual_lines = not vl_enabled and { current_line = true } or false,
+			})
+			vl_enabled = not vl_enabled
+			-- TODO: disable when cursor moved beyond lines
+		end, { desc = 'LSP: Toggle virtual lines of diagnostic' })
+		local client_id = ev.data.client_id
+		local client = assert(vim.lsp.get_client_by_id(client_id))
+		require('kjuq.lsp_module').register_format_on_save(client, bufnr, {
+			fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
+		})
+		if vim.fn.has('nvim-0.12') == 1 then
+			vim.opt.complete = 'o'
+			require('kjuq.lsp_module').register_inlinecompletion(client, bufnr)
+		end
+		require('kjuq.lsp_module').register_completion_documentation(client, bufnr)
+	end,
 })
 -- }}}
 
