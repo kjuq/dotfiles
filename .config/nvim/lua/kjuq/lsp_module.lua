@@ -53,149 +53,64 @@ function M.workspace_didopen()
 	end
 end
 
----@param clnt vim.lsp.Client
+-- https://github.com/fnune/codeactions-on-save.nvim
+-- https://github.com/fnune/codeactions-on-save.nvim/blob/1445e1ab60f64f62ff7765cd6537333f636ca29b/lua/codeactions-on-save/main.lua
+
+---@alias ActionKind string Code action kinds (e.g., "source.organizeImports", "source.fixAll.ruff")
+
+---@param client vim.lsp.Client
+---@param action table
 ---@param buf integer
----@param opt table? { fix_cursor, retry }
-function M.register_format_on_save(clnt, buf, opt)
-	if not opt then
-		opt = {}
-	end
-	---@return boolean success or not
-	local function reg()
-		if clnt:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
-				buffer = buf,
-				callback = function()
-					local v ---@type vim.fn.winsaveview.ret
-					if opt.fix_cursor then
-						v = vim.fn.winsaveview()
-					end
-					vim.lsp.buf.format({ async = false, id = clnt.id })
-					if opt.fix_cursor then
-						vim.fn.winrestview(v)
-					end
-				end,
-			})
-			return true
-		end
-		return false
-	end
-	-- Neovim currently does not support dynamic capabilities
-	-- so retry several times until dynamic registration has done
-	-- https://github.com/neovim/neovim/issues/24229
-	local successed = reg()
-	local retrynum = opt.retry or 3
-	local waitms = 1000
-	if not successed then
-		for i = 1, retrynum do
-			vim.defer_fn(function()
-				if successed then
-					return
-				end
-				successed = reg()
-			end, waitms * i)
-		end
-	end
-end
-
----@param selected_index integer
----@param result table
----@param client vim.lsp.Client
--- https://github.com/konradmalik/neovim-flake/blob/644fe3df84dc3cf51a7d5ab2df29817ff7d6100d/config/nvim/lua/pde/lsp/capabilities/textDocument_completion.lua
-local function show_documentation(selected_index, result, client)
-	local docs = vim.tbl_get(result, 'documentation', 'value')
-	if not docs then
+---@param timeout_ms integer
+---@param attempts integer
+local function handle_action_sync(client, action, buf, timeout_ms, attempts)
+	if attempts > 3 then
+		vim.notify('Max resolve attempts reached for action ' .. action.kind, vim.log.levels.WARN)
 		return
 	end
-
-	local wininfo = vim.api.nvim__complete_set(selected_index, { info = docs .. '\n\n_client: ' .. client.name .. '_' })
-	if vim.tbl_isempty(wininfo) or not vim.api.nvim_win_is_valid(wininfo.winid) then
-		return
-	end
-
-	vim.wo[wininfo.winid].conceallevel = 2
-	vim.wo[wininfo.winid].concealcursor = 'n'
-
-	if not vim.api.nvim_buf_is_valid(wininfo.bufnr) then
-		return
-	end
-
-	vim.bo[wininfo.bufnr].syntax = 'markdown'
-	vim.treesitter.start(wininfo.bufnr, 'markdown')
-end
-
-local documentation_is_enabled = true
----@param client vim.lsp.Client
----@param bufnr integer
-function M.register_completion_documentation(client, bufnr)
-	if not client:supports_method(vim.lsp.protocol.Methods.completionItem_resolve) then
-		return
-	end
-
-	local _, cancel_prev = nil, function() end
-
-	vim.api.nvim_create_autocmd('CompleteChanged', {
-		group = vim.api.nvim_create_augroup(
-			string.format('kjuq_completion_documentation_%s_buf_%d', client.name, bufnr),
-			{}
-		),
-		buffer = bufnr,
-		callback = function()
-			cancel_prev()
-			if not documentation_is_enabled then
-				return
+	if action.edit then
+		vim.lsp.util.apply_workspace_edit(action.edit, 'utf-16')
+	elseif action.command then
+		-- vim.lsp.buf.execute_command(action.command)
+		client:exec_cmd(action.command) -- I am not sure this works or not though
+	else
+		-- neovim:runtime/lua/vim/lsp/buf.lua shows how to run a code action
+		-- synchronously. This section is based on that.
+		local resolve_result = vim.lsp.buf_request_sync(buf, 'codeAction/resolve', action, timeout_ms)
+		if resolve_result then
+			for _, resolved_action in pairs(resolve_result) do
+				handle_action_sync(client, resolved_action.result, buf, timeout_ms, attempts + 1)
 			end
-
-			local completion_item = vim.tbl_get(vim.v.completed_item, 'user_data', 'nvim', 'lsp', 'completion_item')
-			if not completion_item then
-				return
-			end
-
-			local complete_info = vim.fn.complete_info({ 'selected' })
-			if vim.tbl_isempty(complete_info) then
-				return
-			end
-
-			local selected_index = complete_info.selected
-
-			_, cancel_prev = vim.lsp.buf_request(
-				bufnr,
-				vim.lsp.protocol.Methods.completionItem_resolve,
-				completion_item,
-				function(err, item)
-					if err ~= nil then
-						-- vim.notify(
-						-- 	'Error from client ' .. client.name .. ' when getting documentation\n' .. vim.inspect(err),
-						-- 	vim.log.levels.WARN
-						-- )
-						-- at this stage just disable it
-						documentation_is_enabled = false
-						return
-					end
-					if not item then
-						return
-					end
-					show_documentation(selected_index, item, client)
-				end
+		else
+			vim.notify(
+				'Failed to resolve code action ' .. action.kind .. ' without edit or command',
+				vim.log.levels.WARN
 			)
-		end,
-	})
+		end
+	end
 end
 
 ---@param client vim.lsp.Client
----@param bufnr integer
-function M.register_inlinecompletion(client, bufnr)
-	vim.keymap.set('i', '<C-a>', vim.lsp.inline_completion.get, { desc = 'Get the current inline completion' })
-	if client:supports_method('textDocument/inlineCompletion') then
-		-- https://github.com/neovim/nvim-lspconfig/pull/4029
-		-- To sign-in `:LspCopilotSignIn`
-		vim.keymap.set('n', '<Space>ti', function()
-			vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
-		end, { buffer = bufnr, desc = 'Enable inline completion' })
-		vim.keymap.set('n', '<Space>tI', function()
-			vim.lsp.inline_completion.enable(false, { bufnr = bufnr })
-		end, { buffer = bufnr, desc = 'Disable inline completion' })
+---@param kind ActionKind|ActionKind[]
+---@param buf integer
+---@param timeout_ms? integer
+function M.apply_codeaction(client, kind, buf, timeout_ms)
+	if not timeout_ms then
+		timeout_ms = 1000
+	end
+	local params = vim.lsp.util.make_range_params(0, 'utf-16')
+	params['context'] = { diagnostics = {} }
+	local response = client:request_sync('textDocument/codeAction', params, timeout_ms, buf)
+	if not response then
+		return
+	end
+	if type(kind) ~= 'table' then
+		kind = { kind }
+	end
+	for _, action in pairs(response.result or {}) do
+		if vim.tbl_contains(kind, action.kind) then
+			handle_action_sync(client, action, buf, timeout_ms, 0)
+		end
 	end
 end
 

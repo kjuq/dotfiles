@@ -213,6 +213,142 @@ vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, { desc = 'LSP: Signatur
 -- }}}
 
 -- LSP {{{
+---@param clnt vim.lsp.Client
+---@param buf integer
+---@param opt table? { fix_cursor, retry }
+local function register_format_on_save(clnt, buf, opt)
+	if not opt then
+		opt = {}
+	end
+	---@return boolean success or not
+	local function reg()
+		if clnt:supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = vim.api.nvim_create_augroup(string.format('kjuq_formatonsave_%s_buf_%d', clnt.name, buf), {}),
+				buffer = buf,
+				callback = function()
+					local v ---@type vim.fn.winsaveview.ret
+					if opt.fix_cursor then
+						v = vim.fn.winsaveview()
+					end
+					vim.lsp.buf.format({ async = false, id = clnt.id })
+					if opt.fix_cursor then
+						vim.fn.winrestview(v)
+					end
+				end,
+			})
+			return true
+		end
+		return false
+	end
+	-- Neovim currently does not support dynamic capabilities
+	-- so retry several times until dynamic registration has done
+	-- https://github.com/neovim/neovim/issues/24229
+	local successed = reg()
+	local retrynum = opt.retry or 3
+	local waitms = 1000
+	if not successed then
+		for i = 1, retrynum do
+			vim.defer_fn(function()
+				if successed then
+					return
+				end
+				successed = reg()
+			end, waitms * i)
+		end
+	end
+end
+
+---@param selected_index integer
+---@param result table
+---@param client vim.lsp.Client
+-- https://github.com/konradmalik/neovim-flake/blob/644fe3df84dc3cf51a7d5ab2df29817ff7d6100d/config/nvim/lua/pde/lsp/capabilities/textDocument_completion.lua
+local function show_documentation(selected_index, result, client)
+	local docs = vim.tbl_get(result, 'documentation', 'value')
+	if not docs then
+		return
+	end
+	local wininfo = vim.api.nvim__complete_set(selected_index, { info = docs .. '\n\n_client: ' .. client.name .. '_' })
+	if vim.tbl_isempty(wininfo) or not vim.api.nvim_win_is_valid(wininfo.winid) then
+		return
+	end
+	vim.wo[wininfo.winid].conceallevel = 2
+	vim.wo[wininfo.winid].concealcursor = 'n'
+	if not vim.api.nvim_buf_is_valid(wininfo.bufnr) then
+		return
+	end
+	vim.bo[wininfo.bufnr].syntax = 'markdown'
+	vim.treesitter.start(wininfo.bufnr, 'markdown')
+end
+
+local documentation_is_enabled = true
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function register_completion_documentation(client, bufnr)
+	if not client:supports_method(vim.lsp.protocol.Methods.completionItem_resolve) then
+		return
+	end
+	local _, cancel_prev = nil, function() end
+	vim.api.nvim_create_autocmd('CompleteChanged', {
+		group = vim.api.nvim_create_augroup(
+			string.format('kjuq_completion_documentation_%s_buf_%d', client.name, bufnr),
+			{}
+		),
+		buffer = bufnr,
+		callback = function()
+			cancel_prev()
+			if not documentation_is_enabled then
+				return
+			end
+			local completion_item = vim.tbl_get(vim.v.completed_item, 'user_data', 'nvim', 'lsp', 'completion_item')
+			if not completion_item then
+				return
+			end
+			local complete_info = vim.fn.complete_info({ 'selected' })
+			if vim.tbl_isempty(complete_info) then
+				return
+			end
+			local selected_index = complete_info.selected
+			_, cancel_prev = vim.lsp.buf_request(
+				bufnr,
+				vim.lsp.protocol.Methods.completionItem_resolve,
+				completion_item,
+				function(err, item)
+					if err ~= nil then
+						-- vim.notify(
+						-- 	'Error from client ' .. client.name .. ' when getting documentation\n' .. vim.inspect(err),
+						-- 	vim.log.levels.WARN
+						-- )
+						-- at this stage just disable it
+						documentation_is_enabled = false
+						return
+					end
+					if not item then
+						return
+					end
+					show_documentation(selected_index, item, client)
+				end
+			)
+		end,
+	})
+end
+
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function register_inlinecompletion(client, bufnr)
+	vim.keymap.set('i', '<C-a>', vim.lsp.inline_completion.get, { desc = 'Get the current inline completion' })
+	if client:supports_method('textDocument/inlineCompletion') then
+		-- https://github.com/neovim/nvim-lspconfig/pull/4029
+		-- To sign-in `:LspCopilotSignIn`
+		vim.keymap.set('n', '<Space>ti', function()
+			vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+		end, { buffer = bufnr, desc = 'Enable inline completion' })
+		vim.keymap.set('n', '<Space>tI', function()
+			vim.lsp.inline_completion.enable(false, { bufnr = bufnr })
+		end, { buffer = bufnr, desc = 'Disable inline completion' })
+	end
+end
+
 vim.diagnostic.config({
 	signs = false,
 	float = {
@@ -244,14 +380,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, { desc = 'LSP: Toggle virtual lines of diagnostic' })
 		local client_id = ev.data.client_id
 		local client = assert(vim.lsp.get_client_by_id(client_id))
-		require('kjuq.lsp_module').register_format_on_save(client, bufnr, {
+		register_format_on_save(client, bufnr, {
 			fix_cursor = vim.tbl_contains({ 'efm' }, client.name),
 		})
 		if vim.fn.has('nvim-0.12') == 1 then
 			vim.opt.complete = 'o'
-			require('kjuq.lsp_module').register_inlinecompletion(client, bufnr)
+			register_inlinecompletion(client, bufnr)
 		end
-		require('kjuq.lsp_module').register_completion_documentation(client, bufnr)
+		register_completion_documentation(client, bufnr)
 	end,
 })
 -- }}}
