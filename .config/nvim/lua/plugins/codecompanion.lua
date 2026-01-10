@@ -18,8 +18,13 @@ local default_adp = 'copilot'
 
 local map = require('kjuq.lazy').generate_map('', 'CodeCompanion: ')
 spec.keys = {
-	map('<Space>po', { 'n', 'x' }, string.format('<Cmd>CodeCompanionChat %s<CR>', default_adp), 'Open'),
-	map('<Space>pO', { 'n', 'x' }, string.format('<Cmd>vsplit | CodeCompanionChat %s<CR>', default_adp), 'Split'),
+	map('<Space>po', { 'n', 'x' }, string.format('<Cmd>CodeCompanionChat adapter=%s<CR>', default_adp), 'Open'),
+	map(
+		'<Space>pO',
+		{ 'n', 'x' },
+		string.format('<Cmd>vsplit | CodeCompanionChat adapter=%s<CR>', default_adp),
+		'Split'
+	),
 	map('<Space>pa', { 'n', 'x' }, '<Cmd>CodeCompanionActions<CR>', 'Actions'),
 
 	map('<Space>pe', 'n', '<Cmd>vsplit | %CodeCompanion /explain<CR>', 'Explain'),
@@ -116,12 +121,6 @@ spec.opts = {
 				yank_code = {
 					modes = { n = nil },
 				},
-				pin = {
-					modes = { n = pfx .. 'P' },
-				},
-				watch = {
-					modes = { n = pfx .. 'W' },
-				},
 				next_chat = {
 					modes = { n = ']}' },
 				},
@@ -197,136 +196,136 @@ spec.specs = {
 	{ 'nvim-lua/plenary.nvim' },
 }
 
-spec.dependencies = {
-	{
-		'https://github.com/ravitemer/codecompanion-history.nvim',
-		keys = {
-			{ '<Space>ph', mode = 'n', '<Cmd>CodeCompanionHistory<CR>', desc = 'CodeCompanion-history: Open' },
-		},
-		config = function()
-			local plugopts = {
-				keymap = '<Nop>', -- Keymap to open history from chat buffer (default: gh)
-				save_chat_keymap = '<Nop>', -- Keymap to save the current chat manually (when auto_save is disabled)
-				auto_save = true, -- Save all chats by default (disable to save only manually using 'sc')
-				expiration_days = 0, -- Number of days after which chats are automatically deleted (0 to disable)
-				picker = nil, --- "telescope", "snacks", "fzf-lua", or "default" (`nil` to auto resolve to a valid picker)
-				chat_filter = nil, ---@type function(chat_data) return boolean | Filter function to control which chats are shown
-				picker_keymaps = { -- Customize picker keymaps (optional)
-					rename = { n = 'r', i = '<M-r>' },
-					delete = { n = 'd', i = '<M-d>' },
-					duplicate = { n = '<M-y>', i = '<M-y>' },
-				},
-				auto_generate_title = true, ---Automatically generate titles for new chats
-				title_generation_opts = {
-					adapter = 'copilot', ---Adapter for generating titles (`nil` to current chat adapter) "copilot"
-					model = nil, ---Model for generating titles (`nil` to current chat model) "gpt-4o"
-					refresh_every_n_prompts = 0, -- Number of prompts after which to refresh the title
-					max_refreshes = 3, ---Maximum number of times to refresh the title (default: 3)
-					format_title = function(original_title)
-						-- this can be a custom function that applies some custom formatting to the title.
-						return original_title
-					end,
-				},
-				continue_last_chat = false, -- On exiting and entering neovim, loads the last chat on opening chat
-				delete_on_clearing_chat = false, -- When chat is cleared with `gx` delete the chat from history
-				dir_to_save = vim.fn.stdpath('data') .. '/codecompanion-history', -- Directory path to save the chats
-				enable_logging = false, -- Enable detailed logging for history extension
-				summary = { -- Summary system
-					create_summary_keymap = '<Nop>', -- Keymap to generate summary for current chat (default: "gcs")
-					browse_summaries_keymap = '<Nop>', -- Keymap to browse summaries (default: "gbs")
-					generation_opts = {
-						adapter = nil, -- defaults to current chat adapter
-						model = nil, -- defaults to current chat model
-						context_size = 90000, -- max tokens that the model supports
-						include_references = true, -- include slash command content
-						include_tool_outputs = true, -- include tool execution results
-						system_prompt = nil, -- custom system prompt (string or function)
-						format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
-					},
-				},
-				memory = { -- Memory system (requires VectorCode CLI)
-					auto_create_memories_on_summary_generation = true, -- Automatically index summaries when they are generated
-					vectorcode_exe = 'vectorcode', -- Path to the VectorCode executable
-					tool_opts = { -- Tool configuration
-						default_num = 10, -- Default number of memories to retrieve
-					},
-					notify = true, -- Enable notifications for indexing progress
-					index_on_startup = false, -- Index existing memories on startup (needs VectorCode 0.6.12+ for efficiency)
-				},
-			}
-			local opts = spec.opts --[[@ as table]]
-			opts = vim.tbl_deep_extend('error', opts, {
-				extensions = { history = { enabled = true, opts = plugopts } },
-			})
-			require('codecompanion').setup(opts)
-		end,
-	},
-	{
-		'https://github.com/j-hui/fidget.nvim',
-		config = function(_, opts)
-			-- https://github.com/olimorris/codecompanion.nvim/discussions/813#discussioncomment-12031954
-			local progress = require('fidget.progress')
-			local handles = {}
-			local function store_progress_handle(id, handle)
-				handles[id] = handle
-			end
-			local function pop_progress_handle(id)
-				local handle = handles[id]
-				handles[id] = nil
-				return handle
-			end
-			local function llm_role_title(adapter)
-				local parts = {}
-				table.insert(parts, adapter.formatted_name)
-				if adapter.model and adapter.model ~= '' then
-					table.insert(parts, '(' .. adapter.model .. ')')
-				end
-				return table.concat(parts, ' ')
-			end
-			local function create_progress_handle(request)
-				return progress.handle.create({
-					title = ' Requesting assistance (' .. request.data.strategy .. ')',
-					message = 'In progress...',
-					lsp_client = {
-						name = llm_role_title(request.data.adapter),
-					},
-				})
-			end
-			local function report_exit_status(handle, request)
-				if request.data.status == 'success' then
-					handle.message = 'Completed'
-				elseif request.data.status == 'error' then
-					handle.message = ' Error'
-				else
-					handle.message = '󰜺 Cancelled'
-				end
-			end
-			local function init()
-				local group = vim.api.nvim_create_augroup('CodeCompanionFidgetHooks', {})
-				vim.api.nvim_create_autocmd({ 'User' }, {
-					pattern = 'CodeCompanionRequestStarted',
-					group = group,
-					callback = function(request)
-						local handle = create_progress_handle(request)
-						store_progress_handle(request.data.id, handle)
-					end,
-				})
-				vim.api.nvim_create_autocmd({ 'User' }, {
-					pattern = 'CodeCompanionRequestFinished',
-					group = group,
-					callback = function(request)
-						local handle = pop_progress_handle(request.data.id)
-						if handle then
-							report_exit_status(handle, request)
-							handle:finish()
-						end
-					end,
-				})
-			end
-			init()
-			require('fidget').setup(opts)
-		end,
-	},
-}
+-- spec.dependencies = {
+-- 	{
+-- 		'https://github.com/ravitemer/codecompanion-history.nvim',
+-- 		keys = {
+-- 			{ '<Space>ph', mode = 'n', '<Cmd>CodeCompanionHistory<CR>', desc = 'CodeCompanion-history: Open' },
+-- 		},
+-- 		config = function()
+-- 			local plugopts = {
+-- 				keymap = '<Nop>', -- Keymap to open history from chat buffer (default: gh)
+-- 				save_chat_keymap = '<Nop>', -- Keymap to save the current chat manually (when auto_save is disabled)
+-- 				auto_save = true, -- Save all chats by default (disable to save only manually using 'sc')
+-- 				expiration_days = 0, -- Number of days after which chats are automatically deleted (0 to disable)
+-- 				picker = nil, --- "telescope", "snacks", "fzf-lua", or "default" (`nil` to auto resolve to a valid picker)
+-- 				chat_filter = nil, ---@type function(chat_data) return boolean | Filter function to control which chats are shown
+-- 				picker_keymaps = { -- Customize picker keymaps (optional)
+-- 					rename = { n = 'r', i = '<M-r>' },
+-- 					delete = { n = 'd', i = '<M-d>' },
+-- 					duplicate = { n = '<M-y>', i = '<M-y>' },
+-- 				},
+-- 				auto_generate_title = true, ---Automatically generate titles for new chats
+-- 				title_generation_opts = {
+-- 					adapter = 'copilot', ---Adapter for generating titles (`nil` to current chat adapter) "copilot"
+-- 					model = nil, ---Model for generating titles (`nil` to current chat model) "gpt-4o"
+-- 					refresh_every_n_prompts = 0, -- Number of prompts after which to refresh the title
+-- 					max_refreshes = 3, ---Maximum number of times to refresh the title (default: 3)
+-- 					format_title = function(original_title)
+-- 						-- this can be a custom function that applies some custom formatting to the title.
+-- 						return original_title
+-- 					end,
+-- 				},
+-- 				continue_last_chat = false, -- On exiting and entering neovim, loads the last chat on opening chat
+-- 				delete_on_clearing_chat = false, -- When chat is cleared with `gx` delete the chat from history
+-- 				dir_to_save = vim.fn.stdpath('data') .. '/codecompanion-history', -- Directory path to save the chats
+-- 				enable_logging = false, -- Enable detailed logging for history extension
+-- 				summary = { -- Summary system
+-- 					create_summary_keymap = '<Nop>', -- Keymap to generate summary for current chat (default: "gcs")
+-- 					browse_summaries_keymap = '<Nop>', -- Keymap to browse summaries (default: "gbs")
+-- 					generation_opts = {
+-- 						adapter = nil, -- defaults to current chat adapter
+-- 						model = nil, -- defaults to current chat model
+-- 						context_size = 90000, -- max tokens that the model supports
+-- 						include_references = true, -- include slash command content
+-- 						include_tool_outputs = true, -- include tool execution results
+-- 						system_prompt = nil, -- custom system prompt (string or function)
+-- 						format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
+-- 					},
+-- 				},
+-- 				memory = { -- Memory system (requires VectorCode CLI)
+-- 					auto_create_memories_on_summary_generation = true, -- Automatically index summaries when they are generated
+-- 					vectorcode_exe = 'vectorcode', -- Path to the VectorCode executable
+-- 					tool_opts = { -- Tool configuration
+-- 						default_num = 10, -- Default number of memories to retrieve
+-- 					},
+-- 					notify = true, -- Enable notifications for indexing progress
+-- 					index_on_startup = false, -- Index existing memories on startup (needs VectorCode 0.6.12+ for efficiency)
+-- 				},
+-- 			}
+-- 			local opts = spec.opts --[[@ as table]]
+-- 			opts = vim.tbl_deep_extend('error', opts, {
+-- 				extensions = { history = { enabled = true, opts = plugopts } },
+-- 			})
+-- 			require('codecompanion').setup(opts)
+-- 		end,
+-- 	},
+-- 	{
+-- 		'https://github.com/j-hui/fidget.nvim',
+-- 		config = function(_, opts)
+-- 			-- https://github.com/olimorris/codecompanion.nvim/discussions/813#discussioncomment-12031954
+-- 			local progress = require('fidget.progress')
+-- 			local handles = {}
+-- 			local function store_progress_handle(id, handle)
+-- 				handles[id] = handle
+-- 			end
+-- 			local function pop_progress_handle(id)
+-- 				local handle = handles[id]
+-- 				handles[id] = nil
+-- 				return handle
+-- 			end
+-- 			local function llm_role_title(adapter)
+-- 				local parts = {}
+-- 				table.insert(parts, adapter.formatted_name)
+-- 				if adapter.model and adapter.model ~= '' then
+-- 					table.insert(parts, '(' .. adapter.model .. ')')
+-- 				end
+-- 				return table.concat(parts, ' ')
+-- 			end
+-- 			local function create_progress_handle(request)
+-- 				return progress.handle.create({
+-- 					title = ' Requesting assistance (' .. request.data.strategy .. ')',
+-- 					message = 'In progress...',
+-- 					lsp_client = {
+-- 						name = llm_role_title(request.data.adapter),
+-- 					},
+-- 				})
+-- 			end
+-- 			local function report_exit_status(handle, request)
+-- 				if request.data.status == 'success' then
+-- 					handle.message = 'Completed'
+-- 				elseif request.data.status == 'error' then
+-- 					handle.message = ' Error'
+-- 				else
+-- 					handle.message = '󰜺 Cancelled'
+-- 				end
+-- 			end
+-- 			local function init()
+-- 				local group = vim.api.nvim_create_augroup('CodeCompanionFidgetHooks', {})
+-- 				vim.api.nvim_create_autocmd({ 'User' }, {
+-- 					pattern = 'CodeCompanionRequestStarted',
+-- 					group = group,
+-- 					callback = function(request)
+-- 						local handle = create_progress_handle(request)
+-- 						store_progress_handle(request.data.id, handle)
+-- 					end,
+-- 				})
+-- 				vim.api.nvim_create_autocmd({ 'User' }, {
+-- 					pattern = 'CodeCompanionRequestFinished',
+-- 					group = group,
+-- 					callback = function(request)
+-- 						local handle = pop_progress_handle(request.data.id)
+-- 						if handle then
+-- 							report_exit_status(handle, request)
+-- 							handle:finish()
+-- 						end
+-- 					end,
+-- 				})
+-- 			end
+-- 			init()
+-- 			require('fidget').setup(opts)
+-- 		end,
+-- 	},
+-- }
 
 return spec
