@@ -165,6 +165,13 @@ end, { silent = true })
 vim.keymap.set('n', '<Space>cr', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
 vim.keymap.set('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
 
+function _G.kjuq_sortmotion()
+	vim.cmd([[ '[,']sort n ]])
+end
+
+vim.keymap.set('n', '<Space>cs', [[m'<Cmd>lua vim.o.operatorfunc='v:lua._G.kjuq_sortmotion'<CR>g@]], { desc = 'Sort' })
+vim.keymap.set('x', '<Space>cs', ':sort n<CR>', { desc = 'Sort' }) -- NOTE: dot-register is not updated with visual mode
+
 vim.keymap.set('n', '<Space>cv', '`[v`]', { desc = 'Select last pasted range' })
 
 vim.keymap.set('n', '<Space>sq', '<CMD>copen<CR>', { desc = 'Open QuickFix window' })
@@ -348,7 +355,5 @@ if os.getenv('KJUQ_NVIM_LOAD_ALL_RUNTIME_PATH') then
 	}
 end
 -- }}}
-
-require('kjuq.cmd-to-operator').setup()
 
 -- vim: set foldmethod=marker :

@@ -15,7 +15,7 @@ end
 
 ---@type function
 local yank_entire_buffer = function()
-	if require('kjuq.helper').is_empty_buffer() then
+	if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
 		vim.fn.setreg('+', ' ')
 		vim.fn.setreg('*', ' ')
 		return

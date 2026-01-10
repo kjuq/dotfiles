@@ -2,7 +2,20 @@
 ---@type LazySpec
 local spec = { 'https://github.com/stevearc/oil.nvim' }
 
-spec.lazy = not require('kjuq.helper').argv_contains('oil-ssh://')
+local argv_contains = function(patterns)
+	patterns = type(patterns) == 'string' and { patterns } or patterns --[[@ as string[] ]]
+	local argv = vim.fn.argv() --[[@ as string[] ]]
+	for _, arg in pairs(argv) do
+		for _, pattern in pairs(patterns) do
+			if string.find(arg, pattern, 1, true) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+spec.lazy = not argv_contains('oil-ssh://')
 
 spec.event = 'VeryLazy'
 

@@ -12,6 +12,12 @@ local completion_rank = skk_dir .. '/completion_rank'
 
 local group = vim.api.nvim_create_augroup('kjuq_skk_toggle', {})
 
+local feed_plug = function(cmd)
+	-- https://github.com/neovim/neovim/blob/b535575acdb037c35a9b688bc2d8adc2f3dece8d/src/nvim/keymap.h#L225
+	-- https://www.reddit.com/r/neovim/comments/kup1g0/comment/givujwd
+	vim.api.nvim_feedkeys(string.format('%c%c%c' .. '(' .. cmd .. ')', 0x80, 253, 83), 'n', true)
+end
+
 local toggle_japanese = function()
 	if is_skk_jp_mode_enabled then
 		vim.notify('Japanese mode disabled (English)')
@@ -23,7 +29,7 @@ local toggle_japanese = function()
 			group = group,
 			pattern = '*',
 			callback = function()
-				require('kjuq.helper').feed_plug('skkeleton-enable')
+				feed_plug('skkeleton-enable')
 			end,
 		})
 		vim.api.nvim_exec_autocmds('User', { pattern = 'kjuq_enable_jp_mode' })
@@ -38,7 +44,7 @@ end
 
 spec.config = function()
 	vim.keymap.set('i', '<C-Space>', function()
-		require('kjuq.helper').feed_plug('skkeleton-enable')
+		feed_plug('skkeleton-enable')
 	end, { expr = true })
 	vim.keymap.set('n', '<Space>tj', toggle_japanese)
 
