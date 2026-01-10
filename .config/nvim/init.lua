@@ -349,3 +349,5 @@ vim.lsp.config.lua_ls = {
 	},
 }
 -- }}}
+
+-- vim: set foldmethod=marker :
