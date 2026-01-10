@@ -1,7 +1,6 @@
--- Usage: `nvim -c 'lua require("kjuq.asime")'`
+local M = {}
 
-local is_linux = vim.fn.has('linux') == 1
-local is_macos = vim.fn.has('mac') == 1
+-- Usage: `nvim -c 'lua require("kjuq.asime").setup()'`
 
 ---@param line string|integer
 ---@return boolean
@@ -31,10 +30,10 @@ end
 ---@param delay number
 -- OS-specific function. Linux uses i3wm and MacOS may use Hammerspoon
 local hide_and_paste = function(delay)
-	if is_linux then
+	if vim.fn.has('linux') == 1 then
 		local cmd = string.format([[!bash -c 'i3-msg scratchpad show && sleep %s && xdotool key shift+Insert']], delay)
 		vim.cmd(string.format([[silent execute "%s"]], cmd))
-	elseif is_macos then
+	elseif vim.fn.has('mac') == 1 then
 		-- TODO: Implement this
 		vim.notify('MacOS is currently not supported')
 	end
@@ -53,15 +52,6 @@ local confirm = {
 		hide_and_paste(0.3)
 	end,
 }
-
-vim.opt_local.number = false
-vim.opt_local.relativenumber = false
-vim.opt_local.wrap = false
-vim.opt_local.swapfile = false
-
-vim.keymap.set('n', '<C-g><C-g>', confirm.n, { buffer = true })
-vim.keymap.set('i', '<C-g><C-g>', confirm.i, { buffer = true })
-vim.keymap.set('n', '<Esc>', confirm.n, { buffer = true })
 
 ---@param lhs string
 ---@param rhs string
@@ -109,9 +99,26 @@ local remapall = function()
 	remap('<C-M-BS>', '<M-C-w>') -- available only on ORS layer
 end
 
-vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-	group = vim.api.nvim_create_augroup('kjuq_remap_all_specialkeys', {}),
-	callback = function()
-		remapall()
-	end,
-})
+local setup = function()
+	vim.opt_local.number = false
+	vim.opt_local.relativenumber = false
+	vim.opt_local.wrap = false
+	vim.opt_local.swapfile = false
+
+	vim.keymap.set('n', '<C-g><C-g>', confirm.n, { buffer = true })
+	vim.keymap.set('i', '<C-g><C-g>', confirm.i, { buffer = true })
+	vim.keymap.set('n', '<Esc>', confirm.n, { buffer = true })
+
+	vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+		group = vim.api.nvim_create_augroup('kjuq_remap_all_specialkeys', {}),
+		callback = function()
+			remapall()
+		end,
+	})
+end
+
+M = {
+	setup = setup,
+}
+
+return M
