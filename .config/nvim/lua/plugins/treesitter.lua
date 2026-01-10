@@ -14,40 +14,39 @@ spec.opts = {
 }
 
 local indent_lang = { 'python' }
+local is_first = true
 
 spec.config = function(_, opts)
-	local ts = require('nvim-treesitter')
-	ts.setup(opts)
-	local callback = function(args)
+	require('nvim-treesitter').setup(opts)
+	local start = function(args)
 		local ft = vim.bo[args.buf].ft
 		local lang = vim.treesitter.language.get_lang(ft)
-		local installed = require('nvim-treesitter.config').get_installed
-		local function enable()
-			vim.treesitter.start(args.buf)
-			if vim.tbl_contains(indent_lang, lang) then
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-			end
-		end
-		if not vim.tbl_contains(installed(), lang) then
-			ts.install({ lang }):await(function(err)
+		local indentexpr = vim.tbl_contains(indent_lang, lang) and "v:lua.require'nvim-treesitter'.indentexpr()"
+			or vim.bo.indentexpr
+		if
+			not vim.tbl_contains(require('nvim-treesitter').get_installed(), lang)
+			and vim.tbl_contains(require('nvim-treesitter').get_available(), lang)
+		then
+			require('nvim-treesitter').install({ lang }):await(function(err)
 				if err then
 					vim.notify('Treesitter install error\nft: ' .. ft .. '\nerr: ' .. err, vim.log.level.error)
 					return
 				end
-				if vim.tbl_contains(installed(), lang) then -- if `lang` was newly installed
-					enable()
-				end
 			end)
-			return
 		end
-		enable() -- if `lang` was already installed
+		if vim.tbl_contains(require('nvim-treesitter').get_installed(), lang) then
+			vim.treesitter.start(args.buf)
+			vim.bo.indentexpr = indentexpr
+		end
 	end
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
 		group = vim.api.nvim_create_augroup('kjuq_treesitter_start', {}),
-		callback = callback,
+		callback = start,
 	})
-	-- for lazy loading
-	vim.bo.filetype = vim.bo.filetype
+	if is_first then
+		start({ buf = 0 })
+	end
+	is_first = false
 end
 
 return spec
