@@ -13,7 +13,6 @@ spec.opts = {
 	install_dir = vim.fn.stdpath('data') .. '/site',
 }
 
-local indent_lang = { 'python' }
 local is_first = true
 
 spec.config = function(_, opts)
@@ -21,8 +20,6 @@ spec.config = function(_, opts)
 	local start = function(args)
 		local ft = vim.bo[args.buf].ft
 		local lang = vim.treesitter.language.get_lang(ft)
-		local indentexpr = vim.tbl_contains(indent_lang, lang) and "v:lua.require'nvim-treesitter'.indentexpr()"
-			or vim.bo.indentexpr
 		if
 			not vim.tbl_contains(require('nvim-treesitter').get_installed(), lang)
 			and vim.tbl_contains(require('nvim-treesitter').get_available(), lang)
@@ -36,7 +33,7 @@ spec.config = function(_, opts)
 		end
 		if vim.tbl_contains(require('nvim-treesitter').get_installed(), lang) then
 			vim.treesitter.start(args.buf)
-			vim.bo.indentexpr = indentexpr
+			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 		end
 	end
 	vim.api.nvim_create_autocmd({ 'FileType' }, {
