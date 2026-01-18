@@ -202,8 +202,7 @@ vim.keymap.set('n', 'gr', '<Nop>')
 
 local vlb = vim.lsp.buf
 
-vim.keymap.set('n', 'grR', '<Cmd>lsp restart<CR><Cmd>echomsg "Done :lsp restart"<CR>', { desc = 'LSP: Restart LS' })
-vim.keymap.set('n', 'grt', vlb.type_definition, { desc = 'LSP: Go to type definition' })
+vim.keymap.set('n', 'grl', '<Cmd>lsp restart<CR><Cmd>echomsg "Done :lsp restart"<CR>', { desc = 'LSP: Restart LS' })
 vim.keymap.set('n', 'grd', vlb.declaration, { desc = 'LSP: Go to Declaration' })
 vim.keymap.set('n', 'grh', vlb.typehierarchy, { desc = 'LSP: Type hierarchy' })
 vim.keymap.set('n', 'grc', vlb.incoming_calls, { desc = 'LSP: Incoming calls' })
