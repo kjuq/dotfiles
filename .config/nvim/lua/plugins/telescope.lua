@@ -136,21 +136,7 @@ spec.opts = function()
 end
 
 spec.specs = {
-	'nvim-lua/popup.nvim',
 	'nvim-lua/plenary.nvim',
-	'BurntSushi/ripgrep',
-}
-
-spec.dependencies = {
-	'nvim-telescope/telescope-symbols.nvim',
-	{
-		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'make',
-		cond = (vim.fn.executable('gcc') == 1 or vim.fn.executable('clang') == 1) and vim.fn.executable('make') == 1,
-		config = function()
-			require('telescope').load_extension('fzf')
-		end,
-	},
 }
 
 return spec
