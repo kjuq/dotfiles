@@ -71,6 +71,9 @@ spec.config = function()
 			end,
 		})
 	end
+	require('mini.surround').setup({
+		highlight_duration = require('kjuq.common_params').highlight_duration,
+	})
 	require('mini.git').setup()
 	require('mini.icons').setup()
 end
