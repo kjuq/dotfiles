@@ -9,6 +9,7 @@ $XDG_CONFIG_HOME/brewfile/Brewfile
 $XDG_CONFIG_HOME/clangd/config.yaml
 $XDG_CONFIG_HOME/clang-format
 $XDG_CONFIG_HOME/claude/settings.json
+$XDG_CONFIG_HOME/claude/keybindings.json
 $XDG_CONFIG_HOME/claude/CLAUDE.md
 $XDG_CONFIG_HOME/docker/config.json
 $XDG_CONFIG_HOME/dust/config.toml
