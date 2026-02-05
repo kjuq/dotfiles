@@ -13,7 +13,7 @@ osc52 = "CopyPaste"
 
 [font]
 normal = { family = "UDEV Gothic", style = "Regular" }
-size = 10.0
+size = 12.0
 
 [colors]
 cursor = { cursor = "#E5E9F0" }

@@ -20,7 +20,7 @@ if [ -f "$userresources" ]; then
 	xrdb -merge "$userresources"
 fi
 
-echo 'Xcursor.theme: Adwaita' | xrdb -merge
+# echo 'Xcursor.theme: Adwaita' | xrdb -merge
 
 # if [ "$(uname --nodename)" = "KOXPX" ]; then
 # 	echo 'Xft.dpi: 168' | xrdb -merge
