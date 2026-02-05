@@ -1,8 +1,8 @@
-alias ...='cd ../../..'
-alias ....='cd ../../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-alias .......='cd ../../../../../..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../..'
+alias ......='cd ../../../..'
+alias .......='cd ../../../../..'
 
 alias la='ls --almost-all'
 alias lla='ll --almost-all'
