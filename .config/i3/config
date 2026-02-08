@@ -4,6 +4,9 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
+bindsym $mod+Tab workspace back_and_forth
+bindsym Mod1+Tab workspace back_and_forth
+
 # Keybinds {{{
 # Super + Alt + Ctrl
 set $sac Mod4+Mod1+Ctrl
