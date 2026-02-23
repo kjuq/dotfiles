@@ -1,4 +1,5 @@
 {
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -26,6 +27,6 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true,
-  "language": "Japanese"
+  "language": "Japanese",
+  "alwaysThinkingEnabled": true
 }

@@ -95,7 +95,8 @@
     {
       "context": "Task",
       "bindings": {
-        "meta+b": "task:background"
+        "meta+b": "task:background",
+        "ctrl+b": null
       }
     },
     {
