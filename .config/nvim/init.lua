@@ -103,6 +103,17 @@ vim.opt.matchpairs:append({
 -- Keymaps {{{
 vim.keymap.set({ 'n', 'x' }, '<Space>', '<Nop>')
 
+vim.keymap.set({ 'n', 'i', 'c' }, '<Up>', '<C-p>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'c' }, '<Down>', '<C-n>', { remap = true })
+vim.keymap.set({ 'n', 'i' }, '<Left>', '<C-b>', { remap = true })
+vim.keymap.set({ 'n', 'i' }, '<Right>', '<C-f>', { remap = true })
+vim.keymap.set({ 'n', 'i' }, '<Home>', '<C-a>', { remap = true })
+vim.keymap.set({ 'n', 'i' }, '<End>', '<C-e>', { remap = true })
+vim.keymap.set({ 'n', 'i' }, '<Del>', '<C-d>', { remap = true })
+-- vim.keymap.set({ 'n', 'i' }, '<BS>', '<C-h>', { remap = true })
+-- vim.keymap.set({ 'n', 'i' }, '<CR>', '<C-m>', { remap = true })
+-- vim.keymap.set({ 'n', 'i' }, '<Tab>', '<C-i>', { remap = true })
+
 -- Emacs-like cursor movement in command mode
 vim.keymap.set('c', '<C-b>', '<Left>') -- Jumps to the beginning of a line by default
 vim.keymap.set('c', '<C-f>', '<Right>') -- Opens a command-line window (q:) by default
