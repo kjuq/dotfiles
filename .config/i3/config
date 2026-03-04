@@ -26,13 +26,15 @@ bindsym $mod+Shift+5 --release exec --no-startup-id i3-scrot -w
 bindsym $sac+9 focus next
 
 # move focused window (hjkl)
+# Prior: PageUp
+# Next: PageDown
 bindsym $sac+0 focus left
-bindsym $sac+comma focus down
-bindsym $sac+period focus up
+bindsym $sac+Next focus down
+bindsym $sac+Prior focus up
 bindsym $sac+7 focus right
 bindsym $sac+Shift+0 move left
-bindsym $sac+Shift+comma move down
-bindsym $sac+Shift+period move up
+bindsym $sac+Shift+Next move down
+bindsym $sac+Shift+Prior move up
 bindsym $sac+Shift+7 move right
 
 # dismiss notification
