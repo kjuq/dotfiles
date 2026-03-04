@@ -35,13 +35,9 @@ hide_when_typing = true
 
 [keyboard]
 bindings = [
-	{ key = "Tab", mods = "Control", chars = "\u001B[27;5;9~" }, # ctrl-tab (needed for tmux)
-	{ key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab (needed for tmux)
 	# Shift-tab works without such configurations
-	{ key = "Delete", mods = "Control|Shift", chars = "\u000b" }, # Ctrl-k for Linux
+	# { key = "Tab", mods = "Control", chars = "\u001B[27;5;9~" }, # ctrl-tab (needed for tmux)
+	# { key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab (needed for tmux)
 	{ key = "Back", mods = "Control", chars = "\u0017" }, # Ctrl-w for Linux
-	{ key = "Back", mods = "Control|Shift", chars = "\u0015" }, # Ctrl-w for Linux
-	{ key = "Insert", mods = "Shift", action = "Paste" }, # Use CLIPBOARD register rather than PRIMARY register of X11
 	{ key = "Paste", action = "Paste" },
-	{ key = "Back", mods = "Command", chars = "\u0015" }, # Ctrl-u for MacOS
 ]
