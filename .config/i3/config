@@ -90,6 +90,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 # End: Keybinds }}}
 
 # Workspace {{{
+set $ws0 0
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -100,16 +101,20 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 
-set $wskey1 backslash
-set $wskey2 semicolon
-set $wskey3 bracketright
-set $wskey4 bracketleft
-set $wskey5 slash
-set $wskey6 grave
-set $wskey7 equal
-set $wskey8 minus
+
+set $wskey0 backslash
+set $wskey1 semicolon
+set $wskey2 period
+set $wskey3 comma
+set $wskey4 bracketright
+set $wskey5 bracketleft
+set $wskey6 slash
+set $wskey7 grave
+set $wskey8 equal
+set $wskey9 minus
 
 # switch to workspace
+bindsym $sac+$wskey0 workspace 0
 bindsym $sac+$wskey1 workspace 1
 bindsym $sac+$wskey2 workspace 2
 bindsym $sac+$wskey3 workspace 3
@@ -118,8 +123,10 @@ bindsym $sac+$wskey5 workspace 5
 bindsym $sac+$wskey6 workspace 6
 bindsym $sac+$wskey7 workspace 7
 bindsym $sac+$wskey8 workspace 8
+bindsym $sac+$wskey9 workspace 9
 
 # Move to workspace with focused container
+bindsym Shift+$sac+$wskey0 move container to workspace 0; workspace $ws0
 bindsym Shift+$sac+$wskey1 move container to workspace 1; workspace $ws1
 bindsym Shift+$sac+$wskey2 move container to workspace 2; workspace $ws2
 bindsym Shift+$sac+$wskey3 move container to workspace 3; workspace $ws3
@@ -128,6 +135,7 @@ bindsym Shift+$sac+$wskey5 move container to workspace 5; workspace $ws5
 bindsym Shift+$sac+$wskey6 move container to workspace 6; workspace $ws6
 bindsym Shift+$sac+$wskey7 move container to workspace 7; workspace $ws7
 bindsym Shift+$sac+$wskey8 move container to workspace 8; workspace $ws8
+bindsym Shift+$sac+$wskey9 move container to workspace 9; workspace $ws9
 
 # Move window to other displays (Super + Alt)
 bindsym $sac+p move workspace to output up
@@ -139,11 +147,11 @@ bindsym $sac+b move workspace to output left
 # To get class name, `xprop | grep WM_CLASS`
 
 # +---+---+---+---+---+
-# |   | 8 | 7 | 6 |   |
+# |   | 9 | 8 | 7 |   |
 # +---+---+---+---+---+
-# |   | 5 | 4 | 3 |   |
+# |   | 6 | 5 | 4 |   |
 # +---+---+---+---+---+
-# |   |   |   | 2 | 1 |
+# |   | 3 | 2 | 1 | 0 |
 # +---+---+---+---+---+
 
 # Open specific applications in floating mode
@@ -158,7 +166,7 @@ no_focus [title="^Peek preview$"]
 for_window [urgent=latest] focus
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
+# workspace_auto_back_and_forth yes
 
 # End: Workspace }}}
 
