@@ -1,5 +1,9 @@
 include $XDG_CONFIG_HOME/i3/config
 
+output DP-1 allow_tearing enable
+output DP-2 allow_tearing enable
+output eDP-1 allow_tearing enable
+
 input type:pointer {
 	left_handed disabled
 	tap disabled
