@@ -63,9 +63,6 @@ set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
 # w3m
 set --export W3M_DIR "$XDG_CONFIG_HOME/w3m"
 
-# rclone
-set --export RCLONE_EXCLUDE "*.DS_Store"
-
 # fzf
 set fzf_fd_opts "--hidden --exclude .git"
 set --export FZF_DEFAULT_COMMAND "fd --type f $fzf_fd_opts"
