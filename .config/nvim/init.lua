@@ -103,16 +103,17 @@ vim.opt.matchpairs:append({
 -- Keymaps {{{
 vim.keymap.set({ 'n', 'x' }, '<Space>', '<Nop>')
 
-vim.keymap.set({ 'n', 'i', 'c' }, '<Up>', '<C-p>', { remap = true })
-vim.keymap.set({ 'n', 'i', 'c' }, '<Down>', '<C-n>', { remap = true })
-vim.keymap.set({ 'n', 'i' }, '<Left>', '<C-b>', { remap = true })
-vim.keymap.set({ 'n', 'i' }, '<Right>', '<C-f>', { remap = true })
-vim.keymap.set({ 'n', 'i' }, '<Home>', '<C-a>', { remap = true })
-vim.keymap.set({ 'n', 'i' }, '<End>', '<C-e>', { remap = true })
-vim.keymap.set({ 'n', 'i' }, '<Del>', '<C-d>', { remap = true })
--- vim.keymap.set({ 'n', 'i' }, '<BS>', '<C-h>', { remap = true })
--- vim.keymap.set({ 'n', 'i' }, '<CR>', '<C-m>', { remap = true })
--- vim.keymap.set({ 'n', 'i' }, '<Tab>', '<C-i>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x', 'c' }, '<Up>', '<C-p>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x', 'c' }, '<Down>', '<C-n>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x' }, '<Left>', '<C-b>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x' }, '<Right>', '<C-f>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x' }, '<Home>', '<C-a>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x' }, '<End>', '<C-e>', { remap = true })
+vim.keymap.set({ 'n', 'i', 'x' }, '<Del>', '<C-d>', { remap = true })
+vim.keymap.set({ 'n', 'x' }, '<C-w><BS>', '<C-w><C-h>', { remap = true })
+-- vim.keymap.set({ 'n', 'i', 'x' }, '<BS>', '<C-h>', { remap = true })
+-- vim.keymap.set({ 'n', 'i', 'x' }, '<CR>', '<C-m>', { remap = true })
+-- vim.keymap.set({ 'n', 'i', 'x' }, '<Tab>', '<C-i>', { remap = true })
 
 -- Emacs-like cursor movement in command mode
 vim.keymap.set('c', '<C-b>', '<Left>') -- Jumps to the beginning of a line by default
