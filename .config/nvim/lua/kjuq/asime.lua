@@ -34,8 +34,10 @@ local hide_and_paste = function(delay)
 		local cmd = string.format([[!bash -c 'i3-msg scratchpad show && sleep %s && xdotool key shift+Insert']], delay)
 		vim.cmd(string.format([[silent execute "%s"]], cmd))
 	elseif vim.fn.has('mac') == 1 then
-		-- TODO: Implement this
-		vim.notify('MacOS is currently not supported')
+		local hidewin = [[!hs -c 'hs.eventtap.keyStroke({"cmd"}, "h")']]
+		vim.cmd(hidewin)
+		local paste = [[!hs -c 'hs.eventtap.keyStroke({"cmd"}, "v")']]
+		vim.cmd(paste)
 	end
 end
 
