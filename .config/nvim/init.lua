@@ -362,16 +362,19 @@ end
 
 vim.diagnostic.config({
 	signs = false,
-	float = {
-		max_width = 80,
-		max_height = 20,
-		header = '',
-		format = function(diagnostic)
-			return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)
-		end,
-	},
 	jump = {
-		float = true,
+		-- float = true,
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({
+				bufnr = bufnr,
+				scope = 'cursor',
+				focus = false,
+				header = '',
+				format = function(diagnostic)
+					return string.format('%s\n⊳ %s', diagnostic.message, diagnostic.source)
+				end,
+			})
+		end,
 	},
 })
 
