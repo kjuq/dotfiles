@@ -13,9 +13,10 @@
 
 [credential]
 	helper = cache --timeout=3600
-	; ; https://git-scm.com/docs/gitcredentials#_custom_helpers
-	; username = kjuq
-	; helper = "!f() { echo password=$(pass github.com/kjuq_repo_token); }; f"
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
 
 [core]
 	pager = "nvim -R -c 'setlocal nonumber norelativenumber'"
@@ -35,9 +36,6 @@
 
 [safe]
 	directory = /storage/emulated/0/*
-
-; [url "git@github.com:"]
-; 	insteadOf = https://github.com/
 
 ; difftool and mergetool
 ; https://gist.github.com/openjck/93b335dfe5e33955d7dec3c9aec9d609
