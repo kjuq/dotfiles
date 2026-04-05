@@ -36,8 +36,8 @@
 [safe]
 	directory = /storage/emulated/0/*
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+; [url "git@github.com:"]
+; 	insteadOf = https://github.com/
 
 ; difftool and mergetool
 ; https://gist.github.com/openjck/93b335dfe5e33955d7dec3c9aec9d609
