@@ -14,6 +14,8 @@ osc52 = "CopyPaste"
 [font]
 normal = { family = "UDEV Gothic", style = "Regular" }
 size = 12.0
+# `alacritty msg config 'font.size=14'`
+# `alacritty msg config "font.normal={family='HackNerdFontMono'}"` or 'Hack Nerd Font Mono' (with spaces) ?
 
 [colors]
 cursor = { cursor = "#E5E9F0" }
@@ -29,6 +31,7 @@ color = '#303030'
 dimensions = { columns = 220, lines = 60 }
 padding = { x = 6, y = 2 }
 option_as_alt = "Both" # for MacOS
+decorations = 'Buttonless'
 
 [mouse]
 hide_when_typing = true
@@ -39,5 +42,7 @@ bindings = [
 	# { key = "Tab", mods = "Control", chars = "\u001B[27;5;9~" }, # ctrl-tab (needed for tmux)
 	# { key = "Tab", mods = "Control|Shift", chars = "\u001B[27;6;9~" }, # ctrl-shift-tab (needed for tmux)
 	{ key = "Back", mods = "Control", chars = "\u0017" }, # Ctrl-w for Linux
+	{ key = "Back", mods = "Alt", chars = "\u0017" }, # Ctrl-w for MacOS
+	{ key = "Back", mods = "Super", chars = "\u0015" }, # Ctrl-u for MacOS
 	{ key = "Paste", action = "Paste" },
 ]
