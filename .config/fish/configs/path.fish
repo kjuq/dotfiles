@@ -7,8 +7,8 @@ set -eU fish_user_paths
 
 set -l brew_path /opt/homebrew/bin/brew # Only for MacOS
 if [ -e $brew_path ]
-	set --export PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 	eval ($brew_path shellenv)
+	set --export PATH "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 end
 
 if command --search --quiet go

@@ -36,7 +36,7 @@ set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
 # Bash
-mkdir --parents "$XDG_STATE_HOME/bash"
+mkdir -p "$XDG_STATE_HOME/bash"
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 
 # Docker
