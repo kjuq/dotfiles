@@ -26,7 +26,12 @@ if command --search --quiet ghq
 end
 
 if command --search --quiet trash
-	alias dl='trash -r'
+	switch $(uname)
+	case Linux
+		alias dl='trash -r'
+	case Darwin
+		alias dl='trash'
+	end
 	alias rm='echo "`rm` is dangerous so use `dl` instead."'
 end
 
