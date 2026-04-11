@@ -49,12 +49,6 @@ checkhealth() {
 		echo '============================================='
 		exit 1
 	fi
-	if ! echo ';o;' | gpg --passphrase-fd 0 --pinentry-mode=loopback -o $PREFIX/tmp/pass_dummy --yes $PASSWORD_STORE_DIR/__dummy/__is_decryption_success.gpg >/dev/null 2>&1; then
-		# if ! pass __dummy/__is_decryption_success > /dev/null 2>&1; then
-		echo 'Error: passphrase of `gpg-agent` is not entered' 1>&2
-		echo '============================================='
-		exit 1
-	fi
 }
 
 # Copy local image to remote
