@@ -2,6 +2,7 @@
 
 set -eu
 
+# `mkdir -p ~/.local/bin && curl https://chromium.googlesource.com/apps/libapps/+/refs/heads/main/hterm/etc/osc52.sh?format=TEXT | base64 --decode > ~/.local/bin/osc52 && chmod u+x ~/.local/bin/osc52`
 if command -v osc52 &>/dev/null; then
 	printf "%s" "$(cat)" | osc52
 	exit 0
