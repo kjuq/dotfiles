@@ -24,7 +24,7 @@ function fish_prompt
 	echo -n -s \
 		$(set_color normal) $(dirs) \
 		$(set_color brblack) "$user_and_hostname" \
-		$(set_color brblack) "$(fish_vcs_prompt | tr -d '()')" \
+		# $(set_color brblack) "$(fish_vcs_prompt | tr -d '()')" \
 		" $prompt_status" \
 		\n \
 		$(set_color brblack) '$ '
