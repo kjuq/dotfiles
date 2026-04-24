@@ -20,6 +20,7 @@ $XDG_CONFIG_HOME/feh/keys
 $XDG_CONFIG_HOME/feh/buttons
 $XDG_CONFIG_HOME/fish/config.fish
 $XDG_CONFIG_HOME/fish/configs
+$XDG_CONFIG_HOME/ghostty/config
 $XDG_CONFIG_HOME/git
 $XDG_CONFIG_HOME/gitui
 $XDG_CONFIG_HOME/glow/glow.yml

@@ -15,7 +15,7 @@ set $sac Mod4+Mod1+Ctrl
 bindsym $sac+BackSpace kill
 
 # Launch applications
-bindsym $sac+Shift+m exec alacritty
+bindsym $sac+Shift+m exec ghostty # alacritty
 
 # Screenshot like MacOS
 bindsym $mod+Shift+3 exec --no-startup-id i3-scrot

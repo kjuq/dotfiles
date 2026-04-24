@@ -1,0 +1,26 @@
+# Converted from alacritty.toml
+
+theme = "Kanagawa Dragon"
+background = #000000
+cursor-color = #E5E9F0
+
+font-family = "UDEV Gothic"
+font-size = 12
+
+window-width = 220
+window-height = 60
+window-padding-x = 6
+window-padding-y = 2
+
+mouse-hide-while-typing = true
+macos-option-as-alt = true
+macos-window-buttons = hidden
+macos-titlebar-style = hidden
+window-decoration = server
+gtk-titlebar = false
+cursor-style-blink = false
+
+keybind = ctrl+backspace=text:\x17
+keybind = alt+backspace=text:\x17
+keybind = super+backspace=text:\x15
+keybind = ctrl+shift+backspace=text:\x15
