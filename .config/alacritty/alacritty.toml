@@ -44,5 +44,6 @@ bindings = [
 	{ key = "Back", mods = "Control", chars = "\u0017" }, # Ctrl-w for Linux
 	{ key = "Back", mods = "Alt", chars = "\u0017" }, # Ctrl-w for MacOS
 	{ key = "Back", mods = "Super", chars = "\u0015" }, # Ctrl-u for MacOS
+	{ key = "Back", mods = "Control|Shift", chars = "\u0015" }, # Ctrl-u for Linux
 	{ key = "Paste", action = "Paste" },
 ]
