@@ -51,39 +51,25 @@ spec.opts = {
 	opts = {
 		language = 'Japanese',
 		send_code = true,
+		log_level = 'DEBUG',
 	},
 	adapters = {
-		acp = {
-			opts = {
-				show_defaults = false,
-			},
-			claude_code = function()
-				return require('codecompanion.adapters').extend('claude_code', {
-					env = {
-						CLAUDE_CODE_OAUTH_TOKEN = 'cmd:pass claude.ai/main | head -n1',
-					},
-				})
-			end,
-			gemini_cli = function()
-				return require('codecompanion.adapters').extend('gemini_cli', {
-					defaults = {
-						auth_method = 'oauth-personal', -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
-					},
-					-- env = {
-					-- 	GEMINI_API_KEY = 'cmd:op read op://personal/Gemini_API/credential --no-newline',
-					-- },
-				})
-			end,
-		},
 		http = {
-			opts = {
-				show_defaults = false,
-			},
 			copilot = function()
 				return require('codecompanion.adapters').extend('copilot', {
 					schema = {
 						model = {
-							default = 'claude-sonnet-4.5', -- 'claude-opus-4.5'
+							default = 'gpt-5.4-mini',
+						},
+						top_p = {
+							---@type fun(self: CodeCompanion.HTTPAdapter): boolean | boolean
+							enabled = function(self)
+								local model = self.schema.model.default
+								if model:find('5.4') then
+									return false
+								end
+								return true
+							end,
 						},
 					},
 				})
