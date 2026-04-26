@@ -130,8 +130,3 @@ set --export QT_QPA_PLATFORMTHEME qt5ct
 if set --query XDG_RUNTIME_DIR
 	set --export XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 end
-
-# SSH-agent
-if command --search --quiet ssh-agent
-	eval "$(ssh-agent -c)" >/dev/null
-end
