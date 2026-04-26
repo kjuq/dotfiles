@@ -13,10 +13,6 @@
 
 [credential]
 	helper = cache --timeout=3600
-[credential "https://github.com"]
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = !/usr/bin/gh auth git-credential
 
 [core]
 	pager = "nvim -R -c 'setlocal nonumber norelativenumber'"
