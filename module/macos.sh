@@ -16,8 +16,8 @@ etc() {
 }
 
 install() {
-	ln --symbolic "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
-	ln --symbolic "$XDG_CONFIG_HOME/clangd/config.yaml" "$HOME/Library/Preferences/clangd/config.yaml"
+	# ln --symbolic "$XDG_CONFIG_HOME/qutebrowser/config.py" "$HOME/.qutebrowser/config.py"
+	mkdir -p ~/Library/Preferences/clangd; ln -s ~/.config/clangd/config.yaml ~/Library/Preferences/clangd/config.yaml
 }
 
 uninstall() {
