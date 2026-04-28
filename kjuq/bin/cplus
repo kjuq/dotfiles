@@ -14,5 +14,5 @@ while getopts "t" opt; do
 done
 
 # echo "$@"
-g++-14 -std=c++23 -Wall -Wextra -g -fsanitize=address,undefined $debug_opts -o "$output" "$@" && "$output"
+g++ -std=c++23 -Wall -Wextra -g -o "$output" "$@" && "$output"
 command rm "$output"
