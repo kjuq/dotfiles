@@ -57,3 +57,4 @@ Put files at `$XDG_CONFIG_HOME/nvim/lua/kjuq/rc/local/*`
 - `_G.kjuq_colorscheme_transparent`
 - `_G.kjuq_auto_completion`
 - `_G.kjuq_auto_copilot_suggestion`
+- `_G.kjuq_codecompanion_adapter`

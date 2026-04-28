@@ -5,6 +5,12 @@ end
 
 vim.loader.enable()
 
+local localconfexists, localconf = pcall(require, 'kjuq.local')
+
+if localconfexists and localconf.pre then
+	localconf.pre()
+end
+
 -- Options {{{
 vim.opt.backup = true
 vim.opt.backupdir = os.getenv('XDG_STATE_HOME') .. '/nvim/backup//'
@@ -397,5 +403,9 @@ if os.getenv('KJUQ_NVIM_LOAD_ALL_RUNTIME_PATH') then
 	}
 end
 -- }}}
+
+if localconfexists and localconf.post then
+	localconf.post()
+end
 
 -- vim: set foldmethod=marker :
