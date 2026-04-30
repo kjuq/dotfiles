@@ -28,16 +28,22 @@ end
 
 ---@type function
 ---@param delay number
--- OS-specific function. Linux uses i3wm and MacOS may use Hammerspoon
+-- OS-specific function. Linux uses i3wm and MacOS may use Aerospace
 local hide_and_paste = function(delay)
 	if vim.fn.has('linux') == 1 then
 		local cmd = string.format([[!bash -c 'i3-msg scratchpad show && sleep %s && xdotool key shift+Insert']], delay)
 		vim.cmd(string.format([[silent execute "%s"]], cmd))
 	elseif vim.fn.has('mac') == 1 then
-		local hidewin = [[!hs -c 'hs.eventtap.keyStroke({"cmd"}, "h")']]
-		vim.cmd(hidewin)
-		local paste = [[!hs -c 'hs.eventtap.keyStroke({"cmd"}, "v")']]
-		vim.cmd(paste)
+		local cmd = string.format(
+			[[!bash -c 'aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid) && sleep %s && osascript -e \'tell application "System Events" to keystroke "v" using command down\'']],
+			delay
+		)
+		-- vim.cmd(string.format([[silent execute "%s"]], cmd))
+		vim.cmd(cmd)
+		-- local hidewin = [[!hs -c 'hs.eventtap.keyStroke({"cmd"}, "h")']]
+		-- vim.cmd(hidewin)
+		-- local paste = [[!hs -c 'hs.eventtap.keyStroke({"cmd"}, "v")']]
+		-- vim.cmd(paste)
 	end
 end
 

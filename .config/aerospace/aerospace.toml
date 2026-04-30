@@ -3,19 +3,22 @@
 # $mod = Mod4 (Command)
 # $sac = Mod4 + Mod1 + Ctrl (Cmd + Alt + Ctrl)
 
+[gaps]
+
+inner.horizontal = 3
+inner.vertical =   3
+outer.left =       0
+outer.bottom =     0
+outer.top =        0
+outer.right =      0
+
 [mode.main.binding]
 # Workspace back_and_forth
 cmd-tab = 'workspace-back-and-forth'
 alt-tab = 'workspace-back-and-forth'
 
-# Kill Window (i3: $sac+BackSpace kill)
-cmd-alt-ctrl-backspace = 'close'
-
-# Launch applications (i3: $sac+Shift+m exec alacritty)
-cmd-alt-ctrl-shift-m = 'exec-and-forget open -a Alacritty'
-
 # Change focus (i3: $sac+9 focus next)
-cmd-alt-ctrl-9 = 'focus dfs-next'
+cmd-alt-ctrl-9 = 'focus dfs-next --ignore-floating --boundaries-action wrap-around-the-workspace'
 
 # Move focus (hjkl/directional)
 cmd-alt-ctrl-0 = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
@@ -24,23 +27,10 @@ cmd-alt-ctrl-pageUp = 'focus --boundaries all-monitors-outer-frame --boundaries-
 cmd-alt-ctrl-7 = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
 
 # Move focused window
-cmd-alt-ctrl-shift-0 = 'move --boundaries all-monitors-outer-frame --boundaries-action stop left'
-cmd-alt-ctrl-shift-pageDown = 'move --boundaries all-monitors-outer-frame --boundaries-action stop down'
-cmd-alt-ctrl-shift-pageUp = 'move --boundaries all-monitors-outer-frame --boundaries-action stop up'
-cmd-alt-ctrl-shift-7 = 'move --boundaries all-monitors-outer-frame --boundaries-action stop right'
-
-# Split orientation
-# 注: AeroSpace は enable-normalization-flatten-containers と 'split' を併用すると
-# split が即座に flatten されて効かないため、推奨に従い 'join-with' を使う。
-# 注: AeroSpaceに「通知を送る」組み込みコマンドはないため exec-and-forget を併用
-cmd-alt-ctrl-s = ['join-with right', 'exec-and-forget osascript -e "display notification \"tile horizontally\" with title \"AeroSpace\""']
-cmd-alt-ctrl-v = ['join-with down', 'exec-and-forget osascript -e "display notification \"tile vertically\" with title \"AeroSpace\""']
-
-# Toggle fullscreen
-cmd-alt-ctrl-o = 'fullscreen'
-
-# Toggle tiling / floating
-cmd-alt-ctrl-l = 'layout floating tiling'
+cmd-alt-ctrl-shift-0 = 'move --boundaries all-monitors-outer-frame left'
+cmd-alt-ctrl-shift-pageDown = 'move --boundaries all-monitors-outer-frame down'
+cmd-alt-ctrl-shift-pageUp = 'move --boundaries all-monitors-outer-frame up'
+cmd-alt-ctrl-shift-7 = 'move --boundaries all-monitors-outer-frame right'
 
 # --- Workspace Switch (sac + wskey) ---
 cmd-alt-ctrl-backslash = 'workspace 0'
@@ -67,16 +57,13 @@ cmd-alt-ctrl-shift-backtick = 'move-node-to-workspace 7 --focus-follows-window'
 cmd-alt-ctrl-shift-equal = 'move-node-to-workspace 8 --focus-follows-window'
 cmd-alt-ctrl-shift-minus = 'move-node-to-workspace 9 --focus-follows-window'
 
-# Move workspace to other displays (i3: move workspace to output ...)
-# AeroSpaceでは物理的な方向（up/down）ではなく、次/前のモニタへの移動になります
-cmd-alt-ctrl-p = 'move-workspace-to-monitor --wrap-around next' # up相当
-cmd-alt-ctrl-n = 'move-workspace-to-monitor --wrap-around prev' # down相当
-cmd-alt-ctrl-f = 'move-workspace-to-monitor --wrap-around next' # right相当
-cmd-alt-ctrl-b = 'move-workspace-to-monitor --wrap-around prev' # left相当
+### Scratchpad (https://github.com/cristianoliveira/aerospace-scratchpad)
+# cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad move Alacritty'
+# cmd-alt-ctrl-quote = 'exec-and-forget aerospace-scratchpad show Alacritty'
+# cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(aerospace list-windows --focused --format '%{window-id}')'
+cmd-alt-ctrl-quote = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)'
+# Hide current window: `aerospace-scratchpad show ".+" --filter window-id=$(aerospace list-windows --focused --format '%{window-id}')`
 
-# Move focused window to other displays (ワークスペースごとではなく、ウィンドウ単体を移動)
-# Shift を加えると「ワークスペース移動」ではなく「ウィンドウのみ移動」(--focus-follows-window で焦点も追従)
-cmd-alt-ctrl-shift-p = 'move-node-to-monitor --wrap-around --focus-follows-window next' # up相当
-cmd-alt-ctrl-shift-n = 'move-node-to-monitor --wrap-around --focus-follows-window prev' # down相当
-cmd-alt-ctrl-shift-f = 'move-node-to-monitor --wrap-around --focus-follows-window next' # right相当
-cmd-alt-ctrl-shift-b = 'move-node-to-monitor --wrap-around --focus-follows-window prev' # left相当
+[exec.env-vars]
+PATH = '/opt/homebrew/bin:${PATH}' # Scratchpad
+# AEROSPACE_SCRATCHPAD_LOGS_LEVEL = "DEBUG"
