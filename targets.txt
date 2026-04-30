@@ -3,6 +3,7 @@ $XDG_CONFIG_HOME/aerc/accounts.conf.template
 $XDG_CONFIG_HOME/aerc/aerc.conf
 $XDG_CONFIG_HOME/aerc/binds.conf
 $XDG_CONFIG_HOME/aerc/stylesets
+$XDG_CONFIG_HOME/aerospace/aerospace.toml
 $XDG_CONFIG_HOME/alacritty/alacritty.toml
 $XDG_CONFIG_HOME/autostart
 $XDG_CONFIG_HOME/brewfile/Brewfile
