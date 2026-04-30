@@ -7,10 +7,8 @@ alias .......='cd ../../../../..'
 alias la='ls --almost-all'
 alias lla='ll --almost-all'
 
-switch $(uname)
-case Linux
-	alias ls='ls --color=auto --classify --group-directories-first'
-case Darwin
+alias ls='ls --color=auto --classify --group-directories-first'
+if [ "$(uname)" = 'Darwin' ] && not command --search --quiet gls
 	alias ls='ls -GF'
 end
 
