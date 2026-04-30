@@ -17,6 +17,8 @@ outer.right =      6
 cmd-tab = 'workspace-back-and-forth'
 alt-tab = 'workspace-back-and-forth'
 
+cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
+
 # Change focus (i3: $sac+9 focus next)
 cmd-alt-ctrl-9 = 'focus dfs-next --ignore-floating --boundaries-action wrap-around-the-workspace'
 
