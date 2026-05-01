@@ -317,7 +317,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- Buffer-local keymaps
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP: Go to definition', buffer = bufnr })
 		local vl_enabled = false
-		vim.keymap.set('n', '<M-l>', function()
+		vim.keymap.set('n', '<M-d>', function()
 			vim.diagnostic.config({
 				virtual_lines = not vl_enabled and { current_line = true } or false,
 			})

@@ -46,7 +46,7 @@ spec.keys = {
 	map('<M-t>', 'n', function()
 		require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner')
 	end, 'Swap forward'),
-	map('<M-d>', 'n', function()
+	map('<M-g>', 'n', function()
 		require('nvim-treesitter-textobjects.swap').swap_previous('@parameter.inner')
 	end, 'Swap backward'),
 }
