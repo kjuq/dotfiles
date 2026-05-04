@@ -9,4 +9,9 @@ spec.opts = {
 	dim_inactive = false,
 }
 
+spec.config = function(_, opts)
+	require('gruvbox').setup(opts)
+	vim.cmd.colorscheme('gruvbox')
+end
+
 return spec
