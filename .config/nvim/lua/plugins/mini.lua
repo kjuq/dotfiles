@@ -61,6 +61,7 @@ spec.config = function()
 			},
 		})
 		require('mini.extra').setup()
+		vim.keymap.set('n', '<Space>fe', '<Cmd>Pick files<CR>', { desc = 'Mini: pick files' })
 		vim.keymap.set('n', '<Space>fg', '<Cmd>Pick grep_live<CR>', { desc = 'Mini: pick grep_live' })
 		vim.keymap.set('n', '<Space>fG', '<Cmd>Pick git_files<CR>', { desc = 'Mini: pick git_files' })
 		vim.keymap.set('n', '<Space>fi', '<Cmd>Pick help<CR>', { desc = 'Mini: Pick help tags' })
