@@ -35,7 +35,21 @@ vim.opt.dictionary:append('/usr/share/dict/words') -- For Archlinux, `pacman -S 
 
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 40
+vim.opt.pumborder = vim.o.winborder
 -- o.pumblend = 20 -- Disable this when using transparent env
+
+-- HACK: ドキュメントポップアップに無理やりボーダーを付ける (https://www.pandanoir.info/entry/2026/04/19/095000#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95)
+-- 現状 winborder や completeopt=popup だけではドキュメントfloatのボーダーを制御できない (https://github.com/neovim/neovim/issues/38248)
+-- 将来的に completepopup オプション等が実装されればこのワークアラウンドは不要になる
+local orig_complete_set = vim.api.nvim__complete_set
+---@diagnostic disable-next-line: duplicate-set-field
+vim.api.nvim__complete_set = function(...)
+	local result = orig_complete_set(...)
+	if result and result.winid then
+		pcall(vim.api.nvim_win_set_config, result.winid, { border = 'rounded' })
+	end
+	return result
+end
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
