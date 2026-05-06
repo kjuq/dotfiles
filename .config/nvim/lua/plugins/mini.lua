@@ -71,7 +71,9 @@ spec.config = function()
 		vim.keymap.set('n', '<Space>fr', '<Cmd>Pick resume<CR>', { desc = 'Mini: Pick resume finding' })
 	end
 	do
-		require('mini.sessions').setup()
+		require('mini.sessions').setup({
+			autowrite = false,
+		})
 		vim.keymap.set('n', '<Space>sl', '<Cmd>lua MiniSessions.read()<CR>', { desc = 'Mini.sessions: Read' })
 		vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
 			group = vim.api.nvim_create_augroup('kjuq_mini_sessions', {}),
