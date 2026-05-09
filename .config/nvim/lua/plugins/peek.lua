@@ -14,6 +14,8 @@ spec.cmd = {
 	'PeekToggle',
 }
 
+local ft = { 'markdown', 'codecompanion' }
+
 local map = require('kjuq.lazy').generate_map('', 'Peek: ')
 spec.keys = {
 	map('<Space>aP', 'n', function()

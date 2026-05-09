@@ -65,6 +65,7 @@ cmd-alt-ctrl-shift-minus = 'move-node-to-workspace 9 --focus-follows-window'
 # cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(aerospace list-windows --focused --format '%{window-id}')'
 cmd-alt-ctrl-quote = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)'
 # Hide current window: `aerospace-scratchpad show ".+" --filter window-id=$(aerospace list-windows --focused --format '%{window-id}')`
+# Move focused window to scratchpad `aerospace list-windows --focused --format '%{window-id}' > /tmp/kjuq_aerospace_scratchpad_winid && aerospace-scratchpad move ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)`
 
 [exec.env-vars]
 PATH = '/opt/homebrew/bin:${PATH}' # Scratchpad
