@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd({ 'OptionSet' }, {
 	group = vim.api.nvim_create_augroup('kjuq_update_indent_line', {}),
 	callback = update_indent_line,
 })
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 	group = vim.api.nvim_create_augroup('kjuq_init_indent_line', {}),
 	callback = update_indent_line,
 })

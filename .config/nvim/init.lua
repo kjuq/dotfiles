@@ -27,7 +27,7 @@ vim.opt.ruler = false
 
 -- vim.opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
 vim.opt.wildoptions:append('fuzzy')
-vim.opt.completeopt = { 'menuone', 'popup', 'fuzzy' }
+vim.opt.completeopt = { 'noinsert', 'menuone', 'popup', 'fuzzy' }
 
 vim.opt.winborder = 'single'
 
