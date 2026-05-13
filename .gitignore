@@ -1,3 +1,4 @@
 .config/nvim/lazy-lock.json
 .config/nvim/lua/kjuq/local.lua
 .config/fish/configs/local/*
+.config/git/config_local

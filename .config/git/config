@@ -35,8 +35,11 @@
 [safe]
 	directory = /storage/emulated/0/*
 
-[url "ssh://git@github.com"]
-	insteadOf = https://github.com
+; [url "ssh://git@github.com"]
+; 	insteadOf = https://github.com
+
+[include]
+	path = ~/.config/git/config_local
 
 ; difftool and mergetool
 ; https://gist.github.com/openjck/93b335dfe5e33955d7dec3c9aec9d609
