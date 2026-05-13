@@ -35,6 +35,7 @@
 [safe]
 	directory = /storage/emulated/0/*
 
+; `gh auth login` allows pushing without setting up keys nor this trick
 ; [url "ssh://git@github.com"]
 ; 	insteadOf = https://github.com
 
