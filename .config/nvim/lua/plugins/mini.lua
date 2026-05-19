@@ -70,18 +70,18 @@ spec.config = function()
 		vim.keymap.set('n', '<Space>fH', '<Cmd>Pick oldfiles current_dir=false<CR>', { desc = 'Mini: MRU' })
 		vim.keymap.set('n', '<Space>fr', '<Cmd>Pick resume<CR>', { desc = 'Mini: Pick resume finding' })
 	end
-	do
-		require('mini.sessions').setup({
-			autowrite = false,
-		})
-		vim.keymap.set('n', '<Space>sl', '<Cmd>lua MiniSessions.read()<CR>', { desc = 'Mini.sessions: Read' })
-		vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
-			group = vim.api.nvim_create_augroup('kjuq_mini_sessions', {}),
-			callback = function()
-				MiniSessions.write('mini_sessions_main')
-			end,
-		})
-	end
+	-- do
+	-- 	require('mini.sessions').setup({
+	-- 		autowrite = false,
+	-- 	})
+	-- 	vim.keymap.set('n', '<Space>sl', '<Cmd>lua MiniSessions.read()<CR>', { desc = 'Mini.sessions: Read' })
+	-- 	vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
+	-- 		group = vim.api.nvim_create_augroup('kjuq_mini_sessions', {}),
+	-- 		callback = function()
+	-- 			MiniSessions.write('mini_sessions_main')
+	-- 		end,
+	-- 	})
+	-- end
 	require('mini.surround').setup({
 		highlight_duration = require('kjuq.common_params').highlight_duration,
 		silent = true,
