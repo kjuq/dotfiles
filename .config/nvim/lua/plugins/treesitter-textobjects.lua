@@ -37,12 +37,6 @@ spec.keys = {
 	map('iT', { 'x', 'o' }, function()
 		require('nvim-treesitter-textobjects.select').select_textobject('@conditional.inner', 'textobjects')
 	end, '@conditional.inner'),
-	map('al', { 'x', 'o' }, function()
-		require('nvim-treesitter-textobjects.select').select_textobject('@loop.outer', 'textobjects')
-	end, '@loop.outer'),
-	map('il', { 'x', 'o' }, function()
-		require('nvim-treesitter-textobjects.select').select_textobject('@loop.inner', 'textobjects')
-	end, '@loop.inner'),
 	map('<M-t>', 'n', function()
 		require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner')
 	end, 'Swap forward'),
