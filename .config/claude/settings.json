@@ -1,4 +1,10 @@
 {
+  "env": {
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "model": "opus[1m]",
   "hooks": {
     "Notification": [
@@ -24,9 +30,6 @@
       }
     ]
   },
-  "env": {
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
-  },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true
@@ -36,7 +39,5 @@
   "effortLevel": "xhigh",
   "theme": "auto",
   "skipAutoPermissionPrompt": true,
-  "permissions": {
-    "defaultMode": "auto"
-  }
+  "tui": "fullscreen"
 }
