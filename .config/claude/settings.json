@@ -3,7 +3,7 @@
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
   "permissions": {
-    "defaultMode": "auto"
+    "defaultMode": "plan"
   },
   "model": "opus[1m]",
   "hooks": {
@@ -37,7 +37,7 @@
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "theme": "auto",
-  "skipAutoPermissionPrompt": true,
-  "tui": "fullscreen"
+  "skipAutoPermissionPrompt": true
 }
