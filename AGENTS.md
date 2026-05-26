@@ -9,8 +9,8 @@ You must:
 	- "!" to "！"
 	- and etc.
 - Insert spaces outside of brackets. For example,
-	- EC2(Amazon Elastic Compute Cloud)は AWS で実行されています。
-	- EC2 (Amazon Elastic Compute Cloud) はAWSで実行されています。
+	- NG: EC2(Amazon Elastic Compute Cloud)は AWS で実行されています。
+	- OK: EC2 (Amazon Elastic Compute Cloud) はAWSで実行されています。
 
 Markdown format:
 
