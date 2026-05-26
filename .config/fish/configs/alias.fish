@@ -23,6 +23,10 @@ if command --search --quiet ghq
 	alias ghf='set --local repo "$(ghq list | fzf)" && cd "$(ghq root)/$repo"'
 end
 
+if command --search --quiet git-wt && command --search --quiet fzf
+	alias gwf='git rev-parse --is-inside-work-tree > /dev/null 2>&1; and cd $(git-wt | fzf --header-lines=1 | awk \'{if ($1 == "*") print $2; else print $1}\'); or echo "Not a git repo"'
+end
+
 if command --search --quiet trash
 	switch $(uname)
 	case Linux
