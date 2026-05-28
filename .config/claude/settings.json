@@ -3,7 +3,10 @@
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
   "permissions": {
-    "defaultMode": "plan"
+    "deny": [
+      "Read(**/.env)"
+    ],
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
   "hooks": {
@@ -39,5 +42,6 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "theme": "auto",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "useAutoModeDuringPlan": true
 }

@@ -32,10 +32,6 @@ spec.keys = {
 	map('aq', { 'o', 'x' }, function()
 		require('various-textobjs').anyQuote('outer', 'outer')
 	end, 'Any Quote (outer)'),
-
-	map('gG', { 'o', 'x' }, function()
-		require('various-textobjs').entireBuffer()
-	end, 'Entire Buffer'),
 }
 
 spec.opts = {
