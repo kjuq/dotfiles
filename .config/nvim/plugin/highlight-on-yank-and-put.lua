@@ -10,9 +10,9 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 
 local highlight = function()
 	local timeout = require('kjuq.common_params').highlight_duration
-	require('vim.hl').on_yank({ higroup = 'kjuq_highlight_on_yank', timeout = timeout })
+	vim.hl.hl_op({ higroup = 'kjuq_highlight_on_yank', timeout = timeout })
 end
-vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+vim.api.nvim_create_autocmd({ 'TextYankPost', 'TextPutPost' }, {
 	group = group,
 	callback = highlight,
 })
