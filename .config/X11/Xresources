@@ -8,6 +8,8 @@ Xft.hintstyle: hintsfull
 Xft.lcdfilter: lcddefault
 
 Xcursor.theme: Adwaita
+Xcursor.size: 48
+*cursorColor:                     #1ABB9B
 
 !
 ! XTerm*background:        #222D31

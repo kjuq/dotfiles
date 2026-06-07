@@ -20,6 +20,19 @@ M.cpp = {
 	seq = [[auto seq(int begin, int end) { return (std::views::iota(begin, end + 1)); }]],
 }
 
+M.cpp.init = {
+	[[#include <iostream>]],
+	[[#include <ranges>]],
+	[[using namespace std;]],
+	[[]],
+	M.cpp.rep,
+	M.cpp.seq,
+	[[]],
+	[[signed main() {]],
+	[[	${0}]],
+	[[}]],
+}
+
 M.lua = {
 	autocmd = {
 		[[vim.api.nvim_create_autocmd({ '${1}' }, {]],
