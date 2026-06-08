@@ -26,3 +26,7 @@ Python rules:
 - Run python code with `uv run`
 - DON'T use `pip` to install external packages
 - Use pep723 to manage dependencies if the script consists of one file
+
+Worktree rules:
+
+- Use `.claude/worktrees` if user doesn't specify specific directory

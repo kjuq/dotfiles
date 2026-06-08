@@ -20,11 +20,25 @@ if command --search --quiet nvim
 end
 
 if command --search --quiet ghq
-	alias ghf='set --local repo "$(ghq list | fzf)" && cd "$(ghq root)/$repo"'
+	function ghf
+		set --local repo "$(ghq list | fzf)"
+		if [ ! $repo = '' ]
+			cd "$(ghq root)/$repo"
+		end
+	end
 end
 
-if command --search --quiet git-wt && command --search --quiet fzf
-	alias gwf='git rev-parse --is-inside-work-tree > /dev/null 2>&1; and cd $(git-wt | fzf --header-lines=1 | awk \'{if ($1 == "*") print $2; else print $1}\'); or echo "Not a git repo"'
+if command --search --quiet fzf
+	function gwf
+		if not git rev-parse --is-inside-work-tree > /dev/null 2>&1
+			echo "Not a git repo"
+			return 1
+		end
+		set --local repo $(git worktree list | fzf | cut -d ' ' -f 1)
+		if [ ! $repo = '' ]
+			cd $repo
+		end
+	end
 end
 
 if command --search --quiet trash
