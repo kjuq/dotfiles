@@ -69,7 +69,7 @@ local setup = function()
 
 	vim.keymap.set('n', '<C-g><C-g>', confirm.n, { buffer = true })
 	vim.keymap.set('i', '<C-g><C-g>', confirm.i, { buffer = true })
-	vim.keymap.set('n', '<Esc>', confirm.n, { buffer = true })
+	vim.keymap.set('n', '<Space>d', confirm.n, { buffer = true })
 end
 
 M = {
