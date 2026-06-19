@@ -1,6 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "DISABLE_AUTOUPDATER": "1"
   },
   "permissions": {
     "deny": [
@@ -8,7 +9,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -32,10 +32,6 @@
         ]
       }
     ]
-  },
-  "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true
   },
   "language": "Japanese",
   "alwaysThinkingEnabled": true,

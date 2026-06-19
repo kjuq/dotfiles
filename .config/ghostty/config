@@ -20,6 +20,8 @@ window-decoration = server
 gtk-titlebar = false
 cursor-style-blink = false
 
+mouse-scroll-multiplier = 0.75
+
 keybind = clear
 
 keybind = super+v=paste_from_clipboard

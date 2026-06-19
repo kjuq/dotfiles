@@ -10,6 +10,9 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 			vim.api.nvim_set_hl(0, 'WinSeparator', { fg = 'DarkGray' })
 			vim.api.nvim_set_hl(0, 'VertSplit', { link = 'WinSeparator' })
 			vim.api.nvim_set_hl(0, 'Cursor', { bg = 'LightGreen' })
+			if _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent then
+				vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' }) -- background
+			end
 		end
 	end,
 })
@@ -17,7 +20,7 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 -- load built-in colorscheme if no colorscheme is loaded by plugin manager
 if vim.g.colors_name == nil then
 	vim.cmd.colorscheme('slate') -- 'default'|'slate'|'habamax'|'retrobox'|'sorbet'|'unokai'
-	if _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent then
-		vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' }) -- background
-	end
+	-- if _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent then
+	-- 	vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' }) -- background
+	-- end
 end

@@ -35,6 +35,9 @@ set --export GHQ_ROOT "$HOME/kjuq/ghq"
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
+# less
+set --export LESS '--mouse --wheel-lines=1'
+
 # Bash
 mkdir -p "$XDG_STATE_HOME/bash"
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"

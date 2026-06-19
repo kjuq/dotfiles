@@ -15,7 +15,7 @@ spec.keys = {
 			reveal_force_cwd = true,
 		})
 	end, 'Open'),
-	map('aG', 'n', function()
+	map('ag', 'n', function()
 		require('neo-tree.command').execute({
 			source = 'git_status',
 			position = 'left',
@@ -23,7 +23,7 @@ spec.keys = {
 			reveal_force_cwd = true,
 		})
 	end, 'Open git'),
-	map('aB', 'n', function()
+	map('ab', 'n', function()
 		require('neo-tree.command').execute({
 			source = 'buffers',
 			position = 'left',
