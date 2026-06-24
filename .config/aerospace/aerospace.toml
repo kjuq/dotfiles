@@ -5,12 +5,12 @@
 
 [gaps]
 
-inner.horizontal = 10
-inner.vertical =   8
-outer.left =       6
-outer.bottom =     6
-outer.top =        5
-outer.right =      6
+inner.horizontal = [{ monitor."^built-in retina display$"= 10 }, 20]
+inner.vertical = [{ monitor."^built-in retina display$"= 8 }, 16]
+outer.left = [{ monitor."^built-in retina display$"= 6 }, 40]
+outer.bottom = [{ monitor."^built-in retina display$"= 6 }, 100]
+outer.top = [{ monitor."^built-in retina display$"= 5 }, 35]
+outer.right = [{ monitor."^built-in retina display$"= 6 }, 40]
 
 [mode.main.binding]
 # Workspace back_and_forth
