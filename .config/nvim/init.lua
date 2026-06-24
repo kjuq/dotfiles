@@ -72,7 +72,7 @@ vim.opt.startofline = true
 
 vim.opt.autoindent = true
 vim.opt.smartindent = false -- DON'T ENABLE THIS so that '#' at the beginning of a line be indented properly
-vim.opt.cindent = true
+vim.opt.cindent = false
 vim.opt.cinkeys:remove('0#')
 vim.opt.cinoptions:append('j9') -- `:help java-cinoptions`
 vim.opt.cinoptions:append('J9') -- `:help javascript-cinoptions`

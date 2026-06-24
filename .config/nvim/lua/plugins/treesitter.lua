@@ -33,7 +33,9 @@ spec.config = function(_, opts)
 		end
 		if vim.tbl_contains(require('nvim-treesitter').get_installed(), lang) then
 			vim.treesitter.start(args.buf)
-			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			if not lang == 'python' then
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
 		end
 	end
 	vim.api.nvim_create_autocmd({ 'FileType' }, {

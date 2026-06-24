@@ -2,5 +2,7 @@
 .trash/
 node_modules/
 
+mise.local.toml
+
 **/.claude/settings.local.json
 **/.claude/worktrees
