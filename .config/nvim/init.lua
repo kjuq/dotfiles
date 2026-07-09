@@ -27,13 +27,25 @@ vim.opt.ruler = false
 
 -- vim.opt.wildoptions = { 'pum', 'tagfile', 'fuzzy' }
 vim.opt.wildoptions:append('fuzzy')
-vim.opt.completeopt = { 'noinsert', 'menuone', 'popup', 'fuzzy' }
+vim.opt.completeopt = { 'noselect', 'menuone', 'popup', 'fuzzy' }
 
-vim.opt.winborder = 'single'
+-- -- <C-n>/<C-p> の keyword 補完だけは候補を選択せずに開く
+-- vim.keymap.set('i', '<C-n>', '<Cmd>setglobal completeopt+=noselect<CR><C-n>')
+-- vim.keymap.set('i', '<C-p>', '<Cmd>setglobal completeopt+=noselect<CR><C-p>')
+--
+-- -- 補完が終わったら戻す (次に使う <C-x> 系補完を select に保つ)
+-- vim.api.nvim_create_autocmd('CompleteDone', {
+-- 	group = vim.api.nvim_create_augroup('kjuq_cn_noselect', {}),
+-- 	callback = function()
+-- 		vim.opt_global.completeopt:remove('noselect')
+-- 	end,
+-- })
 
 vim.opt.dictionary:append('/usr/share/dict/words') -- For Archlinux, `pacman -S words`
 
-vim.opt.pumheight = 10
+vim.opt.winborder = 'single'
+
+vim.opt.pumheight = 7
 vim.opt.pumwidth = 40
 vim.opt.pumborder = vim.o.winborder
 -- o.pumblend = 20 -- Disable this when using transparent env
@@ -173,6 +185,20 @@ vim.keymap.set('i', '<C-y>', function()
 		return '<C-y>'
 	end
 end, { expr = true })
+
+-- vim.keymap.set('i', '<C-n>', function()
+-- 	local mode = vim.api.nvim_get_mode().mode
+-- 	if mode ~= 'ic' then
+-- 		return '<C-n><C-n>'
+-- 	else
+-- 		return '<C-n>'
+-- 	end
+-- 	-- if not selected then
+-- 	-- 	return '<C-n><C-n>'
+-- 	-- else
+-- 	-- 	return '<C-n>'
+-- 	-- end
+-- end, { expr = true })
 
 -- Move caret on display lines
 -- Comfortable line specify movement by v:count
