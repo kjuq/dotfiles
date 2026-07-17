@@ -11,7 +11,7 @@ spec.opts = {
 		light = 'latte',
 		dark = 'mocha',
 	},
-	transparent_background = _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent,
+	transparent_background = _G.kjuq.colorscheme_transparent == nil and true or _G.kjuq.colorscheme_transparent,
 	float = {
 		transparent = true, -- enable transparent floating windows
 		solid = true, -- use solid styling for floating windows, see |winborder|

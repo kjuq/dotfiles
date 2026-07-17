@@ -4,6 +4,7 @@ if vim.uv.getuid() == 0 then
 end
 
 vim.loader.enable()
+_G.kjuq = {}
 
 local localconfexists, localconf = pcall(require, 'kjuq.local')
 

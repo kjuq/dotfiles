@@ -6,9 +6,14 @@ spec.priority = 9999
 
 spec.opts = {
 	options = {
-		transparent = _G.kjuq_colorscheme_transparent == nil and true or _G.kjuq_colorscheme_transparent,
+		transparent = _G.kjuq.colorscheme_transparent == nil and true or _G.kjuq.colorscheme_transparent,
 		dim_inactive = false, -- Non focused panes set to alternative background
 	},
 }
+
+spec.config = function(_, opts)
+	require('nightfox').setup(opts) -- `setup` must be called before loading
+	vim.cmd.colorscheme('nightfox')
+end
 
 return spec
