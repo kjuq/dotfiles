@@ -19,6 +19,7 @@ local function preference()
 		if _G.kjuq.colorscheme_transparent == nil and true or _G.kjuq.colorscheme_transparent then
 			override_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
 			override_hl(0, 'Pmenu', { bg = 'NONE', ctermbg = 'NONE' })
+			override_hl(0, 'PmenuExtra', { bg = 'NONE', ctermbg = 'NONE' })
 			override_hl(0, 'PmenuBorder', { bg = 'NONE', ctermbg = 'NONE' })
 			override_hl(0, 'PmenuKind', { bg = 'NONE', ctermbg = 'NONE' })
 		end
