@@ -23,7 +23,11 @@ spec.config = function()
 			vim.fs.joinpath(require('lazy.core.config').options.root, 'dict', 'SKK-JISYO.jinmei'),
 		},
 		mappedKeys = mapped_keys,
-		completion = { enabled = true, insertOnSelect = true, deferOkuri = true }, -- TODO: delete `deferOkuri`, make always defer Okuri when completion is enabled
+		completion = {
+			enabled = true,
+			insertOnSelect = true,
+			deferOkuri = true, -- TODO: delete `deferOkuri`, make always defer Okuri when completion is enabled
+		},
 		pureSpace = true,
 		indicator = {
 			alwaysShown = false,
