@@ -16,56 +16,52 @@ outer.right = [{ monitor."^built-in retina display$"= 6 }, 40]
 # Workspace back_and_forth
 cmd-tab = 'workspace-back-and-forth'
 alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'workspace-back-and-forth'
 
 cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
 
 # Change focus (i3: $sac+9 focus next)
-cmd-alt-ctrl-9 = 'focus dfs-next --ignore-floating --boundaries-action wrap-around-the-workspace'
+cmd-alt-ctrl-y = 'focus dfs-next --ignore-floating --boundaries-action wrap-around-the-workspace'
 
 # Move focus (hjkl/directional)
-cmd-alt-ctrl-0 = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
-cmd-alt-ctrl-pageDown = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
-cmd-alt-ctrl-pageUp = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop up'
-cmd-alt-ctrl-7 = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
+cmd-alt-ctrl-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
+cmd-alt-ctrl-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
+cmd-alt-ctrl-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop up'
+cmd-alt-ctrl-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
 
 # Move focused window
-cmd-alt-ctrl-shift-0 = 'move --boundaries all-monitors-outer-frame left'
-cmd-alt-ctrl-shift-pageDown = 'move --boundaries all-monitors-outer-frame down'
-cmd-alt-ctrl-shift-pageUp = 'move --boundaries all-monitors-outer-frame up'
-cmd-alt-ctrl-shift-7 = 'move --boundaries all-monitors-outer-frame right'
+cmd-alt-ctrl-shift-h = 'move --boundaries all-monitors-outer-frame left'
+cmd-alt-ctrl-shift-j = 'move --boundaries all-monitors-outer-frame down'
+cmd-alt-ctrl-shift-k = 'move --boundaries all-monitors-outer-frame up'
+cmd-alt-ctrl-shift-l = 'move --boundaries all-monitors-outer-frame right'
 
 # --- Workspace Switch (sac + wskey) ---
-cmd-alt-ctrl-backslash = 'workspace 0'
-cmd-alt-ctrl-semicolon = 'workspace 1'
-cmd-alt-ctrl-period = 'workspace 2'
-cmd-alt-ctrl-comma = 'workspace 3'
-cmd-alt-ctrl-rightSquareBracket = 'workspace 4' # bracketright
-cmd-alt-ctrl-leftSquareBracket = 'workspace 5'  # bracketleft
-cmd-alt-ctrl-slash = 'workspace 6'
-cmd-alt-ctrl-backtick = 'workspace 7'      # grave
-cmd-alt-ctrl-equal = 'workspace 8'
-cmd-alt-ctrl-minus = 'workspace 9'
+cmd-alt-ctrl-v = 'workspace 0'
+cmd-alt-ctrl-d = 'workspace 1'
+cmd-alt-ctrl-c = 'workspace 2'
+cmd-alt-ctrl-x = 'workspace 3'
+cmd-alt-ctrl-t = 'workspace 4'
+cmd-alt-ctrl-s = 'workspace 5'
+cmd-alt-ctrl-r = 'workspace 6'
+cmd-alt-ctrl-p = 'workspace 7'
+cmd-alt-ctrl-f = 'workspace 8'
+cmd-alt-ctrl-w = 'workspace 9'
 
 # --- Move to workspace with focused container (Shift + sac + wskey) ---
 # AeroSpaceでは '--focus-follows-window' で「移動してそのワークスペースを追う」挙動になります
-cmd-alt-ctrl-shift-backslash = 'move-node-to-workspace 0 --focus-follows-window'
-cmd-alt-ctrl-shift-semicolon = 'move-node-to-workspace 1 --focus-follows-window'
-cmd-alt-ctrl-shift-period = 'move-node-to-workspace 2 --focus-follows-window'
-cmd-alt-ctrl-shift-comma = 'move-node-to-workspace 3 --focus-follows-window'
-cmd-alt-ctrl-shift-rightSquareBracket = 'move-node-to-workspace 4 --focus-follows-window'
-cmd-alt-ctrl-shift-leftSquareBracket = 'move-node-to-workspace 5 --focus-follows-window'
-cmd-alt-ctrl-shift-slash = 'move-node-to-workspace 6 --focus-follows-window'
-cmd-alt-ctrl-shift-backtick = 'move-node-to-workspace 7 --focus-follows-window'
-cmd-alt-ctrl-shift-equal = 'move-node-to-workspace 8 --focus-follows-window'
-cmd-alt-ctrl-shift-minus = 'move-node-to-workspace 9 --focus-follows-window'
+cmd-alt-ctrl-shift-v = 'move-node-to-workspace 0 --focus-follows-window'
+cmd-alt-ctrl-shift-d = 'move-node-to-workspace 1 --focus-follows-window'
+cmd-alt-ctrl-shift-c = 'move-node-to-workspace 2 --focus-follows-window'
+cmd-alt-ctrl-shift-x = 'move-node-to-workspace 3 --focus-follows-window'
+cmd-alt-ctrl-shift-t = 'move-node-to-workspace 4 --focus-follows-window'
+cmd-alt-ctrl-shift-s = 'move-node-to-workspace 5 --focus-follows-window'
+cmd-alt-ctrl-shift-r = 'move-node-to-workspace 6 --focus-follows-window'
+cmd-alt-ctrl-shift-p = 'move-node-to-workspace 7 --focus-follows-window'
+cmd-alt-ctrl-shift-f = 'move-node-to-workspace 8 --focus-follows-window'
+cmd-alt-ctrl-shift-w = 'move-node-to-workspace 9 --focus-follows-window'
 
 ### Scratchpad (https://github.com/cristianoliveira/aerospace-scratchpad)
-# cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad move Alacritty'
-# cmd-alt-ctrl-quote = 'exec-and-forget aerospace-scratchpad show Alacritty'
-# cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(aerospace list-windows --focused --format '%{window-id}')'
-cmd-alt-ctrl-quote = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)'
-# Hide current window: `aerospace-scratchpad show ".+" --filter window-id=$(aerospace list-windows --focused --format '%{window-id}')`
-# Move focused window to scratchpad `aerospace list-windows --focused --format '%{window-id}' > /tmp/kjuq_aerospace_scratchpad_winid && aerospace-scratchpad move ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)`
+cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)'
 
 [exec.env-vars]
 PATH = '/opt/homebrew/bin:${PATH}' # Scratchpad
