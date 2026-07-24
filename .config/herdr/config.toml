@@ -67,6 +67,13 @@ rename_workspace = ["prefix+shift+w", "prefix+$"]
 previous_workspace = "prefix+("
 next_workspace = "prefix+)"
 
+# tmux デフォルト: prefix+! でペインを新規タブに分離 (break-pane)
+[[keys.command]]
+key = "prefix+!"
+label = "break-pane"
+type = "shell"
+command = '"$HERDR_BIN_PATH" pane move "$HERDR_ACTIVE_PANE_ID" --new-tab --focus'
+
 [ui.toast]
 delivery = "herdr"
 
