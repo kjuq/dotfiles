@@ -10,7 +10,7 @@ window-height = 60
 window-padding-x = 6
 window-padding-y = 2
 
-background-opacity = 0.5
+background-opacity = 1
 
 mouse-hide-while-typing = true
 macos-option-as-alt = true

@@ -30,6 +30,7 @@ $XDG_CONFIG_HOME/gtkrc-2.0/gtkrc
 $XDG_CONFIG_HOME/hammerspoon/lua
 $XDG_CONFIG_HOME/hammerspoon/init.lua
 $XDG_CONFIG_HOME/hammerspoon/.luarc.json
+$XDG_CONFIG_HOME/herdr/config.toml
 $XDG_CONFIG_HOME/i3/config
 $XDG_CONFIG_HOME/i3status/config
 $XDG_CONFIG_HOME/kitty/kitty.conf
