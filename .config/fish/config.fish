@@ -13,7 +13,7 @@ source "$__fish_config_dir/configs/misc.fish"
 source "$__fish_config_dir/configs/prompt.fish"
 source "$__fish_config_dir/configs/c.fish"
 
-if [ -e "$__fish_config_dir/configs/local/post"  ]
+if [ -e "$__fish_config_dir/configs/local/post.fish"  ]
 	source "$__fish_config_dir/configs/local/post.fish"
 end
 
