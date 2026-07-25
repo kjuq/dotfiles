@@ -6,6 +6,7 @@ set $mod Mod4
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym Mod1+Tab workspace back_and_forth
+bindsym Mod1+Shift+Tab workspace back_and_forth
 
 # Keybinds {{{
 # Super + Alt + Ctrl
@@ -22,37 +23,38 @@ bindsym $mod+Shift+3 exec --no-startup-id i3-scrot
 bindsym $mod+Shift+4 --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+5 --release exec --no-startup-id i3-scrot -w
 
-# change focus
-bindsym $sac+9 focus next
+# # change focus
+# bindsym $sac+9 focus next
 
 # move focused window (hjkl)
 # Prior: PageUp
 # Next: PageDown
-bindsym $sac+0 focus left
-bindsym $sac+Next focus down
-bindsym $sac+Prior focus up
-bindsym $sac+7 focus right
-bindsym $sac+Shift+0 move left
-bindsym $sac+Shift+Next move down
-bindsym $sac+Shift+Prior move up
-bindsym $sac+Shift+7 move right
+bindsym $sac+h focus left
+bindsym $sac+j focus down
+bindsym $sac+k focus up
+bindsym $sac+l focus right
+bindsym $sac+Shift+h move left
+bindsym $sac+Shift+j move down
+bindsym $sac+Shift+k move up
+bindsym $sac+Shift+l move right
 
 # dismiss notification
 # bindsym $sac+m exec dunstctl close
 
-# split orientation
-bindsym $sac+s split h;exec notify-send 'tile horizontally'
-bindsym $sac+v split v;exec notify-send 'tile vertically'
-# bindsym $sac+Shift+s split toggle
+# # split orientation
+# bindsym $mod+s split h;exec notify-send 'tile horizontally'
+# bindsym $mod+v split v;exec notify-send 'tile vertically'
+# # bindsym $sac+Shift+s split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $sac+o fullscreen toggle
 
 # Rescue builtin display
-bindsym $sac+d exec xrandr | grep 'connected' | grep -v 'eDP-1' | cut -d ' ' -f 1 | xargs -I {} xrandr --output '{}' --off --output eDP-1 --auto --primary --rotate left
+bindsym $sac+Shift+o exec xrandr | grep 'connected' | grep -v 'eDP-1' | cut -d ' ' -f 1 | xargs -I {} xrandr --output '{}' --off --output eDP-1 --auto --primary --rotate left
+
 
 # toggle tiling / floating
-bindsym $sac+l floating toggle
+bindsym $sac+i floating toggle
 
 # # change focus between tiling / floating windows
 # bindsym $sac+f focus mode_toggle
@@ -61,22 +63,10 @@ bindsym $sac+l floating toggle
 # bindsym $sac+p focus parent
 
 # move the currently focused window to the scratchpad
-bindsym $sac+g move scratchpad
+bindsym $sac+Shift+g move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window. If there are multiple scratchpad windows, this command cycles through them.
-bindsym $sac+apostrophe scratchpad show
-
-# Resize window (you can also use the mouse for that)
-bindsym $sac+r mode "resize"
-mode "resize" {
-	bindsym h resize shrink width 5 px or 5 ppt
-	bindsym k resize grow height 5 px or 5 ppt
-	bindsym j resize shrink height 5 px or 5 ppt
-	bindsym l resize grow width 5 px or 5 ppt
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
+bindsym $sac+g scratchpad show
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "brightnessctl set 10%+"
@@ -102,16 +92,27 @@ set $ws8 8
 set $ws9 9
 
 
-set $wskey0 backslash
-set $wskey1 semicolon
-set $wskey2 period
-set $wskey3 comma
-set $wskey4 bracketright
-set $wskey5 bracketleft
-set $wskey6 slash
-set $wskey7 grave
-set $wskey8 equal
-set $wskey9 minus
+# set $wskey0 backslash
+# set $wskey1 semicolon
+# set $wskey2 period
+# set $wskey3 comma
+# set $wskey4 bracketright
+# set $wskey5 bracketleft
+# set $wskey6 slash
+# set $wskey7 grave
+# set $wskey8 equal
+# set $wskey9 minus
+
+set $wskey0 v
+set $wskey1 d
+set $wskey2 c
+set $wskey3 x
+set $wskey4 t
+set $wskey5 s
+set $wskey6 r
+set $wskey7 p
+set $wskey8 f
+set $wskey9 w
 
 # switch to workspace
 bindsym $sac+$wskey0 workspace 0
@@ -137,11 +138,11 @@ bindsym Shift+$sac+$wskey7 move container to workspace 7; workspace $ws7
 bindsym Shift+$sac+$wskey8 move container to workspace 8; workspace $ws8
 bindsym Shift+$sac+$wskey9 move container to workspace 9; workspace $ws9
 
-# Move window to other displays (Super + Alt)
-bindsym $sac+p move workspace to output up
-bindsym $sac+n move workspace to output down
-bindsym $sac+f move workspace to output right
-bindsym $sac+b move workspace to output left
+# # Move window to other displays (Super + Alt)
+# bindsym $sac+p move workspace to output up
+# bindsym $sac+n move workspace to output down
+# bindsym $sac+f move workspace to output right
+# bindsym $sac+b move workspace to output left
 
 # Open applications on specific workspaces
 # To get class name, `xprop | grep WM_CLASS`
@@ -158,6 +159,7 @@ bindsym $sac+b move workspace to output left
 # for_window [title="File Transfer*"] floating enable
 for_window [class="FloatingVim"] floating enable
 for_window [window_role="GtkFileChooserDialog"] floating disable
+for_window [class="Beeper"] floating disable
 
 # github.com/toppair/peek.nvim
 no_focus [title="^Peek preview$"]
