@@ -9,26 +9,16 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus[1m]",
   "hooks": {
-    "Notification": [
+    "SessionStart": [
       {
-        "matcher": "",
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Approval required' && paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "notify-send 'Claude Code' 'Task finished' && paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga"
+            "command": "bash '/Users/kenta.ase/.config/claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
           }
         ]
       }
@@ -39,6 +29,7 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "theme": "auto",
+  "switchModelsOnFlag": false,
   "skipAutoPermissionPrompt": true,
   "useAutoModeDuringPlan": true
 }
