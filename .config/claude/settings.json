@@ -9,6 +9,11 @@
     ],
     "defaultMode": "auto"
   },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": false,
+    "allowUnsandboxedCommands": false
+  },
   "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
