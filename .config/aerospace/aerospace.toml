@@ -59,10 +59,3 @@ cmd-alt-ctrl-shift-r = 'move-node-to-workspace 6 --focus-follows-window'
 cmd-alt-ctrl-shift-p = 'move-node-to-workspace 7 --focus-follows-window'
 cmd-alt-ctrl-shift-f = 'move-node-to-workspace 8 --focus-follows-window'
 cmd-alt-ctrl-shift-w = 'move-node-to-workspace 9 --focus-follows-window'
-
-### Scratchpad (https://github.com/cristianoliveira/aerospace-scratchpad)
-cmd-alt-ctrl-g = 'exec-and-forget aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid)'
-
-[exec.env-vars]
-PATH = '/opt/homebrew/bin:${PATH}' # Scratchpad
-# AEROSPACE_SCRATCHPAD_LOGS_LEVEL = "DEBUG"

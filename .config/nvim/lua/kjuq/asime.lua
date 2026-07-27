@@ -35,7 +35,7 @@ local hide_and_paste = function(delay)
 		vim.cmd(string.format([[silent execute "%s"]], cmd))
 	elseif vim.fn.has('mac') == 1 then
 		local cmd = string.format(
-			[[!bash -c 'aerospace-scratchpad show ".+" --filter window-id=$(cat /tmp/kjuq_aerospace_scratchpad_winid) && sleep %s && osascript -e \'tell application "System Events" to keystroke "v" using command down\'']],
+			[[!bash -c 'osascript -e \'tell application "System Events"\' -e \'keystroke "g" using {command down, option down, control down}\' -e \'delay 0.01\' -e \'keystroke "v" using {command down}\' -e \'end tell\'']],
 			delay
 		)
 		-- vim.cmd(string.format([[silent execute "%s"]], cmd))
