@@ -59,6 +59,8 @@ set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 
 # Claude code
 set --export CLAUDE_CONFIG_DIR "$XDG_CONFIG_HOME/claude"
+set --export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY 1
+set --export DISABLE_AUTOUPDATER 1
 
 # Cargo
 set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
