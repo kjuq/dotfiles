@@ -183,15 +183,24 @@ focus_wrapping no
 hide_edge_borders none
 
 # Set inner/outer gaps
-gaps inner 6
-gaps outer -2
+gaps inner 20
+
+# Outer gaps for all windows: space along the screen edges.
+# gaps outer 0
+# gaps horizontal 0
+# gaps vertical 0
+gaps top 50
+gaps left 75
+gaps bottom 50
+gaps right 75
+
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+# smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders on
 
 ## Use Mouse+$mod to drag floating windows
 floating_modifier $mod
