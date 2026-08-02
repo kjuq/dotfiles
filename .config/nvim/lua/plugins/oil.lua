@@ -6,7 +6,7 @@ spec.lazy = false
 
 local map = require('kjuq.lazy').generate_map('', 'Oil: ')
 spec.keys = {
-	map('<Space>-', 'n', '<CMD>Oil<CR>', 'Open'),
+	map('<Space>-', 'n', '<Plug>(nvim-dir-up)', 'Open'),
 }
 
 spec.init = function()
