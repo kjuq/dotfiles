@@ -8,7 +8,7 @@
 inner.horizontal = [{ monitor."^built-in retina display$"= 10 }, 20]
 inner.vertical = [{ monitor."^built-in retina display$"= 8 }, 16]
 outer.left = [{ monitor."^built-in retina display$"= 6 }, 40]
-outer.bottom = [{ monitor."^built-in retina display$"= 6 }, 200]
+outer.bottom = [{ monitor."^built-in retina display$"= 6 }, 300]
 outer.top = [{ monitor."^built-in retina display$"= 5 }, 35]
 outer.right = [{ monitor."^built-in retina display$"= 6 }, 40]
 
@@ -16,7 +16,6 @@ outer.right = [{ monitor."^built-in retina display$"= 6 }, 40]
 # Workspace back_and_forth
 cmd-tab = 'workspace-back-and-forth'
 alt-tab = 'workspace-back-and-forth'
-alt-shift-tab = 'workspace-back-and-forth'
 
 cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
 

@@ -20,8 +20,6 @@ window-decoration = server
 gtk-titlebar = false
 cursor-style-blink = false
 
-mouse-scroll-multiplier = 0.75
-
 keybind = clear
 
 keybind = super+v=paste_from_clipboard
@@ -29,11 +27,14 @@ keybind = paste=paste_from_clipboard
 
 keybind = ctrl+backspace=text:\x17
 keybind = alt+backspace=text:\x17
+
 keybind = super+backspace=text:\x15
 keybind = ctrl+shift+backspace=text:\x15
+
 keybind = ctrl+tab=esc:[27;5;9~
 keybind = ctrl+shift+tab=esc:[27;6;9~
 
-keybind = super+p=increase_font_size:1
-keybind = super+n=decrease_font_size:1
+keybind = super+f=increase_font_size:1
+keybind = super+b=decrease_font_size:1
+keybind = super+n=new_window
 keybind = super+comma=reload_config
