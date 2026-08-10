@@ -1,0 +1,2 @@
+scripts:
+  - ~/.config/mitmproxy/script/method_url_body_export.py

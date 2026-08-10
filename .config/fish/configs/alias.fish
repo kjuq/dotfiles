@@ -54,3 +54,9 @@ end
 if command --search --quiet w3m
 	alias w3m='env TERM=xterm-256color command w3m'
 end
+
+if command --search --quiet mitmproxy
+	alias mitmproxy="mitmproxy --set confdir=$XDG_CONFIG_HOME/mitmproxy"
+	alias mitmweb="mitmweb --set confdir=$XDG_CONFIG_HOME/mitmproxy"
+	alias mitmdump="mitmdump --set confdir=$XDG_CONFIG_HOME/mitmproxy"
+end
