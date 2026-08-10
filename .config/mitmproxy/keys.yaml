@@ -2,3 +2,7 @@
   ctx: ["flowlist", "flowview"]
   cmd: "export.clip method-url-body @focus"
   help: "Copy Method + URL + Body (PacketProxy Style)"
+- key: "c"
+  ctx: ["flowlist", "flowview"]
+  cmd: 'console.choose.cmd "Copy as..." export.formats export.clip {choice} @focus'
+  help: "Copy flow to clipboard as..."

@@ -1,2 +1,4 @@
 scripts:
-  - ~/.config/mitmproxy/script/method_url_body_export.py
+  - ./script/method_url_body_export.py
+  - ./script/esc_delay.py
+  - ./script/title_back_button.py
