@@ -1,4 +1,4 @@
-# `open -na Ghostty --args --config-file=$XDG_CONFIG_HOME/ghostty/quick`
+# `open -na Ghostty --args --config-file=$XDG_CONFIG_HOME/ghostty/asime`
 
 config-default-files = true
 

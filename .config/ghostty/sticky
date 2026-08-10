@@ -1,0 +1,17 @@
+# `open -na Ghostty --args --config-file=$XDG_CONFIG_HOME/ghostty/sticky`
+
+config-default-files = true
+
+macos-hidden = always
+auto-update = off
+keybind = global:cmd+ctrl+opt+b=toggle_quick_terminal
+quick-terminal-position = bottom
+quick-terminal-size = 19%,97%
+quick-terminal-autohide = false
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0
+quick-terminal-space-behavior = move
+
+window-save-state = never
+
+background-opacity = 0.5
