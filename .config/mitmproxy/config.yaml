@@ -1,3 +1,4 @@
+console_strip_trailing_newlines: true
 scripts:
   - ./script/method_url_body_export.py
   - ./script/esc_delay.py
