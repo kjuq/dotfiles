@@ -10,3 +10,7 @@
   ctx: ["flowlist", "flowview"]
   cmd: "tools.leader"
   help: "Leader key"
+- key: "esc"
+  ctx: ["commonkey", "global"]
+  cmd: "console.view.pop_no_exit"
+  help: "Exit the current view (never quit at top level)"

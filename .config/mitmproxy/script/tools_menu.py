@@ -43,6 +43,7 @@ class Tool(NamedTuple):
 # ツール一覧. 増やすときはここに 1 行足す.
 TOOLS: list[Tool] = [
 	Tool('l', 'last-byte sync', 'race.menu'),
+	Tool('d', 'quit', 'console.exit', needs_flow=False),
 ]
 
 # メニューを開く leader キー (space ?).
