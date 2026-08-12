@@ -5,3 +5,4 @@ scripts:
   - ./script/esc_delay.py
   - ./script/title_back_button.py
   - ./script/race_lastbyte.py
+  - ./script/hide_write_indicator.py

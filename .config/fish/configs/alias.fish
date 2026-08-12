@@ -56,7 +56,8 @@ if command --search --quiet w3m
 end
 
 if command --search --quiet mitmproxy
-	alias mitmproxy="mitmproxy --set confdir=$XDG_CONFIG_HOME/mitmproxy"
-	alias mitmweb="mitmweb --set confdir=$XDG_CONFIG_HOME/mitmproxy"
-	alias mitmdump="mitmdump --set confdir=$XDG_CONFIG_HOME/mitmproxy"
+	set --local mitmopt '--set confdir=$XDG_CONFIG_HOME/mitmproxy -w +$XDG_STATE_HOME/mitmproxy/sessions/%Y-%m-%d-%H-%M-%S.mitm'
+	alias mitmproxy="mitmproxy $mitmopt"
+	alias mitmweb="mitmweb $mitmopt"
+	alias mitmdump="mitmdump $mitmopt"
 end
