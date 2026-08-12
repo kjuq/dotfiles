@@ -29,7 +29,6 @@ from mitmproxy import ctx
 from mitmproxy import exceptions
 from mitmproxy import flow
 from mitmproxy import http
-from mitmproxy.log import ALERT
 from mitmproxy.net.http.http1 import assemble
 
 logger = logging.getLogger(__name__)
@@ -116,10 +115,7 @@ class RaceLastByte:
 		use_tls = req.scheme == 'https'
 		head, last = raw[:-1], raw[-1:]
 
-		logger.log(
-			ALERT,
-			f'[race] last-byte sync start: {req.method} {req.pretty_url} ({count} conns, tls={use_tls})',
-		)
+		logger.info(f'[race] last-byte sync start: {req.method} {req.pretty_url} ({count} conns, tls={use_tls})')
 
 		# asyncio ループを止めないよう, 送信一式はワーカースレッドへ逃がす
 		threading.Thread(
@@ -210,8 +206,8 @@ class RaceLastByte:
 	def _report(self, results: list) -> None:
 		# レスポンスのステータスライン分布を出す. 種類がばらけたらレース成立の兆候
 		for status, cnt in Counter(results).most_common():
-			logger.log(ALERT, f'[race]   {cnt:3d} x {status}')
-		logger.log(ALERT, '[race] done')
+			logger.info(f'[race]   {cnt:3d} x {status}')
+		logger.info('[race] done')
 
 
 addons = [RaceLastByte()]
