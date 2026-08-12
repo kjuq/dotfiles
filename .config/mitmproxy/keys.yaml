@@ -6,3 +6,7 @@
   ctx: ["flowlist", "flowview"]
   cmd: 'console.choose.cmd "Copy as..." export.formats export.clip {choice} @focus'
   help: "Copy flow to clipboard as..."
+- key: "space"
+  ctx: ["flowlist", "flowview"]
+  cmd: "tools.leader"
+  help: "Leader key"

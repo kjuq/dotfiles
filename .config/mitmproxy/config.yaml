@@ -1,5 +1,7 @@
 console_strip_trailing_newlines: true
 scripts:
+  - ./script/tools_menu.py
   - ./script/method_url_body_export.py
   - ./script/esc_delay.py
   - ./script/title_back_button.py
+  - ./script/race_lastbyte.py
