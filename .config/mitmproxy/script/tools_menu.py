@@ -54,7 +54,7 @@ TOOLS: list[Tool] = [
 	Tool('d', 'quit', 'console.exit', needs_flow=False),
 	Tool('l', 'last-byte sync', 'race.menu', ctx=('flowlist', 'flowview')),
 	Tool('c', 'copy method+url+body', 'export.clip method-url-body @focus', raw=True, ctx=('flowlist', 'flowview')),
-	Tool('r', 'copy response body', 'cut.clip @focus response.content', raw=True, ctx=('flowlist', 'flowview')),
+	Tool('r', 'copy response body', 'export.clip response-body @focus', raw=True, ctx=('flowlist', 'flowview')),
 	Tool(
 		'C',
 		'copy as...',
