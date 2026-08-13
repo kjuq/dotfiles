@@ -6,5 +6,6 @@ scripts:
   - ./script/esc_delay.py
   - ./script/title_back_button.py
   - ./script/race_lastbyte.py
+  - ./script/turbo_race.py
   - ./script/hide_write_indicator.py
   - ./script/esc_no_quit.py

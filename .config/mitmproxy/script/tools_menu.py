@@ -52,7 +52,7 @@ class Tool(NamedTuple):
 # 解決するので needs_flow は無視される (フロー 0 のときのエラーも native と同じ).
 TOOLS: list[Tool] = [
 	Tool('d', 'quit', 'console.exit', needs_flow=False),
-	Tool('l', 'last-byte sync', 'race.menu', ctx=('flowlist', 'flowview')),
+	Tool('t', 'race attack', 'turbo.menu', needs_flow=False, ctx=('flowlist', 'flowview')),
 	Tool('c', 'copy method+url+body', 'export.clip method-url-body @focus', raw=True, ctx=('flowlist', 'flowview')),
 	Tool('r', 'copy response body', 'export.clip response-body @focus', raw=True, ctx=('flowlist', 'flowview')),
 	Tool(
