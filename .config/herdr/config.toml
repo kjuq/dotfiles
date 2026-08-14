@@ -38,9 +38,12 @@ split_horizontal = ["prefix+minus", "prefix+double_quote"]
 previous_workspace = "prefix+("
 next_workspace = "prefix+)"
 
-# tmux デフォルト: prefix+! でペインを新規タブに分離 (break-pane)
+previous_agent = "prefix+{"
+next_agent = "prefix+}"
+
+# tmux default: prefix+! detaches the pane into a new tab (break-pane)
 [[keys.command]]
 key = "prefix+!"
-label = "break-pane"
+description = "break-pane"
 type = "shell"
 command = '"$HERDR_BIN_PATH" pane move "$HERDR_ACTIVE_PANE_ID" --new-tab --focus'
