@@ -9,12 +9,14 @@
 turbo.menu (space t) は 3 種を 1 メニューにまとめた統合レースメニュー:
 	- last-byte sync (native)   race_lastbyte.py の raw ソケット実装をレジストリ
 	                            経由 (race.lastbyte) で呼ぶ. multi-endpoint 対応.
-	- last-byte sync (turbo)    Turbo Intruder の Engine.THREADED (HTTP/1.1).
+	- last-byte sync (turbo)    Turbo Intruder の Engine.THREADED (HTTP/1.1). 単一フローのみ.
 	- single-packet (HTTP/2)    Turbo Intruder の Engine.HTTP2. 1 パケットに全
 	                            リクエストを載せて撃つ HTTP/2 レースの本命.
 	native は raw ソケットで ALPN を http/1.1 に固定するため single-packet は撃てない.
-	そこを Turbo Intruder が補完する, という住み分け. Turbo Intruder は 1 リクエスト
-	テンプレートしか撃てないので, turbo 系は単一フロー時のみメニューに出す.
+	そこを Turbo Intruder が補完する, という住み分け.
+	single-packet は 1 パケット = 1 コネクション = 1 ホストなので, marked が同一ホスト
+	なら複数フロー (異なるリクエスト) を 1 パケットにまとめて撃てる. 異なるホストが
+	混ざる multi-endpoint は native の last-byte sync が担当する.
 
 前提 (環境変数で差し替え可):
 	TURBO_INTRUDER_JAR     turbo-intruder-all.jar のパス
@@ -33,11 +35,12 @@ jar のビルド:
 	:turbo.race @focus                 # focus を既定 (HTTP2, 20 本) で
 	:turbo.race @focus 30              # 30 本で
 	:turbo.race @focus 30 THREADED     # last-byte sync (threaded) 30 本で
+	:turbo.race @marked 1 HTTP2        # marked 各フロー (同一ホスト) を 1 本ずつ 1 パケットで
 
 結果は mitmproxy のイベントログ (コンソールで E) に出る. jar 実行は数秒かかるが
-ワーカースレッドに逃がすので UI は固まらない. エンジン/本数は環境変数
-TURBO_ENGINE / TURBO_REQUESTS 経由で headless スクリプトに渡す (argv の
-wordlist 規約と衝突しないため).
+ワーカースレッドに逃がすので UI は固まらない. エンジン/複製数/リクエスト群は環境変数
+TURBO_ENGINE / TURBO_REQUESTS / TURBO_REQUEST_DIR 経由で headless スクリプトに
+渡す (argv の wordlist 規約と衝突しないため).
 """
 
 from __future__ import annotations
@@ -129,6 +132,21 @@ class TurboRace:
 		focused = view.focus.flow
 		return [focused] if focused is not None else []
 
+	@staticmethod
+	def _same_host(flows: Sequence[flow.Flow]) -> bool:
+		"""全フローが同一 scheme://host:port か.
+
+		single-packet attack は 1 パケット = 1 HTTP/2 コネクション = 1 ホストなので,
+		複数フローを 1 パケットに混ぜるには同一ホストである必要がある.
+		"""
+		eps = set()
+		for f in flows:
+			if not isinstance(f, http.HTTPFlow) or not f.request:
+				return False
+			r = f.request
+			eps.add((r.scheme, r.host, r.port))
+		return len(eps) == 1
+
 	# --- 統合レースメニュー (space t) --------------------------------------
 	# native (race_lastbyte.py) の last-byte sync と, Turbo Intruder の
 	# last-byte sync / single-packet attack を 1 メニューにまとめる. native は
@@ -167,12 +185,23 @@ class TurboRace:
 					label = f'last-byte sync (native) x{k}  ({n} flows x {k} = {total} conns)'
 				self._menu_actions[label] = ('native', k)
 
-		# Turbo Intruder は 1 リクエストテンプレートしか撃てないので単一フロー時のみ.
+		# Turbo last-byte sync は単一フローのみ (multi-endpoint は native が担当).
 		if n == 1:
 			for k in RACE_COUNTS:
 				self._menu_actions[f'last-byte sync (turbo) x{k}'] = ('turbo-lbs', k)
-			for k in RACE_COUNTS:
-				self._menu_actions[f'single-packet (HTTP/2) x{k}'] = ('turbo-sp', k)
+
+		# single-packet attack. 同一ホストなら複数フロー (異なるリクエスト) を
+		# 1 パケットにまとめて撃てる. 異なるホストが混ざるときは撃てないので出さない.
+		if self._same_host(targets):
+			counts = RACE_COUNTS if n == 1 else [1, *RACE_COUNTS]
+			for k in counts:
+				if n == 1 and k < 2:
+					continue  # 単一フロー 1 本ではレースにならない
+				if n == 1:
+					label = f'single-packet (HTTP/2) x{k}'
+				else:
+					label = f'single-packet (HTTP/2) x{k}  ({n} flows x {k} = {n * k} reqs)'
+				self._menu_actions[label] = ('turbo-sp', k)
 
 		ctx.master.commands.call(
 			'console.choose.cmd',
@@ -202,16 +231,19 @@ class TurboRace:
 			ctx.master.commands.call('race.lastbyte', self._targets, k)
 		elif kind == 'turbo-lbs':
 			self.race([self._targets[0]], k, 'THREADED')
-		else:  # 'turbo-sp'
-			self.race([self._targets[0]], k, 'HTTP2')
+		else:  # 'turbo-sp' — single-packet は同一ホストの複数フローをまとめて撃てる
+			self.race(self._targets, k, 'HTTP2')
 
 	# --- 実行本体 -----------------------------------------------------------
 
 	@command.command('turbo.race')
 	def race(self, flows: Sequence[flow.Flow], count: int = DEFAULT_COUNT, engine: str = DEFAULT_ENGINE) -> None:
-		"""flows の先頭リクエストを Turbo Intruder に渡し count 本のレースを撃つ.
+		"""flows のリクエストを Turbo Intruder に渡してレースを撃つ.
 
-		Turbo Intruder は 1 テンプレートを撃つので, 複数渡されても先頭のみ使う.
+		HTTP2 (single-packet) は同一ホストなら複数フロー (異なるリクエスト) を 1 パケットに
+		まとめて撃てる. THREADED (last-byte sync) は 1 テンプレートのみ扱う (multi-endpoint
+		の last-byte sync は native = race.lastbyte の領分). count はフロー 1 つあたりの
+		複製数で, 総リクエスト数は フロー数 x count.
 		"""
 		if not flows:
 			raise exceptions.CommandError('No flow to race.')
@@ -222,31 +254,50 @@ class TurboRace:
 		if engine not in valid:
 			raise exceptions.CommandError(f'Unknown engine {engine!r} (use one of {sorted(valid)}).')
 
-		f = flows[0]
-		if not isinstance(f, http.HTTPFlow) or not f.request:
-			raise exceptions.CommandError("Can't race a flow with no request.")
+		httpflows: list[http.HTTPFlow] = []
+		for f in flows:
+			if not isinstance(f, http.HTTPFlow) or not f.request:
+				raise exceptions.CommandError("Can't race a flow with no request.")
+			httpflows.append(f)
+
+		# THREADED は 1 テンプレートのみ (複数フローの last-byte sync は native が担当).
+		if engine == 'THREADED':
+			httpflows = httpflows[:1]
+
+		# single-packet は 1 パケット = 1 コネクション = 1 ホスト. 複数なら同一ホスト必須.
+		if not self._same_host(httpflows):
+			raise exceptions.CommandError(
+				'single-packet requires all flows on the same host:port. '
+				'Use native last-byte sync for multiple hosts (multi-endpoint).'
+			)
 
 		self._preflight()
 
-		# race_lastbyte と同じ手順で on-the-wire なバイト列を組み立てる
-		# (content-encoding を解除し, content-length を実ボディに合わせる).
-		# 手組みでヘッダ行を join するより取りこぼしが無い.
-		req = f.request.copy()
-		req.decode(strict=False)
-		try:
-			raw = assemble.assemble_request(req)
-		except ValueError as e:
-			raise exceptions.CommandError(str(e))
+		# 各フローを on-the-wire なバイト列に組み立てる (race_lastbyte と同じ手順:
+		# content-encoding を解除し content-length を実ボディに合わせる).
+		raws: list[bytes] = []
+		for f in httpflows:
+			req = f.request.copy()
+			req.decode(strict=False)
+			try:
+				raws.append(assemble.assemble_request(req))
+			except ValueError as e:
+				raise exceptions.CommandError(str(e))
 
-		endpoint = f'{req.scheme}://{req.host}:{req.port}'
-		label = f'{req.method} {req.pretty_url}'
-		logger.info(f'[turbo] {engine} x{count} start: {label}')
+		req0 = httpflows[0].request
+		endpoint = f'{req0.scheme}://{req0.host}:{req0.port}'
+		if len(httpflows) == 1:
+			label = f'{req0.method} {req0.pretty_url}'
+		else:
+			label = f'{len(httpflows)} flows @ {req0.host}:{req0.port}'
+		total = len(raws) * count
+		logger.info(f'[turbo] {engine} {len(raws)} req(s) x{count} = {total} start: {label}')
 
 		# JVM 起動 + jar 実行は数秒かかるので UI ループを止めないよう
 		# ワーカースレッドに逃がす (race_lastbyte と同じ方針).
 		threading.Thread(
 			target=self._run,
-			args=(raw, endpoint, label, engine, count),
+			args=(raws, endpoint, label, engine, count),
 			name='turbo.race',
 			daemon=True,
 		).start()
@@ -272,30 +323,36 @@ class TurboRace:
 				f'turbo attack script not found: {script}\nSet $TURBO_INTRUDER_SCRIPT.'
 			)
 
-	def _run(self, raw: bytes, endpoint: str, label: str, engine: str, count: int) -> None:
-		# リクエストテンプレートと, wordlist 引数用のダミーファイルを作る.
-		# Turbo Intruder の headless CLI は第 4 引数に「入力」を要求するが,
-		# レースでは注入点を使わないのでダミーで足りる. ファイルパスとして渡すと
-		# 実装差 (リテラル扱い / ファイル扱い) のどちらでも壊れにくい.
+	def _run(self, raws: list[bytes], endpoint: str, label: str, engine: str, count: int) -> None:
+		# 各リクエストを req_000.txt, req_001.txt, ... に, wordlist 引数用のダミーを
+		# wordlist.txt に書き出す. Turbo Intruder の headless CLI は第 4 引数に「入力」を
+		# 要求するが, レースでは注入点を使わないのでダミーで足りる. リクエスト群は
+		# TURBO_REQUEST_DIR 経由で turbo_attack.py に渡し, single-packet で複数の異なる
+		# リクエストを 1 パケットに混ぜられるようにする.
 		tmpdir = tempfile.mkdtemp(prefix='turbo_')
-		reqfile = Path(tmpdir) / 'request.txt'
 		wordfile = Path(tmpdir) / 'wordlist.txt'
 		result: str
 		try:
-			reqfile.write_bytes(raw)
+			reqfiles = []
+			for i, raw in enumerate(raws):
+				p = Path(tmpdir) / f'req_{i:03d}.txt'
+				p.write_bytes(raw)
+				reqfiles.append(p)
 			wordfile.write_text('race\n')
 
 			env = dict(os.environ)
-			# headless スクリプトへエンジンと本数を渡す (argv を汚さない経路).
+			# headless スクリプトへエンジン / 複製数 / リクエスト群の場所を渡す
+			# (argv を汚さない経路).
 			env['TURBO_ENGINE'] = engine
-			env['TURBO_REQUESTS'] = str(count)
+			env['TURBO_REQUESTS'] = str(count)  # フロー 1 つあたりの複製数
+			env['TURBO_REQUEST_DIR'] = tmpdir
 
 			cmd = [
 				_java_bin(),
 				'-jar',
 				str(_jar_path()),
 				str(_script_path()),
-				str(reqfile),
+				str(reqfiles[0]),  # target.req 用. TURBO_REQUEST_DIR があれば無視される
 				endpoint,
 				str(wordfile),
 			]

@@ -16,12 +16,12 @@ last-byte sync に必要なバイト単位の送出制御ができる.
 
 レスポンスの確認:
 	raw ソケットで送るのでこれらのリクエストは通常フローリストに出ない.
-	そこで送信後, 各コネクションのレスポンス全文を取り込み, エンドポイント
-	(method+url) × ステータスラインごとに代表 1 本をパースして http.HTTPFlow
-	として mitmproxy に注入する (master.load_flow). これによりフローリストに
-	並び, flowview や既存のコピー系ツール (space r 等) がそのまま使える.
-	注入は代表のみなので, x100 でもリストは (エンドポイント数 x ステータス種)
-	程度しか増えない. イベントログ (E) にはステータスライン分布も出す.
+	そこで送信後, レスポンス全文を取り込めた全コネクション分を 1 本ずつパースして
+	http.HTTPFlow として mitmproxy に注入する (master.load_flow). これによりフロー
+	リストに並び, flowview や既存のコピー系ツール (space r 等) がそのまま使える.
+	x100 なら (レスポンスを取り込めた分だけ) 最大 100 本増える. 大量に注入すると
+	フローリストが埋まるので, 件数を絞りたい場合は count を減らす. イベントログ
+	(E) には代表ではなくステータスライン分布 (集計) を出す.
 
 使い方 (TUI コマンド欄 or キーバインド):
 	:race.menu                     # 選択メニューを開く (marked があれば marked, 無ければ focus)
@@ -81,7 +81,7 @@ class Job(NamedTuple):
 
 
 class Result(NamedTuple):
-	"""1 コネクションの結果. 代表フロー注入とレポートの材料."""
+	"""1 コネクションの結果. フロー注入とレポートの材料."""
 
 	label: str
 	status: str  # ステータスライン, または CONNECT_ERR 等のマーカー
@@ -237,7 +237,7 @@ class RaceLastByte:
 			t.start()
 		for t in threads:
 			t.join()
-		# 集計ログと代表フロー注入は UI と同じループスレッドに戻して行う
+		# 集計ログとフロー注入は UI と同じループスレッドに戻して行う
 		# (view/master への追加はメインスレッドで行う必要があるため)
 		if self.loop is not None:
 			self.loop.call_soon_threadsafe(self._finish, results)
@@ -337,7 +337,7 @@ class RaceLastByte:
 
 		return head + b'\r\n\r\n' + body
 
-	# --- 集計 + 代表フロー注入 ---------------------------------------------
+	# --- 集計 + フロー注入 ---------------------------------------------------
 
 	def _finish(self, results: list) -> None:
 		self._report(results)
@@ -360,16 +360,11 @@ class RaceLastByte:
 		logger.info('[race] done')
 
 	def _inject(self, results: list) -> None:
-		"""エンドポイント × ステータスごとに代表 1 本をフローとして注入する."""
-		seen: set[tuple[str, str]] = set()
+		"""レスポンスを取り込めたコネクション全部を, 1 本ずつフローとして注入する."""
 		injected = 0
 		for r in results:
 			if r is None or r.raw is None:
 				continue
-			key = (r.label, r.status)
-			if key in seen:
-				continue
-			seen.add(key)
 			try:
 				resp = self._parse_response(r.raw)
 			except Exception as e:  # noqa: BLE001 - パース失敗はスキップ (集計には残る)
@@ -380,7 +375,7 @@ class RaceLastByte:
 				self.loop.create_task(self._load(f))
 			injected += 1
 		if injected:
-			logger.info(f'[race] injected {injected} representative flow(s) into the flow list')
+			logger.info(f'[race] injected {injected} flow(s) into the flow list')
 
 	async def _load(self, f: http.HTTPFlow) -> None:
 		try:
