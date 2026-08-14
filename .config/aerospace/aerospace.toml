@@ -1,8 +1,8 @@
 # AeroSpace Configuration
 
-# disable AeroSpace's original window splitting mechanism. I prefer i3-compatible style
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
+# # disable AeroSpace's original window splitting mechanism. I prefer i3-compatible style
+# enable-normalization-flatten-containers = false
+# enable-normalization-opposite-orientation-for-nested-containers = false
 
 [gaps]
 
@@ -21,15 +21,25 @@ alt-tab = 'workspace-back-and-forth'
 
 cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
 
+cmd-alt-ctrl-y = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
+
 cmd-alt-ctrl-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
 cmd-alt-ctrl-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
 cmd-alt-ctrl-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop up'
 cmd-alt-ctrl-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
 
-cmd-alt-ctrl-shift-h = 'move --boundaries all-monitors-outer-frame left'
-cmd-alt-ctrl-shift-j = 'move --boundaries all-monitors-outer-frame down'
-cmd-alt-ctrl-shift-k = 'move --boundaries all-monitors-outer-frame up'
-cmd-alt-ctrl-shift-l = 'move --boundaries all-monitors-outer-frame right'
+# Moving across monitors is unconfortable for me
+cmd-alt-ctrl-shift-h = 'move left'  # 'move --boundaries all-monitors-outer-frame left'
+cmd-alt-ctrl-shift-j = 'move down'  # 'move --boundaries all-monitors-outer-frame down'
+cmd-alt-ctrl-shift-k = 'move up'    # 'move --boundaries all-monitors-outer-frame up'
+cmd-alt-ctrl-shift-l = 'move right' # 'move --boundaries all-monitors-outer-frame right'
+
+cmd-alt-ctrl-shift-0 = 'join-with left'
+cmd-alt-ctrl-shift-pageDown = 'join-with down'
+cmd-alt-ctrl-shift-pageUp = 'join-with up'
+cmd-alt-ctrl-shift-7 = 'join-with right'
+
+cmd-alt-ctrl-n = ['flatten-workspace-tree', 'layout tiles horizontal', 'balance-sizes']
 
 cmd-alt-ctrl-v = 'workspace 0'
 cmd-alt-ctrl-d = 'workspace 1'
