@@ -21,7 +21,8 @@ alt-tab = 'workspace-back-and-forth'
 
 cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
 
-cmd-alt-ctrl-y = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
+cmd-alt-ctrl-tab = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
+cmd-alt-tab = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
 
 cmd-alt-ctrl-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
 cmd-alt-ctrl-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
