@@ -1,8 +1,5 @@
 # AeroSpace Configuration
 
-# $mod = Mod4 (Command)
-# $sac = Mod4 + Mod1 + Ctrl (Cmd + Alt + Ctrl)
-
 [gaps]
 
 inner.horizontal = [{ monitor."^built-in retina display$"= 10 }, 20]
@@ -12,29 +9,24 @@ outer.bottom = [{ monitor."^built-in retina display$"= 6 }, 50]
 outer.top = [{ monitor."^built-in retina display$"= 5 }, 35]
 outer.right = [{ monitor."^built-in retina display$"= 6 }, 40]
 
+
 [mode.main.binding]
-# Workspace back_and_forth
+
 cmd-tab = 'workspace-back-and-forth'
 alt-tab = 'workspace-back-and-forth'
 
 cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
 
-# Change focus (i3: $sac+9 focus next)
-cmd-alt-ctrl-y = 'focus dfs-next --ignore-floating --boundaries-action wrap-around-the-workspace'
-
-# Move focus (hjkl/directional)
 cmd-alt-ctrl-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
 cmd-alt-ctrl-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
 cmd-alt-ctrl-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop up'
 cmd-alt-ctrl-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
 
-# Move focused window
 cmd-alt-ctrl-shift-h = 'move --boundaries all-monitors-outer-frame left'
 cmd-alt-ctrl-shift-j = 'move --boundaries all-monitors-outer-frame down'
 cmd-alt-ctrl-shift-k = 'move --boundaries all-monitors-outer-frame up'
 cmd-alt-ctrl-shift-l = 'move --boundaries all-monitors-outer-frame right'
 
-# --- Workspace Switch (sac + wskey) ---
 cmd-alt-ctrl-v = 'workspace 0'
 cmd-alt-ctrl-d = 'workspace 1'
 cmd-alt-ctrl-c = 'workspace 2'
@@ -46,8 +38,6 @@ cmd-alt-ctrl-p = 'workspace 7'
 cmd-alt-ctrl-f = 'workspace 8'
 cmd-alt-ctrl-w = 'workspace 9'
 
-# --- Move to workspace with focused container (Shift + sac + wskey) ---
-# AeroSpaceでは '--focus-follows-window' で「移動してそのワークスペースを追う」挙動になります
 cmd-alt-ctrl-shift-v = 'move-node-to-workspace 0 --focus-follows-window'
 cmd-alt-ctrl-shift-d = 'move-node-to-workspace 1 --focus-follows-window'
 cmd-alt-ctrl-shift-c = 'move-node-to-workspace 2 --focus-follows-window'
