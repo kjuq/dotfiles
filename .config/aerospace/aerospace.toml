@@ -24,10 +24,10 @@ cmd-alt-ctrl-shift-m = 'exec-and-forget open -na Ghostty.app'
 cmd-alt-ctrl-tab = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
 cmd-alt-tab = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
 
-cmd-alt-ctrl-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
-cmd-alt-ctrl-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
-cmd-alt-ctrl-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop up'
-cmd-alt-ctrl-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
+cmd-alt-ctrl-h = 'focus left'  # 'focus --boundaries all-monitors-outer-frame --boundaries-action stop left'
+cmd-alt-ctrl-j = 'focus down'  # 'focus --boundaries all-monitors-outer-frame --boundaries-action stop down'
+cmd-alt-ctrl-k = 'focus up'    # 'focus --boundaries all-monitors-outer-frame --boundaries-action stop up'
+cmd-alt-ctrl-l = 'focus right' # 'focus --boundaries all-monitors-outer-frame --boundaries-action stop right'
 
 # Moving across monitors is unconfortable for me
 cmd-alt-ctrl-shift-h = 'move left'  # 'move --boundaries all-monitors-outer-frame left'
