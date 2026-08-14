@@ -1,10 +1,5 @@
 {
-	"env": {
-		"ANTHROPIC_MODEL": "sonnet",
-		"CLAUDE_CODE_EFFORT_LEVEL": "max",
-		"CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-		"DISABLE_AUTOUPDATER": "1"
-	},
+	"env": { "ANTHROPIC_MODEL": "sonnet", "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1", "DISABLE_AUTOUPDATER": "1" },
 	"sandbox": { "enabled": true, "autoAllowBashIfSandboxed": false, "allowUnsandboxedCommands": false },
 	"permissions": { "defaultMode": "auto" },
 	"tui": "fullscreen",
