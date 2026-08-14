@@ -1,69 +1,40 @@
 onboarding = false
 
 [theme]
-# 他の候補: tokyo-night, kanagawa, nord, rose-pine, gruvbox など
-name = "catppuccin"
-
-[theme.custom]
-# タブ余白を透過する
-panel_bg = "reset"
+name = "catppuccin" # tokyo-night, kanagawa, nord, rose-pine, gruvbox
+custom.panel_bg = "reset" # transpaernt tab margin
 
 [ui]
 agent_panel_sort = "spaces"
-
 show_agent_labels_on_pane_borders = true
+sidebar_collapsed_mode = "hidden" # hide sidebar completely when it is collapsed
+hide_tab_bar_when_single_tab = true # hide top bar when only one tab exists
+prompt_new_tab_name = false # tmux-like behavior: create tab without prompt for naming
 
-# tmux 風: サイドバーは起動時非表示 (prefix+b で開閉)
-sidebar_start_collapsed = true
-sidebar_collapsed_mode = "hidden"
+toast.delivery = "herdr"
+sound.enabled = true
 
-# tmux 風: タブが 1 個のときは上部バーを出さない
-hide_tab_bar_when_single_tab = true
-
-# tmux 風: prefix+c で名前を聞かず即タブ作成 (自動の数字名)
-prompt_new_tab_name = false
 [experimental]
-# Kitty graphics 対応の外側端末が必要 (chawan 等の画像表示用)
 kitty_graphics = true
+pane_history = true # https://zenn.dev/7shi/scraps/98218b6bc12734#%E2%91%A0-%E7%94%BB%E9%9D%A2%E5%B1%A5%E6%AD%B4%E3%81%AE%E5%BE%A9%E5%85%83-(pane_history)
 
-pane_history = false
 [keys]
-# tmux: set -g prefix C-j
-# literal C-j は C-j C-j で送信 (herdr 組み込み)
 prefix = "ctrl+j"
 
-# tmux: bind Down/C-n next-window, bind Up/C-p previous-window
-next_tab = ["prefix+n", "prefix+down", "prefix+ctrl+n"]
-previous_tab = ["prefix+p", "prefix+up", "prefix+ctrl+p"]
+focus_pane_left = ["super+h"]
+focus_pane_down = ["super+j"]
+focus_pane_up = ["super+k"]
+focus_pane_right = ["super+l"]
 
-# tmux: bind -n M-h/M-j/M-k/M-l select-pane (prefix なし直接)
-# prefix+j は literal C-j 送信との混同を避けるため未割り当て
-focus_pane_left = ["prefix+h", "alt+h"]
-focus_pane_down = ["alt+j"]
-focus_pane_up = ["prefix+k", "alt+k"]
-focus_pane_right = ["prefix+l", "alt+l"]
+cycle_pane_next = ["prefix+tab", "ctrl+tab"] # prefix+tab is the default keybind
+cycle_pane_previous = ["prefix+shift+tab", "ctrl+shift+tab"]
 
-# tmux: bind -n M-u / C-Tab, bind u / C-u (ペイン巡回)
-cycle_pane_next = ["prefix+tab", "prefix+u", "prefix+ctrl+u", "alt+u", "ctrl+tab"]
+copy_mode = ["prefix+[", "prefix+e"] # prefix+[ is the default keybind
+edit_scrollback = "prefix+shift+e" # opens scrollback via $EDITOR
 
-# tmux: bind e / C-e copy-mode (+ tmux デフォルト prefix+[)
-copy_mode = ["prefix+[", "prefix+e", "prefix+ctrl+e"]
-
-# tmux: bind E capture_buffer.sh 相当 (スクロールバックを $EDITOR で開く)
-edit_scrollback = "prefix+shift+e"
-
-# tmux デフォルト: prefix+d detach (herdr デフォルト prefix+q も残す)
-detach = ["prefix+d", "prefix+q"]
-
-# tmux デフォルト: prefix+% 左右分割, prefix+" 上下分割
 split_vertical = ["prefix+v", "prefix+%"]
 split_horizontal = ["prefix+minus", "prefix+double_quote"]
 
-# tmux デフォルト: prefix+, ウィンドウリネーム, prefix+$ セッションリネーム
-rename_tab = ["prefix+shift+t", "prefix+,"]
-rename_workspace = ["prefix+shift+w", "prefix+$"]
-
-# tmux デフォルト: prefix+( / prefix+) セッション切り替え
 previous_workspace = "prefix+("
 next_workspace = "prefix+)"
 
@@ -73,9 +44,3 @@ key = "prefix+!"
 label = "break-pane"
 type = "shell"
 command = '"$HERDR_BIN_PATH" pane move "$HERDR_ACTIVE_PANE_ID" --new-tab --focus'
-
-[ui.toast]
-delivery = "herdr"
-
-[ui.sound]
-enabled = true
