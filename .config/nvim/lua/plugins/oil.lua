@@ -41,6 +41,7 @@ spec.opts = {
 		['_'] = 'actions.cd',
 		['`'] = 'actions.change_sort',
 		['gx'] = 'actions.open_external',
+		['<2-LeftMouse>'] = 'actions.open_external',
 		['g.'] = 'actions.toggle_hidden',
 		['g\\'] = 'actions.toggle_trash',
 	},

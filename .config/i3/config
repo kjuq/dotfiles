@@ -9,7 +9,7 @@ set $sac Mod4+Mod1+Ctrl
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym Mod1+Tab workspace back_and_forth
-bindsym Mod1+Shift+Tab workspace back_and_forth
+# bindsym Mod1+Shift+Tab workspace back_and_forth
 
 # Keybinds {{{
 
