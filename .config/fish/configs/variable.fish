@@ -63,6 +63,9 @@ set --export CLAUDE_CONFIG_DIR "$XDG_CONFIG_HOME/claude"
 # Codex
 set --export CODEX_HOME "$XDG_CONFIG_HOME/codex"
 
+# Grok
+set --export GROK_HOME "$XDG_CONFIG_HOME/grok"
+
 # Cargo
 set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
 
