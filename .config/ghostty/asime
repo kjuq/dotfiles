@@ -10,7 +10,7 @@ quick-terminal-size = 40%,25%
 quick-terminal-autohide = true
 quick-terminal-screen = main
 quick-terminal-animation-duration = 0
-quick-terminal-space-behavior = remain
+# quick-terminal-space-behavior = remain
 
 window-save-state = never
 
