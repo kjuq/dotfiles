@@ -22,6 +22,7 @@ spec.config = function()
 			vim.fs.joinpath(require('lazy.core.config').options.root, 'dict', 'SKK-JISYO.L'),
 			vim.fs.joinpath(require('lazy.core.config').options.root, 'dict', 'SKK-JISYO.jinmei'),
 		},
+		completionRankFile = vim.fs.joinpath(vim.fn.stdpath('state'), 'skkelua', 'rank'),
 		mappedKeys = mapped_keys,
 		completion = {
 			enabled = true,

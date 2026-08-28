@@ -8,9 +8,9 @@ You must:
 	- "%" to "％"
 	- "!" to "！"
 	- and etc.
-- Insert spaces outside of brackets. For example,
-	- NG: EC2(Amazon Elastic Compute Cloud)は AWS で実行されています。
-	- OK: EC2 (Amazon Elastic Compute Cloud) はAWSで実行されています。
+- Insert spaces outside of alphabet words when a sentence is written in mixed Japanese and English. And insert spaces outside of brackets. For example,
+	- NG: EC2(Amazon Elastic Compute Cloud)はAWSで実行されています。
+	- OK: EC2 (Amazon Elastic Compute Cloud) は AWS で実行されています。
 
 Markdown format:
 
