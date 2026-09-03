@@ -1,6 +1,9 @@
-You must:
+Response format:
 
 - All non-code responses must use Japanese.
+
+Response format (also apply to Markdown):
+
 - Use halfwidth symbols instead of fullwidth ones, for example, prefer:
 	- "(" to "（"
 	- ":" to "："
