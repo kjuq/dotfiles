@@ -20,3 +20,4 @@ end
 if ! [ "$_KJUQ_FISH_CONFIG_LOADED" = '0' ];
 	set --export _KJUQ_FISH_CONFIG_LOADED 1
 end
+set -gx PIP_UPLOADED_PRIOR_TO P7D
