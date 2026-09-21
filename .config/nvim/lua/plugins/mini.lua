@@ -6,15 +6,6 @@ spec.event = 'VeryLazy'
 
 spec.config = function()
 	do
-		require('mini.align').setup({
-			-- Module mappings. Use `''` (empty string) to disable one.
-			mappings = {
-				start = 'ga',
-				start_with_preview = 'gA',
-			},
-		})
-	end
-	do
 		require('mini.pick').setup({
 			delay = {
 				-- Delay between forcing asynchronous behavior
@@ -61,41 +52,16 @@ spec.config = function()
 			},
 		})
 		require('mini.extra').setup()
-		vim.keymap.set('n', '<Space>fe', '<Cmd>Pick files<CR>', { desc = 'Mini: pick files' })
-		vim.keymap.set('n', '<Space>fg', '<Cmd>Pick grep_live<CR>', { desc = 'Mini: pick grep_live' })
-		vim.keymap.set('n', '<Space>fG', '<Cmd>Pick git_files<CR>', { desc = 'Mini: pick git_files' })
-		vim.keymap.set('n', '<Space>fi', '<Cmd>Pick help<CR>', { desc = 'Mini: Pick help tags' })
-		vim.keymap.set('n', '<Space>fb', '<Cmd>Pick buffers<CR>', { desc = 'Mini: Pick buffers' })
-		vim.keymap.set('n', '<Space>fh', '<Cmd>Pick oldfiles current_dir=true<CR>', { desc = 'Mini: MRU current dir' })
-		vim.keymap.set('n', '<Space>fH', '<Cmd>Pick oldfiles current_dir=false<CR>', { desc = 'Mini: MRU' })
-		vim.keymap.set('n', '<Space>fr', '<Cmd>Pick resume<CR>', { desc = 'Mini: Pick resume finding' })
+		vim.keymap.set('n', '<Space>fe', '<Cmd>Pick files<CR>', { desc = 'MiniPick: files' })
+		vim.keymap.set('n', '<Space>fg', '<Cmd>Pick grep_live<CR>', { desc = 'MiniPick: grep_live' })
+		vim.keymap.set('n', '<Space>fG', '<Cmd>Pick git_files<CR>', { desc = 'MiniPick: git_files' })
+		vim.keymap.set('n', '<Space>fi', '<Cmd>Pick help<CR>', { desc = 'MiniPick: help tags' })
+		vim.keymap.set('n', '<Space>fk', '<Cmd>Pick keymaps<CR>', { desc = 'MiniPick: keymaps' })
+		vim.keymap.set('n', '<Space>fb', '<Cmd>Pick buffers<CR>', { desc = 'MiniPick: buffers' })
+		vim.keymap.set('n', '<Space>fh', '<Cmd>Pick oldfiles current_dir=true<CR>', { desc = 'MiniPick: oldfiles' })
+		vim.keymap.set('n', '<Space>fH', '<Cmd>Pick oldfiles current_dir=false<CR>', { desc = 'MiniPick: oldfiles G' })
+		vim.keymap.set('n', '<Space>fr', '<Cmd>Pick resume<CR>', { desc = 'MiniPick: resume finding' })
 	end
-	-- do
-	-- 	require('mini.sessions').setup({
-	-- 		autowrite = false,
-	-- 	})
-	-- 	vim.keymap.set('n', '<Space>sl', '<Cmd>lua MiniSessions.read()<CR>', { desc = 'Mini.sessions: Read' })
-	-- 	vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
-	-- 		group = vim.api.nvim_create_augroup('kjuq_mini_sessions', {}),
-	-- 		callback = function()
-	-- 			MiniSessions.write('mini_sessions_main')
-	-- 		end,
-	-- 	})
-	-- end
-	require('mini.surround').setup({
-		highlight_duration = require('kjuq.common_params').highlight_duration,
-		silent = true,
-	})
-	require('mini.operators').setup({
-		evaluate = { prefix = '' },
-		exchange = { prefix = '' },
-		multiply = { prefix = '' },
-		sort = { prefix = '' },
-		replace = { -- substitution for 'gbprod/substitute.nvim'
-			prefix = 'st',
-			reindent_linewise = true,
-		},
-	})
 	require('mini.git').setup()
 	require('mini.icons').setup()
 end
