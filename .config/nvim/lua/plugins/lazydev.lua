@@ -26,7 +26,6 @@ spec.config = function()
 end
 
 spec.dependencies = {
-	'williamboman/mason.nvim',
 	'neovim/nvim-lspconfig',
 }
 
