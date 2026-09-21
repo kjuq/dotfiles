@@ -12,8 +12,10 @@ require('nvim-treesitter').setup({
 local start = function(args)
 	local ft = vim.bo[args.buf].ft
 	local lang = vim.treesitter.language.get_lang(ft)
-	if not vim.tbl_contains(require('nvim-treesitter').get_installed(), lang)
-		and vim.tbl_contains(require('nvim-treesitter').get_available(), lang) then
+	if
+		not vim.tbl_contains(require('nvim-treesitter').get_installed(), lang)
+		and vim.tbl_contains(require('nvim-treesitter').get_available(), lang)
+	then
 		require('nvim-treesitter').install({ lang }):await(function(err)
 			if err then
 				vim.notify('Treesitter install error\nft: ' .. ft .. '\nerr: ' .. err, vim.log.level.error)
