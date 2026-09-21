@@ -5,11 +5,9 @@ end
 
 require('vim._core.ui2').enable({
 	enable = true, -- Whether to enable or disable the UI.
+	-- timeout = 4000, -- ms
 	msg = { -- Options related to the message module.
 		targets = 'msg',
-		msg = { -- Options related to msg window.
-			timeout = 4000, -- ms
-		},
 	},
 })
 
