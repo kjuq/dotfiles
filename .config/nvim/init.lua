@@ -226,6 +226,11 @@ vim.keymap.set({ 'i' }, '<C-l>', function()
 	end
 end, { silent = true })
 
+vim.keymap.set('n', '<M-q>', function()
+	local reg = vim.fn.reg_recorded()
+	return reg == '' and '' or ('@' .. reg)
+end, { expr = true })
+
 vim.keymap.set('n', '<Space>cr', ':<C-u>%s///g<Left><Left>', { desc = 'Start substitution' })
 vim.keymap.set('x', '<Space>cr', ":<C-u>'<,'>s///g<Left><Left>", { desc = 'Start substitution' })
 
