@@ -1,39 +1,39 @@
-local map = require('kjuq.lazy').generate_map('<Space>', 'Neo-tree: ')
+vim.pack.add({{
+	src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
+	version = vim.version.range('3')
+},
+"https://github.com/nvim-lua/plenary.nvim",
+"https://github.com/MunifTanjim/nui.nvim",
+})
 
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/nvim-neo-tree/neo-tree.nvim' }
-spec.branch = 'v3.x'
-spec.cmd = { 'Neotree' }
+vim.keymap.set('n', 'af', function()
+	require('neo-tree.command').execute({
+		source = 'filesystem',
+		position = 'left',
+		toggle = false,
+		reveal_force_cwd = true,
+	})
+end, { desc = 'Neo-Tree: Open' })
 
-spec.keys = {
-	map('af', 'n', function()
-		require('neo-tree.command').execute({
-			source = 'filesystem',
-			position = 'left',
-			toggle = false,
-			reveal_force_cwd = true,
-		})
-	end, 'Open'),
-	map('ag', 'n', function()
-		require('neo-tree.command').execute({
-			source = 'git_status',
-			position = 'left',
-			toggle = false,
-			reveal_force_cwd = true,
-		})
-	end, 'Open git'),
-	map('ab', 'n', function()
-		require('neo-tree.command').execute({
-			source = 'buffers',
-			position = 'left',
-			toggle = false,
-			reveal_force_cwd = true,
-		})
-	end, 'Open buffer'),
-}
+vim.keymap.set('n', 'ag', function()
+	require('neo-tree.command').execute({
+		source = 'git_status',
+		position = 'left',
+		toggle = false,
+		reveal_force_cwd = true,
+	})
+end, { desc = 'Neo-Tree: Open git' })
 
-spec.opts = {
+vim.keymap.set('n', 'ab', function()
+	require('neo-tree.command').execute({
+		source = 'buffers',
+		position = 'left',
+		toggle = false,
+		reveal_force_cwd = true,
+	})
+end, { desc = 'Neo-Tree: Open buffer' })
+
+require('neo-tree').setup({
 	close_if_last_window = true,
 	filesystem = {
 		window = {
@@ -79,11 +79,6 @@ spec.opts = {
 			enabled = true,
 		},
 	},
-}
+})
 
-spec.specs = {
-	'nvim-lua/plenary.nvim',
-	'MunifTanjim/nui.nvim',
-}
-
-return spec
+-- depends on plenary.nvim and nui.nvim

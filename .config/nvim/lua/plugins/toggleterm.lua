@@ -1,46 +1,26 @@
-local map = require('kjuq.lazy').generate_map('', 'ToggleTerm: ')
+vim.pack.add({ 'https://github.com/akinsho/toggleterm.nvim' })
 
 local open_cmd = 'ToggleTerm dir=%:p:h'
 
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/akinsho/toggleterm.nvim' }
-spec.version = '*'
+vim.keymap.set('n', '<C-space>', string.format('<CMD>%s<CR>', open_cmd), { desc = 'ToggleTerm: Open' })
 
-spec.keys = {
-	map('<C-space>', { 'n' }, string.format('<CMD>%s<CR>', open_cmd), 'Open'),
-}
-
-spec.cmd = {
-	'ToggleTerm',
-	'ToggleTermSetName',
-	'ToggleTermToggleAll',
-	'ToggleTermSendCurrentLine',
-	'ToggleTermSendVisualLines',
-	'ToggleTermSendVisualSelection',
-}
-
-spec.opts = function()
-	---@diagnostic disable-next-line: duplicate-set-field
-	function _G.set_terminal_keymaps()
-		local opts = { buffer = 0 }
-		-- vim.keymap.set("t", "<esc>", function() vim.cmd(open_cmd) end, opts)
-		vim.keymap.set('t', '<C-Space>', function()
-			vim.cmd(open_cmd)
-		end, opts)
-	end
-
-	vim.api.nvim_create_autocmd({ 'TermOpen' }, {
-		pattern = 'term://*toggleterm#*',
-		callback = function()
-			set_terminal_keymaps()
-		end,
-	})
-
-	return {
-		direction = 'float',
-		-- float_opts = { winblend = 20, },
-	}
+---@diagnostic disable-next-line: duplicate-set-field
+function _G.set_terminal_keymaps()
+	local opts = { buffer = 0 }
+	-- vim.keymap.set("t", "<esc>", function() vim.cmd(open_cmd) end, opts)
+	vim.keymap.set('t', '<C-Space>', function()
+		vim.cmd(open_cmd)
+	end, opts)
 end
 
-return spec
+vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+	pattern = 'term://*toggleterm#*',
+	callback = function()
+		set_terminal_keymaps()
+	end,
+})
+
+require('toggleterm').setup( {
+	direction = 'float',
+	-- float_opts = { winblend = 20, },
+})

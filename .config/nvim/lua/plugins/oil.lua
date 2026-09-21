@@ -1,19 +1,6 @@
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/stevearc/oil.nvim' }
+vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
 
-spec.lazy = false
-
-local map = require('kjuq.lazy').generate_map('', 'Oil: ')
-spec.keys = {
-	map('<Space>-', 'n', '<Plug>(nvim-dir-up)', 'Open'),
-}
-
-spec.init = function()
-	vim.g.loaded_netrwPlugin = 1
-end
-
-spec.opts = {
+require('oil').setup({
 	delete_to_trash = true,
 	skip_confirm_for_simple_edits = true,
 	cleanup_delay_ms = false,
@@ -53,6 +40,4 @@ spec.opts = {
 			return vim.list_contains(hiddens, name)
 		end,
 	},
-}
-
-return spec
+})

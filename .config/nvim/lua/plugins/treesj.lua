@@ -1,21 +1,11 @@
-local map = require('kjuq.lazy').generate_map('', 'TreeSJ: ')
+vim.pack.add({ 'https://github.com/Wansmer/treesj' })
 
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/Wansmer/treesj' }
+vim.keymap.set('n', '<Space>ck', function()
+	require('treesj').split()
+end, { desc = 'TreeSJ: Split' })
 
-spec.keys = {
-	map('<Space>ck', 'n', function()
-		require('treesj').split()
-	end, 'Split'),
-}
+require('treesj').setup({
+	use_default_keymaps = false,
+})
 
-spec.config = function()
-	require('treesj').setup({
-		use_default_keymaps = false,
-	})
-end
-
-spec.dependencies = { 'nvim-treesitter/nvim-treesitter' }
-
-return spec
+-- depends on nvim-treesitter

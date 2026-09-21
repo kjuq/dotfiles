@@ -1,36 +1,18 @@
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/akinsho/git-conflict.nvim' }
+vim.pack.add({ 'https://github.com/akinsho/git-conflict.nvim' })
 
-spec.version = '*'
+vim.keymap.set('n', '<Space>gcl', '<Cmd>GitConflictListQf<CR>', { desc = 'Git-conflict: List QuickFix' })
+vim.keymap.set('n', '<Space>gci', '<Cmd>GitConflictChooseTheirs<CR>', { desc = 'Git-conflict: Choose theirs' })
+vim.keymap.set('n', '<Space>gco', '<Cmd>GitConflictChooseOurs<CR>', { desc = 'Git-conflict: Choose ours' })
+vim.keymap.set('n', '<Space>gca', '<Cmd>GitConflictChooseBoth<CR>', { desc = 'Git-conflict: Choose both (all)' })
+vim.keymap.set('n', '<Space>gcn', '<Cmd>GitConflictChooseNone<CR>', { desc = 'Git-conflict: Choose none' })
+vim.keymap.set('n', '<Space>gcb', '<Cmd>GitConflictChooseBase<CR>', { desc = 'Git-conflict: Choose base' })
+vim.keymap.set('n', ']c', '<Cmd>GitConflictNextConflict<CR>', { desc = 'Git-conflict: Next conflict' })
+vim.keymap.set('n', '[c', '<Cmd>GitConflictPrevConflict<CR>', { desc = 'Git-conflict: Previous conflict' })
 
-spec.event = 'VeryLazy'
-
-local map = require('kjuq.lazy').generate_map('', 'Git-conflict: ')
-spec.keys = {
-	map('<Space>gcl', 'n', '<Cmd>GitConflictListQf<CR>', 'List QuickFix'),
-	map('<Space>gci', 'n', '<Cmd>GitConflictChooseTheirs<CR>', 'Choose theirs'),
-	map('<Space>gco', 'n', '<Cmd>GitConflictChooseOurs<CR>', 'Choose ours'),
-	map('<Space>gca', 'n', '<Cmd>GitConflictChooseBoth<CR>', 'Choose both (all)'),
-	map('<Space>gcn', 'n', '<Cmd>GitConflictChooseNone<CR>', 'Choose none'),
-	map('<Space>gcb', 'n', '<Cmd>GitConflictChooseBase<CR>', 'Choose base'),
-	map(']c', 'n', '<Cmd>GitConflictNextConflict<CR>', 'Next conflict'),
-	map('[c', 'n', '<Cmd>GitConflictPrevConflict<CR>', 'Previous conflict'),
-}
-
-spec.opts = {
+require('git-conflict').setup({
 	default_mappings = false,
 	highlights = {
 		incoming = 'DiffAdd',
 		current = 'DiffDelete',
 	},
-}
-
-spec.config = function(_, opts)
-	require('git-conflict').setup(opts)
-
-	-- for lazy load
-	vim.cmd.GitConflictRefresh()
-end
-
-return spec
+})
