@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd({ 'TermOpen' }, {
 	end,
 })
 
-require('toggleterm').setup( {
+require('toggleterm').setup({
 	direction = 'float',
 	-- float_opts = { winblend = 20, },
 })
