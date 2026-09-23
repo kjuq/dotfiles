@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
 		if name ~= 'peek.nvim' then
 			return
 		end
-		if kind ~= 'install' and kind ~= 'update' then
+		if kind ~= 'install' or kind ~= 'update' then
 			return
 		end
 		vim.system({ 'deno', 'task', '--quiet', 'build:fast' }, { cwd = path }):wait()

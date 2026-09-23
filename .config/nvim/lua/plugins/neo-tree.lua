@@ -6,7 +6,7 @@ vim.pack.add({{
 "https://github.com/MunifTanjim/nui.nvim",
 })
 
-vim.keymap.set('n', 'af', function()
+vim.keymap.set('n', '<space>af', function()
 	require('neo-tree.command').execute({
 		source = 'filesystem',
 		position = 'left',
@@ -15,7 +15,7 @@ vim.keymap.set('n', 'af', function()
 	})
 end, { desc = 'Neo-Tree: Open' })
 
-vim.keymap.set('n', 'ag', function()
+vim.keymap.set('n', '<space>ag', function()
 	require('neo-tree.command').execute({
 		source = 'git_status',
 		position = 'left',
@@ -24,7 +24,7 @@ vim.keymap.set('n', 'ag', function()
 	})
 end, { desc = 'Neo-Tree: Open git' })
 
-vim.keymap.set('n', 'ab', function()
+vim.keymap.set('n', '<space>ab', function()
 	require('neo-tree.command').execute({
 		source = 'buffers',
 		position = 'left',
