@@ -1,8 +1,12 @@
 # AeroSpace Configuration
 
+config-version = 2
+
 # # disable AeroSpace's original window splitting mechanism. I prefer i3-compatible style
 # enable-normalization-flatten-containers = false
 # enable-normalization-opposite-orientation-for-nested-containers = false
+
+focus-follows-mouse.enabled = true
 
 [gaps]
 
