@@ -1,3 +1,8 @@
+-- NOTE: require certain version of Neovim
+if vim.fn.has('nvim-0.13') == 0 then
+	return
+end
+
 local group = vim.api.nvim_create_augroup('kjuq_highlight_on_yank', {})
 
 local set_hl = function()
