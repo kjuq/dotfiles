@@ -8,10 +8,6 @@ vim.opt.cmdheight = 0
 vim.opt.laststatus = 0 -- global status line. `0` to hide
 vim.opt.statusline = require('kjuq.statusline').statusline
 
-if vim.fn.has('nvim-0.13') == 1 then
-	vim.opt.messagesopt:append({ timeout = 4000 })
-end
-
 vim.opt.showcmdloc = 'statusline'
 vim.opt.ruler = false
 
