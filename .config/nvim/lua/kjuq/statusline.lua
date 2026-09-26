@@ -23,7 +23,7 @@ end
 
 function _G.kjuq_stl_encoding()
 	local enc = vim.o.fileencoding
-	if enc == 'utf-8' then
+	if enc == 'utf-8' or enc == '' then
 		return ''
 	end
 	return string.upper(enc) .. ' '
