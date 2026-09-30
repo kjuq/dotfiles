@@ -6,7 +6,7 @@ config-version = 2
 # enable-normalization-flatten-containers = false
 # enable-normalization-opposite-orientation-for-nested-containers = false
 
-focus-follows-mouse.enabled = true
+# focus-follows-mouse.enabled = true
 
 [gaps]
 
