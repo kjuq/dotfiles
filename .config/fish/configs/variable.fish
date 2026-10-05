@@ -1,7 +1,3 @@
-if [ -n "$_KJUQ_FISH_CONFIG_LOADED" ]
-	return
-end
-
 # XDG Base Directories (NEED TO LOAD FIRST!!!!)
 set --query XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME "$HOME/.config"
 set --query XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"
@@ -39,7 +35,7 @@ set --export HOMEBREW_NO_ENV_HINTS 1
 set --export LESS '--mouse --wheel-lines=1'
 
 # Bash
-mkdir -p "$XDG_STATE_HOME/bash"
+[ -d "$XDG_STATE_HOME/bash" ]; or mkdir -p "$XDG_STATE_HOME/bash" # avoid forking `mkdir` on every startup
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 
 # Docker
