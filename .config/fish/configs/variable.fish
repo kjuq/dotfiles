@@ -21,6 +21,12 @@ else
 	set --export KJUQ_DOCS "$HOME/kjuq/docs"
 end
 
+# nvimpager
+if command --search --quiet nvimpager
+	set --export NVIMPAGER_NVIM 'env NVIM_APPNAME=nvim nvim'
+	set --export PAGER 'nvimpager'
+end
+
 # Password-store
 set --export PASSWORD_STORE_DIR "$HOME/kjuq/password-store"
 
