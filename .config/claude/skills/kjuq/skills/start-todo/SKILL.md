@@ -1,7 +1,7 @@
 ---
 name: start-todo
 description: Start working on a TODO queued by /create-todo. Takes a TODO number or a natural-language description and works according to its plan file in <Project root>/_kjuq/blueprint/.
-argument-hint: [<num> | どの TODO かの説明]
+argument-hint: [<num> | description of which TODO]
 disable-model-invocation: true
 ---
 

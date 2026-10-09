@@ -1,7 +1,7 @@
 ---
 name: ask
 description: Answer-only mode. Never modifies files or runs commands with side effects; when the answer is a command, presents it for the user to run themselves.
-argument-hint: [質問]
+argument-hint: [question]
 disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, WebFetch, WebSearch, Bash(git log:*), Bash(git show:*), Bash(git diff:*), Bash(git status:*), Bash(ls:*)
 ---
