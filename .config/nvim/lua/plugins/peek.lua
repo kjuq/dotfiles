@@ -7,14 +7,15 @@ vim.api.nvim_create_autocmd('PackChanged', {
 		if name ~= 'peek.nvim' then
 			return
 		end
-		if kind ~= 'install' or kind ~= 'update' then
+		if kind ~= 'install' and kind ~= 'update' then
 			return
 		end
 		vim.system({ 'deno', 'task', '--quiet', 'build:fast' }, { cwd = path }):wait()
 	end,
 })
 
-vim.pack.add({ 'https://github.com/toppair/peek.nvim' })
+-- vim.opt.runtimepath:prepend('~/kjuq/ghq/github.com/kjuq/peek.nvim')
+vim.pack.add({ 'https://github.com/kjuq/peek.nvim' })
 
 -- webkitgtk has an issue with Nvidia card. See,
 -- https://www.reddit.com/r/EndeavourOS/comments/1bsf8km
