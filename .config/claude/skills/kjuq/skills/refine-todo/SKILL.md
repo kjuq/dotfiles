@@ -1,6 +1,6 @@
 ---
 name: refine-todo
-description: Refine a TODO queued by /create-todo. Investigates the code, resolves ambiguities by confirming decisions with the user, and rewrites its plan file in <Project root>/_kjuq/blueprint/ so that implementation can start immediately.
+description: Refine a TODO queued by `/create-todo`.
 argument-hint: [<num> | description of which TODO]
 disable-model-invocation: true
 ---
@@ -18,14 +18,14 @@ $ARGUMENTS
 ## 1. パスを決める
 
 - Project root は `git rev-parse --show-toplevel` で求める。git リポジトリでなければカレントディレクトリを Project root とする。
-- blueprint ディレクトリは `<Project root>/_kjuq/blueprint/`、TODO 一覧は `<Project root>/_kjuq/TODO.md`。
+- blueprint ディレクトリは `<project-root>/_kjuq/blueprint/`、TODO 一覧は `<project-root>/_kjuq/TODO.md`。
 - どちらも存在しなければ、TODO がまだ無いことを伝えて終了する。
 
 ## 2. TODO を特定する
 
 指定の形に応じて対象を決める。
 
-- 数字のとき: `<Project root>/_kjuq/blueprint/<num>-*.md` に一致するファイルを対象にする。見つからなければその旨と TODO.md の一覧を示して終了する。
+- 数字のとき: `<project-root>/_kjuq/blueprint/<num>-*.md` に一致するファイルを対象にする。見つからなければその旨と TODO.md の一覧を示して終了する。
 - 自然言語のとき: TODO.md の各行のサマリーと、必要なら blueprint の中身を読み、指示に最も合う TODO を選ぶ。
 	- 一つに絞り込めれば、どの TODO (番号とサマリー) を詰めるかを一行伝えてから進める。
 	- 候補が複数あって決めきれない場合や、該当するものが無い場合は、候補を示してユーザーに選んでもらう。

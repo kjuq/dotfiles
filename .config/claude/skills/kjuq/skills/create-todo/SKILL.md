@@ -1,6 +1,6 @@
 ---
 name: create-todo
-description: Queue a TODO for later. Creates a plan file in <Project root>/_kjuq/blueprint/ and appends a one-line summary with a link to <Project root>/_kjuq/TODO.md.
+description: Queue a TODO for later.
 argument-hint: [TODO description]
 disable-model-invocation: true
 ---
@@ -32,7 +32,7 @@ $ARGUMENTS
 ## 2. パスを決める
 
 - Project root は `git rev-parse --show-toplevel` で求める。git リポジトリでなければカレントディレクトリを Project root とする。
-- blueprint ディレクトリは `<Project root>/_kjuq/blueprint/`、TODO 一覧は `<Project root>/_kjuq/TODO.md`。存在しなければ作成する。
+- blueprint ディレクトリは `<project-root>/_kjuq/blueprint/`、TODO 一覧は `<project-root>/_kjuq/TODO.md`。存在しなければ作成する。
 - `_kjuq` はグローバルに git ignore されているので、git に add やコミットはしない。
 
 ## 3. 番号とファイル名を決める
@@ -43,7 +43,7 @@ $ARGUMENTS
 
 ## 4. blueprint を書く
 
-`<Project root>/_kjuq/blueprint/<num>-some-title-in-english.md` を作成する。後で別のセッションがこのファイルだけを読めるよう、会話の中で確定した情報は会話の文脈に頼らずに書き写す。本文は日本語で書く。
+`<project-root>/_kjuq/blueprint/<num>-some-title-in-english.md` を作成する。後で別のセッションがこのファイルだけを読めるよう、会話の中で確定した情報は会話の文脈に頼らずに書き写す。本文は日本語で書く。
 
 - 書くべき情報が無い節は、推測で埋めずに「未定」とだけ書く。
 - 分量が少なくても構わない。数行の blueprint でもよい。
@@ -74,7 +74,7 @@ $ARGUMENTS
 
 ## 5. TODO.md に追記する
 
-`<Project root>/_kjuq/TODO.md` の末尾に次の書式で一行追記する。リンクは TODO.md からの相対パスにする。
+`<project-root>/_kjuq/TODO.md` の末尾に次の書式で一行追記する。リンクは TODO.md からの相対パスにする。
 
 ```markdown
 - summary ([<num>](blueprint/<num>-some-title-in-english.md))
