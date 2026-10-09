@@ -1,6 +1,6 @@
 ---
 name: create-todo
-description: 今後やりたいことを TODO として積む。<Project root>/_kjuq/blueprint/ に計画ファイルを作り、<Project root>/_kjuq/TODO.md に一行サマリーとリンクを追記する。
+description: Queue a TODO for later. Creates a plan file in <Project root>/_kjuq/blueprint/ and appends a one-line summary with a link to <Project root>/_kjuq/TODO.md.
 argument-hint: [TODO の内容]
 disable-model-invocation: true
 ---

@@ -1,6 +1,6 @@
 ---
 name: ask
-description: 質問への回答専用モード。ファイルの変更や副作用のあるコマンド実行を一切行わず、回答がコマンドになる場合は提示のみしてユーザー自身に実行させる。
+description: Answer-only mode. Never modifies files or runs commands with side effects; when the answer is a command, presents it for the user to run themselves.
 argument-hint: [質問]
 disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, WebFetch, WebSearch, Bash(git log:*), Bash(git show:*), Bash(git diff:*), Bash(git status:*), Bash(ls:*)
