@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "kjuq",
+  "version": "0.1.0",
+  "description": "kjuq's personal skills",
+  "author": {
+    "name": "kjuq",
+    "email": "44694396+kjuq@users.noreply.github.com"
+  },
+  "skills": [
+    "./"
+  ]
+}
