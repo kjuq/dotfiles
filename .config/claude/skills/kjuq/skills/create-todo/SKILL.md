@@ -74,7 +74,7 @@ $ARGUMENTS
 
 ## 5. TODO.md に追記する
 
-`<project-root>/_kjuq/TODO.md` の末尾に次の書式で一行追記する。リンクは TODO.md からの相対パスにする。
+`<project-root>/_kjuq/TODO.md` の末尾に次の書式で一行追記する。リンク先は TODO.md からの相対パスではなく、Project root からのパス (`_kjuq/blueprint/...`) にする。`blueprint/...` とは書かない。
 
 ```markdown
 - summary: [<num>](_kjuq/blueprint/<num>-some-title-in-english.md)
