@@ -4,7 +4,7 @@ function _G.kjuq_stl_macrorec()
 	if vim.fn.reg_recording() == '' then
 		return ''
 	end
-	return vim.fn.reg_recording() .. ' '
+	return ' ' .. vim.fn.reg_recording() .. ' '
 end
 
 function _G.kjuq_stl_searchcount()
@@ -18,7 +18,7 @@ function _G.kjuq_stl_searchcount()
 		return
 	end
 	local denominator = math.min(result.total, result.maxcount)
-	return string.format('%d/%d ', result.current, denominator)
+	return string.format(' %d/%d ', result.current, denominator)
 end
 
 function _G.kjuq_stl_encoding()
@@ -26,7 +26,7 @@ function _G.kjuq_stl_encoding()
 	if enc == 'utf-8' or enc == '' then
 		return ''
 	end
-	return string.upper(enc) .. ' '
+	return ' ' .. string.upper(enc) .. ' '
 end
 
 function _G.kjuq_stl_fileformat()
@@ -34,7 +34,7 @@ function _G.kjuq_stl_fileformat()
 	if ffmt == 'unix' then
 		return ''
 	end
-	return string.upper(ffmt) .. ' '
+	return ' ' .. string.upper(ffmt) .. ' '
 end
 
 function _G.kjuq_stl_diagnostic_error()
@@ -47,7 +47,7 @@ function _G.kjuq_stl_diagnostic_error()
 		return ''
 	end
 
-	return 'E:' .. err .. ' '
+	return ' ' .. 'E:' .. err .. ' '
 end
 
 function _G.kjuq_stl_diagnostic_warn()
@@ -60,7 +60,7 @@ function _G.kjuq_stl_diagnostic_warn()
 		return ''
 	end
 
-	return 'W:' .. warn .. ' '
+	return ' ' .. 'W:' .. warn .. ' '
 end
 
 function _G.kjuq_stl_diagnostic_info()
@@ -73,7 +73,7 @@ function _G.kjuq_stl_diagnostic_info()
 		return ''
 	end
 
-	return 'I:' .. info .. ' '
+	return ' ' .. 'I:' .. info .. ' '
 end
 
 function _G.kjuq_stl_diagnostic_hint()
@@ -86,7 +86,7 @@ function _G.kjuq_stl_diagnostic_hint()
 		return ''
 	end
 
-	return 'H:' .. hint .. ' '
+	return ' ' .. 'H:' .. hint .. ' '
 end
 
 ---@param highlight string
@@ -96,11 +96,11 @@ local function color(highlight, item)
 end
 
 local components = {
-	fullpath = color('Comment', '%F'),
+	fullpath = color('Comment', ' %F'),
 	readonly = color('StatusLine', ' %R'),
 	modified = color('StatusLine', ' %m'),
 	separator = '%=',
-	filetype = color('StatusLine', '%{&filetype}'),
+	filetype = color('StatusLine', ' %{&filetype} '),
 	macro_rec = color('Number', '%{v:lua._G.kjuq_stl_macrorec()}'),
 	searchcount = color('Label', '%{v:lua._G.kjuq_stl_searchcount()}'),
 	encoding = color('Error', '%{v:lua._G.kjuq_stl_encoding()}'),
@@ -115,7 +115,7 @@ local components = {
 }
 
 M.statusline = table.concat({
-	components.blank,
+	-- components.blank,
 
 	components.fullpath,
 	components.modified,
@@ -133,7 +133,7 @@ M.statusline = table.concat({
 	components.fileformat,
 	components.filetype,
 
-	components.blank,
+	-- components.blank,
 }, '')
 
 return M
