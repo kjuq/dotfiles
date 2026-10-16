@@ -30,6 +30,7 @@ Python rules:
 - DON'T use `pip` to install external packages
 - Use pep723 to manage dependencies if the script consists of one file
 
-Worktree rules:
+Git rules:
 
-- Use `.claude/worktrees` if user doesn't specify specific directory
+- Use `main` branch and commit to that directly unless a user specify specific branch
+- Use `.claude/worktrees` when creating worktree if a user doesn't specify specific directory
