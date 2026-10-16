@@ -74,6 +74,9 @@ vim.keymap.set({ 'n', 'x' }, 'j', function()
 	return vim.v.count == 0 and 'gj' or 'j'
 end, { expr = true, silent = true })
 
+vim.keymap.set('n', 'gf', 'gF')
+vim.keymap.set('n', 'gF', 'gf')
+
 vim.keymap.set('n', '<Esc>', function()
 	vim.cmd.nohlsearch()
 	return '<Cmd>fclose<CR><Esc>'
