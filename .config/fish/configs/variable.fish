@@ -119,6 +119,7 @@ set --export RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
 # Android
 set --export ANDROID_USER_HOME "$XDG_DATA_HOME"/android
+set --export ANDROID_AVD_HOME "$ANDROID_USER_HOME"/avd
 
 # OpenJDK (some applications don't respect this setting)
 set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
