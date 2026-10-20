@@ -7,8 +7,19 @@ alias .......='cd ../../../../..'
 alias la='ls --almost-all'
 alias lla='ll --almost-all'
 
+# Determine OS by the target which fish was built for, since forking `uname` is slow
+set -l os
+switch "$(status build-info 2>/dev/null | string match --regex '^Target.*')"
+	case '*-apple-darwin'
+		set os Darwin
+	case '*-linux-*'
+		set os Linux
+	case '*'
+		set os (uname) # `status build-info` is available since fish 4.0
+end
+
 alias ls='ls --color=auto --classify --group-directories-first'
-if [ "$(uname)" = 'Darwin' ] && not command --search --quiet gls
+if [ "$os" = 'Darwin' ] && not command --search --quiet gls
 	alias ls='ls -GF'
 end
 
@@ -42,7 +53,7 @@ if command --search --quiet fzf
 end
 
 if command --search --quiet trash
-	switch $(uname)
+	switch $os
 	case Linux
 		alias dl='trash -r'
 	case Darwin

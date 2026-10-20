@@ -1,6 +1,9 @@
-You must:
+Response format:
 
 - All non-code responses must use Japanese.
+
+Response format (also apply to Markdown):
+
 - Use halfwidth symbols instead of fullwidth ones, for example, prefer:
 	- "(" to "（"
 	- ":" to "："
@@ -8,9 +11,9 @@ You must:
 	- "%" to "％"
 	- "!" to "！"
 	- and etc.
-- Insert spaces outside of brackets. For example,
-	- NG: EC2(Amazon Elastic Compute Cloud)は AWS で実行されています。
-	- OK: EC2 (Amazon Elastic Compute Cloud) はAWSで実行されています。
+- Insert spaces outside of alphabet words when a sentence is written in mixed Japanese and English. And insert spaces outside of brackets. For example,
+	- NG: EC2(Amazon Elastic Compute Cloud)はAWSで実行されています。
+	- OK: EC2 (Amazon Elastic Compute Cloud) は AWS で実行されています。
 
 Markdown format:
 
@@ -27,6 +30,7 @@ Python rules:
 - DON'T use `pip` to install external packages
 - Use pep723 to manage dependencies if the script consists of one file
 
-Worktree rules:
+Git rules:
 
-- Use `.claude/worktrees` if user doesn't specify specific directory
+- Use `main` branch and commit to that directly unless a user specify specific branch
+- Use `.claude/worktrees` when creating worktree if a user doesn't specify specific directory

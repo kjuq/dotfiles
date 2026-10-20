@@ -1,13 +1,7 @@
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/willothy/flatten.nvim' }
+vim.pack.add({ 'https://github.com/willothy/flatten.nvim' })
 
-spec.lazy = os.getenv('NVIM') == nil
-
-spec.opts = {
+require('flatten').setup({
 	window = {
 		open = 'alternate', -- for toggleterm integration
 	},
-}
-
-return spec
+})

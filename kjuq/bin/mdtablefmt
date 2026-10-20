@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+
+# /// script
+# requires-python = ">=3.9"
+# dependencies = []
+# ///
+
+"""Format one GitHub-Flavored Markdown table from stdin to stdout."""
+
+import re
+import sys
+import unicodedata
+
+
+def cell_width(text: str) -> int:
+	"""Return terminal-like display width for ordinary CJK text."""
+	width = 0
+	for char in text:
+		if unicodedata.combining(char) or unicodedata.category(char) in {'Cf', 'Cc'}:
+			continue
+		if unicodedata.east_asian_width(char) in {'W', 'F'}:
+			width += 2
+		else:
+			width += 1
+	return width
+
+
+def split_row(line: str) -> list[str]:
+	"""Split a Markdown table row, respecting backslash-escaped pipes."""
+	line = line.strip()
+	if line.startswith('|'):
+		line = line[1:]
+	if line.endswith('|') and not line.endswith('\\|'):
+		line = line[:-1]
+
+	cells: list[str] = []
+	current: list[str] = []
+	escaped = False
+	for char in line:
+		if char == '|' and not escaped:
+			cells.append(''.join(current).strip())
+			current = []
+		else:
+			current.append(char)
+		escaped = char == '\\' and not escaped
+		if char != '\\':
+			escaped = False
+	cells.append(''.join(current).strip())
+	return cells
+
+
+def alignment(cell: str) -> str:
+	cell = cell.strip()
+	left = cell.startswith(':')
+	right = cell.endswith(':')
+	body = cell[1:] if left else cell
+	body = body[:-1] if right else body
+	if not body or set(body) != {'-'}:
+		raise ValueError('invalid Markdown table delimiter row')
+	if left and right:
+		return 'center'
+	if left:
+		return 'left'
+	if right:
+		return 'right'
+	return 'none'
+
+
+def unescaped_width(text: str) -> int:
+	# A backslash-escaped pipe renders as one character, not two.
+	rendered = re.sub(r'\\([|\\])', r'\1', text)
+	return cell_width(rendered)
+
+
+def format_table(source: str) -> None:
+	had_final_newline = source.endswith('\n')
+	lines = source.splitlines()
+	while lines and not lines[0].strip():
+		lines.pop(0)
+	while lines and not lines[-1].strip():
+		lines.pop()
+	if len(lines) < 2:
+		raise ValueError('expected a Markdown table on stdin')
+
+	rows = [split_row(line) for line in lines]
+	try:
+		alignments = [alignment(cell) for cell in rows[1]]
+	except ValueError as exc:
+		raise ValueError('the second line is not a Markdown table delimiter') from exc
+
+	column_count = max(len(row) for row in rows)
+	for row in rows:
+		row.extend([''] * (column_count - len(row)))
+	alignments.extend(['none'] * (column_count - len(alignments)))
+
+	widths: list[int] = []
+	for column in range(column_count):
+		content_width = max(unescaped_width(row[column]) for row in [rows[0], *rows[2:]])
+		marker_width = 2 if alignments[column] == 'center' else 1 if alignments[column] in {'left', 'right'} else 0
+		widths.append(max(content_width, 3 + marker_width))
+
+	def render_cell(text: str, width: int, kind: str) -> str:
+		padding = max(0, width - unescaped_width(text))
+		if kind == 'right':
+			return (' ' * padding) + text
+		if kind == 'center':
+			left = padding // 2
+			return (' ' * left) + text + (' ' * (padding - left))
+		return text + (' ' * padding)
+
+	output: list[str] = []
+	output.append('| ' + ' | '.join(render_cell(row, widths[i], alignments[i]) for i, row in enumerate(rows[0])) + ' |')
+
+	delimiter: list[str] = []
+	for width, kind in zip(widths, alignments):
+		if kind == 'left':
+			delimiter.append(':' + '-' * (width - 1))
+		elif kind == 'right':
+			delimiter.append('-' * (width - 1) + ':')
+		elif kind == 'center':
+			delimiter.append(':' + '-' * (width - 2) + ':')
+		else:
+			delimiter.append('-' * width)
+	output.append('| ' + ' | '.join(delimiter) + ' |')
+
+	for row in rows[2:]:
+		output.append(
+			'| ' + ' | '.join(render_cell(row[i], widths[i], alignments[i]) for i in range(column_count)) + ' |'
+		)
+
+	result = '\n'.join(output)
+	sys.stdout.write(result + ('\n' if had_final_newline else ''))
+
+
+try:
+	format_table(sys.stdin.read())
+except ValueError as error:
+	print(f'mdtablefmt: {error}', file=sys.stderr)
+	sys.exit(2)

@@ -1,15 +1,4 @@
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/linrongbin16/gitlinker.nvim' }
+vim.pack.add({ 'https://github.com/linrongbin16/gitlinker.nvim' })
 
-spec.cmd = 'GitLink'
-
-local map = require('kjuq.lazy').generate_map('', 'Gitlinker: ')
-spec.keys = {
-	map('<Space>gy', { 'n', 'x' }, '<Cmd>GitLink<CR>', 'Yank git link'),
-	map('<Space>gY', { 'n', 'x' }, '<Cmd>GitLink!<CR>', 'Open git link'),
-}
-
-spec.opts = {}
-
-return spec
+vim.keymap.set({ 'n', 'x' }, '<Space>gy', '<Cmd>GitLink<CR>', { desc = 'Gitlinker: Yank git link' })
+vim.keymap.set({ 'n', 'x' }, '<Space>gY', '<Cmd>GitLink!<CR>', { desc = 'Gitlinker: Open git link' })

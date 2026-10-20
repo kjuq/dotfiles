@@ -1,7 +1,3 @@
-if [ -n "$_KJUQ_FISH_CONFIG_LOADED" ]
-	return
-end
-
 # XDG Base Directories (NEED TO LOAD FIRST!!!!)
 set --query XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME "$HOME/.config"
 set --query XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"
@@ -25,6 +21,12 @@ else
 	set --export KJUQ_DOCS "$HOME/kjuq/docs"
 end
 
+# nvimpager
+if command --search --quiet nvimpager
+	set --export NVIMPAGER_NVIM 'env NVIM_APPNAME=nvim nvim'
+	set --export PAGER 'nvimpager'
+end
+
 # Password-store
 set --export PASSWORD_STORE_DIR "$HOME/kjuq/password-store"
 
@@ -39,7 +41,7 @@ set --export HOMEBREW_NO_ENV_HINTS 1
 set --export LESS '--mouse --wheel-lines=1'
 
 # Bash
-mkdir -p "$XDG_STATE_HOME/bash"
+[ -d "$XDG_STATE_HOME/bash" ]; or mkdir -p "$XDG_STATE_HOME/bash" # avoid forking `mkdir` on every startup
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 
 # Docker
@@ -50,6 +52,9 @@ set --export PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc.py"
 set --export PYTHON_HISTORY "$XDG_STATE_HOME/python/history" # not working so wrote `pythonrc.py` as a workaround
 set --export PYTHONPYCACHEPREFIX "$XDG_CACHE_HOME/python" # no `__pycache__`
 set --export PYTHONUSERBASE "$XDG_DATA_HOME/python" # base dir where packages will be installed via `pip install --user`
+
+# PIP
+set --export PIP_UPLOADED_PRIOR_TO P7D
 
 # Go
 set --export GOPATH "$XDG_DATA_HOME/go"
@@ -114,6 +119,7 @@ set --export RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
 # Android
 set --export ANDROID_USER_HOME "$XDG_DATA_HOME"/android
+set --export ANDROID_AVD_HOME "$ANDROID_USER_HOME"/avd
 
 # OpenJDK (some applications don't respect this setting)
 set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
