@@ -1,7 +1,9 @@
 -- `git clone https://github.com/skk-dev/dict $XDG_DATA_HOME/nvim/skkelua/dict`
-vim.pack.add({ 'https://github.com/kjuq/skkelua.nvim' })
 
-vim.keymap.set('i', '<C-Space>', '<Plug>(skkelua-enable)')
+vim.pack.add({ 'https://github.com/kjuq/skkelua.nvim' })
+-- vim.opt.runtimepath:append('~/kjuq/ghq/github.com/kjuq/skkelua.nvim')
+
+vim.keymap.set({ 'i', 'c', 't' }, '<C-Space>', '<Plug>(skkelua-enable)')
 vim.keymap.set('n', '<Space>tj', '<Plug>(skkelua-persistent-toggle)')
 
 local skkelua = require('skkelua')
