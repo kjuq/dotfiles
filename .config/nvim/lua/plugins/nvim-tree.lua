@@ -17,4 +17,25 @@ require('nvim-tree').setup({
 	filters = {
 		git_ignored = false,
 	},
+	view = {
+		signcolumn = 'auto',
+	},
+	renderer = {
+		icons = {
+			padding = {
+				folder_arrow = '  ',
+				icon = '  ',
+			},
+			show = {
+				bookmarks = false,
+				diagnostics = false,
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = false,
+				-- hidden = false, -- it is false by default
+				modified = false,
+			},
+		},
+	},
 })
