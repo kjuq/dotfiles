@@ -8,8 +8,18 @@ custom.panel_bg = "reset" # transpaernt tab margin
 agent_panel_sort = "spaces"
 show_agent_labels_on_pane_borders = true
 sidebar_collapsed_mode = "hidden" # hide sidebar completely when it is collapsed
-hide_tab_bar_when_single_tab = true # hide top bar when only one tab exists
+hide_tab_bar_when_single_tab = false # hide top bar when only one tab exists
 prompt_new_tab_name = false # tmux-like behavior: create tab without prompt for naming
+pane_borders = "always"
+tab_bar_position = "bottom"
+
+tab_bar_right = [
+	{ type = "zoom" },
+	{ type = "command", command = 'echo $PWD | sed "s|$HOME|~|"', interval_seconds = 1, timeout_seconds = 2 },
+	{ type = "command", command = "git branch --show", interval_seconds = 1, timeout_seconds = 2 },
+	{ type = "datetime", format = "%H:%M" },
+]
+tab_bar_right_separator = " · "
 
 toast.delivery = "herdr"
 sound.enabled = true
