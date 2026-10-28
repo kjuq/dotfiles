@@ -8,9 +8,13 @@ vim.keymap.set('n', '<space>af', '<Cmd>NvimTreeOpen<CR>', { desc = 'Nvim-tree: O
 -- optionally depends on devicons
 
 require('nvim-tree').setup({
-	hijack_netrw = true,
+	hijack_cursor = true,
+	disable_netrw = true,
 	hijack_directories = {
-		enable = true,
-		auto_open = true,
+		enable = false,
+		auto_open = false,
+	},
+	filters = {
+		git_ignored = false,
 	},
 })
