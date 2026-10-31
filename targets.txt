@@ -3,15 +3,15 @@ $XDG_CONFIG_HOME/aerc/accounts.conf.template
 $XDG_CONFIG_HOME/aerc/aerc.conf
 $XDG_CONFIG_HOME/aerc/binds.conf
 $XDG_CONFIG_HOME/aerc/stylesets
+$XDG_CONFIG_HOME/aerospace/aerospace.toml
 $XDG_CONFIG_HOME/alacritty/alacritty.toml
 $XDG_CONFIG_HOME/autostart
 $XDG_CONFIG_HOME/brewfile/Brewfile
 $XDG_CONFIG_HOME/clangd/config.yaml
 $XDG_CONFIG_HOME/clang-format
-$XDG_CONFIG_HOME/claude/settings.json
-$XDG_CONFIG_HOME/claude/keybindings.json
+$XDG_CONFIG_HOME/claude/settings.json.example
 $XDG_CONFIG_HOME/claude/CLAUDE.md
-$XDG_CONFIG_HOME/docker/config.json
+$XDG_CONFIG_HOME/claude/skills/kjuq
 $XDG_CONFIG_HOME/dust/config.toml
 $XDG_CONFIG_HOME/dunst/dunstrc
 $XDG_CONFIG_HOME/fd/ignore
@@ -20,6 +20,9 @@ $XDG_CONFIG_HOME/feh/keys
 $XDG_CONFIG_HOME/feh/buttons
 $XDG_CONFIG_HOME/fish/config.fish
 $XDG_CONFIG_HOME/fish/configs
+$XDG_CONFIG_HOME/ghostty/asime
+$XDG_CONFIG_HOME/ghostty/config
+$XDG_CONFIG_HOME/ghostty/sticky
 $XDG_CONFIG_HOME/git
 $XDG_CONFIG_HOME/gitui
 $XDG_CONFIG_HOME/glow/glow.yml
@@ -29,6 +32,7 @@ $XDG_CONFIG_HOME/gtkrc-2.0/gtkrc
 $XDG_CONFIG_HOME/hammerspoon/lua
 $XDG_CONFIG_HOME/hammerspoon/init.lua
 $XDG_CONFIG_HOME/hammerspoon/.luarc.json
+$XDG_CONFIG_HOME/herdr/config.toml
 $XDG_CONFIG_HOME/i3/config
 $XDG_CONFIG_HOME/i3status/config
 $XDG_CONFIG_HOME/kitty/kitty.conf
@@ -37,6 +41,9 @@ $XDG_CONFIG_HOME/lazygit/config.yml
 $XDG_CONFIG_HOME/lesskey
 $XDG_CONFIG_HOME/matplotlib/matplotlibrc
 $XDG_CONFIG_HOME/mimeapps.list
+$XDG_CONFIG_HOME/mitmproxy/config.yaml
+$XDG_CONFIG_HOME/mitmproxy/keys.yaml
+$XDG_CONFIG_HOME/mitmproxy/script
 $XDG_CONFIG_HOME/moxide/settings.toml
 $XDG_CONFIG_HOME/mypy/config
 $XDG_CONFIG_HOME/nb/nbrc
@@ -56,6 +63,7 @@ $XDG_CONFIG_HOME/qutebrowser/config.py
 $XDG_CONFIG_HOME/ripgrep/ripgreprc
 $XDG_CONFIG_HOME/rubocop/config.yml
 $XDG_CONFIG_HOME/ruff/ruff.toml
+$XDG_CONFIG_HOME/slk/config.toml.template
 $XDG_CONFIG_HOME/solargraph/config.yml
 $XDG_CONFIG_HOME/stylua/stylua.toml
 $XDG_CONFIG_HOME/sway/config

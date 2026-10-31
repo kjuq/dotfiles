@@ -1,0 +1,25 @@
+-- NOTE: require certain version of Neovim
+if vim.fn.has('nvim-0.13') == 0 then
+	return
+end
+
+local group = vim.api.nvim_create_augroup('kjuq_highlight_on_yank', {})
+
+local set_hl = function()
+	vim.api.nvim_set_hl(0, 'kjuq_highlight_on_yank', { bg = '#c43963' }) -- color is from SagaBeacon of LspSaga
+end
+vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+	group = group,
+	callback = set_hl,
+})
+
+local highlight = function()
+	local timeout = require('kjuq.common_params').highlight_duration
+	vim.hl.hl_op({ higroup = 'kjuq_highlight_on_yank', timeout = timeout })
+end
+vim.api.nvim_create_autocmd({ 'TextYankPost', 'TextPutPost' }, {
+	group = group,
+	callback = highlight,
+})
+
+set_hl()

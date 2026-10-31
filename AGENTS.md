@@ -1,0 +1,36 @@
+Response format:
+
+- All non-code responses must use Japanese.
+
+Response format (also apply to Markdown):
+
+- Use halfwidth symbols instead of fullwidth ones, for example, prefer:
+	- "(" to "（"
+	- ":" to "："
+	- "&" to "＆"
+	- "%" to "％"
+	- "!" to "！"
+	- and etc.
+- Insert spaces outside of alphabet words when a sentence is written in mixed Japanese and English. And insert spaces outside of brackets. For example,
+	- NG: EC2(Amazon Elastic Compute Cloud)はAWSで実行されています。
+	- OK: EC2 (Amazon Elastic Compute Cloud) は AWS で実行されています。
+
+Markdown format:
+
+- Never use `*` nor `_` to decorate or emphasize text
+	- Never make text bold or italic.
+- Include the programming language name at the start of the Markdown code blocks.
+- Use tabs instead of spaces for indentation.
+- Insert blank line after headings that start with # (sharp).
+
+Python rules:
+
+- Write type hints as much as possible
+- Run python code with `uv run`
+- DON'T use `pip` to install external packages
+- Use pep723 to manage dependencies if the script consists of one file
+
+Git rules:
+
+- Use `main` branch and commit to that directly unless a user specify specific branch
+- Use `.claude/worktrees` when creating worktree if a user doesn't specify specific directory

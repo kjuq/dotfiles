@@ -1,7 +1,3 @@
-if [ -n "$_KJUQ_FISH_CONFIG_LOADED" ]
-	return
-end
-
 # XDG Base Directories (NEED TO LOAD FIRST!!!!)
 set --query XDG_CONFIG_HOME; or set --export XDG_CONFIG_HOME "$HOME/.config"
 set --query XDG_CACHE_HOME; or set --export XDG_CACHE_HOME "$HOME/.cache"
@@ -35,8 +31,11 @@ set --export GHQ_ROOT "$HOME/kjuq/ghq"
 set --export HOMEBREW_NO_ANALYTICS 1
 set --export HOMEBREW_NO_ENV_HINTS 1
 
+# less
+set --export LESS '--mouse --wheel-lines=1'
+
 # Bash
-mkdir -p "$XDG_STATE_HOME/bash"
+[ -d "$XDG_STATE_HOME/bash" ]; or mkdir -p "$XDG_STATE_HOME/bash" # avoid forking `mkdir` on every startup
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
 
 # Docker
@@ -48,6 +47,9 @@ set --export PYTHON_HISTORY "$XDG_STATE_HOME/python/history" # not working so wr
 set --export PYTHONPYCACHEPREFIX "$XDG_CACHE_HOME/python" # no `__pycache__`
 set --export PYTHONUSERBASE "$XDG_DATA_HOME/python" # base dir where packages will be installed via `pip install --user`
 
+# PIP
+set --export PIP_UPLOADED_PRIOR_TO P7D
+
 # Go
 set --export GOPATH "$XDG_DATA_HOME/go"
 
@@ -56,6 +58,12 @@ set --export NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 
 # Claude code
 set --export CLAUDE_CONFIG_DIR "$XDG_CONFIG_HOME/claude"
+
+# Codex
+set --export CODEX_HOME "$XDG_CONFIG_HOME/codex"
+
+# Grok
+set --export GROK_HOME "$XDG_CONFIG_HOME/grok"
 
 # Cargo
 set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
@@ -105,6 +113,7 @@ set --export RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
 # Android
 set --export ANDROID_USER_HOME "$XDG_DATA_HOME"/android
+set --export ANDROID_AVD_HOME "$ANDROID_USER_HOME"/avd
 
 # OpenJDK (some applications don't respect this setting)
 set --export _JAVA_OPTIONS "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
@@ -129,9 +138,4 @@ set --export QT_QPA_PLATFORMTHEME qt5ct
 # Xauthority
 if set --query XDG_RUNTIME_DIR
 	set --export XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
-end
-
-# SSH-agent
-if command --search --quiet ssh-agent
-	eval "$(ssh-agent -c)" >/dev/null
 end

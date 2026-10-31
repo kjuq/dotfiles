@@ -14,9 +14,23 @@ M.all = {
 
 M.cpp = {
 	forauto = [[for (auto ${1} : ${2} ) {${0}}]],
-	rep = [[for (int ${1} : rep(${2}, ${3})) {${0}}]],
 	cout = [[cout << ${0} << endl;]],
 	cin = [[cin >> ${0};]],
+	rep = [[auto rep(int end) { return (std::views::iota(0, end)); }]],
+	seq = [[auto seq(int begin, int end) { return (std::views::iota(begin, end + 1)); }]],
+}
+
+M.cpp.init = {
+	[[#include <iostream>]],
+	[[#include <ranges>]],
+	[[using namespace std;]],
+	[[]],
+	M.cpp.rep,
+	M.cpp.seq,
+	[[]],
+	[[signed main() {]],
+	[[	${0}]],
+	[[}]],
 }
 
 M.lua = {

@@ -1,34 +1,10 @@
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/stevearc/oil.nvim' }
+vim.g.loaded_nvim_dir_plugin = 1
 
-local argv_contains = function(patterns)
-	patterns = type(patterns) == 'string' and { patterns } or patterns --[[@ as string[] ]]
-	local argv = vim.fn.argv() --[[@ as string[] ]]
-	for _, arg in pairs(argv) do
-		for _, pattern in pairs(patterns) do
-			if string.find(arg, pattern, 1, true) then
-				return true
-			end
-		end
-	end
-	return false
-end
+vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
 
-spec.lazy = not argv_contains('oil-ssh://')
+vim.keymap.set('n', '<Plug>(nvim-dir-up)', '<CMD>Oil<CR>', { desc = 'Oil: Open' })
 
-spec.event = 'VeryLazy'
-
-local map = require('kjuq.lazy').generate_map('', 'Oil: ')
-spec.keys = {
-	map('<Space>-', 'n', '<CMD>Oil<CR>', 'Open'),
-}
-
-spec.init = function()
-	vim.g.loaded_netrwPlugin = 1
-end
-
-spec.opts = {
+require('oil').setup({
 	delete_to_trash = true,
 	skip_confirm_for_simple_edits = true,
 	cleanup_delay_ms = false,
@@ -56,6 +32,7 @@ spec.opts = {
 		['_'] = 'actions.cd',
 		['`'] = 'actions.change_sort',
 		['gx'] = 'actions.open_external',
+		['<2-LeftMouse>'] = 'actions.open_external',
 		['g.'] = 'actions.toggle_hidden',
 		['g\\'] = 'actions.toggle_trash',
 	},
@@ -67,6 +44,4 @@ spec.opts = {
 			return vim.list_contains(hiddens, name)
 		end,
 	},
-}
-
-return spec
+})

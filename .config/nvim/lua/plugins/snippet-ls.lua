@@ -1,7 +1,3 @@
-local spec = { 'https://github.com/kjuq/nvim-snippet-ls' }
+vim.pack.add({ 'https://github.com/kjuq/nvim-snippet-ls' })
 
-spec.event = { 'InsertEnter' }
-
-spec.opts = {}
-
-return spec
+require('snippet-ls').setup()

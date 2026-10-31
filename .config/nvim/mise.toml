@@ -1,0 +1,3 @@
+[tools]
+lua-language-server = "3.19.1"
+stylua = "2.5.2"

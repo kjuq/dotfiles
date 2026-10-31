@@ -2,4 +2,10 @@
 .trash/
 node_modules/
 
+mise.local.toml
+
+/_kjuq/
+
 **/.claude/settings.local.json
+**/.claude/worktrees
+**/.claude/.cc-writes/

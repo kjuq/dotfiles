@@ -1,3 +1,6 @@
+if not os.getenv('KJUQ_DOCS') or not os.getenv('XDG_CONFIG_HOME') then
+	return
+end
 local doc = os.getenv('KJUQ_DOCS')
 local confroot = os.getenv('XDG_CONFIG_HOME') .. '/nvim'
 

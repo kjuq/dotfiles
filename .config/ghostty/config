@@ -1,0 +1,41 @@
+theme = "Kanagawa Dragon"
+background = #000000
+cursor-color = #E5E9F0
+
+font-family = "UDEV Gothic"
+font-size = 12
+
+window-width = 220
+window-height = 60
+window-padding-x = 6
+window-padding-y = 2
+
+background-opacity = 1
+
+mouse-scroll-multiplier = 1
+mouse-hide-while-typing = true
+macos-option-as-alt = true
+macos-window-buttons = hidden
+macos-titlebar-style = hidden
+window-decoration = server
+gtk-titlebar = false
+cursor-style-blink = false
+
+keybind = clear
+
+keybind = super+v=paste_from_clipboard
+keybind = paste=paste_from_clipboard
+
+keybind = ctrl+backspace=text:\x17
+keybind = alt+backspace=text:\x17
+
+keybind = super+backspace=text:\x15
+keybind = ctrl+shift+backspace=text:\x15
+
+keybind = ctrl+tab=esc:[27;5;9~
+keybind = ctrl+shift+tab=esc:[27;6;9~
+
+keybind = super+f=increase_font_size:1
+keybind = super+b=decrease_font_size:1
+keybind = super+n=new_window
+keybind = super+comma=reload_config
