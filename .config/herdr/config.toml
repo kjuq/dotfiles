@@ -29,7 +29,7 @@ kitty_graphics = true
 pane_history = true # https://zenn.dev/7shi/scraps/98218b6bc12734#%E2%91%A0-%E7%94%BB%E9%9D%A2%E5%B1%A5%E6%AD%B4%E3%81%AE%E5%BE%A9%E5%85%83-(pane_history)
 
 [keys]
-prefix = "ctrl+j"
+prefix = "ctrl+space"
 
 focus_pane_left = ["super+h"]
 focus_pane_down = ["super+j"]

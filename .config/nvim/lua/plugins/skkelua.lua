@@ -3,7 +3,7 @@
 vim.pack.add({ 'https://github.com/kjuq/skkelua.nvim' })
 -- vim.opt.runtimepath:append('~/kjuq/ghq/github.com/kjuq/skkelua.nvim')
 
-vim.keymap.set({ 'i', 'c', 't' }, '<C-Space>', '<Plug>(skkelua-enable)')
+vim.keymap.set({ 'i', 'c', 't' }, '<C-j>', '<Plug>(skkelua-enable)')
 vim.keymap.set('n', '<Space>tj', '<Plug>(skkelua-persistent-toggle)')
 
 local skkelua = require('skkelua')
