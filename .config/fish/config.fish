@@ -16,5 +16,3 @@ source "$__fish_config_dir/configs/c.fish"
 if [ -e "$__fish_config_dir/configs/local/post.fish"  ]
 	source "$__fish_config_dir/configs/local/post.fish"
 end
-
-set -gx PIP_UPLOADED_PRIOR_TO P7D

@@ -39,6 +39,11 @@ cmd-alt-ctrl-shift-j = 'move down'  # 'move --boundaries all-monitors-outer-fram
 cmd-alt-ctrl-shift-k = 'move up'    # 'move --boundaries all-monitors-outer-frame up'
 cmd-alt-ctrl-shift-l = 'move right' # 'move --boundaries all-monitors-outer-frame right'
 
+cmd-alt-ctrl-0 = 'move-node-to-monitor --focus-follows-window left'
+cmd-alt-ctrl-pageDown = 'move-node-to-monitor --focus-follows-window down'
+cmd-alt-ctrl-pageUp = 'move-node-to-monitor --focus-follows-window up'
+cmd-alt-ctrl-7 = 'move-node-to-monitor --focus-follows-window right'
+
 cmd-alt-ctrl-shift-0 = 'join-with left'
 cmd-alt-ctrl-shift-pageDown = 'join-with down'
 cmd-alt-ctrl-shift-pageUp = 'join-with up'

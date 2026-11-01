@@ -12,6 +12,7 @@ $XDG_CONFIG_HOME/clang-format
 $XDG_CONFIG_HOME/claude/settings.json.example
 $XDG_CONFIG_HOME/claude/CLAUDE.md
 $XDG_CONFIG_HOME/claude/skills/kjuq
+$XDG_CONFIG_HOME/codex/AGENTS.md
 $XDG_CONFIG_HOME/dust/config.toml
 $XDG_CONFIG_HOME/dunst/dunstrc
 $XDG_CONFIG_HOME/fd/ignore
@@ -63,6 +64,7 @@ $XDG_CONFIG_HOME/qutebrowser/config.py
 $XDG_CONFIG_HOME/ripgrep/ripgreprc
 $XDG_CONFIG_HOME/rubocop/config.yml
 $XDG_CONFIG_HOME/ruff/ruff.toml
+$XDG_CONFIG_HOME/slk/config.toml.template
 $XDG_CONFIG_HOME/solargraph/config.yml
 $XDG_CONFIG_HOME/stylua/stylua.toml
 $XDG_CONFIG_HOME/sway/config

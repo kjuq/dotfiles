@@ -1,2 +1,7 @@
-# F11
-^[[23~ quit
+\kx forw-screen # Delete
+\e\e quit
+
+# # https://github.com/gwsw/less/issues/830
+# # https://github.com/gwsw/less/issues/83
+# # Requires `e59af04d1c25d92c3d368a79d6210c4b3b4828be` (v711)
+# \e quit # Esc
