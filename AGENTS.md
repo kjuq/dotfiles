@@ -34,3 +34,4 @@ Git rules:
 
 - Use `main` branch and commit to that directly unless a user specify specific branch
 - Use `.claude/worktrees` when creating worktree if a user doesn't specify specific directory
+- Use conventional commit
