@@ -1,0 +1,42 @@
+# `cat config.toml.template | envsubst > config.toml`
+
+approval_policy = 'on-request'
+approvals_reviewer = 'auto_review'
+default_permissions = 'no-secrets'
+
+[permissions.no-secrets]
+extends = ':workspace'
+
+[permissions.no-secrets.filesystem]
+'$PASSWORD_STORE_DIR' = 'deny'
+'$XDG_CONFIG_HOME/gnupg' = 'deny'
+'$XDG_RUNTIME_DIR/gnupg' = 'deny'
+
+[permissions.no-secrets.filesystem.':workspace_roots']
+'.env' = 'deny'
+'*.env' = 'deny'
+'**/.env' = 'deny'
+'**/*.env' = 'deny'
+
+[auto_review]
+extra_policy = '''
+These operations are strongly prohibited. DO NOT approve even if a user request it.
+
+- Access to
+	- '$PASSWORD_STORE_DIR'
+	- '$XDG_CONFIG_HOME/gnupg'
+	- '$XDG_RUNTIME_DIR/gnupg'
+	- `.env`, `*.env` files
+- Connect to any GPG agent regardless a socket location
+- Bypassing the above restrictions using alternative commands, scripts, symbolic links, or indirect execution.
+- Changing settings to disable the above protections.
+'''
+
+[tui]
+screen_reader_detection_done = true
+fullscreen_transcript = true
+
+[features]
+remote_control = true
+
+# vim: set ft=toml:

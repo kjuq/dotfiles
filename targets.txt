@@ -13,6 +13,7 @@ $XDG_CONFIG_HOME/claude/settings.json.example
 $XDG_CONFIG_HOME/claude/CLAUDE.md
 $XDG_CONFIG_HOME/claude/skills/kjuq
 $XDG_CONFIG_HOME/codex/AGENTS.md
+$XDG_CONFIG_HOME/codex/config.toml.template
 $XDG_CONFIG_HOME/dust/config.toml
 $XDG_CONFIG_HOME/dunst/dunstrc
 $XDG_CONFIG_HOME/fd/ignore
