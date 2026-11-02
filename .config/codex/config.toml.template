@@ -11,6 +11,7 @@ extends = ':workspace'
 '$PASSWORD_STORE_DIR' = 'deny'
 '$XDG_CONFIG_HOME/gnupg' = 'deny'
 '$XDG_RUNTIME_DIR/gnupg' = 'deny'
+glob_scan_max_depth = 8
 
 [permissions.no-secrets.filesystem.':workspace_roots']
 '.env' = 'deny'
