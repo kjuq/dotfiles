@@ -25,7 +25,7 @@ usage() {
 }
 
 # 必須コマンドの存在チェック
-for cmd in identify stat uuid; do
+for cmd in identify stat; do
 	if ! command -v "$cmd" &>/dev/null; then
 		echo "エラー: 必要なコマンド '$cmd' が見つかりません。インストールしてください。" >&2
 		exit 1
@@ -103,7 +103,11 @@ for file in "$@"; do
 	fi
 
 	# UUIDを生成
-	generated_uuid=$(uuid)
+	if command -v 'uuid' &>/dev/null; then
+		generated_uuid=$(uuid)
+	else
+		generated_uuid=$(uuidgen)
+	fi
 	if [ -z "$generated_uuid" ]; then
 		echo "エラー: UUIDの生成に失敗しました。スキップします。" >&2
 		continue
