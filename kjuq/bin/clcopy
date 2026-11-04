@@ -4,7 +4,7 @@ set -eu
 
 # `mkdir -p ~/.local/bin && curl https://chromium.googlesource.com/apps/libapps/+/refs/heads/main/hterm/etc/osc52.sh?format=TEXT | base64 --decode > ~/.local/bin/osc52 && chmod u+x ~/.local/bin/osc52`
 if command -v osc52 &>/dev/null; then
-	printf "%s" "$(cat)" | osc52
+	printf "%s" "$(cat)" | base64 -w0 | xargs printf "\e]52;c;%s\a"
 	exit 0
 fi
 
