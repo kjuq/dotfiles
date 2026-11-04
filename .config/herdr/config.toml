@@ -39,6 +39,9 @@ focus_pane_right = ["super+l"]
 cycle_pane_next = ["prefix+tab", "ctrl+tab"] # prefix+tab is the default keybind
 cycle_pane_previous = ["prefix+shift+tab", "ctrl+shift+tab"]
 
+next_tab = ["prefix+n", "ctrl+alt+tab"]
+previous_tab = ["prefix+p", "ctrl+alt+shift+tab"]
+
 copy_mode = ["prefix+[", "prefix+e"] # prefix+[ is the default keybind
 edit_scrollback = "prefix+shift+e" # opens scrollback via $EDITOR
 
