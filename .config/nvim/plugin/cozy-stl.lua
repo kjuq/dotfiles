@@ -37,6 +37,11 @@ vim.api.nvim_create_autocmd({ 'OptionSet' }, {
 	callback = cb,
 })
 
+vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+	group = vim.api.nvim_create_augroup('kjuq_cozy_statusline_colorscheme', {}),
+	callback = cb,
+})
+
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
 	group = vim.api.nvim_create_augroup('kjuq_cozy_statusline_enter', {}),
 	callback = cb,

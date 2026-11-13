@@ -5,6 +5,7 @@ vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
 vim.keymap.set('n', '<Plug>(nvim-dir-up)', '<CMD>Oil<CR>', { desc = 'Oil: Open' })
 
 require('oil').setup({
+	default_file_explorer = true,
 	delete_to_trash = true,
 	skip_confirm_for_simple_edits = true,
 	cleanup_delay_ms = 0,

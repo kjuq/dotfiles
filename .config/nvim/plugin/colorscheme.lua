@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 
 -- load built-in colorscheme if no colorscheme is loaded by plugin manager
 if vim.g.colors_name == nil then
-	vim.cmd.colorscheme(_G.kjuq.colorscheme or 'retrobox') -- 'default'|'slate'|'habamax'|'retrobox'|'sorbet'|'unokai'
+	vim.cmd.colorscheme(_G.kjuq.colorscheme or 'catppuccin') -- 'default'|'slate'|'habamax'|'retrobox'|'sorbet'|'unokai'
 else
 	preference()
 end
