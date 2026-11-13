@@ -7,8 +7,8 @@ vim.keymap.set('n', '<Plug>(nvim-dir-up)', '<CMD>Oil<CR>', { desc = 'Oil: Open' 
 require('oil').setup({
 	delete_to_trash = true,
 	skip_confirm_for_simple_edits = true,
-	cleanup_delay_ms = false,
-	constrain_cursor = 'editable', -- 'editable' | 'name' | false
+	cleanup_delay_ms = 0,
+	constrain_cursor = false, -- 'editable' | 'name' | false
 	columns = {
 		-- 'icon',
 		-- "permissions",
@@ -18,6 +18,10 @@ require('oil').setup({
 	buf_options = {
 		buflisted = false,
 		bufhidden = 'hide',
+	},
+	win_options = {
+		conceallevel = 0,
+		concealcursor = '',
 	},
 	keymaps = {
 		['g?'] = 'actions.show_help',
