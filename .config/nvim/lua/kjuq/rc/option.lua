@@ -80,6 +80,8 @@ vim.opt.showbreak = '> '
 
 vim.opt.cursorlineopt = { 'screenline' }
 
+vim.opt.nrformats:append('unsigned')
+
 vim.opt.splitright = true
 vim.opt.splitbelow = false
 

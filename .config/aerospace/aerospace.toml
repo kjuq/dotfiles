@@ -72,3 +72,7 @@ cmd-alt-ctrl-shift-r = 'move-node-to-workspace 6 --focus-follows-window'
 cmd-alt-ctrl-shift-p = 'move-node-to-workspace 7 --focus-follows-window'
 cmd-alt-ctrl-shift-f = 'move-node-to-workspace 8 --focus-follows-window'
 cmd-alt-ctrl-shift-w = 'move-node-to-workspace 9 --focus-follows-window'
+
+[[on-window-detected]]
+if.window-title-regex-substring = '.*'
+run = ['layout tiling']

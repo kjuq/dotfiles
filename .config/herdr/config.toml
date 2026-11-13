@@ -15,8 +15,8 @@ tab_bar_position = "bottom"
 
 tab_bar_right = [
 	{ type = "zoom" },
-	{ type = "command", command = 'echo $PWD | sed "s|$HOME|~|"', interval_seconds = 1, timeout_seconds = 2 },
 	{ type = "command", command = "git branch --show", interval_seconds = 1, timeout_seconds = 2 },
+	{ type = "command", command = 'echo $PWD | sed "s|$HOME|~|"', interval_seconds = 1, timeout_seconds = 2 },
 	{ type = "datetime", format = "%H:%M" },
 ]
 tab_bar_right_separator = " · "
@@ -39,7 +39,7 @@ focus_pane_right = ["super+l"]
 cycle_pane_next = ["prefix+tab", "ctrl+tab"] # prefix+tab is the default keybind
 cycle_pane_previous = ["prefix+shift+tab", "ctrl+shift+tab"]
 
-next_tab = ["prefix+n", "ctrl+alt+tab"]
+next_tab = ["prefix+n", "ctrl+alt+tab", "alt+shift+tab"]
 previous_tab = ["prefix+p", "ctrl+alt+shift+tab"]
 
 copy_mode = ["prefix+[", "prefix+e"] # prefix+[ is the default keybind
