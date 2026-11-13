@@ -17,3 +17,14 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 		end, { desc = 'md-render: Toggle preview' })
 	end,
 })
+
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+	-- pattern = 'md-render',
+	group = vim.api.nvim_create_augroup('kjuq_mdrender_options', {}),
+	callback = function()
+		if vim.o.ft ~= 'md-render' then
+			return
+		end
+		vim.wo.wrap = true
+	end,
+})
