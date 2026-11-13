@@ -1,11 +1,6 @@
----@module 'lazy'
----@type LazySpec
-local spec = { 'https://github.com/catppuccin/nvim' }
-spec.name = 'catppuccin'
-spec.lazy = false
-spec.priority = 9999
+vim.pack.add({ 'https://github.com/catppuccin/nvim' })
 
-spec.opts = {
+require('catppuccin').setup({
 	flavour = 'mocha', -- latte, frappe, macchiato, mocha
 	background = { -- :h background
 		light = 'latte',
@@ -35,12 +30,6 @@ spec.opts = {
 		types = {},
 		operators = {},
 	},
-}
+})
 
-spec.config = function(_, opts)
-	require('catppuccin').setup(opts) -- `setup` must be called before loading
-	vim.cmd.colorscheme('catppuccin')
-	vim.api.nvim_set_hl(0, 'LineNr', { fg = '#888888' })
-end
-
-return spec
+vim.cmd.colorscheme('catppuccin')
