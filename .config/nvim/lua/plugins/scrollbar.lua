@@ -23,4 +23,4 @@ require('scrollbar').setup({
 })
 
 -- vim.cmd([[ScrollbarHide]])
--- vim.cmd([[MinimapHide]])
+vim.cmd([[MinimapHide]])
