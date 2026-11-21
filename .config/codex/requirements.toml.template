@@ -15,16 +15,16 @@ These operations are strongly prohibited. DO NOT approve even if a user request 
 
 Network access restrictions (CIDR):
 - Do not approve connecting to, probing, or scanning destinations in these ranges:
-  - 100.64.0.0/10 (Tailscale IPv4).
-  - fd7a:115c:a1e0::/48 (Tailscale IPv6).
-  - 10.0.0.0/8 (private IPv4).
-  - 172.16.0.0/12 (private IPv4).
-  - 192.168.0.0/16 (private IPv4).
-  - 169.254.0.0/16 (IPv4 link-local).
-  - fc00::/7 (IPv6 unique-local).
-  - fe80::/10 (IPv6 link-local).
-  - 161.33.178.151/32 (OCI instance public IPv4).
-  - 2603:c021:8018:a0aa::a/128 (OCI instance public IPv6).
+	- 100.64.0.0/10 (Tailscale IPv4).
+	- fd7a:115c:a1e0::/48 (Tailscale IPv6).
+	- 10.0.0.0/8 (private IPv4).
+	- 172.16.0.0/12 (private IPv4).
+	- 192.168.0.0/16 (private IPv4).
+	- 169.254.0.0/16 (IPv4 link-local).
+	- fc00::/7 (IPv6 unique-local).
+	- fe80::/10 (IPv6 link-local).
+	- 161.33.178.151/32 (OCI instance public IPv4).
+	- 2603:c021:8018:a0aa::a/128 (OCI instance public IPv6).
 - These restrictions apply to every protocol, port, and tool, including IP literals, hostnames, DNS aliases, and IPv4-mapped IPv6 addresses.
 - Do not approve access to the user's Tailscale devices, OCI instances, or other home-network servers through any address, even if it falls outside the ranges above.
 - Do not approve indirect access through SSH, proxies, tunnels, port forwarding, subnet routers, remote commands, or intermediary services.
