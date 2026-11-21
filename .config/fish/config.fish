@@ -11,6 +11,7 @@ source "$__fish_config_dir/configs/path.fish"
 source "$__fish_config_dir/configs/alias.fish"
 source "$__fish_config_dir/configs/misc.fish"
 source "$__fish_config_dir/configs/prompt.fish"
+source "$__fish_config_dir/configs/ssh.fish"
 source "$__fish_config_dir/configs/c.fish"
 
 if [ -e "$__fish_config_dir/configs/local/post.fish"  ]

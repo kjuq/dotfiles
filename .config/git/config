@@ -3,10 +3,14 @@
 [user]
 	name = kjuq
 	email = 44694396+kjuq@users.noreply.github.com
-	signingkey = 23AA3C90F78458AF
 [commit]
 	gpgsign = true
 	verbose = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	defaultKeyCommand = ssh-add -L
+	allowedSignersFile = ~/.ssh/allowed_signers
 
 [pull]
 	rebase = false
@@ -38,7 +42,7 @@
 ; 	insteadOf = https://github.com
 
 [include]
-	path = ~/.config/git/config_local
+	path = config_local
 
 ; difftool and mergetool
 ; https://gist.github.com/openjck/93b335dfe5e33955d7dec3c9aec9d609
