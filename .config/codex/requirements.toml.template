@@ -9,6 +9,7 @@ These operations are strongly prohibited. DO NOT approve even if a user request 
 	- '$XDG_CONFIG_HOME/gnupg'
 	- '$XDG_RUNTIME_DIR/gnupg'
 	- `.env`, `*.env` files
+	- `.pem`, `*.pem` files
 - Connect to any GPG agent regardless a socket location
 - Bypassing the above restrictions using alternative commands, scripts, symbolic links, or indirect execution.
 - Changing settings to disable the above protections.

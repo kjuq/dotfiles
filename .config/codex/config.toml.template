@@ -18,6 +18,10 @@ glob_scan_max_depth = 8
 '*.env' = 'deny'
 '**/.env' = 'deny'
 '**/*.env' = 'deny'
+'.pem' = 'deny'
+'*.pem' = 'deny'
+'**/.pem' = 'deny'
+'**/*.pem' = 'deny'
 
 [tui]
 screen_reader_detection_done = true
