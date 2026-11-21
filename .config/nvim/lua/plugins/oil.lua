@@ -39,14 +39,14 @@ require('oil').setup({
 		['gx'] = 'actions.open_external',
 		['<2-LeftMouse>'] = 'actions.select',
 		['<RightMouse>'] = 'actions.open_external',
-		['g.'] = 'actions.toggle_hidden',
+		['gh'] = 'actions.toggle_hidden',
 		['g\\'] = 'actions.toggle_trash',
 	},
 	use_default_keymaps = false,
 	view_options = {
 		show_hidden = false,
 		is_always_hidden = function(name, _)
-			local hiddens = { '.DS_Store', '.git', '.gitmodules', 'node_modules' }
+			local hiddens = { '.DS_Store', 'node_modules' }
 			return vim.list_contains(hiddens, name)
 		end,
 	},

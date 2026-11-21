@@ -12,6 +12,9 @@
 	defaultKeyCommand = ssh-add -L
 	allowedSignersFile = ~/.ssh/allowed_signers
 
+[init]
+	defaultBranch = main
+
 [pull]
 	rebase = false
 
