@@ -1,0 +1,12 @@
+// vim: set ft=jsonc:
+// this file needs to be `json` but treated as `jsonc`
+
+// `cat cli.json.template > cli.json`
+
+{
+	"keybinds": {
+		"prompt.editor": "ctrl+g",
+		"session.first": "<leader>p",
+	},
+}
+
