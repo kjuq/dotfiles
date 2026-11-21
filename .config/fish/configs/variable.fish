@@ -70,7 +70,7 @@ set --export CODEX_HOME "$XDG_CONFIG_HOME/codex"
 set --export GROK_HOME "$XDG_CONFIG_HOME/grok"
 
 # Cloudflare
-set --export TUNNEL_ORIGIN_CERT "$XDG_CONFIG_HOME/cloudflared/cert.pem"
+set --export TUNNEL_ORIGIN_CERT "$XDG_DATA_HOME/cloudflared/cert.pem"
 
 # Cargo
 set --export CARGO_HOME "$XDG_DATA_HOME"/cargo
