@@ -1,0 +1,43 @@
+// `cat settings.json.template | tail -n +2 | envsubst > settings.json`
+
+{
+	"env": { "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1", "DISABLE_AUTOUPDATER": "1" },
+	"sandbox": {
+		"enabled": true,
+		"autoAllowBashIfSandboxed": true,
+		"filesystem": {
+			"denyRead": [
+				"$PASSWORD_STORE_DIR",
+				"$GNUPGHOME",
+				"$XDG_RUNTIME_DIR/gnupg",
+				"**/.env",
+				"**/*.env",
+				"**/*.pem"
+			]
+		},
+		"network": {
+			"allowLocalBinding": true,
+			"allowedDomains": ["*"],
+			"deniedDomains": ["161.33.178.151", "2603:c021:8018:a0aa::a"]
+		}
+	},
+	"permissions": {
+		"defaultMode": "auto",
+		"deny": [
+			"Read($PASSWORD_STORE_DIR/**)",
+			"Read($XDG_CONFIG_HOME/gnupg/**)",
+			"Read($XDG_RUNTIME_DIR/gnupg/**)",
+			"Read(**/.env)",
+			"Read(**/*.env)",
+			"Read(**/*.pem)",
+			"Edit($PASSWORD_STORE_DIR/**)",
+			"Edit($XDG_CONFIG_HOME/gnupg/**)",
+			"Edit($XDG_RUNTIME_DIR/gnupg/**)",
+			"Edit(**/.env)",
+			"Edit(**/*.env)",
+			"Edit(**/*.pem)"
+		]
+	},
+	"tui": "fullscreen",
+	"language": "Japanese"
+}

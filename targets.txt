@@ -9,7 +9,7 @@ $XDG_CONFIG_HOME/autostart
 $XDG_CONFIG_HOME/brewfile/Brewfile
 $XDG_CONFIG_HOME/clangd/config.yaml
 $XDG_CONFIG_HOME/clang-format
-$XDG_CONFIG_HOME/claude/settings.json.example
+$XDG_CONFIG_HOME/claude/settings.json.template
 $XDG_CONFIG_HOME/claude/CLAUDE.md
 $XDG_CONFIG_HOME/claude/skills/kjuq
 $XDG_CONFIG_HOME/codex/AGENTS.md
