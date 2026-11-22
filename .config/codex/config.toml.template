@@ -14,6 +14,7 @@ extends = ':workspace'
 glob_scan_max_depth = 8
 
 [permissions.no-secrets.filesystem.':workspace_roots']
+'.git' = 'write'
 '*.env' = 'deny'
 '**/.env' = 'deny'
 '**/*.env' = 'deny'
