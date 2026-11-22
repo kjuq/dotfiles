@@ -41,5 +41,6 @@ allow_upstream_proxy = false
 [features]
 remote_control = true
 network_proxy = true
+hooks = true
 
 # vim: set ft=toml:
