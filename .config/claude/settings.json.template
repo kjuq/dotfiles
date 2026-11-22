@@ -16,6 +16,7 @@
 	"sandbox": {
 		"enabled": true,
 		"autoAllowBashIfSandboxed": true,
+		"excludedCommands": ["gh *", "gcloud *", "terraform *"],
 		"filesystem": {
 			"denyRead": [
 				"/$PASSWORD_STORE_DIR",
