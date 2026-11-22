@@ -1,15 +1,26 @@
-// `cat settings.json.template | tail -n +2 | envsubst > settings.json`
+// Setup:
+// `grep -v '^//' settings.json.template | envsubst > settings.json`
+
+// Sign git commit:
+// `ssh-keygen -t ed25519 -C "44694396+kjuq@users.noreply.github.com" -f ~/.ssh/id_ed25519_sign -P ''`
+// `gh ssh-key add ~/.ssh/id_ed25519_sign.pub --type signing --title 'CodingAgent'`
 
 {
-	"env": { "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1", "DISABLE_AUTOUPDATER": "1" },
+	"env": {
+		"CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+		"DISABLE_AUTOUPDATER": "1",
+		"GIT_CONFIG_COUNT": "1",
+		"GIT_CONFIG_KEY_0": "user.signingKey",
+		"GIT_CONFIG_VALUE_0": "~/.ssh/id_ed25519_sign"
+	},
 	"sandbox": {
 		"enabled": true,
 		"autoAllowBashIfSandboxed": true,
 		"filesystem": {
 			"denyRead": [
-				"$PASSWORD_STORE_DIR",
-				"$GNUPGHOME",
-				"$XDG_RUNTIME_DIR/gnupg",
+				"/$PASSWORD_STORE_DIR",
+				"/$GNUPGHOME",
+				"/$XDG_RUNTIME_DIR/gnupg",
 				"**/.env",
 				"**/*.env",
 				"**/*.pem"
@@ -24,18 +35,31 @@
 	"permissions": {
 		"defaultMode": "auto",
 		"deny": [
-			"Read($PASSWORD_STORE_DIR/**)",
-			"Read($XDG_CONFIG_HOME/gnupg/**)",
-			"Read($XDG_RUNTIME_DIR/gnupg/**)",
+			"Read(/$PASSWORD_STORE_DIR/**)",
+			"Read(/$GNUPGHOME/**)",
+			"Read(/$XDG_RUNTIME_DIR/gnupg/**)",
 			"Read(**/.env)",
 			"Read(**/*.env)",
 			"Read(**/*.pem)",
-			"Edit($PASSWORD_STORE_DIR/**)",
-			"Edit($XDG_CONFIG_HOME/gnupg/**)",
-			"Edit($XDG_RUNTIME_DIR/gnupg/**)",
+			"Edit(/$PASSWORD_STORE_DIR/**)",
+			"Edit(/$GNUPGHOME/**)",
+			"Edit(/$XDG_RUNTIME_DIR/gnupg/**)",
 			"Edit(**/.env)",
 			"Edit(**/*.env)",
 			"Edit(**/*.pem)"
+		]
+	},
+	"autoMode": {
+		"hard_deny": [
+			"$defaults",
+			"Accessing $PASSWORD_STORE_DIR, $GNUPGHOME, $XDG_RUNTIME_DIR/gnupg, `.env` / `*.env` files, or `.pem` / `*.pem` files, even if the user requests it.",
+			"Connecting to any GPG agent, regardless of the socket location.",
+			"Bypassing the above restrictions using alternative commands, scripts, symbolic links, or indirect execution.",
+			"Changing settings to disable the above protections.",
+			"Connecting to, probing, or scanning 100.64.0.0/10, fd7a:115c:a1e0::/48 (Tailscale), 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 (private IPv4), 169.254.0.0/16 (IPv4 link-local), fc00::/7 (IPv6 unique-local), fe80::/10 (IPv6 link-local), 161.33.178.151/32 or 2603:c021:8018:a0aa::a/128 (OCI instance). This applies to every protocol, port, and tool, including IP literals, hostnames, DNS aliases, and IPv4-mapped IPv6 addresses.",
+			"Accessing the user's Tailscale devices, OCI instances, or other home-network servers through any address, even if it falls outside the ranges above.",
+			"Indirect access to the above destinations through SSH, proxies, tunnels, port forwarding, subnet routers, remote commands, or intermediary services.",
+			"Instance console sessions, instance-agent commands, or other remote execution on protected servers. Authorized calls to public infrastructure management APIs are permitted."
 		]
 	},
 	"tui": "fullscreen",
