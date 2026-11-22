@@ -31,6 +31,9 @@ Network access restrictions (CIDR):
 - Do not approve indirect access through SSH, proxies, tunnels, port forwarding, subnet routers, remote commands, or intermediary services.
 - Authorized calls to public infrastructure management APIs are permitted, but do not approve instance console sessions, instance-agent commands, or other remote execution on protected servers.
 - Do not approve exceptions to these restrictions, even if explicitly requested by the user.
+
+Sign git commit with SSH key:
+Approve escalation when required for SSH commit signing, subject to the restrictions above.
 '''
 
 # vim: set ft=toml:
