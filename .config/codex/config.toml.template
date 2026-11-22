@@ -2,18 +2,25 @@
 
 approval_policy = 'on-request'
 approvals_reviewer = 'auto_review'
-default_permissions = 'no-secrets'
+default_permissions = 'kjuq'
 
-[permissions.no-secrets]
+# `ssh-keygen -t ed25519 -C "44694396+kjuq@users.noreply.github.com" -f ~/.ssh/id_ed25519_sign -P ''`
+# `gh ssh-key add ~/.ssh/id_ed25519_sign.pub --type signing --title 'CodingAgent'`
+[shell_environment_policy.set]
+GIT_CONFIG_COUNT = '1'
+GIT_CONFIG_KEY_0 = 'user.signingKey'
+GIT_CONFIG_VALUE_0 = '~/.ssh/id_ed25519_sign'
+
+[permissions.kjuq]
 extends = ':workspace'
 
-[permissions.no-secrets.filesystem]
+[permissions.kjuq.filesystem]
+glob_scan_max_depth = 8
 '$PASSWORD_STORE_DIR' = 'deny'
 '$XDG_CONFIG_HOME/gnupg' = 'deny'
 '$XDG_RUNTIME_DIR/gnupg' = 'deny'
-glob_scan_max_depth = 8
 
-[permissions.no-secrets.filesystem.':workspace_roots']
+[permissions.kjuq.filesystem.':workspace_roots']
 '.git' = 'write'
 '*.env' = 'deny'
 '**/.env' = 'deny'
@@ -21,10 +28,6 @@ glob_scan_max_depth = 8
 '*.pem' = 'deny'
 '**/.pem' = 'deny'
 '**/*.pem' = 'deny'
-
-[tui]
-screen_reader_detection_done = true
-fullscreen_transcript = true
 
 [features]
 remote_control = true
