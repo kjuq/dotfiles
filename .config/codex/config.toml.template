@@ -1,0 +1,33 @@
+# `cat config.toml.template | envsubst > config.toml`
+
+approval_policy = 'on-request'
+approvals_reviewer = 'auto_review'
+default_permissions = 'no-secrets'
+
+[permissions.no-secrets]
+extends = ':workspace'
+
+[permissions.no-secrets.filesystem]
+'$PASSWORD_STORE_DIR' = 'deny'
+'$XDG_CONFIG_HOME/gnupg' = 'deny'
+'$XDG_RUNTIME_DIR/gnupg' = 'deny'
+glob_scan_max_depth = 8
+
+[permissions.no-secrets.filesystem.':workspace_roots']
+'.env' = 'deny'
+'*.env' = 'deny'
+'**/.env' = 'deny'
+'**/*.env' = 'deny'
+'.pem' = 'deny'
+'*.pem' = 'deny'
+'**/.pem' = 'deny'
+'**/*.pem' = 'deny'
+
+[tui]
+screen_reader_detection_done = true
+fullscreen_transcript = true
+
+[features]
+remote_control = true
+
+# vim: set ft=toml:

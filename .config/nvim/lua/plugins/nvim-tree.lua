@@ -20,6 +20,11 @@ require('nvim-tree').setup({
 	view = {
 		signcolumn = 'auto',
 	},
+	actions = {
+		open_file = {
+			resize_window = false,
+		},
+	},
 	renderer = {
 		icons = {
 			padding = {

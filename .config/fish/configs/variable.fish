@@ -34,6 +34,10 @@ set --export HOMEBREW_NO_ENV_HINTS 1
 # less
 set --export LESS '--mouse --wheel-lines=1'
 
+# terminfo
+set --export TERMINFO "$XDG_DATA_HOME"/terminfo
+set --export TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+
 # Bash
 [ -d "$XDG_STATE_HOME/bash" ]; or mkdir -p "$XDG_STATE_HOME/bash" # avoid forking `mkdir` on every startup
 set --export HISTFILE "$XDG_STATE_HOME/bash/history"
@@ -64,6 +68,9 @@ set --export CODEX_HOME "$XDG_CONFIG_HOME/codex"
 
 # Grok
 set --export GROK_HOME "$XDG_CONFIG_HOME/grok"
+
+# Cloudflare
+set --export TUNNEL_ORIGIN_CERT "$XDG_DATA_HOME/cloudflared/cert.pem"
 
 # Cargo
 set --export CARGO_HOME "$XDG_DATA_HOME"/cargo

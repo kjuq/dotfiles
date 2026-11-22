@@ -12,6 +12,10 @@ $XDG_CONFIG_HOME/clang-format
 $XDG_CONFIG_HOME/claude/settings.json.example
 $XDG_CONFIG_HOME/claude/CLAUDE.md
 $XDG_CONFIG_HOME/claude/skills/kjuq
+$XDG_CONFIG_HOME/codex/AGENTS.md
+$XDG_CONFIG_HOME/codex/config.toml.template
+$XDG_CONFIG_HOME/codex/requirements.toml.template
+$XDG_CONFIG_HOME/codex/setup.sh
 $XDG_CONFIG_HOME/dust/config.toml
 $XDG_CONFIG_HOME/dunst/dunstrc
 $XDG_CONFIG_HOME/fd/ignore
@@ -56,6 +60,9 @@ $XDG_CONFIG_HOME/neomutt/signature
 $XDG_CONFIG_HOME/nano/nanorc
 $XDG_CONFIG_HOME/npm/npmrc
 $XDG_CONFIG_HOME/nvim
+$XDG_CONFIG_HOME/opencode/cli.json.template
+$XDG_CONFIG_HOME/opencode/opencode.jsonc.template
+$XDG_CONFIG_HOME/opencode/setup.sh
 $XDG_CONFIG_HOME/pacman/makepkg.conf
 $XDG_CONFIG_HOME/paru/paru.conf
 $XDG_CONFIG_HOME/python/pythonrc.py

@@ -1,2 +1,3 @@
 [appearance]
+timestamp_format = "15:04"
 image_protocol = "kitty"

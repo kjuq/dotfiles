@@ -5,10 +5,11 @@ vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
 vim.keymap.set('n', '<Plug>(nvim-dir-up)', '<CMD>Oil<CR>', { desc = 'Oil: Open' })
 
 require('oil').setup({
+	default_file_explorer = true,
 	delete_to_trash = true,
 	skip_confirm_for_simple_edits = true,
-	cleanup_delay_ms = false,
-	constrain_cursor = 'editable', -- 'editable' | 'name' | false
+	cleanup_delay_ms = 0,
+	constrain_cursor = false, -- 'editable' | 'name' | false
 	columns = {
 		-- 'icon',
 		-- "permissions",
@@ -18,6 +19,10 @@ require('oil').setup({
 	buf_options = {
 		buflisted = false,
 		bufhidden = 'hide',
+	},
+	win_options = {
+		conceallevel = 0,
+		concealcursor = '',
 	},
 	keymaps = {
 		['g?'] = 'actions.show_help',
@@ -32,15 +37,16 @@ require('oil').setup({
 		['_'] = 'actions.cd',
 		['`'] = 'actions.change_sort',
 		['gx'] = 'actions.open_external',
-		['<2-LeftMouse>'] = 'actions.open_external',
-		['g.'] = 'actions.toggle_hidden',
+		['<2-LeftMouse>'] = 'actions.select',
+		['<RightMouse>'] = 'actions.open_external',
+		['gh'] = 'actions.toggle_hidden',
 		['g\\'] = 'actions.toggle_trash',
 	},
 	use_default_keymaps = false,
 	view_options = {
 		show_hidden = false,
 		is_always_hidden = function(name, _)
-			local hiddens = { '.DS_Store', '.git', '.gitmodules', 'node_modules' }
+			local hiddens = { '.DS_Store', 'node_modules' }
 			return vim.list_contains(hiddens, name)
 		end,
 	},
