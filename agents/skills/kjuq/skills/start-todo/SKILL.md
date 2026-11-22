@@ -1,17 +1,15 @@
 ---
 name: start-todo
-description: Start working on a TODO queued by `/create-todo`.
+description: Start working on a TODO queued by create-todo.
 argument-hint: [<num> | description of which TODO]
 disable-model-invocation: true
 ---
 
-# `/start-todo`: TODO に着手する
+# TODO に着手する
 
-`/create-todo` で積んだ TODO を選び、その blueprint に従って作業する。
+`create-todo` で積んだ TODO を選び、その blueprint に従って作業する。
 
-指定:
-
-$ARGUMENTS
+呼び出し時にユーザーが添えたテキストを TODO の指定として扱う。
 
 ## 1. パスを決める
 
