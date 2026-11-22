@@ -1,8 +1,0 @@
-vim.pack.add({ 'https://github.com/ellisonleao/gruvbox.nvim' })
-
-require('gruvbox').setup({
-	transparent_mode = _G.kjuq.colorscheme_transparent == nil and true or _G.kjuq.colorscheme_transparent,
-	dim_inactive = false,
-})
-
-vim.cmd.colorscheme('gruvbox')
