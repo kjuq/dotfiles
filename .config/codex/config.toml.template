@@ -29,7 +29,17 @@ glob_scan_max_depth = 8
 '**/.pem' = 'deny'
 '**/*.pem' = 'deny'
 
+[permissions.kjuq.network]
+enabled = true
+allow_upstream_proxy = false
+
+[permissions.kjuq.network.domains]
+"*" = "allow"
+"161.33.178.151" = "deny" # OCI instance IPv4
+"2603:c021:8018:a0aa::a" = "deny" # OCI instance IPv6
+
 [features]
 remote_control = true
+network_proxy = true
 
 # vim: set ft=toml:
