@@ -44,8 +44,7 @@ network_proxy = true
 hooks = true
 
 [mcp_servers.herdr]
-command = "uv"
-args = ["run", "--python", "3.12", "--script", "$XDG_CONFIG_HOME/codex/herdr_mcp.py"]
+command = "$HOME/kjuq/dotfiles/agents/mcp/herdr_mcp.py"
 env_vars = ["HERDR_ENV", "HERDR_PANE_ID", "HERDR_SOCKET_PATH", "HERDR_SESSION"]
 enabled_tools = [
 	"list_agents", "get_agent", "prompt_agent", "wait_agent", "list_panes",
