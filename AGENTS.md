@@ -9,6 +9,7 @@ Response rules (also apply to documentation):
 - Keep prose to a minimum and stick to listing the commands readers need to run.
 - Write for experienced software engineers with ADHD. Omit beginner-level explanations.
 - Omit parenthetical explanations. Readers can look up specifics as needed, so leave them out.
+- Use `,` instead of `/` as delimiter to separate words
 
 Markdown format:
 
