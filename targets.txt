@@ -11,6 +11,7 @@ $XDG_CONFIG_HOME/clangd/config.yaml
 $XDG_CONFIG_HOME/clang-format
 $XDG_CONFIG_HOME/claude/settings.json.template
 $XDG_CONFIG_HOME/claude/CLAUDE.md
+$XDG_CONFIG_HOME/claude/kjuq
 $XDG_CONFIG_HOME/claude/skills/kjuq
 $XDG_CONFIG_HOME/codex/AGENTS.md
 $XDG_CONFIG_HOME/codex/config.toml.template
