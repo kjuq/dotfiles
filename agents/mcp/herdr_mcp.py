@@ -46,7 +46,7 @@ def list_agents() -> dict[str, Any]:
 @mcp.tool()
 def get_agent(target: str) -> dict[str, Any]:
 	"""Show a live agent by name or pane ID."""
-	return herdr("agent", "get", "--", target)
+	return herdr("agent", "get", target)
 
 
 @mcp.tool()
@@ -60,11 +60,11 @@ def prompt_agent(
 	target: str, text: str, wait: bool = False, timeout_ms: int = 120000,
 ) -> dict[str, Any]:
 	"""Submit a prompt to a live agent and optionally wait for it to settle."""
-	args = ["agent", "prompt"]
+	args = ["agent", "prompt", target, text]
 	if wait:
 		args += ["--wait", "--timeout", str(timeout_ms)]
 	timeout = timeout_ms / 1000 + 5 if wait else 30
-	return herdr(*args, "--", target, text, timeout=timeout)
+	return herdr(*args, timeout=timeout)
 
 
 @mcp.tool()
@@ -72,10 +72,10 @@ def wait_agent(
 	target: str, until: list[AgentStatus] | None = None, timeout_ms: int = 60000,
 ) -> dict[str, Any]:
 	"""Wait for a live agent to reach the given status, or to settle by default."""
-	args = ["agent", "wait", "--timeout", str(timeout_ms)]
+	args = ["agent", "wait", target, "--timeout", str(timeout_ms)]
 	for status in until or []:
 		args += ["--until", status]
-	return herdr(*args, "--", target, timeout=timeout_ms / 1000 + 5)
+	return herdr(*args, timeout=timeout_ms / 1000 + 5)
 
 
 def codex_agent(target: str) -> dict[str, Any]:
@@ -130,7 +130,7 @@ def read_codex(target: str, lines: int = 80) -> str:
 	if not 1 <= lines <= 200:
 		raise ToolError("lines must be between 1 and 200")
 	codex_agent(target)
-	return herdr_text("agent", "read", "--source", "recent-unwrapped", "--lines", str(lines), "--", target)
+	return herdr_text("agent", "read", target, "--source", "recent-unwrapped", "--lines", str(lines))
 
 
 @mcp.tool()
@@ -144,7 +144,7 @@ def quit_codex(target: str) -> dict[str, Any]:
 		raise ToolError("Cannot quit the Codex session making this request")
 	if agent["agent_status"] not in {"idle", "done"}:
 		raise ToolError(f"Wait for {target} to become idle before quitting")
-	return herdr("agent", "prompt", "--", target, "/quit")
+	return herdr("agent", "prompt", target, "/quit")
 
 
 if __name__ == "__main__":
