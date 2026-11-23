@@ -41,6 +41,8 @@ Python rules:
 - Run python code with `uv run`
 - DON'T use `pip` to install external packages
 - Use pep723 to manage dependencies if the script consists of one file
+- Write shebang `#!/usr/bin/env -S uv run --script` at the beginning of the python file
+- Give permission for execution so that the python script can be run with `./path/to/script.py`
 
 Git rules:
 
