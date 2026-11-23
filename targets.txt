@@ -14,6 +14,7 @@ $XDG_CONFIG_HOME/claude/CLAUDE.md
 $XDG_CONFIG_HOME/claude/skills/kjuq
 $XDG_CONFIG_HOME/codex/AGENTS.md
 $XDG_CONFIG_HOME/codex/config.toml.template
+$XDG_CONFIG_HOME/codex/kjuq
 $XDG_CONFIG_HOME/codex/requirements.toml.template
 $XDG_CONFIG_HOME/codex/setup.sh
 $XDG_CONFIG_HOME/codex/skills/kjuq
