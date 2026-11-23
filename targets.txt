@@ -61,6 +61,7 @@ $XDG_CONFIG_HOME/neomutt/signature
 $XDG_CONFIG_HOME/nano/nanorc
 $XDG_CONFIG_HOME/npm/npmrc
 $XDG_CONFIG_HOME/nvim
+$XDG_CONFIG_HOME/opencode/AGENTS.md
 $XDG_CONFIG_HOME/opencode/cli.json.template
 $XDG_CONFIG_HOME/opencode/opencode.jsonc.template
 $XDG_CONFIG_HOME/opencode/setup.sh

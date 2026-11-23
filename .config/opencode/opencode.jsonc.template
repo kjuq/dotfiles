@@ -1,6 +1,6 @@
 // vim: set ft=jsonc :
 
-// `cat opencode.jsonc.template | tail -n +4 | jq --arg key "$(pass sakura.ad.jp/llm_token)" '.providers.sakura.settings.apiKey = $key' > opencode.jsonc`
+// `cat opencode.jsonc.template | grep -v '^//' | jq --arg key "$(pass sakura.ad.jp/llm_token)" '.providers.sakura.settings.apiKey = $key' > opencode.jsonc`
 
 {
 	"$schema": "https://opencode.ai/config.json",
@@ -13,6 +13,19 @@
 				"apiKey": "REPLACE_WITH_JQ"
 			},
 			"models": {
+				"deepseek-v41-flash-1017": {
+					"name": "DeepSeek V4.1 Flash 1017",
+					"modelID": "preview/DeepSeek-V4.1-Flash-1017",
+					"capabilities": {
+						"tools": true,
+						"input": ["text", "image"],
+						"output": ["text"]
+					},
+					"limit": {
+						"context": 1048575,
+						"output": 32000
+					}
+				},
 				"kimi-k27-code": {
 					"name": "Kimi K2.7 Code",
 					"modelID": "preview/Kimi-K2.7-Code",
